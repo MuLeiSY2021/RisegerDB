@@ -6,7 +6,7 @@ import lombok.Data;
 public class Lexicon {
 
     public enum Type {
-        NUM,STR,FUN
+        NUM,STR,FUN,VAR
     }
 
     private String id;
@@ -15,9 +15,9 @@ public class Lexicon {
 
     private Double doubleValue;
 
-    private Function function;
+    private transient Function function;
 
-    private Type type;
+    private transient Type type;
 
     public Lexicon(String id, String value,Lexicon.Type type) {
         this.id = id;
@@ -33,5 +33,11 @@ public class Lexicon {
         this.id = id;
         doubleValue = tmp;
         this.type = Type.NUM;
+    }
+
+    public Lexicon(String id, String type) {
+        this.id = id;
+        this.type = Type.valueOf(type);
+        this.doubleValue = null;
     }
 }

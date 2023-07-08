@@ -5,6 +5,8 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.risegerdb.compile.config.CompileConfig;
+import org.risegerdb.compile.syntax.Interpreter;
+import org.risegerdb.compile.syntax.PriorityTree;
 import org.risegerdb.compile.tokenize.Tokenizer;
 import org.risegerdb.utils.Utils;
 
@@ -32,7 +34,7 @@ public class Function {
 
     private String syntax;
 
-    private int priority;
+    private Integer priority;
 
     public Function(Element function) {
         try {
@@ -51,7 +53,6 @@ public class Function {
     public Function(String key) {
         this.key = key;
         this.tokenId = COUNT++;
-        this.priority = CompileConfig.DEFAULT_PRIORITY;
         this.returnType = null;
         this.syntax = null;
     }

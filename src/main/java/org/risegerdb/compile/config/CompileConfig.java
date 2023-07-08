@@ -53,5 +53,7 @@ public class CompileConfig {
         }
     }
     
-    public static final int DEFAULT_PRIORITY = 1024;
+    public static final int DEFAULT_PRIORITY = Integer.MAX_VALUE;
+
+    public static final int MORE_PRIORITY = 1024;
 }

@@ -1,4 +1,9 @@
-3 / t + 5 = a
-a = 5 + 4
-indistinct=0.5, //坐标模糊度
-a>=-5.5
+SELECT (3 / cycle(t + 5) = a)
+3 / cycle(t + 5) = a
+                =
+3 / cycle(t + 5)       a
+SELECT a = 5 + 4
+SELECT indistinct=0.5, //坐标模糊度
+SELECT a>=-5.5
+
+SELECT people.name
