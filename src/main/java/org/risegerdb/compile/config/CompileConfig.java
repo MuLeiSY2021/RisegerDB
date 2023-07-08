@@ -1,5 +1,10 @@
 package org.risegerdb.compile.config;
 
+import org.risegerdb.compile.lextcal.LexicalTree;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class CompileConfig {
     public static final String FUNCTION_CONFIG_URI = "./src/main/resources/function_config.xml";
 
@@ -27,8 +32,26 @@ public class CompileConfig {
     public static final String NUMBER_PATTERN = "([1-9]\\d*\\.?\\d*)|(0\\.\\d*[1-9])";
 
     public static final String WORD_PATTERN =
-            "('[a-zA-Z_.]+'|[a-zA-Z_.]+|[_])";
+            "((?!\\d+(\\.\\d+)?)\\w+|^('')?$|'[^']*')";
 
     public static final String TOKEN_PATTERN =
-            "('[a-zA-Z_.]+'|[a-zA-Z_.]+|[_])|([1-9]\\d*\\.?\\d*)|(0\\.\\d*[1-9])";
+            "((?!\\d+(\\.\\d+)?)\\w+|^('')?$|'[^']*')|([1-9]\\d*\\.?\\d*)|(0\\.\\d*[1-9])";
+
+    private static final String[] LINEFEED_KEYWORDS = new String[]{
+        "SELECT",
+        "WHERE",
+        "USE",
+        "FROM",
+        "ON",
+        "OTHER"
+    };
+
+    public static final Map<String,Boolean> LINEFEED_MAP = new HashMap<>();
+    static {
+        for (String kerword : LINEFEED_KEYWORDS) {
+            LINEFEED_MAP.put(LexicalTree.INSTANCE.getId(kerword), true);
+        }
+    }
+    
+    public static final int DEFAULT_PRIORITY = 1024;
 }

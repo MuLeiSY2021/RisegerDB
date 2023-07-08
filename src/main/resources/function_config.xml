@@ -23,22 +23,27 @@
         <return>BOL</return>
         <priority>2</priority>
     </fun>
-
     <fun>
         <key>=</key>
-        <syntax>STR KEY NUM</syntax>
+        <syntax>VAR KEY NUM</syntax>
         <return>BOL</return>
         <priority>3</priority>
     </fun>
     <fun>
         <key>=</key>
-        <syntax>STR KEY STR</syntax>
+        <syntax>VAR KEY STR</syntax>
         <return>BOL</return>
         <priority>3</priority>
     </fun>
     <fun>
         <key>=</key>
-        <syntax>STR KEY BOL</syntax>
+        <syntax>VAR KEY VAR</syntax>
+        <return>BOL</return>
+        <priority>3</priority>
+    </fun>
+    <fun>
+        <key>=</key>
+        <syntax>VAR KEY BOL</syntax>
         <return>BOL</return>
         <priority>3</priority>
     </fun>
@@ -47,26 +52,34 @@
         <key>&lt;</key>
         <syntax>NUM KEY NUM</syntax>
         <return>BOL</return>
-        <priority>4</priority>
+        <priority>3</priority>
     </fun>
     <fun>
         <key>&lt;=</key>
         <syntax>NUM KEY NUM</syntax>
         <return>BOL</return>
-        <priority>4</priority>
+        <priority>3</priority>
     </fun>
     <fun>
         <key>&gt;=</key>
         <syntax>NUM KEY NUM</syntax>
         <return>BOL</return>
-        <priority>4</priority>
+        <priority>3</priority>
     </fun>
     <fun>
         <key>&gt;</key>
         <syntax>NUM KEY NUM</syntax>
         <return>BOL</return>
+        <priority>3</priority>
+    </fun>
+
+    <fun>
+        <key>.</key>
+        <syntax>STR KEY STR</syntax>
+        <return>VAR</return>
         <priority>4</priority>
     </fun>
+
     <fun>
         <key>-</key>
         <syntax>NUM KEY NUM</syntax>
@@ -98,25 +111,6 @@
         <priority>7</priority>
     </fun>
     <fun>
-        <key>DATABASE</key>
-        <syntax>KEY STR</syntax>
-        <return>VAR</return>
-        <priority>7</priority>
-    </fun>
-    <fun>
-        <key>MAP</key>
-        <syntax>KEY STR</syntax>
-        <return>VAR</return>
-        <priority>7</priority>
-    </fun>
-    <fun>
-        <key>MODEL</key>
-        <pram_count>-1</pram_count>
-        <syntax>KEY STR</syntax>
-        <return>NULL</return>
-        <priority>7</priority>
-    </fun>
-    <fun>
         <key>SELECT</key>
         <syntax>KEY STR</syntax>
         <return>VAR</return>
@@ -140,12 +134,12 @@
         <return>BOL</return>
         <priority>7</priority>
     </fun>
-    <fun>
-        <key>field.cycle</key>
-        <syntax>KEY(POINT,NUM)</syntax>
-        <return>CYCLE</return>
-        <priority>7</priority>
-    </fun>
+<!--    <fun>-->
+<!--        <key>field.cycle</key>-->
+<!--        <syntax>KEY(POINT,NUM)</syntax>-->
+<!--        <return>CYCLE</return>-->
+<!--        <priority>7</priority>-->
+<!--    </fun>-->
     <fun>
         <key>coord</key>
         <syntax>KEY(NUM,NUM)</syntax>
@@ -164,12 +158,12 @@
         <return>BOL</return>
         <priority>7</priority>
     </fun>
-    <fun>
-        <key>field.rect</key>
-        <syntax>KEY(POINT,POINT)</syntax>
-        <return>RECT</return>
-        <priority>7</priority>
-    </fun>
+<!--    <fun>-->
+<!--        <key>field.rect</key>-->
+<!--        <syntax>KEY(POINT,POINT)</syntax>-->
+<!--        <return>RECT</return>-->
+<!--        <priority>7</priority>-->
+<!--    </fun>-->
     <fun>
         <key>DISTANCE</key>
         <syntax>KEY(POINT,POINT)</syntax>
@@ -184,7 +178,7 @@
         <priority>7</priority>
     </fun>
     <fun>
-        <key>IN</key>
+        <key>ON</key>
         <syntax>KEY STR</syntax>
         <return>VAR</return>
         <priority>7</priority>

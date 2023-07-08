@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import org.risegerdb.compile.lextcal.LexicalAnalyzer;
 import org.risegerdb.compile.lextcal.LexicalAnalyzerOutput;
 import org.risegerdb.compile.syntax.Interpreter;
-import org.risegerdb.compile.syntax.PreProcessor;
-import org.risegerdb.compile.syntax.SyntaxTree;
 import org.risegerdb.compile.tokenize.Tokenizer;
 import org.risegerdb.utils.Utils;
 
@@ -13,19 +11,23 @@ import java.io.File;
 import java.util.List;
 
 public class Compiler {
-    private final Tokenizer tokenizer = Tokenizer.INSTANCE;
+    private static final Tokenizer tokenizer;
 
-    private final PreProcessor processor = PreProcessor.INSTANCE;
 
-    private final LexicalAnalyzer lexicalAnalyzer = LexicalAnalyzer.INSTANCE;
+    private static final LexicalAnalyzer lexicalAnalyzer;
 
-    private final Interpreter interpreter = Interpreter.INSTANCE;
+    private static final Interpreter interpreter;
 
+    static {
+        tokenizer = Tokenizer.INSTANCE;
+        lexicalAnalyzer = new LexicalAnalyzer();
+        interpreter = new Interpreter();
+    }
 
     public String compile(String code) {
         List<String> result = tokenizer.execute(code);
         LexicalAnalyzerOutput output = lexicalAnalyzer.execute(result);
-        processor.execute(output);
+        interpreter.execute(output);
         return new Gson().toJson(output);
     }
 

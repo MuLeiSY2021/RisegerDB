@@ -1,7 +1,6 @@
 package org.risegerdb.compile.lextcal;
 
 import org.risegerdb.compile.config.CompileConfig;
-import org.risegerdb.compile.tokenize.Token;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +8,6 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class LexicalAnalyzer {
-    public static final LexicalAnalyzer INSTANCE = new LexicalAnalyzer();
 
     LexicalTree lexicalTree = LexicalTree.INSTANCE;
 
@@ -21,8 +19,6 @@ public class LexicalAnalyzer {
 
     private final Map<Double,Integer> doubleMap = new HashMap<>();
 
-    private int count = 0;
-
     public LexicalAnalyzerOutput execute(List<String> lexicons) {
         LexicalAnalyzerOutput output = new LexicalAnalyzerOutput();
         for (String word:lexicons) {
@@ -33,22 +29,22 @@ public class LexicalAnalyzer {
     }
 
     public Lexicon getLexicon(String word) {
-        Token token;
+        Function func;
 
         if(numberPattern.matcher(word).matches()) {
             double tmp = Double.parseDouble(word);
             if(!doubleMap.containsKey(tmp)) {
-                doubleMap.put(tmp,getCount());
+                doubleMap.put(tmp,doubleMap.size() + 1);
             }
             return new Lexicon(CompileConfig.NUMBER_CONST_PREFIX + "_" + doubleMap.get(tmp), tmp);
         }
         String tmp = word.toUpperCase();
-        if((token = lexicalTree.get(tmp)) != null) {
-            return new Lexicon(CompileConfig.KEYWORD_CONST_PREFIX + "_" + token.getId(),token.getName(), Lexicon.Type.FUN);
+        if((func = lexicalTree.get(tmp)) != null) {
+            return new Lexicon(func.getId(), func.getKey(), Lexicon.Type.FUN);
         }
         if(wordPattern.matcher(word).matches()) {
             if(!wordMap.containsKey(word)) {
-                wordMap.put(word,getCount());
+                wordMap.put(word,wordMap.size() + 1);
             }
             return new Lexicon(CompileConfig.STRING_CONST_PREFIX + "_" + wordMap.get(word), word, Lexicon.Type.STR);
         }else {
@@ -57,10 +53,5 @@ public class LexicalAnalyzer {
             throw new IllegalArgumentException("非法字符存在");
         }
     }
-
-    public int getCount() {
-        return count++;
-    }
-
 
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Data
 public class LexicalAnalyzerOutput {
-    private List<String> lexemeList = new LinkedList<>();
+    private List<Lexicon> lexemeList = new LinkedList<>();
 
     private Map<String,String> stringConstTable = new HashMap<>();
 
@@ -17,17 +17,17 @@ public class LexicalAnalyzerOutput {
 
     public void add(Lexicon lexicon) {
         if(lexicon.getType().equals(Lexicon.Type.FUN)) {
-            lexemeList.add(lexicon.getId());
+            lexemeList.add(lexicon);
         } else if(lexicon.getType().equals(Lexicon.Type.NUM)) {
             if(!numberConstTable.containsKey(lexicon.getId())) {
                 numberConstTable.put(lexicon.getId(), lexicon.getDoubleValue());
             }
-            lexemeList.add(lexicon.getId());
+            lexemeList.add(lexicon);
         } else if(lexicon.getType().equals(Lexicon.Type.STR)) {
             if(!stringConstTable.containsKey(lexicon.getId())) {
                 stringConstTable.put(lexicon.getId(), lexicon.getValue());
             }
-            lexemeList.add(lexicon.getId());
+            lexemeList.add(lexicon);
         }
     }
 }

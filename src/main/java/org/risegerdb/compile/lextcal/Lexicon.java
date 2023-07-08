@@ -1,26 +1,21 @@
 package org.risegerdb.compile.lextcal;
 
 import lombok.Data;
-import org.risegerdb.compile.tokenize.Token;
 
 @Data
 public class Lexicon {
-
-
-
 
     public enum Type {
         NUM,STR,FUN
     }
 
-
     private String id;
 
     private String value;
 
-    private double doubleValue;
+    private Double doubleValue;
 
-    private Token tokenValue;
+    private Function function;
 
     private Type type;
 
@@ -28,9 +23,10 @@ public class Lexicon {
         this.id = id;
         this.value = value;
         if (type == Type.FUN) {
-            tokenValue = LexicalTree.INSTANCE.get(value);
+            function = LexicalTree.INSTANCE.get(value);
         }
         this.type = type;
+        this.doubleValue = null;
     }
 
     public Lexicon(String id, double tmp) {

@@ -14,6 +14,32 @@ public class Tokenizer {
 
     static Pattern tokenPattern = Pattern.compile(CompileConfig.TOKEN_PATTERN);
 
+    public List<String> execute(String code) {
+        List<String> lines = new LinkedList<>(Arrays.asList(code.split("\n")));
+        return tokenize(lines);
+    }
+
+    private List<String> getTokens(String tile) {
+        Matcher m;
+        List<String> tokens = new LinkedList<>();
+        while (tile.length() > 0) {
+            int index = -1;
+            int tmp;
+            if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
+                index = m.end(0);
+            } else if ((tmp = LexicalTree.INSTANCE.getIndex(tile)) > -1) {
+                index = tmp;
+            }
+
+            if(index == -1) {
+                throw new IndexOutOfBoundsException(tile + " -1");
+            }
+            tokens.add(tile.substring(0,index));
+            tile = tile.substring(index);
+        }
+        return tokens;
+    }
+
     private List<String> tokenize(List<String> tokens) {
         List<String> res = new LinkedList<>();
 
@@ -29,52 +55,13 @@ public class Tokenizer {
             //按照空格分词
             String[] tiles = token.split(" ");
             for (String tile:tiles) {
-                while (tile.length() > 0) {
-
-                    String keyword = tile;
-                    m = tokenPattern.matcher(keyword);
-                    if(m.find()){
-                        int start = m.start();
-
-                        //说明前面有东西 “>=-5” 把前面的部分拆出来
-                        if (start != 0) {
-                            //拿出 >=-
-                            keyword = tile.substring(0,start);
-                        } else {
-                            //说明前面没东西了，利用正则表达式把里面的第一部分拆出来
-                            res.add(tile.substring(0, m.end()));
-                            //把剩下的东西再填回
-                            tile = tile.substring(m.end());
-                            continue;
-                        }
-                    }
-                    int log = 0;
-                    //拿出 >=-
-                    for ( int index_ = 0;index_ < keyword.length();index_ = 0) {
-                        //从词法树里拿出>=
-                        index_ = LexicalTree.INSTANCE.getIndex(keyword);
-                        if (index_ == -1) {
-                            throw new IllegalArgumentException("Invalid token word:" + keyword);
-                        }
-                        //把>=放入结果集
-                        res.add(keyword.substring(0, index_));
-
-                        //把剩下的-再次放入循环
-                        keyword = keyword.substring(index_);
-                        log = index_;
-                    }
-                    tile = tile.substring(log);
-                }
+                res.addAll(getTokens(tile));
             }
         }
 
         return res;
     }
 
-    public List<String> execute(String code) {
-        List<String> lines = new LinkedList<>(Arrays.asList(code.split("\n")));
-        return tokenize(lines);
 
-    }
 
 }

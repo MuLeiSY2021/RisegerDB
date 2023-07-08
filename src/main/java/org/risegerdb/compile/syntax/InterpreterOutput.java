@@ -18,17 +18,17 @@ public class InterpreterOutput {
 
     public void add(Lexicon lexicon) {
         if(lexicon.getType().equals(Lexicon.Type.FUN)) {
-            lexemeList.add(lexicon.getId());
+            lexemeList.add(lexicon.getValue());
         } else if(lexicon.getType().equals(Lexicon.Type.NUM)) {
             if(!numberConstTable.containsKey(lexicon.getId())) {
                 numberConstTable.put(lexicon.getId(), lexicon.getDoubleValue());
             }
-            lexemeList.add(lexicon.getId());
+            lexemeList.add(lexicon.getValue());
         } else if(lexicon.getType().equals(Lexicon.Type.STR)) {
             if(!stringConstTable.containsKey(lexicon.getId())) {
                 stringConstTable.put(lexicon.getId(), lexicon.getValue());
             }
-            lexemeList.add(lexicon.getId());
+            lexemeList.add(lexicon.getValue());
         }
     }
 }

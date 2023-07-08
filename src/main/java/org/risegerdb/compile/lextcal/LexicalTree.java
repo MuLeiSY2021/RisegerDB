@@ -1,13 +1,7 @@
 package org.risegerdb.compile.lextcal;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import lombok.Data;
-import org.risegerdb.compile.config.CompileConfig;
-import org.risegerdb.compile.tokenize.Token;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,30 +9,20 @@ public class LexicalTree {
     private final Node root = new Node();
 
     private LexicalTree() {
-        Gson gson = new Gson();
-        List<Token> tmp = null;
-        try {
-            tmp = gson.fromJson(new BufferedReader(new FileReader(CompileConfig.KEYWORDS_FILE_URI))
-                    ,new TypeToken<List<Token>>() {}.getType());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        List<Token> keywords = tmp;
-        if(keywords != null) {
-            for (Token keyword : keywords) {
-                root.insert(keyword);
-            }
+        for (Function function:Function.FUNCTIONS_BY_KEY.values()) {
+            root.insert(function);
         }
     }
 
 
     public static final LexicalTree INSTANCE = new LexicalTree();
 
+
     @Data
     private static class Node {
         private char letter;
 
-        private Token token;
+        private Function function;
 
         private List<Node> children = new LinkedList<>();
 
@@ -47,45 +31,45 @@ public class LexicalTree {
         public Node() {
         }
 
-        public Node(char letter, Token token, Node parent) {
+        public Node(char letter, Function function, Node parent) {
             this.letter = letter;
-            this.token = token;
+            this.function = function;
             this.parent = parent;
         }
 
-        public void insert(Token child, int index) {
+        public void insert(Function function, int index) {
             try {
                 for (Node node : children) {
-                    if (node.getLetter() == child.getName().charAt(index)) {
-                        if (child.getName().length() == index + 1) {
-                            node.setToken(child);
+                    if (node.getLetter() == function.getKey().charAt(index)) {
+                        if (function.getKey().length() == index + 1) {
+                            node.setFunction(function);
                         } else {
-                            node.insert(child, index + 1);
+                            node.insert(function, index + 1);
                         }
                         return;
                     }
                 }
                 Node childNode;
-                if (child.getName().length() == index + 1) {
-                    childNode = new Node(child.getName().charAt(index), child, this);
+                if (function.getKey().length() == index + 1) {
+                    childNode = new Node(function.getKey().charAt(index), function, this);
                 } else {
-                    childNode = new Node(child.getName().charAt(index), null, this);
+                    childNode = new Node(function.getKey().charAt(index), null, this);
                 }
                 children.add(childNode);
-                if (child.getName().length() > index + 1) {
-                    childNode.insert(child, index + 1);
+                if (function.getKey().length() > index + 1) {
+                    childNode.insert(function, index + 1);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println(child.getName());
+                System.out.println(function.getKey());
             }
         }
 
-        public Token get(String name, int index) {
+        public Function get(String name, int index) {
             for (Node node : children) {
                 if (node.getLetter() == name.charAt(index)) {
                     if (name.length() == index + 1) {
-                        return node.getToken();
+                        return node.getFunction();
                     } else {
                         return node.get(name, index + 1);
                     }
@@ -102,11 +86,11 @@ public class LexicalTree {
                     '}';
         }
 
-        public Token get(String name) {
+        public Function get(String name) {
             return this.get(name, 0);
         }
 
-        public void insert(Token keyword) {
+        public void insert(Function keyword) {
             this.insert(keyword, 0);
         }
 
@@ -132,11 +116,21 @@ public class LexicalTree {
         }
     }
 
-    public Token get(String name) {
-        return root.get(name);
+    public String getId(String name) {
+        Function function;
+        if((function =root.get(name)) != null) {
+            return function.getId();
+        } else {
+            return null;
+        }
     }
 
     public int getIndex(String word) {
         return root.getIndex(word);
     }
+
+    public Function get(String tmp) {
+        return root.get(tmp);
+    }
+
 }
