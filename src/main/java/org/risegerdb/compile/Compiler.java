@@ -42,6 +42,5 @@ public class Compiler {
         File code = new File("./src/main/resources/code.txt");
         Compiler compiler = new Compiler();
         String result = compiler.compile(code);
-        System.out.println(result);
     }
 }

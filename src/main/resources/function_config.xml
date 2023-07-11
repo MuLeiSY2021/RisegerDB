@@ -190,20 +190,20 @@
 
 
 
-    <fun>
-        <key>|</key>
-        <syntax>BOL KEY BOL</syntax>
-        <return>BOL</return>
-        <priority>10</priority>
-    </fun>
+
     <fun>
         <key>&amp;</key>
         <syntax>BOL KEY BOL</syntax>
         <return>BOL</return>
-        <priority>11</priority>
+        <priority>10</priority>
     </fun>
 
-
+    <fun>
+        <key>|</key>
+        <syntax>BOL KEY BOL</syntax>
+        <return>BOL</return>
+        <priority>11</priority>
+    </fun>
 
 
 

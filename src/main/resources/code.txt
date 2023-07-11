@@ -1,2 +1,59 @@
+//-------------------------字段SQL参考----------------------//
+
+USE 'test_database'
+
+SELECT people.name,people.site
+
+FROM people,building
+ON test_map.county
+WHERE {
+
+//范围图论搜索
+
 IN cycle(coord(43,66),7)
-//4 + 8 * 9
+
+&
+
+OUT rect(coord(44,65),4)
+
+&
+
+IN cycle(
+
+{
+
+SELECT
+
+      building.site
+
+WHERE
+
+building.name = 'aaaa'
+
+}
+
+,4
+
+)
+
+
+
+|
+
+DISTANCE(coord(99,88),people.site) < 10
+
+
+
+//字段搜索
+
+&
+
+!road.size >= 5
+
+}
+
+OTHER
+
+indistinct 0.5, //坐标模糊度
+
+count 10 //查询结果数量

@@ -42,6 +42,8 @@ public class PriorityTree {
 
         private Node rChild;
 
+        private List<Node> children = new LinkedList<>();
+
         private transient Node parent;
 
         public Node(List<Lexicon> line) {
@@ -50,33 +52,91 @@ public class PriorityTree {
         }
 
         private void setChild(List<Lexicon> line) {
+            List<List<Lexicon>> result;
             if(canSplit(line)) {
-                int[] indexes = getPrioritizeIndex(line);
-                if (indexes[0] > -1) {
-                    this.line = new LinkedList<>(line.subList(indexes[0], indexes[1] + 1));
-                    if(indexes[0] > 0) {
-                        List<Lexicon> children = line.subList(0, indexes[0]);
-                        if (canSplit(children)) {
-                            this.lChild = new Node(children, this, 0);
-                        } else {
-                            this.line.addAll(0, children);
+                if((result = isFunction(line)) != null) {
+                    List<Lexicon> self = result.get(0);
+                    int offset = 1;
+                    for (int i = 0;i < self.size();i++) {
+                        Lexicon node = self.get(i);
+                        if(node.equals(",") || node.equals(")")) {
+                            if(canSplit(result.get(offset))) {
+                                this.children.add(new Node(result.get(offset), this, i - 1));
+                                offset++;
+                            } else {
+                                self.addAll(i,result.get(offset));
+                                offset++;
+                                i++;
+                            }
                         }
                     }
-                    if(indexes[1] + 1 < line.size() ) {
-                        List<Lexicon> children = line.subList(indexes[1] + 1, line.size());
-                        if (canSplit(children)){
-                            this.rChild = new Node(line.subList(indexes[1] + 1, line.size()), this, indexes[1] + 1);
-                        } else{
-                            this.line.addAll(children);
+                    this.line = self;
+                } else {
+                    int[] indexes = getPrioritizeIndex(line);
+                    if (indexes[0] > -1) {
+                        this.line = new LinkedList<>(line.subList(indexes[0], indexes[1] + 1));
+                        if (indexes[0] > 0) {
+                            List<Lexicon> children = line.subList(0, indexes[0]);
+                            if (canSplit(children)) {
+                                this.children.add(new Node(children, this, 0));
+                            } else {
+                                this.line.addAll(0, children);
+                            }
+                        }
+                        if (indexes[1] + 1 < line.size()) {
+                            List<Lexicon> children = line.subList(indexes[1] + 1, line.size());
+                            if (canSplit(children)) {
+                                this.children.add(new Node(line.subList(indexes[1] + 1, line.size()), this, indexes[1] + 1));
+                            } else {
+                                this.line.addAll(children);
+                            }
                         }
                     }
                 }
             }
         }
 
-        public boolean isFunction(List<Lexicon> children) {
-            boolean flg = true;
-            return flg;
+        public List<List<Lexicon>> isFunction(List<Lexicon> children) {
+            if(children.size() < 3) {
+                return null;
+            }
+            boolean flg;
+            List<List<Lexicon>> result = new LinkedList<>();
+            List<Lexicon> self = new LinkedList<>();
+            ListIterator<Lexicon> it = children.listIterator();
+            Lexicon lexicon = it.next();
+            flg = lexicon.equals(Lexicon.Type.STR);
+            self.add(lexicon);
+            lexicon = it.next();
+            flg &= MULTIPLE_MAP.containsKey(lexicon.getValue());
+            if(!flg) {
+                return null;
+            }
+            self.add(lexicon);
+            result.add(self);
+            Stack<Lexicon> stack = new Stack<>();
+            stack.push(lexicon);
+            List<Lexicon> pramList = new LinkedList<>();
+            for (lexicon = it.next(); it.hasNext() ;lexicon = it.next()) {
+                if(MULTIPLE_MAP.containsKey(lexicon.getValue())) {
+                    stack.push(lexicon);
+                    pramList.add(lexicon);
+                } else if(!stack.isEmpty() && ANOTHER_PART_MAP.get(stack.peek().getValue()).equals(lexicon.getValue())) {
+                    stack.pop();
+                    pramList.add(lexicon);
+                } else if(!stack.isEmpty() && (lexicon.equals(",") || ANOTHER_PART_MAP.get(stack.peek().getValue()).equals(lexicon.getValue())) && stack.size() == 1) {
+                    result.add(pramList);
+                    self.add(lexicon);
+                    pramList = new LinkedList<>();
+                } else {
+                    pramList.add(lexicon);
+                }
+            }
+            if(!pramList.isEmpty()) {
+                result.add(pramList);
+                self.add(lexicon);
+            }
+            return result;
         }
 
         public Node(List<Lexicon> line, Node parent,int prevIndex) {
