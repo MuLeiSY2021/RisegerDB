@@ -78,7 +78,9 @@ public class Function {
                 keywords.put(key,key);
             }
             for (String key:keywords.values()) {
-                res.put(key,new Function(key));
+                if(!res.containsKey(key)) {
+                    res.put(key, new Function(key));
+                }
             }
         }catch (Exception e) {
             e.printStackTrace();

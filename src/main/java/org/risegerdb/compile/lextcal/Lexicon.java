@@ -2,6 +2,8 @@ package org.risegerdb.compile.lextcal;
 
 import lombok.Data;
 
+import java.util.Objects;
+
 @Data
 public class Lexicon {
 
@@ -9,7 +11,7 @@ public class Lexicon {
         NUM,STR,FUN,VAR
     }
 
-    private String id;
+    private transient String id;
 
     private String value;
 
@@ -39,5 +41,31 @@ public class Lexicon {
         this.id = id;
         this.type = Type.valueOf(type);
         this.doubleValue = null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o instanceof String && o.equals(this.value)) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) return false;
+        Lexicon lexicon = (Lexicon) o;
+        return Objects.equals(getValue(), lexicon.getValue());
+    }
+
+    public boolean equals(String value) {
+        if(value == null || this.value == null) return false;
+        return value.equals(this.value);
+    }
+
+    public boolean equals(Type type) {
+        if(this.type == null || type == null) return false;
+        return type.equals(this.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getValue());
     }
 }

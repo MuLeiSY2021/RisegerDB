@@ -39,7 +39,7 @@ public class Compiler {
 
 
     public static void main(String[] args) {
-        File code = new File("./src/main/resources/code_.txt");
+        File code = new File("./src/main/resources/code.txt");
         Compiler compiler = new Compiler();
         String result = compiler.compile(code);
         System.out.println(result);

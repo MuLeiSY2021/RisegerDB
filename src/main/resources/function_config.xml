@@ -1,5 +1,10 @@
 <funs>
-
+    <fun>
+        <key>(</key>
+        <syntax>KEY CYCLE</syntax>
+        <return>BOL</return>
+        <priority>1</priority>
+    </fun>
     <fun>
         <key>USE</key>
         <pram_count>-1</pram_count>
@@ -30,18 +35,19 @@
         <return>BOL</return>
         <priority>1</priority>
     </fun>
-    <fun>
-        <key>CYCLE</key>
-        <syntax>KEY(POINT,NUM)</syntax>
-        <return>CYCLE</return>
-        <priority>1</priority>
-    </fun>
-    <fun>
-        <key>COORD</key>
-        <syntax>KEY(NUM,NUM)</syntax>
-        <return>POINT</return>
-        <priority>1</priority>
-    </fun>
+
+<!--    <fun>-->
+<!--        <key>CYCLE</key>-->
+<!--        <syntax>KEY(POINT,NUM)</syntax>-->
+<!--        <return>CYCLE</return>-->
+<!--        <priority>1</priority>-->
+<!--    </fun>-->
+<!--    <fun>-->
+<!--        <key>COORD</key>-->
+<!--        <syntax>KEY(NUM,NUM)</syntax>-->
+<!--        <return>POINT</return>-->
+<!--        <priority>1</priority>-->
+<!--    </fun>-->
     <fun>
         <key>OUT</key>
         <syntax>KEY CYCLE</syntax>
@@ -54,18 +60,18 @@
         <return>BOL</return>
         <priority>1</priority>
     </fun>
-    <fun>
-        <key>rect</key>
-        <syntax>KEY(POINT,POINT)</syntax>
-        <return>RECT</return>
-        <priority>1</priority>
-    </fun>
-    <fun>
-        <key>DISTANCE</key>
-        <syntax>KEY(POINT,POINT)</syntax>
-        <return>NUM</return>
-        <priority>1</priority>
-    </fun>
+<!--    <fun>-->
+<!--        <key>rect</key>-->
+<!--        <syntax>KEY(POINT,POINT)</syntax>-->
+<!--        <return>RECT</return>-->
+<!--        <priority>1</priority>-->
+<!--    </fun>-->
+<!--    <fun>-->
+<!--        <key>DISTANCE</key>-->
+<!--        <syntax>KEY(POINT,POINT)</syntax>-->
+<!--        <return>NUM</return>-->
+<!--        <priority>1</priority>-->
+<!--    </fun>-->
 
     <fun>
         <key>FROM</key>

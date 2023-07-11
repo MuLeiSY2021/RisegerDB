@@ -20,9 +20,9 @@ public class PriorityTree {
 
     public static final Map<String,Integer> MULTIPLE_MAP = new HashMap<>();
     static {
-        MULTIPLE_MAP.put("{",1);
+        MULTIPLE_MAP.put("{",3);
         MULTIPLE_MAP.put("[",2);
-        MULTIPLE_MAP.put("(",3);
+        MULTIPLE_MAP.put("(",1);
     }
 
     public static final Map<String,String> ANOTHER_PART_MAP = new HashMap<>();
@@ -51,17 +51,32 @@ public class PriorityTree {
 
         private void setChild(List<Lexicon> line) {
             if(canSplit(line)) {
-                int index = getPrioritizeIndex(line);
-                if (index > -1) {
-                    if(index > 0) {
-                        this.lChild = new Node(line.subList(0, index - 1), this, 0);
+                int[] indexes = getPrioritizeIndex(line);
+                if (indexes[0] > -1) {
+                    this.line = new LinkedList<>(line.subList(indexes[0], indexes[1] + 1));
+                    if(indexes[0] > 0) {
+                        List<Lexicon> children = line.subList(0, indexes[0]);
+                        if (canSplit(children)) {
+                            this.lChild = new Node(children, this, 0);
+                        } else {
+                            this.line.addAll(0, children);
+                        }
                     }
-                    if(index < line.size() - 1) {
-                        this.rChild = new Node(line.subList(index + 1, line.size()), this, index - 1);
+                    if(indexes[1] + 1 < line.size() ) {
+                        List<Lexicon> children = line.subList(indexes[1] + 1, line.size());
+                        if (canSplit(children)){
+                            this.rChild = new Node(line.subList(indexes[1] + 1, line.size()), this, indexes[1] + 1);
+                        } else{
+                            this.line.addAll(children);
+                        }
                     }
-                    this.line = line.subList(index, index + 1);
                 }
             }
+        }
+
+        public boolean isFunction(List<Lexicon> children) {
+            boolean flg = true;
+            return flg;
         }
 
         public Node(List<Lexicon> line, Node parent,int prevIndex) {
@@ -71,9 +86,9 @@ public class PriorityTree {
             this.prevIndex = prevIndex;
         }
 
-        private int getPrioritizeIndex(List<Lexicon> line) {
-                int result = 0,
-                        max = Integer.MIN_VALUE,
+        private int[] getPrioritizeIndex(List<Lexicon> line) {
+                int[] result = new int[2];
+                int max = Integer.MIN_VALUE,
                         index = 0,
                         muti = 0;
                 Stack<String> prefix = new Stack<>();
@@ -94,7 +109,8 @@ public class PriorityTree {
                                 - muti * CompileConfig.MORE_PRIORITY + prefix.size();
                         if (p > max) {
                             max = p;
-                            result = index;
+                            result[0] = index;
+                            result[1] = index;
                         }
                         index++;
                     } catch (Exception e) {
@@ -102,8 +118,27 @@ public class PriorityTree {
                         throw e;
                     }
                 }
+                if(PriorityTree.MULTIPLE_MAP.containsKey(line.get(result[0]).getValue()) &&
+                    result[0] > 0 && (line.get(result[0] - 1).equals(Lexicon.Type.STR) ||
+                        line.get(result[0] - 1).equals(Lexicon.Type.FUN))) {
+                    result[0]--;
+                    index = result[0];
+                    Iterator<Lexicon> iterator = line.listIterator(result[0] + 1);
+                    Stack<String> stack = new Stack<>();
+                    stack.push(line.get(result[0]).getValue());
+                    for (Lexicon lexicon = iterator.next(); iterator.hasNext(); lexicon = iterator.next()) {
+                        if(stack.isEmpty()) {
+                            result[1] = index;
+                        }
+                        if(MULTIPLE_MAP.containsKey(lexicon.getValue())) {
+                            stack.push(lexicon.getValue());
+                        } else if(lexicon.equals(ANOTHER_PART_MAP.get(stack.peek()))) {
+                            stack.pop();
+                        }
+                        index++;
+                    }
+                }
                 return result;
-
         }
 
         private boolean canSplit(List<Lexicon> line) {
@@ -115,7 +150,7 @@ public class PriorityTree {
                     i++;
                 }
             }
-            return i > 1;
+            return i > 0;
         }
 
         private Node getTail() {
