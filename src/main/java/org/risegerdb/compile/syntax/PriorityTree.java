@@ -57,9 +57,10 @@ public class PriorityTree {
                 if((result = isFunction(line)) != null) {
                     List<Lexicon> self = result.get(0);
                     int offset = 1;
+                    String key = self.get(1).getValue();
                     for (int i = 0;i < self.size();i++) {
                         Lexicon node = self.get(i);
-                        if(node.equals(",") || node.equals(")")) {
+                        if(node.equals(",") || ANOTHER_PART_MAP.get(key).equals(node.getValue())) {
                             if(canSplit(result.get(offset))) {
                                 this.children.add(new Node(result.get(offset), this, i - 1));
                                 offset++;
@@ -105,7 +106,7 @@ public class PriorityTree {
             List<Lexicon> self = new LinkedList<>();
             ListIterator<Lexicon> it = children.listIterator();
             Lexicon lexicon = it.next();
-            flg = lexicon.equals(Lexicon.Type.STR);
+            flg = lexicon.equals(Lexicon.Type.STR) || lexicon.equals(Lexicon.Type.FUN);
             self.add(lexicon);
             lexicon = it.next();
             flg &= MULTIPLE_MAP.containsKey(lexicon.getValue());
