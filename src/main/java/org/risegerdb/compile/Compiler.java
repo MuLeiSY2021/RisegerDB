@@ -1,8 +1,9 @@
 package org.risegerdb.compile;
 
 import com.google.gson.Gson;
-import org.risegerdb.compile.lextcal.LexicalAnalyzer;
-import org.risegerdb.compile.lextcal.LexicalAnalyzerOutput;
+import lombok.Data;
+import org.risegerdb.compile.context.Context;
+import org.risegerdb.compile.lextcal.TokenAnalyzer;
 import org.risegerdb.compile.syntax.Interpreter;
 import org.risegerdb.compile.tokenize.Tokenizer;
 import org.risegerdb.utils.Utils;
@@ -10,37 +11,35 @@ import org.risegerdb.utils.Utils;
 import java.io.File;
 import java.util.List;
 
+@Data
 public class Compiler {
-    private static final Tokenizer tokenizer;
+    public final Context context;
 
+    private final Tokenizer tokenizer;
 
-    private static final LexicalAnalyzer lexicalAnalyzer;
+    private final TokenAnalyzer tokenAnalyzer;
 
-    private static final Interpreter interpreter;
+    private final Interpreter interpreter;
 
-    static {
-        tokenizer = Tokenizer.INSTANCE;
-        lexicalAnalyzer = new LexicalAnalyzer();
-        interpreter = new Interpreter();
+    public Compiler(Context context) {
+        this.context = context;
+        tokenizer = new Tokenizer(context);
+        tokenAnalyzer = new TokenAnalyzer(context);
+        interpreter = new Interpreter(context);
     }
 
-    public String compile(String code) {
-        List<String> result = tokenizer.execute(code);
-        LexicalAnalyzerOutput output = lexicalAnalyzer.execute(result);
-        interpreter.execute(output);
-        return new Gson().toJson(output);
+    public void compile() {
+        tokenizer.execute();
+        tokenAnalyzer.execute();
+        interpreter.execute();
     }
 
-    public String compile(File file) {
-        String code = Utils.getText(file);
-        return compile(code);
+    public void tokenAnalyze() {
+        tokenizer.execute();
+        tokenAnalyzer.execute();
     }
 
-
-
-    public static void main(String[] args) {
-        File code = new File("./src/main/resources/code.txt");
-        Compiler compiler = new Compiler();
-        String result = compiler.compile(code);
+    public void tokenize() {
+        tokenizer.execute();
     }
 }

@@ -1,0 +1,1 @@
+DISTANCE(coord(99,88),people.site) < 3+5*2 | 1 & !road.size >= 5

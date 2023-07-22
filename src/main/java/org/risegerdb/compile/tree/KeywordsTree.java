@@ -1,28 +1,28 @@
-package org.risegerdb.compile.lextcal;
+package org.risegerdb.compile.tree;
 
 import lombok.Data;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class LexicalTree {
+public class KeywordsTree {
     private final Node root = new Node();
 
-    private LexicalTree() {
-        for (Function function:Function.FUNCTIONS_BY_KEY.values()) {
-            root.insert(function);
+    private KeywordsTree() {
+        for (Keyword keyword:Keyword.KEYWORDS) {
+            root.insert(keyword);
         }
     }
 
 
-    public static final LexicalTree INSTANCE = new LexicalTree();
+    public static final KeywordsTree INSTANCE = new KeywordsTree();
 
 
     @Data
     private static class Node {
-        private char letter;
+        private char word;
 
-        private Function function;
+        private Keyword keyword;
 
         private List<Node> children = new LinkedList<>();
 
@@ -31,45 +31,45 @@ public class LexicalTree {
         public Node() {
         }
 
-        public Node(char letter, Function function, Node parent) {
-            this.letter = letter;
-            this.function = function;
+        public Node(char word, Keyword keyword, Node parent) {
+            this.word = word;
+            this.keyword = keyword;
             this.parent = parent;
         }
 
-        public void insert(Function function, int index) {
+        public void insert(Keyword keyword, int index) {
             try {
                 for (Node node : children) {
-                    if (node.getLetter() == function.getKey().charAt(index)) {
-                        if (function.getKey().length() == index + 1) {
-                            node.setFunction(function);
+                    if (keyword.equals(index,node.getWord())) {
+                        if (keyword.isTail(index)) {
+                            node.setKeyword(keyword);
                         } else {
-                            node.insert(function, index + 1);
+                            node.insert(keyword, index + 1);
                         }
                         return;
                     }
                 }
                 Node childNode;
-                if (function.getKey().length() == index + 1) {
-                    childNode = new Node(function.getKey().charAt(index), function, this);
+                if (keyword.isTail(index)) {
+                    childNode = new Node(keyword.getWords(index), keyword, this);
                 } else {
-                    childNode = new Node(function.getKey().charAt(index), null, this);
+                    childNode = new Node(keyword.getWords(index), null, this);
                 }
                 children.add(childNode);
-                if (function.getKey().length() > index + 1) {
-                    childNode.insert(function, index + 1);
+                if (!keyword.isTail(index)) {
+                    childNode.insert(keyword, index + 1);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println(function.getKey());
+                System.out.println(keyword.getWords());
             }
         }
 
-        public Function get(String name, int index) {
+        public Keyword get(String name, int index) {
             for (Node node : children) {
-                if (node.getLetter() == name.charAt(index)) {
+                if (node.getWord() == name.charAt(index)) {
                     if (name.length() == index + 1) {
-                        return node.getFunction();
+                        return node.getKeyword();
                     } else {
                         return node.get(name, index + 1);
                     }
@@ -82,15 +82,15 @@ public class LexicalTree {
         @Override
         public String toString() {
             return "Node{" +
-                    "letter=" + letter +
+                    "letter=" + word +
                     '}';
         }
 
-        public Function get(String name) {
+        public Keyword get(String name) {
             return this.get(name, 0);
         }
 
-        public void insert(Function keyword) {
+        public void insert(Keyword keyword) {
             this.insert(keyword, 0);
         }
 
@@ -104,7 +104,7 @@ public class LexicalTree {
             }
             for (Node node : children) {
                 try {
-                    if (node.letter == word.charAt(index + 1)) {
+                    if (node.word == word.charAt(index + 1)) {
                         return node.getIndex(word, index + 1);
                     }
                 }catch ( Exception e) {
@@ -116,10 +116,10 @@ public class LexicalTree {
         }
     }
 
-    public String getId(String name) {
-        Function function;
-        if((function =root.get(name)) != null) {
-            return function.getId();
+    public String getCode(String name) {
+        Keyword keyword;
+        if((keyword =root.get(name)) != null) {
+            return keyword.getCode();
         } else {
             return null;
         }
@@ -129,8 +129,14 @@ public class LexicalTree {
         return root.getIndex(word);
     }
 
-    public Function get(String tmp) {
+    public Keyword get(String tmp) {
         return root.get(tmp);
     }
+
+    public boolean contain(String tmp) {
+        return root.get(tmp) != null;
+    }
+
+
 
 }
