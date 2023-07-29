@@ -1,6 +1,6 @@
 package org.resegerdb.jrdbc.command;
 
-import org.resegerdb.jrdbc.command.create.Create;
+import org.resegerdb.jrdbc.command.maintain.create.Create;
 import org.resegerdb.jrdbc.driver.Session;
 
 import java.util.HashMap;

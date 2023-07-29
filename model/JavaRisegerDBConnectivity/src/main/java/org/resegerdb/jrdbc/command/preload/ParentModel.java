@@ -1,6 +1,8 @@
-package org.resegerdb.jrdbc.struct.model;
+package org.resegerdb.jrdbc.command.preload;
 
-public class ParentModel extends Model{
+import org.resegerdb.jrdbc.struct.model.Type;
+
+public class ParentModel extends Model {
 
     public ParentModel(String name) {
         super(name);

@@ -1,8 +1,7 @@
-package org.resegerdb.jrdbc.command.create;
+package org.resegerdb.jrdbc.command.maintain.create;
 
 import org.resegerdb.jrdbc.command.Command;
 import org.resegerdb.jrdbc.command.Commands;
-import org.resegerdb.jrdbc.struct.model.Type;
 
 import java.util.LinkedList;
 import java.util.List;
