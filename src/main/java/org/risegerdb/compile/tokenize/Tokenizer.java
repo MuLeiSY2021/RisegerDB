@@ -1,67 +1,139 @@
 package org.risegerdb.compile.tokenize;
 
-import org.risegerdb.compile.config.CompileConfig;
-import org.risegerdb.compile.lextcal.LexicalTree;
+import com.google.gson.Gson;
+import org.risegerdb.compile.config.Config;
+import org.risegerdb.compile.context.Context;
+import org.risegerdb.compile.tree.KeywordsTree;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Tokenizer {
-    public static final Tokenizer INSTANCE = new Tokenizer();
+    static Pattern tokenPattern = Pattern.compile(Config.TOKEN_PATTERN);
 
-    static Pattern tokenPattern = Pattern.compile(CompileConfig.TOKEN_PATTERN);
+    private final Context context;
 
-    public List<String> execute(String code) {
-        List<String> lines = new LinkedList<>(Arrays.asList(code.split("\n")));
-        return tokenize(lines);
+    public Tokenizer(Context context) {
+        this.context = context;
     }
 
-    private List<String> getTokens(String tile) {
+    public void execute() {
+        List<Token> lines;
+        String sourcecode = context.getSourcecode();
+        lines = splitLine(sourcecode);
+        lines = splitSpace(lines);
+        splitToken(lines);
+    }
+
+    private void splitToken(List<Token> lines) {
+        for (Token token:lines) {
+            int top = 0;
+            String tile = token.getSourceCode();
+            Matcher m;
+            int debug = 100,round = 0;
+            while (tile.length() > 0) {
+                if (round == debug) {
+                    throw new RuntimeException("Always Loop :"+ tile + " token:" + new Gson().toJson(token));
+                }
+                int index = -1;
+                int tmp;
+                if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
+                    index = m.end(0);
+                } else if ((tmp = KeywordsTree.INSTANCE.getIndex(tile)) > -1) {
+                    index = tmp;
+                }
+
+                if(index == -1) {
+                    throw new IndexOutOfBoundsException(tile + " -1");
+                }
+                context.add(new Token(tile.substring(0,index),token.getLine(),top + token.getColumn()));
+                top = index;
+
+                if(token.getSourceCode().length() == index) {
+                    break;
+                }
+                tile = tile.substring(index);
+                round++;
+            }
+        }
+    }
+
+    public static List<String> splitToken(String tile) {
+        List<String> res = new ArrayList<>();
         Matcher m;
-        List<String> tokens = new LinkedList<>();
         while (tile.length() > 0) {
             int index = -1;
             int tmp;
             if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
                 index = m.end(0);
-            } else if ((tmp = LexicalTree.INSTANCE.getIndex(tile)) > -1) {
+            } else if ((tmp = KeywordsTree.INSTANCE.getIndex(tile)) > -1) {
                 index = tmp;
             }
 
             if(index == -1) {
                 throw new IndexOutOfBoundsException(tile + " -1");
             }
-            tokens.add(tile.substring(0,index));
+            res.add(tile.substring(0,index));
+            if(tile.length() == index) {
+                break;
+            }
             tile = tile.substring(index);
         }
-        return tokens;
+        return res;
     }
 
-    private List<String> tokenize(List<String> tokens) {
-        List<String> res = new LinkedList<>();
+    private List<Token> splitLine(String code) {
+        List<Token> res = new LinkedList<>();
+        int i = 1;
+        for (String line:code.split("\n")) {
+            res.add(new Token(line,i,0));
+            i++;
+        }
+        return res;
+    }
 
-        for (String token:tokens) {
+    private List<Token> splitSpace(List<Token> tokens) {
+        List<Token> res = new LinkedList<>();
 
+        for (Token token:tokens) {
+            String line = token.getSourceCode();
             //查找注释
-            Matcher m = Pattern.compile("//.+").matcher(token);
+            Matcher m = Pattern.compile("//.+").matcher(line);
+
             if(m.find()) {
                 //去除注释部分
-                token = token.substring(0, m.start());
+                line = line.substring(0, m.start());
             }
-
-            //按照空格分词
-            String[] tiles = token.split(" ");
-            for (String tile:tiles) {
-                res.addAll(getTokens(tile));
+            //去除空句
+            if(line.length() == 0) {
+                continue;
+            }
+            int top = 1,bottom = 1;
+            boolean flag = false;
+            StringBuilder sb = new StringBuilder();
+            for (Character c:line.toCharArray()) {
+                if(!c.equals(' ')) {
+                    if(flag) {
+                        top = bottom;
+                        flag = false;
+                    }
+                    sb.append(c);
+                }else {
+                    res.add(new Token(sb.toString(),token.getLine(),top));
+                    flag = true;
+                    sb = new StringBuilder();
+                }
+                bottom++;
+            }
+            if(sb.length() > 0) {
+                res.add(new Token(sb.toString(),token.getLine(),top));
             }
         }
 
         return res;
     }
-
-
 
 }

@@ -1,4 +1,4 @@
-WHERE {
+WHERE
 IN cycle(coord(43,66),7)
 &
 OUT rect(coord(44,65),4)
@@ -8,4 +8,3 @@ IN cycle(5,4)
 DISTANCE(coord(99,88),people.site) < 10
 &
 !road.size >= 5
-}

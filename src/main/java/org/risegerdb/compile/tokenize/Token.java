@@ -4,15 +4,21 @@ import lombok.Data;
 
 @Data
 public class Token {
-    private String source;
+    private String sourceCode;
 
-    private String value;
+    private String code;
 
-    public Token() {
+    private int line;
+
+    private int column;
+
+    public Token(String sourceCode, int line, int column) {
+        this.sourceCode = sourceCode;
+        this.line = line;
+        this.column = column;
     }
 
-    public Token(String source, String value) {
-        this.source = source;
-        this.value = value;
+    public Token(String code) {
+        this.code = code;
     }
 }

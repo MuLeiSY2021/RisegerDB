@@ -1,7 +1,7 @@
 package org.risegerdb.compile.syntax;
 
 import lombok.Data;
-import org.risegerdb.compile.lextcal.Function;
+import org.risegerdb.compile.tokenize.Token;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,15 +11,10 @@ public class SyntaxTree {
     private final Node root = new Node();
 
     private SyntaxTree() {
-        for (Function function:FUNCTIONS.values()) {
-            if(function.getSyntax() != null) {
-                root.insert(function);
-            }
+        for (Function function:Function.FUNCTIONS) {
+            root.insert(function);
         }
     }
-    //不定参的paramCount = -1
-
-    public static final Map<String, Function> FUNCTIONS = Function.FUNCTIONS_BY_KEY;;
 
     public static final SyntaxTree INSTANCE = new SyntaxTree();
 
@@ -42,7 +37,7 @@ public class SyntaxTree {
         }
 
         public void insert(Function child) {
-            this.insert(child.getSyntaxList(),0,child);
+            this.insert(child.getList(),0,child);
         }
 
         public void insert(List<String> words,int index,Function function) {
@@ -74,5 +69,6 @@ public class SyntaxTree {
                     '}';
         }
     }
+
 
 }
