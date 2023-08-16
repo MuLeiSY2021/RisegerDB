@@ -1,0 +1,4 @@
+cycle cycle(point,num)
+point coord(point,num)
+rect rect(point,point)
+num distance(point,point)
