@@ -1,7 +1,7 @@
 package org.resegerdb.jrdbc.command.preload.builder;
 
-import org.resegerdb.jrdbc.struct.model.Database;
 import org.resegerdb.jrdbc.driver.session.PreloadSession;
+import org.riseger.protoctl.struct.model.Database;
 
 public class DatabaseBuilder {
     private final PreloadSession session;
@@ -15,21 +15,21 @@ public class DatabaseBuilder {
     }
 
     public MapBuilder buildMap() {
-        if(this.database == null) {
+        if (this.database == null) {
             throw new NullPointerException("database is null");
         }
         return new MapBuilder(this.database);
     }
 
     public ScopeBuilder buildScope() {
-        if(this.database == null) {
+        if (this.database == null) {
             throw new NullPointerException("database is null");
         }
         return new ScopeBuilder(this.database);
     }
 
     public ModelBuilder buildModel() {
-        if(this.database == null) {
+        if (this.database == null) {
             throw new NullPointerException("database is null");
         }
         return new ModelBuilder(this.database);

@@ -1,6 +1,6 @@
 package com.easyarch.protocol;
 
-public class MessageResponsePacket extends BaseMsgPacket{
+public class MessageResponsePacket extends BaseMsgPacket {
 
     private String message;
     private String fromUserId;

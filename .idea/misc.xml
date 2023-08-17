@@ -8,10 +8,11 @@
         <option value="$PROJECT_DIR$/model/JRDBConnectivity/pom.xml" />
         <option value="$PROJECT_DIR$/model/JRDBC_Protocol/pom.xml" />
         <option value="$PROJECT_DIR$/model/RTreePrimary/pom.xml" />
+        <option value="$PROJECT_DIR$/model/JRDBC_Protoctl/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="liberica-1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="ProjectType">

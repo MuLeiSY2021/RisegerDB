@@ -1,10 +1,9 @@
 package org.resegerdb.jrdbc.command.preload.builder;
 
-import org.resegerdb.jrdbc.struct.model.Database;
-import org.resegerdb.jrdbc.struct.model.Model;
-import org.resegerdb.jrdbc.struct.model.ParentModel;
-import org.resegerdb.jrdbc.struct.config.Option;
-import org.resegerdb.jrdbc.struct.model.Type;
+import org.riseger.protoctl.struct.config.Option;
+import org.riseger.protoctl.struct.model.Database;
+import org.riseger.protoctl.struct.model.Model;
+import org.riseger.protoctl.struct.model.Type;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,11 +13,11 @@ public class ModelBuilder {
 
     private String name;
 
-    protected ParentModel parent;
+    private String parent;
 
-    protected Map<String, Type> parameters = new HashMap<String, Type>();
+    protected Map<String, Type> parameters = new HashMap<>();
 
-    protected Map<Option,String> configs = new HashMap<Option, String>();
+    protected Map<Option, String> configs = new HashMap<>();
 
     private Model model;
 
@@ -32,7 +31,7 @@ public class ModelBuilder {
     }
 
     public Model build() {
-        this.model = new Model(name, database,parent,this.parameters,this.configs);
+        this.model = new Model(name, database, parent, this.parameters, this.configs);
         return this.model;
     }
 
@@ -43,6 +42,11 @@ public class ModelBuilder {
 
     public ModelBuilder config(Option option, String value) {
         this.configs.put(option, value);
+        return this;
+    }
+
+    public ModelBuilder parent(String parent) {
+        this.parent = parent;
         return this;
     }
 }

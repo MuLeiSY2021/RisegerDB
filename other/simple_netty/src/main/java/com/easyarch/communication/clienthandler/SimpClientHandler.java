@@ -39,13 +39,13 @@ public class SimpClientHandler extends SimpleChannelInboundHandler<LoginResponse
 //        BaseMsgPacket baseMsgPacket = PacketCodec.INSTANCE.decode(byteBuf);
 //        if (baseMsgPacket instanceof LoginResponsePacket) {
 //            LoginResponsePacket responsePacket = (LoginResponsePacket) baseMsgPacket;
-            //做登录校验
-            if (packet.isSuccess()) {
-                LoginUtil.markLogin(ctx.channel());
-                System.out.println("登录成功！id:"+packet.getUserId());
-            } else {
-                System.out.println("登录失败，原因：" + packet.getInfo());
-            }
+        //做登录校验
+        if (packet.isSuccess()) {
+            LoginUtil.markLogin(ctx.channel());
+            System.out.println("登录成功！id:" + packet.getUserId());
+        } else {
+            System.out.println("登录失败，原因：" + packet.getInfo());
+        }
 //        }
 //        System.out.println(byteBuf.toString(StandardCharsets.UTF_8));
 

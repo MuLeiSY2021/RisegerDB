@@ -17,9 +17,9 @@ public class ConsoleCommandManager implements ConsoleCommand {
         consoleCommandMap.put("createGroup", new CreateChatGroupCommand());
         consoleCommandMap.put("joinGroup", new JoinChatGroupCommand());
         consoleCommandMap.put("sendGroupMsg", new ChatGroupMsgCommand());
-        consoleCommandMap.put("quitGroup",new QuitChatGroupCommand());
-        consoleCommandMap.put("getGroupMembers",new GetGroupMembersCommand());
-        consoleCommandMap.put("getStatistic",new GetServerStatisticCommand());
+        consoleCommandMap.put("quitGroup", new QuitChatGroupCommand());
+        consoleCommandMap.put("getGroupMembers", new GetGroupMembersCommand());
+        consoleCommandMap.put("getStatistic", new GetServerStatisticCommand());
     }
 
 

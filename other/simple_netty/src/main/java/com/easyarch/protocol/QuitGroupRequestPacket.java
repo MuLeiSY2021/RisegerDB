@@ -1,7 +1,7 @@
 package com.easyarch.protocol;
 
 
-public class QuitGroupRequestPacket extends BaseMsgPacket{
+public class QuitGroupRequestPacket extends BaseMsgPacket {
 
     private String groupId;
 

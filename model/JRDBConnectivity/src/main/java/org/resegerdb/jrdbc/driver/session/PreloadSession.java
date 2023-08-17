@@ -1,14 +1,12 @@
 package org.resegerdb.jrdbc.driver.session;
 
 import com.google.gson.Gson;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
-import org.resegerdb.jrdbc.driver.result.Result;
-import org.resegerdb.jrdbc.struct.model.Database;
 import org.resegerdb.jrdbc.command.preload.builder.DatabaseBuilder;
-import org.resegerdb.jrdbc.protocol.PreloadRequestPacket;
+import org.resegerdb.jrdbc.driver.result.Result;
+import org.riseger.protoctl.struct.model.Database;
+import org.riseger.protoctl.utils.Utils;
 
-import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,21 +28,24 @@ public class PreloadSession implements Session {
 
     @Override
     public Result send() {
-        PreloadRequestPacket requestPacket = warpRequest();
-        ByteBuf byteBuf = channel.alloc().buffer();
-        byteBuf.writeBytes(requestPacket.serialize());
-        channel.writeAndFlush(byteBuf);
 
+//        PreloadRequestPacket requestPacket = warpRequest();
+//        ByteBuf byteBuf = channel.alloc().buffer();
+//        byteBuf.writeBytes(requestPacket.serialize());
+//        channel.writeAndFlush(byteBuf);
+//        return new Result() {
+//            @Override
+//            public String getResult() {
+//                return null;
+//            }
+//        };
+
+        Utils.writeStringToFile(new Gson().toJson(this.databases), "src/main/resources/dataSource/0.json");
+        return null;
     }
 
     public DatabaseBuilder buildDatabase() {
         return new DatabaseBuilder(this);
     }
 
-    private PreloadRequestPacket warpRequest() {
-        PreloadRequestPacket tmp = new PreloadRequestPacket();
-        byte[] content = new Gson().toJson(databases).getBytes(StandardCharsets.UTF_8);
-        tmp.setContent(content);
-        return tmp;
-    }
 }

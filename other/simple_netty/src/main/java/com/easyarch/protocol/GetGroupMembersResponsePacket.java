@@ -2,7 +2,7 @@ package com.easyarch.protocol;
 
 import java.util.List;
 
-public class GetGroupMembersResponsePacket extends BaseMsgPacket{
+public class GetGroupMembersResponsePacket extends BaseMsgPacket {
 
     List<String> usersName;
 

@@ -12,7 +12,7 @@ public class GetGroupMembersResponseHandler extends SimpleChannelInboundHandler<
         for (int i = 0; i < len; i++) {
             System.out.println(
                     "用户姓名：" + getGroupMembersResponsePacket.getUsersName().get(i) +
-                    " 用户ID：" + getGroupMembersResponsePacket.getUsersId().get(i));
+                            " 用户ID：" + getGroupMembersResponsePacket.getUsersId().get(i));
         }
     }
 }

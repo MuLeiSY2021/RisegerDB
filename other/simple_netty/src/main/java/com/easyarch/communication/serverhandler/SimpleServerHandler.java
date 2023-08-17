@@ -40,7 +40,7 @@ public class SimpleServerHandler extends SimpleChannelInboundHandler<LoginReques
             responsePacket.setSuccess(true);
             LoginUtil.markLogin(ctx.channel());
             String userId = UUID.randomUUID().toString();
-            SessionUtil.bindSession(new Session(userId,packet.getUserName()), ctx.channel());
+            SessionUtil.bindSession(new Session(userId, packet.getUserName()), ctx.channel());
             responsePacket.setUserId(userId);
         } else {
             responsePacket.setSuccess(false);

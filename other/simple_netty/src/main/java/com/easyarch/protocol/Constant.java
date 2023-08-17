@@ -53,12 +53,12 @@ public interface Constant {
             put(Constant.GROUP_MSG_REQUEST, GroupMessageRequestPacket.class);
             put(Constant.GROUP_MSG_RESPONSE, GroupMessageResponsePacket.class);
             put(Constant.HEART_BEAT_RESPONSE, HeartBeatResponsePacket.class);
-            put(Constant.QUIT_GROUP_REQUEST,QuitGroupRequestPacket.class);
-            put(Constant.QUIT_GROUP_RESPONSE,QuitGroupResponsePacket.class);
-            put(Constant.GET_GROUP_MEMBERS_REQUEST,GetGroupMembersRequestPacket.class);
-            put(Constant.GET_GROUP_MEMBERS_RESPONSE,GetGroupMembersResponsePacket.class);
-            put(Constant.GET_SERVER_STATISTIC_REQUEST,GetServerStatisticResquestPacket.class);
-            put(Constant.GET_SERVER_STATISTIC_RESPONSE,GetServerStatisticResponsePacket.class);
+            put(Constant.QUIT_GROUP_REQUEST, QuitGroupRequestPacket.class);
+            put(Constant.QUIT_GROUP_RESPONSE, QuitGroupResponsePacket.class);
+            put(Constant.GET_GROUP_MEMBERS_REQUEST, GetGroupMembersRequestPacket.class);
+            put(Constant.GET_GROUP_MEMBERS_RESPONSE, GetGroupMembersResponsePacket.class);
+            put(Constant.GET_SERVER_STATISTIC_REQUEST, GetServerStatisticResquestPacket.class);
+            put(Constant.GET_SERVER_STATISTIC_RESPONSE, GetServerStatisticResponsePacket.class);
         }
     };
 }

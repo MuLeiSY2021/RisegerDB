@@ -48,7 +48,7 @@ function connectWebsocket() {
 
 //将消息显示在网页上
 function setMessageInnerHTML(jsonObj) {
-    if(typeof jsonObj ==='object'){
+    if (typeof jsonObj === 'object') {
         var username = jsonObj.fromUserName;
         var type = jsonObj.messageType;
 
@@ -64,7 +64,7 @@ function setMessageInnerHTML(jsonObj) {
             document.getElementById('message').innerHTML += '<div style="text-align: left; margin-left: 30px;">' + jsonObj.msg + '</div>';// 内容
             document.getElementById('message').scrollTop = document.getElementById('message').scrollHeight;// 当出现滚动条时，滚动条将自动保持在底部
         }
-    }else{
+    } else {
         document.getElementById('message').innerHTML += '<div>' + jsonObj + '</div>';
     }
     // try {
@@ -74,7 +74,7 @@ function setMessageInnerHTML(jsonObj) {
     // }
 }
 
-function getSelectUser(userName,userId) {
+function getSelectUser(userName, userId) {
     selectedUserId = userId;
     selectedUserName = userName;
     // console.log(userName,userId);
@@ -88,7 +88,7 @@ function send() {
         alert("未选择任何用户！");
         return;
     }
-    var jsonObj = {msg: message, toUserId: toUserId,messageType:3};
+    var jsonObj = {msg: message, toUserId: toUserId, messageType: 3};
     websocket.send(JSON.stringify(jsonObj));
 }
 

@@ -13,20 +13,21 @@ public class BuildingGenerator {
     }
 
     // Function to check if two buildings overlap
-    private static boolean doBuildingsOverlap(Building building1, Building building2, int overlapSize) {
+    private static boolean doBuildingsOverlap(Building building1, Building building2) {
         double x_overlap = Math.max(0, Math.min(building1.x_max, building2.x_max) - Math.max(building1.x_min, building2.x_min));
         double y_overlap = Math.max(0, Math.min(building1.y_max, building2.y_max) - Math.max(building1.y_min, building2.y_min));
 
         double overlapArea = x_overlap * y_overlap;
-        return overlapArea >= overlapSize;
+        return overlapArea >= BuildingGenerator.overlapSize;
     }
 
-    // Function to generate non-overlapping buildings
-    public static List<Building> createBuildings(Double x_min, Double y_min, Double x_max, Double y_max, int count,
-                                                 String addressPrefix, int overlapSize) {
-        List<Building> buildings = new ArrayList<>();
+    private static final int overlapSize = 714;
 
-        for (int i = 0; i < count; i++) {
+    // Function to generate non-overlapping buildings
+    public static List<Building> createBuildings(Double x_min, Double y_min, Double x_max, Double y_max, int count, String addressPrefix) {
+        List<Building> buildings = new ArrayList<>();
+        int i = 0;
+        do {
             double randomXMin = getRandomInRange(x_min, x_max);
             double randomYMin = getRandomInRange(y_min, y_max);
             double randomXMax = getRandomInRange(randomXMin, x_max);
@@ -37,16 +38,17 @@ public class BuildingGenerator {
 
             boolean isOverlapping = false;
             for (Building existingBuilding : buildings) {
-                if (doBuildingsOverlap(newBuilding, existingBuilding, overlapSize)) {
+                if (doBuildingsOverlap(newBuilding, existingBuilding)) {
                     isOverlapping = true;
                     break;
                 }
             }
-
             if (!isOverlapping) {
                 buildings.add(newBuilding);
+                i++;
             }
-        }
+
+        } while (i != count);
 
         return buildings;
     }
@@ -58,9 +60,8 @@ public class BuildingGenerator {
         Double y_max = 100.0;
         int count = 10;
         String addressPrefix = "Address ";
-        int overlapSize = 50;
 
-        List<Building> buildings = createBuildings(x_min, y_min, x_max, y_max, count, addressPrefix, overlapSize);
+        List<Building> buildings = createBuildings(x_min, y_min, x_max, y_max, count, addressPrefix);
 
         // Print the generated buildings
         for (Building building : buildings) {

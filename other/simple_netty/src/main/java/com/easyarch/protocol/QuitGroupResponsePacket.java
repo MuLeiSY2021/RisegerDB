@@ -1,6 +1,6 @@
 package com.easyarch.protocol;
 
-public class QuitGroupResponsePacket extends BaseMsgPacket{
+public class QuitGroupResponsePacket extends BaseMsgPacket {
 
     private boolean success;
     private String groupId;

@@ -8,7 +8,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 
-public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<GroupMessageRequestPacket> implements SengMessage{
+public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<GroupMessageRequestPacket> implements SengMessage {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, GroupMessageRequestPacket groupMessageRequestPacket) throws Exception {
@@ -18,7 +18,7 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         responsePacket.setFromUser(SessionUtil.getSession(channelHandlerContext.channel()).getUserName());
         responsePacket.setMsg(groupMessageRequestPacket.getMsg());
         ChannelGroup group = SessionUtil.getGroup(groupId);
-        fixStatistic(responsePacket.getMsg().getBytes().length,group.size());
+        fixStatistic(responsePacket.getMsg().getBytes().length, group.size());
         group.writeAndFlush(responsePacket);
     }
 

@@ -31,7 +31,7 @@ public class WsChannelHandler extends SimpleChannelInboundHandler<TextWebSocketF
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        if(evt instanceof WebSocketServerProtocolHandler.HandshakeComplete){
+        if (evt instanceof WebSocketServerProtocolHandler.HandshakeComplete) {
             Session fromSession = SessionUtil.getSession(ctx.channel());
             ctx.channel().writeAndFlush(BuildWsMsg.buildSingleMsg(fromSession.getUserId(), fromSession.getUserName(), fromSession.getUserId(), fromSession.getUserName(), GSON.toJson(SessionUtil.getAllSession()), 1));
         }

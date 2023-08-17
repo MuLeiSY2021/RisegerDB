@@ -35,7 +35,7 @@ public class WebSocketAuthHandler extends SimpleChannelInboundHandler<FullHttpRe
             if (userMap.get(userName).equals(password)) {
                 String userId = UUID.randomUUID().toString();
                 SessionUtil.bindSession(new Session(userId, userName), ctx.channel());
-                req.setUri("/"+split[1]);
+                req.setUri("/" + split[1]);
             } else {
                 ctx.channel().writeAndFlush(new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
                         HttpResponseStatus.UNAUTHORIZED));

@@ -1,6 +1,6 @@
 package com.easyarch.protocol;
 
-public class LoginRequestPacket extends BaseMsgPacket{
+public class LoginRequestPacket extends BaseMsgPacket {
 
     private long userId;
 

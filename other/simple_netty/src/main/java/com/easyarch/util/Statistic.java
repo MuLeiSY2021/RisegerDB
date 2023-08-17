@@ -16,7 +16,7 @@ public class Statistic {
     }
 
     public static void addOnlineUser(int num) {
-        Statistic.onlineUsers+= num;
+        Statistic.onlineUsers += num;
     }
 
     public static void subOnlineUser() {
@@ -24,7 +24,7 @@ public class Statistic {
     }
 
     public static void subOnlineUser(int num) {
-        Statistic.onlineUsers-= num;
+        Statistic.onlineUsers -= num;
     }
 
     public static Long getProcessingBytes() {
@@ -40,7 +40,7 @@ public class Statistic {
     }
 
     public static void addInfoTransfer() {
-        InfoTransferSum ++;
+        InfoTransferSum++;
     }
 
     public static void addInfoTransfer(int num) {

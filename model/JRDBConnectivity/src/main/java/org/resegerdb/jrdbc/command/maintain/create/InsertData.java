@@ -16,7 +16,7 @@ public class InsertData extends Command {
 
     String scope;
 
-    Map<String,String> parameters;
+    Map<String, String> parameters;
 
     public InsertData(Commands commands) {
         super(commands);
@@ -42,8 +42,8 @@ public class InsertData extends Command {
         return this;
     }
 
-    public InsertData parameter(String name,String value) {
-        this.parameters.put(name,value);
+    public InsertData parameter(String name, String value) {
+        this.parameters.put(name, value);
         return this;
     }
 

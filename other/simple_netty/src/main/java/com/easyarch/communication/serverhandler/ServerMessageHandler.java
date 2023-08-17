@@ -12,7 +12,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 @ChannelHandler.Sharable
-public class ServerMessageHandler extends SimpleChannelInboundHandler<MessageRequestPacket> implements SengMessage{
+public class ServerMessageHandler extends SimpleChannelInboundHandler<MessageRequestPacket> implements SengMessage {
     //    @Override
 //    protected void channelRead0(ChannelHandlerContext channelHandlerContext, MessageRequestPacket messageRequestPacket) throws Exception {
 //        System.out.println(new Date() + "receive client message:" + messageRequestPacket.getMessage());
@@ -43,7 +43,7 @@ public class ServerMessageHandler extends SimpleChannelInboundHandler<MessageReq
 
         Channel channel = SessionUtil.getChannel(messageRequestPacket.getToUserId());
         if (channel != null && LoginUtil.hasLogin(channel)) {
-            fixStatistic(messageResponsePacket.getMessage().getBytes().length,0);
+            fixStatistic(messageResponsePacket.getMessage().getBytes().length, 0);
             channel.writeAndFlush(messageResponsePacket);
         } else {
             MessageResponsePacket notLoginMessage = new MessageResponsePacket();

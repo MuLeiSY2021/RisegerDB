@@ -45,7 +45,7 @@ public class Server {
                         //按指定的标志进行拆包
 //                        nioSocketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, Unpooled.wrappedBuffer("!=end=!".getBytes(StandardCharsets.UTF_8))));
                         //基于自定义长度域的拆包(这里跳过前7个字节，取4个字节作为数据长度)
-                        nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE,7,4));
+                        nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
                         nioSocketChannel.pipeline().addLast(new PacketDecoder());
                         nioSocketChannel.pipeline().addLast(new ServerHandler());
                     }

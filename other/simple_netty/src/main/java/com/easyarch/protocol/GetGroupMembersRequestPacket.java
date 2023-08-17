@@ -1,6 +1,6 @@
 package com.easyarch.protocol;
 
-public class GetGroupMembersRequestPacket extends BaseMsgPacket{
+public class GetGroupMembersRequestPacket extends BaseMsgPacket {
 
     private String groupId;
 

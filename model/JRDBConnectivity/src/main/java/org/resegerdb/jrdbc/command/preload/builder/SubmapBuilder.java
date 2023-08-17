@@ -1,7 +1,7 @@
 package org.resegerdb.jrdbc.command.preload.builder;
 
-import org.resegerdb.jrdbc.struct.model.MapDB;
-import org.resegerdb.jrdbc.struct.model.Submap;
+import org.riseger.protoctl.struct.model.MapDB;
+import org.riseger.protoctl.struct.model.Submap;
 
 public class SubmapBuilder {
     private final MapDB parent;
@@ -27,12 +27,12 @@ public class SubmapBuilder {
     }
 
     public Submap build() {
-        this.submap = new Submap(name,scopePath,parent);
+        this.submap = new Submap(name, scopePath, parent);
         return this.submap;
     }
 
     public SubmapBuilder buildSubmap() {
-        if(this.submap != null) {
+        if (this.submap != null) {
             return new SubmapBuilder(this.submap);
         } else {
             throw new NullPointerException();

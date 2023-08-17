@@ -28,7 +28,7 @@ public class Commands {
 
     public Commands(Session session) {
         this.session = session;
-        this.create = new Create(session,this);
+        this.create = new Create(session, this);
     }
 
     public Create create() {
@@ -42,7 +42,7 @@ public class Commands {
 
     public String getName(String argument) {
         String name = getN(STRING_PREFIX);
-        this.variable.put(name,argument);
+        this.variable.put(name, argument);
         return name;
     }
 

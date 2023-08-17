@@ -1,7 +1,7 @@
 package org.resegerdb.jrdbc.command.preload.builder;
 
-import org.resegerdb.jrdbc.struct.model.Database;
-import org.resegerdb.jrdbc.struct.model.Scope;
+import org.riseger.protoctl.struct.model.Database;
+import org.riseger.protoctl.struct.model.Scope;
 
 public class ScopeBuilder {
     private final Database database;
@@ -36,7 +36,7 @@ public class ScopeBuilder {
     }
 
     public ScopeBuilder child() {
-        if(this.scope != null) {
+        if (this.scope != null) {
             return new ScopeBuilder(database, this.scope);
         } else {
             throw new NullPointerException();

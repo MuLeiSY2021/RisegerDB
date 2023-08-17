@@ -1,7 +1,7 @@
 package org.resegerdb.jrdbc.command.preload.builder;
 
-import org.resegerdb.jrdbc.struct.model.Database;
-import org.resegerdb.jrdbc.struct.model.MapDB;
+import org.riseger.protoctl.struct.model.Database;
+import org.riseger.protoctl.struct.model.MapDB;
 
 public class MapBuilder {
     private final Database database;
@@ -20,13 +20,13 @@ public class MapBuilder {
     }
 
     public MapBuilder build() {
-        this.map = new MapDB(name,database);
+        this.map = new MapDB(name, database);
         return this;
     }
 
 
     public SubmapBuilder buildSubMap() {
-        if(this.map == null) {
+        if (this.map == null) {
             throw new NullPointerException("map is null");
         }
         return new SubmapBuilder(this.map);

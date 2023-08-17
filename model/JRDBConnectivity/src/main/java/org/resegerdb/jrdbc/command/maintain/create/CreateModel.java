@@ -2,9 +2,9 @@ package org.resegerdb.jrdbc.command.maintain.create;
 
 import org.resegerdb.jrdbc.command.Command;
 import org.resegerdb.jrdbc.command.Commands;
-import org.resegerdb.jrdbc.struct.config.Option;
-import org.resegerdb.jrdbc.struct.model.ParentModel;
-import org.resegerdb.jrdbc.struct.model.Type;
+import org.riseger.protoctl.struct.config.Option;
+import org.riseger.protoctl.struct.model.ParentModel;
+import org.riseger.protoctl.struct.model.Type;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class CreateModel extends Command {
         return this;
     }
 
-    public CreateModel config(Option option,String value) {
+    public CreateModel config(Option option, String value) {
 //        this.model.addConfig(option,value);
         return this;
     }

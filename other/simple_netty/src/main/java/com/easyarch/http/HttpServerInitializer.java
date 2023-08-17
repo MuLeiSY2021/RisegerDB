@@ -12,7 +12,7 @@ public class HttpServerInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         ChannelPipeline pipeline = socketChannel.pipeline();
         pipeline.addLast(new HttpServerCodec());
-        pipeline.addLast("httpAggregator",new HttpObjectAggregator(512*1024));
+        pipeline.addLast("httpAggregator", new HttpObjectAggregator(512 * 1024));
         pipeline.addLast(new HttpRequestHandler());
     }
 }

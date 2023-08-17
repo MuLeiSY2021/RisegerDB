@@ -18,7 +18,7 @@ public class LoginUtil {
     }
 
 
-    public static void Logout(Channel channel){
+    public static void Logout(Channel channel) {
         channel.attr(Attributes.LOGIN).set(null);
         Statistic.subOnlineUser();
     }
