@@ -4,7 +4,6 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.risegerdb.web.protocol.LoginResponsePacket;
-import org.risegerdb.web.util.LoginUtil;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;

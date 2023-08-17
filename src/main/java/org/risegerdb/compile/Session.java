@@ -33,5 +33,6 @@ public class Session {
         session.run();
 
         System.out.println(new Gson().toJson(Function.FUNCTIONS));
+        System.out.println(sourcecode);
     }
 }

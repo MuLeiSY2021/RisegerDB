@@ -7,7 +7,6 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import org.risegerdb.web.entity.Session;
 import org.risegerdb.web.protocol.MessageRequestPacket;
 import org.risegerdb.web.protocol.MessageResponsePacket;
-import org.risegerdb.web.util.LoginUtil;
 import org.risegerdb.web.util.SessionUtil;
 import org.risegerdb.web.util.Statistic;
 

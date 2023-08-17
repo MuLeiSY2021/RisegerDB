@@ -10,7 +10,6 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import org.risegerdb.web.communication.clienthandler.ClientChannelManager;
 import org.risegerdb.web.communication.consolemanager.ConsoleCommandManager;
 import org.risegerdb.web.communication.consolemanager.LoginCommand;
-import org.risegerdb.web.util.LoginUtil;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;

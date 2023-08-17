@@ -2,7 +2,6 @@ package org.risegerdb.web.communication.commonhandler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import org.risegerdb.web.util.LoginUtil;
 
 public class AuthHandler extends ChannelInboundHandlerAdapter {
 

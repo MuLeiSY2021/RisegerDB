@@ -7,7 +7,6 @@ import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import org.risegerdb.web.entity.Session;
-import org.risegerdb.web.util.LoginUtil;
 import org.risegerdb.web.util.SessionUtil;
 
 import java.util.HashMap;

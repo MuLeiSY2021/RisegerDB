@@ -20,7 +20,6 @@
         </plugins>
     </build>
     <dependencies>
-
         <!-- https://mvnrepository.com/artifact/org.openimaj/core-image -->
         <dependency>
             <groupId>org.openimaj</groupId>
@@ -28,6 +27,7 @@
             <version>1.3.10</version>
         </dependency>
 
+        
     </dependencies>
 
 

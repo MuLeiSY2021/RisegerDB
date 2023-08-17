@@ -5,7 +5,6 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import org.risegerdb.web.entity.Session;
 import org.risegerdb.web.protocol.LoginRequestPacket;
 import org.risegerdb.web.protocol.LoginResponsePacket;
-import org.risegerdb.web.util.LoginUtil;
 import org.risegerdb.web.util.SessionUtil;
 
 import java.util.HashMap;

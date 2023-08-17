@@ -2,7 +2,6 @@ package org.risegerdb.web.communication.consolemanager;
 
 import io.netty.channel.Channel;
 import org.risegerdb.web.protocol.LoginRequestPacket;
-import org.risegerdb.web.util.LoginUtil;
 
 import java.util.Scanner;
 
