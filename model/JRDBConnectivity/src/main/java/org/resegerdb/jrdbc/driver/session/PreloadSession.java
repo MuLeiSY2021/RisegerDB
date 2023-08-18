@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import io.netty.channel.Channel;
 import org.resegerdb.jrdbc.command.preload.builder.DatabaseBuilder;
 import org.resegerdb.jrdbc.driver.result.Result;
+import org.riseger.protoctl.request.PreloadRequest;
 import org.riseger.protoctl.struct.model.Database;
 import org.riseger.protoctl.utils.Utils;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public class PreloadSession implements Session {
     private final List<Database> databases = new LinkedList<Database>();
 
-    private final Channel channel;
+    private transient final Channel channel;
 
     private static final int SEND_MAX_LENGTH = 1500 - 10;
 
@@ -40,7 +41,7 @@ public class PreloadSession implements Session {
 //            }
 //        };
 
-        Utils.writeStringToFile(new Gson().toJson(this.databases), "src/main/resources/dataSource/0.json");
+        Utils.writeStringToFile(new Gson().toJson(new PreloadRequest(this.databases)), "src/main/resources/dataSource/0.json");
         return null;
     }
 

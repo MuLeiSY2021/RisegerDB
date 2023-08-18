@@ -24,8 +24,9 @@ public class RectangleGenerator {
     // Function to generate non-overlapping rectangles
     public static List<int[]> createRectangles(int x_min, int y_min, int x_max, int y_max, int count, int overlapSize) {
         List<int[]> rectangles = new ArrayList<>();
+        int i = 0;
 
-        for (int i = 0; i < count; i++) {
+        do {
             int randomXMin = getRandomInRange(x_min, x_max);
             int randomYMin = getRandomInRange(y_min, y_max);
             int randomWidth = getRandomInRange(1, x_max - randomXMin);
@@ -45,8 +46,9 @@ public class RectangleGenerator {
 
             if (!isOverlapping) {
                 rectangles.add(newRectangle);
+                i++;
             }
-        }
+        } while (i != count);
 
         return rectangles;
     }
