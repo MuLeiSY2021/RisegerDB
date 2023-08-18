@@ -16,6 +16,8 @@ public class PreloadJob implements Job<PreloadRequest> {
 
     @Override
     public void run() {
+        for (Database database : databases) {
 
+        }
     }
 }
