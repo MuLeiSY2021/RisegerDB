@@ -5,7 +5,7 @@ import io.netty.channel.Channel;
 import org.resegerdb.jrdbc.command.preload.builder.DatabaseBuilder;
 import org.resegerdb.jrdbc.driver.result.Result;
 import org.riseger.protoctl.request.PreloadRequest;
-import org.riseger.protoctl.struct.model.Database;
+import org.riseger.protoctl.struct.entity.Database;
 import org.riseger.protoctl.utils.Utils;
 
 import java.util.LinkedList;

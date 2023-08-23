@@ -6,8 +6,8 @@ import junit.framework.TestSuite;
 import org.resegerdb.jrdbc.command.preload.builder.*;
 import org.resegerdb.jrdbc.driver.connector.Connector;
 import org.resegerdb.jrdbc.driver.session.PreloadSession;
-import org.riseger.protoctl.struct.model.ParentModel;
-import org.riseger.protoctl.struct.model.Type;
+import org.riseger.protoctl.struct.entity.ParentModel;
+import org.riseger.protoctl.struct.entity.Type;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -85,10 +85,6 @@ public class AppTest extends TestCase {
         MapBuilder mapBuilder = databaseBuilder.buildMap();
         mapBuilder.name("china_mp").build();
 
-        ScopeBuilder scopeBuilder = databaseBuilder.buildScope();
-        scopeBuilder.name("province_scope").build();
-        scopeBuilder.child().name("area_scope").build();
-
         ModelBuilder modelBuilder = databaseBuilder.buildModel();
         modelBuilder.name("building_model")
                 .parent(ParentModel.FIELD)
@@ -103,13 +99,18 @@ public class AppTest extends TestCase {
         for (String name : province_names) {
             List<Building> buildings = initDataBuildings(map, name, i);
             SubmapBuilder submapBuilder = mapBuilder.buildSubMap();
-            submapBuilder.name(name)
-                    .scopePath("province_scope").build();
+            submapBuilder
+                    .name(name)
+                    .scopePath("province_scope")
+                    .build();
 
             int j = 0;
             for (String area_name : map.get(name)) {
                 SubmapBuilder submap_area = submapBuilder.buildSubmap();
-                submap_area.name(area_name).build();
+                submap_area
+                        .name(area_name)
+                        .scopePath("province_scope/area_scope")
+                        .build();
 
                 Building building = buildings.get(j);
 

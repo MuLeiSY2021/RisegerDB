@@ -1,9 +1,9 @@
 package org.resegerdb.jrdbc.command.preload.builder;
 
 import org.riseger.protoctl.struct.config.Option;
-import org.riseger.protoctl.struct.model.Database;
-import org.riseger.protoctl.struct.model.Model;
-import org.riseger.protoctl.struct.model.Type;
+import org.riseger.protoctl.struct.entity.Database;
+import org.riseger.protoctl.struct.entity.Model;
+import org.riseger.protoctl.struct.entity.Type;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +31,7 @@ public class ModelBuilder {
     }
 
     public Model build() {
-        this.model = new Model(name, database, parent, this.parameters, this.configs);
+        this.model = new Model(name, database, parent, this.parameters);
         return this.model;
     }
 

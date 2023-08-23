@@ -3,8 +3,8 @@ package org.resegerdb.jrdbc.command.maintain.create;
 import org.resegerdb.jrdbc.command.Command;
 import org.resegerdb.jrdbc.command.Commands;
 import org.riseger.protoctl.struct.config.Option;
-import org.riseger.protoctl.struct.model.ParentModel;
-import org.riseger.protoctl.struct.model.Type;
+import org.riseger.protoctl.struct.entity.ParentModel;
+import org.riseger.protoctl.struct.entity.Type;
 
 import java.util.LinkedList;
 import java.util.List;

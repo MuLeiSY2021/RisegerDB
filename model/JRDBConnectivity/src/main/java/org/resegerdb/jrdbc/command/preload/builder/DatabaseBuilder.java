@@ -1,7 +1,7 @@
 package org.resegerdb.jrdbc.command.preload.builder;
 
 import org.resegerdb.jrdbc.driver.session.PreloadSession;
-import org.riseger.protoctl.struct.model.Database;
+import org.riseger.protoctl.struct.entity.Database;
 
 public class DatabaseBuilder {
     private final PreloadSession session;

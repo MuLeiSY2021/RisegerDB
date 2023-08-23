@@ -1,0 +1,282 @@
+{
+    "databases": [
+        {
+            "name": "test_db",
+            "configs": {},
+            "maps": [
+                {
+                    "name": "china_mp",
+                    "submaps": [
+                        {
+                            "scopePath": "province_scope",
+                            "name": "ShangHai",
+                            "submaps": [
+                                {
+                                    "scopePath": "province_scope/area_scope",
+                                    "name": "Huangpu",
+                                    "submaps": [],
+                                    "elements": [
+                                        {
+                                            "parent": {
+                                                "name": "field",
+                                                "parameters": {
+                                                    "KEY_LOOP": "COORDS_LOOP"
+                                                },
+                                                "configs": {}
+                                            },
+                                            "attributes": {
+                                                "KEY_LOOP::1::x": "5136.894493756101",
+                                                "address": "ShangHai1",
+                                                "KEY_LOOP::1::y": "1201.0936392238743",
+                                                "name": "Building 1",
+                                                "KEY_LOOP::0::y": "988.0904263121005",
+                                                "KEY_LOOP::0::x": "4856.768398373168",
+                                                "floorArea": "1440.517118611496"
+                                            },
+                                            "configs": {}
+                                        }
+                                    ]
+                                },
+                                {
+                                    "scopePath": "province_scope/area_scope",
+                                    "name": "Jing'an",
+                                    "submaps": [],
+                                    "elements": [
+                                        {
+                                            "parent": {
+                                                "name": "field",
+                                                "parameters": {
+                                                    "KEY_LOOP": "COORDS_LOOP"
+                                                },
+                                                "configs": {}
+                                            },
+                                            "attributes": {
+                                                "KEY_LOOP::1::x": "5414.386297297861",
+                                                "address": "ShangHai2",
+                                                "KEY_LOOP::1::y": "1917.4330330570535",
+                                                "name": "Building 2",
+                                                "KEY_LOOP::0::y": "1658.5421287144022",
+                                                "KEY_LOOP::0::x": "4406.74191028525",
+                                                "floorArea": "4263.546840965142"
+                                            },
+                                            "configs": {}
+                                        }
+                                    ]
+                                },
+                                {
+                                    "scopePath": "province_scope/area_scope",
+                                    "name": "Xuhui",
+                                    "submaps": [],
+                                    "elements": [
+                                        {
+                                            "parent": {
+                                                "name": "field",
+                                                "parameters": {
+                                                    "KEY_LOOP": "COORDS_LOOP"
+                                                },
+                                                "configs": {}
+                                            },
+                                            "attributes": {
+                                                "KEY_LOOP::1::x": "5487.445526597376",
+                                                "address": "ShangHai3",
+                                                "KEY_LOOP::1::y": "1126.9915842417402",
+                                                "name": "Building 3",
+                                                "KEY_LOOP::0::y": "937.7672644596237",
+                                                "KEY_LOOP::0::x": "5362.094079059504",
+                                                "floorArea": "3779.6160192933967"
+                                            },
+                                            "configs": {}
+                                        }
+                                    ]
+                                }
+                            ],
+                            "elements": []
+                        },
+                        {
+                            "scopePath": "province_scope",
+                            "name": "Tianjin",
+                            "submaps": [
+                                {
+                                    "scopePath": "province_scope/area_scope",
+                                    "name": "Hexi",
+                                    "submaps": [],
+                                    "elements": [
+                                        {
+                                            "parent": {
+                                                "name": "field",
+                                                "parameters": {
+                                                    "KEY_LOOP": "COORDS_LOOP"
+                                                },
+                                                "configs": {}
+                                            },
+                                            "attributes": {
+                                                "KEY_LOOP::1::x": "9963.752703673159",
+                                                "address": "Tianjin1",
+                                                "KEY_LOOP::1::y": "7895.628507907482",
+                                                "name": "Building 1",
+                                                "KEY_LOOP::0::y": "6023.166118945886",
+                                                "KEY_LOOP::0::x": "9954.940261208862",
+                                                "floorArea": "1781.0195773008522"
+                                            },
+                                            "configs": {}
+                                        }
+                                    ]
+                                },
+                                {
+                                    "scopePath": "province_scope/area_scope",
+                                    "name": "Heping",
+                                    "submaps": [],
+                                    "elements": [
+                                        {
+                                            "parent": {
+                                                "name": "field",
+                                                "parameters": {
+                                                    "KEY_LOOP": "COORDS_LOOP"
+                                                },
+                                                "configs": {}
+                                            },
+                                            "attributes": {
+                                                "KEY_LOOP::1::x": "9958.718790746216",
+                                                "address": "Tianjin2",
+                                                "KEY_LOOP::1::y": "7402.669458015063",
+                                                "name": "Building 2",
+                                                "KEY_LOOP::0::y": "7137.167185067483",
+                                                "KEY_LOOP::0::x": "9957.015063536912",
+                                                "floorArea": "4993.217391867492"
+                                            },
+                                            "configs": {}
+                                        }
+                                    ]
+                                },
+                                {
+                                    "scopePath": "province_scope/area_scope",
+                                    "name": "Hedong",
+                                    "submaps": [],
+                                    "elements": [
+                                        {
+                                            "parent": {
+                                                "name": "field",
+                                                "parameters": {
+                                                    "KEY_LOOP": "COORDS_LOOP"
+                                                },
+                                                "configs": {}
+                                            },
+                                            "attributes": {
+                                                "KEY_LOOP::1::x": "9961.877217208885",
+                                                "address": "Tianjin3",
+                                                "KEY_LOOP::1::y": "7954.081175266184",
+                                                "name": "Building 3",
+                                                "KEY_LOOP::0::y": "7952.097622990438",
+                                                "KEY_LOOP::0::x": "9961.398789899193",
+                                                "floorArea": "1418.3767203499099"
+                                            },
+                                            "configs": {}
+                                        }
+                                    ]
+                                }
+                            ],
+                            "elements": []
+                        },
+                        {
+                            "scopePath": "province_scope",
+                            "name": "Chongqing",
+                            "submaps": [
+                                {
+                                    "scopePath": "province_scope/area_scope",
+                                    "name": "Yuzhong",
+                                    "submaps": [],
+                                    "elements": [
+                                        {
+                                            "parent": {
+                                                "name": "field",
+                                                "parameters": {
+                                                    "KEY_LOOP": "COORDS_LOOP"
+                                                },
+                                                "configs": {}
+                                            },
+                                            "attributes": {
+                                                "KEY_LOOP::1::x": "9654.374020852254",
+                                                "address": "Chongqing1",
+                                                "KEY_LOOP::1::y": "6708.345867035846",
+                                                "name": "Building 1",
+                                                "KEY_LOOP::0::y": "6530.295650839898",
+                                                "KEY_LOOP::0::x": "9567.19873528212",
+                                                "floorArea": "1503.9943053705174"
+                                            },
+                                            "configs": {}
+                                        }
+                                    ]
+                                },
+                                {
+                                    "scopePath": "province_scope/area_scope",
+                                    "name": "Jiangbei",
+                                    "submaps": [],
+                                    "elements": [
+                                        {
+                                            "parent": {
+                                                "name": "field",
+                                                "parameters": {
+                                                    "KEY_LOOP": "COORDS_LOOP"
+                                                },
+                                                "configs": {}
+                                            },
+                                            "attributes": {
+                                                "KEY_LOOP::1::x": "9684.639254505657",
+                                                "address": "Chongqing2",
+                                                "KEY_LOOP::1::y": "6648.539446466141",
+                                                "name": "Building 2",
+                                                "KEY_LOOP::0::y": "5129.189396054099",
+                                                "KEY_LOOP::0::x": "9654.616452971322",
+                                                "floorArea": "3370.7793434956698"
+                                            },
+                                            "configs": {}
+                                        }
+                                    ]
+                                },
+                                {
+                                    "scopePath": "province_scope/area_scope",
+                                    "name": "Shapingba",
+                                    "submaps": [],
+                                    "elements": [
+                                        {
+                                            "parent": {
+                                                "name": "field",
+                                                "parameters": {
+                                                    "KEY_LOOP": "COORDS_LOOP"
+                                                },
+                                                "configs": {}
+                                            },
+                                            "attributes": {
+                                                "KEY_LOOP::1::x": "9294.29117159774",
+                                                "address": "Chongqing3",
+                                                "KEY_LOOP::1::y": "7894.346623142757",
+                                                "name": "Building 3",
+                                                "KEY_LOOP::0::y": "7879.587885046889",
+                                                "KEY_LOOP::0::x": "8200.783816027899",
+                                                "floorArea": "1410.1325309016706"
+                                            },
+                                            "configs": {}
+                                        }
+                                    ]
+                                }
+                            ],
+                            "elements": []
+                        }
+                    ],
+                    "elements": []
+                }
+            ],
+            "models": [
+                {
+                    "name": "building_model",
+                    "parent": "field",
+                    "parameters": {
+                        "address": "STRING",
+                        "name": "STRING",
+                        "floorArea": "DOUBLE"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,6 +1,6 @@
 package org.riseger.main.exception;
 
-import org.riseger.compile.tokenize.Token;
+import org.riseger.main.api.compile.tokenize.Token;
 
 public class CompileException extends RuntimeException {
 

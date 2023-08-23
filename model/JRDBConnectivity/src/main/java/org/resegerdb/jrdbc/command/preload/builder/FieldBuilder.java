@@ -1,9 +1,9 @@
 package org.resegerdb.jrdbc.command.preload.builder;
 
 import org.riseger.protoctl.struct.config.Option;
-import org.riseger.protoctl.struct.model.Element;
-import org.riseger.protoctl.struct.model.MapDB;
-import org.riseger.protoctl.struct.model.ParentModel;
+import org.riseger.protoctl.struct.entity.Element;
+import org.riseger.protoctl.struct.entity.MapDB;
+import org.riseger.protoctl.struct.entity.ParentModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +28,7 @@ public class FieldBuilder {
     }
 
     public Element build() {
-        this.element = new Element(this.parent, this.attributes, this.configs);
+        this.element = new Element(this.parent,model, this.attributes, this.configs);
         map.addElement(this.element);
         return this.element;
     }

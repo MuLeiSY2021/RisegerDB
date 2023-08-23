@@ -1,7 +1,7 @@
 package org.resegerdb.jrdbc.command.preload.builder;
 
-import org.riseger.protoctl.struct.model.Database;
-import org.riseger.protoctl.struct.model.MapDB;
+import org.riseger.protoctl.struct.entity.Database;
+import org.riseger.protoctl.struct.entity.MapDB;
 
 public class MapBuilder {
     private final Database database;

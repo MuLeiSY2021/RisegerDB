@@ -17,7 +17,7 @@
             </plugin>
         </plugins>
     </build>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>RisegerDB</name>
     <url>http://maven.apache.org</url>
@@ -70,11 +70,6 @@
             <artifactId>netty-transport</artifactId>
             <version>4.1.95.Final</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.riseger.jrdbc</groupId>
-            <artifactId>JRDBC_Protoctl</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
