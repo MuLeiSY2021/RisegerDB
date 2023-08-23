@@ -5,7 +5,6 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class HandlerManager extends ChannelInitializer<SocketChannel> {
