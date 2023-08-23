@@ -1,9 +1,9 @@
 package org.riseger.main.cache.entity.element;
 
 import lombok.Data;
-import org.riseger.main.cache.entity.mamager.DBConfigManager;
-import org.riseger.main.cache.entity.mamager.MapDBManager;
-import org.riseger.main.cache.entity.mamager.ModelManager;
+import org.riseger.main.cache.entity.manager.DBConfigManager;
+import org.riseger.main.cache.entity.manager.MapDBManager;
+import org.riseger.main.cache.entity.manager.ModelManager;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.MapDB;
 import org.riseger.protoctl.struct.entity.Model;

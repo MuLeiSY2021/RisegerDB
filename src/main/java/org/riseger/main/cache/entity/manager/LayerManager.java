@@ -1,4 +1,4 @@
-package org.riseger.main.cache.entity.mamager;
+package org.riseger.main.cache.entity.manager;
 
 import org.riseger.main.cache.entity.element.Layer_c;
 import org.riseger.protoctl.struct.entity.Element;
@@ -38,7 +38,7 @@ public class LayerManager {
 
             layer = new Layer_c(getLName(submap));
         }
-        layer.addSubap(submap,index + 1);
+        layer.addSubmap(submap,index + 1);
     }
 
     public String getLName(Submap submap) {

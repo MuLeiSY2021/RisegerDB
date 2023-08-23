@@ -1,4 +1,4 @@
-package org.riseger.main.cache.entity.mamager;
+package org.riseger.main.cache.entity.manager;
 
 import org.riseger.main.cache.entity.element.Model_c;
 

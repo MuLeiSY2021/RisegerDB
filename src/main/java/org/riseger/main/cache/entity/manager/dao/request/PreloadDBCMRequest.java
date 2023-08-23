@@ -1,9 +1,9 @@
-package org.riseger.main.cache.entity.mamager.dao.request;
+package org.riseger.main.cache.entity.manager.dao.request;
 
 import lombok.Data;
-import org.riseger.main.api.workflow.revoke.revocable;
 import org.riseger.main.api.workflow.job.Job;
-import org.riseger.main.cache.entity.mamager.dao.job.PreloadDBCMJob;
+import org.riseger.main.api.workflow.revoke.revocable;
+import org.riseger.main.cache.entity.manager.dao.job.PreloadDBCMJob;
 import org.riseger.protoctl.request.Request;
 import org.riseger.protoctl.struct.entity.Database;
 

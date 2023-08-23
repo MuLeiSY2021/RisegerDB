@@ -1,4 +1,4 @@
-package org.riseger.main.cache.entity.mamager;
+package org.riseger.main.cache.entity.manager;
 
 import org.riseger.main.cache.entity.element.MapDB_c;
 import org.riseger.protoctl.struct.entity.MapDB;

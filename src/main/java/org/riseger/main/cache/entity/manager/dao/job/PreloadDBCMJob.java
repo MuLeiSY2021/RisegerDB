@@ -1,9 +1,9 @@
-package org.riseger.main.cache.entity.mamager.dao.job;
+package org.riseger.main.cache.entity.manager.dao.job;
 
-import org.riseger.main.api.workflow.revoke.revocable;
 import org.riseger.main.api.workflow.job.Job;
+import org.riseger.main.api.workflow.revoke.revocable;
 import org.riseger.main.cache.entity.element.Database_c;
-import org.riseger.main.cache.entity.mamager.CacheMaster;
+import org.riseger.main.cache.entity.manager.CacheMaster;
 import org.riseger.protoctl.struct.entity.Database;
 
 public class PreloadDBCMJob implements Job {

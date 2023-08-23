@@ -21,13 +21,6 @@ public class DatabaseBuilder {
         return new MapBuilder(this.database);
     }
 
-    public ScopeBuilder buildScope() {
-        if (this.database == null) {
-            throw new NullPointerException("database is null");
-        }
-        return new ScopeBuilder(this.database);
-    }
-
     public ModelBuilder buildModel() {
         if (this.database == null) {
             throw new NullPointerException("database is null");

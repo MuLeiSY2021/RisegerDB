@@ -1,7 +1,7 @@
 package org.riseger.main.cache.entity.element;
 
-import org.riseger.main.cache.entity.mamager.ElementManager;
-import org.riseger.main.cache.entity.mamager.LayerManager;
+import org.riseger.main.cache.entity.manager.ElementManager;
+import org.riseger.main.cache.entity.manager.LayerManager;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
 
@@ -20,11 +20,11 @@ public class Layer_c {
 
     }
 
-    public Layer_c addSubap() {
+    public Layer_c addSubmap() {
         return null;
     }
 
-    public Submap_c addSubap(Submap submap,int index) {
+    public void addSubmap(Submap submap, int index) {
         for (Element e:submap.getElements()) {
             addElement(e);
         }
@@ -34,6 +34,6 @@ public class Layer_c {
     }
 
     public String getName() {
-        return this.;
+        return null;
     }
 }

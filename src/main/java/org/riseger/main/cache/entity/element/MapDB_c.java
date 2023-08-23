@@ -1,6 +1,6 @@
 package org.riseger.main.cache.entity.element;
 
-import org.riseger.main.cache.entity.mamager.LayerManager;
+import org.riseger.main.cache.entity.manager.LayerManager;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.MapDB;
 
