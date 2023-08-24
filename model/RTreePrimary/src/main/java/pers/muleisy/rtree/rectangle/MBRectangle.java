@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
-public class CommonRectangle implements Rectangle {
+public abstract class MBRectangle implements Rectangle {
     private Double minX = Double.MAX_VALUE;
 
     private Double maxX = Double.MIN_VALUE;
@@ -15,59 +15,29 @@ public class CommonRectangle implements Rectangle {
 
     private Double threshold = null;
 
-    public CommonRectangle() {
-    }
-
-    public CommonRectangle(Double minX, Double minY, Double maxX, Double maxY) {
-        this.setMinX(minX);
-        this.setMaxX(maxX);
-        this.setMinY(minY);
-        this.setMaxY(maxY);
-    }
-
-
-    public CommonRectangle(Collection<? extends Rectangle> rects) {
-        expandAll(rects);
-    }
-
-    public CommonRectangle(Rectangle... rects) {
-        expandAll(rects);
-    }
-
-    public CommonRectangle(Rectangle rectangle) {
-        copy(rectangle);
-    }
-
-    public CommonRectangle(Double threshold) {
+    public MBRectangle(Double threshold) {
         this.setThreshold(threshold);
     }
 
-    public CommonRectangle(Double minX, Double maxX, Double minY, Double maxY, Double threshold) {
-        this.minX = minX;
-        this.maxX = maxX;
-        this.minY = minY;
-        this.maxY = maxY;
-        this.setThreshold(threshold);
-    }
-
-
-    public CommonRectangle(Collection<? extends Rectangle> rects, Double threshold) {
+    public MBRectangle(Collection<? extends Rectangle> rects, Double threshold) {
         expandAll(rects);
         this.setThreshold(threshold);
-
     }
 
-    public CommonRectangle(Double threshold,Rectangle... rects) {
+    public MBRectangle(Double threshold, Rectangle... rects) {
         expandAll(rects);
         this.setThreshold(threshold);
-
     }
 
-    public CommonRectangle(Rectangle rectangle, Double threshold) {
-        copy(rectangle);
-        this.setThreshold(threshold);
-
+    public MBRectangle(Double minX, Double maxX, Double minY, Double maxY, Double threshold) {
+        setThreshold(threshold);
+        setMaxX(maxX);
+        setMinX(minX);
+        setMaxY(maxY);
+        setMinY(minY);
     }
+
+    public abstract void initBMRCoords();
 
     private void initialize() {
         this.setMinX(Double.MAX_VALUE);
@@ -172,12 +142,14 @@ public class CommonRectangle implements Rectangle {
     }
 
     @Override
-    public Rectangle overlap(Rectangle rectangle) {
-        return new CommonRectangle(
-                Math.max(this.minX, rectangle.minX()),
-                Math.max(this.minY, rectangle.minY()),
-                Math.min(this.maxX, rectangle.maxX()),
-                Math.min(this.maxY, rectangle.maxY()));
+    public double overlap(Rectangle rectangle) {
+        double h = Math.min(this.maxY, rectangle.maxY()) - Math.max(this.minY, rectangle.minY());
+        double w = Math.min(this.maxX, rectangle.maxX()) - Math.max(this.minX, rectangle.minX());
+        if(h < 0 || w < 0) {
+            return -1;
+        }
+        return h * w;
+
     }
 
     @Override
@@ -235,13 +207,14 @@ public class CommonRectangle implements Rectangle {
 
     @Override
     public boolean intersects(Rectangle other) {
-        return this.overlap(other).isLegal();
+        return this.overlap(other) > 0;
     }
 
     @Override
     public Double width() {
         return this.maxX()-this.minX();
     }
+
 
     @Override
     public Double height() {
@@ -274,7 +247,7 @@ public class CommonRectangle implements Rectangle {
         return false;
     }
 
-    private double truncateDecimal(double value) {
+    protected double truncateDecimal(double value) {
         if(threshold == null) {
             return value;
         }

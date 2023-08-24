@@ -6,7 +6,7 @@ import org.openimaj.math.geometry.point.Point2dImpl;
 import org.openimaj.math.geometry.shape.Polygon;
 import pers.muleisy.rtree.RTreeDao;
 import pers.muleisy.rtree.othertree.RTree;
-import pers.muleisy.rtree.rectangle.CommonRectangle;
+import pers.muleisy.rtree.rectangle.MBRectangle;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -23,10 +23,10 @@ public class ImagePrint {
 
     private static final Random random = new Random(0);
 
-    public static List<CommonRectangle> generateRectangles(int size, int numRectangles) {
+    public static List<MBRectangle> generateRectangles(int size, int numRectangles) {
         double minSize = Math.sqrt(size) / 2;
         double maxSize = Math.sqrt(size)*2;
-        List<CommonRectangle> rectangles = new LinkedList<>();
+        List<MBRectangle> rectangles = new LinkedList<>();
 
 
         while (rectangles.size() < numRectangles) {
@@ -35,7 +35,7 @@ public class ImagePrint {
             double r_width = random.nextDouble() * (maxSize - minSize) + minSize; // 随机生成矩形大小
             double r_height = random.nextDouble() * (maxSize - minSize) + minSize;
 
-            CommonRectangle rect = new CommonRectangle( x, y, (x + r_width), (y + r_height));
+            MBRectangle rect = new TestRectangle( x, y, (x + r_width), (y + r_height),0.5);
 
             while (rect.intersects(rectangles)) {
                 x = x + 1; // 线性探测，尝试放置在下一个位置
@@ -55,15 +55,15 @@ public class ImagePrint {
         return rectangles;
     }
 
-    public static void toPNG(int size,String URL, String fileName, RTreeDao<CommonRectangle> tree) throws IOException {
+    public static void toPNG(int size,String URL, String fileName, RTreeDao<MBRectangle> tree) throws IOException {
         double K = resolution /size <= 0 ? 1 : resolution / (double) size;
-        List<CommonRectangle> tuples = tree.getAllNode4Test();
+        List<MBRectangle> tuples = tree.getAllNode4Test();
         //
         BufferedImage prevImage = new BufferedImage((int) (size * 1.2 * K), (int) (size * 1.2 * K), BufferedImage.TYPE_INT_RGB);
         MBFImage image = ImageUtilities.createMBFImage(prevImage, false);
         image.fill(new Float[]{255f, 255f, 255f});
         int depth = 5;
-        for (CommonRectangle tuple : tuples) {
+        for (MBRectangle tuple : tuples) {
             if (tuple instanceof RTree.TestSpace) {
                 depth--;
                 continue;
@@ -79,12 +79,12 @@ public class ImagePrint {
 //        DisplayUtilities.display(image);
     }
 
-    public static void toPNG(int size,String URL, String fileName, Collection<? extends CommonRectangle> rectangles) throws IOException {
+    public static void toPNG(int size,String URL, String fileName, Collection<? extends MBRectangle> rectangles) throws IOException {
         double K = resolution /(double) size < 1 ? 1 : resolution / (double) size;
         BufferedImage prevImage = new BufferedImage((int) (size * 1.2 * K), (int) (size * 1.2 * K), BufferedImage.TYPE_INT_RGB);
         MBFImage image = ImageUtilities.createMBFImage(prevImage, false);
         image.fill(new Float[]{255f, 255f, 255f});
-        for (CommonRectangle tuple : rectangles) {
+        for (MBRectangle tuple : rectangles) {
             drawRectangles(image, tuple, 2,K);
         }
         File f = new File(URL + "/" + fileName +".png");
@@ -109,9 +109,9 @@ public class ImagePrint {
     }
     static int i = 1;
 
-    static HashMap<CommonRectangle,Integer> hashMap = new HashMap<>();
+    static HashMap<MBRectangle,Integer> hashMap = new HashMap<>();
 
-    private static void drawRectangles(MBFImage image, CommonRectangle rectangles, int thickness, double K) {
+    private static void drawRectangles(MBFImage image, MBRectangle rectangles, int thickness, double K) {
         int minX = (int) ((rectangles.minX() - thickness * 5 + 50) * K);
         int minY = (int) ((rectangles.minY() - thickness * 5 + 50) * K);
         int maxX = (int) ((rectangles.maxX() + thickness * 5 + 50) * K);

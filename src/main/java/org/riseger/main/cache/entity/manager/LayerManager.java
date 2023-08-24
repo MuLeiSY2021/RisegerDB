@@ -1,6 +1,7 @@
 package org.riseger.main.cache.entity.manager;
 
 import org.riseger.main.cache.entity.element.Layer_c;
+import org.riseger.main.cache.entity.element.MapDB_c;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
 
@@ -8,7 +9,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LayerManager {
-    private Map<String, Layer_c> layerMap = new HashMap<>();
+    private final Map<String, Layer_c> layerMap = new HashMap<>();
+
+    private final MapDB_c mapDBC;
+
+    public LayerManager(MapDB_c mapDBC) {
+        this.mapDBC = mapDBC;
+    }
 
     public void addElement(Element e) {
         Layer_c layer = null;

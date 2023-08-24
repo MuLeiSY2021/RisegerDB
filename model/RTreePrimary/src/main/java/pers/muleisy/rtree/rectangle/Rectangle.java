@@ -23,7 +23,7 @@ public interface Rectangle {
 
     Double area();
 
-    Rectangle overlap(Rectangle rectangle);
+    double overlap(Rectangle rectangle);
 
     boolean isLegal();
 

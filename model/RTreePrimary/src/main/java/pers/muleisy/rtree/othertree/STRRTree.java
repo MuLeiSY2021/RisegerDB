@@ -1,12 +1,12 @@
 package pers.muleisy.rtree.othertree;
 
-import pers.muleisy.rtree.rectangle.CommonRectangle;
+import pers.muleisy.rtree.rectangle.MBRectangle;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-public class STRRTree<R extends CommonRectangle> extends RStarTree<R>{
+public class STRRTree<R extends MBRectangle> extends RStarTree<R>{
 
     public STRRTree(int nodeSize,double threshold) {
         super(nodeSize,threshold);
@@ -31,26 +31,26 @@ public class STRRTree<R extends CommonRectangle> extends RStarTree<R>{
         return pieces * M;
     }
 
-    private List<SubTree> packing(List<? extends CommonRectangle> rects) {
+    private List<SubTree> packing(List<? extends MBRectangle> rects) {
         int chunkPieces = getChunkPieces(rects.size());
 
-        List<List<? extends CommonRectangle>> tmpList = new LinkedList<>();
+        List<List<? extends MBRectangle>> tmpList = new LinkedList<>();
         List<SubTree> subTreeList = new LinkedList<>();
         rects = sortByAxis(rects,Axis.X,false);
         int chunkSize = getChunkSize(chunkPieces);
 
         for (int i = 0; i < chunkPieces; i++) {
-            List<? extends CommonRectangle> subList = getSubList(chunkSize,i,rects);
+            List<? extends MBRectangle> subList = getSubList(chunkSize,i,rects);
             if(subList == null) {
                 break;
             }
             tmpList.add(subList);
         }
         int t = 0;
-        for (List<? extends CommonRectangle> rList: tmpList) {
+        for (List<? extends MBRectangle> rList: tmpList) {
             rList = sortByAxis(rList,Axis.Y,true);
             for (int i = 0; i < chunkPieces; i++) {
-                List<? extends CommonRectangle> subList = getSubList(M(),i,rList);
+                List<? extends MBRectangle> subList = getSubList(M(),i,rList);
                 if(subList == null) {
                     break;
                 }
@@ -64,7 +64,7 @@ public class STRRTree<R extends CommonRectangle> extends RStarTree<R>{
         return subTreeList;
     }
 
-    private List<? extends CommonRectangle> getSubList(int chunkSize, int round, List<? extends CommonRectangle> list) {
+    private List<? extends MBRectangle> getSubList(int chunkSize, int round, List<? extends MBRectangle> list) {
         int fromIndex = Math.min(round * chunkSize, list.size()),toIndex = Math.min((round + 1) * chunkSize, list.size());
         if(toIndex - fromIndex <= 0){
             return null;

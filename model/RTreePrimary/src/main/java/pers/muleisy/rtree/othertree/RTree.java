@@ -1,13 +1,13 @@
 package pers.muleisy.rtree.othertree;
 
 import pers.muleisy.rtree.RTreeDao;
-import pers.muleisy.rtree.rectangle.CommonRectangle;
+import pers.muleisy.rtree.rectangle.MBRectangle;
 import pers.muleisy.rtree.rectangle.Rectangle;
 
 import java.util.*;
 
-public abstract class RTree <R extends CommonRectangle> implements RTreeDao<R> {
-    public static String getStringBuilder(CommonRectangle rectangles, HashMap<CommonRectangle, Integer> hashMap) {
+public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
+    public static String getStringBuilder(MBRectangle rectangles, HashMap<MBRectangle, Integer> hashMap) {
         StringBuilder sb = new StringBuilder();
         if (rectangles instanceof RTree<?>.SubTree) {
             RTree<?>.SubTree subTree = (RTree<?>.SubTree) rectangles;
@@ -23,7 +23,13 @@ public abstract class RTree <R extends CommonRectangle> implements RTreeDao<R> {
         return sb.toString();
     }
 
-    public class SubTree extends CommonRectangle {
+    public class SubTree extends MBRectangle {
+
+        @Override
+        public void initBMRCoords() {
+            throw new UnsupportedOperationException();
+        }
+
         private LinkedList<SubTree> subTrees = new LinkedList<>();
 
         private SubTree parent;
@@ -420,10 +426,10 @@ public abstract class RTree <R extends CommonRectangle> implements RTreeDao<R> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        List<CommonRectangle> allNode = getAllNode4Test();
+        List<MBRectangle> allNode = getAllNode4Test();
         int i = 1;
-        HashMap<CommonRectangle,Integer> hashMap = new HashMap<>();
-        for (CommonRectangle node:allNode) {
+        HashMap<MBRectangle,Integer> hashMap = new HashMap<>();
+        for (MBRectangle node:allNode) {
             hashMap.put(node,i);
             i++;
 
@@ -447,8 +453,8 @@ public abstract class RTree <R extends CommonRectangle> implements RTreeDao<R> {
 
     //------------Test----------------//
 
-    public List<CommonRectangle> getAllNode4Test() {
-        LinkedList<CommonRectangle> res = new LinkedList<>();
+    public List<MBRectangle> getAllNode4Test() {
+        LinkedList<MBRectangle> res = new LinkedList<>();
         LinkedList<SubTree> tuples1 = new LinkedList<>();
         LinkedList<SubTree> tuples2 = new LinkedList<>();
         LinkedList<Leaf> leaves = new LinkedList<>();
@@ -472,10 +478,10 @@ public abstract class RTree <R extends CommonRectangle> implements RTreeDao<R> {
                 tmp.clear();
                 tuples2 = tmp;
                 if (!tuples1.isEmpty()) {
-                    res.add((CommonRectangle) new TestSpace());
+                    res.add((MBRectangle) new TestSpace());
                 }
             }
-            res.add((CommonRectangle) new TestSpace());
+            res.add((MBRectangle) new TestSpace());
         } else {
             leaves.add((Leaf) root);
         }
@@ -489,8 +495,15 @@ public abstract class RTree <R extends CommonRectangle> implements RTreeDao<R> {
         return new int[]{this.root.maxX().intValue(), this.root.maxY().intValue()};
     }
 
-    public static class TestSpace extends CommonRectangle {
+    public class TestSpace extends MBRectangle {
+        public TestSpace() {
+            super(threshold);
+        }
 
+        @Override
+        public void initBMRCoords() {
+            throw new UnsupportedOperationException();
+        }
     }
 
     protected int M() {
