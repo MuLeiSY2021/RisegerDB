@@ -71,5 +71,10 @@
             <version>4.1.95.Final</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>pers.muleisy.rtree</groupId>
+            <artifactId>RTreePrimary</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
