@@ -13,6 +13,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/model/JRDBC_Protocol/pom.xml" />
         <option value="$PROJECT_DIR$/model/JRDBC_Protoctl/pom.xml" />
       </set>
     </option>
