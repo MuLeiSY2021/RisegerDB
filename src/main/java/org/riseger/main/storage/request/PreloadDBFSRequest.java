@@ -2,7 +2,7 @@ package org.riseger.main.storage.request;
 
 import lombok.Data;
 import org.riseger.main.api.workflow.job.Job;
-import org.riseger.main.cache.entity.element.Database_c;
+import org.riseger.main.cache.entity.component.db.Database_c;
 import org.riseger.main.storage.job.PreloadDBFSJob;
 import org.riseger.protoctl.request.Request;
 

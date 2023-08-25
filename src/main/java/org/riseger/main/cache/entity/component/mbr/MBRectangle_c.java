@@ -1,30 +1,27 @@
-package org.riseger.main.cache.entity.element;
+package org.riseger.main.cache.entity.component.mbr;
 
-import org.riseger.main.cache.entity.manager.ElementManager;
-import org.riseger.main.cache.entity.manager.ModelManager;
-import org.riseger.protoctl.struct.entity.Element;
 import pers.muleisy.rtree.rectangle.MBRectangle;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
-public class Element_c extends MBRectangle_c {
-    private final String parentModel;
+public class MBRectangle_c extends MBRectangle {
 
-    private final String model;
+    private final List<Double> xKeySet = new LinkedList<>();
 
-    private final Map<String, String> attributes = new HashMap<>();
+    private final List<Double> yKeySet = new LinkedList<>();
 
-    private final ModelManager modelManager;
+    private final ArrayList<Double[]> coordsSet = new ArrayList<>();
 
-    private final ElementManager elementManager;
-
-    private Element_c(Element e,ModelManager modelManager,ElementManager elementManager, double threshold) {
-        super(e.getAttributes(),threshold);
-        this.parentModel = e.getParent().getName();
-        this.model = e.getModelName();
-        this.modelManager = modelManager;
-        this.elementManager = elementManager;
-        for (Map.Entry<String,String> a : e.getAttributes().entrySet()) {
+    public MBRectangle_c(Map<String,String> map, double threshold) {
+        super(threshold);
+        if(map == null || map.isEmpty()) {
+//            LogManager.getLogManager().getLogger(this.getClass().getName()).warning("MBRectangle_c: map is null or empty");
+            return;
+        }
+        for (Map.Entry<String,String> a : map.entrySet()) {
             String k = a.getKey();
             if(k.startsWith("KEY")) {
                 String[] keys = k.split("::");
@@ -45,15 +42,9 @@ public class Element_c extends MBRectangle_c {
                     addY(v);
                     coords[1] = v;
                 }
-            } else {
-                attributes.put(k, a.getValue());
+                map.remove(k);
             }
         }
-    }
-
-    //TODO::需要做对模版类和父类合法性的判断
-    public boolean legal(Element e) {
-        return true;
     }
 
     @Override

@@ -1,9 +1,10 @@
-package org.riseger.main.cache.entity.element;
+package org.riseger.main.cache.entity.component;
 
+import org.riseger.main.cache.entity.component.db.Model_c;
 import org.riseger.protoctl.struct.entity.ParentModel;
 import org.riseger.protoctl.struct.entity.Type;
 
-public class ParentModel_c extends Model_c{
+public class ParentModel_c extends Model_c {
     public ParentModel_c(String name) {
         super(name);
     }

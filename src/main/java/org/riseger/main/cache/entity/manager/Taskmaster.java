@@ -2,8 +2,8 @@ package org.riseger.main.cache.entity.manager;
 
 import org.riseger.main.api.workflow.revoke.revocable;
 import org.riseger.main.api.workflow.workflow.CommonWorkFlow;
-import org.riseger.main.cache.entity.element.Database_c;
-import org.riseger.main.cache.entity.element.Model_c;
+import org.riseger.main.cache.entity.component.db.Database_c;
+import org.riseger.main.cache.entity.component.db.Model_c;
 import org.riseger.main.cache.entity.manager.dao.DAO;
 import org.riseger.main.cache.entity.manager.dao.request.PreloadDBCMRequest;
 import org.riseger.protoctl.struct.config.Config;

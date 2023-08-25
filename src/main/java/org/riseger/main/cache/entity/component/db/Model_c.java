@@ -1,4 +1,4 @@
-package org.riseger.main.cache.entity.element;
+package org.riseger.main.cache.entity.component.db;
 
 import org.riseger.protoctl.struct.entity.Model;
 import org.riseger.protoctl.struct.entity.Type;

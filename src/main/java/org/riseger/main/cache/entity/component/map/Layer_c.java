@@ -1,4 +1,4 @@
-package org.riseger.main.cache.entity.element;
+package org.riseger.main.cache.entity.component.map;
 
 import org.riseger.main.cache.entity.manager.ElementManager;
 import org.riseger.main.cache.entity.manager.LayerManager;

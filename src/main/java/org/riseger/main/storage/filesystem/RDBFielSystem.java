@@ -1,7 +1,7 @@
 package org.riseger.main.storage.filesystem;
 
 import org.riseger.main.api.workflow.workflow.CommonWorkFlow;
-import org.riseger.main.cache.entity.element.Database_c;
+import org.riseger.main.cache.entity.component.db.Database_c;
 import org.riseger.main.storage.request.PreloadDBFSRequest;
 
 public class RDBFielSystem {

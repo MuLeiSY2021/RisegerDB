@@ -1,6 +1,6 @@
 package org.riseger.main.cache.entity.manager;
 
-import org.riseger.main.cache.entity.element.Database_c;
+import org.riseger.main.cache.entity.component.db.Database_c;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Database;
 import org.riseger.protoctl.struct.entity.MapDB;
@@ -36,7 +36,7 @@ public class DatabaseManager {
         for (MapDB map : database.getMaps()) {
             db.addMap(map);
         }
-        return null;
+        return db;
     }
 
     public Database_c addDatabase(Database database) {

@@ -1,4 +1,4 @@
-package org.riseger.main.cache.entity.element;
+package org.riseger.main.cache.entity.component.db;
 
 import lombok.Data;
 import org.riseger.main.cache.entity.manager.DBConfigManager;
@@ -27,9 +27,10 @@ public class Database_c {
     }
 
     public void addModel(Model model) {
-
+        models.addModel(model);
     }
 
     public void addMap(MapDB map) {
+        maps.addMap(map.getName(),map);
     }
 }

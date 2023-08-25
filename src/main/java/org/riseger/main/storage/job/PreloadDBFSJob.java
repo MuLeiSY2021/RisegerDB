@@ -1,7 +1,7 @@
 package org.riseger.main.storage.job;
 
 import org.riseger.main.api.workflow.job.Job;
-import org.riseger.main.cache.entity.element.Database_c;
+import org.riseger.main.cache.entity.component.db.Database_c;
 
 public class PreloadDBFSJob implements Job {
     private final Database_c database;

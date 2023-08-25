@@ -1,8 +1,8 @@
 package org.riseger.main.cache.entity.manager.dao;
 
 import org.riseger.main.api.workflow.revoke.revocable;
-import org.riseger.main.cache.entity.element.Database_c;
-import org.riseger.main.cache.entity.element.Model_c;
+import org.riseger.main.cache.entity.component.db.Database_c;
+import org.riseger.main.cache.entity.component.db.Model_c;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.config.Option;
 import org.riseger.protoctl.struct.entity.Database;

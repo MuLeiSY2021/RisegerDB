@@ -1,7 +1,7 @@
 package org.riseger.main.cache.entity.manager;
 
-import org.riseger.main.cache.entity.element.Layer_c;
-import org.riseger.main.cache.entity.element.MapDB_c;
+import org.riseger.main.cache.entity.component.map.Layer_c;
+import org.riseger.main.cache.entity.component.map.MapDB_c;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
 
@@ -55,6 +55,5 @@ public class LayerManager {
     public String getLName(Element e) {
         return "md_" + e.getModelName();
     }
-
 
 }

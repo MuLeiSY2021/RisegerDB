@@ -1,6 +1,6 @@
 package org.riseger.main.cache.entity.manager;
 
-import org.riseger.main.cache.entity.element.Database_c;
+import org.riseger.main.cache.entity.component.db.Database_c;
 import org.riseger.protoctl.struct.config.Config;
 
 import java.util.HashMap;
