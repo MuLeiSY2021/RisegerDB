@@ -13,7 +13,7 @@ public abstract class MBRectangle implements Rectangle {
 
     private Double maxY = Double.MIN_VALUE;
 
-    private Double threshold = null;
+    protected Double threshold = null;
 
     public MBRectangle(Double threshold) {
         this.setThreshold(threshold);

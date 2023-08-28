@@ -1,5 +1,6 @@
 package org.riseger.main.cache.entity.manager;
 
+import org.riseger.main.cache.entity.component.db.Database_c;
 import org.riseger.main.cache.entity.component.db.Model_c;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Model;
@@ -8,7 +9,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ModelManager {
-    private Map<String, Model_c> models = new HashMap<String, Model_c>();
+    private final Database_c database;
+    private final Map<String, Model_c> models = new HashMap<String, Model_c>();
+
+    public ModelManager(Database_c database) {
+        this.database = database;
+    }
 
     public void addModel(Model model) {
         models.put(model.getName(), new Model_c(model));

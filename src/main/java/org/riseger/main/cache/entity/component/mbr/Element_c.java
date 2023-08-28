@@ -1,7 +1,7 @@
 package org.riseger.main.cache.entity.component.mbr;
 
+import org.riseger.main.cache.entity.component.db.Database_c;
 import org.riseger.main.cache.entity.manager.ElementManager;
-import org.riseger.main.cache.entity.manager.ModelManager;
 import org.riseger.protoctl.struct.entity.Element;
 
 import java.util.HashMap;
@@ -14,15 +14,15 @@ public class Element_c extends MBRectangle_c {
 
     private final Map<String, String> attributes = new HashMap<>();
 
-    private final ModelManager modelManager;
+    private final Database_c db;
 
     private final ElementManager elementManager;
 
-    private Element_c(Element e,ModelManager modelManager,ElementManager elementManager, double threshold) {
+    public Element_c(Element e, Database_c db, ElementManager elementManager, double threshold) {
         super(e.getAttributes(),threshold);
         this.parentModel = e.getParent().getName();
         this.model = e.getModelName();
-        this.modelManager = modelManager;
+        this.db = db;
         this.elementManager = elementManager;
         for (Map.Entry<String,String> a : e.getAttributes().entrySet()) {
             String k = a.getKey();

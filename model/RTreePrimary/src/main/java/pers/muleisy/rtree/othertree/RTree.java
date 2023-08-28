@@ -23,7 +23,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         return sb.toString();
     }
 
-    public class SubTree extends MBRectangle {
+    protected class SubTree extends MBRectangle {
 
         @Override
         public void initBMRCoords() {
@@ -156,7 +156,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         }
     }
 
-    public class Leaf extends SubTree{
+    protected class Leaf extends SubTree{
         private final LinkedList<R> elements = new LinkedList<>();
 
         public Leaf() {
@@ -423,88 +423,92 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         return leaf.strictGet(rectangle);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        List<MBRectangle> allNode = getAllNode4Test();
-        int i = 1;
-        HashMap<MBRectangle,Integer> hashMap = new HashMap<>();
-        for (MBRectangle node:allNode) {
-            hashMap.put(node,i);
-            i++;
-
-            if(node instanceof RTree.TestSpace) {
-                sb.append("\n");
-            }else if (node instanceof RTree<?>.SubTree) {
-                SubTree subTree = (SubTree)node;
-                if (node instanceof RTree<?>.Leaf) {
-                    sb.append("|L:id=").append(hashMap.get(node)).append(",");
-                } else {
-                    sb.append("|ST:id=").append(hashMap.get(node)).append(",");
-                }
-                sb.append(subTree.toString(), 0, subTree.toString().length() - 1).append(",P:id=").append(hashMap.get(((SubTree) node).parent)).append("|");
-            } else {
-                sb.append("|R:id=").append(hashMap.get(node)).append(",").append(node.toString().substring(1));
-            }
-
-        }
-        return sb.toString();
-    }
+//    public List<MBRectangle> getAllNode4Test() {
+//        LinkedList<MBRectangle> res = new LinkedList<>();
+//        LinkedList<SubTree> tuples1 = new LinkedList<>();
+//        LinkedList<SubTree> tuples2 = new LinkedList<>();
+//        LinkedList<Leaf> leaves = new LinkedList<>();
+//        tuples1.add(root);
+//        res.add(root);
+//        res.add(new TestSpace());
+//        if(!(Leaf.class.isInstance(root))) {
+//            while (!tuples1.isEmpty()) {
+//                for (SubTree parent : tuples1) {
+//                    for (SubTree child : parent.getSubTrees()) {
+//                        if (Leaf.class.isInstance(child)) {
+//                            leaves.add((Leaf) child);
+//                        } else {
+//                            tuples2.add(child);
+//                        }
+//                        res.add(child);
+//                    }
+//                }
+//                LinkedList<SubTree> tmp = tuples1;
+//                tuples1 = tuples2;
+//                tmp.clear();
+//                tuples2 = tmp;
+//                if (!tuples1.isEmpty()) {
+//                    res.add(new TestSpace());
+//                }
+//            }
+//            res.add(new TestSpace());
+//        } else {
+//            leaves.add((Leaf) root);
+//        }
+//        for (Leaf leaf:leaves) {
+//            res.addAll(leaf.getElements());
+//        }
+//        return res;
+//    }
+//
+//    class TestSpace extends MBRectangle {
+//        public TestSpace() {
+//            super(threshold);
+//        }
+//
+//        @Override
+//        public void initBMRCoords() {
+//            throw new UnsupportedOperationException();
+//        }
+//    }
+//
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        List<MBRectangle> allNode = getAllNode4Test();
+//        int i = 1;
+//        HashMap<MBRectangle,Integer> hashMap = new HashMap<>();
+//        for (MBRectangle node:allNode) {
+//            hashMap.put(node,i);
+//            i++;
+//
+//            if(node instanceof RTree.TestSpace) {
+//                sb.append("\n");
+//            }else if (node instanceof RTree<?>.SubTree) {
+//                SubTree subTree = (SubTree)node;
+//                if (node instanceof RTree<?>.Leaf) {
+//                    sb.append("|L:id=").append(hashMap.get(node)).append(",");
+//                } else {
+//                    sb.append("|ST:id=").append(hashMap.get(node)).append(",");
+//                }
+//                sb.append(subTree.toString(), 0, subTree.toString().length() - 1).append(",P:id=").append(hashMap.get(((SubTree) node).parent)).append("|");
+//            } else {
+//                sb.append("|R:id=").append(hashMap.get(node)).append(",").append(node.toString().substring(1));
+//            }
+//
+//        }
+//        return sb.toString();
+//    }
 
     //------------Test----------------//
 
-    public List<MBRectangle> getAllNode4Test() {
-        LinkedList<MBRectangle> res = new LinkedList<>();
-        LinkedList<SubTree> tuples1 = new LinkedList<>();
-        LinkedList<SubTree> tuples2 = new LinkedList<>();
-        LinkedList<Leaf> leaves = new LinkedList<>();
-        tuples1.add(root);
-        res.add(root);
-        res.add(new TestSpace());
-        if(!(Leaf.class.isInstance(root))) {
-            while (!tuples1.isEmpty()) {
-                for (SubTree parent : tuples1) {
-                    for (SubTree child : parent.getSubTrees()) {
-                        if (Leaf.class.isInstance(child)) {
-                            leaves.add((Leaf) child);
-                        } else {
-                            tuples2.add(child);
-                        }
-                        res.add(child);
-                    }
-                }
-                LinkedList<SubTree> tmp = tuples1;
-                tuples1 = tuples2;
-                tmp.clear();
-                tuples2 = tmp;
-                if (!tuples1.isEmpty()) {
-                    res.add((MBRectangle) new TestSpace());
-                }
-            }
-            res.add((MBRectangle) new TestSpace());
-        } else {
-            leaves.add((Leaf) root);
-        }
-        for (Leaf leaf:leaves) {
-            res.addAll(leaf.getElements());
-        }
-        return res;
-    }
+
 
     public int[] getMapSize() {
         return new int[]{this.root.maxX().intValue(), this.root.maxY().intValue()};
     }
 
-    public class TestSpace extends MBRectangle {
-        public TestSpace() {
-            super(threshold);
-        }
 
-        @Override
-        public void initBMRCoords() {
-            throw new UnsupportedOperationException();
-        }
-    }
 
     protected int M() {
         return M;

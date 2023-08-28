@@ -13,4 +13,12 @@ public class Config {
     public String getValue() {
         return value;
     }
+
+    public int getIntValue() {
+        return Integer.parseInt(value);
+    }
+
+    public double getDoubleValue() {
+        return Double.parseDouble(value);
+    }
 }

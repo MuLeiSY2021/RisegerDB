@@ -12,11 +12,11 @@ import org.riseger.protoctl.struct.entity.Model;
 public class Database_c {
     String name;
 
-    MapDBManager maps = new MapDBManager();
+    MapDBManager maps = new MapDBManager(this);
 
     DBConfigManager configs = new DBConfigManager(this);
 
-    ModelManager models = new ModelManager();
+    ModelManager models = new ModelManager(this);
 
     public Database_c(String name) {
         this.name = name;
@@ -31,6 +31,8 @@ public class Database_c {
     }
 
     public void addMap(MapDB map) {
-        maps.addMap(map.getName(),map);
+        maps.addMap(map.getConfig("nodeSize").getIntValue(),
+                map.getConfig("threshold").getDoubleValue(),
+                map);
     }
 }

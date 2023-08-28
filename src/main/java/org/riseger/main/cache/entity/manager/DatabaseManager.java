@@ -11,7 +11,7 @@ import java.util.Map;
 
 
 public class DatabaseManager {
-    private Map<String,Database_c> databases ;
+    private final Map<String,Database_c> databases ;
 
     public DatabaseManager() {
         this.databases = new HashMap<>();

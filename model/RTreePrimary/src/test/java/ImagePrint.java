@@ -64,10 +64,10 @@ public class ImagePrint {
         image.fill(new Float[]{255f, 255f, 255f});
         int depth = 5;
         for (MBRectangle tuple : tuples) {
-            if (tuple instanceof RTree.TestSpace) {
-                depth--;
-                continue;
-            }
+//            if (tuple instanceof Rectangle) {
+//                depth--;
+//                continue;
+//            }
             drawRectangles(image, tuple, depth,K);
         }
         File url = new File(URL);
