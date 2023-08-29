@@ -1,4 +1,4 @@
-package org.riseger.main.cache.entity.manager;
+package org.riseger.main.cache.manager;
 
 import org.riseger.main.cache.entity.component.map.Layer_c;
 import org.riseger.main.cache.entity.component.map.MapDB_c;
@@ -7,7 +7,6 @@ import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
 import org.riseger.protoctl.struct.entity.Element;
 import pers.muleisy.rtree.othertree.RStarTree;
 import pers.muleisy.rtree.othertree.RTree;
-import pers.muleisy.rtree.rectangle.MBRectangle;
 
 public class ElementManager {
 

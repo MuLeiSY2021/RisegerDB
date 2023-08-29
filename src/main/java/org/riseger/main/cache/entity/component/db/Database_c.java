@@ -1,9 +1,11 @@
 package org.riseger.main.cache.entity.component.db;
 
 import lombok.Data;
-import org.riseger.main.cache.entity.manager.DBConfigManager;
-import org.riseger.main.cache.entity.manager.MapDBManager;
-import org.riseger.main.cache.entity.manager.ModelManager;
+import org.riseger.main.cache.entity.builder.MapBuilder;
+import org.riseger.main.cache.manager.DBConfigManager;
+import org.riseger.main.cache.manager.MapDBManager;
+import org.riseger.main.cache.manager.ModelManager;
+import org.riseger.main.cache.other.Status;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.MapDB;
 import org.riseger.protoctl.struct.entity.Model;
@@ -11,6 +13,8 @@ import org.riseger.protoctl.struct.entity.Model;
 @Data
 public class Database_c {
     String name;
+
+    Status status = Status.LOADING;
 
     MapDBManager maps = new MapDBManager(this);
 
@@ -34,5 +38,17 @@ public class Database_c {
         maps.addMap(map.getConfig("nodeSize").getIntValue(),
                 map.getConfig("threshold").getDoubleValue(),
                 map);
+    }
+
+    public boolean isLoading() {
+        return this.status == Status.LOADING;
+    }
+
+    public void active() {
+        this.status = Status.ACTIVE;
+    }
+
+    public MapBuilder newMap(String map_name) {
+        return new MapBuilder(map_name);
     }
 }

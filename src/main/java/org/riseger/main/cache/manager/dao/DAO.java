@@ -1,4 +1,4 @@
-package org.riseger.main.cache.entity.manager.dao;
+package org.riseger.main.cache.manager.dao;
 
 import org.riseger.main.api.workflow.revoke.revocable;
 import org.riseger.main.cache.entity.component.db.Database_c;

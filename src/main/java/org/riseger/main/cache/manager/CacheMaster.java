@@ -1,4 +1,4 @@
-package org.riseger.main.cache.entity.manager;
+package org.riseger.main.cache.manager;
 
 import lombok.Data;
 

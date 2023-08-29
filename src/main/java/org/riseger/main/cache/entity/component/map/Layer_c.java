@@ -1,10 +1,9 @@
 package org.riseger.main.cache.entity.component.map;
 
 import org.riseger.main.cache.entity.component.db.Database_c;
-import org.riseger.main.cache.entity.component.mbr.Element_c;
 import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
-import org.riseger.main.cache.entity.manager.ElementManager;
-import org.riseger.main.cache.entity.manager.LayerManager;
+import org.riseger.main.cache.manager.ElementManager;
+import org.riseger.main.cache.manager.LayerManager;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
 

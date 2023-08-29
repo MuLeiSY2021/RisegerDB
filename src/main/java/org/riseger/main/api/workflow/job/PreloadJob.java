@@ -3,7 +3,7 @@ package org.riseger.main.api.workflow.job;
 import org.apache.logging.log4j.LogManager;
 import org.riseger.main.api.workflow.revoke.revocable;
 import org.riseger.main.cache.entity.component.db.Database_c;
-import org.riseger.main.cache.entity.manager.DBCacheManager;
+import org.riseger.main.cache.manager.DBCacheManager;
 import org.riseger.protoctl.struct.entity.Database;
 
 import java.util.List;

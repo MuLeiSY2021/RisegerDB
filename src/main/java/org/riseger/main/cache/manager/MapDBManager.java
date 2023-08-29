@@ -1,4 +1,4 @@
-package org.riseger.main.cache.entity.manager;
+package org.riseger.main.cache.manager;
 
 import org.riseger.main.cache.entity.component.db.Database_c;
 import org.riseger.main.cache.entity.component.map.MapDB_c;

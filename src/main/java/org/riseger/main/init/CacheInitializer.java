@@ -1,6 +1,6 @@
 package org.riseger.main.init;
 
-import org.riseger.main.cache.entity.manager.CacheMaster;
+import org.riseger.main.cache.manager.CacheMaster;
 
 public class CacheInitializer {
 

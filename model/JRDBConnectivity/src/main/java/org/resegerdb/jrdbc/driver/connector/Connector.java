@@ -3,7 +3,7 @@ package org.resegerdb.jrdbc.driver.connector;
 import io.netty.channel.Channel;
 import org.resegerdb.jrdbc.driver.session.PreloadSession;
 
-public class Connector {
+public class    Connector {
 
     private final Channel channel;
 

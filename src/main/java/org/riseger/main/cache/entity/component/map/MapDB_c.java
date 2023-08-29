@@ -1,9 +1,9 @@
 package org.riseger.main.cache.entity.component.map;
 
 import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
-import org.riseger.main.cache.entity.manager.ElementManager;
-import org.riseger.main.cache.entity.manager.LayerManager;
-import org.riseger.main.cache.entity.manager.MapDBManager;
+import org.riseger.main.cache.manager.ElementManager;
+import org.riseger.main.cache.manager.LayerManager;
+import org.riseger.main.cache.manager.MapDBManager;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.MapDB;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapDB_c extends MBRectangle_c {
-    private String name;
+    private final String name;
 
     private final Map<String,Config> configs = new HashMap<>();
 
