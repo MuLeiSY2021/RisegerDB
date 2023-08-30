@@ -19,7 +19,8 @@ public class MapDB_c extends MBRectangle_c {
 
     private final LayerManager layers;
 
-    private final MapDBManager mapDBManager;
+    //如果是Submap就是null
+    private final MapDBManager parent;
 
     private ElementManager elementManager;
 
@@ -27,7 +28,7 @@ public class MapDB_c extends MBRectangle_c {
         super(map, threshold);
         this.name = name;
         this.layers = new LayerManager(this);
-        mapDBManager = parent;
+        this.parent = parent;
         configs.put("node_size",new Config("node_size",String.valueOf(nodeSize)));
         configs.put("threshold",new Config("threshold",String.valueOf(threshold)));
     }
@@ -35,7 +36,7 @@ public class MapDB_c extends MBRectangle_c {
     public static MapDB_c mapBuilder(MapDB map,int nodeSize, double threshold,MapDBManager parent) {
         MapDB_c mapDB = new MapDB_c(null, nodeSize, threshold, map.getName(),parent);
         for (Submap submap:map.getSubmaps()) {
-            mapDB.createSubmap(submap);
+            mapDB.addSubmap(submap);
         }
 
         for (Element e:map.getElements()) {
@@ -44,12 +45,16 @@ public class MapDB_c extends MBRectangle_c {
         return mapDB;
     }
 
-    private void addElement(Element e) {
-        layers.addElement(e,mapDBManager.getDatabase());
+    public void addElement(Element e) {
+        layers.addElement(e);
     }
 
-    public void createSubmap(Submap map) {
+    public void addSubmap(Submap map) {
         layers.addSubmap(map);
+    }
+
+    public void addSubmap(Submap submapChild, int index) {
+        layers.addSubmap(submapChild,index);
     }
 
     public void updateBoundary(MBRectangle_c mbr) {
@@ -70,7 +75,5 @@ public class MapDB_c extends MBRectangle_c {
         return configs.get("threshold").getDoubleValue();
     }
 
-    public MapDBManager getMapManager() {
-        return mapDBManager;
-    }
+
 }

@@ -25,9 +25,9 @@ public class ElementManager {
 
     public void addElement(Element e) {
         Element_c e_c = new Element_c(e,
-                layer.getLayerManager().getMap().getMapManager().getDatabase(),
+                layer.getParent().getMap().getMapManager().getDatabase(),
                 this,
-                layer.getLayerManager().getMap().getThreshold());
+                layer.getParent().getMap().getThreshold());
         rtreeKeyIndex.insert(e_c);
         layer.expand(e_c);
     }

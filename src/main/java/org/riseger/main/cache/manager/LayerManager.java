@@ -1,6 +1,6 @@
 package org.riseger.main.cache.manager;
 
-import org.riseger.main.cache.entity.component.db.Database_c;
+import lombok.Data;
 import org.riseger.main.cache.entity.component.map.Layer_c;
 import org.riseger.main.cache.entity.component.map.MapDB_c;
 import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
@@ -10,13 +10,14 @@ import org.riseger.protoctl.struct.entity.Submap;
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
 public class LayerManager {
     private final Map<String, Layer_c> layerMap = new HashMap<>();
 
-    private final MapDB_c mapDBC;
+    private final MapDB_c parent;
 
-    public LayerManager(MapDB_c mapDBC) {
-        this.mapDBC = mapDBC;
+    public LayerManager(MapDB_c parent) {
+        this.parent = parent;
     }
 
     public void addSubmap(Submap submap) {
@@ -25,44 +26,40 @@ public class LayerManager {
 
     public void addSubmap(Submap submap, int index) {
         Layer_c layer;
-        String[] paths = submap.getScopePath().split("/");
+        String[] paths = submap.getScopePath().split("\\.");
         String name = getLName(submap);
         if(layerMap.containsKey(paths[index])) {
             layer = layerMap.get(name);
         } else {
-            layer = new Layer_c(name,this,mapDBC.getNodeSize(),mapDBC.getThreshold());
+            layer = new Layer_c(name,this, parent.getNodeSize(), parent.getThreshold());
         }
         layer.addSubmap(submap,index + 1);
     }
 
     public String getLName(Submap submap) {
-        return "sb_" + submap.getScopePath().split("/")[0];
+        return "sb_" + submap.getScopePath();
     }
 
     public String getLName(Element e) {
         return "md_" + e.getModelName();
     }
 
-    public void addElement(Element e, Database_c db) {
+    public void addElement(Element e) {
         Layer_c layer;
         String name = getLName(e);
         if(layerMap.containsKey(name)) {
             layer = layerMap.get(name);
         } else {
-            layer = new Layer_c(name,this,mapDBC.getNodeSize(),mapDBC.getThreshold());
+            layer = new Layer_c(name,this, parent.getNodeSize(), parent.getThreshold());
             layerMap.put(name, layer);
         }
         if(layer == null) {
             throw new RuntimeException("Layer " + name  + " not found");
         }
-        layer.addElement(e,db,mapDBC);
-    }
-
-    public MapDB_c getMap() {
-        return mapDBC;
+        layer.addElement(e);
     }
 
     public void expand(MBRectangle_c eC) {
-        mapDBC.updateBoundary(eC);
+        parent.updateBoundary(eC);
     }
 }

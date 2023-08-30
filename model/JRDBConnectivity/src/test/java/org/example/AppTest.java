@@ -109,7 +109,7 @@ public class AppTest extends TestCase {
                 SubmapBuilder submap_area = submapBuilder.buildSubmap();
                 submap_area
                         .name(area_name)
-                        .scopePath("province_scope/area_scope")
+                        .scopePath("province_scope.area_scope")
                         .build();
 
                 Building building = buildings.get(j);

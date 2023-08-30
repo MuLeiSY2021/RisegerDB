@@ -12,7 +12,7 @@
                             "name": "ShangHai",
                             "submaps": [
                                 {
-                                    "scopePath": "province_scope/area_scope",
+                                    "scopePath": "province_scope.area_scope",
                                     "name": "Huangpu",
                                     "submaps": [],
                                     "elements": [

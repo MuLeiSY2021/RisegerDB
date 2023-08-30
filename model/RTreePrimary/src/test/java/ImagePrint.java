@@ -56,26 +56,26 @@ public class ImagePrint {
     }
 
     public static void toPNG(int size,String URL, String fileName, RTreeDao<MBRectangle> tree) throws IOException {
-        double K = resolution /size <= 0 ? 1 : resolution / (double) size;
-        List<MBRectangle> tuples = tree.getAllNode4Test();
-        //
-        BufferedImage prevImage = new BufferedImage((int) (size * 1.2 * K), (int) (size * 1.2 * K), BufferedImage.TYPE_INT_RGB);
-        MBFImage image = ImageUtilities.createMBFImage(prevImage, false);
-        image.fill(new Float[]{255f, 255f, 255f});
-        int depth = 5;
-        for (MBRectangle tuple : tuples) {
-//            if (tuple instanceof Rectangle) {
-//                depth--;
-//                continue;
-//            }
-            drawRectangles(image, tuple, depth,K);
-        }
-        File url = new File(URL);
-        url.mkdirs();
-        File f = new File(URL + "/" + fileName +".png");
-        f.createNewFile();
-
-        ImageUtilities.write(image, "PNG", f);
+//        double K = resolution /size <= 0 ? 1 : resolution / (double) size;
+////        List<MBRectangle> tuples = tree.getAllNode4Test();
+//        //
+//        BufferedImage prevImage = new BufferedImage((int) (size * 1.2 * K), (int) (size * 1.2 * K), BufferedImage.TYPE_INT_RGB);
+//        MBFImage image = ImageUtilities.createMBFImage(prevImage, false);
+//        image.fill(new Float[]{255f, 255f, 255f});
+//        int depth = 5;
+//        for (MBRectangle tuple : tuples) {
+////            if (tuple instanceof Rectangle) {
+////                depth--;
+////                continue;
+////            }
+//            drawRectangles(image, tuple, depth,K);
+//        }
+//        File url = new File(URL);
+//        url.mkdirs();
+//        File f = new File(URL + "/" + fileName +".png");
+//        f.createNewFile();
+//
+//        ImageUtilities.write(image, "PNG", f);
 //        DisplayUtilities.display(image);
     }
 

@@ -19,8 +19,6 @@ public interface RTreeDao<R extends MBRectangle> {
 
     void insertAll(List<? extends R> rects);
 
-    List<MBRectangle> getAllNode4Test();
-
     int[] getMapSize();
 
     int getDeep();

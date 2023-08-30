@@ -39,11 +39,11 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         }
 
         public SubTree() {
-            super(threshold);
+            super(RTree.this.threshold);
         }
 
         public SubTree(Collection<? extends SubTree> subTrees) {
-            super(threshold);
+            super(RTree.this.threshold);
             addAll(subTrees);
         }
 
