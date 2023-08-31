@@ -27,4 +27,8 @@ public class MapDBManager {
     public Database_c getDatabase() {
         return database;
     }
+
+    public MapDB_c[] toList() {
+        return maps.values().toArray(new MapDB_c[0]);
+    }
 }

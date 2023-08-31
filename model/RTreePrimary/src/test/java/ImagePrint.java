@@ -7,6 +7,7 @@ import org.openimaj.math.geometry.shape.Polygon;
 import pers.muleisy.rtree.RTreeDao;
 import pers.muleisy.rtree.othertree.RTree;
 import pers.muleisy.rtree.rectangle.MBRectangle;
+import pers.muleisy.rtree.test.TestRectangle;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

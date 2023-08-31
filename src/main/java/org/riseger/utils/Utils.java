@@ -1,8 +1,14 @@
-package org.riseger.protoctl.utils;
+package org.riseger.utils;
+
+import com.google.gson.Gson;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Utils {
+
+    private static final Gson gson = new Gson();
 
     public static String getText(File file) {
         try (FileReader reader = new FileReader(file);
@@ -22,7 +28,7 @@ public class Utils {
         }
     }
 
-    public static void writeStringToFile(String content, String filePath) {
+    public static void writeToFile(String content, String filePath) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
             writer.write(content);
@@ -33,5 +39,20 @@ public class Utils {
         }
     }
 
+    public static void writeToFile(byte[] content, String filePath) {
+        try {
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            os.write(content);
+            os.writeTo(Files.newOutputStream(Paths.get(filePath)));
+            os.close();
+            System.out.println("内容已成功写入文件。");
+        } catch (IOException e) {
+            System.err.println("写入文件时出现错误：" + e.getMessage());
+        }
+    }
+
+    public static String toJson(Object object) {
+        return gson.toJson(object);
+    }
 
 }

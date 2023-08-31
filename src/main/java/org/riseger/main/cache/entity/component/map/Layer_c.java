@@ -1,5 +1,6 @@
 package org.riseger.main.cache.entity.component.map;
 
+import lombok.Data;
 import org.riseger.main.cache.entity.builder.SubmapBuilder;
 import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
 import org.riseger.main.cache.manager.ElementManager;
@@ -7,6 +8,7 @@ import org.riseger.main.cache.manager.LayerManager;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
 
+@Data
 public class Layer_c {
     private String name;
 

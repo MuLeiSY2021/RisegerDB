@@ -62,4 +62,8 @@ public class LayerManager {
     public void expand(MBRectangle_c eC) {
         parent.updateBoundary(eC);
     }
+
+    public Layer_c[] toList() {
+        return this.layerMap.values().toArray(new Layer_c[0]);
+    }
 }

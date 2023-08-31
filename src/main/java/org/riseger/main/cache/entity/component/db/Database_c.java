@@ -1,14 +1,17 @@
 package org.riseger.main.cache.entity.component.db;
 
+import com.google.gson.Gson;
 import lombok.Data;
 import org.riseger.main.cache.entity.builder.MapBuilder;
-import org.riseger.main.cache.manager.DBConfigManager;
 import org.riseger.main.cache.manager.MapDBManager;
 import org.riseger.main.cache.manager.ModelManager;
 import org.riseger.main.cache.other.Status;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.MapDB;
 import org.riseger.protoctl.struct.entity.Model;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 public class Database_c {
@@ -18,7 +21,7 @@ public class Database_c {
 
     MapDBManager maps = new MapDBManager(this);
 
-    DBConfigManager configs = new DBConfigManager(this);
+    Map<String,Config> configs = new HashMap<>();
 
     ModelManager models = new ModelManager(this);
 
@@ -27,7 +30,7 @@ public class Database_c {
     }
 
     public void addConfig(Config config,String value) {
-        configs.addConfig(config,value);
+        configs.put(value, config);
     }
 
     public void addModel(Model model) {
@@ -50,5 +53,9 @@ public class Database_c {
 
     public MapBuilder newMap(String map_name) {
         return new MapBuilder(map_name);
+    }
+
+    public String configToFile() {
+        return new Gson().toJson(configs);
     }
 }

@@ -1,4 +1,4 @@
-package org.riseger.protoctl.utils;
+package org.riseger.utils;
 
 public class ReGenerateFile {
 //    public static void main(String[] args) throws Exception {

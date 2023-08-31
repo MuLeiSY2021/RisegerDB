@@ -6,7 +6,7 @@ import org.resegerdb.jrdbc.command.preload.builder.DatabaseBuilder;
 import org.resegerdb.jrdbc.driver.result.Result;
 import org.riseger.protoctl.request.PreloadRequest;
 import org.riseger.protoctl.struct.entity.Database;
-import org.riseger.protoctl.utils.Utils;
+import org.riseger.utils.Utils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class PreloadSession implements Session {
 //            }
 //        };
 
-        Utils.writeStringToFile(new Gson().toJson(new PreloadRequest(this.databases)), "src/main/resources/dataSource/0.json");
+        Utils.writeToFile(new Gson().toJson(new PreloadRequest(this.databases)), "src/main/resources/dataSource/0.json");
         return null;
     }
 

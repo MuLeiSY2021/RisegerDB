@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ModelManager {
-    private final Database_c database;
-    private final Map<String, Model_c> models = new HashMap<String, Model_c>();
+    private transient final Database_c database;
+    private final Map<String, Model_c> models = new HashMap<>();
 
     public ModelManager(Database_c database) {
         this.database = database;

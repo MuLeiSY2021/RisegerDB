@@ -1,5 +1,9 @@
 package pers.muleisy.rtree.rectangle;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import pers.muleisy.rtree.test.TestRectangle;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -13,24 +17,50 @@ public abstract class MBRectangle implements Rectangle {
 
     private Double maxY = Double.MIN_VALUE;
 
-    protected Double threshold = null;
+    protected final Double threshold;
+
+    public static ByteBuf serialize(MBRectangle mbr) {
+        ByteBuf byteBuf = Unpooled.buffer();
+        byteBuf.writeDouble(mbr.minX);
+        byteBuf.writeDouble(mbr.maxX);
+        byteBuf.writeDouble(mbr.maxY);
+        byteBuf.writeDouble(mbr.minY);
+        byteBuf.writeDouble(mbr.threshold);
+
+        return byteBuf;
+    }
+
+    // Deserialize a Leaf object
+    public static MBRectangle deserialize(ByteBuf byteBuf) {
+        double minX = byteBuf.readDouble();
+        double maxX = byteBuf.readDouble();
+        double maxY = byteBuf.readDouble();
+        double minY = byteBuf.readDouble();
+        double threshold = byteBuf.readDouble();
+
+        return new TestRectangle(minX, maxX, minY, maxY, threshold); // Return the reconstructed Leaf object
+    }
 
     public MBRectangle(Double threshold) {
-        this.setThreshold(threshold);
+        this.threshold = threshold;
+        truncateAll();
     }
 
     public MBRectangle(Collection<? extends Rectangle> rects, Double threshold) {
         expandAll(rects);
-        this.setThreshold(threshold);
+        this.threshold = threshold;
+        truncateAll();
     }
 
     public MBRectangle(Double threshold, Rectangle... rects) {
         expandAll(rects);
-        this.setThreshold(threshold);
+        this.threshold = threshold;
+        truncateAll();
     }
 
     public MBRectangle(Double minX, Double maxX, Double minY, Double maxY, Double threshold) {
-        setThreshold(threshold);
+        this.threshold = threshold;
+        truncateAll();
         setMaxX(maxX);
         setMinX(minX);
         setMaxY(maxY);
@@ -80,11 +110,6 @@ public abstract class MBRectangle implements Rectangle {
 
     public void setMaxY(Double maxY) {
         this.maxY = truncateDecimal(maxY);
-    }
-
-    public void setThreshold(Double threshold) {
-        this.threshold = threshold;
-        truncateAll();
     }
 
     @Override
@@ -261,4 +286,6 @@ public abstract class MBRectangle implements Rectangle {
         this.setMinY(this.minY);
         this.setMaxY(this.maxY);
     }
+
+
 }

@@ -2,7 +2,7 @@ package org.riseger.main.api.compile.tree;
 
 import lombok.Data;
 import org.riseger.main.api.compile.config.Config;
-import org.riseger.protoctl.utils.Utils;
+import org.riseger.utils.Utils;
 
 import java.io.File;
 import java.util.LinkedList;

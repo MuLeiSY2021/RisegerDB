@@ -1,6 +1,7 @@
 import pers.muleisy.rtree.RTreeDao;
 import pers.muleisy.rtree.othertree.RStarTree;
 import pers.muleisy.rtree.rectangle.MBRectangle;
+import pers.muleisy.rtree.test.TestRectangle;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,5 +1,6 @@
 package org.riseger.main.cache.entity.component.map;
 
+import lombok.Getter;
 import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
 import org.riseger.main.cache.manager.ElementManager;
 import org.riseger.main.cache.manager.LayerManager;
@@ -12,6 +13,7 @@ import org.riseger.protoctl.struct.entity.Submap;
 import java.util.HashMap;
 import java.util.Map;
 
+@Getter
 public class MapDB_c extends MBRectangle_c {
     private final String name;
 

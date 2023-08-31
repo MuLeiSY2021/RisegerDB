@@ -5,7 +5,7 @@ import lombok.Data;
 import org.riseger.main.api.compile.context.Context;
 import org.riseger.main.api.compile.syntax.Function;
 import org.riseger.main.api.compile.syntax.Interpreter;
-import org.riseger.protoctl.utils.Utils;
+import org.riseger.utils.Utils;
 
 import java.io.File;
 

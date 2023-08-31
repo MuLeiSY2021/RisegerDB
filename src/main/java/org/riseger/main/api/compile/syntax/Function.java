@@ -7,7 +7,7 @@ import org.riseger.main.api.compile.context.Context;
 import org.riseger.main.api.compile.tokenize.Token;
 import org.riseger.main.api.compile.tokenize.Tokenizer;
 import org.riseger.main.api.compile.tree.KeywordsTree;
-import org.riseger.protoctl.utils.Utils;
+import org.riseger.utils.Utils;
 
 import java.io.File;
 import java.util.HashMap;

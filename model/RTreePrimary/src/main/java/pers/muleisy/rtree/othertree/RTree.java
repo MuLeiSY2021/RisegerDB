@@ -1,9 +1,15 @@
 package pers.muleisy.rtree.othertree;
 
+import com.google.gson.Gson;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import io.netty.buffer.Unpooled;
 import pers.muleisy.rtree.RTreeDao;
 import pers.muleisy.rtree.rectangle.MBRectangle;
 import pers.muleisy.rtree.rectangle.Rectangle;
 
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
@@ -33,6 +39,41 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         private LinkedList<SubTree> subTrees = new LinkedList<>();
 
         private SubTree parent;
+
+        public ByteBuf serialize() {
+            ByteBuf byteBuf = Unpooled.buffer();
+            byteBuf.writeBytes(MBRectangle.serialize(this));
+            byteBuf.writeInt(subTrees.size());
+            if(Leaf.class.isInstance(this.subTrees.getFirst())) {
+                for (SubTree subTree : subTrees) {
+                    Leaf leaf = (Leaf) subTree;
+                    byteBuf.writeChar('l');
+                    byteBuf.writeBytes(leaf.serialize());
+                }
+            } else {
+                for (SubTree subTree : subTrees) {
+                    byteBuf.writeChar('s');
+                    byteBuf.writeBytes(MBRectangle.serialize(subTree));
+                    byteBuf.writeBytes(subTree.serialize());
+                }
+            }
+            // Serialize leaf's data and add to byteBuf
+            // Example: byteBuf.writeInt(leaf.getElements().size());
+
+            return byteBuf;
+        }
+
+        // Deserialize a Leaf object
+        public static SubTree deserialize(ByteBuf byteBuf) {
+            // Read data from byteBuf and reconstruct the Leaf object
+            // Example: int numElements = byteBuf.readInt();
+            //          Leaf leaf = new Leaf();
+            //          for (int i = 0; i < numElements; i++) {
+            //              // Deserialize element and add to leaf
+            //          }
+
+            return null; // Return the reconstructed Leaf object
+        }
 
         public LinkedList<SubTree> getSubTrees() {
             return subTrees;
@@ -109,7 +150,6 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
             }
         }
 
-        @SafeVarargs
         public final void adjust(Rectangle... subTrees) {
             boolean flg = super.expandAll(subTrees);
             SubTree parent = this.getParent();
@@ -159,8 +199,36 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
     protected class Leaf extends SubTree{
         private final LinkedList<R> elements = new LinkedList<>();
 
+        // Serialize a Leaf object
+        public ByteBuf serialize() {
+            ByteBuf byteBuf = Unpooled.buffer();
+            byteBuf.writeBytes(MBRectangle.serialize(this));
+            byteBuf.writeInt(elements.size());
+            byteBuf.writeBytes(RTree.this.getClass()
+                    .getTypeParameters()[0].getTypeName()
+                    .getBytes(StandardCharsets.UTF_8));
+            Gson g = new Gson();
+            for (R r:elements) {
+                byteBuf.writeBytes(g.toJson(r).getBytes(StandardCharsets.UTF_8));
+            }
+            return byteBuf;
+        }
+
+        // Deserialize a Leaf object
+        public Leaf deserialize(ByteBuf byteBuf) {
+            // Read data from byteBuf and reconstruct the Leaf object
+            // Example: int numElements = byteBuf.readInt();
+            //          Leaf leaf = new Leaf();
+            //          for (int i = 0; i < numElements; i++) {
+            //              // Deserialize element and add to leaf
+            //          }
+
+            return null; // Return the reconstructed Leaf object
+        }
+
         public Leaf() {
         }
+
 
         public Leaf(Collection<? extends R> elements) {
             this.elements.addAll(elements);
@@ -213,6 +281,8 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         public boolean isOverFlow() {
             return this.elements.size() > M;
         }
+
+
 
     }
 
@@ -530,5 +600,38 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
             deep++;
         }
         return deep;
+    }
+
+    public ByteBuf serialize() {
+        ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer();
+        buffer.writeInt(this.M);
+        buffer.writeDouble(threshold);
+        //添加root
+        buffer.writeBytes(root.serialize());
+        return buffer;
+    }
+
+    public static RTree<?> deserializeStar(ByteBuf buffer,Class<? extends MBRectangle> clazz) {
+        int M = buffer.readInt();
+        double threshold = buffer.readDouble();
+        RTree<?> tree = new RStarTree<>(M,threshold);
+        tree.root = RTree.deserialize(buffer,clazz);
+    }
+
+    public static RTree<?> deserializeSTR(ByteBuf buffer,Class<? extends MBRectangle> clazz) {
+        RTree<?> tree = new RStarTree<>();
+    }
+
+    // Deserialize a SubTree object
+    public static RTree.SubTree deserializeSubTree(ByteBuf byteBuf) {
+        // Read data from byteBuf and reconstruct the SubTree object
+        // Example: int numSubTrees = byteBuf.readInt();
+        //          SubTree subTree = new SubTree();
+        //          for (int i = 0; i < numSubTrees; i++) {
+        //              SubTree child = deserializeSubTree(byteBuf);
+        //              subTree.add(child);
+        //          }
+
+        return null; // Return the reconstructed SubTree object
     }
 }
