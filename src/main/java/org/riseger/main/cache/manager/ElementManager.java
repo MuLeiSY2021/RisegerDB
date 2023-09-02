@@ -27,7 +27,7 @@ public class ElementManager {
 
     public void addElement(Element e) {
         Element_c e_c = new Element_c(e,
-                parent.getParent().getParent().getParent().getDatabase(),
+                parent.getParent().getParent().getDatabase(),
                 this,
                 parent.getParent().getParent().getThreshold());
         rtreeKeyIndex.insert(e_c);

@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class MBRectangle implements Rectangle {
-    private Double minX = Double.MAX_VALUE;
+    private Double minX = (Double.MAX_VALUE -100);
 
-    private Double maxX = Double.MIN_VALUE;
+    private Double maxX = -(Double.MAX_VALUE -100);
 
-    private Double minY = Double.MAX_VALUE;
+    private Double minY = (Double.MAX_VALUE -100);
 
-    private Double maxY = Double.MIN_VALUE;
+    private Double maxY = -(Double.MAX_VALUE -100);
 
     protected Double threshold;
 

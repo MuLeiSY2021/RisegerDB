@@ -9,8 +9,13 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.apache.log4j.Logger;
 import org.riseger.main.entry.handler.HandlerManager;
 
-public class NettyServer implements Server {
-    private static final Logger logger = Logger.getLogger(NettyServer.class);
+public class NettyServer implements Server,Runnable {
+    private static final Logger LOG = Logger.getLogger(NettyServer.class);
+
+    @Override
+    public void run() {
+        bootstrap();
+    }
 
     public void bootstrap() {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -23,10 +28,11 @@ public class NettyServer implements Server {
                     .childHandler(new HandlerManager())
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
-            ChannelFuture future = bootstrap.bind(8888).sync();
+            ChannelFuture future = bootstrap.bind(10086).sync();
+            LOG.info("Netty server connected ,waiting for port 10086 requests");
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
-            logger.error(e);
+            LOG.error(e);
         } finally {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();

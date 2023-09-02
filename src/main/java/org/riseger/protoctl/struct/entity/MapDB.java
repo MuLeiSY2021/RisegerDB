@@ -1,7 +1,6 @@
 package org.riseger.protoctl.struct.entity;
 
 import lombok.Data;
-import org.riseger.protoctl.struct.config.Config;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -16,11 +15,12 @@ public class MapDB {
 
     private List<Element> elements = new LinkedList<>();
 
-    private Map<String,Config> configs = new HashMap<>();
+    private Map<String,String> configs = new HashMap<>();
 
-    public MapDB(String name, Database database) {
+    public MapDB(String name, Database database, Map<String,String> configs) {
         this.name = name;
         database.addMap(this);
+        this.configs = configs;
     }
 
     protected MapDB(String name) {
@@ -35,8 +35,16 @@ public class MapDB {
         submaps.add(map);
     }
 
-    public Config getConfig(String key) {
+    public String getConfig(String key) {
         return configs.get(key);
+    }
+
+    public void setNodeSize(int size) {
+        this.configs.put("nodeSize", String.valueOf(size));
+    }
+
+    public void setThreshold(double threshold) {
+        this.configs.put("threshold", String.valueOf(threshold));
     }
 }
 

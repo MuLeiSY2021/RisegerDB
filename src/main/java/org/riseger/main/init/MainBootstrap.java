@@ -1,36 +1,46 @@
 package org.riseger.main.init;
 
-import java.io.File;
+import org.apache.log4j.Logger;
 
 public class MainBootstrap {
+    private static Logger LOG;
+
     public static void main(String[] args) {
         String rootPath = getRootPath();
 
+        LogInitializer logInitializer = new LogInitializer();
+        logInitializer.initLog();
+        MainBootstrap.LOG = Logger.getLogger(MainBootstrap.class);
+        LOG.info("Log initializer successfully");
+
         StorageInitializer storageInitializer = new StorageInitializer(rootPath);
         storageInitializer.init();
+        LOG.info("Storage initialized successfully");
 
         CacheInitializer cacheInitializer = new CacheInitializer();
         cacheInitializer.init();
+        LOG.info("Cache initialized successfully");
 
         RequestHandlerInitializer requestHandlerInitializer = new RequestHandlerInitializer();
         requestHandlerInitializer.init();
+        LOG.info("RequestHandler initialized successfully");
 
         EntryInitializer entryInitializer = new EntryInitializer();
         entryInitializer.init();
+        LOG.info("Entry initialized successfully");
     }
 
     public static String getRootPath() {
-        /* 方法一：获取当前可执行jar包所在目录 */
-        String filePath = System.getProperty("java.class.path");
-        String pathSplit = System.getProperty("path.separator");//得到当前操作系统的分隔符，windows下是";",linux下是":"
-
-        /* 若没有其他依赖，则filePath的结果应当是该可运行jar包的绝对路径， * 此时我们只需要经过字符串解析，便可得到jar所在目录 */
-        if(filePath.contains(pathSplit)){
-            filePath = filePath.substring(0,filePath.indexOf(pathSplit));
-        }else if (filePath.endsWith(".jar")) {
-            //截取路径中的jar包名,可执行jar包运行的结果里包含".jar"
-            filePath = filePath.substring(0, filePath.lastIndexOf(File.separator) + 1);
+        String realPath = MainBootstrap.class.getClassLoader().getResource("")
+                .getFile();
+        java.io.File file = new java.io.File(realPath);
+        realPath = file.getAbsolutePath();
+        try {
+            realPath = java.net.URLDecoder.decode(realPath, "utf-8");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return filePath;
+
+        return realPath;
     }
 }

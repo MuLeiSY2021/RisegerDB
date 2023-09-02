@@ -2,7 +2,7 @@ package org.resegerdb.jrdbc.utils;
 
 import com.google.gson.Gson;
 import org.resegerdb.jrdbc.command.preload.builder.DatabaseBuilder;
-import org.riseger.protoctl.request.PreloadRequest;
+import org.riseger.protoctl.request.PreloadDatabase;
 import org.riseger.protoctl.struct.entity.Database;
 import org.riseger.utils.Utils;
 
@@ -18,7 +18,7 @@ public class PreloadBuilder {
     }
 
     public void write() {
-        Utils.writeToFile(new Gson().toJson(new PreloadRequest(this.databases)), "src/main/resources/dataSource/0.json");
+        Utils.writeToFile(new Gson().toJson(new PreloadDatabase(this.databases)), "src/main/resources/dataSource/0.json");
     }
 
     public DatabaseBuilder buildDatabase() {

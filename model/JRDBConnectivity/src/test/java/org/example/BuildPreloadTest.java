@@ -79,7 +79,10 @@ public class BuildPreloadTest extends TestCase {
         databaseBuilder.name("test_db").build();
 
         MapBuilder mapBuilder = databaseBuilder.buildMap();
-        mapBuilder.name("china_mp").build();
+        mapBuilder.name("china_mp")
+                .threshold(0.5)
+                .nodeSize(4)
+                .build();
 
         ModelBuilder modelBuilder = databaseBuilder.buildModel();
         modelBuilder.name("building_model")
@@ -122,5 +125,6 @@ public class BuildPreloadTest extends TestCase {
             }
             i++;
         }
+        builder.write();
     }
 }

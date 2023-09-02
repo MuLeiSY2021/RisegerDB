@@ -27,14 +27,14 @@ public class LayerManager {
 
     public void addSubmap(Submap submap, int index) {
         Layer_c layer;
-        String[] paths = submap.getScopePath().split("\\.");
         String name = getLName(submap);
-        if(layerMap.containsKey(paths[index])) {
+        if(layerMap.containsKey(name)) {
             layer = layerMap.get(name);
         } else {
             layer = new Layer_c(name,this, parent.getNodeSize(), parent.getThreshold());
+            layerMap.put(name, layer);
         }
-        layer.addSubmap(submap,index + 1);
+        layer.addSubmap(submap,index);
     }
 
     public String getLName(Submap submap) {

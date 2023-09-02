@@ -8,12 +8,14 @@ import org.riseger.main.cache.entity.component.map.Layer_c;
 import org.riseger.main.cache.entity.component.map.MapDB_c;
 import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
 import org.riseger.main.cache.manager.ModelManager;
+import org.riseger.protoctl.message.JsonSerializer;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.utils.Utils;
 import pers.muleisy.rtree.othertree.RTree;
 import pers.muleisy.rtree.rectangle.MBRectangle;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -65,11 +67,11 @@ public class PreloadFSM {
             }
 
         } catch (Exception e) {
-            LOG.error(e.getMessage());
+            LOG.error(e);
         }
     }
 
-    private void createSubmap(MapDB_c map, File mapFile) {
+    private void createSubmap(MapDB_c map, File mapFile) throws IOException {
         String res;
         File submapFile = new File(mapFile.getPath() + "/" + map.getName() + "."+ Constant.SUBMAP_PREFIX);
         res = createDir(submapFile);
@@ -83,7 +85,7 @@ public class PreloadFSM {
         createMap(submapFile, map);
     }
 
-    private void createMap(File parent, MapDB_c map) {
+    private void createMap(File parent, MapDB_c map) throws IOException {
         File mapFile = new File(parent.getPath() + "/" + map.getName() + ".mp");
         String res = createDir(mapFile);
         if(res != null) {
@@ -109,37 +111,48 @@ public class PreloadFSM {
         }
     }
 
-    private static File createLayer(File parent, Layer_c layer) {
+    private static File createLayer(File parent, Layer_c layer) throws IOException {
         File layerFile = new File(parent.getPath() + "/" + layer.getName() + ".layer");
-        Utils.writeToFile(layerToFile(layer).array(), layerFile.getPath());
+        Utils.writeToFile(layerToFile(layer), layerFile.getPath());
         return layerFile;
     }
 
-    private static ByteBuf layerToFile(Layer_c layer) {
+    private static byte[] layerToFile(Layer_c layer) throws IOException {
         RTree<MBRectangle_c> r_t = layer.getElementManager().getRtreeKeyIndex();
-        return r_t.serialize();
+        ByteBuf buffer = r_t.serialize();
+        byte[] data = new byte[buffer.readableBytes()];
+        buffer.readBytes(data);
+        return data;
     }
 
     private static File createConfig(File parent, Map<String, Config> configs) {
         File configFile = new File(parent.getPath() + "/" + "config" + ".json");
-        Utils.writeToFile(configToFile(configs), configFile.getPath());
+        try {
+            Utils.writeToFile(configToFile(configs), configFile.getPath());
+        } catch (IOException e) {
+            LOG.error(e);
+        }
         LOG.info("创建Config文件成功");
         return configFile;
     }
 
-    private static String configToFile(Map<String,Config> configs) {
-        return Utils.toJson(configs);
+    private static byte[] configToFile(Map<String,Config> configs) throws IOException {
+        return JsonSerializer.serialize(configs);
     }
 
     private static File modelToFile(File parent, ModelManager models) {
         File modelFile = new File(parent.getPath() + "/" + "model" + ".json");
-        Utils.writeToFile(modelsToFile(models), modelFile.getPath());
+        try {
+            Utils.writeToFile(modelsToFile(models), modelFile.getPath());
+        } catch (IOException e) {
+            LOG.error(e);
+        }
         LOG.info("创建Model文件成功");
         return modelFile;
     }
 
-    private static String modelsToFile(ModelManager models) {
-        return Utils.toJson(models);
+    private static byte[] modelsToFile(ModelManager models) throws IOException {
+        return JsonSerializer.serialize(models);
     }
 
     private static String createDir(File file) {

@@ -1,35 +1,39 @@
 package org.riseger.main.cache.entity.component.mbr;
 
+import lombok.Getter;
 import pers.muleisy.rtree.rectangle.MBRectangle;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
 
+@Getter
 public class MBRectangle_c extends MBRectangle {
 
     private final List<Double> xKeySet = new LinkedList<>();
 
     private final List<Double> yKeySet = new LinkedList<>();
 
-    private final ArrayList<Double[]> coordsSet = new ArrayList<>();
+    private Double[][] coordsSet;
 
-    public MBRectangle_c(Map<String,String> map, double threshold) {
+    public MBRectangle_c(ConcurrentMap<String,String> map, double threshold) {
         super(threshold);
         if(map == null || map.isEmpty()) {
-//            LogManager.getLogManager().getLogger(this.getClass().getName()).warning("MBRectangle_c: map is null or empty");
             return;
         }
+        Map<Integer,Double[]> coordsSet = new HashMap<>();
         for (Map.Entry<String,String> a : map.entrySet()) {
             String k = a.getKey();
             if(k.startsWith("KEY")) {
                 String[] keys = k.split("::");
-                int i = Integer.parseInt(keys[0]);
+                Integer i = Integer.parseInt(keys[1]);
                 Double[] coords;
-                if(coordsSet.get(i) != null) {
+
+                if(!coordsSet.containsKey(i)) {
                     coords = new Double[2];
-                    coordsSet.add(i, coords);
+                    coordsSet.put(i, coords);
                 } else {
                     coords = coordsSet.get(i);
                 }
@@ -44,6 +48,10 @@ public class MBRectangle_c extends MBRectangle {
                 }
                 map.remove(k);
             }
+        }
+        this.coordsSet = new Double[coordsSet.size()][];
+        for (Map.Entry<Integer, Double[]> entry:coordsSet.entrySet()) {
+            this.coordsSet[entry.getKey()] = entry.getValue();
         }
     }
 

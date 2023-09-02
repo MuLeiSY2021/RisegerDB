@@ -1,10 +1,10 @@
 package org.riseger.main.cache.entity.component.map;
 
 import lombok.Getter;
+import org.riseger.main.cache.entity.component.db.Database_c;
 import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
 import org.riseger.main.cache.manager.ElementManager;
 import org.riseger.main.cache.manager.LayerManager;
-import org.riseger.main.cache.manager.MapDBManager;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.MapDB;
@@ -12,6 +12,7 @@ import org.riseger.protoctl.struct.entity.Submap;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
 
 @Getter
 public class MapDB_c extends MBRectangle_c {
@@ -19,24 +20,23 @@ public class MapDB_c extends MBRectangle_c {
 
     private final Map<String,Config> configs = new HashMap<>();
 
-    private final LayerManager layers;
+    private transient final LayerManager layers;
 
-    //如果是Submap就是null
-    private final MapDBManager parent;
+    private transient ElementManager elementManager;
 
-    private ElementManager elementManager;
+    private transient final Database_c database;
 
-    public MapDB_c(Map<String, String> map,int nodeSize, double threshold, String name,MapDBManager parent) {
+    public MapDB_c(ConcurrentMap<String, String> map, int nodeSize, double threshold, String name, Database_c database) {
         super(map, threshold);
         this.name = name;
         this.layers = new LayerManager(this);
-        this.parent = parent;
+        this.database = database;
         configs.put("node_size",new Config("node_size",String.valueOf(nodeSize)));
         configs.put("threshold",new Config("threshold",String.valueOf(threshold)));
     }
 
-    public static MapDB_c mapBuilder(MapDB map,int nodeSize, double threshold,MapDBManager parent) {
-        MapDB_c mapDB = new MapDB_c(null, nodeSize, threshold, map.getName(),parent);
+    public static MapDB_c mapBuilder(MapDB map,int nodeSize, double threshold,Database_c database) {
+        MapDB_c mapDB = new MapDB_c(null, nodeSize, threshold, map.getName(),database);
         for (Submap submap:map.getSubmaps()) {
             mapDB.addSubmap(submap);
         }

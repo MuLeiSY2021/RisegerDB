@@ -5,8 +5,8 @@ import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.MapDB;
 import org.riseger.protoctl.struct.entity.ParentModel;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class FieldBuilder {
     private final MapDB map;
@@ -17,9 +17,9 @@ public class FieldBuilder {
 
     private int loopSize = 0;
 
-    protected Map<String, String> attributes = new HashMap<>();
+    protected ConcurrentMap<String, String> attributes = new ConcurrentHashMap<>();
 
-    protected Map<Option, String> configs = new HashMap<Option, String>();
+    protected ConcurrentMap<Option, String> configs = new ConcurrentHashMap<>();
 
     private Element element;
 

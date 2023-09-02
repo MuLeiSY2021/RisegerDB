@@ -3,15 +3,22 @@ package org.resegerdb.jrdbc.driver.handler;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
-import org.riseger.main.entry.handler.PreloadMessageInboundHandler;
+import org.resegerdb.jrdbc.driver.connector.Connector;
+import org.riseger.protoctl.codec.ProtocolCodec;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClientHandlerManager extends ChannelInitializer<SocketChannel> {
-    private static final List<ChannelHandler> handlers = new ArrayList<>();
-    static {
-        handlers.add(new PreloadMessageInboundHandler());
+    private final Connector connector;
+
+    private final List<ChannelHandler> handlers;
+
+    public ClientHandlerManager(Connector connector) {
+        this.connector = connector;
+        this.handlers = new ArrayList<>();
+            handlers.add(new ProtocolCodec());
+            handlers.add(new PreloadDatabaseResponseHandler(connector));
     }
 
     @Override

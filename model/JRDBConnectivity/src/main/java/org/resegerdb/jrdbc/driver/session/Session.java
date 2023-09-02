@@ -5,7 +5,7 @@ import org.resegerdb.jrdbc.driver.result.Result;
 public interface Session {
 
 
-    Result send();
+    Result send() throws InterruptedException;
 
 
 }

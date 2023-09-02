@@ -8,7 +8,9 @@ import org.apache.log4j.Logger;
 import pers.muleisy.rtree.RTreeDao;
 import pers.muleisy.rtree.rectangle.MBRectangle;
 import pers.muleisy.rtree.rectangle.Rectangle;
+import pers.muleisy.rtree.utils.JsonSerializer;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -34,7 +36,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         LinkedList<SubTree> tuples1 = new LinkedList<>();
         LinkedList<SubTree> tuples2 = new LinkedList<>();
         tuples1.add(root);
-        if(!(Leaf.class.isInstance(root))) {
+        if(!Leaf.class.isInstance(root)) {
             while (!tuples1.isEmpty()) {
                 for (SubTree parent : tuples1) {
                     for (SubTree child : parent.getSubTrees()) {
@@ -51,6 +53,9 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
                 tmp.clear();
                 tuples2 = tmp;
             }
+        } else {
+            Leaf leaf = (Leaf) root;
+            res.addAll(leaf.elements);
         }
         return res;
     }
@@ -86,7 +91,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
             addAll(subTrees);
         }
 
-        public ByteBuf serialize() {
+        public ByteBuf serialize() throws IOException {
             ByteBuf byteBuf = Unpooled.buffer();
             byteBuf.writeBytes(MBRectangle.serialize(this));
             byteBuf.writeInt(subTrees.size());
@@ -240,16 +245,15 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         }
 
         // Serialize a Leaf object
-        public ByteBuf serialize() {
+        public ByteBuf serialize() throws IOException {
             ByteBuf byteBuf = Unpooled.buffer();
             byteBuf.writeBytes(MBRectangle.serialize(this));
             byteBuf.writeInt(elements.size());
             byteBuf.writeBytes(RTree.this.getClass()
                     .getTypeParameters()[0].getTypeName()
                     .getBytes(StandardCharsets.UTF_8));
-            Gson g = new Gson();
             for (R r:elements) {
-                byteBuf.writeBytes(g.toJson(r).getBytes(StandardCharsets.UTF_8));
+                byteBuf.writeBytes(JsonSerializer.serialize(r));
             }
             return byteBuf;
         }
@@ -625,7 +629,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         return deep;
     }
 
-    public ByteBuf serialize() {
+    public ByteBuf serialize() throws IOException {
         ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer();
         buffer.writeInt(this.M);
         buffer.writeDouble(threshold);

@@ -1,7 +1,18 @@
 package org.riseger.protoctl.message;
 
+import lombok.Getter;
+import org.riseger.protoctl.response.PreloadDatabaseResponse;
+
+@Getter
 public enum MessageType {
-    TYPE_0_PRELOAD, TYPE_1_MAINTAIN, TYPE_2_LOOKUP, TYPE_3_RESPONSE
+    PRELOAD_DB(PreloadDatabaseRequest.class),
+    PRELOAD_DB_RESPONSE(PreloadDatabaseResponse.class);
 
 
+    private final Class<?> clazz;
+
+
+    MessageType(Class<?> clazz) {
+        this.clazz = clazz;
+    }
 }

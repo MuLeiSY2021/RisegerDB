@@ -38,8 +38,8 @@ public class Database_c {
     }
 
     public void addMap(MapDB map) {
-        maps.addMap(map.getConfig("nodeSize").getIntValue(),
-                map.getConfig("threshold").getDoubleValue(),
+        maps.addMap(Integer.parseInt(map.getConfig("nodeSize")),
+                Double.parseDouble(map.getConfig("threshold")),
                 map);
     }
 

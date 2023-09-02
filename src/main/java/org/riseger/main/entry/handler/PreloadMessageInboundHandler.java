@@ -1,25 +1,34 @@
 package org.riseger.main.entry.handler;
 
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.SimpleChannelInboundHandler;
+import org.apache.log4j.Logger;
 import org.riseger.main.api.ApiHandlerManager;
-import org.riseger.protoctl.message.PreloadMessage;
-import org.riseger.protoctl.response.PreloadResponse;
+import org.riseger.protoctl.message.PreloadDatabaseRequest;
+import org.riseger.protoctl.response.PreloadDatabaseResponse;
 
-public class PreloadMessageInboundHandler extends ChannelInboundHandlerAdapter {
+public class PreloadMessageInboundHandler extends SimpleChannelInboundHandler<PreloadDatabaseRequest> {
+    private final Logger LOG = Logger.getLogger(PreloadMessageInboundHandler.class);
+
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg1) throws Exception {
-        if (!(msg1 instanceof PreloadMessage)) {
-            return;
-        }
-        PreloadMessage msg = (PreloadMessage) msg1;
-        PreloadResponse response = new PreloadResponse();
+    protected void channelRead0(ChannelHandlerContext ctx, PreloadDatabaseRequest msg) throws Exception {
+        LOG.info("Received PreloadDatabaseRequest: {}"+ msg);
+
+        PreloadDatabaseResponse response = new PreloadDatabaseResponse();
         try {
+            LOG.info("Processing PreloadDatabaseRequest...");
             ApiHandlerManager.INSTANCE.setPreloadRequest(msg);
+
+            // Perform any necessary processing here...
+
+            LOG.info("PreloadDatabaseRequest processed successfully.");
         } catch (Exception e) {
-            response.setSuccess(false);
+            LOG.error("Error processing PreloadDatabaseRequest: {}"+ e.getMessage()+ e);
+            response.failed(e);
         }
-        response.setSuccess(true);
+
+        LOG.info("Sending PreloadDatabaseResponse: {}"+ response);
+        response.success();
         ctx.channel().writeAndFlush(response);
     }
 }

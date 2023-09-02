@@ -9,7 +9,10 @@ public class FileSystemManagers {
 
     public PreloadFSM preloadFSM;
 
+
+
     public FileSystemManagers(String rootPath) {
         this.rootPath = rootPath;
+        this.preloadFSM = new PreloadFSM(rootPath);
     }
 }

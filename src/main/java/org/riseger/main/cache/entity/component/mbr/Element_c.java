@@ -14,9 +14,9 @@ public class Element_c extends MBRectangle_c {
 
     private final Map<String, String> attributes = new HashMap<>();
 
-    private final Database_c db;
+    private transient final Database_c db;
 
-    private final ElementManager elementManager;
+    private transient final ElementManager elementManager;
 
     public Element_c(Element e, Database_c db, ElementManager elementManager, double threshold) {
         super(e.getAttributes(),threshold);

@@ -3,8 +3,8 @@ package org.riseger.protoctl.struct.entity;
 import lombok.Data;
 import org.riseger.protoctl.struct.config.Option;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 @Data
 public class Element {
@@ -12,11 +12,11 @@ public class Element {
 
     private String modelName;
 
-    private Map<String, String> attributes;
+    private ConcurrentMap<String, String> attributes;
 
-    private Map<Option, String> configs = new HashMap<Option, String>();
+    private ConcurrentMap<Option, String> configs = new ConcurrentHashMap<>();
 
-    public Element(ParentModel parent,String modelName, Map<String, String> attributes, Map<Option, String> configs) {
+    public Element(ParentModel parent,String modelName, ConcurrentMap<String, String> attributes, ConcurrentMap<Option, String> configs) {
         this.parent = parent;
         this.attributes = attributes;
         this.configs = configs;

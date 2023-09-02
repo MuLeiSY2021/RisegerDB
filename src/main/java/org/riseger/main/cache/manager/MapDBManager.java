@@ -4,11 +4,11 @@ import org.riseger.main.cache.entity.component.db.Database_c;
 import org.riseger.main.cache.entity.component.map.MapDB_c;
 import org.riseger.protoctl.struct.entity.MapDB;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class MapDBManager {
-    private final Map<String, MapDB_c> maps = new HashMap<>();
+    private final ConcurrentMap<String, MapDB_c> maps = new ConcurrentHashMap<>();
 
     private final Database_c database;
 
@@ -21,7 +21,7 @@ public class MapDBManager {
     }
 
     public void addMap(int nodeSize, double threshold, MapDB map) {
-        maps.put(map.getName(), MapDB_c.mapBuilder(map,nodeSize,threshold,this));
+        maps.put(map.getName(), MapDB_c.mapBuilder(map,nodeSize,threshold,database));
     }
 
     public Database_c getDatabase() {
