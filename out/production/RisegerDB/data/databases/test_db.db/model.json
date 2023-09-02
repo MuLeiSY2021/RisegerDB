@@ -1,0 +1,1 @@
+{"models":{"building_model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}}}}
