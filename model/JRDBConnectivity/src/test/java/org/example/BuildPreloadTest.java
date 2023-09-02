@@ -4,12 +4,10 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.resegerdb.jrdbc.command.preload.builder.*;
-import org.resegerdb.jrdbc.driver.connector.Connector;
-import org.resegerdb.jrdbc.driver.session.PreloadSession;
+import org.resegerdb.jrdbc.utils.PreloadBuilder;
 import org.riseger.protoctl.struct.entity.ParentModel;
 import org.riseger.protoctl.struct.entity.Type;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,13 +15,13 @@ import java.util.Map;
 /**
  * Unit test for simple App.
  */
-public class AppTest extends TestCase {
+public class BuildPreloadTest extends TestCase {
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public AppTest(String testName) {
+    public BuildPreloadTest(String testName) {
         super(testName);
     }
 
@@ -31,7 +29,7 @@ public class AppTest extends TestCase {
      * @return the suite of tests being tested
      */
     public static Test suite() {
-        return new TestSuite(AppTest.class);
+        return new TestSuite(BuildPreloadTest.class);
     }
 
     /**
@@ -74,12 +72,10 @@ public class AppTest extends TestCase {
     }
 
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        Connector connector = Connector.connet("localhost", 10086);
+    public static void main(String[] args) {
+        PreloadBuilder builder = new PreloadBuilder();
 
-        PreloadSession preloadSession = connector.preload();
-
-        DatabaseBuilder databaseBuilder = preloadSession.buildDatabase();
+        DatabaseBuilder databaseBuilder = builder.buildDatabase();
         databaseBuilder.name("test_db").build();
 
         MapBuilder mapBuilder = databaseBuilder.buildMap();
@@ -126,11 +122,5 @@ public class AppTest extends TestCase {
             }
             i++;
         }
-
-        preloadSession.send();
-
-        connector.close();
-
-
     }
 }

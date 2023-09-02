@@ -23,7 +23,6 @@ public class NettyServer implements Server {
                     .childHandler(new HandlerManager())
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
-
             ChannelFuture future = bootstrap.bind(8888).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {

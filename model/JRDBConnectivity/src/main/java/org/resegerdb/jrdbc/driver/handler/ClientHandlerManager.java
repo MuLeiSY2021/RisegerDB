@@ -1,21 +1,16 @@
-package org.riseger.main.entry.handler;
+package org.resegerdb.jrdbc.driver.handler;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
-import org.riseger.protoctl.codec.ProtoctlCodec;
-import org.riseger.protoctl.handler.ProtocolMessageInboundHandler;
-import org.riseger.protoctl.handler.ProtocolMessageOutboundHandler;
+import org.riseger.main.entry.handler.PreloadMessageInboundHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HandlerManager extends ChannelInitializer<SocketChannel> {
+public class ClientHandlerManager extends ChannelInitializer<SocketChannel> {
     private static final List<ChannelHandler> handlers = new ArrayList<>();
     static {
-        handlers.add(new ProtoctlCodec());
-        handlers.add(new ProtocolMessageInboundHandler());
-        handlers.add(new ProtocolMessageOutboundHandler());
         handlers.add(new PreloadMessageInboundHandler());
     }
 

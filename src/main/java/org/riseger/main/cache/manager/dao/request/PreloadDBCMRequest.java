@@ -15,6 +15,7 @@ public class PreloadDBCMRequest implements Request {
 
     public PreloadDBCMRequest(Database database, revocable revocable) {
         this.database = database;
+        this.revocable = revocable;
     }
 
     @Override

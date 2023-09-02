@@ -18,10 +18,6 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
             super(threshold, rects);
         }
 
-        @Override
-        public void initBMRCoords() {
-            throw new UnsupportedOperationException();
-        }
     }
 
 

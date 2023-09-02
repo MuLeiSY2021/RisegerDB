@@ -1,52 +1,39 @@
 package org.resegerdb.jrdbc.driver.session;
 
 import com.google.gson.Gson;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
-import org.resegerdb.jrdbc.command.preload.builder.DatabaseBuilder;
 import org.resegerdb.jrdbc.driver.result.Result;
-import org.riseger.protoctl.request.PreloadRequest;
-import org.riseger.protoctl.struct.entity.Database;
-import org.riseger.utils.Utils;
+import org.riseger.protoctl.message.PreloadMessage;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
 
 
 public class PreloadSession implements Session {
-    private final List<Database> databases = new LinkedList<Database>();
+    private String uri;
 
     private transient final Channel channel;
 
     private static final int SEND_MAX_LENGTH = 1500 - 10;
 
+    private static final Gson gson = new Gson();
+
+
     public PreloadSession(Channel channel) {
         this.channel = channel;
     }
 
-    public void addDatabase(Database database) {
-        databases.add(database);
-    }
-
     @Override
     public Result send() {
-
-//        PreloadRequestPacket requestPacket = warpRequest();
-//        ByteBuf byteBuf = channel.alloc().buffer();
-//        byteBuf.writeBytes(requestPacket.serialize());
-//        channel.writeAndFlush(byteBuf);
-//        return new Result() {
-//            @Override
-//            public String getResult() {
-//                return null;
-//            }
-//        };
-
-        Utils.writeToFile(new Gson().toJson(new PreloadRequest(this.databases)), "src/main/resources/dataSource/0.json");
+        PreloadMessage message = new PreloadMessage();
+        message.setUri(uri);
+        ByteBuf byteBuf = channel.alloc().buffer();
+        byteBuf.writeBytes(gson.toJson(message).getBytes(StandardCharsets.UTF_8));
+        channel.writeAndFlush(byteBuf);
         return null;
     }
 
-    public DatabaseBuilder buildDatabase() {
-        return new DatabaseBuilder(this);
+    public void setUri(String uri) {
+        this.uri = uri;
     }
-
 }

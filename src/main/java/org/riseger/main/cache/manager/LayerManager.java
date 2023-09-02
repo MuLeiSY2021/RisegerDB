@@ -1,6 +1,7 @@
 package org.riseger.main.cache.manager;
 
 import lombok.Data;
+import org.riseger.main.Constant;
 import org.riseger.main.cache.entity.component.map.Layer_c;
 import org.riseger.main.cache.entity.component.map.MapDB_c;
 import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
@@ -37,11 +38,11 @@ public class LayerManager {
     }
 
     public String getLName(Submap submap) {
-        return "sb_" + submap.getScopePath();
+        return Constant.SUBMAP_PREFIX + "_" + submap.getScopePath();
     }
 
     public String getLName(Element e) {
-        return "md_" + e.getModelName();
+        return Constant.MODEL_PREFIX + "_" + e.getModelName();
     }
 
     public void addElement(Element e) {

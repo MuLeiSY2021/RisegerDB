@@ -1,6 +1,7 @@
 package org.riseger.main.cache.entity.component.map;
 
 import lombok.Data;
+import org.riseger.main.Constant;
 import org.riseger.main.cache.entity.builder.SubmapBuilder;
 import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
 import org.riseger.main.cache.manager.ElementManager;
@@ -52,5 +53,9 @@ public class Layer_c {
 
     public void expand(MBRectangle_c eC) {
         parent.expand(eC);
+    }
+
+    public boolean isSubMap() {
+        return name.startsWith(Constant.SUBMAP_PREFIX);
     }
 }

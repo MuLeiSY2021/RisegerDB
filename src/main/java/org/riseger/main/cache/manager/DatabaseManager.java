@@ -1,6 +1,7 @@
 package org.riseger.main.cache.manager;
 
 import org.riseger.main.cache.entity.component.db.Database_c;
+import org.riseger.main.storage.FileSystemManagers;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Database;
 import org.riseger.protoctl.struct.entity.MapDB;
@@ -36,6 +37,9 @@ public class DatabaseManager {
         for (MapDB map : database.getMaps()) {
             db.addMap(map);
         }
+
+        FileSystemManagers.DEFAULT.preloadFSM.saveDatabase(db);
+        db.active();
         return db;
     }
 

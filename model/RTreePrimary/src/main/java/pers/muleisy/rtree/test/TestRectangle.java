@@ -11,9 +11,4 @@ public class TestRectangle extends MBRectangle {
         setMaxY(maxY);
         setMinY(minY);
     }
-
-    @Override
-    public void initBMRCoords() {
-        throw new UnsupportedOperationException();
-    }
 }

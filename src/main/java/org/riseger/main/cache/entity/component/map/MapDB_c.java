@@ -77,5 +77,7 @@ public class MapDB_c extends MBRectangle_c {
         return configs.get("threshold").getDoubleValue();
     }
 
-
+    public String toFIleName() {
+        return name + "." + super.toFileString();
+    }
 }

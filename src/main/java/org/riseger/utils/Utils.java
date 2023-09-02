@@ -1,10 +1,12 @@
 package org.riseger.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class Utils {
 
@@ -55,4 +57,7 @@ public class Utils {
         return gson.toJson(object);
     }
 
+    public static List<?> toJson(String text, TypeToken<?> parameterized) {
+        return gson.fromJson(text, parameterized.getType());
+    }
 }

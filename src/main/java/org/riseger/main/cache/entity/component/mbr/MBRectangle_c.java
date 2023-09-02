@@ -47,14 +47,6 @@ public class MBRectangle_c extends MBRectangle {
         }
     }
 
-    @Override
-    public void initBMRCoords() {
-        setMinX(xKeySet.get(xKeySet.size() - 1));
-        setMaxX(xKeySet.get(0));
-        setMinY(yKeySet.get(yKeySet.size() - 1));
-        setMaxY(yKeySet.get(0));
-    }
-
     private void addX(double x) {
         for (int i = 0; i < xKeySet.size(); i++) {
             if (x < xKeySet.get(i)) {

@@ -1,17 +1,17 @@
 package org.resegerdb.jrdbc.command.preload.builder;
 
-import org.resegerdb.jrdbc.driver.session.PreloadSession;
+import org.resegerdb.jrdbc.utils.PreloadBuilder;
 import org.riseger.protoctl.struct.entity.Database;
 
 public class DatabaseBuilder {
-    private final PreloadSession session;
+    private final PreloadBuilder parent;
 
     private Database database;
 
     private String name;
 
-    public DatabaseBuilder(PreloadSession session) {
-        this.session = session;
+    public DatabaseBuilder(PreloadBuilder parent) {
+        this.parent = parent;
     }
 
     public MapBuilder buildMap() {
@@ -36,7 +36,7 @@ public class DatabaseBuilder {
 
     public DatabaseBuilder build() {
         this.database = new Database(name);
-        this.session.addDatabase(this.database);
+        this.parent.addDatabase(this.database);
         return this;
     }
 }

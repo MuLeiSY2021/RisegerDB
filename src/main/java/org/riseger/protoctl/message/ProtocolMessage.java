@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ProtocolMessage {
     private MessageType messageType;
+
     private byte[] data;
 
     public ProtocolMessage(MessageType messageType, byte[] data) {

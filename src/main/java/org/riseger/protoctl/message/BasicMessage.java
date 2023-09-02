@@ -1,6 +1,13 @@
 package org.riseger.protoctl.message;
 
-public class BasicMessage {
-    private MessageType messageType;
-    private byte[] data;
+public abstract class BasicMessage implements Message{
+    private final MessageType messageType;
+    public BasicMessage(MessageType messageType) {
+        this.messageType = messageType;
+    }
+
+    @Override
+    public MessageType getType() {
+        return messageType;
+    }
 }
