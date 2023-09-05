@@ -20,6 +20,30 @@ public class Tokenizer {
         this.context = context;
     }
 
+    public static List<String> splitToken(String tile) {
+        List<String> res = new ArrayList<>();
+        Matcher m;
+        while (tile.length() > 0) {
+            int index = -1;
+            int tmp;
+            if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
+                index = m.end(0);
+            } else if ((tmp = KeywordsTree.INSTANCE.getIndex(tile)) > -1) {
+                index = tmp;
+            }
+
+            if (index == -1) {
+                throw new IndexOutOfBoundsException(tile + " -1");
+            }
+            res.add(tile.substring(0, index));
+            if (tile.length() == index) {
+                break;
+            }
+            tile = tile.substring(index);
+        }
+        return res;
+    }
+
     public void execute() {
         List<Token> lines;
         String sourcecode = context.getSourcecode();
@@ -59,30 +83,6 @@ public class Tokenizer {
                 round++;
             }
         }
-    }
-
-    public static List<String> splitToken(String tile) {
-        List<String> res = new ArrayList<>();
-        Matcher m;
-        while (tile.length() > 0) {
-            int index = -1;
-            int tmp;
-            if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
-                index = m.end(0);
-            } else if ((tmp = KeywordsTree.INSTANCE.getIndex(tile)) > -1) {
-                index = tmp;
-            }
-
-            if (index == -1) {
-                throw new IndexOutOfBoundsException(tile + " -1");
-            }
-            res.add(tile.substring(0, index));
-            if (tile.length() == index) {
-                break;
-            }
-            tile = tile.substring(index);
-        }
-        return res;
     }
 
     private List<Token> splitLine(String code) {

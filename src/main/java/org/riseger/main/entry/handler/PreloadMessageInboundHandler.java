@@ -12,7 +12,7 @@ public class PreloadMessageInboundHandler extends SimpleChannelInboundHandler<Pr
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, PreloadDatabaseRequest msg) throws Exception {
-        LOG.info("Received PreloadDatabaseRequest: {}"+ msg);
+        LOG.info("Received PreloadDatabaseRequest: {}" + msg);
 
         PreloadDatabaseResponse response = new PreloadDatabaseResponse();
         try {
@@ -23,11 +23,11 @@ public class PreloadMessageInboundHandler extends SimpleChannelInboundHandler<Pr
 
             LOG.info("PreloadDatabaseRequest processed successfully.");
         } catch (Exception e) {
-            LOG.error("Error processing PreloadDatabaseRequest: {}"+ e.getMessage()+ e);
+            LOG.error("Error processing PreloadDatabaseRequest: {}" + e.getMessage() + e);
             response.failed(e);
         }
 
-        LOG.info("Sending PreloadDatabaseResponse: {}"+ response);
+        LOG.info("Sending PreloadDatabaseResponse: {}" + response);
         response.success();
         ctx.channel().writeAndFlush(response);
     }

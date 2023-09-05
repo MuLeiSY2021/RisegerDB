@@ -2,7 +2,7 @@ package org.riseger.main.cache.manager.dao.job;
 
 import org.riseger.main.api.workflow.job.Job;
 import org.riseger.main.api.workflow.revoke.revocable;
-import org.riseger.main.cache.entity.component.db.Database_c;
+import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.manager.CacheMaster;
 import org.riseger.protoctl.struct.entity.Database;
 

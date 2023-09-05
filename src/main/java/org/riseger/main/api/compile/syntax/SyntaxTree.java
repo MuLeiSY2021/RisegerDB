@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SyntaxTree {
+    public static final SyntaxTree INSTANCE = new SyntaxTree();
     private final Node root = new Node();
 
     private SyntaxTree() {
@@ -13,8 +14,6 @@ public class SyntaxTree {
             root.insert(function);
         }
     }
-
-    public static final SyntaxTree INSTANCE = new SyntaxTree();
 
     @Data
     private static class Node {

@@ -32,13 +32,6 @@ public class BuildPreloadTest extends TestCase {
         return new TestSuite(BuildPreloadTest.class);
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp() {
-        assertTrue(true);
-    }
-
     public static Map<String, String[]> initDataMap() {
 
 
@@ -70,7 +63,6 @@ public class BuildPreloadTest extends TestCase {
                 count_sub,
                 name);
     }
-
 
     public static void main(String[] args) {
         PreloadBuilder builder = new PreloadBuilder();
@@ -126,5 +118,12 @@ public class BuildPreloadTest extends TestCase {
             i++;
         }
         builder.write();
+    }
+
+    /**
+     * Rigourous Test :-)
+     */
+    public void testApp() {
+        assertTrue(true);
     }
 }

@@ -9,7 +9,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.apache.log4j.Logger;
 import org.riseger.main.entry.handler.HandlerManager;
 
-public class NettyServer implements Server,Runnable {
+public class NettyServer implements Server, Runnable {
     private static final Logger LOG = Logger.getLogger(NettyServer.class);
 
     @Override

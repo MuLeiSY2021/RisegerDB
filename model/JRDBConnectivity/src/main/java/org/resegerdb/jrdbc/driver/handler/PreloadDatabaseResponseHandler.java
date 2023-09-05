@@ -15,6 +15,6 @@ public class PreloadDatabaseResponseHandler extends SimpleChannelInboundHandler<
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, PreloadDatabaseResponse msg) throws Exception {
-        connector.setResult(new PreloadResult(msg.isSuccess(),msg.getMessage()));
+        connector.setResult(new PreloadResult(msg.isSuccess(), msg.getMessage()));
     }
 }

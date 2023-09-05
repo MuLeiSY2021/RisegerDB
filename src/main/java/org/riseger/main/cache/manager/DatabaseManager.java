@@ -1,6 +1,6 @@
 package org.riseger.main.cache.manager;
 
-import org.riseger.main.cache.entity.component.db.Database_c;
+import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.storage.FileSystemManagers;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Database;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 
 public class DatabaseManager {
-    private final Map<String,Database_c> databases ;
+    private final Map<String, Database_c> databases;
 
     public DatabaseManager() {
         this.databases = new HashMap<>();
@@ -21,15 +21,15 @@ public class DatabaseManager {
     //TODO:把handler实现化
 
     public Database_c preloadDatabase(Database database) {
-        Database_c db = addDatabase(database);
+        Database_c db = prelaodDatabase(database);
 
         //添加Config
-        for (Map.Entry<Config,String> entry:database.getConfigs().entrySet()) {
+        for (Map.Entry<Config, String> entry : database.getConfigs().entrySet()) {
             db.addConfig(entry.getKey(), entry.getValue());
         }
 
         //添加Model
-        for (Model model:database.getModels()) {
+        for (Model model : database.getModels()) {
             db.addModel(model);
         }
 
@@ -43,9 +43,13 @@ public class DatabaseManager {
         return db;
     }
 
-    public Database_c addDatabase(Database database) {
+    public Database_c prelaodDatabase(Database database) {
         Database_c res = new Database_c(database.getName());
-        this.databases.put(database.getName(),res);
-        return res ;
+        this.databases.put(database.getName(), res);
+        return res;
+    }
+
+    public void addDatabase(Database_c database) {
+        this.databases.put(database.getName(), database);
     }
 }

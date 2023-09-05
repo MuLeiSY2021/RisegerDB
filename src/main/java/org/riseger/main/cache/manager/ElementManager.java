@@ -1,13 +1,16 @@
 package org.riseger.main.cache.manager;
 
 import lombok.Data;
-import org.riseger.main.cache.entity.component.map.Layer_c;
-import org.riseger.main.cache.entity.component.map.MapDB_c;
-import org.riseger.main.cache.entity.component.mbr.Element_c;
-import org.riseger.main.cache.entity.component.mbr.MBRectangle_c;
+import org.riseger.main.cache.entity.component.Element_c;
+import org.riseger.main.cache.entity.component.Layer_c;
+import org.riseger.main.cache.entity.component.MBRectangle_c;
+import org.riseger.main.cache.entity.component.MapDB_c;
 import org.riseger.protoctl.struct.entity.Element;
+import org.riseger.utils.Utils;
 import pers.muleisy.rtree.othertree.RStarTree;
 import pers.muleisy.rtree.othertree.RTree;
+
+import java.io.File;
 
 @Data
 public class ElementManager {
@@ -22,7 +25,11 @@ public class ElementManager {
     }
 
     public static ElementManager buildRStartElementManager(int nodeSize, double threshold, Layer_c layerC) {
-        return new ElementManager(new RStarTree<>(nodeSize, threshold),layerC);
+        return new ElementManager(new RStarTree<>(nodeSize, threshold), layerC);
+    }
+
+    public static ElementManager deserializeRStartElementManager(Layer_c layerC, File layer_) throws Exception {
+        return new ElementManager((RTree<MBRectangle_c>) RTree.deserializeStar(Utils.fileToByteBuf(layer_)), layerC);
     }
 
     public void addElement(Element e) {
@@ -33,6 +40,7 @@ public class ElementManager {
         rtreeKeyIndex.insert(e_c);
         parent.expand(e_c);
     }
+
     public void addElement(MBRectangle_c e) {
         rtreeKeyIndex.insert(e);
         parent.expand(e);
@@ -46,6 +54,5 @@ public class ElementManager {
     public void remove(MapDB_c mapDBC) {
         rtreeKeyIndex.deleteStrict(mapDBC);
     }
-
 
 }

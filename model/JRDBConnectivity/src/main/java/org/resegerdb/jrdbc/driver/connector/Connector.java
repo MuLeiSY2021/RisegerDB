@@ -18,18 +18,21 @@ import java.util.concurrent.locks.ReentrantLock;
 @Getter
 public class Connector {
 
-    private Channel channel;
-
     private final LinkedBlockingDeque<Result> resultQueue = new LinkedBlockingDeque<>();
-
+    private Channel channel;
+    private EventLoopGroup eventLoopGroup;
     private ReentrantLock lock = new ReentrantLock();
 
     private Condition cond = lock.newCondition();
 
+    public Connector(EventLoopGroup eventLoopGroup) {
+        this.eventLoopGroup = eventLoopGroup;
+    }
+
     public static Connector connect(String host, int port) throws InterruptedException {
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
-        Connector connector = new Connector();
+        Connector connector = new Connector(new NioEventLoopGroup());
         Bootstrap bootstrap = new Bootstrap();
+        EventLoopGroup workerGroup = connector.getEventLoopGroup();
         bootstrap.group(workerGroup)
                 .option(ChannelOption.SO_KEEPALIVE, true)
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
@@ -41,12 +44,8 @@ public class Connector {
     }
 
     public void close() {
-        if (channel != null) {
-            try {
-                channel.closeFuture().sync();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        if (eventLoopGroup != null) {
+            eventLoopGroup.shutdownGracefully();
         }
     }
 

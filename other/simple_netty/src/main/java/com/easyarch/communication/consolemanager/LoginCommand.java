@@ -7,6 +7,15 @@ import io.netty.channel.Channel;
 import java.util.Scanner;
 
 public class LoginCommand implements ConsoleCommand {
+    private static void waitLogin() {
+        //等待登录
+        try {
+            Thread.sleep(1000L);
+        } catch (InterruptedException ignore) {
+
+        }
+    }
+
     @Override
     public void exec(Scanner scanner, Channel channel) {
         if (!LoginUtil.hasLogin(channel)) {
@@ -19,15 +28,6 @@ public class LoginCommand implements ConsoleCommand {
             loginRequestPacket.setPassword(password);
             channel.writeAndFlush(loginRequestPacket);
             waitLogin();
-        }
-    }
-
-    private static void waitLogin() {
-        //等待登录
-        try {
-            Thread.sleep(1000L);
-        } catch (InterruptedException ignore) {
-
         }
     }
 }

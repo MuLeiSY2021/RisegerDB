@@ -12,18 +12,14 @@ import java.util.Map;
 @Data
 public class Context {
     private final String sourcecode;
+    private final List<Token> tokens = new LinkedList<>();
+    private final List<List<Token>> lines = new LinkedList<>();
+    private Map<String, String> stringConstTable = new HashMap<>();
+    private Map<String, Double> numberConstTable = new HashMap<>();
 
     public Context(String sourcecode) {
         this.sourcecode = sourcecode;
     }
-
-    private final List<Token> tokens = new LinkedList<>();
-
-    private final List<List<Token>> lines = new LinkedList<>();
-
-    private Map<String, String> stringConstTable = new HashMap<>();
-
-    private Map<String, Double> numberConstTable = new HashMap<>();
 
     public void addAll(List<Token> lines) {
         this.tokens.addAll(lines);

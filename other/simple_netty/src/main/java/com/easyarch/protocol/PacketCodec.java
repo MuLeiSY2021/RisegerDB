@@ -5,12 +5,11 @@ import io.netty.buffer.ByteBuf;
 public class PacketCodec {
 
     public static final int MAGIC_NUMBER = 0x12345678;
+    public static final PacketCodec INSTANCE = new PacketCodec();
     private static final byte VERSION = 1;
     private static final byte SERIALIZE = 1;
     private static final byte COMMAND = 1;
     private static final byte LENGTH = 4;
-
-    public static final PacketCodec INSTANCE = new PacketCodec();
 
     private PacketCodec() {
 

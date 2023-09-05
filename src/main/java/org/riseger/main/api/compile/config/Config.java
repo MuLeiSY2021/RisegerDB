@@ -30,7 +30,9 @@ public class Config {
 
     public static final String TOKEN_PATTERN =
             "((?!\\d+(\\.\\d+)?)\\w+|^('')?$|'[^']*')|([1-9]\\d*\\.?\\d*)|(0\\.\\d*[1-9])";
-
+    public static final Map<String, Boolean> LINEFEED_MAP = new HashMap<>();
+    public static final int DEFAULT_PRIORITY = Integer.MAX_VALUE;
+    public static final int MORE_PRIORITY = 1024;
     private static final String[] LINEFEED_KEYWORDS = new String[]{
             "SELECT",
             "WHERE",
@@ -40,15 +42,9 @@ public class Config {
             "OTHER"
     };
 
-    public static final Map<String, Boolean> LINEFEED_MAP = new HashMap<>();
-
     static {
         for (String kerword : LINEFEED_KEYWORDS) {
             LINEFEED_MAP.put(KeywordsTree.INSTANCE.getCode(kerword), true);
         }
     }
-
-    public static final int DEFAULT_PRIORITY = Integer.MAX_VALUE;
-
-    public static final int MORE_PRIORITY = 1024;
 }

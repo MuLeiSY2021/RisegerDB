@@ -6,9 +6,8 @@ import org.riseger.protoctl.message.PreloadDatabaseRequest;
 
 
 public class PreloadSession implements Session {
-    private String uri;
-
     private transient final Connector parent;
+    private String uri;
 
     public PreloadSession(Connector parent) {
         this.parent = parent;

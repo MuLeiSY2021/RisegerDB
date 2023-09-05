@@ -20,6 +20,6 @@ public class PreloadDBCMRequest implements Request {
 
     @Override
     public Job warp() {
-        return new PreloadDBCMJob(this.database,this.revocable);
+        return new PreloadDBCMJob(this.database, this.revocable);
     }
 }

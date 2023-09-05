@@ -16,7 +16,7 @@ public class Element {
 
     private ConcurrentMap<Option, String> configs = new ConcurrentHashMap<>();
 
-    public Element(ParentModel parent,String modelName, ConcurrentMap<String, String> attributes, ConcurrentMap<Option, String> configs) {
+    public Element(ParentModel parent, String modelName, ConcurrentMap<String, String> attributes, ConcurrentMap<Option, String> configs) {
         this.parent = parent;
         this.attributes = attributes;
         this.configs = configs;

@@ -1,6 +1,5 @@
 package pers.muleisy.rtree.othertree;
 
-import com.google.gson.Gson;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.buffer.Unpooled;
@@ -14,7 +13,18 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
+public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
+    protected final double threshold;
+    private final int M;
+    private final int m;
+    protected SubTree root = new Leaf();
+
+    public RTree(int nodeSize, double threshold) {
+        this.M = nodeSize;
+        this.m = (int) (M * 0.4);
+        this.threshold = threshold;
+    }
+
     public static String getStringBuilder(MBRectangle rectangles, HashMap<MBRectangle, Integer> hashMap) {
         StringBuilder sb = new StringBuilder();
         if (rectangles instanceof RTree<?>.SubTree) {
@@ -31,12 +41,28 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         return sb.toString();
     }
 
+    public static RTree<?> deserializeStar(ByteBuf buffer) throws Exception {
+        int M = buffer.readInt();
+        double threshold = buffer.readDouble();
+        RTree<?> tree = new RStarTree<>(M, threshold);
+        tree.deserializeSubTree(buffer);
+        return tree;
+    }
+
+    public static RTree<?> deserializeSTR(ByteBuf buffer) throws Exception {
+        int M = buffer.readInt();
+        double threshold = buffer.readDouble();
+        RTree<?> tree = new STRRTree<>(M, threshold);
+        tree.deserializeSubTree(buffer);
+        return tree;
+    }
+
     public List<R> getElements() {
         LinkedList<R> res = new LinkedList<>();
         LinkedList<SubTree> tuples1 = new LinkedList<>();
         LinkedList<SubTree> tuples2 = new LinkedList<>();
         tuples1.add(root);
-        if(!Leaf.class.isInstance(root)) {
+        if (!Leaf.class.isInstance(root)) {
             while (!tuples1.isEmpty()) {
                 for (SubTree parent : tuples1) {
                     for (SubTree child : parent.getSubTrees()) {
@@ -60,277 +86,6 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         return res;
     }
 
-
-    protected class SubTree extends MBRectangle {
-
-        private LinkedList<SubTree> subTrees = new LinkedList<>();
-
-        private SubTree parent;
-
-        public SubTree() {
-            super(RTree.this.threshold);
-        }
-
-        public SubTree(ByteBuf byteBuf,SubTree parent) {
-            super(RTree.this.threshold);
-            this.parent = parent;
-            super.deserialize(byteBuf);
-            int i = byteBuf.readInt();
-            for (int j = 0; j < i; j++) {
-                char r = byteBuf.readChar();
-                if(r == 's') {
-                    subTrees.add(new SubTree(byteBuf, this));
-                } else {
-                    subTrees.add(new Leaf(byteBuf, this));
-                }
-            }
-        }
-
-        public SubTree(Collection<? extends SubTree> subTrees) {
-            super(RTree.this.threshold);
-            addAll(subTrees);
-        }
-
-        public ByteBuf serialize() throws IOException {
-            ByteBuf byteBuf = Unpooled.buffer();
-            byteBuf.writeBytes(MBRectangle.serialize(this));
-            byteBuf.writeInt(subTrees.size());
-            if(Leaf.class.isInstance(this.subTrees.getFirst())) {
-                for (SubTree subTree : subTrees) {
-                    Leaf leaf = (Leaf) subTree;
-                    byteBuf.writeChar('l');
-                    byteBuf.writeBytes(leaf.serialize());
-                }
-            } else {
-                for (SubTree subTree : subTrees) {
-                    byteBuf.writeChar('s');
-                    byteBuf.writeBytes(MBRectangle.serialize(subTree));
-                    byteBuf.writeBytes(subTree.serialize());
-                }
-            }
-            return byteBuf;
-        }
-
-        public LinkedList<SubTree> getSubTrees() {
-            return subTrees;
-        }
-
-        public void add(SubTree subTree) {
-            this.subTrees.add(subTree);
-            subTree.parent = this;
-            this.adjust(subTree);
-        }
-
-        public List<Leaf> getLeave() {
-            List<Leaf> leaves = new LinkedList<>();
-            LinkedList<SubTree> tuples1 = new LinkedList<>();
-            LinkedList<SubTree> tuples2 = new LinkedList<>();
-            tuples1.add(this);
-
-            while (!tuples1.isEmpty()) {
-                for (SubTree parent : tuples1) {
-                    if(Leaf.class.isInstance(parent)) {
-                        leaves.add((Leaf) parent);
-                    } else {
-                        for (SubTree child : parent.getSubTrees()) {
-                            if (Leaf.class.isInstance(child)) {
-                                leaves.add((Leaf) child);
-                            } else {
-                                tuples2.add(child);
-                            }
-                        }
-                    }
-                }
-                LinkedList<SubTree> tmp = tuples1;
-                tuples1 = tuples2;
-                tmp.clear();
-                tuples2 = tmp;
-            }
-            return leaves;
-        }
-
-        public void addAll(Collection<? extends SubTree> subTrees) {
-            this.subTrees.addAll(subTrees);
-            for (SubTree subTree : subTrees) {
-                subTree.parent = this;
-            }
-            this.adjust(subTrees);
-        }
-
-        @SafeVarargs
-        public final void addAll(SubTree... subTrees) {
-            Collections.addAll(this.subTrees, subTrees);
-            for (SubTree subTree : subTrees) {
-                subTree.parent = this;
-            }
-            this.adjust(subTrees);
-        }
-
-        public final void adjust(Rectangle subTree) {
-            boolean flg = willBeExpand(subTree);
-            if(flg) {
-                super.expand(subTree);
-            }
-            SubTree parent = this.getParent();
-            if(parent != null && flg) {
-                parent.adjust(this);
-            }
-        }
-
-        public final void adjust(Rectangle... subTrees) {
-            boolean flg = super.expandAll(subTrees);
-            SubTree parent = this.getParent();
-            if(parent != null && flg) {
-                parent.adjust(this);
-            }
-        }
-
-        public void adjust(Collection<? extends Rectangle> subTrees) {
-            boolean flg = super.expandAll(subTrees);
-            SubTree parent = this.getParent();
-            if(parent != null && flg) {
-                parent.adjust(this);
-            }
-        }
-
-        public void setSubTrees(LinkedList<SubTree> subTrees) {
-            this.subTrees = subTrees;
-            super.adjustAll(subTrees);
-        }
-
-        public SubTree getParent() {
-            return parent;
-        }
-
-        public void delete(SubTree subTree) {
-            this.subTrees.remove(subTree);
-            subTree.parent = null;
-        }
-
-        public boolean isTooFew() {
-            return this.subTrees.size() < M >> 1;
-        }
-
-        public boolean isOverFlow() {
-            return this.subTrees.size() > M;
-        }
-
-        @Override
-        public String toString() {
-            return super.toString().substring(1,super.toString().length() - 1) + "|";
-        }
-    }
-
-    protected class Leaf extends SubTree{
-        private final LinkedList<R> elements = new LinkedList<>();
-
-        public Leaf(ByteBuf byteBuf, SubTree parent) {
-            super();
-            super.parent = parent;
-            super.deserialize(byteBuf);
-            int i = byteBuf.readInt();
-            Gson g = new Gson();
-            try {
-                Class<? extends R> clazz = (Class<? extends R>) Class.forName(byteBuf
-                        .readCharSequence(byteBuf.readInt(), StandardCharsets.UTF_8)
-                        .toString());
-
-                for (int j = 0; j < i; j++) {
-                    this.elements.add(g.fromJson(byteBuf.readCharSequence(byteBuf.readInt(), StandardCharsets.UTF_8).toString(),
-                            clazz));
-                }
-            } catch (ClassNotFoundException e) {
-                Logger.getLogger(this.getClass()).error(e.getMessage());
-            }
-        }
-
-        // Serialize a Leaf object
-        public ByteBuf serialize() throws IOException {
-            ByteBuf byteBuf = Unpooled.buffer();
-            byteBuf.writeBytes(MBRectangle.serialize(this));
-            byteBuf.writeInt(elements.size());
-            byteBuf.writeBytes(RTree.this.getClass()
-                    .getTypeParameters()[0].getTypeName()
-                    .getBytes(StandardCharsets.UTF_8));
-            for (R r:elements) {
-                byteBuf.writeBytes(JsonSerializer.serialize(r));
-            }
-            return byteBuf;
-        }
-
-        public Leaf() {
-        }
-
-        public Leaf(Collection<? extends R> elements) {
-            this.elements.addAll(elements);
-            super.adjust(elements);
-        }
-
-        public LinkedList<R> getElements() {
-            return elements;
-        }
-
-        public void add(R element) {
-            this.elements.add(element);
-            super.adjust(element);
-        }
-
-        public void add(Collection<? extends R> elements) {
-            this.elements.addAll(elements);
-            super.adjust(elements);
-        }
-
-        public List<R> get(Rectangle rectangle) {
-            List<R> result = new LinkedList<>();
-            for (R e:elements) {
-                if(e.intersects(rectangle)) {
-                    result.add(e);
-                }
-            }
-            return result;
-        }
-
-        public R strictGet(Rectangle rectangle) {
-            for (R e:elements) {
-                if(e.match(rectangle)) {
-                    return e;
-                }
-            }
-            return null;
-        }
-
-        public void delete(Rectangle rectangle) {
-            this.elements.remove(rectangle);
-        }
-
-        @Override
-        public boolean isTooFew() {
-            return this.elements.size() < M >> 1;
-        }
-
-        @Override
-        public boolean isOverFlow() {
-            return this.elements.size() > M;
-        }
-
-
-
-    }
-
-    protected SubTree root = new Leaf();
-
-    private final int M;
-
-    private final int m;
-
-    protected final double threshold;
-
-    public RTree(int nodeSize,double threshold) {
-        this.M = nodeSize;
-        this.m  = (int) (M * 0.4);
-        this.threshold = threshold;
-    }
-
     @Override
     public void insert(R rectangle) {
         rectangle.setThreshold(threshold);
@@ -338,7 +93,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
 
     @Override
     public void insertAll(List<? extends R> rects) {
-        for (R r :rects) {
+        for (R r : rects) {
             r.setThreshold(threshold);
         }
     }
@@ -348,7 +103,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         //Find node containing record.
         List<Leaf> leafList = findLeaf(rectangle);
 
-        if(leafList.size() == 0) {
+        if (leafList.size() == 0) {
             return 0;
         }
 
@@ -392,7 +147,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
             for (SubTree parent : tuples1) {
                 for (SubTree child : parent.getSubTrees()) {
                     if (child.intersects(rect)) {
-                        if(Leaf.class.isInstance(child)) {
+                        if (Leaf.class.isInstance(child)) {
                             res.add((Leaf) child);
                         } else {
                             tuples2.add(child);
@@ -445,7 +200,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
             if (node.isTooFew()) {
                 //[Eliminate under-full node.]
                 parent.delete(node);
-                for (Leaf l:node.getLeave()) {
+                for (Leaf l : node.getLeave()) {
                     eliminatedNodes.addAll(l.getElements());
                 }
             } else {
@@ -471,7 +226,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         List<SubTree> subtreeList2 = new LinkedList<>();
         List<R> eliminatedNodes = new LinkedList<>();
         SubTree parent;
-        while (!( subtreeList1.get(0).parent == null)) {
+        while (!(subtreeList1.get(0).parent == null)) {
             for (SubTree node : subtreeList1) {
                 //[Find parent entry.]
                 parent = node.getParent();
@@ -479,7 +234,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
                 if (node.isTooFew()) {
                     //[Eliminate under-full node.]
                     parent.delete(node);
-                    for (Leaf l:node.getLeave()) {
+                    for (Leaf l : node.getLeave()) {
                         eliminatedNodes.addAll(l.getElements());
                     }
                 } else {
@@ -604,11 +359,9 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
     //------------Test----------------//
 
 
-
     public int[] getMapSize() {
         return new int[]{this.root.maxX().intValue(), this.root.maxY().intValue()};
     }
-
 
 
     protected int M() {
@@ -618,7 +371,7 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
     @Override
     public int getDeep() {
         int deep = 1;
-        if(Leaf.class.isInstance(root)&&((Leaf) root).getElements().isEmpty()) {
+        if (Leaf.class.isInstance(root) && ((Leaf) root).getElements().isEmpty()) {
             return 0;
         }
         SubTree root = this.root;
@@ -638,24 +391,268 @@ public abstract class RTree <R extends MBRectangle> implements RTreeDao<R> {
         return buffer;
     }
 
-    public static RTree<?> deserializeStar(ByteBuf buffer) {
-        int M = buffer.readInt();
-        double threshold = buffer.readDouble();
-        RTree<?> tree = new RStarTree<>(M,threshold);
-        tree.deserializeSubTree(buffer);
-        return tree;
-    }
-
-    public static RTree<?> deserializeSTR(ByteBuf buffer) {
-        int M = buffer.readInt();
-        double threshold = buffer.readDouble();
-        RTree<?> tree = new STRRTree<>(M,threshold);
-        tree.deserializeSubTree(buffer);
-        return tree;
-    }
-
     // Deserialize a SubTree object
-    public void deserializeSubTree(ByteBuf byteBuf) {
-        this.root = new SubTree(byteBuf,null);
+    public void deserializeSubTree(ByteBuf byteBuf) throws Exception {
+        this.root = new SubTree(byteBuf, null);
+    }
+
+    protected class SubTree extends MBRectangle {
+
+        private LinkedList<SubTree> subTrees = new LinkedList<>();
+
+        private SubTree parent;
+
+        public SubTree() {
+            super(RTree.this.threshold);
+        }
+
+        public SubTree(ByteBuf byteBuf, SubTree parent) throws Exception {
+            super(RTree.this.threshold);
+            this.parent = parent;
+            super.deserialize(byteBuf);
+            int i = byteBuf.readInt();
+            for (int j = 0; j < i; j++) {
+                char r = byteBuf.readChar();
+                if (r == 's') {
+                    subTrees.add(new SubTree(byteBuf, this));
+                } else {
+                    subTrees.add(new Leaf(byteBuf, this));
+                }
+            }
+        }
+
+        public SubTree(Collection<? extends SubTree> subTrees) {
+            super(RTree.this.threshold);
+            addAll(subTrees);
+        }
+
+        public ByteBuf serialize() throws IOException {
+            ByteBuf byteBuf = Unpooled.buffer();
+            byteBuf.writeBytes(MBRectangle.serialize(this, byteBuf));
+            byteBuf.writeInt(subTrees.size());
+            if (Leaf.class.isInstance(this.subTrees.getFirst())) {
+                for (SubTree subTree : subTrees) {
+                    Leaf leaf = (Leaf) subTree;
+                    byteBuf.writeChar('l');
+                    byteBuf.writeBytes(leaf.serialize());
+                }
+            } else {
+                for (SubTree subTree : subTrees) {
+                    byteBuf.writeChar('s');
+                    byteBuf.writeBytes(MBRectangle.serialize(subTree, byteBuf));
+                    byteBuf.writeBytes(subTree.serialize());
+                }
+            }
+            return byteBuf;
+        }
+
+        public LinkedList<SubTree> getSubTrees() {
+            return subTrees;
+        }
+
+        public void setSubTrees(LinkedList<SubTree> subTrees) {
+            this.subTrees = subTrees;
+            super.adjustAll(subTrees);
+        }
+
+        public void add(SubTree subTree) {
+            this.subTrees.add(subTree);
+            subTree.parent = this;
+            this.adjust(subTree);
+        }
+
+        public List<Leaf> getLeave() {
+            List<Leaf> leaves = new LinkedList<>();
+            LinkedList<SubTree> tuples1 = new LinkedList<>();
+            LinkedList<SubTree> tuples2 = new LinkedList<>();
+            tuples1.add(this);
+
+            while (!tuples1.isEmpty()) {
+                for (SubTree parent : tuples1) {
+                    if (Leaf.class.isInstance(parent)) {
+                        leaves.add((Leaf) parent);
+                    } else {
+                        for (SubTree child : parent.getSubTrees()) {
+                            if (Leaf.class.isInstance(child)) {
+                                leaves.add((Leaf) child);
+                            } else {
+                                tuples2.add(child);
+                            }
+                        }
+                    }
+                }
+                LinkedList<SubTree> tmp = tuples1;
+                tuples1 = tuples2;
+                tmp.clear();
+                tuples2 = tmp;
+            }
+            return leaves;
+        }
+
+        public void addAll(Collection<? extends SubTree> subTrees) {
+            this.subTrees.addAll(subTrees);
+            for (SubTree subTree : subTrees) {
+                subTree.parent = this;
+            }
+            this.adjust(subTrees);
+        }
+
+        @SafeVarargs
+        public final void addAll(SubTree... subTrees) {
+            Collections.addAll(this.subTrees, subTrees);
+            for (SubTree subTree : subTrees) {
+                subTree.parent = this;
+            }
+            this.adjust(subTrees);
+        }
+
+        public final void adjust(Rectangle subTree) {
+            boolean flg = willBeExpand(subTree);
+            if (flg) {
+                super.expand(subTree);
+            }
+            SubTree parent = this.getParent();
+            if (parent != null && flg) {
+                parent.adjust(this);
+            }
+        }
+
+        public final void adjust(Rectangle... subTrees) {
+            boolean flg = super.expandAll(subTrees);
+            SubTree parent = this.getParent();
+            if (parent != null && flg) {
+                parent.adjust(this);
+            }
+        }
+
+        public void adjust(Collection<? extends Rectangle> subTrees) {
+            boolean flg = super.expandAll(subTrees);
+            SubTree parent = this.getParent();
+            if (parent != null && flg) {
+                parent.adjust(this);
+            }
+        }
+
+        public SubTree getParent() {
+            return parent;
+        }
+
+        public void delete(SubTree subTree) {
+            this.subTrees.remove(subTree);
+            subTree.parent = null;
+        }
+
+        public boolean isTooFew() {
+            return this.subTrees.size() < M >> 1;
+        }
+
+        public boolean isOverFlow() {
+            return this.subTrees.size() > M;
+        }
+
+        @Override
+        public String toString() {
+            return super.toString().substring(1, super.toString().length() - 1) + "|";
+        }
+    }
+
+    protected class Leaf extends SubTree {
+        private final LinkedList<R> elements = new LinkedList<>();
+
+
+
+        public Leaf() {
+        }
+
+        public Leaf(Collection<? extends R> elements) {
+            this.elements.addAll(elements);
+            super.adjust(elements);
+        }
+        public Leaf(ByteBuf byteBuf, SubTree parent) throws Exception {
+            super();
+            super.parent = parent;
+            super.deserialize(byteBuf);
+            int i = byteBuf.readInt();
+            try {
+                byte[] bytes = new byte[byteBuf.readInt()];
+                byteBuf.readBytes(bytes);
+                Class<? extends R> clazz = (Class<? extends R>) Class.forName(new String(bytes,StandardCharsets.UTF_8));
+                for (int j = 0; j < i; j++) {
+                    bytes = new byte[byteBuf.readInt()];
+                    byteBuf.readBytes(bytes);
+                    this.elements.add(JsonSerializer.deserialize(bytes,clazz));
+                }
+            } catch (Exception e) {
+                Logger.getLogger(this.getClass()).error(e.getMessage());
+                throw e;
+            }
+        }
+
+        // Serialize a Leaf object
+        public ByteBuf serialize() throws IOException {
+            ByteBuf byteBuf = Unpooled.buffer();
+            MBRectangle.serialize(this,byteBuf);
+            byteBuf.writeInt(elements.size());
+            byte[] bytes = RTree.this.getClass()
+                    .getTypeParameters()[0].getTypeName()
+                    .getBytes(StandardCharsets.UTF_8);
+            byteBuf.writeInt(bytes.length);
+            byteBuf.writeBytes(bytes);
+            for (R r : elements) {
+                bytes = JsonSerializer.serialize(r);
+                byteBuf.writeInt(bytes.length);
+                byteBuf.writeBytes(bytes);
+            }
+            return byteBuf;
+        }
+
+        public LinkedList<R> getElements() {
+            return elements;
+        }
+
+        public void add(R element) {
+            this.elements.add(element);
+            super.adjust(element);
+        }
+
+        public void add(Collection<? extends R> elements) {
+            this.elements.addAll(elements);
+            super.adjust(elements);
+        }
+
+        public List<R> get(Rectangle rectangle) {
+            List<R> result = new LinkedList<>();
+            for (R e : elements) {
+                if (e.intersects(rectangle)) {
+                    result.add(e);
+                }
+            }
+            return result;
+        }
+
+        public R strictGet(Rectangle rectangle) {
+            for (R e : elements) {
+                if (e.match(rectangle)) {
+                    return e;
+                }
+            }
+            return null;
+        }
+
+        public void delete(Rectangle rectangle) {
+            this.elements.remove(rectangle);
+        }
+
+        @Override
+        public boolean isTooFew() {
+            return this.elements.size() < M >> 1;
+        }
+
+        @Override
+        public boolean isOverFlow() {
+            return this.elements.size() > M;
+        }
+
+
     }
 }

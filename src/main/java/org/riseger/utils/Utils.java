@@ -2,6 +2,8 @@ package org.riseger.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -55,5 +57,14 @@ public class Utils {
 
     public static List<?> toJson(String text, TypeToken<?> parameterized) {
         return gson.fromJson(text, parameterized.getType());
+    }
+
+    public static ByteBuf fileToByteBuf(File file) throws IOException {
+        FileInputStream in = new FileInputStream(file);
+        ByteBuf buffer = Unpooled.buffer(in.available());
+        while (in.available() > 0) {
+            buffer.writeByte(in.read());
+        }
+        return buffer;
     }
 }

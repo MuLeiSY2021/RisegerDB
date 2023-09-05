@@ -6,6 +6,8 @@ import java.util.Random;
 
 public class BuildingGenerator {
 
+    private static final int overlapSize = 714;
+
     // Function to generate random double value within a specified range
     private static double getRandomInRange(double min, double max) {
         Random random = new Random();
@@ -20,8 +22,6 @@ public class BuildingGenerator {
         double overlapArea = x_overlap * y_overlap;
         return overlapArea >= BuildingGenerator.overlapSize;
     }
-
-    private static final int overlapSize = 714;
 
     // Function to generate non-overlapping buildings
     public static List<Building> createBuildings(Double x_min, Double y_min, Double x_max, Double y_max, int count, String addressPrefix) {

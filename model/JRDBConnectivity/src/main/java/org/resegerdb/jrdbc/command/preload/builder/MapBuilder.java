@@ -13,7 +13,7 @@ public class MapBuilder {
 
     private String name;
 
-    private Map<String,String> configs = new HashMap<>();
+    private Map<String, String> configs = new HashMap<>();
 
 
     public MapBuilder(Database database) {
@@ -26,7 +26,7 @@ public class MapBuilder {
     }
 
     public MapBuilder build() {
-        this.map = new MapDB(name, database,configs);
+        this.map = new MapDB(name, database, configs);
         return this;
     }
 

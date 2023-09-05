@@ -13,7 +13,7 @@ public class PreloadResult implements Result {
     @Override
     public String getResult() {
         StringBuilder sb = new StringBuilder();
-        if(success) {
+        if (success) {
             sb.append("预载入成功");
         } else {
             sb.append("预载入失败，错误原因：\n").append(message);

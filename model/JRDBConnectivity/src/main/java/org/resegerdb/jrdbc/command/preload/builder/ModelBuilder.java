@@ -10,15 +10,10 @@ import java.util.Map;
 
 public class ModelBuilder {
     private final Database database;
-
-    private String name;
-
-    private String parent;
-
     protected Map<String, Type> parameters = new HashMap<>();
-
     protected Map<Option, String> configs = new HashMap<>();
-
+    private String name;
+    private String parent;
     private Model model;
 
     public ModelBuilder(Database database) {

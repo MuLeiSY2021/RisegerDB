@@ -6,7 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class KeywordsTree {
+    public static final KeywordsTree INSTANCE = new KeywordsTree();
     private final Node root = new Node();
+
 
     private KeywordsTree() {
         for (Keyword keyword : Keyword.KEYWORDS) {
@@ -14,9 +16,26 @@ public class KeywordsTree {
         }
     }
 
+    public String getCode(String name) {
+        Keyword keyword;
+        if ((keyword = root.get(name)) != null) {
+            return keyword.getCode();
+        } else {
+            return null;
+        }
+    }
 
-    public static final KeywordsTree INSTANCE = new KeywordsTree();
+    public int getIndex(String word) {
+        return root.getIndex(word);
+    }
 
+    public Keyword get(String tmp) {
+        return root.get(tmp);
+    }
+
+    public boolean contain(String tmp) {
+        return root.get(tmp) != null;
+    }
 
     @Data
     private static class Node {
@@ -114,27 +133,6 @@ public class KeywordsTree {
             }
             return index + 1;
         }
-    }
-
-    public String getCode(String name) {
-        Keyword keyword;
-        if ((keyword = root.get(name)) != null) {
-            return keyword.getCode();
-        } else {
-            return null;
-        }
-    }
-
-    public int getIndex(String word) {
-        return root.getIndex(word);
-    }
-
-    public Keyword get(String tmp) {
-        return root.get(tmp);
-    }
-
-    public boolean contain(String tmp) {
-        return root.get(tmp) != null;
     }
 
 

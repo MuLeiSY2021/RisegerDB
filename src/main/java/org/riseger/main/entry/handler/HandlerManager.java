@@ -10,6 +10,7 @@ import java.util.List;
 
 public class HandlerManager extends ChannelInitializer<SocketChannel> {
     private static final List<ChannelHandler> handlers = new ArrayList<>();
+
     static {
         handlers.add(new ProtocolCodec());
         handlers.add(new PreloadMessageInboundHandler());
@@ -17,7 +18,7 @@ public class HandlerManager extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel ch) {
-        for (ChannelHandler handler:handlers) {
+        for (ChannelHandler handler : handlers) {
             ch.pipeline().addLast(handler);
         }
     }

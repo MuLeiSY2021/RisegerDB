@@ -2,10 +2,12 @@ package org.riseger.main.init;
 
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
+
 public class MainBootstrap {
     private static Logger LOG;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String rootPath = getRootPath();
 
         LogInitializer logInitializer = new LogInitializer();
@@ -17,7 +19,7 @@ public class MainBootstrap {
         storageInitializer.init();
         LOG.info("Storage initialized successfully");
 
-        CacheInitializer cacheInitializer = new CacheInitializer();
+        CacheInitializer cacheInitializer = new CacheInitializer(storageInitializer);
         cacheInitializer.init();
         LOG.info("Cache initialized successfully");
 

@@ -17,13 +17,13 @@ public class ClientHandlerManager extends ChannelInitializer<SocketChannel> {
     public ClientHandlerManager(Connector connector) {
         this.connector = connector;
         this.handlers = new ArrayList<>();
-            handlers.add(new ProtocolCodec());
-            handlers.add(new PreloadDatabaseResponseHandler(connector));
+        handlers.add(new ProtocolCodec());
+        handlers.add(new PreloadDatabaseResponseHandler(connector));
     }
 
     @Override
     protected void initChannel(SocketChannel ch) {
-        for (ChannelHandler handler:handlers) {
+        for (ChannelHandler handler : handlers) {
             ch.pipeline().addLast(handler);
         }
     }

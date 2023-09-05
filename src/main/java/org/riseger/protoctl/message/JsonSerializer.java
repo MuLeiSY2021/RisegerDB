@@ -16,7 +16,7 @@ public class JsonSerializer {
     }
 
     public static <T> T deserialize(byte[] bytes, Class<T> valueType) throws IOException {
-        return gson.fromJson(new String(bytes,StandardCharsets.UTF_8),valueType);
+        return gson.fromJson(new String(bytes, StandardCharsets.UTF_8), valueType);
     }
 
     public static Object deserialize(String text, TypeToken<?> parameterized) {

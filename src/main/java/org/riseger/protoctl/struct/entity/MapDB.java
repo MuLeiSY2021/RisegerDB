@@ -15,9 +15,9 @@ public class MapDB {
 
     private List<Element> elements = new LinkedList<>();
 
-    private Map<String,String> configs = new HashMap<>();
+    private Map<String, String> configs = new HashMap<>();
 
-    public MapDB(String name, Database database, Map<String,String> configs) {
+    public MapDB(String name, Database database, Map<String, String> configs) {
         this.name = name;
         database.addMap(this);
         this.configs = configs;

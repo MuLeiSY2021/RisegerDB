@@ -8,21 +8,14 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class RStarTree<R extends MBRectangle> extends RTree<R> {
-    private static class TmpRectangle extends MBRectangle {
+    //-------------------Split---------------------//
+    protected int M = RStarTree.this.M();
+    protected int m = (int) (M * 0.4);
+    //-----------------ReInsert------------------//
+    int p = (int) (M * 0.3);
 
-        public TmpRectangle(Collection<? extends Rectangle> rects, Double threshold) {
-            super(rects, threshold);
-        }
-
-        public TmpRectangle(Double threshold, Rectangle... rects) {
-            super(threshold, rects);
-        }
-
-    }
-
-
-    public RStarTree(int nodeSize,double threshold) {
-        super(nodeSize,threshold);
+    public RStarTree(int nodeSize, double threshold) {
+        super(nodeSize, threshold);
     }
 
     @Override
@@ -49,8 +42,8 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
         return Leaf.class.isInstance(subTree.getSubTrees().get(0));
     }
 
-    public int compareOverlap(MBRectangle rect, MBRectangle tuple1, MBRectangle tuple2, List<? extends MBRectangle> tuples) {
-        int res = Double.compare(getOverlap(rect, tuple1, tuples),getOverlap(rect, tuple1, tuples));
+    private int compareOverlap(MBRectangle rect, MBRectangle tuple1, MBRectangle tuple2, List<? extends MBRectangle> tuples) {
+        int res = Double.compare(getOverlap(rect, tuple1, tuples), getOverlap(rect, tuple1, tuples));
 
         if (res == 0) {
             res = compareAreaEnlargement(rect, tuple1, tuple2);
@@ -58,14 +51,13 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
         return res;
     }
 
-
     private Leaf chooseSubtree(R rect) {
         SubTree root = this.root;
 
         while (!(Leaf.class.isInstance(root))) {
             if (isLeafParent(root)) {
                 final List<SubTree> subtrees = root.getSubTrees();
-                Optional<SubTree> tuple = root.getSubTrees().stream().min((x,y) -> compareOverlap(rect,x,y,subtrees));
+                Optional<SubTree> tuple = root.getSubTrees().stream().min((x, y) -> compareOverlap(rect, x, y, subtrees));
                 if (tuple.isPresent()) {
                     root = tuple.get();
                 } else {
@@ -73,7 +65,7 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
                     throw new IllegalArgumentException("No such child");
                 }
             } else {
-                Optional<SubTree> tuple = root.getSubTrees().stream().min((x,y) -> compareAreaEnlargement(rect,x,y));
+                Optional<SubTree> tuple = root.getSubTrees().stream().min((x, y) -> compareAreaEnlargement(rect, x, y));
                 if (tuple.isPresent()) {
                     root = tuple.get();
                 } else {
@@ -111,7 +103,7 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
                 parent = root;
             }
             parent.delete(subtree);
-            parent.addAll(new Leaf((Collection<? extends R>) splitSet[0]),new Leaf((Collection<? extends R>) splitSet[1]));
+            parent.addAll(new Leaf((Collection<? extends R>) splitSet[0]), new Leaf((Collection<? extends R>) splitSet[1]));
         } else {
             Object[] splitSet = split(subtree.getSubTrees());
             SubTree parent = subtree.getParent();
@@ -120,7 +112,7 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
                 parent = root;
             }
             parent.delete(subtree);
-            parent.addAll(new SubTree((Collection<? extends RTree<R>.SubTree>) splitSet[0]),new SubTree((Collection<? extends RTree<R>.SubTree>) splitSet[1]));
+            parent.addAll(new SubTree((Collection<? extends RTree<R>.SubTree>) splitSet[0]), new SubTree((Collection<? extends RTree<R>.SubTree>) splitSet[1]));
 
         }
     }
@@ -131,70 +123,61 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
         insertAll((List<? extends R>) reinsertSet.get(1));
     }
 
-    public Double getOverlap(MBRectangle rect, MBRectangle tuple1, List<? extends MBRectangle> tuples) {
+    private Double getOverlap(MBRectangle rect, MBRectangle tuple1, List<? extends MBRectangle> tuples) {
         double overlap = 0;
-        MBRectangle newTuple = new TmpRectangle(threshold,tuple1, rect);
+        MBRectangle newTuple = new TmpRectangle(threshold, tuple1, rect);
         for (MBRectangle tuple : tuples) {
             overlap += newTuple.overlap(tuple);
         }
         return overlap;
     }
 
-    public int compareAreaEnlargement(MBRectangle rect, MBRectangle tuple1, MBRectangle tuple2) {
-        int res = Double.compare(getAreaEnlargement(rect, tuple1),getAreaEnlargement(rect, tuple2));
+    private int compareAreaEnlargement(MBRectangle rect, MBRectangle tuple1, MBRectangle tuple2) {
+        int res = Double.compare(getAreaEnlargement(rect, tuple1), getAreaEnlargement(rect, tuple2));
         if (res == 0) {
             res = compareAreaWithRect(rect, tuple1, tuple2);
         }
         return res;
     }
 
-    public Double getAreaEnlargement(MBRectangle rect, MBRectangle tuple) {
-        return new TmpRectangle(threshold,tuple, rect).area()- tuple.area();
+    private Double getAreaEnlargement(MBRectangle rect, MBRectangle tuple) {
+        return new TmpRectangle(threshold, tuple, rect).area() - tuple.area();
     }
 
-    public int compareAreaWithRect(MBRectangle rect, MBRectangle tuple1, MBRectangle tuple2) {
-        return Double.compare(new TmpRectangle(threshold,tuple1, rect).area(),new TmpRectangle(threshold,tuple2, rect).area());
+    private int compareAreaWithRect(MBRectangle rect, MBRectangle tuple1, MBRectangle tuple2) {
+        return Double.compare(new TmpRectangle(threshold, tuple1, rect).area(), new TmpRectangle(threshold, tuple2, rect).area());
     }
-
-    //-------------------Split---------------------//
-    public int M = RStarTree.this.M();
-
-    public int m = (int) (M * 0.4);
 
     private Double getAreaValue(List<? extends MBRectangle> group1,
-                   List<? extends MBRectangle> group2) {
-        return new TmpRectangle(group1,threshold).area()+new TmpRectangle(group2,threshold).area();
+                                List<? extends MBRectangle> group2) {
+        return new TmpRectangle(group1, threshold).area() + new TmpRectangle(group2, threshold).area();
     }
 
     private Double getMarginValue(List<? extends MBRectangle> group1,
-                     List<? extends MBRectangle> group2) {
-        return new TmpRectangle(group1,threshold).margin()+new TmpRectangle(group2,threshold).margin();
+                                  List<? extends MBRectangle> group2) {
+        return new TmpRectangle(group1, threshold).margin() + new TmpRectangle(group2, threshold).margin();
     }
 
     private Double getOverlapValue(List<? extends MBRectangle> group1,
-                      List<? extends MBRectangle> group2) {
-        return new TmpRectangle(group1,threshold).overlap(new TmpRectangle(group2,threshold));
-    }
-
-    protected enum Axis {
-        X,Y
+                                   List<? extends MBRectangle> group2) {
+        return new TmpRectangle(group1, threshold).overlap(new TmpRectangle(group2, threshold));
     }
 
     private Axis chooseSplitAxis(List<? extends MBRectangle> tuples) {
-        double xValue = 0,yValue = 0;
+        double xValue = 0, yValue = 0;
         //from x
-        tuples = sortByAxis(tuples,Axis.X,false);
+        tuples = sortByAxis(tuples, Axis.X, false);
         for (int k = 1; k <= M - (m << 1) + 2; k++) {
             xValue += getMarginValue(tuples.subList(0, m - 1 + k), tuples.subList(m - 1 + k, tuples.size()));
         }
 
         //from Y
-        tuples = sortByAxis(tuples,Axis.Y,false);
+        tuples = sortByAxis(tuples, Axis.Y, false);
         for (int k = 1; k <= M - (m << 1) + 2; k++) {
             yValue += getMarginValue(tuples.subList(0, m - 1 + k), tuples.subList(m - 1 + k, tuples.size()));
         }
 
-        if(Double.compare(xValue,yValue) < 0) {
+        if (Double.compare(xValue, yValue) < 0) {
             return Axis.X;
         } else {
             return Axis.Y;
@@ -202,15 +185,15 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
     }
 
     protected List<? extends MBRectangle> sortByAxis(List<? extends MBRectangle> tuples, Axis axis, boolean reversed) {
-        if(axis.equals(Axis.X)) {
-            if(reversed) {
+        if (axis.equals(Axis.X)) {
+            if (reversed) {
                 return tuples.stream().sorted(Comparator.comparing(MBRectangle::minX, Double::compare)
                         .thenComparing(MBRectangle::maxX, Double::compare).reversed()).collect(Collectors.toCollection(LinkedList::new));
             }
             return tuples.stream().sorted(Comparator.comparing(MBRectangle::minX, Double::compare)
                     .thenComparing(MBRectangle::maxX, Double::compare)).collect(Collectors.toCollection(LinkedList::new));
         } else {
-            if(reversed) {
+            if (reversed) {
                 return tuples.stream().sorted(Comparator.comparing(MBRectangle::minY, Double::compare)
                         .thenComparing(MBRectangle::maxX, Double::compare).reversed()).collect(Collectors.toCollection(LinkedList::new));
             }
@@ -224,60 +207,65 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
         for (int k = 1; k < tuples.size(); k++) {
             indexList.add(k);
         }
-        Optional<Integer> index = indexList.stream().sorted().min((Integer x,Integer y) -> compareOverlapValue(x,y,tuples));
+        Optional<Integer> index = indexList.stream().sorted().min((Integer x, Integer y) -> compareOverlapValue(x, y, tuples));
 
-        if(index.isPresent()) {
+        if (index.isPresent()) {
             return index.get();
-        }else {
+        } else {
             throw new IllegalArgumentException("Invalid index");
         }
     }
 
-
-    public int compareOverlapValue(Integer k1, Integer k2, List<? extends MBRectangle> sortedTuples) {
-        int res= Double.compare(getOverlapValue(sortedTuples.subList(0,k1),sortedTuples.subList(k1,sortedTuples.size())),getOverlapValue(sortedTuples.subList(0,k2),sortedTuples.subList(k2 + 1,sortedTuples.size())));
-        if(res == 0) {
-            res = Double.compare(getAreaValue(sortedTuples.subList(0,k1),sortedTuples.subList(k1,sortedTuples.size())),getAreaValue(sortedTuples.subList(0,k2),sortedTuples.subList(k2 + 1,sortedTuples.size())));
+    private int compareOverlapValue(Integer k1, Integer k2, List<? extends MBRectangle> sortedTuples) {
+        int res = Double.compare(getOverlapValue(sortedTuples.subList(0, k1), sortedTuples.subList(k1, sortedTuples.size())), getOverlapValue(sortedTuples.subList(0, k2), sortedTuples.subList(k2 + 1, sortedTuples.size())));
+        if (res == 0) {
+            res = Double.compare(getAreaValue(sortedTuples.subList(0, k1), sortedTuples.subList(k1, sortedTuples.size())), getAreaValue(sortedTuples.subList(0, k2), sortedTuples.subList(k2 + 1, sortedTuples.size())));
         }
         return res;
     }
 
-
-
-
-
-    public Object[] split(List<? extends MBRectangle> tuples) {
+    private Object[] split(List<? extends MBRectangle> tuples) {
         Object[] res = new Object[2];
         Axis axis = chooseSplitAxis(tuples);
-        if(axis.equals(Axis.X)) {
-            tuples = sortByAxis(tuples,Axis.X,false);
+        if (axis.equals(Axis.X)) {
+            tuples = sortByAxis(tuples, Axis.X, false);
         } else {
-            tuples = sortByAxis(tuples,Axis.Y,false);
+            tuples = sortByAxis(tuples, Axis.Y, false);
         }
 
         int index = chooseSplitIndex(tuples);
-        res[0] = tuples.subList(0,index);
-        res[1] = tuples.subList(index,tuples.size());
+        res[0] = tuples.subList(0, index);
+        res[1] = tuples.subList(index, tuples.size());
         return res;
     }
 
-
-
-
-
-    //-----------------ReInsert------------------//
-    int p = (int) (M * 0.3);
-
-    public List<List<? extends MBRectangle>> getReinsertSet(Rectangle subtree, Collection<? extends MBRectangle> set){
+    private List<List<? extends MBRectangle>> getReinsertSet(Rectangle subtree, Collection<? extends MBRectangle> set) {
         LinkedList<? extends MBRectangle> sortedSet =
                 set.stream().sorted(
                         ((x, y) -> -Double.compare(x.distance_compare(subtree), y.distance_compare(subtree)))
                 ).collect(Collectors.toCollection(LinkedList::new));
         List<List<? extends MBRectangle>> res = new LinkedList<>();
-        res.add(sortedSet.subList(p,sortedSet.size() - 1));
-        res.add(sortedSet.subList(0,p));
+        res.add(sortedSet.subList(p, sortedSet.size() - 1));
+        res.add(sortedSet.subList(0, p));
 
         return res;
+    }
+
+
+    protected enum Axis {
+        X, Y
+    }
+
+    private static class TmpRectangle extends MBRectangle {
+
+        public TmpRectangle(Collection<? extends Rectangle> rects, Double threshold) {
+            super(rects, threshold);
+        }
+
+        public TmpRectangle(Double threshold, Rectangle... rects) {
+            super(threshold, rects);
+        }
+
     }
 
 }

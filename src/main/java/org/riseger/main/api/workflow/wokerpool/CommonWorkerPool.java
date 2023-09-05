@@ -8,11 +8,9 @@ import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class CommonWorkerPool implements WorkerPool{
-    private final CommonJobStack jobStack;
-
+public class CommonWorkerPool implements WorkerPool {
     private static final Logger lo = Logger.getLogger(CommonWorkerPool.class);
-
+    private final CommonJobStack jobStack;
     private final ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
             CORE_POOL_SIZE,
             MAX_POOL_SIZE,

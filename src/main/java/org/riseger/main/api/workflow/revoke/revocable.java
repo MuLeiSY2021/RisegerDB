@@ -8,9 +8,9 @@ public abstract class revocable<E> {
 
     Condition cond = lock.newCondition();
 
-    public abstract void setE(E database);
-
     public abstract E getE();
+
+    public abstract void setE(E database);
 
     protected void sleep() throws InterruptedException {
         lock.lock();

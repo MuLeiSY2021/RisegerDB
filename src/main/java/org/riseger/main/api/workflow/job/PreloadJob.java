@@ -2,7 +2,7 @@ package org.riseger.main.api.workflow.job;
 
 import org.apache.logging.log4j.LogManager;
 import org.riseger.main.api.workflow.revoke.revocable;
-import org.riseger.main.cache.entity.component.db.Database_c;
+import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.manager.DBCacheManager;
 import org.riseger.protoctl.struct.entity.Database;
 
@@ -20,7 +20,7 @@ public class PreloadJob extends revocable<Database_c> implements Job {
     @Override
     public void run() {
         for (Database database : databases) {
-            DBCacheManager.DAO.preloadDatabase(database,this);
+            DBCacheManager.DAO.preloadDatabase(database, this);
 
             //TODO:考虑异步任务发布
             try {

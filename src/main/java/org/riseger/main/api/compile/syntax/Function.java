@@ -18,9 +18,10 @@ import java.util.Map;
 
 @Data
 public class Function {
-    private static int count = 0;
-
     public static final List<Function> FUNCTIONS = new LinkedList<>();
+    public static int maxPriority = 1;
+    public static Map<String, Object> typeMap = new HashMap<>();
+    private static int count = 0;
 
     static {
         String file = Utils.getText(new File("data/basic.txt"));
@@ -36,10 +37,6 @@ public class Function {
             }
         }
     }
-
-    public static int maxPriority = 1;
-
-    public static Map<String, Object> typeMap = new HashMap<>();
 
     static {
         typeMap.put("int", Integer.class);

@@ -11,6 +11,7 @@ import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class FunctionTree {
+    public static final FunctionTree INSTANCE = new FunctionTree();
     private final Node root = new Node();
 
     private FunctionTree() {
@@ -19,7 +20,13 @@ public class FunctionTree {
         }
     }
 
-    public static final FunctionTree INSTANCE = new FunctionTree();
+    public Iterator iterator() {
+        return new Iterator(this.root);
+    }
+
+    public Session session(List<Token> tokens) {
+        return new Session(tokens);
+    }
 
     @Data
     private static class Node {
@@ -100,10 +107,6 @@ public class FunctionTree {
         }
     }
 
-    public Iterator iterator() {
-        return new Iterator(this.root);
-    }
-
     private class Iterator {
         Node current;
 
@@ -149,34 +152,22 @@ public class FunctionTree {
         }
     }
 
-    public Session session(List<Token> tokens) {
-        return new Session(tokens);
-    }
-
     public class Session {
-        List<Token> tokenLine;
-
-        int max = Integer.MIN_VALUE;
-
-        int max_i = -1;
-
-        ListIterator<Token> iterator;
-
-        int extra = 0;
-
-        int index = 0;
-
-        Queue<String> queue = new LinkedBlockingQueue<>(50);
-
         private final Map<String, String> bracketsMap = new HashMap<>();
+        private final Map<String, Integer> priorityMap = new HashMap<>();
+        List<Token> tokenLine;
+        int max = Integer.MIN_VALUE;
+        int max_i = -1;
+        ListIterator<Token> iterator;
+        int extra = 0;
+        int index = 0;
+        Queue<String> queue = new LinkedBlockingQueue<>(50);
 
         {
             this.bracketsMap.put("(", ")");
             this.bracketsMap.put("[", "]");
             this.bracketsMap.put("{", "}");
         }
-
-        private final Map<String, Integer> priorityMap = new HashMap<>();
 
         {
             this.priorityMap.put("(", 3);

@@ -10,31 +10,31 @@ public class RStarTreeTest {
     public static void main(String[] args) throws IOException {
         int size = 1600;
 
-        RTreeDao<MBRectangle> tree = new RStarTree(4,0.5);
-        List<MBRectangle> rectangles = ImagePrint.generateRectangles(size,20);
+        RTreeDao<MBRectangle> tree = new RStarTree(4, 0.5);
+        List<MBRectangle> rectangles = ImagePrint.generateRectangles(size, 20);
         for (MBRectangle rectangle : rectangles) {
             tree.insert(rectangle);
         }
 
         try {
             System.out.println(tree);
-            ImagePrint.toPNG(size,"model/RTreePrimary/src/test/resources/pngPicture/star_r_tree","all"+rectangles.size(),tree);
+            ImagePrint.toPNG(size, "model/RTreePrimary/src/test/resources/pngPicture/star_r_tree", "all" + rectangles.size(), tree);
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println(tree.getDeep());
-        List<MBRectangle> list =  tree.search(new TestRectangle(1235.0, 773.0, 1283.0, 924.0,0.5));
+        List<MBRectangle> list = tree.search(new TestRectangle(1235.0, 773.0, 1283.0, 924.0, 0.5));
         System.out.println(list);
         try {
-            ImagePrint.toPNG(size,"model/RTreePrimary/src/test/resources/pngPicture/star_r_tree","Search_N5&N6",list);
+            ImagePrint.toPNG(size, "model/RTreePrimary/src/test/resources/pngPicture/star_r_tree", "Search_N5&N6", list);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         //delete
-        tree.delete(new TestRectangle(159.0, 614.0, 186.0, 641.0,0.5));
+        tree.delete(new TestRectangle(159.0, 614.0, 186.0, 641.0, 0.5));
         try {
-            ImagePrint.toPNG(size,"model/RTreePrimary/src/test/resources/pngPicture/star_r_tree","deleted_N0",tree);
+            ImagePrint.toPNG(size, "model/RTreePrimary/src/test/resources/pngPicture/star_r_tree", "deleted_N0", tree);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

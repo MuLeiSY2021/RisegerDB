@@ -6,10 +6,10 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-public class STRRTree<R extends MBRectangle> extends RStarTree<R>{
+public class STRRTree<R extends MBRectangle> extends RStarTree<R> {
 
-    public STRRTree(int nodeSize,double threshold) {
-        super(nodeSize,threshold);
+    public STRRTree(int nodeSize, double threshold) {
+        super(nodeSize, threshold);
     }
 
     @Override
@@ -23,7 +23,7 @@ public class STRRTree<R extends MBRectangle> extends RStarTree<R>{
     }
 
     public int getChunkPieces(int size) {
-        int P = size % M == 0 ? size/M : (size / M) + 1;
+        int P = size % M == 0 ? size / M : (size / M) + 1;
         return (int) (Math.sqrt(P) - (int) Math.sqrt(P) == 0 ? Math.sqrt(P) : Math.sqrt(P) + 1);
     }
 
@@ -36,25 +36,25 @@ public class STRRTree<R extends MBRectangle> extends RStarTree<R>{
 
         List<List<? extends MBRectangle>> tmpList = new LinkedList<>();
         List<SubTree> subTreeList = new LinkedList<>();
-        rects = sortByAxis(rects,Axis.X,false);
+        rects = sortByAxis(rects, Axis.X, false);
         int chunkSize = getChunkSize(chunkPieces);
 
         for (int i = 0; i < chunkPieces; i++) {
-            List<? extends MBRectangle> subList = getSubList(chunkSize,i,rects);
-            if(subList == null) {
+            List<? extends MBRectangle> subList = getSubList(chunkSize, i, rects);
+            if (subList == null) {
                 break;
             }
             tmpList.add(subList);
         }
         int t = 0;
-        for (List<? extends MBRectangle> rList: tmpList) {
-            rList = sortByAxis(rList,Axis.Y,true);
+        for (List<? extends MBRectangle> rList : tmpList) {
+            rList = sortByAxis(rList, Axis.Y, true);
             for (int i = 0; i < chunkPieces; i++) {
-                List<? extends MBRectangle> subList = getSubList(M(),i,rList);
-                if(subList == null) {
+                List<? extends MBRectangle> subList = getSubList(M(), i, rList);
+                if (subList == null) {
                     break;
                 }
-                if(rects.get(0) instanceof RTree.SubTree) {
+                if (rects.get(0) instanceof RTree.SubTree) {
                     subTreeList.add(new SubTree((Collection<? extends SubTree>) subList));
                 } else {
                     subTreeList.add(new Leaf((Collection<? extends R>) subList));
@@ -65,11 +65,11 @@ public class STRRTree<R extends MBRectangle> extends RStarTree<R>{
     }
 
     private List<? extends MBRectangle> getSubList(int chunkSize, int round, List<? extends MBRectangle> list) {
-        int fromIndex = Math.min(round * chunkSize, list.size()),toIndex = Math.min((round + 1) * chunkSize, list.size());
-        if(toIndex - fromIndex <= 0){
+        int fromIndex = Math.min(round * chunkSize, list.size()), toIndex = Math.min((round + 1) * chunkSize, list.size());
+        if (toIndex - fromIndex <= 0) {
             return null;
         }
-        return list.subList(fromIndex,toIndex);
+        return list.subList(fromIndex, toIndex);
     }
 
 }

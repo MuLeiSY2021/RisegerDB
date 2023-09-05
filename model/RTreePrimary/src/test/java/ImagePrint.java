@@ -23,10 +23,12 @@ public class ImagePrint {
     private static final int resolution = 2160;
 
     private static final Random random = new Random(0);
+    static int i = 1;
+    static HashMap<MBRectangle, Integer> hashMap = new HashMap<>();
 
     public static List<MBRectangle> generateRectangles(int size, int numRectangles) {
         double minSize = Math.sqrt(size) / 2;
-        double maxSize = Math.sqrt(size)*2;
+        double maxSize = Math.sqrt(size) * 2;
         List<MBRectangle> rectangles = new LinkedList<>();
 
 
@@ -36,7 +38,7 @@ public class ImagePrint {
             double r_width = random.nextDouble() * (maxSize - minSize) + minSize; // 随机生成矩形大小
             double r_height = random.nextDouble() * (maxSize - minSize) + minSize;
 
-            MBRectangle rect = new TestRectangle( x, y, (x + r_width), (y + r_height),0.5);
+            MBRectangle rect = new TestRectangle(x, y, (x + r_width), (y + r_height), 0.5);
 
             while (rect.intersects(rectangles)) {
                 x = x + 1; // 线性探测，尝试放置在下一个位置
@@ -56,7 +58,7 @@ public class ImagePrint {
         return rectangles;
     }
 
-    public static void toPNG(int size,String URL, String fileName, RTreeDao<MBRectangle> tree) throws IOException {
+    public static void toPNG(int size, String URL, String fileName, RTreeDao<MBRectangle> tree) throws IOException {
 //        double K = resolution /size <= 0 ? 1 : resolution / (double) size;
 ////        List<MBRectangle> tuples = tree.getAllNode4Test();
 //        //
@@ -80,15 +82,15 @@ public class ImagePrint {
 //        DisplayUtilities.display(image);
     }
 
-    public static void toPNG(int size,String URL, String fileName, Collection<? extends MBRectangle> rectangles) throws IOException {
-        double K = resolution /(double) size < 1 ? 1 : resolution / (double) size;
+    public static void toPNG(int size, String URL, String fileName, Collection<? extends MBRectangle> rectangles) throws IOException {
+        double K = resolution / (double) size < 1 ? 1 : resolution / (double) size;
         BufferedImage prevImage = new BufferedImage((int) (size * 1.2 * K), (int) (size * 1.2 * K), BufferedImage.TYPE_INT_RGB);
         MBFImage image = ImageUtilities.createMBFImage(prevImage, false);
         image.fill(new Float[]{255f, 255f, 255f});
         for (MBRectangle tuple : rectangles) {
-            drawRectangles(image, tuple, 2,K);
+            drawRectangles(image, tuple, 2, K);
         }
-        File f = new File(URL + "/" + fileName +".png");
+        File f = new File(URL + "/" + fileName + ".png");
         f.createNewFile();
 
         ImageUtilities.write(image, "PNG", f);
@@ -108,9 +110,6 @@ public class ImagePrint {
             }
         }
     }
-    static int i = 1;
-
-    static HashMap<MBRectangle,Integer> hashMap = new HashMap<>();
 
     private static void drawRectangles(MBFImage image, MBRectangle rectangles, int thickness, double K) {
         int minX = (int) ((rectangles.minX() - thickness * 5 + 50) * K);
@@ -126,13 +125,13 @@ public class ImagePrint {
         image.drawPolygon(polygon, (int) (4 * K), col);
         tl.setX(tl.getX() - 4);
         tl.setY(tl.getY() - 4);
-        if(!hashMap.containsKey(rectangles)) {
-            hashMap.put(rectangles,i);
+        if (!hashMap.containsKey(rectangles)) {
+            hashMap.put(rectangles, i);
             i++;
         }
 
-        String s = RTree.getStringBuilder(rectangles,hashMap);
-        image.drawText(s, tl, new GeneralFont("Monospaced", Font.PLAIN), (int)(14 * K), col);
+        String s = RTree.getStringBuilder(rectangles, hashMap);
+        image.drawText(s, tl, new GeneralFont("Monospaced", Font.PLAIN), (int) (14 * K), col);
     }
 
 }

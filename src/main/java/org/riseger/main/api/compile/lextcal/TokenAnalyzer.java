@@ -12,15 +12,11 @@ import java.util.regex.Pattern;
 
 public class TokenAnalyzer {
 
-    Pattern numberPattern = Pattern.compile(Config.NUMBER_PATTERN);
-
-    Pattern wordPattern = Pattern.compile(Config.WORD_PATTERN);
-
     private final Map<String, Integer> wordMap = new HashMap<>();
-
     private final Map<Double, Integer> doubleMap = new HashMap<>();
-
     private final Context context;
+    Pattern numberPattern = Pattern.compile(Config.NUMBER_PATTERN);
+    Pattern wordPattern = Pattern.compile(Config.WORD_PATTERN);
 
     public TokenAnalyzer(Context context) {
         this.context = context;

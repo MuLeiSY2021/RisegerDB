@@ -10,17 +10,11 @@ import java.util.concurrent.ConcurrentMap;
 
 public class FieldBuilder {
     private final MapDB map;
-
-    private String model;
-
     protected ParentModel parent = ParentModel.RECTANGLE;
-
-    private int loopSize = 0;
-
     protected ConcurrentMap<String, String> attributes = new ConcurrentHashMap<>();
-
     protected ConcurrentMap<Option, String> configs = new ConcurrentHashMap<>();
-
+    private String model;
+    private int loopSize = 0;
     private Element element;
 
     public FieldBuilder(MapDB map) {
@@ -28,7 +22,7 @@ public class FieldBuilder {
     }
 
     public Element build() {
-        this.element = new Element(this.parent,model, this.attributes, this.configs);
+        this.element = new Element(this.parent, model, this.attributes, this.configs);
         map.addElement(this.element);
         return this.element;
     }
