@@ -12,7 +12,6 @@ import org.riseger.protoctl.struct.config.Config;
 import org.riseger.utils.Utils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 public class FileSystemManagers {
@@ -37,7 +36,7 @@ public class FileSystemManagers {
                 }
             }
         }
-        return null;
+        return databases;
     }
 
     public Database_c getDatabase(File db_) throws Exception {
@@ -55,7 +54,9 @@ public class FileSystemManagers {
         mb.setDatabase(db);
         mb.setName(map_.getName().split("\\.")[0]);
         for (File submap_ : Objects.requireNonNull(map_.listFiles())) {
-            if (submap_.isDirectory() && submap_.getName().endsWith(Constant.SUBMAP_PREFIX)) {
+            if(submap_.isFile() && submap_.getName().endsWith(Constant.LAYER_PREFIX)) {
+                mb.setLayer(submap_);
+            }else if (submap_.isDirectory() && submap_.getName().endsWith(Constant.SUBMAP_PREFIX)) {
                 mb.addMap(getSubMap(submap_, db));
             } else if (submap_.getName().equals(Constant.CONFIG_FILE_NAME
                     + Constant.DOT_PREFIX

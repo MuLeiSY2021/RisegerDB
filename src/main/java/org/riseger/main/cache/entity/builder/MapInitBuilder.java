@@ -5,6 +5,7 @@ import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.entity.component.MapDB_c;
 import org.riseger.protoctl.struct.config.Config;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -31,5 +32,9 @@ public class MapInitBuilder implements MapBuilder {
 
     public void addMap(SubmapInitBuilder subMap) {
         submaps.add(subMap);
+    }
+
+    public void setLayer(File submap) {
+
     }
 }

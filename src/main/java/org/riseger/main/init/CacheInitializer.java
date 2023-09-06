@@ -18,7 +18,7 @@ public class CacheInitializer implements Initializer {
         CacheMaster.setINSTANCE(new CacheMaster());
         DatabaseManager dbm = CacheMaster.INSTANCE.getDatabaseManager();
         List<Database_c> databases = storageInitializer.initDatabases();
-        if( databases != null) {
+        if(databases != null) {
             for (Database_c database : databases) {
                 dbm.addDatabase(database);
             }

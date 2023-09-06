@@ -2,7 +2,6 @@ package pers.muleisy.rtree.othertree;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
-import io.netty.buffer.Unpooled;
 import org.apache.log4j.Logger;
 import pers.muleisy.rtree.RTreeDao;
 import pers.muleisy.rtree.rectangle.MBRectangle;
@@ -16,7 +15,9 @@ import java.util.*;
 public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
     protected final double threshold;
     private final int M;
+
     private final int m;
+
     protected SubTree root = new Leaf();
 
     public RTree(int nodeSize, double threshold) {
@@ -41,6 +42,15 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         return sb.toString();
     }
 
+    public ByteBuf serialize() throws IOException {
+        ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer();
+        buffer.writeInt(this.M);
+        buffer.writeDouble(threshold);
+        //添加root
+        root.serialize(buffer);
+        return buffer;
+    }
+
     public static RTree<?> deserializeStar(ByteBuf buffer) throws Exception {
         int M = buffer.readInt();
         double threshold = buffer.readDouble();
@@ -55,6 +65,11 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         RTree<?> tree = new STRRTree<>(M, threshold);
         tree.deserializeSubTree(buffer);
         return tree;
+    }
+
+    // Deserialize a SubTree object
+    public void deserializeSubTree(ByteBuf byteBuf) throws Exception {
+        this.root = new SubTree(byteBuf, null);
     }
 
     public List<R> getElements() {
@@ -382,19 +397,6 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         return deep;
     }
 
-    public ByteBuf serialize() throws IOException {
-        ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer();
-        buffer.writeInt(this.M);
-        buffer.writeDouble(threshold);
-        //添加root
-        buffer.writeBytes(root.serialize());
-        return buffer;
-    }
-
-    // Deserialize a SubTree object
-    public void deserializeSubTree(ByteBuf byteBuf) throws Exception {
-        this.root = new SubTree(byteBuf, null);
-    }
 
     protected class SubTree extends MBRectangle {
 
@@ -426,24 +428,25 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
             addAll(subTrees);
         }
 
-        public ByteBuf serialize() throws IOException {
-            ByteBuf byteBuf = Unpooled.buffer();
-            byteBuf.writeBytes(MBRectangle.serialize(this, byteBuf));
+        @Override
+        public void serialize(ByteBuf byteBuf) throws IOException {
+            super.serialize(byteBuf);
             byteBuf.writeInt(subTrees.size());
+            if(this.subTrees.size() == 0) {
+                return;
+            }
             if (Leaf.class.isInstance(this.subTrees.getFirst())) {
                 for (SubTree subTree : subTrees) {
                     Leaf leaf = (Leaf) subTree;
                     byteBuf.writeChar('l');
-                    byteBuf.writeBytes(leaf.serialize());
+                    leaf.serialize(byteBuf);
                 }
             } else {
                 for (SubTree subTree : subTrees) {
                     byteBuf.writeChar('s');
-                    byteBuf.writeBytes(MBRectangle.serialize(subTree, byteBuf));
-                    byteBuf.writeBytes(subTree.serialize());
+                    subTree.serialize(byteBuf);
                 }
             }
-            return byteBuf;
         }
 
         public LinkedList<SubTree> getSubTrees() {
@@ -589,9 +592,8 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         }
 
         // Serialize a Leaf object
-        public ByteBuf serialize() throws IOException {
-            ByteBuf byteBuf = Unpooled.buffer();
-            MBRectangle.serialize(this,byteBuf);
+        public void serialize(ByteBuf byteBuf) throws IOException {
+            super.serialize(byteBuf);
             byteBuf.writeInt(elements.size());
             byte[] bytes = RTree.this.getClass()
                     .getTypeParameters()[0].getTypeName()
@@ -603,7 +605,6 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
                 byteBuf.writeInt(bytes.length);
                 byteBuf.writeBytes(bytes);
             }
-            return byteBuf;
         }
 
         public LinkedList<R> getElements() {

@@ -23,13 +23,15 @@ public class MapPreloadBuilder implements MapBuilder {
 
     public MapDB_c build() {
         MapDB_c mapDB = new MapDB_c(null, nodeSize, threshold, map.getName(), database);
+        for (Element e : map.getElements()) {
+            mapDB.preloadElement(e);
+        }
+
         for (Submap submap : map.getSubmaps()) {
             mapDB.preloadSubmap(submap);
         }
 
-        for (Element e : map.getElements()) {
-            mapDB.preloadElement(e);
-        }
+
         return mapDB;
     }
 

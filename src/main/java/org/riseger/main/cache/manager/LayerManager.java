@@ -30,18 +30,18 @@ public class LayerManager {
 
     public void preloadSubmap(Submap submap, int index) {
         Layer_c layer;
-        String name = getLName(submap);
+        String name = getLName(submap,index);
         if (layerMap.containsKey(name)) {
             layer = layerMap.get(name);
         } else {
             layer = new Layer_c(name, this, parent.getNodeSize(), parent.getThreshold());
             layerMap.put(name, layer);
         }
-        layer.preloadSubmap(submap, index);
+        layer.preloadSubmap(submap, index + 1);
     }
 
-    public String getLName(Submap submap) {
-        return Constant.SUBMAP_PREFIX + "_" + submap.getScopePath();
+    public String getLName(Submap submap,int index) {
+        return Constant.SUBMAP_PREFIX + "_" + submap.getScopePath().split("\\.")[index];
     }
 
     public String getLName(Element e) {

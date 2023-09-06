@@ -87,7 +87,7 @@ public class PreloadFSM {
         return null;
     }
 
-    public void saveDatabase(Database_c database) {
+    public void saveDatabase(Database_c database) throws IOException {
         File root = new File(rootPath + "/data/databases");
         try {
             //创建数据库根目录
@@ -124,6 +124,7 @@ public class PreloadFSM {
 
         } catch (Exception e) {
             LOG.error(e);
+            throw e;
         }
     }
 
@@ -157,14 +158,24 @@ public class PreloadFSM {
         //创建Config文件
         createConfig(rootFile, map.getConfigs());
 
-        //创建Layer文件
+        //创建Layer文件夹
         for (Layer_c layer : map.getLayers().toList()) {
-            createLayer(rootFile, layer);
             if (layer.isSubMap()) {
+                rootFile = new File(rootFile.getPath() + "/" + layer.getName() + ".layer");
+                String res = createDir(rootFile);
+                if (res != null) {
+                    if (!res.isEmpty()) {
+                        LOG.error(res + "地图目录");
+                    } else {
+                        LOG.info("创建地图目录成功");
+                    }
+                }
                 List<MBRectangle_c> maps = layer.getElementManager().getRtreeKeyIndex().getElements();
                 for (MBRectangle mbr : maps) {
                     createSubmap((MapDB_c) mbr, rootFile);
                 }
+            } else {
+                createLayer(rootFile, layer);
             }
         }
     }

@@ -4,22 +4,17 @@ import lombok.Getter;
 import pers.muleisy.rtree.rectangle.MBRectangle;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentMap;
 
 @Getter
 public class MBRectangle_c extends MBRectangle {
 
-    private final List<Double> xKeySet = new LinkedList<>();
-
-    private final List<Double> yKeySet = new LinkedList<>();
-
     private Double[][] coordsSet;
 
     public MBRectangle_c(ConcurrentMap<String, String> map, double threshold) {
         super(threshold);
+        double minX = Double.MAX_VALUE,minY = Double.MAX_VALUE,maxX = -Double.MAX_VALUE,maxY = -Double.MAX_VALUE;
         if (map == null || map.isEmpty()) {
             return;
         }
@@ -29,6 +24,7 @@ public class MBRectangle_c extends MBRectangle {
             if (k.startsWith("KEY")) {
                 String[] keys = k.split("::");
                 Integer i = Integer.parseInt(keys[1]);
+                String x_y = keys[2];
                 Double[] coords;
 
                 if (!coordsSet.containsKey(i)) {
@@ -39,12 +35,14 @@ public class MBRectangle_c extends MBRectangle {
                 }
 
                 double v = super.truncateDecimal(Double.parseDouble(a.getValue()));
-                if (keys[1].equals("x")) {
-                    addX(v);
+                if (x_y.equals("x")) {
                     coords[0] = v;
-                } else if (keys[1].equals("y")) {
-                    addY(v);
+                    minX = Math.min(minX,v);
+                    maxX = Math.max(maxX,v);
+                } else if (x_y.equals("y")) {
                     coords[1] = v;
+                    minY = Math.min(minY,v);
+                    maxY = Math.max(maxX,v);
                 }
                 map.remove(k);
             }
@@ -53,25 +51,9 @@ public class MBRectangle_c extends MBRectangle {
         for (Map.Entry<Integer, Double[]> entry : coordsSet.entrySet()) {
             this.coordsSet[entry.getKey()] = entry.getValue();
         }
-    }
-
-    private void addX(double x) {
-        for (int i = 0; i < xKeySet.size(); i++) {
-            if (x < xKeySet.get(i)) {
-                xKeySet.add(i, x);
-                return;
-            }
-        }
-        xKeySet.add(x);
-    }
-
-    private void addY(double y) {
-        for (int i = 0; i < yKeySet.size(); i++) {
-            if (y < yKeySet.get(i)) {
-                yKeySet.add(i, y);
-                return;
-            }
-        }
-        yKeySet.add(y);
+        super.setMinX(minX);
+        super.setMinY(minY);
+        super.setMaxX(maxX);
+        super.setMaxY(maxY);
     }
 }

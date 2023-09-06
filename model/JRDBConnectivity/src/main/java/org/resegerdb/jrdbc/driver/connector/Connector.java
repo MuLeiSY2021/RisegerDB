@@ -31,15 +31,20 @@ public class Connector {
 
     public static Connector connect(String host, int port) throws InterruptedException {
         Connector connector = new Connector(new NioEventLoopGroup());
-        Bootstrap bootstrap = new Bootstrap();
-        EventLoopGroup workerGroup = connector.getEventLoopGroup();
-        bootstrap.group(workerGroup)
-                .option(ChannelOption.SO_KEEPALIVE, true)
-                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
-                .option(ChannelOption.TCP_NODELAY, true)
-                .handler(new ClientHandlerManager(connector))
-                .channel(NioSocketChannel.class);
-        connector.channel = bootstrap.connect(host, port).sync().channel();
+        try {
+            Bootstrap bootstrap = new Bootstrap();
+            EventLoopGroup workerGroup = connector.getEventLoopGroup();
+            bootstrap.group(workerGroup)
+                    .option(ChannelOption.SO_KEEPALIVE, true)
+                    .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
+                    .option(ChannelOption.TCP_NODELAY, true)
+                    .handler(new ClientHandlerManager(connector))
+                    .channel(NioSocketChannel.class);
+            connector.channel = bootstrap.connect(host, port).sync().channel();
+        } catch (Exception e) {
+            connector.close();
+            throw e;
+        }
         return connector;
     }
 

@@ -6,6 +6,8 @@ import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.manager.CacheMaster;
 import org.riseger.protoctl.struct.entity.Database;
 
+import java.io.IOException;
+
 public class PreloadDBCMJob implements Job {
     private final Database database;
 
@@ -18,6 +20,10 @@ public class PreloadDBCMJob implements Job {
 
     @Override
     public void run() {
-        revocable.setE(CacheMaster.INSTANCE.getDatabaseManager().preloadDatabase(database));
+        try {
+            revocable.setE(CacheMaster.INSTANCE.getDatabaseManager().preloadDatabase(database));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

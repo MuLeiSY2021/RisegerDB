@@ -37,13 +37,14 @@ public class Layer_c {
         submapPreloadBuilder.setName(submap.getName());
         submapPreloadBuilder.setDatabase(parent.getParent().getDatabase());
         MapDB_c map = submapPreloadBuilder.build();
-        elementManager.addElement(map);
         for (Element e : submap.getElements()) {
             map.preloadElement(e);
         }
         for (Submap submap_child : submap.getSubmaps()) {
             map.preloadSubmap(submap_child, index);
         }
+        elementManager.addElement(map);
+
     }
 
     public void preloadElement(Element e) {

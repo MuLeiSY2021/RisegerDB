@@ -41,9 +41,8 @@ public class ElementManager {
         parent.expand(e_c);
     }
 
-    public void addElement(MBRectangle_c e) {
+    public void addElement(MapDB_c e) {
         rtreeKeyIndex.insert(e);
-        parent.expand(e);
     }
 
     public void updateIndex(MBRectangle_c mbr) {

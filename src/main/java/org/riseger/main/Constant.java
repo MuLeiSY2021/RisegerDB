@@ -11,6 +11,8 @@ public class Constant {
 
     public static final String DATABASE_PREFIX = "db";
 
+    public static final String LAYER_PREFIX = "layer";
+
     public static final String CONFIG_FILE_NAME = "config";
 
     public static final String JSON_PREFIX = "json";

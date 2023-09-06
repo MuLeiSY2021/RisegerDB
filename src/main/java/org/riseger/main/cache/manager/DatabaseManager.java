@@ -7,6 +7,7 @@ import org.riseger.protoctl.struct.entity.Database;
 import org.riseger.protoctl.struct.entity.MapDB;
 import org.riseger.protoctl.struct.entity.Model;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class DatabaseManager {
 
     //TODO:把handler实现化
 
-    public Database_c preloadDatabase(Database database) {
+    public Database_c preloadDatabase(Database database) throws IOException {
         Database_c db = prelaodDatabase(database);
 
         //添加Config

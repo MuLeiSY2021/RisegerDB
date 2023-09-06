@@ -2,6 +2,7 @@ package pers.muleisy.rtree.rectangle;
 
 import io.netty.buffer.ByteBuf;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -30,12 +31,11 @@ public abstract class MBRectangle implements Rectangle {
         truncateAll();
     }
 
-    public static ByteBuf serialize(MBRectangle mbr, ByteBuf byteBuf) {
-        byteBuf.writeDouble(mbr.minX);
-        byteBuf.writeDouble(mbr.maxX);
-        byteBuf.writeDouble(mbr.maxY);
-        byteBuf.writeDouble(mbr.minY);
-        return byteBuf;
+    public void serialize(ByteBuf byteBuf) throws IOException {
+        byteBuf.writeDouble(this.minX);
+        byteBuf.writeDouble(this.maxX);
+        byteBuf.writeDouble(this.maxY);
+        byteBuf.writeDouble(this.minY);
     }
 
     // Deserialize a Leaf object
