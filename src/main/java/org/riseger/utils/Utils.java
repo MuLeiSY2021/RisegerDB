@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import org.apache.log4j.Logger;
+import org.riseger.main.Constant;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -11,6 +13,8 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class Utils {
+
+    private static final Logger LOG = Logger.getLogger(Utils.class);
 
     private static final Gson gson = new Gson();
 
@@ -59,12 +63,26 @@ public class Utils {
         return gson.fromJson(text, parameterized.getType());
     }
 
-    public static ByteBuf fileToByteBuf(File file) throws IOException {
-        FileInputStream in = new FileInputStream(file);
-        ByteBuf buffer = Unpooled.buffer(in.available());
-        while (in.available() > 0) {
-            buffer.writeByte(in.read());
+    public static ByteBuf fileToByteBuf(File file) {
+        try {
+            FileInputStream in = new FileInputStream(file);
+            ByteBuf buffer = Unpooled.buffer(in.available());
+            while (in.available() > 0) {
+                buffer.writeByte(in.read());
+            }
+            return buffer;
+        } catch (Exception e) {
+            LOG.error(e.getStackTrace());
         }
-        return buffer;
+        return null;
     }
+
+    public static String getNameFromFile(File file) {
+        return file.getName().split("\\" + Constant.DOT_PREFIX)[0];
+    }
+
+    public static String getFIleName(String name, String sytle) {
+        return name + "." + sytle;
+    }
+
 }

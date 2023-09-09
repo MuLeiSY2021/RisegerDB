@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.storage.FileSystemManagers;
 
-import java.io.IOException;
 import java.util.List;
 
 public class StorageInitializer implements Initializer {
@@ -21,12 +20,13 @@ public class StorageInitializer implements Initializer {
         FileSystemManagers.DEFAULT = new FileSystemManagers(rootPath);
     }
 
-    public List<Database_c> initDatabases() throws Exception {
+    public List<Database_c> initDatabases() {
         try {
             return FileSystemManagers.DEFAULT.initDatabases();
-        }catch (Exception e) {
+        } catch (Exception e) {
             LOG.error(e);
-            throw e;
+            e.printStackTrace();
         }
+        return null;
     }
 }

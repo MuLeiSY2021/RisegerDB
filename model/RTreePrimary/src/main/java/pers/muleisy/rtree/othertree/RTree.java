@@ -8,7 +8,6 @@ import pers.muleisy.rtree.rectangle.MBRectangle;
 import pers.muleisy.rtree.rectangle.Rectangle;
 import pers.muleisy.rtree.utils.JsonSerializer;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -20,10 +19,20 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
 
     protected SubTree root = new Leaf();
 
-    public RTree(int nodeSize, double threshold) {
+    private String saveClassName;
+
+    public RTree(int nodeSize, double threshold, Class<? extends R> clazz) {
         this.M = nodeSize;
         this.m = (int) (M * 0.4);
         this.threshold = threshold;
+        this.saveClassName = clazz.getName();
+    }
+
+    public RTree(int nodeSize, double threshold, String clazz) {
+        this.M = nodeSize;
+        this.m = (int) (M * 0.4);
+        this.threshold = threshold;
+        this.saveClassName = clazz;
     }
 
     public static String getStringBuilder(MBRectangle rectangles, HashMap<MBRectangle, Integer> hashMap) {
@@ -42,19 +51,14 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         return sb.toString();
     }
 
-    public ByteBuf serialize() throws IOException {
-        ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer();
-        buffer.writeInt(this.M);
-        buffer.writeDouble(threshold);
-        //添加root
-        root.serialize(buffer);
-        return buffer;
-    }
-
     public static RTree<?> deserializeStar(ByteBuf buffer) throws Exception {
         int M = buffer.readInt();
         double threshold = buffer.readDouble();
-        RTree<?> tree = new RStarTree<>(M, threshold);
+        int size = buffer.readInt();
+        byte[] bytes = new byte[size];
+        buffer.readBytes(bytes, 0, size);
+        String saveClassName = new String(bytes, StandardCharsets.UTF_8);
+        RTree<?> tree = new RStarTree<>(M, threshold, saveClassName);
         tree.deserializeSubTree(buffer);
         return tree;
     }
@@ -62,14 +66,38 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
     public static RTree<?> deserializeSTR(ByteBuf buffer) throws Exception {
         int M = buffer.readInt();
         double threshold = buffer.readDouble();
-        RTree<?> tree = new STRRTree<>(M, threshold);
+        RTree<?> tree = new STRRTree<>(M, threshold, null);
         tree.deserializeSubTree(buffer);
         return tree;
     }
 
+    public ByteBuf serialize() throws Throwable {
+        ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer();
+        buffer.writeInt(this.M);
+        buffer.writeDouble(threshold);
+        byte[] bytes = saveClassName.getBytes(StandardCharsets.UTF_8);
+        buffer.writeInt(bytes.length);
+        buffer.writeBytes(bytes);
+        //添加root
+        if (Leaf.class.isInstance(root)) {
+            buffer.writeChar('l');
+            Leaf root_ = (Leaf) root;
+            root_.serialize(buffer);
+        } else {
+            buffer.writeChar('s');
+            root.serialize(buffer);
+        }
+        return buffer;
+    }
+
     // Deserialize a SubTree object
     public void deserializeSubTree(ByteBuf byteBuf) throws Exception {
-        this.root = new SubTree(byteBuf, null);
+        char c = byteBuf.readChar();
+        if (c == 'r') {
+            this.root = new SubTree(byteBuf, null);
+        } else {
+            this.root = new Leaf(byteBuf, null);
+        }
     }
 
     public List<R> getElements() {
@@ -428,11 +456,10 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
             addAll(subTrees);
         }
 
-        @Override
-        public void serialize(ByteBuf byteBuf) throws IOException {
-            super.serialize(byteBuf);
+        public void serialize(ByteBuf byteBuf) throws Throwable {
+            MBRectangle.serialize(byteBuf, this);
             byteBuf.writeInt(subTrees.size());
-            if(this.subTrees.size() == 0) {
+            if (this.subTrees.size() == 0) {
                 return;
             }
             if (Leaf.class.isInstance(this.subTrees.getFirst())) {
@@ -563,7 +590,6 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         private final LinkedList<R> elements = new LinkedList<>();
 
 
-
         public Leaf() {
         }
 
@@ -571,19 +597,19 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
             this.elements.addAll(elements);
             super.adjust(elements);
         }
+
         public Leaf(ByteBuf byteBuf, SubTree parent) throws Exception {
             super();
             super.parent = parent;
             super.deserialize(byteBuf);
             int i = byteBuf.readInt();
             try {
-                byte[] bytes = new byte[byteBuf.readInt()];
-                byteBuf.readBytes(bytes);
-                Class<? extends R> clazz = (Class<? extends R>) Class.forName(new String(bytes,StandardCharsets.UTF_8));
+                Class<? extends R> clazz = (Class<? extends R>)
+                        Class.forName(saveClassName);
                 for (int j = 0; j < i; j++) {
-                    bytes = new byte[byteBuf.readInt()];
+                    byte[] bytes = new byte[byteBuf.readInt()];
                     byteBuf.readBytes(bytes);
-                    this.elements.add(JsonSerializer.deserialize(bytes,clazz));
+                    this.elements.add(JsonSerializer.deserialize(bytes, clazz));
                 }
             } catch (Exception e) {
                 Logger.getLogger(this.getClass()).error(e.getMessage());
@@ -592,16 +618,11 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         }
 
         // Serialize a Leaf object
-        public void serialize(ByteBuf byteBuf) throws IOException {
-            super.serialize(byteBuf);
+        public void serialize(ByteBuf byteBuf) throws Throwable {
+            MBRectangle.serialize(byteBuf, this);
             byteBuf.writeInt(elements.size());
-            byte[] bytes = RTree.this.getClass()
-                    .getTypeParameters()[0].getTypeName()
-                    .getBytes(StandardCharsets.UTF_8);
-            byteBuf.writeInt(bytes.length);
-            byteBuf.writeBytes(bytes);
             for (R r : elements) {
-                bytes = JsonSerializer.serialize(r);
+                byte[] bytes = JsonSerializer.serialize(r);
                 byteBuf.writeInt(bytes.length);
                 byteBuf.writeBytes(bytes);
             }

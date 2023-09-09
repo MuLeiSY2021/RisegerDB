@@ -1,6 +1,7 @@
 package org.riseger.main.cache.manager;
 
 import lombok.Data;
+import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.Element_c;
 import org.riseger.main.cache.entity.component.Layer_c;
 import org.riseger.main.cache.entity.component.MBRectangle_c;
@@ -15,8 +16,8 @@ import java.io.File;
 @Data
 public class ElementManager {
 
+    private static final Logger LOG = Logger.getLogger(ElementManager.class);
     private final RTree<MBRectangle_c> rtreeKeyIndex;
-
     private final Layer_c parent;
 
     public ElementManager(RTree<MBRectangle_c> rtreeKeyIndex, Layer_c parent) {
@@ -25,11 +26,17 @@ public class ElementManager {
     }
 
     public static ElementManager buildRStartElementManager(int nodeSize, double threshold, Layer_c layerC) {
-        return new ElementManager(new RStarTree<>(nodeSize, threshold), layerC);
+        return new ElementManager(new RStarTree<>(nodeSize, threshold, MBRectangle_c.class), layerC);
     }
 
-    public static ElementManager deserializeRStartElementManager(Layer_c layerC, File layer_) throws Exception {
-        return new ElementManager((RTree<MBRectangle_c>) RTree.deserializeStar(Utils.fileToByteBuf(layer_)), layerC);
+    public static ElementManager deserializeRStartElementManager(Layer_c layerC, File layer_) {
+        try {
+            return new ElementManager((RTree<MBRectangle_c>) RTree.deserializeStar(Utils.fileToByteBuf(layer_)), layerC);
+        } catch (Exception e) {
+            LOG.error(e);
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void addElement(Element e) {

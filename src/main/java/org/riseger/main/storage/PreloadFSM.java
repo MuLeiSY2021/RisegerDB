@@ -1,4 +1,4 @@
-package org.riseger.main.storage.filesystem;
+package org.riseger.main.storage;
 
 import io.netty.buffer.ByteBuf;
 import org.apache.log4j.Logger;
@@ -35,12 +35,18 @@ public class PreloadFSM {
         Utils.writeToFile(layerToFile(layer), layerFile.getPath());
     }
 
-    private static byte[] layerToFile(Layer_c layer) throws IOException {
-        RTree<MBRectangle_c> r_t = layer.getElementManager().getRtreeKeyIndex();
-        ByteBuf buffer = r_t.serialize();
-        byte[] data = new byte[buffer.readableBytes()];
-        buffer.readBytes(data);
-        return data;
+    private static byte[] layerToFile(Layer_c layer) {
+        try {
+            RTree<MBRectangle_c> r_t = layer.getElementManager().getRtreeKeyIndex();
+            ByteBuf buffer = r_t.serialize();
+            byte[] data = new byte[buffer.readableBytes()];
+            buffer.readBytes(data);
+            return data;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            LOG.error(e);
+        }
+        return null;
     }
 
     private static void createConfig(File parent, Map<String, Config> configs) {

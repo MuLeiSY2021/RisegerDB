@@ -8,8 +8,8 @@ import java.util.List;
 
 public class STRRTree<R extends MBRectangle> extends RStarTree<R> {
 
-    public STRRTree(int nodeSize, double threshold) {
-        super(nodeSize, threshold);
+    public STRRTree(int nodeSize, double threshold, Class<? extends R> clazz) {
+        super(nodeSize, threshold, clazz);
     }
 
     @Override

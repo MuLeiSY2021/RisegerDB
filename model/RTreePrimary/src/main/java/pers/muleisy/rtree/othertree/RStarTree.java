@@ -14,8 +14,12 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
     //-----------------ReInsert------------------//
     int p = (int) (M * 0.3);
 
-    public RStarTree(int nodeSize, double threshold) {
-        super(nodeSize, threshold);
+    public RStarTree(int nodeSize, double threshold, Class<? extends R> clazz) {
+        super(nodeSize, threshold, clazz);
+    }
+
+    public RStarTree(int nodeSize, double threshold, String clazz) {
+        super(nodeSize, threshold, clazz);
     }
 
     @Override

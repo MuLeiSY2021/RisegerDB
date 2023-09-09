@@ -1,21 +1,31 @@
 package org.riseger.main.cache.entity.component;
 
+import com.google.gson.reflect.TypeToken;
 import lombok.Getter;
 import lombok.Setter;
 import org.riseger.main.Constant;
+import org.riseger.main.cache.entity.builder.SubmapInitBuilder;
 import org.riseger.main.cache.entity.builder.SubmapPreloadBuilder;
 import org.riseger.main.cache.manager.ElementManager;
 import org.riseger.main.cache.manager.LayerManager;
+import org.riseger.protoctl.message.JsonSerializer;
+import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
+import org.riseger.utils.Utils;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 @Getter
 @Setter
 public class Layer_c {
     private final LayerManager parent;
+
     private final ElementManager elementManager;
+
     private String name;
 
     public Layer_c(String name, LayerManager parent, int nodeSize, double threshold) {
@@ -24,7 +34,7 @@ public class Layer_c {
         this.elementManager = ElementManager.buildRStartElementManager(nodeSize, threshold, this);
     }
 
-    public Layer_c(String name, LayerManager parent, File layer_) throws Exception {
+    public Layer_c(String name, LayerManager parent, File layer_) {
         this.name = name;
         this.parent = parent;
         this.elementManager = ElementManager.deserializeRStartElementManager(this, layer_);
@@ -65,5 +75,24 @@ public class Layer_c {
 
     public void addSubmap(MapDB_c submap) {
         elementManager.addElement(submap);
+    }
+
+    public void initSubMap(File map_) {
+        SubmapInitBuilder submapInitBuilder = new SubmapInitBuilder();
+        submapInitBuilder.setDatabase(parent.getParent().getDatabase());
+        submapInitBuilder.setName(Utils.getNameFromFile(map_));
+
+        for (File smp_ : Objects.requireNonNull(map_.listFiles())) {
+            if (smp_.getName().endsWith(Constant.LAYER_PREFIX)) {
+                submapInitBuilder.addLayer(smp_);
+            } else if (smp_.getName().equals(Constant.CONFIG_FILE_NAME
+                    + Constant.DOT_PREFIX
+                    + Constant.JSON_PREFIX)) {
+                Map<String, Config> configs = (Map<String, Config>) JsonSerializer.deserialize(Utils.getText(smp_),
+                        TypeToken.getParameterized(HashMap.class, String.class, Config.class));
+                submapInitBuilder.setConfigs(configs);
+            }
+        }
+        elementManager.addElement(submapInitBuilder.build());
     }
 }

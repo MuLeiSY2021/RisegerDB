@@ -1,8 +1,6 @@
 package org.riseger.main.cache.entity.component;
 
 import lombok.Getter;
-import org.riseger.main.Constant;
-import org.riseger.main.cache.entity.builder.SubmapInitBuilder;
 import org.riseger.main.cache.manager.ElementManager;
 import org.riseger.main.cache.manager.LayerManager;
 import org.riseger.protoctl.struct.config.Config;
@@ -23,7 +21,7 @@ public class MapDB_c extends MBRectangle_c {
 
     private transient final LayerManager layers;
     private transient final Database_c database;
-    private transient ElementManager elementManager;
+    private transient ElementManager smp_parent;
 
     public MapDB_c(ConcurrentMap<String, String> map, int nodeSize, double threshold, String name, Database_c database) {
         super(map, threshold);
@@ -48,7 +46,7 @@ public class MapDB_c extends MBRectangle_c {
         this.layers = new LayerManager(this);
         this.database = database;
         this.configs.putAll(configs);
-        this.elementManager = em;
+        this.smp_parent = em;
     }
 
     public MapDB_c(String name, Layer_c layer, Database_c database, ElementManager em) {
@@ -58,7 +56,7 @@ public class MapDB_c extends MBRectangle_c {
         this.database = database;
         configs.put("node_size", new Config("node_size", String.valueOf(layer.getParent().getParent().getNodeSize())));
         configs.put("threshold", new Config("threshold", String.valueOf(layer.getParent().getParent().getThreshold())));
-        this.elementManager = em;
+        this.smp_parent = em;
     }
 
     public void preloadElement(Element e) {
@@ -74,12 +72,12 @@ public class MapDB_c extends MBRectangle_c {
     }
 
     public void updateBoundary(MBRectangle_c mbr) {
-        if (elementManager != null) {
-            elementManager.remove(this);
+        if (smp_parent != null) {
+            smp_parent.remove(this);
         }
         super.expand(mbr);
-        if (elementManager != null) {
-            elementManager.addElement(this);
+        if (smp_parent != null) {
+            smp_parent.addElement(this);
         }
     }
 
@@ -91,22 +89,15 @@ public class MapDB_c extends MBRectangle_c {
         return configs.get("threshold").getDoubleValue();
     }
 
-    public String toFIleName() {
-        return name + "." + super.toFileString();
-    }
-
-    public void addAll(List<SubmapInitBuilder> submaps) throws Exception {
-        layers.addAllSubmap(submaps);
-    }
-
-    public void addAllLayer(List<File> layers_) throws Exception {
-        for (File layer_ : layers_) {
-            String name = layer_.getName().split("\\" + Constant.DOT_PREFIX)[0];
-            Layer_c lm = layers.get(name);
-            if (lm == null) {
-                layers.deserialize(layer_, name);
-            }
+    public void initAllSmp(List<File> submaps) {
+        for (File submap_ : submaps) {
+            layers.initSmpLayer(submap_);
         }
     }
 
+    public void initAllMd(List<File> mdLayer) {
+        for (File md_ : mdLayer) {
+            layers.initMdLayer(md_);
+        }
+    }
 }

@@ -38,7 +38,7 @@
                   ]
                 },
                 {
-                  "scopePath": "province_scope/area_scope",
+                  "scopePath": "province_scope.area_scope",
                   "name": "Jing'an",
                   "submaps": [],
                   "elements": [

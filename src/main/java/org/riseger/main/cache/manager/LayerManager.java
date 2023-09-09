@@ -2,16 +2,15 @@ package org.riseger.main.cache.manager;
 
 import lombok.Data;
 import org.riseger.main.Constant;
-import org.riseger.main.cache.entity.builder.SubmapInitBuilder;
 import org.riseger.main.cache.entity.component.Layer_c;
 import org.riseger.main.cache.entity.component.MBRectangle_c;
 import org.riseger.main.cache.entity.component.MapDB_c;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
+import org.riseger.utils.Utils;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Data
@@ -30,7 +29,7 @@ public class LayerManager {
 
     public void preloadSubmap(Submap submap, int index) {
         Layer_c layer;
-        String name = getLName(submap,index);
+        String name = getLName(submap, index);
         if (layerMap.containsKey(name)) {
             layer = layerMap.get(name);
         } else {
@@ -40,7 +39,7 @@ public class LayerManager {
         layer.preloadSubmap(submap, index + 1);
     }
 
-    public String getLName(Submap submap,int index) {
+    public String getLName(Submap submap, int index) {
         return Constant.SUBMAP_PREFIX + "_" + submap.getScopePath().split("\\.")[index];
     }
 
@@ -71,26 +70,21 @@ public class LayerManager {
         return this.layerMap.values().toArray(new Layer_c[0]);
     }
 
-    public void addAllSubmap(List<SubmapInitBuilder> submaps) throws Exception {
-        for (SubmapInitBuilder submap : submaps) {
-            Layer_c layer;
-            String name = submap.getName();
-            if (layerMap.containsKey(name)) {
-                layer = layerMap.get(name);
-            } else {
-                layer = new Layer_c(name, this, parent.getNodeSize(), parent.getThreshold());
-                layerMap.put(name, layer);
-            }
-            submap.setEm(layer.getElementManager());
-            layer.addSubmap(submap.build());
-        }
-    }
-
     public Layer_c get(String s) {
         return this.layerMap.get(s);
     }
 
-    public void deserialize(File layer_, String name) throws Exception {
+    public void initSmpLayer(File layer_) {
+        String name = Utils.getNameFromFile(layer_);
+        Layer_c layer = new Layer_c(name, this, parent.getNodeSize(), parent.getThreshold());
+        this.layerMap.put(name, layer);
+        for (File smp : layer_.listFiles()) {
+            layer.initSubMap(smp);
+        }
+    }
+
+    public void initMdLayer(File layer_) {
+        String name = Utils.getNameFromFile(layer_);
         Layer_c layer = new Layer_c(name, this, layer_);
         layerMap.put(name, layer);
     }

@@ -1,6 +1,5 @@
 package org.riseger.main.cache.entity.component;
 
-import com.google.gson.Gson;
 import lombok.Data;
 import org.riseger.main.cache.manager.MapDBManager;
 import org.riseger.main.cache.manager.ModelManager;
@@ -42,16 +41,8 @@ public class Database_c {
                 map);
     }
 
-    public boolean isLoading() {
-        return this.status == Status.LOADING;
-    }
-
     public void active() {
         this.status = Status.ACTIVE;
-    }
-
-    public String configToFile() {
-        return new Gson().toJson(configs);
     }
 
     public void initMap(MapDB_c map) {

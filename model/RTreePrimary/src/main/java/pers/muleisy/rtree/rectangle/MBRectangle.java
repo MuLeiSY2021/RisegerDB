@@ -2,17 +2,16 @@ package pers.muleisy.rtree.rectangle;
 
 import io.netty.buffer.ByteBuf;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
 public abstract class MBRectangle implements Rectangle {
     protected Double threshold;
-    private Double minX = (Double.MAX_VALUE - 100);
-    private Double maxX = -(Double.MAX_VALUE - 100);
-    private Double minY = (Double.MAX_VALUE - 100);
-    private Double maxY = -(Double.MAX_VALUE - 100);
+    private Double minX = (Double.MAX_VALUE);
+    private Double maxX = -(Double.MAX_VALUE);
+    private Double minY = (Double.MAX_VALUE);
+    private Double maxY = -(Double.MAX_VALUE);
 
     public MBRectangle(Double threshold) {
         this.threshold = threshold;
@@ -31,11 +30,11 @@ public abstract class MBRectangle implements Rectangle {
         truncateAll();
     }
 
-    public void serialize(ByteBuf byteBuf) throws IOException {
-        byteBuf.writeDouble(this.minX);
-        byteBuf.writeDouble(this.maxX);
-        byteBuf.writeDouble(this.maxY);
-        byteBuf.writeDouble(this.minY);
+    public static void serialize(ByteBuf byteBuf, MBRectangle rectangle) throws Throwable {
+        byteBuf.writeDouble(rectangle.minX);
+        byteBuf.writeDouble(rectangle.maxX);
+        byteBuf.writeDouble(rectangle.maxY);
+        byteBuf.writeDouble(rectangle.minY);
     }
 
     // Deserialize a Leaf object

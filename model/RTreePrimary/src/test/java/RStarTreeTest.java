@@ -10,7 +10,7 @@ public class RStarTreeTest {
     public static void main(String[] args) throws IOException {
         int size = 1600;
 
-        RTreeDao<MBRectangle> tree = new RStarTree(4, 0.5);
+        RTreeDao<MBRectangle> tree = new RStarTree(4, 0.5, MBRectangle.class);
         List<MBRectangle> rectangles = ImagePrint.generateRectangles(size, 20);
         for (MBRectangle rectangle : rectangles) {
             tree.insert(rectangle);

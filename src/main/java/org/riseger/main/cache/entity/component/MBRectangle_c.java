@@ -14,7 +14,7 @@ public class MBRectangle_c extends MBRectangle {
 
     public MBRectangle_c(ConcurrentMap<String, String> map, double threshold) {
         super(threshold);
-        double minX = Double.MAX_VALUE,minY = Double.MAX_VALUE,maxX = -Double.MAX_VALUE,maxY = -Double.MAX_VALUE;
+        double minX = Double.MAX_VALUE, minY = Double.MAX_VALUE, maxX = -Double.MAX_VALUE, maxY = -Double.MAX_VALUE;
         if (map == null || map.isEmpty()) {
             return;
         }
@@ -37,12 +37,12 @@ public class MBRectangle_c extends MBRectangle {
                 double v = super.truncateDecimal(Double.parseDouble(a.getValue()));
                 if (x_y.equals("x")) {
                     coords[0] = v;
-                    minX = Math.min(minX,v);
-                    maxX = Math.max(maxX,v);
+                    minX = Math.min(minX, v);
+                    maxX = Math.max(maxX, v);
                 } else if (x_y.equals("y")) {
                     coords[1] = v;
-                    minY = Math.min(minY,v);
-                    maxY = Math.max(maxX,v);
+                    minY = Math.min(minY, v);
+                    maxY = Math.max(maxX, v);
                 }
                 map.remove(k);
             }

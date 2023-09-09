@@ -27,8 +27,8 @@ INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundH
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@3076f173
 DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
 INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
 INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
 INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
@@ -42,12 +42,12 @@ INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundH
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@3888f26e
 DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Model文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
 INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
 INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
 INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
@@ -74,11 +74,11 @@ INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundH
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@626ca6e5
 DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Model文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
 INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
 INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
 INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
@@ -92,30 +92,30 @@ INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundH
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@1a5dbb43
 DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Model文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
 INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
 INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
 INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
@@ -135,27 +135,530 @@ INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundH
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@1a5dbb43
 DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Model文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
-INFO pool-5-thread-1 org.riseger.main.storage.filesystem.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - readerIndex(54) + length(65536) exceeds writerIndex(317): UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 54, widx: 317, cap: 317)
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@1d9b7cce
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - readerIndex(54) + length(65536) exceeds writerIndex(315): UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 54, widx: 315, cap: 315)
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@4d9e68d0
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - readerIndex(54) + length(65536) exceeds writerIndex(316): UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 54, widx: 316, cap: 316)
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@42e99e4a
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - readerIndex(54) + length(65536) exceeds writerIndex(315): UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 54, widx: 315, cap: 315)
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@14dd9eb7
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - readerIndex(54) + length(65536) exceeds writerIndex(315): UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 54, widx: 315, cap: 315)
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@6c80d78a
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - readerIndex(54) + length(65536) exceeds writerIndex(315): UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 54, widx: 315, cap: 315)
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@62150f9e
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - readerIndex(54) + length(65536) exceeds writerIndex(317): UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 54, widx: 317, cap: 317)
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@6dc17b83
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - readerIndex(54) + length(65536) exceeds writerIndex(318): UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 54, widx: 318, cap: 318)
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@5e0826e7
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - readerIndex(54) + length(65536) exceeds writerIndex(318): UnpooledByteBufAllocator$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 54, widx: 318, cap: 318)
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@32eff876
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-0 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: {}PRELOAD_DB
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {}org.riseger.protoctl.message.PreloadDatabaseRequest@70dcf96d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {}org.riseger.protoctl.message.PreloadDatabaseRequest@70dcf96d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@19b60a50
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@42e99e4a
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@14dd9eb7
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@52e6fdee
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@6c80d78a
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@1a451d4d
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@7fa98a66
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@32eff876
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@8dbdac1
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@6e20b53a
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@5e0826e7
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@32eff876
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@8dbdac1
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@6e20b53a
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@3ce1e309
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@6aba2b86
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@3bb9a3ff
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@661972b0
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf -  
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@5af3afd9
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-0 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: {}PRELOAD_DB
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {}org.riseger.protoctl.message.PreloadDatabaseRequest@70dcf96d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {}org.riseger.protoctl.message.PreloadDatabaseRequest@70dcf96d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@19b60a50
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-0 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: {}PRELOAD_DB
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {}org.riseger.protoctl.message.PreloadDatabaseRequest@741c4161
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {}org.riseger.protoctl.message.PreloadDatabaseRequest@741c4161
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@556d54a1
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-0 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-0 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: {}PRELOAD_DB
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {}org.riseger.protoctl.message.PreloadDatabaseRequest@5eb8a55d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {}org.riseger.protoctl.message.PreloadDatabaseRequest@5eb8a55d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@7ffcb6f3
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-0 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: {}PRELOAD_DB
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {}org.riseger.protoctl.message.PreloadDatabaseRequest@741c4161
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {}org.riseger.protoctl.message.PreloadDatabaseRequest@741c4161
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@556d54a1
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+ERROR pool-5-thread-1 org.riseger.main.storage.PreloadFSM - java.lang.StackOverflowError
+ERROR pool-5-thread-1 org.riseger.main.storage.PreloadFSM - java.lang.NullPointerException
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-0 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: {}PRELOAD_DB
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {}org.riseger.protoctl.message.PreloadDatabaseRequest@79a6b61d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {}org.riseger.protoctl.message.PreloadDatabaseRequest@79a6b61d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@330c45aa
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@42e99e4a
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@14dd9eb7
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@52e6fdee
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@6c80d78a
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@1a451d4d
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@7fa98a66
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@32eff876
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@8dbdac1
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@6e20b53a
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@42e99e4a
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@14dd9eb7
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@52e6fdee
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@6c80d78a
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@1a451d4d
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@7fa98a66
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@32eff876
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@8dbdac1
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - [Ljava.lang.StackTraceElement;@6e20b53a
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+ERROR main pers.muleisy.rtree.othertree.RTree$Leaf - R
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.ClassNotFoundException: R
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-0 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: {}PRELOAD_DB
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {}org.riseger.protoctl.message.PreloadDatabaseRequest@37a72fbc
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {}org.riseger.protoctl.message.PreloadDatabaseRequest@37a72fbc
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@3144e234
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+ERROR main org.riseger.main.cache.manager.ElementManager - java.lang.NullPointerException
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-0 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: {}PRELOAD_DB
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {}org.riseger.protoctl.message.PreloadDatabaseRequest@70dcf96d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {}org.riseger.protoctl.message.PreloadDatabaseRequest@70dcf96d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@19b60a50
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+ERROR pool-5-thread-1 org.riseger.main.storage.PreloadFSM - java.lang.NullPointerException
+ERROR pool-5-thread-1 org.riseger.main.storage.PreloadFSM - java.lang.NullPointerException
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-0 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: {}PRELOAD_DB
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {}org.riseger.protoctl.message.PreloadDatabaseRequest@79a6b61d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {}org.riseger.protoctl.message.PreloadDatabaseRequest@79a6b61d
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {}org.riseger.protoctl.response.PreloadDatabaseResponse@330c45aa
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: {}PRELOAD_DB_RESPONSE
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO Thread-1 org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests

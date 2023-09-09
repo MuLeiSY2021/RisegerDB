@@ -2,8 +2,6 @@ package org.riseger.main.init;
 
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
-
 public class MainBootstrap {
     private static Logger LOG;
 
