@@ -10,6 +10,7 @@ import lombok.Getter;
 import org.resegerdb.jrdbc.driver.handler.ClientHandlerManager;
 import org.resegerdb.jrdbc.driver.result.Result;
 import org.resegerdb.jrdbc.driver.session.PreloadSession;
+import org.resegerdb.jrdbc.driver.session.SearchSession;
 
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.locks.Condition;
@@ -78,5 +79,9 @@ public class Connector {
         } finally {
             lock.unlock();
         }
+    }
+
+    public SearchSession search() {
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package org.example;
+package org.test.preload;
 
 import org.resegerdb.jrdbc.driver.connector.Connector;
 import org.resegerdb.jrdbc.driver.result.Result;
