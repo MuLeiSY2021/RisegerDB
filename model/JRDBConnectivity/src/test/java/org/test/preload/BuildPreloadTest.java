@@ -3,8 +3,7 @@ package org.test.preload;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.resegerdb.jrdbc.command.preload.builder.*;
-import org.resegerdb.jrdbc.utils.PreloadBuilder;
+import org.reseger.jrdbc.utils.*;
 import org.riseger.protoctl.struct.entity.ParentModel;
 import org.riseger.protoctl.struct.entity.Type;
 

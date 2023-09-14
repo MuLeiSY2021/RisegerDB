@@ -8,7 +8,7 @@ import org.riseger.main.cache.entity.builder.SubmapInitBuilder;
 import org.riseger.main.cache.entity.builder.SubmapPreloadBuilder;
 import org.riseger.main.cache.manager.ElementManager;
 import org.riseger.main.cache.manager.LayerManager;
-import org.riseger.protoctl.message.JsonSerializer;
+import org.riseger.protoctl.serializer.JsonSerializer;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
@@ -73,10 +73,6 @@ public class Layer_c {
         return name.startsWith(Constant.SUBMAP_PREFIX);
     }
 
-    public void addSubmap(MapDB_c submap) {
-        elementManager.addElement(submap);
-    }
-
     public void initSubMap(File map_) {
         SubmapInitBuilder submapInitBuilder = new SubmapInitBuilder();
         submapInitBuilder.setDatabase(parent.getParent().getDatabase());
@@ -95,4 +91,5 @@ public class Layer_c {
         }
         elementManager.addElement(submapInitBuilder.build());
     }
+
 }

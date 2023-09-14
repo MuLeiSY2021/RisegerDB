@@ -8,7 +8,7 @@ import org.riseger.main.cache.entity.component.Layer_c;
 import org.riseger.main.cache.entity.component.MBRectangle_c;
 import org.riseger.main.cache.entity.component.MapDB_c;
 import org.riseger.main.cache.manager.ModelManager;
-import org.riseger.protoctl.message.JsonSerializer;
+import org.riseger.protoctl.serializer.JsonSerializer;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.utils.Utils;
 import pers.muleisy.rtree.othertree.RTree;

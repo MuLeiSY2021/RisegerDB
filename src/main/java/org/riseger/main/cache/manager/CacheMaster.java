@@ -1,6 +1,7 @@
 package org.riseger.main.cache.manager;
 
 import lombok.Data;
+import org.riseger.main.cache.entity.component.Database_c;
 
 @Data
 public class CacheMaster {
@@ -15,5 +16,9 @@ public class CacheMaster {
     public static void setINSTANCE(CacheMaster INSTANCE) {
         CacheMaster.INSTANCE = INSTANCE;
 
+    }
+
+    public Database_c getDatabase(String database) {
+        return databaseManager.getDatabase(database);
     }
 }

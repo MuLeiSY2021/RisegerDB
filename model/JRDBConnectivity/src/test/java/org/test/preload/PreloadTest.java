@@ -1,8 +1,8 @@
 package org.test.preload;
 
-import org.resegerdb.jrdbc.driver.connector.Connector;
-import org.resegerdb.jrdbc.driver.result.Result;
-import org.resegerdb.jrdbc.driver.session.PreloadSession;
+import org.reseger.jrdbc.driver.connector.Connector;
+import org.reseger.jrdbc.driver.result.Result;
+import org.reseger.jrdbc.driver.session.PreloadSession;
 
 public class PreloadTest {
     public static void main(String[] args) throws Exception {

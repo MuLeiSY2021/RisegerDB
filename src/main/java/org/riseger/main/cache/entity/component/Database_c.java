@@ -13,15 +13,15 @@ import java.util.Map;
 
 @Data
 public class Database_c {
-    String name;
+    private String name;
 
-    Status status = Status.LOADING;
+    private Status status = Status.LOADING;
 
-    MapDBManager maps = new MapDBManager(this);
+    private MapDBManager maps = new MapDBManager(this);
 
-    Map<String, Config> configs = new HashMap<>();
+    private Map<String, Config> configs = new HashMap<>();
 
-    ModelManager models = new ModelManager(this);
+    private ModelManager models = new ModelManager(this);
 
     public Database_c(String name) {
         this.name = name;
@@ -49,4 +49,7 @@ public class Database_c {
         maps.initMap(map);
     }
 
+    public MapDB_c getMap(String map) {
+        return this.maps.getMap(map);
+    }
 }

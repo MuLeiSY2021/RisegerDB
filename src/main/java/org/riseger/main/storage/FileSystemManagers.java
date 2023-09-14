@@ -5,7 +5,7 @@ import org.riseger.main.Constant;
 import org.riseger.main.cache.entity.builder.MapInitBuilder;
 import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.entity.component.MapDB_c;
-import org.riseger.protoctl.message.JsonSerializer;
+import org.riseger.protoctl.serializer.JsonSerializer;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.utils.Utils;
 

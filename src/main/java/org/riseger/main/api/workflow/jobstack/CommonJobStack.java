@@ -1,6 +1,6 @@
 package org.riseger.main.api.workflow.jobstack;
 
-import org.riseger.main.api.workflow.job.Job;
+import org.riseger.protoctl.job.Job;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 

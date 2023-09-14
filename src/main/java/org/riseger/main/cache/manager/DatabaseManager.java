@@ -22,8 +22,8 @@ public class DatabaseManager {
     //TODO:把handler实现化
 
     public Database_c preloadDatabase(Database database) throws IOException {
-        Database_c db = prelaodDatabase(database);
-
+        Database_c db = new Database_c(database.getName());
+        this.databases.put(database.getName(), db);
         //添加Config
         for (Map.Entry<Config, String> entry : database.getConfigs().entrySet()) {
             db.addConfig(entry.getKey(), entry.getValue());
@@ -44,13 +44,12 @@ public class DatabaseManager {
         return db;
     }
 
-    public Database_c prelaodDatabase(Database database) {
-        Database_c res = new Database_c(database.getName());
-        this.databases.put(database.getName(), res);
-        return res;
-    }
 
     public void addDatabase(Database_c database) {
         this.databases.put(database.getName(), database);
+    }
+
+    public Database_c getDatabase(String database) {
+        return this.databases.get(database);
     }
 }

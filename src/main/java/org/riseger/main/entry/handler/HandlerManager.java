@@ -14,6 +14,7 @@ public class HandlerManager extends ChannelInitializer<SocketChannel> {
     static {
         handlers.add(new ProtocolCodec());
         handlers.add(new PreloadMessageInboundHandler());
+        handlers.add(new SearchMessageInboundHandler());
     }
 
     @Override

@@ -100,4 +100,8 @@ public class MapDB_c extends MBRectangle_c {
             layers.initMdLayer(md_);
         }
     }
+
+    public Layer_c getLayer(String s) {
+        return this.layers.get(s);
+    }
 }

@@ -13,11 +13,16 @@ public class ApiHandlerManager {
 
     private CommonWorkFlow maintainWorkflow = new CommonWorkFlow();
 
-    private CommonWorkFlow selectWorkflow = new CommonWorkFlow();
+    private CommonWorkFlow searchWorkflow = new CommonWorkFlow();
 
     private Compiler compiler;
 
-    public void setPreloadRequest(Message preloadRequest) throws IOException {
-        preloadWorkflow.push(preloadRequest.warp());
+    public void setPreloadRequest(Message message) throws IOException {
+        preloadWorkflow.push(message.warp());
     }
+
+    public void setSearchRequest(Message message) throws IOException {
+        searchWorkflow.push(message.warp());
+    }
+
 }
