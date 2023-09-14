@@ -26,21 +26,21 @@ public abstract class FUNCTION implements FUNCTIONBLE {
     private static final Logger LOG = Logger.getLogger(FUNCTION.class);
 
     static {
-        FUNCTION.getId(ATTRIBUTE.class);
-        FUNCTION.getId(COORD.class);
-        FUNCTION.getId(RECT.class);
-        FUNCTION.getId(DISTANCE.class);
-        FUNCTION.getId(IN.class);
-        FUNCTION.getId(OUT.class);
-        FUNCTION.getId(AND.class);
-        FUNCTION.getId(NOT.class);
-        FUNCTION.getId(OR.class);
-        FUNCTION.getId(BIG.class);
-        FUNCTION.getId(BIG_EQUAL.class);
-        FUNCTION.getId(EQUAL.class);
-        FUNCTION.getId(NUMBER.class);
-        FUNCTION.getId(SMALL.class);
-        FUNCTION.getId(SMALL_EQUAL.class);
+        FUNCTION.set(ATTRIBUTE.class);
+        FUNCTION.set(COORD.class);
+        FUNCTION.set(RECT.class);
+        FUNCTION.set(DISTANCE.class);
+        FUNCTION.set(IN.class);
+        FUNCTION.set(OUT.class);
+        FUNCTION.set(AND.class);
+        FUNCTION.set(NOT.class);
+        FUNCTION.set(OR.class);
+        FUNCTION.set(BIG.class);
+        FUNCTION.set(BIG_EQUAL.class);
+        FUNCTION.set(EQUAL.class);
+        FUNCTION.set(NUMBER.class);
+        FUNCTION.set(SMALL.class);
+        FUNCTION.set(SMALL_EQUAL.class);
     }
 
     private final int functionId;
@@ -49,11 +49,11 @@ public abstract class FUNCTION implements FUNCTIONBLE {
         this.functionId = classMap.get(clazz);
     }
 
-    public static int getId(Class<? extends FUNCTIONBLE> clazz) {
-        return getId(clazz.getName());
+    public static void set(Class<? extends FUNCTIONBLE> clazz) {
+        set(clazz.getName());
     }
 
-    public static int getId(String className) {
+    public static void set(String className) {
         int tmpid = className.hashCode();
         while (FUNCTION.idMap.containsKey(tmpid)) {
             tmpid++;
@@ -66,7 +66,6 @@ public abstract class FUNCTION implements FUNCTIONBLE {
             LOG.error(e);
             e.printStackTrace();
         }
-        return tmpid;
     }
 
     @Override
@@ -77,4 +76,6 @@ public abstract class FUNCTION implements FUNCTIONBLE {
     public abstract List<FUNCTION> getFunctions();
 
     public abstract Integer getWeight();
+
+
 }

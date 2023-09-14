@@ -2,7 +2,6 @@ package org.riseger.main.cache.manager;
 
 import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.entity.component.Model_c;
-import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Model;
 
 import java.util.HashMap;
@@ -24,8 +23,4 @@ public class ModelManager {
         return models.get(name);
     }
 
-    //TODO: 准备写个适配查询接口
-    public boolean isSuiteModel(Element element) {
-        return false;
-    }
 }

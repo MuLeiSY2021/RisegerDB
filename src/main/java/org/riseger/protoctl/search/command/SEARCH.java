@@ -1,10 +1,13 @@
 package org.riseger.protoctl.search.command;
 
+import lombok.Getter;
+
 import java.util.LinkedList;
 import java.util.List;
 
+@Getter
 public class SEARCH extends SQL {
-    private List<String> content = new LinkedList<>();
+    private final List<String> content = new LinkedList<>();
 
     private WHERE where;
 

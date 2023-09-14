@@ -37,4 +37,8 @@ public class AND extends FUNCTION implements BOOL_FUNCTIONBLE {
         return ConstantWeight.AND_WEIGHT(function1.getWeight(), function2.getWeight());
     }
 
+    @Override
+    public boolean canSkip() {
+        return false;
+    }
 }

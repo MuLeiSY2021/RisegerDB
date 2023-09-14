@@ -37,4 +37,9 @@ public class SMALL_EQUAL extends FUNCTION implements BOOL_FUNCTIONBLE {
     public Integer getWeight() {
         return ConstantWeight.SMALL_EQUAL_WEIGHT;
     }
+
+    @Override
+    public boolean canSkip() {
+        return true;
+    }
 }

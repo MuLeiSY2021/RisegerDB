@@ -1,33 +1,43 @@
 package org.riseger.main.search;
 
-import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.main.search.function.Function_c;
 
 public class SQLTreeIterator {
+    private final boolean isSub;
+
     public SQLTree.SQLNode tail;
 
     public int index;
 
-    public SQLTreeIterator(SQLTree.SQLNode root) {
-        while (root.getSqlList().size() != 0) {
-            root = root.getSqlList().get(0);
-        }
+    public SQLTreeIterator(SQLTree.SQLNode root, boolean isSub) {
+        this.isSub = isSub;
         this.tail = root;
         this.index = 0;
+
+        while (tail.getSqlList().size() != 0) {
+            for (int i = 0; i < tail.getSqlList().size(); i++) {
+                if (!isSub || !tail.getSqlList().get(i).isCanSkip()) {
+                    tail = tail.getSqlList().get(i);
+                    index = i;
+                }
+            }
+        }
     }
 
-    public FUNCTION next() {
-        FUNCTION r = tail.getFunction();
-        if (tail.getParent() != null) {
-            while (tail.getParent().getSqlList().size() > index) {
+    public Function_c next() {
+        Function_c result = tail.getFunction();
+        index++;
+
+        while (tail.getParent().getSqlList().size() <= index || (tail.getSqlList().get(index).isCanSkip() && isSub)) {
+            if (tail.getParent().getSqlList().size() <= index) {
                 tail = tail.getParent();
                 index = 0;
+            } else {
+                index++;
             }
-            index++;
-            tail = tail.getParent().getSqlList().get(index);
-        } else {
-            tail = null;
         }
-        return r;
+        tail = tail.getParent().getSqlList().get(index);
+        return result;
     }
 
     public boolean hasNext() {

@@ -32,4 +32,9 @@ public class NOT extends FUNCTION implements BOOL_FUNCTIONBLE {
     public Integer getWeight() {
         return ConstantWeight.NOT_WEIGHT(function.getWeight());
     }
+
+    @Override
+    public boolean canSkip() {
+        return false;
+    }
 }

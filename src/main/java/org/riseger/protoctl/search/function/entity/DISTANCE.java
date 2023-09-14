@@ -20,7 +20,6 @@ public class DISTANCE extends FUNCTION implements NUMBER_FUNCTIONBLE {
     }
 
     public NUMBER_FUNCTIONBLE invoke(COORD_FUNCTIONBLE coord1, COORD_FUNCTIONBLE coord2) {
-        //TODO:注意这里要标注为不同的函数定义数
         this.coord1 = coord1;
         this.coord2 = coord2;
         return this;
@@ -37,5 +36,10 @@ public class DISTANCE extends FUNCTION implements NUMBER_FUNCTIONBLE {
     @Override
     public Integer getWeight() {
         return ConstantWeight.DISTANCE_WEIGHT;
+    }
+
+    @Override
+    public boolean canSkip() {
+        return false;
     }
 }

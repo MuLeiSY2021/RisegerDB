@@ -38,4 +38,9 @@ public class BIG_EQUAL extends FUNCTION implements BOOL_FUNCTIONBLE {
     public Integer getWeight() {
         return ConstantWeight.BIG_EQUAL_WEIGHT;
     }
+
+    @Override
+    public boolean canSkip() {
+        return true;
+    }
 }

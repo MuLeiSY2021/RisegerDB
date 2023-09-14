@@ -30,4 +30,9 @@ public class ATTRIBUTE extends FUNCTION implements UNIVERSAL_FUNTIONBLE {
     public Integer getWeight() {
         return ConstantWeight.ATTRIBUTE_WEIGHT;
     }
+
+    @Override
+    public boolean canSkip() {
+        return false;
+    }
 }

@@ -37,4 +37,9 @@ public class BIG extends FUNCTION implements BOOL_FUNCTIONBLE {
     public Integer getWeight() {
         return ConstantWeight.BIG_WEIGHT;
     }
+
+    @Override
+    public boolean canSkip() {
+        return true;
+    }
 }

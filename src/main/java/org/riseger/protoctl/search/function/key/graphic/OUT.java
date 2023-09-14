@@ -35,5 +35,8 @@ public class OUT extends FUNCTION implements BOOL_FUNCTIONBLE {
         return ConstantWeight.OUT_WEIGHT;
     }
 
-
+    @Override
+    public boolean canSkip() {
+        return false;
+    }
 }

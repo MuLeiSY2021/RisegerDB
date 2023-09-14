@@ -1,6 +1,6 @@
 package org.riseger.main.cache.manager;
 
-import org.riseger.main.api.workflow.revoke.revocable;
+import org.riseger.main.api.workflow.revoke.Revocable;
 import org.riseger.main.api.workflow.workflow.CommonWorkFlow;
 import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.entity.component.Model_c;
@@ -14,7 +14,7 @@ import org.riseger.protoctl.struct.entity.Type;
 import java.util.Map;
 
 public class Taskmaster implements DAO {
-    private CommonWorkFlow workFlow = new CommonWorkFlow();
+    private final CommonWorkFlow workFlow = new CommonWorkFlow();
 
     @Override
     public Database_c createDatabase(String name, Map<Config, String> configs) {
@@ -23,7 +23,7 @@ public class Taskmaster implements DAO {
     }
 
     @Override
-    public void preloadDatabase(Database database, revocable revocable) {
+    public void preloadDatabase(Database database, Revocable<?> revocable) {
         workFlow.push(new PreloadDBCMRequest(database, revocable));
     }
 

@@ -10,4 +10,7 @@ public interface FUNCTIONBLE {
     List<FUNCTION> getFunctions();
 
     Integer getWeight();
+
+    boolean canSkip();
+
 }

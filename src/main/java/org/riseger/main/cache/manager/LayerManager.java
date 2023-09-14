@@ -12,6 +12,7 @@ import org.riseger.utils.Utils;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Data
 public class LayerManager {
@@ -47,6 +48,14 @@ public class LayerManager {
         return Constant.MODEL_PREFIX + "_" + e.getModelName();
     }
 
+    public String getElementName(String name) {
+        return Constant.MODEL_PREFIX + "_" + name;
+    }
+
+    public String getSubmapName(String name) {
+        return Constant.SUBMAP_PREFIX + "_" + name;
+    }
+
     public void addElement(Element e) {
         Layer_c layer;
         String name = getLName(e);
@@ -70,15 +79,19 @@ public class LayerManager {
         return this.layerMap.values().toArray(new Layer_c[0]);
     }
 
-    public Layer_c get(String s) {
-        return this.layerMap.get(s);
+    public Layer_c getSubmap(String s) {
+        return this.layerMap.get(getSubmapName(s));
+    }
+
+    public Layer_c getElement(String s) {
+        return this.layerMap.get(getElementName(s));
     }
 
     public void initSmpLayer(File layer_) {
         String name = Utils.getNameFromFile(layer_);
         Layer_c layer = new Layer_c(name, this, parent.getNodeSize(), parent.getThreshold());
         this.layerMap.put(name, layer);
-        for (File smp : layer_.listFiles()) {
+        for (File smp : Objects.requireNonNull(layer_.listFiles())) {
             layer.initSubMap(smp);
         }
     }

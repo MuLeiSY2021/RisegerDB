@@ -1,102 +1,195 @@
 package org.riseger.protoctl.job;
 
 import lombok.Data;
-import org.riseger.main.api.workflow.revoke.revocable;
-import org.riseger.main.cache.entity.component.Database_c;
-import org.riseger.main.cache.entity.component.Layer_c;
-import org.riseger.main.cache.entity.component.MapDB_c;
+import org.apache.log4j.Logger;
+import org.riseger.main.cache.entity.component.*;
 import org.riseger.main.cache.manager.CacheMaster;
+import org.riseger.main.cache.manager.ElementManager;
+import org.riseger.main.entry.handler.TransponderHandler;
 import org.riseger.main.search.SQLTree;
 import org.riseger.main.search.SQLTreeIterator;
+import org.riseger.main.search.function.Function_c;
+import org.riseger.protoctl.message.SearchMessage;
 import org.riseger.protoctl.search.command.SEARCH;
 import org.riseger.protoctl.search.command.USE;
 import org.riseger.protoctl.search.command.WHERE;
-import org.riseger.protoctl.search.function.FUNCTION;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-public class SearchJob extends revocable<USE> implements Job {
+public class SearchJob implements Job {
+    private static final Logger LOG = Logger.getLogger(SearchJob.class);
+
     private final USE sql;
+
+    private final TransponderHandler<SearchMessage, List<Element_c>> transponder;
+
     public Database_c database;
-    public MapDB_c map;
+
+    public List<MapDB_c> maps = new LinkedList<>();
+
     public String scope;
+
     public List<String> scopeRoute;
+
     public SQLTree tree;
+
     private boolean inScope = false;
+
     private int level = 0;
+
     private List<SearchSet> searchSets = new LinkedList<>();
 
-    public SearchJob(USE sql) {
+    public SearchJob(USE sql, TransponderHandler<SearchMessage, List<Element_c>> transponder) {
         this.sql = sql;
+        this.transponder = transponder;
     }
 
     @Override
     public void run() {
-        //TODO: 查询handler
         preprocessUse(sql);
-        preprocessSearch(sql.search());
-        preprocessWhere(sql.search().where());
-        process();
+        preprocessSearch(sql.getSearch());
+        preprocessWhere(sql.getSearch().getWhere());
+        List<Element_c> result = process();
+        transponder.setE(result);
     }
 
-    private void process() {
-        if (inScope) {
-            for (SearchSet set : searchSets) {
-                Layer_c layer = map.getLayer(set.getName());
-                where(layer);
+    private List<Element_c> process() {
+        List<Element_c> result = new LinkedList<>();
+        if (!inScope) {
+            List<MapDB_c> tmps = new LinkedList<>();
+            for (MapDB_c map : maps) {
+                try {
+                    while (!inScope) {
+                        if (level > scopeRoute.size()) {
+                            inScope = true;
+                        }
+                        Layer_c layer = map.getSubmapLayer(scopeRoute.get(level));
+                        tmps.addAll(whereScope(layer.getElementManager()));
+                        level++;
+                    }
+                } catch (NullPointerException e) {
+                    LOG.error(e);
+                    e.printStackTrace();
+                }
             }
+            this.maps = tmps;
         } else {
-            Layer_c layer = map.getLayer(scopeRoute.get(level));
-            this.map = whereScope(layer);
+            for (MapDB_c map : maps) {
+                try {
+                    for (SearchSet set : searchSets) {
+                        Layer_c layer = map.getElementLayer(set.getName());
+                        result.addAll(whereElement(layer.getElementManager()));
+                    }
+                } catch (NullPointerException e) {
+                    LOG.error(e);
+                    e.printStackTrace();
+                }
+            }
         }
+        return result;
     }
 
-    private MapDB_c whereScope(Layer_c layer) {
-        SQLTreeIterator iterator = tree.iterator();
-        FUNCTION function = iterator.next();
-        //TODO: 返回子图查询结果
+    private List<MapDB_c> whereScope(ElementManager elementManager) {
+        SQLTreeIterator iterator = tree.submapIterator();
+        List<MapDB_c> maps = new LinkedList<>();
+        while (iterator.hasNext()) {
+            Function_c function = iterator.next();
+            if (maps.isEmpty()) {
+                List<MBRectangle_c> result = function.getResult(elementManager);
+                for (MBRectangle_c mbr : result) {
+                    if (!(result instanceof MapDB_c)) {
+                        LOG.error("奇怪的子图查询时错误");
+                    } else {
+                        maps.add((MapDB_c) mbr);
+                    }
+                }
+            } else {
+                List<MapDB_c> result = new LinkedList<>();
 
-        return null;
+                for (MapDB_c mb : maps) {
+                    if (function.isResult(mb)) {
+                        result.add(mb);
+                    }
+                }
+                maps = result;
+            }
+            iterator.next();
+        }
+
+        return maps;
     }
 
-    private void where(Layer_c layer) {
-        SQLTreeIterator iterator = tree.iterator();
-        FUNCTION function = iterator.next();
-        //TODO: 返回查询结果
+    private List<Element_c> whereElement(ElementManager elementManager) {
+        SQLTreeIterator iterator = tree.submapIterator();
+        List<Element_c> maps = new LinkedList<>();
+        while (iterator.hasNext()) {
+            Function_c function = iterator.next();
+            if (maps.isEmpty()) {
+                List<MBRectangle_c> result = function.getResult(elementManager);
+                for (MBRectangle_c mbr : result) {
+                    if (!(result instanceof Element_c)) {
+                        LOG.error("奇怪的元素查询时错误");
+                    } else {
+                        maps.add((Element_c) mbr);
+                    }
+                }
+            } else {
+                List<Element_c> result = new LinkedList<>();
 
+                for (Element_c mb : maps) {
+                    if (function.isResult(mb)) {
+                        result.add(mb);
+                    }
+                }
+                maps = result;
+            }
+            iterator.next();
+        }
+
+        return maps;
     }
 
     private void preprocessUse(USE use) {
         this.database = CacheMaster.INSTANCE.getDatabase(use.getDatabase());
-        this.map = database.getMap(use.getMap());
+        this.maps.add(database.getMap(use.getMap()));
         this.scopeRoute = new LinkedList<>();
         this.scopeRoute.addAll(Arrays.asList(use.getScope().split("\\.")));
     }
 
     private void preprocessSearch(SEARCH search) {
-        //TODO:生成查询集合
+        this.searchSets = new LinkedList<>();
+        Map<String, SearchSet> searchSetMap = new HashMap<>();
+        for (String list : search.getContent()) {
+            String[] sets = list.split("\\.");
+            SearchSet searchSet;
+            if (searchSetMap.containsKey(sets[0])) {
+                searchSet = searchSetMap.get(sets[0]);
+            } else {
+                searchSet = new SearchSet(sets);
+                searchSets.add(searchSet);
+                searchSetMap.put(sets[0], searchSet);
+            }
+            searchSet.add(sets);
+        }
     }
 
     private void preprocessWhere(WHERE where) {
         this.tree = new SQLTree(where);
     }
 
-    @Override
-    public USE getE() {
-        return sql;
-    }
-
-    @Override
-    public void setE(USE sql) {
-        throw new UnsupportedOperationException();
-    }
-
     @Data
     private static class SearchSet {
         String name;
 
-        List<String> child = new LinkedList<>();
+        List<String[]> child = new LinkedList<>();
+
+        public SearchSet(String[] sets) {
+            name = sets[0];
+            child.add(Arrays.copyOfRange(sets, 1, sets.length));
+        }
+
+        public void add(String[] sets) {
+            child.add(Arrays.copyOfRange(sets, 1, sets.length));
+        }
     }
 }

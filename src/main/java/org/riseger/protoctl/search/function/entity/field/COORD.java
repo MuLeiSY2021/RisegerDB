@@ -33,4 +33,9 @@ public class COORD extends FUNCTION implements COORD_FUNCTIONBLE {
     public Integer getWeight() {
         return ConstantWeight.COORD_WEIGHT;
     }
+
+    @Override
+    public boolean canSkip() {
+        return false;
+    }
 }

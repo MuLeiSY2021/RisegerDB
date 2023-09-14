@@ -19,8 +19,6 @@ public class DatabaseManager {
         this.databases = new HashMap<>();
     }
 
-    //TODO:把handler实现化
-
     public Database_c preloadDatabase(Database database) throws IOException {
         Database_c db = new Database_c(database.getName());
         this.databases.put(database.getName(), db);

@@ -38,4 +38,9 @@ public class EQUAL extends FUNCTION implements BOOL_FUNCTIONBLE {
     public Integer getWeight() {
         return ConstantWeight.EQUAL_WEIGHT;
     }
+
+    @Override
+    public boolean canSkip() {
+        return true;
+    }
 }

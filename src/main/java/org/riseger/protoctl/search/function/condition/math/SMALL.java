@@ -38,4 +38,9 @@ public class SMALL extends FUNCTION implements BOOL_FUNCTIONBLE {
     public Integer getWeight() {
         return ConstantWeight.SMALL_WEIGHT;
     }
+
+    @Override
+    public boolean canSkip() {
+        return true;
+    }
 }

@@ -101,7 +101,11 @@ public class MapDB_c extends MBRectangle_c {
         }
     }
 
-    public Layer_c getLayer(String s) {
-        return this.layers.get(s);
+    public Layer_c getSubmapLayer(String s) {
+        return this.layers.getSubmap(s);
+    }
+
+    public Layer_c getElementLayer(String s) {
+        return this.layers.getElement(s);
     }
 }

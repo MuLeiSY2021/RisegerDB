@@ -22,7 +22,6 @@ public class RECT extends FUNCTION implements RECTANGLE_FUNCTIONBLE {
     }
 
     public RECTANGLE_FUNCTIONBLE invoke(COORD_FUNCTIONBLE coord, NUMBER_FUNCTIONBLE len) {
-        //TODO:注意这里要标注为不同的函数定义数
         this.coord = coord;
         this.len = len;
         return this;
@@ -39,5 +38,10 @@ public class RECT extends FUNCTION implements RECTANGLE_FUNCTIONBLE {
     @Override
     public Integer getWeight() {
         return ConstantWeight.RECTANGLE_WEIGHT;
+    }
+
+    @Override
+    public boolean canSkip() {
+        return false;
     }
 }

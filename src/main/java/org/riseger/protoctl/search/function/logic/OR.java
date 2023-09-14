@@ -36,4 +36,9 @@ public class OR extends FUNCTION implements BOOL_FUNCTIONBLE {
     public Integer getWeight() {
         return ConstantWeight.OR_WEIGHT(function1.getWeight(), function2.getWeight());
     }
+
+    @Override
+    public boolean canSkip() {
+        return false;
+    }
 }

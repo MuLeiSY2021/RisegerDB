@@ -17,7 +17,6 @@ public class NUMBER extends FUNCTION implements NUMBER_FUNCTIONBLE {
 
     public NUMBER_FUNCTIONBLE invoke(Number number) {
         this.number = number;
-        //TODO: 数字无法反序列化，需要自己写类型转换判定
         return this;
     }
 
@@ -29,5 +28,10 @@ public class NUMBER extends FUNCTION implements NUMBER_FUNCTIONBLE {
     @Override
     public Integer getWeight() {
         return ConstantWeight.NUMBER_WEIGHT;
+    }
+
+    @Override
+    public boolean canSkip() {
+        return false;
     }
 }

@@ -70,6 +70,7 @@ public class Utils {
             while (in.available() > 0) {
                 buffer.writeByte(in.read());
             }
+            in.close();
             return buffer;
         } catch (Exception e) {
             LOG.error(e.getStackTrace());
@@ -81,8 +82,8 @@ public class Utils {
         return file.getName().split("\\" + Constant.DOT_PREFIX)[0];
     }
 
-    public static String getFIleName(String name, String sytle) {
-        return name + "." + sytle;
+    public static String getFIleName(String name, String style) {
+        return name + "." + style;
     }
 
 }

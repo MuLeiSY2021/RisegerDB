@@ -11,8 +11,4 @@ public class WHERE extends SQL {
         this.condition = function;
         return this;
     }
-
-    public void warp() {
-
-    }
 }

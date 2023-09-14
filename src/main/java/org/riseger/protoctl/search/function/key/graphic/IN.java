@@ -35,5 +35,8 @@ public class IN extends FUNCTION implements BOOL_FUNCTIONBLE {
         return ConstantWeight.IN_WEIGHT;
     }
 
-
+    @Override
+    public boolean canSkip() {
+        return false;
+    }
 }

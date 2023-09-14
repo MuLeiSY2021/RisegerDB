@@ -4,24 +4,22 @@ import org.riseger.main.api.compile.Compiler;
 import org.riseger.main.api.workflow.workflow.CommonWorkFlow;
 import org.riseger.protoctl.message.Message;
 
-import java.io.IOException;
-
 public class ApiHandlerManager {
     public static ApiHandlerManager INSTANCE;
 
-    private CommonWorkFlow preloadWorkflow = new CommonWorkFlow();
+    private final CommonWorkFlow preloadWorkflow = new CommonWorkFlow();
 
-    private CommonWorkFlow maintainWorkflow = new CommonWorkFlow();
+    private final CommonWorkFlow maintainWorkflow = new CommonWorkFlow();
 
-    private CommonWorkFlow searchWorkflow = new CommonWorkFlow();
+    private final CommonWorkFlow searchWorkflow = new CommonWorkFlow();
 
     private Compiler compiler;
 
-    public void setPreloadRequest(Message message) throws IOException {
+    public void setPreloadRequest(Message message) throws Exception {
         preloadWorkflow.push(message.warp());
     }
 
-    public void setSearchRequest(Message message) throws IOException {
+    public void setSearchRequest(Message message) throws Exception {
         searchWorkflow.push(message.warp());
     }
 

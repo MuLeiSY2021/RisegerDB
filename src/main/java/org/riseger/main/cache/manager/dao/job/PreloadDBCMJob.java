@@ -1,6 +1,6 @@
 package org.riseger.main.cache.manager.dao.job;
 
-import org.riseger.main.api.workflow.revoke.revocable;
+import org.riseger.main.api.workflow.revoke.Revocable;
 import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.manager.CacheMaster;
 import org.riseger.protoctl.job.Job;
@@ -11,9 +11,9 @@ import java.io.IOException;
 public class PreloadDBCMJob implements Job {
     private final Database database;
 
-    private final revocable<Database_c> revocable;
+    private final Revocable<Database_c> revocable;
 
-    public PreloadDBCMJob(Database database, revocable<Database_c> revocable) {
+    public PreloadDBCMJob(Database database, Revocable<Database_c> revocable) {
         this.database = database;
         this.revocable = revocable;
     }

@@ -1,6 +1,6 @@
 package org.riseger.main.cache.manager.dao;
 
-import org.riseger.main.api.workflow.revoke.revocable;
+import org.riseger.main.api.workflow.revoke.Revocable;
 import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.entity.component.Model_c;
 import org.riseger.protoctl.struct.config.Config;
@@ -13,7 +13,7 @@ import java.util.Map;
 public interface DAO {
     Database_c createDatabase(String name, Map<Config, String> configs);
 
-    void preloadDatabase(Database database, revocable preloadJob);
+    void preloadDatabase(Database database, Revocable<?> preloadJob);
 
     Model_c createModel(Database_c databaseC, String name, String parent, Map<String, Type> parameters, Map<Option, String> configs);
 
