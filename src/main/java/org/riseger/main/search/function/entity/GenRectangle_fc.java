@@ -1,20 +1,15 @@
 package org.riseger.main.search.function.entity;
 
+import org.riseger.main.cache.entity.component.Element_c;
 import org.riseger.main.cache.entity.component.MBRectangle_c;
-import org.riseger.main.cache.manager.ElementManager;
-import org.riseger.main.search.function.type.Rectangle_fc;
+import org.riseger.main.search.SearchMemory;
+import org.riseger.main.search.function.type.RectangleFunction_c;
 import org.riseger.protoctl.search.function.FUNCTION;
 
-import java.util.List;
+public class GenRectangle_fc extends RectangleFunction_c {
 
-public class GenRectangle_fc extends Rectangle_fc {
-    public GenRectangle_fc(Class<? extends FUNCTION> parent) {
-        super(parent);
-    }
-
-    @Override
-    public List<MBRectangle_c> getResult(ElementManager elements) {
-        return null;
+    public GenRectangle_fc(int indexStart, SearchMemory memory) {
+        super(indexStart, memory);
     }
 
     @Override
@@ -23,12 +18,7 @@ public class GenRectangle_fc extends Rectangle_fc {
     }
 
     @Override
-    public boolean isResult(MBRectangle_c mb) {
-        return false;
-    }
-
-    @Override
-    public MBRectangle_c getResult() {
+    public MBRectangle_c getResult(Element_c element) {
         return null;
     }
 }

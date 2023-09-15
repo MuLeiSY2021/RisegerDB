@@ -1,32 +1,44 @@
 package org.riseger.main.search.function.type;
 
+import lombok.Getter;
 import org.apache.log4j.Logger;
-import org.riseger.main.cache.entity.component.MBRectangle_c;
-import org.riseger.main.cache.manager.ElementManager;
+import org.riseger.main.cache.entity.component.Element_c;
+import org.riseger.main.search.SearchMemory;
+import org.riseger.main.search.function.math.*;
 import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.condition.math.*;
 
-import java.lang.reflect.Constructor;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public abstract class Function_c {
-    public static final Map<Constructor<? extends Function_c>, Class<? extends Function_c>> functionMap = new HashMap<>();
+@Getter
+public abstract class Function_c<R> {
     private static final Logger LOG = Logger.getLogger(Function_c.class);
 
+    private final int indexStart;
+
+    private final SearchMemory memory;
+
+    public static final Map<Class<? extends FUNCTION>, Class<? extends Function_c<?>>>
+            functionMap = new HashMap<>();
     static {
-        //TODO: 还差所有这些函数的逻辑
+        functionMap.put(BIG.class,Big_fc.class);
+        functionMap.put(BIG_EQUAL.class, BigEqual_fc.class);
+        functionMap.put(EQUAL.class, Equal_fc.class);
+        functionMap.put(SMALL.class, Small_fc.class);
+        functionMap.put(SMALL_EQUAL.class, SmallEqual_fc.class);
+
     }
 
-    private final Class<? extends FUNCTION> parent;
 
-    public Function_c(Class<? extends FUNCTION> parent) {
-        this.parent = parent;
+    public Function_c(int indexStart, SearchMemory memory) {
+        this.indexStart = indexStart;
+        this.memory = memory;
     }
 
-    public static Function_c getFunctionFromMap(FUNCTION function) {
+    public static Function_c<?> getFunctionFromMap(FUNCTION function,int indexStart,SearchMemory searchMemory) {
         try {
-            return null;
+            return functionMap.get(function.getClass()).getConstructor(Integer.class, SearchMemory.class).newInstance(indexStart,searchMemory);
         } catch (Exception e) {
             LOG.error(e);
             e.printStackTrace();
@@ -34,9 +46,17 @@ public abstract class Function_c {
         return null;
     }
 
-    public abstract List<MBRectangle_c> getResult(ElementManager elements);
-
+    //这个函数多少有点多余了........
     public abstract void setFunction(FUNCTION condition);
 
-    public abstract boolean isResult(MBRectangle_c mb);
+
+    public abstract R getResult(Element_c element);
+
+    protected Object get(int gap) {
+        return memory.get(indexStart + gap);
+    }
+
+    protected void set(Object obj) {
+        memory.set(indexStart,obj);
+    }
 }

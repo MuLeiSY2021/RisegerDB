@@ -1,65 +1,105 @@
 package org.riseger.main.search;
 
 import lombok.Data;
-import org.riseger.main.cache.entity.component.Element_c;
-import org.riseger.main.cache.entity.component.MapDB_c;
-import org.riseger.main.cache.manager.ElementManager;
+import org.riseger.main.search.function.type.BooleanFunction_c;
 import org.riseger.main.search.function.type.Function_c;
 import org.riseger.protoctl.search.command.WHERE;
 import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONBLE;
 
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class SQLTree {
     private final SQLNode root;
 
-    public SQLTree(WHERE where) {
-        this.root = new SQLNode((FUNCTION) where.getCondition(), null);
+    public SQLTree(WHERE where,SearchMemory searchMemory) {
+        this.root = new SQLNode((FUNCTION) where.getCondition(), null,searchMemory);
     }
 
-    public SQLTreeIterator iterator() {
-        return new SQLTreeIterator(root, false);
-    }
-
-    public SQLTreeIterator submapIterator() {
-        return new SQLTreeIterator(root, true);
+    public SQLTree(RECTANGLE_FUNCTIONBLE function,SearchMemory searchMemory) {
+        this.root = new SQLNode((FUNCTION) function, null,searchMemory);
     }
 
     @Data
     static class SQLNode {
         private final SQLNode parent;
 
-        private Function_c function;
+        private Function_c<?> function;
 
         private FUNCTION condition;
 
         private List<SQLNode> sqlList = new LinkedList<>();
 
-        private boolean canSkip;
+        private final int resultIndex;
 
-        public SQLNode(FUNCTION condition, SQLNode parent) {
+        public SQLNode(FUNCTION condition, SQLNode parent,SearchMemory searchMemory) {
+            int index = 0;
             this.parent = parent;
-            this.function = Function_c.getFunctionFromMap(condition);
+            this.function = Function_c.getFunctionFromMap(condition,index,searchMemory);
             if (this.function != null) {
                 this.function.setFunction(condition);
             }
             this.condition = condition;
-            canSkip = condition.canSkip();
+            this.resultIndex = index;
             if (condition.getFunctions() != null) {
                 for (FUNCTION child : condition.getFunctions()) {
-                    sqlList.add(new SQLNode(child, this));
-                    canSkip |= child.canSkip();
+                    sqlList.add(new SQLNode(child, this,index++,searchMemory));
                 }
             }
-            sqlList.sort(Comparator.comparing((SQLNode x) -> x.condition.getWeight()).reversed());
+            if(isBool()) {
+                sqlList.sort(Comparator.comparing((SQLNode x) -> x.condition.getWeight()).reversed());
+            }
+        }
+
+        public SQLNode(FUNCTION condition, SQLNode parent,int index,SearchMemory searchMemory) {
+            this.parent = parent;
+            this.function = Function_c.getFunctionFromMap(condition,index,searchMemory);
+            if (this.function != null) {
+                this.function.setFunction(condition);
+            }
+            this.condition = condition;
+            this.resultIndex = index;
+            if (condition.getFunctions() != null) {
+                for (FUNCTION child : condition.getFunctions()) {
+                    sqlList.add(new SQLNode(child, this,index++,searchMemory));
+                }
+            }
+            if(isBool()) {
+                sqlList.sort(Comparator.comparing((SQLNode x) -> x.condition.getWeight()).reversed());
+            }
+        }
+
+        protected boolean isBool() {
+            return function instanceof BooleanFunction_c;
         }
     }
 
-    public List<Element_c> getResultsE(ElementManager elementManager) {
-        SQLTreeIterator iterator = this.iterator();
-        List<Element_c> results = new LinkedList<>();
+    public Queue<Function_c<?>> genFunctionList() {
+        Queue<Function_c<?>> queue = new LinkedBlockingQueue<>();
+        SQLNode tail = root;
+        int index = 0;
+        while (tail.getSqlList().size() != 0) {
+            tail = tail.getSqlList().get(0);
+        }
 
+        while (tail.getParent() != null) {
+            Function_c<?> result = tail.getFunction();
+            index++;
+
+            if (tail.getParent().getSqlList().size() <= index) {
+                tail = tail.getParent();
+                index = 0;
+            } else {
+                index++;
+            }
+
+            tail = tail.getParent().getSqlList().get(index);
+            queue.add(result);
+        }
+        return queue;
     }
 }

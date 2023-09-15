@@ -1,6 +1,7 @@
 package org.riseger.protoctl.search.function.entity.field;
 
 import lombok.Getter;
+import org.riseger.main.cache.entity.component.MBRectangle_c;
 import org.riseger.protoctl.search.function.FUNCTION;
 import org.riseger.protoctl.search.function.type.COORD_FUNCTIONBLE;
 import org.riseger.protoctl.search.function.type.NUMBER_FUNCTIONBLE;
