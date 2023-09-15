@@ -1,7 +1,10 @@
 package org.riseger.main.search;
 
 import lombok.Data;
-import org.riseger.main.search.function.Function_c;
+import org.riseger.main.cache.entity.component.Element_c;
+import org.riseger.main.cache.entity.component.MapDB_c;
+import org.riseger.main.cache.manager.ElementManager;
+import org.riseger.main.search.function.type.Function_c;
 import org.riseger.protoctl.search.command.WHERE;
 import org.riseger.protoctl.search.function.FUNCTION;
 
@@ -52,5 +55,11 @@ public class SQLTree {
             }
             sqlList.sort(Comparator.comparing((SQLNode x) -> x.condition.getWeight()).reversed());
         }
+    }
+
+    public List<Element_c> getResultsE(ElementManager elementManager) {
+        SQLTreeIterator iterator = this.iterator();
+        List<Element_c> results = new LinkedList<>();
+
     }
 }

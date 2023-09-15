@@ -18,7 +18,10 @@ public class SearchTest {
             session.use()
                     .useDatabase("test_db")
                     .useMap("china_mp")
-                    .useScope("province_scope.area_scope")
+                    .useScope(FIELD_F.RECT().invoke(
+                            FIELD_F.COORD().invoke(99,88),
+                            MATH_F.NUMBER().invoke(8)))
+                    .useModel("province_scope.area_scope.building_model")
                     .search()
                     .attr("building_model.KEY_LOOP")
                     .attr("building_model.name")

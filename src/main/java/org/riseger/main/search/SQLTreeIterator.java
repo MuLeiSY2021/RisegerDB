@@ -1,6 +1,6 @@
 package org.riseger.main.search;
 
-import org.riseger.main.search.function.Function_c;
+import org.riseger.main.search.function.type.Function_c;
 
 public class SQLTreeIterator {
     private final boolean isSub;

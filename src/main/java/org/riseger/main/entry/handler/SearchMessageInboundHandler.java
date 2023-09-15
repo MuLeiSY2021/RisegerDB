@@ -8,11 +8,12 @@ import org.riseger.protoctl.message.SearchMessage;
 import org.riseger.protoctl.response.SearchResponse;
 
 import java.util.List;
+import java.util.Map;
 
-public class SearchMessageInboundHandler extends TransponderHandler<SearchMessage, List<Element_c>> {
+public class SearchMessageInboundHandler extends TransponderHandler<SearchMessage, Map<String,List<Element_c>>> {
     private final Logger LOG = Logger.getLogger(SearchMessageInboundHandler.class);
 
-    private List<Element_c> result;
+    private Map<String,List<Element_c>> result;
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, SearchMessage msg) throws Exception {
@@ -37,7 +38,7 @@ public class SearchMessageInboundHandler extends TransponderHandler<SearchMessag
     }
 
     @Override
-    public List<Element_c> getE() {
+    public Map<String,List<Element_c>> getE() {
         try {
             super.sleep();
         } catch (InterruptedException e) {
@@ -48,7 +49,7 @@ public class SearchMessageInboundHandler extends TransponderHandler<SearchMessag
     }
 
     @Override
-    public void setE(List<Element_c> result) {
+    public void setE(Map<String,List<Element_c>> result) {
         this.result = result;
         super.wake();
     }

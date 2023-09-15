@@ -1,4 +1,4 @@
-package org.riseger.main.search.function;
+package org.riseger.main.search.function.type;
 
 import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.MBRectangle_c;
@@ -26,7 +26,6 @@ public abstract class Function_c {
 
     public static Function_c getFunctionFromMap(FUNCTION function) {
         try {
-//            return functionMap.get(function.getClass()).newInstance();
             return null;
         } catch (Exception e) {
             LOG.error(e);

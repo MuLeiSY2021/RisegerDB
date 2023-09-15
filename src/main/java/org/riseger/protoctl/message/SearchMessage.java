@@ -9,6 +9,7 @@ import org.riseger.protoctl.request.SearchRequest;
 import org.riseger.protoctl.search.command.USE;
 
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -23,7 +24,7 @@ public class SearchMessage extends ResponseMessage {
 
     @Override
     public Request warp() {
-        return new SearchRequest(this.sql, (TransponderHandler<SearchMessage, List<Element_c>>) super.getTransponder());
+        return new SearchRequest(this.sql, (TransponderHandler<SearchMessage, Map<String,List<Element_c>>>) super.getTransponder());
     }
 
 }

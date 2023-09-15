@@ -1,0 +1,165 @@
+package org.riseger.main.search;
+
+import lombok.Data;
+import org.riseger.main.cache.entity.component.*;
+import org.riseger.main.cache.manager.CacheMaster;
+import org.riseger.main.search.function.type.Function_c;
+import org.riseger.main.search.function.type.Rectangle_fc;
+import org.riseger.protoctl.search.command.USE;
+import org.riseger.protoctl.search.function.FUNCTION;
+
+import java.util.*;
+
+public class SearchSession {
+    private final USE sql;
+
+    //USE
+    public final Database_c database;
+
+    public final List<MapDB_c> maps = new LinkedList<>();
+
+    public final MBRectangle_c scope;
+
+    public final Map<String,SearchSet> models;
+
+    //Select
+    private final List<SearchSet> searches;
+
+    //Where
+    private final SQLTree tree;
+
+    @Data
+    private static class SearchSet {
+        String name;
+
+        List<String[]> child = new LinkedList<>();
+
+        public SearchSet(String name,String[] sets) {
+            this.name = name;
+            this.child.add(sets);
+        }
+
+        public void add(String[] sets) {
+            child.add(Arrays.copyOfRange(sets, 1, sets.length));
+        }
+    }
+
+
+    public SearchSession(USE sql) {
+        this.sql = sql;
+
+        //Deal Use
+        this.database = CacheMaster.INSTANCE.getDatabase(sql.getDatabase());
+        this.maps.add(this.database.getMap(sql.getMap()));
+        this.scope = ((Rectangle_fc) Function_c.getFunctionFromMap((FUNCTION) sql.getScope())).getResult();
+        this.models = dealModel(sql.getModels());
+
+        //Deal Select
+        this.searches = dealSelect(sql.getSearch().getContent());
+
+        //Deal Where
+        this.tree = new SQLTree(sql.getSearch().getWhere());
+    }
+
+    private Map<String,SearchSet> dealModel(List<String> models) {
+        Map<String,SearchSet> searchSets = new HashMap<>();
+        Map<String, SearchSet> searchSetMap = new HashMap<>();
+        for (String list : models) {
+            String[] sets = list.split("\\.");
+            String modelName = sets[sets.length - 1];
+            sets = Arrays.copyOfRange(sets, 0, sets.length - 1);
+             setSearchSets(searchSets, searchSetMap, sets, modelName);
+        }
+        return searchSets;
+    }
+
+    private List<SearchSet> dealSelect(List<String> models) {
+        List<SearchSet> searchSets = new LinkedList<>();
+        Map<String, SearchSet> searchSetMap = new HashMap<>();
+        for (String list : models) {
+            String[] sets = list.split("\\.");
+            String modelName = sets[0];
+            sets = Arrays.copyOfRange(sets, 1, sets.length);
+            setSearchSets(searchSets, searchSetMap, sets, modelName);
+        }
+        return searchSets;
+    }
+
+    private void setSearchSets(Map<String,SearchSet> searchSets, Map<String, SearchSet> searchSetMap, String[] sets, String modelName) {
+        SearchSet searchSet;
+        if (searchSetMap.containsKey(modelName)) {
+            searchSet = searchSetMap.get(modelName);
+            searchSet.add(sets);
+
+        } else {
+            searchSet = new SearchSet(modelName,sets);
+            searchSetMap.put(modelName, searchSet);
+            searchSets.put(searchSet.name,searchSet);
+        }
+    }
+
+    private void setSearchSets(List<SearchSet> searchSets, Map<String, SearchSet> searchSetMap, String[] sets, String modelName) {
+        SearchSet searchSet;
+        if (searchSetMap.containsKey(modelName)) {
+            searchSet = searchSetMap.get(modelName);
+            searchSet.add(sets);
+
+        } else {
+            searchSet = new SearchSet(modelName,sets);
+            searchSetMap.put(modelName, searchSet);
+            searchSets.add(searchSet);
+        }
+    }
+
+
+
+    public Map<String,List<Element_c>> process() {
+        Map<String,List<Element_c>> results = new HashMap<>();
+        for (SearchSet searchSet:this.searches) {
+            List<Element_c> result = new LinkedList<>();
+            List<Layer_c> layers = findModelLayer(this.models.get(searchSet.name));
+            for (Layer_c layer:layers) {
+                result.addAll(tree.getResultsE(layer.getElementManager()));
+            }
+            results.put(searchSet.name,result);
+        }
+        return results;
+    }
+
+    private List<Layer_c> findModelLayer(SearchSet model) {
+        List<Layer_c> results = new LinkedList<>();
+
+        for (String[] route:model.child) {
+            /*
+              province_scope.area_scope.building_model
+              province_scope.building_model
+            */
+            List<MapDB_c> tmpLayers = new LinkedList<>(this.maps),
+                    nextLayers = new LinkedList<>();
+            for (String layerName:route) {
+                /*
+                  province_scope
+                  area_scope
+                  building_model
+                 */
+                for (MapDB_c map:tmpLayers) {
+                    /*
+                      Tianjin
+                      Shanghai
+                      Beijing
+                     */
+                    List<MBRectangle_c> tmp = map.getSubmapLayer(layerName).getElements(scope);
+                    for (MBRectangle_c mbr:tmp) {
+                        nextLayers.add((MapDB_c) mbr);
+                    }
+                    tmpLayers = nextLayers;
+                    nextLayers = new LinkedList<>();
+                }
+            }
+            for (MapDB_c map:tmpLayers) {
+                results.add(map.getElementLayer(model.name));
+            }
+        }
+        return results;
+    }
+}

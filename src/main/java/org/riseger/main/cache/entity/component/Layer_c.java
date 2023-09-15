@@ -16,6 +16,7 @@ import org.riseger.utils.Utils;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -92,4 +93,7 @@ public class Layer_c {
         elementManager.addElement(submapInitBuilder.build());
     }
 
+    public List<MBRectangle_c> getElements(MBRectangle_c scope) {
+        return elementManager.getElements(scope);
+    }
 }

@@ -12,6 +12,7 @@ import pers.muleisy.rtree.othertree.RStarTree;
 import pers.muleisy.rtree.othertree.RTree;
 
 import java.io.File;
+import java.util.List;
 
 @Data
 public class ElementManager {
@@ -61,4 +62,7 @@ public class ElementManager {
         rtreeKeyIndex.deleteStrict(mapDBC);
     }
 
+    public List<MBRectangle_c> getElements(MBRectangle_c scope) {
+        return rtreeKeyIndex.search(scope);
+    }
 }
