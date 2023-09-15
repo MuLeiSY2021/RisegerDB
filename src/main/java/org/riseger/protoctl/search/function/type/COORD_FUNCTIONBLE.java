@@ -6,5 +6,4 @@ import org.riseger.protoctl.serializer.FunctionDeserializer;
 @JsonAdapter(FunctionDeserializer.class)
 
 public interface COORD_FUNCTIONBLE extends FUNCTIONBLE {
-
 }

@@ -1,4 +1,4 @@
-package org.riseger.main.search.function.entity.field;
+package org.riseger.main.search.function.entity;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.FUNCTION;

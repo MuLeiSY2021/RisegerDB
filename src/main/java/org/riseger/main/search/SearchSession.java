@@ -3,10 +3,11 @@ package org.riseger.main.search;
 import lombok.Data;
 import org.riseger.main.cache.entity.component.*;
 import org.riseger.main.cache.manager.CacheMaster;
+import org.riseger.main.search.function.type.BooleanFunction_c;
 import org.riseger.main.search.function.type.Function_c;
-import org.riseger.main.search.function.type.Rectangle_fc;
+import org.riseger.main.search.function.type.RectangleFunction_c;
 import org.riseger.protoctl.search.command.USE;
-import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONBLE;
 
 import java.util.*;
 
@@ -26,7 +27,9 @@ public class SearchSession {
     private final List<SearchSet> searches;
 
     //Where
-    private final SQLTree tree;
+    private final Queue<Function_c<?>> functionQueue;
+
+    private final SearchMemory memory;
 
     @Data
     private static class SearchSet {
@@ -50,15 +53,17 @@ public class SearchSession {
 
         //Deal Use
         this.database = CacheMaster.INSTANCE.getDatabase(sql.getDatabase());
+        this.memory = new SearchMemory();
         this.maps.add(this.database.getMap(sql.getMap()));
-        this.scope = ((Rectangle_fc) Function_c.getFunctionFromMap((FUNCTION) sql.getScope())).getResult();
+        this.scope = processScope(sql.getScope());
         this.models = dealModel(sql.getModels());
 
         //Deal Select
         this.searches = dealSelect(sql.getSearch().getContent());
 
         //Deal Where
-        this.tree = new SQLTree(sql.getSearch().getWhere());
+        SQLTree tree = new SQLTree(sql.getSearch().getWhere(),memory);
+        this.functionQueue = tree.genFunctionList();
     }
 
     private Map<String,SearchSet> dealModel(List<String> models) {
@@ -111,7 +116,17 @@ public class SearchSession {
         }
     }
 
-
+    public MBRectangle_c processScope(RECTANGLE_FUNCTIONBLE rectangleFunction) {
+        Queue<Function_c<?>> tmpFunctionQueue = new SQLTree(rectangleFunction,memory).genFunctionList();
+        for (Function_c<?> function : tmpFunctionQueue) {
+            if(function instanceof RectangleFunction_c) {
+                return  ((RectangleFunction_c) function).getResult(null);
+            } else {
+                function.getResult(null);
+            }
+        }
+        throw new IllegalArgumentException("Invalid function");
+    }
 
     public Map<String,List<Element_c>> process() {
         Map<String,List<Element_c>> results = new HashMap<>();
@@ -119,11 +134,29 @@ public class SearchSession {
             List<Element_c> result = new LinkedList<>();
             List<Layer_c> layers = findModelLayer(this.models.get(searchSet.name));
             for (Layer_c layer:layers) {
-                result.addAll(tree.getResultsE(layer.getElementManager()));
+                result.addAll((Collection<? extends Element_c>) layer.getElements(scope));
+                result = compileProcessor(result);
             }
             results.put(searchSet.name,result);
         }
         return results;
+    }
+
+    public List<Element_c> compileProcessor(List<Element_c> results) {
+        List<Element_c> result = new LinkedList<>();
+        for (Element_c element:results) {
+            boolean passed = false;
+            for (Function_c<?> function : functionQueue) {
+                if(function instanceof BooleanFunction_c) {
+                    passed = ((BooleanFunction_c) function).getResult(element);
+                    if(passed) break;
+                } else {
+                    function.getResult(element);
+                }
+            }
+            if(passed) result.add(element);
+        }
+        return result;
     }
 
     private List<Layer_c> findModelLayer(SearchSet model) {
