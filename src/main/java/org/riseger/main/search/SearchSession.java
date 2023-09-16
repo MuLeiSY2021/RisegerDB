@@ -133,7 +133,7 @@ public class SearchSession {
     }
 
     public Map<String,List<Element_c>> process() {
-        Map<String,List<Element_c>> results = new HashMap<>();
+         Map<String,List<Element_c>> results = new HashMap<>();
         for (SearchSet searchSet:this.searches) {
             List<Element_c> result = new LinkedList<>();
             List<Layer_c> layers = findModelLayer(this.models.get(searchSet.name));
@@ -145,6 +145,8 @@ public class SearchSession {
             }
             results.put(searchSet.name,result);
         }
+        LOG.debug("result: " +new String(JsonSerializer.serialize(results)));
+
         return results;
     }
 
@@ -162,7 +164,6 @@ public class SearchSession {
             }
             if(passed) result.add(element);
         }
-        LOG.debug("result: " +new String(JsonSerializer.serialize(result)));
         return result;
     }
 

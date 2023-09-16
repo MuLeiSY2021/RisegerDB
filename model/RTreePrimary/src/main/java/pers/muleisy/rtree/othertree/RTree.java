@@ -188,12 +188,20 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
 
         while (!tuples1.isEmpty()) {
             for (SubTree parent : tuples1) {
-                for (SubTree child : parent.getSubTrees()) {
-                    if (child.intersects(rect)) {
-                        if (Leaf.class.isInstance(child)) {
+                if(Leaf.class.isInstance(parent)) {
+                    for (SubTree child : parent.getLeave()) {
+                        if (child.intersects(rect)) {
                             res.add((Leaf) child);
-                        } else {
-                            tuples2.add(child);
+                        }
+                    }
+                } else {
+                    for (SubTree child : parent.getSubTrees()) {
+                        if (child.intersects(rect)) {
+                            if (Leaf.class.isInstance(child)) {
+                                res.add((Leaf) child);
+                            } else {
+                                tuples2.add(child);
+                            }
                         }
                     }
                 }

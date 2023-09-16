@@ -19,8 +19,8 @@ public class SearchTest {
                     .useDatabase("test_db")
                     .useMap("china_mp")
                     .useScope(FIELD_F.RECT().invoke(
-                            FIELD_F.COORD().invoke(99,88),
-                            MATH_F.NUMBER().invoke(8)))
+                            FIELD_F.COORD().invoke(1,1),
+                            MATH_F.NUMBER().invoke(20000)))
                     .useModel("province_scope.area_scope.building_model")
                     .search()
                     .attr("building_model.KEY_LOOP")
@@ -32,9 +32,9 @@ public class SearchTest {
                                             GRAPHIC_F.IN().invoke(
                                                     FIELD_F.RECT().invoke(
                                                             FIELD_F.COORD().invoke(
-                                                                    36.5, 72.1
+                                                                    4000, 1000
                                                             ),
-                                                            MATH_F.NUMBER().invoke(4)
+                                                            MATH_F.NUMBER().invoke(5000)
                                                     )
                                             ),
                                             GRAPHIC_F.OUT().invoke(

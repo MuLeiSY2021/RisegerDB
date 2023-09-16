@@ -47,7 +47,7 @@ public class SQLTree {
             this.resultIndex = index;
             if (condition.getFunctions() != null) {
                 for (FUNCTION child : condition.getFunctions()) {
-                    sqlList.add(new SQLNode(child, this,index++,searchMemory, threshold));
+                    sqlList.add(new SQLNode(child, this,++index,searchMemory, threshold));
                 }
             }
             if(isBool()) {
@@ -87,32 +87,19 @@ public class SQLTree {
         }
 
         while (tail.getParent() != null) {
-            Function_c<?> result = tail.getFunction();
+            queue.add(tail.getFunction());
             index++;
 
             if (tail.getParent().getSqlList().size() <= index) {
                 tail = tail.getParent();
                 index = 0;
-            } else {
-                index++;
             }
-            //TODO: java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
-            //	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
-            //	at java.util.LinkedList.get(LinkedList.java:476)
-            //	at org.riseger.main.search.SQLTree.genFunctionList(SQLTree.java:100)
-            //	at org.riseger.main.search.SearchSession.processScope(SearchSession.java:124)
-            //	at org.riseger.main.search.SearchSession.<init>(SearchSession.java:62)
-            //	at org.riseger.protoctl.job.SearchJob.<init>(SearchJob.java:23)
-            //	at org.riseger.protoctl.request.SearchRequest.warp(SearchRequest.java:26)
-            //	at org.riseger.protoctl.request.SearchRequest.warp(SearchRequest.java:13)
-            //	at org.riseger.main.api.workflow.adapter.CommonAdapter.adapt(CommonAdapter.java:15)
-            //	at org.riseger.main.api.workflow.workflow.CommonWorkFlow.push(CommonWorkFlow.java:22)
-            //	at org.riseger.main.api.ApiHandlerManager.setSearchRequest(ApiHandlerManager.java:23)
-            //	at org.riseger.main.entry.handler.SearchMessageInboundHandler.channelRead0(SearchMessageInboundHandler.java:27)
-            //	at org.riseger.main.entry.handler.SearchMessageInboundHandler.channelRead0(SearchMessageInboundHandler.java:13)
-            tail = tail.getParent().getSqlList().get(index);
-            queue.add(result);
+            if(tail.getParent() != null) {
+                tail = tail.getParent().getSqlList().get(index);
+            }
+
         }
+        queue.add(tail.getFunction());
         return queue;
     }
 }

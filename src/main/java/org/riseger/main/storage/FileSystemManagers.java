@@ -48,6 +48,7 @@ public class FileSystemManagers {
     }
 
     public MapDB_c getMap(File map_, Database_c db) {
+        //TODO: Map的坐标没更新
         MapInitBuilder mb = new MapInitBuilder();
         mb.setDatabase(db);
         mb.setName(map_.getName().split("\\.")[0]);
