@@ -1,11 +1,11 @@
 package org.reseger.jrdbc.driver.session;
 
-import org.riseger.protoctl.message.BasicMessage;
+import org.riseger.protoctl.packet.response.BasicResponse;
 
-public interface Session {
+public interface Session<P extends BasicResponse<?>> {
 
 
-    BasicMessage send() throws InterruptedException;
+    P send() throws InterruptedException;
 
 
 }

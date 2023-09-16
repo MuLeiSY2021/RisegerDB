@@ -4,19 +4,19 @@ import io.netty.channel.ChannelHandlerContext;
 import org.apache.log4j.Logger;
 import org.riseger.main.api.ApiHandlerManager;
 import org.riseger.main.cache.entity.component.Element_c;
-import org.riseger.protoctl.message.SearchMessage;
-import org.riseger.protoctl.response.SearchResponse;
+import org.riseger.protoctl.packet.request.SearchRequest;
+import org.riseger.protoctl.packet.response.SearchResponse;
 
 import java.util.List;
 import java.util.Map;
 
-public class SearchMessageInboundHandler extends TransponderHandler<SearchMessage, Map<String,List<Element_c>>> {
+public class SearchMessageInboundHandler extends TransponderHandler<SearchRequest, Map<String, List<Element_c>>> {
     private final Logger LOG = Logger.getLogger(SearchMessageInboundHandler.class);
 
-    private Map<String,List<Element_c>> result;
+    private Map<String, List<Element_c>> result;
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, SearchMessage msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, SearchRequest msg) throws Exception {
         LOG.info("Received SearchRequest: " + msg);
 
         SearchResponse response = new SearchResponse();

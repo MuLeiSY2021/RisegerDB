@@ -10,6 +10,7 @@ import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.utils.Utils;
 import pers.muleisy.rtree.othertree.RStarTree;
 import pers.muleisy.rtree.othertree.RTree;
+import pers.muleisy.rtree.rectangle.Rectangle;
 
 import java.io.File;
 import java.util.List;
@@ -54,9 +55,14 @@ public class ElementManager {
         parent.expand(e);
     }
 
-    public void updateIndex(MBRectangle_c mbr) {
-        rtreeKeyIndex.deleteStrict(mbr);
-        rtreeKeyIndex.insert(mbr);
+    public void updateIndex(MBRectangle_c self, Rectangle rectangle) {
+        if (self.willBeExpand(rectangle)) {
+            int i = rtreeKeyIndex.deleteStrict(self);
+            self.expand(rectangle);
+            if (i != 0) {
+                rtreeKeyIndex.insert(self);
+            }
+        }
     }
 
     public void remove(MapDB_c mapDBC) {

@@ -43,7 +43,7 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
     }
 
     private boolean isLeafParent(SubTree subTree) {
-        return Leaf.class.isInstance(subTree.getSubTrees().get(0));
+        return subTree.isTooFew() || Leaf.class.isInstance(subTree.getSubTrees().get(0));
     }
 
     private int compareOverlap(MBRectangle rect, MBRectangle tuple1, MBRectangle tuple2, List<? extends MBRectangle> tuples) {

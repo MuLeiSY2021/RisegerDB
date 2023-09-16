@@ -17,8 +17,6 @@ import java.util.*;
 public class SearchSession {
     private static final Logger LOG = Logger.getLogger(SearchSession.class);
 
-    private final USE sql;
-
     //USE
     public final Database_c database;
 
@@ -54,7 +52,6 @@ public class SearchSession {
 
 
     public SearchSession(USE sql) throws Exception {
-        this.sql = sql;
 
         //Deal Use
         this.database = CacheMaster.INSTANCE.getDatabase(sql.getDatabase());
@@ -141,62 +138,61 @@ public class SearchSession {
             List<Layer_c> layers = findModelLayer(this.models.get(searchSet.name));
             for (Layer_c layer : layers) {
                 for (MBRectangle_c mbr : layer.getElements(scope)) {
-                    if (mbr instanceof Element_c) {
+                    if (mbr instanceof Element_c && compileProcessor((Element_c) mbr)) {
                         result.add((Element_c) mbr);
                     } else if (mbr instanceof MapDB_c) {
                         throw new IllegalArgumentException();
                     }
                 }
-                result = compileProcessor(result);
             }
-            results.put(searchSet.name,result);
+            results.put(searchSet.name, result);
         }
-        LOG.debug("result: " +new String(JsonSerializer.serialize(results)));
+        LOG.debug("result: " + new String(JsonSerializer.serialize(results)));
 
         return results;
     }
 
-    public List<Element_c> compileProcessor(List<Element_c> results) throws IllegalSearchAttributeException {
-        List<Element_c> result = new LinkedList<>();
-        for (Element_c element : results) {
-            boolean passed = false;
-            for (Function_c<?> function : functionQueue) {
-                if (function instanceof BooleanFunction_c) {
-                    passed = ((BooleanFunction_c) function).resolve(element);
-                    if (passed) break;
-                } else {
-                    function.resolve(element);
-                }
-            }
-            if(passed) result.add(element);
-        }
+    private List<Element_c> filter(List<Element_c> result) {
+        //TODO: 做结果的筛查和Result返回
         return result;
+    }
+
+    public boolean compileProcessor(Element_c element) throws IllegalSearchAttributeException {
+        boolean passed = false;
+        for (Function_c<?> function : functionQueue) {
+            if (function instanceof BooleanFunction_c) {
+                passed = ((BooleanFunction_c) function).resolve(element);
+            } else {
+                function.resolve(element);
+            }
+        }
+        return passed;
     }
 
     private List<Layer_c> findModelLayer(SearchSet model) {
         List<Layer_c> results = new LinkedList<>();
 
-        for (String[] route:model.child) {
+        for (String[] route : model.child) {
             /*
               province_scope.area_scope.building_model
               province_scope.building_model
             */
             List<MapDB_c> tmpLayers = new LinkedList<>(this.maps),
                     nextLayers = new LinkedList<>();
-            for (String layerName:route) {
+            for (String layerName : route) {
                 /*
                   province_scope
                   area_scope
                   building_model
                  */
-                for (MapDB_c map:tmpLayers) {
+                for (MapDB_c map : tmpLayers) {
                     /*
                       Tianjin
                       Shanghai
                       Beijing
                      */
                     List<MBRectangle_c> tmp = map.getSubmapLayer(layerName).getElements(scope);
-                    for (MBRectangle_c mbr:tmp) {
+                    for (MBRectangle_c mbr : tmp) {
                         nextLayers.add((MapDB_c) mbr);
                     }
                     tmpLayers = nextLayers;

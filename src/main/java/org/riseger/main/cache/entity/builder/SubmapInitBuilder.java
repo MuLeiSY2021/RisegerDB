@@ -28,8 +28,8 @@ public class SubmapInitBuilder implements MapBuilder {
 
     public MapDB_c build() {
         MapDB_c map = new MapDB_c(null, configs, name, database, em);
-        map.initAllSmp(smp_layer);
         map.initAllMd(md_layer);
+        map.initAllSmp(smp_layer);
         return map;
     }
 

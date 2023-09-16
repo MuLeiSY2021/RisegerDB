@@ -1,6 +1,7 @@
 package org.riseger.main.api.compile.syntax;
 
 import lombok.Data;
+import org.apache.log4j.Logger;
 import org.riseger.main.api.compile.Compiler;
 import org.riseger.main.api.compile.config.Config;
 import org.riseger.main.api.compile.context.Context;
@@ -22,19 +23,25 @@ public class Function {
     public static int maxPriority = 1;
     public static Map<String, Object> typeMap = new HashMap<>();
     private static int count = 0;
+    public static final Logger LOG = Logger.getLogger(Function.class);
 
     static {
-        String file = Utils.getText(new File("data/basic.txt"));
-        if (file != null) {
-            for (String line : file.split("\n")) {
-                FUNCTIONS.add(new Function(line));
+        try {
+            String file = Utils.getText(new File("data/basic.txt"));
+            if (file != null) {
+                for (String line : file.split("\n")) {
+                    FUNCTIONS.add(new Function(line));
+                }
             }
-        }
-        file = Utils.getText(new File("data/function.txt"));
-        if (file != null) {
-            for (String line : file.split("\n")) {
-                FUNCTIONS.add(new Function(line, true));
+            file = Utils.getText(new File("data/function.txt"));
+            if (file != null) {
+                for (String line : file.split("\n")) {
+                    FUNCTIONS.add(new Function(line, true));
+                }
             }
+        } catch (Exception e) {
+            LOG.error(e);
+            e.printStackTrace();
         }
     }
 

@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.Element_c;
 import org.riseger.main.entry.handler.TransponderHandler;
 import org.riseger.main.search.SearchSession;
-import org.riseger.protoctl.message.SearchMessage;
+import org.riseger.protoctl.packet.request.SearchRequest;
 import org.riseger.protoctl.search.command.USE;
 
 import java.util.List;
@@ -13,13 +13,13 @@ import java.util.Map;
 public class SearchJob implements Job {
     private static final Logger LOG = Logger.getLogger(SearchJob.class);
 
-    private final TransponderHandler<SearchMessage, Map<String,List<Element_c>>> transponder;
+    private final TransponderHandler<SearchRequest, Map<String, List<Element_c>>> transponder;
 
 
 
     private SearchSession session;
 
-    public SearchJob(USE sql, TransponderHandler<SearchMessage, Map<String,List<Element_c>>> transponder) {
+    public SearchJob(USE sql, TransponderHandler<SearchRequest, Map<String, List<Element_c>>> transponder) {
         this.transponder = transponder;
         try {
             this.session = new SearchSession(sql);

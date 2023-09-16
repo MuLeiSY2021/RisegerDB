@@ -16,6 +16,7 @@ import org.riseger.utils.Utils;
 import pers.muleisy.rtree.rectangle.Rectangle;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,10 @@ public class Layer_c {
         this.parent = parent;
         this.elementManager = ElementManager.deserializeRStartElementManager(this, layer_);
         this.parent.expand(this.elementManager.getRtreeKeyIndex().getSquareRect());
+    }
+
+    private boolean isModel() {
+        return name.startsWith(Constant.MODEL_PREFIX);
     }
 
     public void preloadSubmap(Submap submap, int index) {
@@ -80,7 +85,7 @@ public class Layer_c {
         return name.startsWith(Constant.SUBMAP_PREFIX);
     }
 
-    public void initSubMap(File map_) {
+    public void initSubMap(File map_) throws IOException {
         SubmapInitBuilder submapInitBuilder = new SubmapInitBuilder();
         submapInitBuilder.setDatabase(parent.getParent().getDatabase());
         submapInitBuilder.setName(Utils.getNameFromFile(map_));

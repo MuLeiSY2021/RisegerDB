@@ -74,11 +74,7 @@ public class MapDB_c extends MBRectangle_c {
 
     public void updateBoundary(Rectangle mbr) {
         if (smp_parent != null) {
-            smp_parent.remove(this);
-        }
-        super.expand(mbr);
-        if (smp_parent != null) {
-            smp_parent.addElement(this);
+            smp_parent.updateIndex(this, mbr);
         }
     }
 

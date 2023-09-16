@@ -30,10 +30,10 @@ public class Utils {
                 }
             }
             return sb.toString();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     public static void writeToFile(String content, String filePath) {

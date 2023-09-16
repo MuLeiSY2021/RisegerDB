@@ -4,7 +4,7 @@
 
     <groupId>org.risegerdb</groupId>
     <artifactId>RisegerDB</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <build>
         <plugins>
             <plugin>
@@ -74,7 +74,7 @@
         <dependency>
             <groupId>pers.muleisy.rtree</groupId>
             <artifactId>RTreePrimary</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>0.1.0</version>
         </dependency>
     </dependencies>
 </project>

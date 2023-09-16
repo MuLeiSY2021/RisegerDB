@@ -4,14 +4,15 @@ import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
+import io.netty.channel.FixedRecvByteBufAllocator;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.Getter;
 import org.reseger.jrdbc.driver.handler.ClientHandlerManager;
 import org.reseger.jrdbc.driver.session.PreloadSession;
 import org.reseger.jrdbc.driver.session.SearchSession;
-import org.riseger.protoctl.message.BasicMessage;
 
+import javax.xml.ws.Response;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -19,7 +20,7 @@ import java.util.concurrent.locks.ReentrantLock;
 @Getter
 public class Connector {
 
-    private final LinkedBlockingDeque<BasicMessage> resultQueue = new LinkedBlockingDeque<>();
+    private final LinkedBlockingDeque<Response<?>> resultQueue = new LinkedBlockingDeque<>();
     private final EventLoopGroup eventLoopGroup;
     private final ReentrantLock lock = new ReentrantLock();
     private final Condition cond = lock.newCondition();
@@ -36,6 +37,7 @@ public class Connector {
             EventLoopGroup workerGroup = connector.getEventLoopGroup();
             bootstrap.group(workerGroup)
                     .option(ChannelOption.SO_KEEPALIVE, true)
+                    .option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(65535))
                     .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
                     .option(ChannelOption.TCP_NODELAY, true)
                     .handler(new ClientHandlerManager(connector))
@@ -58,7 +60,7 @@ public class Connector {
         return new PreloadSession(this);
     }
 
-    public BasicMessage getResult() throws InterruptedException {
+    public Response<?> getResult() throws InterruptedException {
         try {
             lock.lock();
             if (resultQueue.size() == 0) {
@@ -70,7 +72,7 @@ public class Connector {
         }
     }
 
-    public void setResult(BasicMessage result) {
+    public void setResult(Response<?> result) {
         try {
             lock.lock();
             this.resultQueue.push(result);

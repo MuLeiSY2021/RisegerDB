@@ -8,6 +8,7 @@ import org.riseger.main.api.compile.syntax.Interpreter;
 import org.riseger.utils.Utils;
 
 import java.io.File;
+import java.io.IOException;
 
 @Data
 public class Session {
@@ -23,7 +24,7 @@ public class Session {
         this.interpreter = new Interpreter(context);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String sourcecode = Utils.getText(new File("src/main/resources/aaa.txt"));
         Session session = new Session(sourcecode);
         session.run();

@@ -2,7 +2,7 @@ package org.test.search;
 
 import org.reseger.jrdbc.driver.connector.Connector;
 import org.reseger.jrdbc.driver.session.SearchSession;
-import org.riseger.protoctl.response.SearchResponse;
+import org.riseger.protoctl.packet.response.SearchResponse;
 import org.riseger.protoctl.search.function.condition.math.MATH_F;
 import org.riseger.protoctl.search.function.entity.basic.BASIC_F;
 import org.riseger.protoctl.search.function.entity.field.FIELD_F;
@@ -53,7 +53,7 @@ public class SearchTest {
                             )
                     );
             System.out.println("发送了");
-            SearchResponse result = (SearchResponse) session.send();
+            SearchResponse result = session.send();
 
             System.out.println(result);
 

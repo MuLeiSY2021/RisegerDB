@@ -3,9 +3,10 @@ package org.reseger.jrdbc.driver.handler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.reseger.jrdbc.driver.connector.Connector;
-import org.riseger.protoctl.message.BasicMessage;
 
-public class ResponseInBoundHandler extends SimpleChannelInboundHandler<BasicMessage> {
+import javax.xml.ws.Response;
+
+public class ResponseInBoundHandler extends SimpleChannelInboundHandler<Response<?>> {
     private final Connector connector;
 
     public ResponseInBoundHandler(Connector connector) {
@@ -13,7 +14,7 @@ public class ResponseInBoundHandler extends SimpleChannelInboundHandler<BasicMes
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, BasicMessage msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, Response<?> msg) throws Exception {
         connector.setResult(msg);
     }
 }

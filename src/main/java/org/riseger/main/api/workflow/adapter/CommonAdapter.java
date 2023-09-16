@@ -1,7 +1,7 @@
 package org.riseger.main.api.workflow.adapter;
 
 import org.riseger.main.api.workflow.jobstack.CommonJobStack;
-import org.riseger.protoctl.request.Request;
+import org.riseger.protoctl.packet.request.ResponseRequest;
 
 public class CommonAdapter implements Adapter {
     private final CommonJobStack stack;
@@ -11,7 +11,7 @@ public class CommonAdapter implements Adapter {
     }
 
     @Override
-    public void adapt(Request request) {
+    public void adapt(ResponseRequest request) {
         stack.push(request.warp());
     }
 

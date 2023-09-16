@@ -167,11 +167,16 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
     }
 
     @Override
-    public void deleteStrict(Rectangle rectangle) {
+    public int deleteStrict(Rectangle rectangle) {
+        if (!Leaf.class.isInstance(root) && root.isEmpty() ||
+                Leaf.class.isInstance(root) && ((Leaf) root).isLeafEmpty()) {
+            return 0;
+        }
+
         //Find node containing record.
         Leaf leaf = strictFindLeaf(rectangle);
         if (leaf == null) {
-            return;
+            return 0;
         }
         //[Delete record.]
         leaf.delete(rectangle);
@@ -181,6 +186,7 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         if (root.getSubTrees().size() == 1) {
             root = root.getSubTrees().get(0);
         }
+        return 1;
     }
 
     protected List<Leaf> findLeaf(Rectangle rect) {
@@ -192,19 +198,19 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         while (!tuples1.isEmpty()) {
             for (SubTree parent : tuples1) {
                 if(Leaf.class.isInstance(parent)) {
-                    for (SubTree child : parent.getLeave()) {
+                    for (Leaf child : parent.getLeave()) {
                         if (child.intersects(rect)) {
-                            res.add((Leaf) child);
+                            res.add(child);
+                        } else if (child.intersects(rect)) {
+                            tuples2.add(child);
                         }
                     }
                 } else {
                     for (SubTree child : parent.getSubTrees()) {
-                        if (child.intersects(rect)) {
-                            if (Leaf.class.isInstance(child)) {
-                                res.add((Leaf) child);
-                            } else {
-                                tuples2.add(child);
-                            }
+                        if (Leaf.class.isInstance(child) && child.intersects(rect)) {
+                            res.add((Leaf) child);
+                        } else if (child.intersects(rect)) {
+                            tuples2.add(child);
                         }
                     }
                 }
@@ -224,11 +230,21 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
 
         while (!tuples1.isEmpty()) {
             for (SubTree parent : tuples1) {
-                for (SubTree child : parent.getSubTrees()) {
-                    if (Leaf.class.isInstance(child) && child.inner(rect)) {
-                        return (Leaf) child;
-                    } else if (child.inner(rect)) {
-                        tuples2.add(child);
+                if (Leaf.class.isInstance(parent)) {
+                    for (Leaf child : parent.getLeave()) {
+                        if (child.match(rect)) {
+                            return child;
+                        } else if (child.match(rect)) {
+                            tuples2.add(child);
+                        }
+                    }
+                } else {
+                    for (SubTree child : parent.getSubTrees()) {
+                        if (Leaf.class.isInstance(child) && child.inner(rect)) {
+                            return (Leaf) child;
+                        } else if (child.inner(rect)) {
+                            tuples2.add(child);
+                        }
                     }
                 }
             }
@@ -247,7 +263,7 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         SubTree node = leaf;
         List<R> eliminatedNodes = new LinkedList<>();
         SubTree parent;
-        while (!node.equals(root)) {
+        while (node != null && !node.equals(root)) {
             //[Find parent entry.]
             parent = node.getParent();
 
@@ -270,7 +286,6 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
 
             //[Move up one level in tree.]
             node = node.getParent();
-
         }
         insertAll(eliminatedNodes);
     }
@@ -530,6 +545,13 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
             return leaves;
         }
 
+        protected void condense() {
+            super.adjustAll(this.subTrees);
+            if (this.parent != null) {
+                this.parent.condense();
+            }
+        }
+
         public void addAll(Collection<? extends SubTree> subTrees) {
             this.subTrees.addAll(subTrees);
             for (SubTree subTree : subTrees) {
@@ -579,8 +601,22 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         }
 
         public void delete(SubTree subTree) {
-            this.subTrees.remove(subTree);
+            if (this.isEmpty()) {
+                return;
+            }
+            ListIterator<SubTree> iterator = this.subTrees.listIterator();
+
+            for (SubTree e = iterator.next(); ; e = iterator.next()) {
+                if (e.match(subTree)) {
+                    iterator.remove();
+                }
+
+                if (!iterator.hasNext()) {
+                    break;
+                }
+            }
             subTree.parent = null;
+            condense();
         }
 
         public boolean isTooFew() {
@@ -594,6 +630,10 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         @Override
         public String toString() {
             return super.toString().substring(1, super.toString().length() - 1) + "|";
+        }
+
+        public boolean isEmpty() {
+            return this.subTrees.isEmpty();
         }
     }
 
@@ -636,6 +676,10 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
                 Logger.getLogger(this.getClass()).error(e.getMessage());
                 throw e;
             }
+        }
+
+        public boolean isLeafEmpty() {
+            return this.elements.isEmpty();
         }
 
         // Serialize a Leaf object
@@ -683,7 +727,21 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         }
 
         public void delete(Rectangle rectangle) {
-            this.elements.remove(rectangle);
+            ListIterator<R> iterator = this.elements.listIterator();
+
+            for (R e = iterator.next(); ; e = iterator.next()) {
+                if (e.match(rectangle)) {
+                    iterator.remove();
+                }
+
+                if (!iterator.hasNext()) {
+                    break;
+                }
+            }
+            super.adjustAll(this.elements);
+            if (super.getParent() != null) {
+                super.getParent().condense();
+            }
         }
 
         @Override

@@ -11,7 +11,7 @@ public interface RTreeDao<R extends MBRectangle> {
 
     int delete(Rectangle rectangle);
 
-    void deleteStrict(Rectangle rectangle);
+    int deleteStrict(Rectangle rectangle);
 
     List<R> search(Rectangle rectangle);
 

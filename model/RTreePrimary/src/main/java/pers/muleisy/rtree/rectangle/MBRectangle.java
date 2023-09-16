@@ -195,9 +195,9 @@ public abstract class MBRectangle implements Rectangle {
     @Override
     public boolean inner(Rectangle rect) {
         return rect.maxX() <= this.maxX &&
-                rect.maxY() <= this.maxX &&
-                rect.minX() >= this.maxX &&
-                rect.minY() >= this.maxX;
+                rect.maxY() <= this.maxY &&
+                rect.minX() >= this.minX &&
+                rect.minY() >= this.minY;
     }
 
     public void adjustAll(Collection<? extends Rectangle> sets) {

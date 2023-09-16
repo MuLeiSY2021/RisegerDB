@@ -2,7 +2,7 @@ package org.riseger.main.api;
 
 import org.riseger.main.api.compile.Compiler;
 import org.riseger.main.api.workflow.workflow.CommonWorkFlow;
-import org.riseger.protoctl.message.Message;
+import org.riseger.protoctl.packet.request.ResponseRequest;
 
 public class ApiHandlerManager {
     public static ApiHandlerManager INSTANCE;
@@ -15,12 +15,12 @@ public class ApiHandlerManager {
 
     private Compiler compiler;
 
-    public void setPreloadRequest(Message message) throws Exception {
-        preloadWorkflow.push(message.warp());
+    public void setPreloadRequest(ResponseRequest request) throws Exception {
+        preloadWorkflow.push(request);
     }
 
-    public void setSearchRequest(Message message) throws Exception {
-        searchWorkflow.push(message.warp());
+    public void setSearchRequest(ResponseRequest request) throws Exception {
+        searchWorkflow.push(request);
     }
 
 }

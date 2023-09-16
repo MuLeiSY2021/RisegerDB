@@ -1,11 +1,11 @@
 package org.riseger.protoctl.job;
 
-import org.apache.logging.log4j.LogManager;
 import org.riseger.main.api.workflow.revoke.Revocable;
 import org.riseger.main.cache.entity.component.Database_c;
-import org.riseger.main.cache.manager.DBCacheManager;
+import org.riseger.main.cache.manager.CacheMaster;
 import org.riseger.protoctl.struct.entity.Database;
 
+import java.io.IOException;
 import java.util.List;
 
 public class PreloadJob extends Revocable<Database_c> implements Job {
@@ -20,12 +20,10 @@ public class PreloadJob extends Revocable<Database_c> implements Job {
     @Override
     public void run() {
         for (Database database : databases) {
-            DBCacheManager.DAO.preloadDatabase(database, this);
-
             try {
-                super.sleep();
-            } catch (InterruptedException e) {
-                LogManager.getLogger(this.getClass()).error(e.getMessage());
+                CacheMaster.INSTANCE.getDatabaseManager().preloadDatabase(database);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }
