@@ -9,6 +9,7 @@ import java.util.List;
 
 @Getter
 public class ATTRIBUTE extends FUNCTION implements UNIVERSAL_FUNTIONBLE {
+    private String model;
 
     private String attribute;
 
@@ -17,7 +18,10 @@ public class ATTRIBUTE extends FUNCTION implements UNIVERSAL_FUNTIONBLE {
     }
 
     public UNIVERSAL_FUNTIONBLE invoke(String attribute) {
-        this.attribute = attribute;
+        String[] values = attribute.split("\\.");
+        this.model = values[0];
+        this.attribute = values[1];
+
         return this;
     }
 

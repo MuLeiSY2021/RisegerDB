@@ -24,6 +24,24 @@ public class SQLTree {
         this.root = new SQLNode((FUNCTION) function, null,searchMemory, threshold);
     }
 
+    public Queue<Function_c<?>> genFunctionList() {
+        Queue<Function_c<?>> queue = new LinkedBlockingQueue<>();
+        walkTree(queue, this.root);
+        return queue;
+    }
+
+    private void walkTree(Queue<Function_c<?>> queue, SQLNode root) {
+        if (root.sqlList.isEmpty()) {
+            queue.add(root.getFunction());
+            return;
+        } else {
+            for (SQLNode node : root.sqlList) {
+                walkTree(queue, node);
+            }
+        }
+        queue.add(root.getFunction());
+    }
+
     @Data
     static class SQLNode {
         private final SQLNode parent;
@@ -34,38 +52,16 @@ public class SQLTree {
 
         private List<SQLNode> sqlList = new LinkedList<>();
 
-        private final int resultIndex;
-
         public SQLNode(FUNCTION condition, SQLNode parent, SearchMemory searchMemory, double threshold) {
-            int index = 0;
             this.parent = parent;
-            this.function = Function_c.getFunctionFromMap(condition,index,searchMemory,threshold);
+            this.function = Function_c.getFunctionFromMap(condition, searchMemory, threshold);
             if (this.function != null) {
                 this.function.setFunction(condition);
             }
             this.condition = condition;
-            this.resultIndex = index;
             if (condition.getFunctions() != null) {
                 for (FUNCTION child : condition.getFunctions()) {
-                    sqlList.add(new SQLNode(child, this,++index,searchMemory, threshold));
-                }
-            }
-            if(isBool()) {
-                sqlList.sort(Comparator.comparing((SQLNode x) -> x.condition.getWeight()).reversed());
-            }
-        }
-
-        public SQLNode(FUNCTION condition, SQLNode parent, int index, SearchMemory searchMemory, double threshold) {
-            this.parent = parent;
-            this.function = Function_c.getFunctionFromMap(condition,index,searchMemory,threshold);
-            if (this.function != null) {
-                this.function.setFunction(condition);
-            }
-            this.condition = condition;
-            this.resultIndex = index;
-            if (condition.getFunctions() != null) {
-                for (FUNCTION child : condition.getFunctions()) {
-                    sqlList.add(new SQLNode(child, this, ++index, searchMemory, threshold));
+                    sqlList.add(new SQLNode(child, this, searchMemory, threshold));
                 }
             }
             if(isBool()) {
@@ -76,30 +72,5 @@ public class SQLTree {
         protected boolean isBool() {
             return function instanceof BooleanFunction_c;
         }
-    }
-
-    public Queue<Function_c<?>> genFunctionList() {
-        Queue<Function_c<?>> queue = new LinkedBlockingQueue<>();
-        SQLNode tail = root;
-        int index = 0;
-        while (tail.getSqlList().size() != 0) {
-            tail = tail.getSqlList().get(0);
-        }
-
-        while (tail.getParent() != null) {
-            queue.add(tail.getFunction());
-            index++;
-
-            if (tail.getParent().getSqlList().size() <= index) {
-                tail = tail.getParent();
-                index = 0;
-            }
-            if(tail.getParent() != null) {
-                tail = tail.getParent().getSqlList().get(index);
-            }
-
-        }
-        queue.add(tail.getFunction());
-        return queue;
     }
 }

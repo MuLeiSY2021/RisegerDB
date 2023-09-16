@@ -4,17 +4,17 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.apache.log4j.Logger;
 import org.riseger.main.api.ApiHandlerManager;
-import org.riseger.protoctl.message.PreloadDatabaseMessage;
-import org.riseger.protoctl.response.PreloadDatabaseResponse;
+import org.riseger.protoctl.message.PreloadMessage;
+import org.riseger.protoctl.response.PreloadResponse;
 
-public class PreloadMessageInboundHandler extends SimpleChannelInboundHandler<PreloadDatabaseMessage> {
+public class PreloadMessageInboundHandler extends SimpleChannelInboundHandler<PreloadMessage> {
     private final Logger LOG = Logger.getLogger(PreloadMessageInboundHandler.class);
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, PreloadDatabaseMessage msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, PreloadMessage msg) throws Exception {
         LOG.info("Received PreloadDatabaseRequest: " + msg);
 
-        PreloadDatabaseResponse response = new PreloadDatabaseResponse();
+        PreloadResponse response = new PreloadResponse();
         try {
             LOG.info("Processing PreloadDatabaseRequest...");
             ApiHandlerManager.INSTANCE.setPreloadRequest(msg);

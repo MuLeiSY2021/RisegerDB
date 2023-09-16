@@ -17,16 +17,26 @@ public class SearchJob implements Job {
 
 
 
-    private final SearchSession session;
+    private SearchSession session;
 
     public SearchJob(USE sql, TransponderHandler<SearchMessage, Map<String,List<Element_c>>> transponder) {
-        this.session = new SearchSession(sql);
         this.transponder = transponder;
+        try {
+            this.session = new SearchSession(sql);
+        } catch (Exception e) {
+            transponder.send(e);
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void run() {
-        transponder.setE(session.process());
+        try {
+            transponder.setE(session.process());
+        } catch (Exception e) {
+            transponder.send(e);
+            e.printStackTrace();
+        }
     }
 
 }

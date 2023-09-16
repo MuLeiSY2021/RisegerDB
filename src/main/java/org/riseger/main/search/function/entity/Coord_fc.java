@@ -10,13 +10,13 @@ import org.riseger.protoctl.search.function.entity.field.COORD;
 public class Coord_fc extends CoordFunction_c {
     Double[] n;
 
-    public Coord_fc(int indexStart, SearchMemory memory, double threshold) {
-        super(indexStart, memory, threshold);
+    public Coord_fc(SearchMemory memory, double threshold) {
+        super(memory, threshold);
     }
 
     @Override
     public void setFunction(FUNCTION condition) {
-        COORD nbmf = (COORD)condition;
+        COORD nbmf = (COORD) condition;
         this.n = new Double[2];
         this.n[0] = nbmf.getNumber1();
         this.n[1] = nbmf.getNumber2();

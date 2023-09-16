@@ -4,6 +4,7 @@ import lombok.Data;
 import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.*;
 import org.riseger.main.cache.manager.CacheMaster;
+import org.riseger.main.exception.search.function.IllegalSearchAttributeException;
 import org.riseger.main.search.function.type.BooleanFunction_c;
 import org.riseger.main.search.function.type.Function_c;
 import org.riseger.main.search.function.type.RectangleFunction_c;
@@ -52,7 +53,7 @@ public class SearchSession {
     }
 
 
-    public SearchSession(USE sql) {
+    public SearchSession(USE sql) throws Exception {
         this.sql = sql;
 
         //Deal Use
@@ -114,17 +115,18 @@ public class SearchSession {
             searchSet.add(sets);
 
         } else {
-            searchSet = new SearchSet(modelName,sets);
+            searchSet = new SearchSet(modelName, sets);
             searchSetMap.put(modelName, searchSet);
             searchSets.add(searchSet);
         }
     }
 
-    public MBRectangle_c processScope(RECTANGLE_FUNCTIONBLE rectangleFunction) {
-        Queue<Function_c<?>> tmpFunctionQueue = new SQLTree(rectangleFunction,memory, maps.get(0).getThreshold()).genFunctionList();
+    public MBRectangle_c processScope(RECTANGLE_FUNCTIONBLE rectangleFunction) throws Exception {
+
+        Queue<Function_c<?>> tmpFunctionQueue = new SQLTree(rectangleFunction, memory, maps.get(0).getThreshold()).genFunctionList();
         for (Function_c<?> function : tmpFunctionQueue) {
-            if(function instanceof RectangleFunction_c) {
-                return  ((RectangleFunction_c) function).resolve(null);
+            if (function instanceof RectangleFunction_c) {
+                return ((RectangleFunction_c) function).resolve(null);
             } else {
                 function.resolve(null);
             }
@@ -132,13 +134,13 @@ public class SearchSession {
         throw new IllegalArgumentException("Invalid function");
     }
 
-    public Map<String,List<Element_c>> process() {
-         Map<String,List<Element_c>> results = new HashMap<>();
-        for (SearchSet searchSet:this.searches) {
+    public Map<String, List<Element_c>> process() throws Exception {
+        Map<String, List<Element_c>> results = new HashMap<>();
+        for (SearchSet searchSet : this.searches) {
             List<Element_c> result = new LinkedList<>();
             List<Layer_c> layers = findModelLayer(this.models.get(searchSet.name));
-            for (Layer_c layer:layers) {
-                for (MBRectangle_c mbr :layer.getElements(scope)) {
+            for (Layer_c layer : layers) {
+                for (MBRectangle_c mbr : layer.getElements(scope)) {
                     if (mbr instanceof Element_c) {
                         result.add((Element_c) mbr);
                     } else if (mbr instanceof MapDB_c) {
@@ -154,14 +156,14 @@ public class SearchSession {
         return results;
     }
 
-    public List<Element_c> compileProcessor(List<Element_c> results) {
+    public List<Element_c> compileProcessor(List<Element_c> results) throws IllegalSearchAttributeException {
         List<Element_c> result = new LinkedList<>();
-        for (Element_c element:results) {
+        for (Element_c element : results) {
             boolean passed = false;
             for (Function_c<?> function : functionQueue) {
-                if(function instanceof BooleanFunction_c) {
+                if (function instanceof BooleanFunction_c) {
                     passed = ((BooleanFunction_c) function).resolve(element);
-                    if(passed) break;
+                    if (passed) break;
                 } else {
                     function.resolve(element);
                 }

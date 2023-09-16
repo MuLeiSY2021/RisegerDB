@@ -9,14 +9,14 @@ import java.util.List;
 
 @Getter
 public class NUMBER extends FUNCTION implements NUMBER_FUNCTIONBLE {
-    private Number number;
+    private Double number;
 
     public NUMBER() {
         super(NUMBER.class);
     }
 
     public NUMBER_FUNCTIONBLE invoke(Number number) {
-        this.number = number;
+        this.number = number.doubleValue();
         return this;
     }
 

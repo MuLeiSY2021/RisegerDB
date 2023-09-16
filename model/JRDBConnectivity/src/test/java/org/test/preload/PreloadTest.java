@@ -1,8 +1,8 @@
 package org.test.preload;
 
 import org.reseger.jrdbc.driver.connector.Connector;
-import org.reseger.jrdbc.driver.result.Result;
 import org.reseger.jrdbc.driver.session.PreloadSession;
+import org.riseger.protoctl.response.PreloadResponse;
 
 public class PreloadTest {
     public static void main(String[] args) throws Exception {
@@ -10,9 +10,9 @@ public class PreloadTest {
 
         PreloadSession session = connector.preload();
         session.setUri("/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json");
-        Result result = session.send();
+        PreloadResponse result = (PreloadResponse) session.send();
 
-        System.out.println(result.getResult());
+        System.out.println(result);
 
         connector.close();
     }

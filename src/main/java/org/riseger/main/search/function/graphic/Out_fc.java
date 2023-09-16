@@ -9,8 +9,8 @@ import org.riseger.protoctl.search.function.FUNCTION;
 public class Out_fc extends BooleanFunction_c {
     MBRectangle_c r;
 
-    public Out_fc(int indexStart, SearchMemory memory, double threshold) {
-        super(indexStart, memory, threshold);
+    public Out_fc(SearchMemory memory, double threshold) {
+        super(memory, threshold);
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Out_fc extends BooleanFunction_c {
 
     @Override
     public Boolean resolve(Element_c element) {
-        r = (MBRectangle_c) super.get(1);
+        r = (MBRectangle_c) super.get();
         boolean result = !r.intersects(element);
         super.set(result);
         return result;

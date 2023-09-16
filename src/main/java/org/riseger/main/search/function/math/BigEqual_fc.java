@@ -10,8 +10,8 @@ public class BigEqual_fc extends BooleanFunction_c {
 
     Number x2;
 
-    public BigEqual_fc(int indexStart, SearchMemory memory, double threshold) {
-        super(indexStart, memory, threshold);
+    public BigEqual_fc(SearchMemory memory, double threshold) {
+        super(memory, threshold);
     }
 
     @Override
@@ -21,9 +21,10 @@ public class BigEqual_fc extends BooleanFunction_c {
 
     @Override
     public Boolean resolve(Element_c element) {
-        x1 = (Number) super.get(1);
-        x2 = (Number) super.get(2);
-        boolean result = ((Comparable)x1).compareTo(x2) >= 0;
+        x1 = (Number) super.get();
+        x2 = (Number) super.get();
+
+        boolean result = ((Comparable) x1).compareTo(x2) >= 0;
         super.set(result);
         return result;
     }

@@ -1,8 +1,8 @@
 package org.test.search;
 
 import org.reseger.jrdbc.driver.connector.Connector;
-import org.reseger.jrdbc.driver.result.Result;
 import org.reseger.jrdbc.driver.session.SearchSession;
+import org.riseger.protoctl.response.SearchResponse;
 import org.riseger.protoctl.search.function.condition.math.MATH_F;
 import org.riseger.protoctl.search.function.entity.basic.BASIC_F;
 import org.riseger.protoctl.search.function.entity.field.FIELD_F;
@@ -46,19 +46,16 @@ public class SearchTest {
                                                     )
                                             )
                                     ),
-                                    MATH_F.SMALL().invoke(
-                                            GRAPHIC_F.DISTANCE().invoke(
-                                                    FIELD_F.COORD().invoke(99, 88),
-                                                    BASIC_F.ATTRIBUTE().invoke("people.site")
-                                            ),
-                                            MATH_F.NUMBER().invoke(10)
+                                    MATH_F.BIG().invoke(
+                                            BASIC_F.ATTRIBUTE().invoke("building_model.floorArea"),
+                                            MATH_F.NUMBER().invoke(1000)
                                     )
                             )
                     );
             System.out.println("发送了");
-            Result result = session.send();
+            SearchResponse result = (SearchResponse) session.send();
 
-            System.out.println(result.getResult());
+            System.out.println(result);
 
             connector.close();
         } catch (Exception e) {

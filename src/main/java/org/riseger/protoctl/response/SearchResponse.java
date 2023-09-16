@@ -1,38 +1,39 @@
 package org.riseger.protoctl.response;
 
 import lombok.Getter;
+import org.riseger.main.cache.entity.component.Element_c;
+import org.riseger.protoctl.job.Job;
 import org.riseger.protoctl.message.BasicMessage;
-import org.riseger.protoctl.message.MessageType;
-import org.riseger.protoctl.request.Request;
+
+import java.util.List;
+import java.util.Map;
 
 @Getter
 public class SearchResponse extends BasicMessage {
 
     private boolean success;
 
-    private String message;
+    private Map<String, List<Element_c>> response;
+
+    private Exception exception;
+
 
     public SearchResponse() {
-        super(MessageType.PRELOAD_DB_RESPONSE);
+        super(SearchResponse.class);
     }
 
-    public void success() {
+    public void success(Map<String, List<Element_c>> response) {
         this.success = true;
-        this.message = "Successfully loaded";
+        this.response = response;
     }
 
     public void failed(Exception e) {
         this.success = false;
-        this.message = e.getMessage();
+        this.exception = e;
     }
 
     @Override
-    public MessageType getType() {
-        return super.getType();
-    }
-
-    @Override
-    public Request warp() {
+    public Job warp() {
         return null;
     }
 }

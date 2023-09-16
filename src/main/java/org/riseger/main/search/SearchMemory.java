@@ -6,12 +6,13 @@ public class SearchMemory {
 
     Object[] universalRegister = new Object[Constant.DEFAULT_MEMORYSIZE];
 
+    private int index;
 
-    public Object get(int index) {
-        return this.universalRegister[index];
+    public Object get() {
+        return this.universalRegister[--index];
     }
 
-    public void set(int index,Object object) {
-        this.universalRegister[index] = object;
+    public void set(Object object) {
+        this.universalRegister[index++] = object;
     }
 }

@@ -1,5 +1,6 @@
 package org.riseger.main.cache.entity.component;
 
+import lombok.Getter;
 import org.riseger.main.cache.manager.ElementManager;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Type;
@@ -7,12 +8,13 @@ import org.riseger.protoctl.struct.entity.Type;
 import java.util.HashMap;
 import java.util.Map;
 
+@Getter
 public class Element_c extends MBRectangle_c {
     private final String parentModel;
 
     private final Model_c model;
 
-    private final Map<Object, String> attributes = new HashMap<>();
+    private final Map<String, Object> attributes = new HashMap<>();
 
     private transient final Database_c db;
 
@@ -26,11 +28,11 @@ public class Element_c extends MBRectangle_c {
         this.elementManager = elementManager;
         for (Map.Entry<String, String> a : e.getAttributes().entrySet()) {
             Object k = convert(a.getKey(),a.getValue());
-            attributes.put(k, a.getValue());
+            attributes.put(a.getKey(), k);
         }
     }
 
-    private Object convert(String name,String value) {
+    private Object convert(String name, String value) {
         Type type = model.getType(name);
         return type.convert(value);
     }
@@ -43,5 +45,9 @@ public class Element_c extends MBRectangle_c {
 
     public Object getAttribute(String attribute) {
         return attributes.get(attribute);
+    }
+
+    public String getModel() {
+        return this.model.name;
     }
 }

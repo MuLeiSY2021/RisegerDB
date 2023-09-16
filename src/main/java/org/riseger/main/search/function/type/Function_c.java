@@ -3,6 +3,7 @@ package org.riseger.main.search.function.type;
 import lombok.Getter;
 import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.Element_c;
+import org.riseger.main.exception.search.function.IllegalSearchAttributeException;
 import org.riseger.main.search.SearchMemory;
 import org.riseger.main.search.function.entity.*;
 import org.riseger.main.search.function.graphic.In_fc;
@@ -29,9 +30,7 @@ import java.util.Map;
 
 @Getter
 public abstract class Function_c<R> {
-    private static final Logger LOG = Logger.getLogger(Function_c.class);
-
-    private final int indexStart;
+    protected static final Logger LOG = Logger.getLogger(Function_c.class);
 
     private final SearchMemory memory;
 
@@ -62,17 +61,16 @@ public abstract class Function_c<R> {
     }
 
 
-    public Function_c(int indexStart, SearchMemory memory, double threshold) {
-        this.indexStart = indexStart;
+    public Function_c(SearchMemory memory, double threshold) {
         this.memory = memory;
         this.threshold = threshold;
     }
 
-    public static Function_c<?> getFunctionFromMap(FUNCTION function,int indexStart,SearchMemory searchMemory,double threshold) {
+    public static Function_c<?> getFunctionFromMap(FUNCTION function, SearchMemory searchMemory, double threshold) {
         try {
             return functionMap.get(function.getClass())
-                    .getConstructor(int.class, SearchMemory.class,double.class)
-                    .newInstance(indexStart,searchMemory,threshold);
+                    .getConstructor(SearchMemory.class, double.class)
+                    .newInstance(searchMemory, threshold);
         } catch (Exception e) {
             LOG.error(e);
             e.printStackTrace();
@@ -86,13 +84,13 @@ public abstract class Function_c<R> {
     public abstract void setFunction(FUNCTION condition);
 
 
-    public abstract R resolve(Element_c element);
+    public abstract R resolve(Element_c element) throws IllegalSearchAttributeException;
 
-    protected Object get(int gap) {
-        return memory.get(indexStart + gap);
+    protected Object get() {
+        return memory.get();
     }
 
     protected void set(Object obj) {
-        memory.set(indexStart,obj);
+        memory.set(obj);
     }
 }

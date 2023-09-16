@@ -7,15 +7,15 @@ import org.riseger.protoctl.search.function.FUNCTION;
 import org.riseger.protoctl.search.function.entity.NUMBER;
 
 public class Number_fc extends NumberFunction_c {
-    Number n;
+    Double n;
 
-    public Number_fc(int indexStart, SearchMemory memory, double threshold) {
-        super(indexStart, memory, threshold);
+    public Number_fc(SearchMemory memory, double threshold) {
+        super(memory, threshold);
     }
 
     @Override
     public void setFunction(FUNCTION condition) {
-        NUMBER nbmf = (NUMBER)condition;
+        NUMBER nbmf = (NUMBER) condition;
         this.n = nbmf.getNumber();
     }
 

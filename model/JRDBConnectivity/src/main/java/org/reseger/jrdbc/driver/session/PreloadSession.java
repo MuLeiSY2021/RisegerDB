@@ -1,8 +1,8 @@
 package org.reseger.jrdbc.driver.session;
 
 import org.reseger.jrdbc.driver.connector.Connector;
-import org.reseger.jrdbc.driver.result.Result;
-import org.riseger.protoctl.message.PreloadDatabaseMessage;
+import org.riseger.protoctl.message.BasicMessage;
+import org.riseger.protoctl.message.PreloadMessage;
 
 
 public class PreloadSession implements Session {
@@ -14,8 +14,8 @@ public class PreloadSession implements Session {
     }
 
     @Override
-    public Result send() throws InterruptedException {
-        PreloadDatabaseMessage message = new PreloadDatabaseMessage();
+    public BasicMessage send() throws InterruptedException {
+        PreloadMessage message = new PreloadMessage();
         message.setUri(this.uri);
         System.out.println("发送到管道");
         parent.getChannel().writeAndFlush(message);

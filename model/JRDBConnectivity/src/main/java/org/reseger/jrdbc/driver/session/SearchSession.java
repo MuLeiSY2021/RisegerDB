@@ -2,7 +2,7 @@ package org.reseger.jrdbc.driver.session;
 
 import lombok.Data;
 import org.reseger.jrdbc.driver.connector.Connector;
-import org.reseger.jrdbc.driver.result.Result;
+import org.riseger.protoctl.message.BasicMessage;
 import org.riseger.protoctl.message.SearchMessage;
 import org.riseger.protoctl.search.command.USE;
 
@@ -16,7 +16,7 @@ public class SearchSession implements Session {
     }
 
     @Override
-    public Result send() throws InterruptedException {
+    public BasicMessage send() throws InterruptedException {
         SearchMessage message = new SearchMessage(sql);
         System.out.println("发送到管道");
         parent.getChannel().writeAndFlush(message);

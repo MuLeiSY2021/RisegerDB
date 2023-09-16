@@ -32,9 +32,12 @@ public class SearchMessageInboundHandler extends TransponderHandler<SearchMessag
             e.printStackTrace();
             response.failed(e);
         }
-
-        LOG.info("Sending SearchRequest: " + response);
-        response.success();
+        LOG.info("Sending Response");
+        if (super.isFailed()) {
+            response.failed(super.getException());
+        } else {
+            response.success(getE());
+        }
         ctx.channel().writeAndFlush(response);
     }
 

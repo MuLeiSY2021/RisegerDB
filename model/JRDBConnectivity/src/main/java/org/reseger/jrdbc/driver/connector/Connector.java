@@ -8,9 +8,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.Getter;
 import org.reseger.jrdbc.driver.handler.ClientHandlerManager;
-import org.reseger.jrdbc.driver.result.Result;
 import org.reseger.jrdbc.driver.session.PreloadSession;
 import org.reseger.jrdbc.driver.session.SearchSession;
+import org.riseger.protoctl.message.BasicMessage;
 
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.locks.Condition;
@@ -19,7 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
 @Getter
 public class Connector {
 
-    private final LinkedBlockingDeque<Result> resultQueue = new LinkedBlockingDeque<>();
+    private final LinkedBlockingDeque<BasicMessage> resultQueue = new LinkedBlockingDeque<>();
     private final EventLoopGroup eventLoopGroup;
     private final ReentrantLock lock = new ReentrantLock();
     private final Condition cond = lock.newCondition();
@@ -58,7 +58,7 @@ public class Connector {
         return new PreloadSession(this);
     }
 
-    public Result getResult() throws InterruptedException {
+    public BasicMessage getResult() throws InterruptedException {
         try {
             lock.lock();
             if (resultQueue.size() == 0) {
@@ -70,7 +70,7 @@ public class Connector {
         }
     }
 
-    public void setResult(Result result) {
+    public void setResult(BasicMessage result) {
         try {
             lock.lock();
             this.resultQueue.push(result);

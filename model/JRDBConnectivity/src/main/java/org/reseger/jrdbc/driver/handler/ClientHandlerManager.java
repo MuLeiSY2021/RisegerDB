@@ -18,7 +18,7 @@ public class ClientHandlerManager extends ChannelInitializer<SocketChannel> {
         this.connector = connector;
         this.handlers = new ArrayList<>();
         handlers.add(new ProtocolCodec());
-        handlers.add(new PreloadDatabaseResponseHandler(connector));
+        handlers.add(new ResponseInBoundHandler(connector));
     }
 
     @Override

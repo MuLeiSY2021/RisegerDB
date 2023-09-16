@@ -9,8 +9,8 @@ import org.riseger.protoctl.search.function.FUNCTION;
 
 public class Rectangle_fc extends RectangleFunction_c {
 
-    public Rectangle_fc(int indexStart, SearchMemory memory, double threshold) {
-        super(indexStart, memory, threshold);
+    public Rectangle_fc(SearchMemory memory, double threshold) {
+        super(memory, threshold);
     }
 
     @Override
@@ -20,9 +20,9 @@ public class Rectangle_fc extends RectangleFunction_c {
 
     @Override
     public MBRectangle_c resolve(Element_c element) {
-        Coord_c coord = (Coord_c) super.get(1);
-        Double len = ((Number) super.get(2)).doubleValue();
-        MBRectangle_c mbr = new MBRectangle_c(coord,len,super.getThreshold());
+        Double len = ((Number) super.get()).doubleValue();
+        Coord_c coord = (Coord_c) super.get();
+        MBRectangle_c mbr = new MBRectangle_c(coord, len, super.getThreshold());
         super.set(mbr);
         return mbr;
     }

@@ -1,11 +1,11 @@
 package org.reseger.jrdbc.driver.session;
 
-import org.reseger.jrdbc.driver.result.Result;
+import org.riseger.protoctl.message.BasicMessage;
 
 public interface Session {
 
 
-    Result send() throws InterruptedException;
+    BasicMessage send() throws InterruptedException;
 
 
 }

@@ -8,8 +8,8 @@ import org.riseger.protoctl.search.function.FUNCTION;
 
 public class Distance_fc extends NumberFunction_c {
 
-    public Distance_fc(int indexStart, SearchMemory memory, double threshold) {
-        super(indexStart, memory, threshold);
+    public Distance_fc(SearchMemory memory, double threshold) {
+        super(memory, threshold);
     }
 
     @Override
@@ -19,8 +19,8 @@ public class Distance_fc extends NumberFunction_c {
 
     @Override
     public Number resolve(Element_c element) {
-        Coord_c coordinates1 = (Coord_c) super.get(1),
-        coordinates2 = (Coord_c) super.get(2);
+        Coord_c coordinates2 = (Coord_c) super.get(),
+                coordinates1 = (Coord_c) super.get();
         Double distance = coordinates1.distance(coordinates2);
         super.set(distance);
         return distance;
