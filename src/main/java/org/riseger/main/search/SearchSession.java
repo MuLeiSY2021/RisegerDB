@@ -1,6 +1,7 @@
 package org.riseger.main.search;
 
 import lombok.Data;
+import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.*;
 import org.riseger.main.cache.manager.CacheMaster;
 import org.riseger.main.search.function.type.BooleanFunction_c;
@@ -8,10 +9,13 @@ import org.riseger.main.search.function.type.Function_c;
 import org.riseger.main.search.function.type.RectangleFunction_c;
 import org.riseger.protoctl.search.command.USE;
 import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONBLE;
+import org.riseger.protoctl.serializer.JsonSerializer;
 
 import java.util.*;
 
 public class SearchSession {
+    private static final Logger LOG = Logger.getLogger(SearchSession.class);
+
     private final USE sql;
 
     //USE
@@ -62,7 +66,7 @@ public class SearchSession {
         this.searches = dealSelect(sql.getSearch().getContent());
 
         //Deal Where
-        SQLTree tree = new SQLTree(sql.getSearch().getWhere(),memory);
+        SQLTree tree = new SQLTree(sql.getSearch().getWhere(),memory, maps.get(0).getThreshold());
         this.functionQueue = tree.genFunctionList();
     }
 
@@ -117,12 +121,12 @@ public class SearchSession {
     }
 
     public MBRectangle_c processScope(RECTANGLE_FUNCTIONBLE rectangleFunction) {
-        Queue<Function_c<?>> tmpFunctionQueue = new SQLTree(rectangleFunction,memory).genFunctionList();
+        Queue<Function_c<?>> tmpFunctionQueue = new SQLTree(rectangleFunction,memory, maps.get(0).getThreshold()).genFunctionList();
         for (Function_c<?> function : tmpFunctionQueue) {
             if(function instanceof RectangleFunction_c) {
-                return  ((RectangleFunction_c) function).getResult(null);
+                return  ((RectangleFunction_c) function).resolve(null);
             } else {
-                function.getResult(null);
+                function.resolve(null);
             }
         }
         throw new IllegalArgumentException("Invalid function");
@@ -134,7 +138,9 @@ public class SearchSession {
             List<Element_c> result = new LinkedList<>();
             List<Layer_c> layers = findModelLayer(this.models.get(searchSet.name));
             for (Layer_c layer:layers) {
-                result.addAll((Collection<? extends Element_c>) layer.getElements(scope));
+                for (MBRectangle_c mbr :layer.getElements(scope)) {
+                    result.add((Element_c) mbr);
+                }
                 result = compileProcessor(result);
             }
             results.put(searchSet.name,result);
@@ -148,14 +154,15 @@ public class SearchSession {
             boolean passed = false;
             for (Function_c<?> function : functionQueue) {
                 if(function instanceof BooleanFunction_c) {
-                    passed = ((BooleanFunction_c) function).getResult(element);
+                    passed = ((BooleanFunction_c) function).resolve(element);
                     if(passed) break;
                 } else {
-                    function.getResult(element);
+                    function.resolve(element);
                 }
             }
             if(passed) result.add(element);
         }
+        LOG.debug("result: " +new String(JsonSerializer.serialize(result)));
         return result;
     }
 

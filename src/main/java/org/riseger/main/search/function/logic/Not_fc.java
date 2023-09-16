@@ -8,8 +8,8 @@ import org.riseger.protoctl.search.function.FUNCTION;
 public class Not_fc extends BooleanFunction_c {
     boolean f1;
 
-    public Not_fc(int indexStart, SearchMemory memory) {
-        super(indexStart, memory);
+    public Not_fc(int indexStart, SearchMemory memory, double threshold) {
+        super(indexStart, memory, threshold);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class Not_fc extends BooleanFunction_c {
     }
 
     @Override
-    public Boolean getResult(Element_c element) {
+    public Boolean resolve(Element_c element) {
         f1 = (Boolean) super.get(1);
         boolean result = !f1;
         super.set(result);

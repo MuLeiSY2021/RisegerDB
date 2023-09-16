@@ -29,6 +29,7 @@ public class SearchMessageInboundHandler extends TransponderHandler<SearchMessag
             LOG.info("SearchRequest processed successfully.");
         } catch (Exception e) {
             LOG.error("Error processing SearchRequest: " + e.getMessage() + e);
+            e.printStackTrace();
             response.failed(e);
         }
 

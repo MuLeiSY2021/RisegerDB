@@ -489,3 +489,280 @@ INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHa
 INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@1712313f
 DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
 ERROR pool-4-thread-1 org.riseger.protoctl.job.SearchJob - java.lang.NullPointerException
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.PreloadDatabaseMessage@3eb9380
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: org.riseger.protoctl.message.PreloadDatabaseMessage@3eb9380
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: org.riseger.protoctl.response.PreloadDatabaseResponse@4758f121
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+DEBUG pool-1-thread-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+INFO pool-5-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
+DEBUG nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@57f09e26
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@57f09e26
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-2 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-2 org.riseger.main.search.function.type.Function_c - java.lang.NullPointerException
+ERROR nioEventLoopGroup-3-2 org.riseger.main.search.function.type.Function_c - java.lang.NullPointerException
+ERROR nioEventLoopGroup-3-2 org.riseger.main.search.function.type.Function_c - java.lang.NullPointerException
+ERROR nioEventLoopGroup-3-2 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@2f39993a
+DEBUG nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@5da27b82
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@5da27b82
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NullPointerException
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Coord_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Number_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@492720e4
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@50b5957e
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@50b5957e
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NullPointerException
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.field.RECT
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Coord_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.field.COORD
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Number_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.NUMBER
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@2e27488c
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@5456fdbd
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@5456fdbd
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NullPointerException
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.field.RECT
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Coord_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.field.COORD
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Number_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.NUMBER
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@245d1ccc
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@5456fdbd
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@5456fdbd
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Rectangle_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.field.RECT
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Coord_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.field.COORD
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Number_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.NUMBER
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@6c54fa50
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@50b5957e
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@50b5957e
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Rectangle_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.field.RECT
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Coord_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.field.COORD
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Number_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.NUMBER
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@26bd135b
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@50b5957e
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@50b5957e
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Rectangle_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.field.RECT
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Coord_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.field.COORD
+ERROR nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - java.lang.NoSuchMethodException: org.riseger.main.search.function.entity.Number_fc.<init>(java.lang.Integer, org.riseger.main.search.SearchMemory, java.lang.Double)
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.search.function.type.Function_c - class org.riseger.protoctl.search.function.entity.NUMBER
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@26bd135b
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@21af6db7
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@21af6db7
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@51803cb9
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@50b5957e
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@50b5957e
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@4e0a6693
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@73fac97f
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@73fac97f
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@357bb099
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@73fac97f
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@73fac97f
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@357bb099
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@73fac97f
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@73fac97f
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@357bb099
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+DEBUG nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@6526b9bb
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@6526b9bb
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-2 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-2 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@400bc434
+DEBUG nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: org.riseger.protoctl.message.SearchMessage@50b5957e
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: org.riseger.protoctl.message.SearchMessage@50b5957e
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
+ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Error processing SearchRequest: Index: 2, Size: 2java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending SearchRequest: org.riseger.protoctl.response.SearchResponse@352c3244
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE

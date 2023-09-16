@@ -10,8 +10,8 @@ public class Or_fc extends BooleanFunction_c {
 
     boolean f2;
 
-    public Or_fc(int indexStart, SearchMemory memory) {
-        super(indexStart, memory);
+    public Or_fc(int indexStart, SearchMemory memory, double threshold) {
+        super(indexStart, memory, threshold);
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Or_fc extends BooleanFunction_c {
     }
 
     @Override
-    public Boolean getResult(Element_c element) {
+    public Boolean resolve(Element_c element) {
         f1 = (Boolean) super.get(1);
         f2 = (Boolean) super.get(2);
         boolean result = f1 | f2;

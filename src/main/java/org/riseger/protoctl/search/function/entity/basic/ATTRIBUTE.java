@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 public class ATTRIBUTE extends FUNCTION implements UNIVERSAL_FUNTIONBLE {
 
-    public String attribute;
+    private String attribute;
 
     public ATTRIBUTE() {
         super(ATTRIBUTE.class);

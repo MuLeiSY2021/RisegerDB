@@ -2,6 +2,7 @@ package org.riseger.main.cache.entity.component;
 
 import org.riseger.main.cache.manager.ElementManager;
 import org.riseger.protoctl.struct.entity.Element;
+import org.riseger.protoctl.struct.entity.Type;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,9 +10,9 @@ import java.util.Map;
 public class Element_c extends MBRectangle_c {
     private final String parentModel;
 
-    private final String model;
+    private final Model_c model;
 
-    private final Map<String, String> attributes = new HashMap<>();
+    private final Map<Object, String> attributes = new HashMap<>();
 
     private transient final Database_c db;
 
@@ -20,13 +21,18 @@ public class Element_c extends MBRectangle_c {
     public Element_c(Element e, Database_c db, ElementManager elementManager, double threshold) {
         super(e.getAttributes(), threshold);
         this.parentModel = e.getParent().getName();
-        this.model = e.getModelName();
+        this.model = db.getModels().getModel(e.getModelName());
         this.db = db;
         this.elementManager = elementManager;
         for (Map.Entry<String, String> a : e.getAttributes().entrySet()) {
-            String k = a.getKey();
+            Object k = convert(a.getKey(),a.getValue());
             attributes.put(k, a.getValue());
         }
+    }
+
+    private Object convert(String name,String value) {
+        Type type = model.getType(name);
+        return type.convert(value);
     }
 
     //TODO::需要做对模版类和父类合法性的判断
@@ -35,4 +41,7 @@ public class Element_c extends MBRectangle_c {
     }
 
 
+    public Object getAttribute(String attribute) {
+        return attributes.get(attribute);
+    }
 }

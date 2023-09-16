@@ -1,29 +1,27 @@
-package org.riseger.main.search.function.math;
+package org.riseger.main.search.function.graphic;
 
 import org.riseger.main.cache.entity.component.Element_c;
+import org.riseger.main.cache.entity.component.MBRectangle_c;
 import org.riseger.main.search.SearchMemory;
 import org.riseger.main.search.function.type.BooleanFunction_c;
 import org.riseger.protoctl.search.function.FUNCTION;
 
-public class BigEqual_fc extends BooleanFunction_c {
-    Number x1;
+public class In_fc extends BooleanFunction_c {
+    MBRectangle_c r;
 
-    Number x2;
-
-    public BigEqual_fc(int indexStart, SearchMemory memory, double threshold) {
+    public In_fc(int indexStart, SearchMemory memory, double threshold) {
         super(indexStart, memory, threshold);
     }
 
     @Override
     public void setFunction(FUNCTION condition) {
-        //这个函数多少有点多余了........
+
     }
 
     @Override
     public Boolean resolve(Element_c element) {
-        x1 = (Number) super.get(1);
-        x2 = (Number) super.get(2);
-        boolean result = ((Comparable)x1).compareTo(x2) >= 0;
+        r = (MBRectangle_c) super.get(1);
+        boolean result = r.inner(element);
         super.set(result);
         return result;
     }

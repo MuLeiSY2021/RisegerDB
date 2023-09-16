@@ -56,4 +56,12 @@ public class MBRectangle_c extends MBRectangle {
         super.setMaxX(maxX);
         super.setMaxY(maxY);
     }
+
+    public MBRectangle_c(Coord_c coord, Double len, Double threshold) {
+        super(threshold);
+        super.setMaxX(coord.getX() + len);
+        super.setMinX(coord.getX() - len);
+        super.setMaxY(coord.getY() + len);
+        super.setMinY(coord.getY() - len);
+    }
 }

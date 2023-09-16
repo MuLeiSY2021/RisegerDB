@@ -6,9 +6,6 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import org.apache.log4j.Logger;
 import org.riseger.main.Constant;
-import org.riseger.main.cache.entity.component.MBRectangle_c;
-import org.riseger.protoctl.search.function.entity.field.RECT;
-import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONBLE;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -20,12 +17,6 @@ public class Utils {
     private static final Logger LOG = Logger.getLogger(Utils.class);
 
     private static final Gson gson = new Gson();
-
-    public static class Graphic {
-        public static MBRectangle_c genMBRectangle(RECTANGLE_FUNCTIONBLE rectFunction) {
-            return rectFunction.directCal();
-        }
-    }
 
     public static String getText(File file) {
         try (FileReader reader = new FileReader(file);

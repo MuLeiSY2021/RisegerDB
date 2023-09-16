@@ -16,12 +16,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class SQLTree {
     private final SQLNode root;
 
-    public SQLTree(WHERE where,SearchMemory searchMemory) {
-        this.root = new SQLNode((FUNCTION) where.getCondition(), null,searchMemory);
+    public SQLTree(WHERE where, SearchMemory searchMemory, double threshold) {
+        this.root = new SQLNode((FUNCTION) where.getCondition(), null,searchMemory, threshold);
     }
 
-    public SQLTree(RECTANGLE_FUNCTIONBLE function,SearchMemory searchMemory) {
-        this.root = new SQLNode((FUNCTION) function, null,searchMemory);
+    public SQLTree(RECTANGLE_FUNCTIONBLE function, SearchMemory searchMemory, double threshold) {
+        this.root = new SQLNode((FUNCTION) function, null,searchMemory, threshold);
     }
 
     @Data
@@ -36,10 +36,10 @@ public class SQLTree {
 
         private final int resultIndex;
 
-        public SQLNode(FUNCTION condition, SQLNode parent,SearchMemory searchMemory) {
+        public SQLNode(FUNCTION condition, SQLNode parent, SearchMemory searchMemory, double threshold) {
             int index = 0;
             this.parent = parent;
-            this.function = Function_c.getFunctionFromMap(condition,index,searchMemory);
+            this.function = Function_c.getFunctionFromMap(condition,index,searchMemory,threshold);
             if (this.function != null) {
                 this.function.setFunction(condition);
             }
@@ -47,7 +47,7 @@ public class SQLTree {
             this.resultIndex = index;
             if (condition.getFunctions() != null) {
                 for (FUNCTION child : condition.getFunctions()) {
-                    sqlList.add(new SQLNode(child, this,index++,searchMemory));
+                    sqlList.add(new SQLNode(child, this,index++,searchMemory, threshold));
                 }
             }
             if(isBool()) {
@@ -55,9 +55,9 @@ public class SQLTree {
             }
         }
 
-        public SQLNode(FUNCTION condition, SQLNode parent,int index,SearchMemory searchMemory) {
+        public SQLNode(FUNCTION condition, SQLNode parent, int index, SearchMemory searchMemory, double threshold) {
             this.parent = parent;
-            this.function = Function_c.getFunctionFromMap(condition,index,searchMemory);
+            this.function = Function_c.getFunctionFromMap(condition,index,searchMemory,threshold);
             if (this.function != null) {
                 this.function.setFunction(condition);
             }
@@ -65,7 +65,7 @@ public class SQLTree {
             this.resultIndex = index;
             if (condition.getFunctions() != null) {
                 for (FUNCTION child : condition.getFunctions()) {
-                    sqlList.add(new SQLNode(child, this,index++,searchMemory));
+                    sqlList.add(new SQLNode(child, this,index++,searchMemory, threshold));
                 }
             }
             if(isBool()) {
@@ -96,7 +96,20 @@ public class SQLTree {
             } else {
                 index++;
             }
-
+            //TODO: java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+            //	at java.util.LinkedList.checkElementIndex(LinkedList.java:555)
+            //	at java.util.LinkedList.get(LinkedList.java:476)
+            //	at org.riseger.main.search.SQLTree.genFunctionList(SQLTree.java:100)
+            //	at org.riseger.main.search.SearchSession.processScope(SearchSession.java:124)
+            //	at org.riseger.main.search.SearchSession.<init>(SearchSession.java:62)
+            //	at org.riseger.protoctl.job.SearchJob.<init>(SearchJob.java:23)
+            //	at org.riseger.protoctl.request.SearchRequest.warp(SearchRequest.java:26)
+            //	at org.riseger.protoctl.request.SearchRequest.warp(SearchRequest.java:13)
+            //	at org.riseger.main.api.workflow.adapter.CommonAdapter.adapt(CommonAdapter.java:15)
+            //	at org.riseger.main.api.workflow.workflow.CommonWorkFlow.push(CommonWorkFlow.java:22)
+            //	at org.riseger.main.api.ApiHandlerManager.setSearchRequest(ApiHandlerManager.java:23)
+            //	at org.riseger.main.entry.handler.SearchMessageInboundHandler.channelRead0(SearchMessageInboundHandler.java:27)
+            //	at org.riseger.main.entry.handler.SearchMessageInboundHandler.channelRead0(SearchMessageInboundHandler.java:13)
             tail = tail.getParent().getSqlList().get(index);
             queue.add(result);
         }

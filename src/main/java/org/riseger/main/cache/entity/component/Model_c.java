@@ -27,4 +27,8 @@ public class Model_c {
     public void addParameter(String name, Type type) {
         this.parameters.put(name, type);
     }
+
+    public Type getType(String value) {
+        return parameters.get(value);
+    }
 }
