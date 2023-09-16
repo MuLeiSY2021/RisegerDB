@@ -102,10 +102,10 @@ public abstract class MBRectangle implements Rectangle {
     }
 
     public boolean willBeExpand(Rectangle rectangle) {
-        return this.minX == null || rectangle.minX() < this.minX() ||
-                this.minY == null || rectangle.minY() < this.minY() ||
-                this.maxX == null || rectangle.maxX() > this.maxX() ||
-                this.maxY == null || rectangle.maxY() > this.maxY();
+        return this.minX.isNaN() || rectangle.minX() < this.minX() ||
+                this.minY.isNaN() || rectangle.minY() < this.minY() ||
+                this.maxX.isNaN() || rectangle.maxX() > this.maxX() ||
+                this.maxY.isNaN() || rectangle.maxY() > this.maxY();
     }
 
     @Override

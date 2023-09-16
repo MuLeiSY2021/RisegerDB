@@ -65,7 +65,7 @@ public class SQLTree {
             this.resultIndex = index;
             if (condition.getFunctions() != null) {
                 for (FUNCTION child : condition.getFunctions()) {
-                    sqlList.add(new SQLNode(child, this,index++,searchMemory, threshold));
+                    sqlList.add(new SQLNode(child, this, ++index, searchMemory, threshold));
                 }
             }
             if(isBool()) {

@@ -3,11 +3,11 @@ package org.riseger.main.cache.manager;
 import lombok.Data;
 import org.riseger.main.Constant;
 import org.riseger.main.cache.entity.component.Layer_c;
-import org.riseger.main.cache.entity.component.MBRectangle_c;
 import org.riseger.main.cache.entity.component.MapDB_c;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
 import org.riseger.utils.Utils;
+import pers.muleisy.rtree.rectangle.Rectangle;
 
 import java.io.File;
 import java.util.HashMap;
@@ -71,7 +71,7 @@ public class LayerManager {
         layer.preloadElement(e);
     }
 
-    public void expand(MBRectangle_c eC) {
+    public void expand(Rectangle eC) {
         parent.updateBoundary(eC);
     }
 

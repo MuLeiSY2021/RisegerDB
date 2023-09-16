@@ -18,7 +18,7 @@ public class RStarTree<R extends MBRectangle> extends RTree<R> {
         super(nodeSize, threshold, clazz);
     }
 
-    public RStarTree(int nodeSize, double threshold, String clazz) {
+    protected RStarTree(int nodeSize, double threshold, String clazz) {
         super(nodeSize, threshold, clazz);
     }
 

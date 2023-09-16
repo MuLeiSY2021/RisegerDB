@@ -6,18 +6,20 @@ import org.apache.log4j.Logger;
 import pers.muleisy.rtree.RTreeDao;
 import pers.muleisy.rtree.rectangle.MBRectangle;
 import pers.muleisy.rtree.rectangle.Rectangle;
+import pers.muleisy.rtree.test.TestRectangle;
 import pers.muleisy.rtree.utils.JsonSerializer;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
+
     protected final double threshold;
     private final int M;
 
     private final int m;
 
-    protected SubTree root = new Leaf();
+    protected SubTree root;
 
     private String saveClassName;
 
@@ -25,6 +27,7 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         this.M = nodeSize;
         this.m = (int) (M * 0.4);
         this.threshold = threshold;
+        this.root = new Leaf();
         this.saveClassName = clazz.getName();
     }
 
@@ -594,11 +597,21 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         }
     }
 
+    public MBRectangle getSquareRect() {
+        return new TestRectangle(
+                this.root.minX(),
+                this.root.maxX(),
+                this.root.minY(),
+                this.root.maxY(),
+                this.threshold);
+    }
+
     protected class Leaf extends SubTree {
         private final LinkedList<R> elements = new LinkedList<>();
 
 
         public Leaf() {
+            super();
         }
 
         public Leaf(Collection<? extends R> elements) {

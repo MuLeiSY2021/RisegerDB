@@ -13,6 +13,7 @@ import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
 import org.riseger.utils.Utils;
+import pers.muleisy.rtree.rectangle.Rectangle;
 
 import java.io.File;
 import java.util.HashMap;
@@ -32,13 +33,18 @@ public class Layer_c {
     public Layer_c(String name, LayerManager parent, int nodeSize, double threshold) {
         this.name = name;
         this.parent = parent;
-        this.elementManager = ElementManager.buildRStartElementManager(nodeSize, threshold, this);
+        if (isSubMap()) {
+            this.elementManager = ElementManager.buildRStartElementManager(nodeSize, threshold, this, MapDB_c.class);
+        } else {
+            this.elementManager = ElementManager.buildRStartElementManager(nodeSize, threshold, this, Element_c.class);
+        }
     }
 
     public Layer_c(String name, LayerManager parent, File layer_) {
         this.name = name;
         this.parent = parent;
         this.elementManager = ElementManager.deserializeRStartElementManager(this, layer_);
+        this.parent.expand(this.elementManager.getRtreeKeyIndex().getSquareRect());
     }
 
     public void preloadSubmap(Submap submap, int index) {
@@ -66,7 +72,7 @@ public class Layer_c {
         return parent;
     }
 
-    public void expand(MBRectangle_c eC) {
+    public void expand(Rectangle eC) {
         parent.expand(eC);
     }
 
@@ -78,7 +84,7 @@ public class Layer_c {
         SubmapInitBuilder submapInitBuilder = new SubmapInitBuilder();
         submapInitBuilder.setDatabase(parent.getParent().getDatabase());
         submapInitBuilder.setName(Utils.getNameFromFile(map_));
-
+        submapInitBuilder.setEm(elementManager);
         for (File smp_ : Objects.requireNonNull(map_.listFiles())) {
             if (smp_.getName().endsWith(Constant.LAYER_PREFIX)) {
                 submapInitBuilder.addLayer(smp_);

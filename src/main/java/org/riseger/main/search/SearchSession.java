@@ -139,7 +139,11 @@ public class SearchSession {
             List<Layer_c> layers = findModelLayer(this.models.get(searchSet.name));
             for (Layer_c layer:layers) {
                 for (MBRectangle_c mbr :layer.getElements(scope)) {
-                    result.add((Element_c) mbr);
+                    if (mbr instanceof Element_c) {
+                        result.add((Element_c) mbr);
+                    } else if (mbr instanceof MapDB_c) {
+                        throw new IllegalArgumentException();
+                    }
                 }
                 result = compileProcessor(result);
             }

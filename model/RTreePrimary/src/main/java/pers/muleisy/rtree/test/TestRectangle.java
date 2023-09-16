@@ -11,4 +11,5 @@ public class TestRectangle extends MBRectangle {
         setMaxY(maxY);
         setMinY(minY);
     }
+
 }

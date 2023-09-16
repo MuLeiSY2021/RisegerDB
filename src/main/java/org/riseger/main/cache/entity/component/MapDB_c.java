@@ -6,6 +6,7 @@ import org.riseger.main.cache.manager.LayerManager;
 import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
+import pers.muleisy.rtree.rectangle.Rectangle;
 
 import java.io.File;
 import java.util.HashMap;
@@ -71,7 +72,7 @@ public class MapDB_c extends MBRectangle_c {
         layers.preloadSubmap(submapChild, index);
     }
 
-    public void updateBoundary(MBRectangle_c mbr) {
+    public void updateBoundary(Rectangle mbr) {
         if (smp_parent != null) {
             smp_parent.remove(this);
         }

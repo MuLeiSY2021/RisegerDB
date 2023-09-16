@@ -1,18 +1,17 @@
 package org.riseger.main.search;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.riseger.main.Constant;
 
 public class SearchMemory {
 
-    Map<Integer, Object> universalRegister = new HashMap<>();
+    Object[] universalRegister = new Object[Constant.DEFAULT_MEMORYSIZE];
 
 
     public Object get(int index) {
-        return universalRegister.get(index);
+        return this.universalRegister[index];
     }
 
     public void set(int index,Object object) {
-        this.universalRegister.put(index,object);
+        this.universalRegister[index] = object;
     }
 }

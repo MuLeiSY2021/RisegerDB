@@ -1,7 +1,7 @@
 package org.riseger.main.cache.entity.component;
 
 public class Coord_c {
-    private Double[] coordinates = new Double[2];
+    private final Double[] coordinates = new Double[2];
 
     public Coord_c(double x, double y) {
         this.coordinates[0] = x;

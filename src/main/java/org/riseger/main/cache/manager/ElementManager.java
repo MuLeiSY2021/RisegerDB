@@ -26,8 +26,8 @@ public class ElementManager {
         this.parent = parent;
     }
 
-    public static ElementManager buildRStartElementManager(int nodeSize, double threshold, Layer_c layerC) {
-        return new ElementManager(new RStarTree<>(nodeSize, threshold, MBRectangle_c.class), layerC);
+    public static ElementManager buildRStartElementManager(int nodeSize, double threshold, Layer_c layerC, Class clazz) {
+        return new ElementManager(new RStarTree<>(nodeSize, threshold, clazz), layerC);
     }
 
     public static ElementManager deserializeRStartElementManager(Layer_c layerC, File layer_) {
@@ -51,6 +51,7 @@ public class ElementManager {
 
     public void addElement(MapDB_c e) {
         rtreeKeyIndex.insert(e);
+        parent.expand(e);
     }
 
     public void updateIndex(MBRectangle_c mbr) {
