@@ -1,4 +1,4 @@
-package org.riseger.main.exception;
+package org.riseger.protoctl.exception;
 
 import org.riseger.main.api.compile.tokenize.Token;
 

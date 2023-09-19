@@ -2,9 +2,9 @@ package org.riseger.main.search.function.entity;
 
 import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.Element_c;
-import org.riseger.main.exception.search.function.IllegalSearchAttributeException;
 import org.riseger.main.search.SearchMemory;
 import org.riseger.main.search.function.type.UniversalFunction_c;
+import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 import org.riseger.protoctl.search.function.FUNCTION;
 import org.riseger.protoctl.search.function.entity.basic.ATTRIBUTE;
 

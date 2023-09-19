@@ -1,17 +1,19 @@
 package org.reseger.jrdbc.driver.session;
 
 import lombok.Data;
-import org.reseger.jrdbc.driver.connector.Connector;
+import org.reseger.jrdbc.driver.connector.Connection;
+import org.riseger.protoctl.exception.SQLException;
 import org.riseger.protoctl.packet.request.SearchRequest;
 import org.riseger.protoctl.packet.response.SearchResponse;
+import org.riseger.protoctl.search.ResultSet;
 import org.riseger.protoctl.search.command.USE;
 
 @Data
 public class SearchSession implements Session<SearchResponse> {
-    private transient final Connector parent;
+    private transient final Connection parent;
     private USE sql;
 
-    public SearchSession(Connector parent) {
+    public SearchSession(Connection parent) {
         this.parent = parent;
     }
 
@@ -26,5 +28,13 @@ public class SearchSession implements Session<SearchResponse> {
     public USE use() {
         sql = new USE();
         return sql;
+    }
+
+    public ResultSet executeQuery(String userInput) throws SQLException {
+        return null;
+    }
+
+    public int executeUpdate(String userInput) {
+        return 0;
     }
 }

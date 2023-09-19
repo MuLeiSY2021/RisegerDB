@@ -1,7 +1,8 @@
 package org.test.search;
 
-import org.reseger.jrdbc.driver.connector.Connector;
+import org.reseger.jrdbc.driver.connector.Connection;
 import org.reseger.jrdbc.driver.session.SearchSession;
+import org.riseger.protoctl.exception.SQLException;
 import org.riseger.protoctl.packet.response.SearchResponse;
 import org.riseger.protoctl.search.function.condition.math.MATH_F;
 import org.riseger.protoctl.search.function.entity.basic.BASIC_F;
@@ -10,16 +11,16 @@ import org.riseger.protoctl.search.function.key.graphic.GRAPHIC_F;
 import org.riseger.protoctl.search.function.logic.LOGIC_F;
 
 public class SearchTest {
-    public static void main(String[] args) throws InterruptedException {
-        Connector connector = Connector.connect("localhost", 10086);
+    public static void main(String[] args) throws InterruptedException, SQLException {
+        Connection connection = Connection.connect("localhost", 10086);
         try {
 
-            SearchSession session = connector.search();
+            SearchSession session = connection.search();
             session.use()
                     .useDatabase("test_db")
                     .useMap("china_mp")
                     .useScope(FIELD_F.RECT().invoke(
-                            FIELD_F.COORD().invoke(1,1),
+                            FIELD_F.COORD().invoke(1, 1),
                             MATH_F.NUMBER().invoke(20000)))
                     .useModel("province_scope.area_scope.building_model")
                     .search()
@@ -57,10 +58,10 @@ public class SearchTest {
 
             System.out.println(result);
 
-            connector.close();
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
-            connector.close();
+            connection.close();
         }
     }
 }

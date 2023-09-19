@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SyntaxTree {
+public class SyntaxTreee {
     public static final SyntaxTree INSTANCE = new SyntaxTree();
     private final Node root = new Node();
 

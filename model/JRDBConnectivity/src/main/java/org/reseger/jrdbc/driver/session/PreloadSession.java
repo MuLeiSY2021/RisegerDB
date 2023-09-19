@@ -1,15 +1,15 @@
 package org.reseger.jrdbc.driver.session;
 
-import org.reseger.jrdbc.driver.connector.Connector;
+import org.reseger.jrdbc.driver.connector.Connection;
 import org.riseger.protoctl.packet.request.PreloadRequest;
 import org.riseger.protoctl.packet.response.PreloadResponse;
 
 
 public class PreloadSession implements Session<PreloadResponse> {
-    private transient final Connector parent;
+    private transient final Connection parent;
     private String uri;
 
-    public PreloadSession(Connector parent) {
+    public PreloadSession(Connection parent) {
         this.parent = parent;
     }
 

@@ -18,7 +18,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Getter
-public class Connector {
+public class Connection {
 
     private final LinkedBlockingDeque<Response<?>> resultQueue = new LinkedBlockingDeque<>();
     private final EventLoopGroup eventLoopGroup;
@@ -26,28 +26,23 @@ public class Connector {
     private final Condition cond = lock.newCondition();
     private Channel channel;
 
-    public Connector(EventLoopGroup eventLoopGroup) {
+    public Connection(EventLoopGroup eventLoopGroup) {
         this.eventLoopGroup = eventLoopGroup;
     }
 
-    public static Connector connect(String host, int port) throws InterruptedException {
-        Connector connector = new Connector(new NioEventLoopGroup());
-        try {
-            Bootstrap bootstrap = new Bootstrap();
-            EventLoopGroup workerGroup = connector.getEventLoopGroup();
-            bootstrap.group(workerGroup)
-                    .option(ChannelOption.SO_KEEPALIVE, true)
-                    .option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(65535))
-                    .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
-                    .option(ChannelOption.TCP_NODELAY, true)
-                    .handler(new ClientHandlerManager(connector))
-                    .channel(NioSocketChannel.class);
-            connector.channel = bootstrap.connect(host, port).sync().channel();
-        } catch (Exception e) {
-            connector.close();
-            throw e;
-        }
-        return connector;
+    public static Connection connect(String host, int port) throws InterruptedException {
+        Connection connection = new Connection(new NioEventLoopGroup());
+        Bootstrap bootstrap = new Bootstrap();
+        EventLoopGroup workerGroup = connection.getEventLoopGroup();
+        bootstrap.group(workerGroup)
+                .option(ChannelOption.SO_KEEPALIVE, true)
+                .option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(65535))
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
+                .option(ChannelOption.TCP_NODELAY, true)
+                .handler(new ClientHandlerManager(connection))
+                .channel(NioSocketChannel.class);
+        connection.channel = bootstrap.connect(host, port).sync().channel();
+        return connection;
     }
 
     public void close() {

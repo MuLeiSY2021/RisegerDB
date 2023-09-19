@@ -1,4 +1,4 @@
-package org.riseger.main.exception;
+package org.riseger.protoctl.exception;
 
 public class NullTokenException extends CompileException {
 

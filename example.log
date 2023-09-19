@@ -273,3 +273,57 @@ DEBUG pool-4-thread-3 org.riseger.main.search.SearchSession - result: {"building
 DEBUG nioEventLoopGroup-3-3 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: SEARCH_RESPONSE
 DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH_RESPONSE
 DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":{"building_model":[{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"Chongqing3","name":"Building 3","floorArea":1046.9826367547719},"coordsSet":[[6785.5,3835.0],[7998.5,3903.5]],"threshold":0.5,"minX":6785.5,"maxX":7998.5,"minY":3835.0,"maxY":7998.5},{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"Chongqing2","name":"Building 2","floorArea":3754.3833466510446},"coordsSet":[[7810.0,4681.5],[8011.0,6000.5]],"threshold":0.5,"minX":7810.0,"maxX":8011.0,"minY":4681.5,"maxY":8011.0},{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"Chongqing1","name":"Building 1","floorArea":1783.1881234842672},"coordsSet":[[6197.5,4026.0],[6848.5,6402.0]],"threshold":0.5,"minX":6197.5,"maxX":6848.5,"minY":4026.0,"maxY":6848.5}]}}
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests

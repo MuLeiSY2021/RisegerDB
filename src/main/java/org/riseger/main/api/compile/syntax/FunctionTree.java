@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import lombok.Data;
 import org.riseger.main.api.compile.config.Config;
 import org.riseger.main.api.compile.tokenize.Token;
-import org.riseger.main.exception.CompileException;
-import org.riseger.main.exception.NullTokenException;
+import org.riseger.protoctl.exception.CompileException;
+import org.riseger.protoctl.exception.NullTokenException;
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;

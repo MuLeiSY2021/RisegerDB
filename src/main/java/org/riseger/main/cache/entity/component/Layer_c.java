@@ -16,7 +16,6 @@ import org.riseger.utils.Utils;
 import pers.muleisy.rtree.rectangle.Rectangle;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,7 +84,7 @@ public class Layer_c {
         return name.startsWith(Constant.SUBMAP_PREFIX);
     }
 
-    public void initSubMap(File map_) throws IOException {
+    public void initSubMap(File map_) {
         SubmapInitBuilder submapInitBuilder = new SubmapInitBuilder();
         submapInitBuilder.setDatabase(parent.getParent().getDatabase());
         submapInitBuilder.setName(Utils.getNameFromFile(map_));
