@@ -2,8 +2,8 @@ package org.riseger.main.entry.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import org.apache.log4j.Logger;
-import org.riseger.main.api.ApiHandlerManager;
 import org.riseger.main.cache.entity.component.Element_c;
+import org.riseger.main.entry.server.ApiHandlerManager;
 import org.riseger.protoctl.packet.request.SearchRequest;
 import org.riseger.protoctl.packet.response.SearchResponse;
 

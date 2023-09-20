@@ -3,7 +3,7 @@ package org.riseger.protoctl.job;
 import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.Element_c;
 import org.riseger.main.entry.handler.TransponderHandler;
-import org.riseger.main.search.SearchSession;
+import org.riseger.main.sql.search.SearchSession;
 import org.riseger.protoctl.packet.request.SearchRequest;
 import org.riseger.protoctl.search.command.USE;
 

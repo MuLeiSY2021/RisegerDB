@@ -1,8 +1,8 @@
 package org.riseger.protoctl.job;
 
-import org.riseger.main.api.workflow.revoke.Revocable;
 import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.manager.CacheMaster;
+import org.riseger.main.workflow.revoke.Revocable;
 import org.riseger.protoctl.struct.entity.Database;
 
 import java.io.IOException;

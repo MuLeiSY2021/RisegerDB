@@ -1,0 +1,53 @@
+sql -> sql ";" sql
+    | "USE" statement
+    | "SEARCH" strings
+    | "WHERE" conditions
+
+statement -> "USE" "DATABASE" string "MAP" string "SCOPE" rectangle "MODEL" strings
+
+strings -> string "," string
+    | attribute
+
+rectangle -> "RECT" "(" coord "," number_operator ")"
+    | attribute
+
+coord -> "COORD" "(" number_operator "," number_operator ")"
+    | attribute
+
+conditions -> bool_condition
+    | "{" conditions "}"
+
+bool_condition -> "IN" rectangle
+    | "OUT" rectangle
+    | "!" bool_condition
+    | bool_condition "AND" bool_condition
+    | bool_condition "OR" bool_condition
+    | number_operator bool_operator number_operator
+    | string "=" string
+    | "(" conditions ")"
+
+bool_operator -> ">"
+    | ">="
+    | "="
+    | "<"
+    | "<="
+
+attribute -> string "." string
+
+number_operator -> number operator number
+    | "(" number_operator ")"
+    | "-" number_operator
+    | operator_0
+
+operator_0 -> number "+" number
+    | number "-" number
+    | operator_1
+
+operator_1 -> number "*" number
+    | number "/" number
+    | number
+
+string -> """string"""
+    | '((?!\\d+(\\.\\d+)?)\\w+|^('')?$|'[^']*')'
+
+number -> '([1-9]\d*\.?\d*)|(0\.\d*[1-9])'

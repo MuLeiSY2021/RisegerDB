@@ -3,7 +3,7 @@ package org.riseger.main.entry.handler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.apache.log4j.Logger;
-import org.riseger.main.api.ApiHandlerManager;
+import org.riseger.main.entry.server.ApiHandlerManager;
 import org.riseger.protoctl.packet.request.PreloadRequest;
 import org.riseger.protoctl.packet.response.PreloadResponse;
 
