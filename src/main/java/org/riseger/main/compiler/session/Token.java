@@ -1,4 +1,4 @@
-package org.riseger.main.compiler;
+package org.riseger.main.compiler.session;
 
 import lombok.Data;
 
@@ -7,6 +7,8 @@ public class Token {
     private String sourceCode;
 
     private String code;
+
+    private TokenType type;
 
     private int line;
 
@@ -18,7 +20,7 @@ public class Token {
         this.column = column;
     }
 
-    public Token(String code) {
-        this.code = code;
+    public void setCode(String code) {
+
     }
 }

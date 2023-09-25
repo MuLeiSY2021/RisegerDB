@@ -1,25 +1,31 @@
 package org.riseger.main.compiler.syntax;
 
 import lombok.Data;
-import org.riseger.main.compiler.keyword.Keyword;
+import org.riseger.main.compiler.lextcal.Keyword;
+import org.riseger.main.compiler.session.Token;
+import org.riseger.protoctl.search.function.FUNCTION;
 
 import java.util.*;
 
-public class AbstractSyntaxTree {
-    private final Map<String, SyntaxTree> forest = new HashMap<>();
+public class SyntaxTree {
+    private final Map<String, SyntaxTreeChild> forest = new HashMap<>();
 
-    public AbstractSyntaxTree(SyntaxRule rule) {
+    public SyntaxTree(SyntaxRule rule) {
         for (Map.Entry<String, SyntaxRule.Rule> entry : rule.getRuleMap().entrySet()) {
-            forest.put(entry.getKey(), new SyntaxTree(entry.getValue()));
+            forest.put(entry.getKey(), new SyntaxTreeChild(entry.getValue()));
         }
     }
 
-    private static class SyntaxTree {
+    public static FUNCTION parser(List<Token> tokenList) {
+
+    }
+
+    private static class SyntaxTreeChild {
         private final String entry;
 
         private final Node root = new Node(null, null);
 
-        public SyntaxTree(SyntaxRule.Rule rule) {
+        public SyntaxTreeChild(SyntaxRule.Rule rule) {
             this.entry = rule.getType();
             for (SyntaxRule.Meta meta : rule.getMeta()) {
                 root.initialize(meta.getTiles().listIterator());

@@ -1,4 +1,4 @@
-package org.riseger.main.compiler.keyword;
+package org.riseger.main.compiler.lextcal;
 
 import lombok.Data;
 
@@ -6,14 +6,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class KeywordsTree {
-    public static final KeywordsTree INSTANCE = new KeywordsTree();
     private final Node root = new Node();
 
-
-    private KeywordsTree() {
-        for (Keyword keyword : Keyword.getKeywords()) {
+    private KeywordsTree(List<Keyword> KEYWORDS) {
+        for (Keyword keyword : KEYWORDS) {
             root.insert(keyword);
         }
+    }
+
+    public static KeywordsTree newKeywordsTree() {
+        return new KeywordsTree(Keyword.getKeywords());
     }
 
     public String getCode(String name) {

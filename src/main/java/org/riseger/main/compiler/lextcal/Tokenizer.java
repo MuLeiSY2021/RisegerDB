@@ -2,58 +2,70 @@ package org.riseger.main.compiler.lextcal;
 
 import com.google.gson.Gson;
 import org.riseger.main.compiler.CompilerConstant;
-import org.riseger.main.compiler.Context;
-import org.riseger.main.compiler.Token;
-import org.riseger.main.compiler.keyword.KeywordsTree;
+import org.riseger.main.compiler.session.Context;
+import org.riseger.main.compiler.session.Token;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Tokenizer {
     static Pattern tokenPattern = Pattern.compile(CompilerConstant.TOKEN_PATTERN);
 
-    private final Context context;
+    private final Map<String, Integer> wordMap = new HashMap<>();
 
-    public Tokenizer(Context context) {
-        this.context = context;
+    private final Map<Double, Integer> doubleMap = new HashMap<>();
+
+    private final KeywordsTree keywordsTree;
+
+    Pattern numberPattern = Pattern.compile(CompilerConstant.NUMBER_PATTERN);
+
+    Pattern wordPattern = Pattern.compile(CompilerConstant.WORD_PATTERN);
+
+    public Tokenizer(KeywordsTree keywordsTree) {
+        this.keywordsTree = keywordsTree;
     }
 
-    public static List<String> splitToken(String tile) {
-        List<String> res = new ArrayList<>();
-        Matcher m;
-        while (tile.length() > 0) {
-            int index = -1;
-            int tmp;
-            if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
-                index = m.end(0);
-            } else if ((tmp = KeywordsTree.INSTANCE.getIndex(tile)) > -1) {
-                index = tmp;
-            }
-
-            if (index == -1) {
-                throw new IndexOutOfBoundsException(tile + " -1");
-            }
-            res.add(tile.substring(0, index));
-            if (tile.length() == index) {
-                break;
-            }
-            tile = tile.substring(index);
-        }
-        return res;
-    }
-
-    public void execute() {
+    public void tokenize(Context context) {
         List<Token> lines;
         String sourcecode = context.getSourcecode();
         lines = splitLine(sourcecode);
         lines = splitSpace(lines);
-        splitToken(lines);
+        splitToken(lines, context);
+
+        for (Token word : context.getTokens()) {
+            setCode(word, context);
+        }
     }
 
-    private void splitToken(List<Token> lines) {
+//    public List<String> splitToken(String tile) {
+//        List<String> res = new ArrayList<>();
+//        Matcher m;
+//        while (tile.length() > 0) {
+//            int index = -1;
+//            int tmp;
+//            if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
+//                index = m.end(0);
+//            } else if ((tmp = this.keywordsTree.getIndex(tile)) > -1) {
+//                index = tmp;
+//            }
+//
+//            if (index == -1) {
+//                throw new IndexOutOfBoundsException(tile + " -1");
+//            }
+//            res.add(tile.substring(0, index));
+//            if (tile.length() == index) {
+//                break;
+//            }
+//            tile = tile.substring(index);
+//        }
+//        return res;
+//    }
+
+    private void splitToken(List<Token> lines, Context context) {
         for (Token token : lines) {
             int top = 0;
             String tile = token.getSourceCode();
@@ -67,7 +79,7 @@ public class Tokenizer {
                 int tmp;
                 if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
                     index = m.end(0);
-                } else if ((tmp = KeywordsTree.INSTANCE.getIndex(tile)) > -1) {
+                } else if ((tmp = keywordsTree.getIndex(tile)) > -1) {
                     index = tmp;
                 }
 
@@ -137,4 +149,33 @@ public class Tokenizer {
         return res;
     }
 
+    public void setCode(Token word, Context context) {
+        String sourcecode = word.getSourceCode();
+        if (numberPattern.matcher(sourcecode).matches()) {
+            double tmp = Double.parseDouble(sourcecode);
+            if (!doubleMap.containsKey(tmp)) {
+                doubleMap.put(tmp, doubleMap.size() + 1);
+                context.put(doubleMap.size(), tmp);
+            }
+            word.setCode(CompilerConstant.NUMBER_PREFIX + "_" + doubleMap.size());
+            return;
+        }
+        sourcecode = sourcecode.toUpperCase();
+        Keyword keyword = this.keywordsTree.get(sourcecode);
+        if (keyword != null) {
+            word.setCode(keyword.getCode());
+            return;
+        }
+
+        if (wordPattern.matcher(sourcecode).matches()) {
+            if (!wordMap.containsKey(sourcecode)) {
+                wordMap.put(sourcecode, wordMap.size() + 1);
+                context.put(wordMap.size(), sourcecode);
+            }
+            word.setCode(CompilerConstant.STRING_PREFIX + "_" + wordMap.size());
+        } else {
+            System.out.println("Word:" + word);
+            throw new IllegalArgumentException("非法字符存在");
+        }
+    }
 }

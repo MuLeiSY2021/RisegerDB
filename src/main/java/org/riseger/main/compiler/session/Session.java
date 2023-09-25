@@ -1,6 +1,9 @@
-package org.riseger.main.compiler;
+package org.riseger.main.compiler.session;
 
 import lombok.Data;
+import org.riseger.main.compiler.CompilerConstant;
+import org.riseger.main.compiler.lextcal.Tokenizer;
+import org.riseger.main.compiler.syntax.SyntaxTree;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,19 +11,30 @@ import java.util.List;
 import java.util.Map;
 
 @Data
-public class Context {
+public class Session {
+    private final Tokenizer tokenizer;
+
+    private final SyntaxTree syntaxTree;
+
     private final String sourcecode;
+
     private final List<Token> tokens = new LinkedList<>();
-    private final List<List<Token>> lines = new LinkedList<>();
+
     private Map<String, String> stringConstTable = new HashMap<>();
+
     private Map<String, Double> numberConstTable = new HashMap<>();
 
-    public Context(String sourcecode) {
+
+    public Session(String sourcecode, Tokenizer tokenizer, SyntaxTree syntaxTree) {
         this.sourcecode = sourcecode;
+        this.tokenizer = tokenizer;
+        this.syntaxTree = syntaxTree;
     }
 
-    public void addAll(List<Token> lines) {
-        this.tokens.addAll(lines);
+
+    public void run() {
+        this.tokenizer.tokenize(context);
+        this.parser
     }
 
     public void add(Token token) {
@@ -35,7 +49,4 @@ public class Context {
         this.getStringConstTable().put(CompilerConstant.STRING_PREFIX + "_" + size, tmp);
     }
 
-    public void addLine(List<Token> tmp) {
-        this.lines.add(tmp);
-    }
 }

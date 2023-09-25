@@ -1,6 +1,6 @@
 package org.riseger.main.compiler;
 
-import org.riseger.main.compiler.keyword.KeywordsTree;
+import org.riseger.main.compiler.lextcal.KeywordsTree;
 
 import java.util.HashMap;
 import java.util.Map;

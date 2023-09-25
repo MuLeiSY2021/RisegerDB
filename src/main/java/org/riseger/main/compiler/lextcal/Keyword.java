@@ -1,4 +1,4 @@
-package org.riseger.main.compiler.keyword;
+package org.riseger.main.compiler.lextcal;
 
 import lombok.Data;
 import org.riseger.main.compiler.CompilerConstant;
