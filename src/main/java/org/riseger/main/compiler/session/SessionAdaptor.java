@@ -1,22 +1,23 @@
 package org.riseger.main.compiler.session;
 
-import org.riseger.main.compiler.lextcal.KeywordsTree;
-import org.riseger.main.compiler.lextcal.Tokenizer;
-import org.riseger.main.compiler.syntax.SyntaxTree;
+import org.riseger.main.compiler.lextcal.Lexicator;
+import org.riseger.main.compiler.syntax.Parser;
+import org.riseger.main.compiler.token.Tokenizer;
 
 public class SessionAdaptor {
-    Tokenizer tokenizer;
+    private final Tokenizer tokenizer;
 
-    KeywordsTree keywordsTree;
+    private final Lexicator lexicator;
 
-    SyntaxTree syntaxTree;
+    private final Parser parser;
 
-    public SessionAdaptor(Tokenizer tokenizer, SyntaxTree syntaxTree) {
+    public SessionAdaptor(Tokenizer tokenizer, Lexicator lexicator, Parser parser) {
         this.tokenizer = tokenizer;
-        this.syntaxTree = syntaxTree;
+        this.lexicator = lexicator;
+        this.parser = parser;
     }
 
     public Session adapt(String sourceCode) {
-        return new Session(sourceCode, tokenizer, syntaxTree);
+        return new Session(sourceCode, tokenizer, lexicator, parser);
     }
 }

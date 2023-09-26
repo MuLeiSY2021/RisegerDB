@@ -20,7 +20,11 @@ public class SyntaxRule {
             String[] tokens;
             if (!ruleTextLine.startsWith("   |")) {
                 tokens = ruleTextLine.split("->");
-                prevRule = new Rule(tokens[0]);
+                if (tokens[0].startsWith("END_")) {
+                    prevRule = new Rule(tokens[0].substring("END_".length()), true);
+                } else {
+                    prevRule = new Rule(tokens[0], false);
+                }
                 eachRule.put(tokens[0], prevRule);
                 tokens = tokens[1].split("\\|");
             } else {
@@ -40,12 +44,16 @@ public class SyntaxRule {
     static class Rule {
         private final String type;
 
+        private final boolean end;
+
         private final List<Meta> meta = new LinkedList<Meta>();
 
         private Meta tmp;
 
-        public Rule(String type) {
+
+        public Rule(String type, boolean end) {
             this.type = type;
+            this.end = end;
         }
 
         public void newMeta() {

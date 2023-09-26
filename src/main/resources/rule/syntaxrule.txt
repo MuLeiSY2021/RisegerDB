@@ -3,7 +3,12 @@ sql -> sql ";" sql
     | "SEARCH" strings
     | "WHERE" conditions
 
-statement -> "USE" "DATABASE" string "MAP" string "SCOPE" rectangle "MODEL" strings
+statement ->
+    | statement "\" statement
+    | "DATABASE" string
+    | "MAP" string
+    | "SCOPE" rectangle
+    | "MODEL" strings
 
 strings -> string "," string
     | attribute
@@ -34,9 +39,10 @@ bool_operator -> ">"
 
 attribute -> string "." string
 
-number_operator -> number operator number
+
+
+number_operator -> "-" number_operator
     | "(" number_operator ")"
-    | "-" number_operator
     | operator_0
 
 operator_0 -> number "+" number
@@ -47,7 +53,7 @@ operator_1 -> number "*" number
     | number "/" number
     | number
 
-string -> """string"""
-    | '((?!\\d+(\\.\\d+)?)\\w+|^('')?$|'[^']*')'
+END:string -> "string"
+    |
 
-number -> '([1-9]\d*\.?\d*)|(0\.\d*[1-9])'
+END:number -> '([1-9]\d*\.?\d*)|(0\.\d*[1-9])'

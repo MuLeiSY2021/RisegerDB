@@ -1,7 +1,5 @@
 package org.riseger.main.compiler;
 
-import org.riseger.main.compiler.lextcal.KeywordsTree;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,18 +31,4 @@ public class CompilerConstant {
     public static final Map<String, Boolean> LINEFEED_MAP = new HashMap<>();
     public static final int DEFAULT_PRIORITY = Integer.MAX_VALUE;
     public static final int MORE_PRIORITY = 1024;
-    private static final String[] LINEFEED_KEYWORDS = new String[]{
-            "SELECT",
-            "WHERE",
-            "USE",
-            "FROM",
-            "ON",
-            "OTHER"
-    };
-
-    static {
-        for (String kerword : LINEFEED_KEYWORDS) {
-            LINEFEED_MAP.put(KeywordsTree.INSTANCE.getCode(kerword), true);
-        }
-    }
 }

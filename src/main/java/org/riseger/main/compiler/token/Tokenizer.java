@@ -1,44 +1,29 @@
-package org.riseger.main.compiler.lextcal;
+package org.riseger.main.compiler.token;
 
 import com.google.gson.Gson;
 import org.riseger.main.compiler.CompilerConstant;
-import org.riseger.main.compiler.session.Context;
-import org.riseger.main.compiler.session.Token;
+import org.riseger.main.compiler.lextcal.KeywordsTree;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Tokenizer {
     static Pattern tokenPattern = Pattern.compile(CompilerConstant.TOKEN_PATTERN);
 
-    private final Map<String, Integer> wordMap = new HashMap<>();
-
-    private final Map<Double, Integer> doubleMap = new HashMap<>();
-
     private final KeywordsTree keywordsTree;
-
-    Pattern numberPattern = Pattern.compile(CompilerConstant.NUMBER_PATTERN);
-
-    Pattern wordPattern = Pattern.compile(CompilerConstant.WORD_PATTERN);
 
     public Tokenizer(KeywordsTree keywordsTree) {
         this.keywordsTree = keywordsTree;
     }
 
-    public void tokenize(Context context) {
+    public List<Token> invoke(String sourcecode) {
         List<Token> lines;
-        String sourcecode = context.getSourcecode();
         lines = splitLine(sourcecode);
         lines = splitSpace(lines);
-        splitToken(lines, context);
-
-        for (Token word : context.getTokens()) {
-            setCode(word, context);
-        }
+        lines = splitToken(lines);
+        return lines;
     }
 
 //    public List<String> splitToken(String tile) {
@@ -65,7 +50,8 @@ public class Tokenizer {
 //        return res;
 //    }
 
-    private void splitToken(List<Token> lines, Context context) {
+    private List<Token> splitToken(List<Token> lines) {
+        List<Token> tokens = new LinkedList<>();
         for (Token token : lines) {
             int top = 0;
             String tile = token.getSourceCode();
@@ -86,7 +72,7 @@ public class Tokenizer {
                 if (index == -1) {
                     throw new IndexOutOfBoundsException(tile + " -1");
                 }
-                context.add(new Token(tile.substring(0, index), token.getLine(), top + token.getColumn()));
+                tokens.add(new Token(tile.substring(0, index), token.getLine(), top + token.getColumn()));
                 top = index;
 
                 if (token.getSourceCode().length() == index) {
@@ -96,6 +82,7 @@ public class Tokenizer {
                 round++;
             }
         }
+        return tokens;
     }
 
     private List<Token> splitLine(String code) {
@@ -149,33 +136,5 @@ public class Tokenizer {
         return res;
     }
 
-    public void setCode(Token word, Context context) {
-        String sourcecode = word.getSourceCode();
-        if (numberPattern.matcher(sourcecode).matches()) {
-            double tmp = Double.parseDouble(sourcecode);
-            if (!doubleMap.containsKey(tmp)) {
-                doubleMap.put(tmp, doubleMap.size() + 1);
-                context.put(doubleMap.size(), tmp);
-            }
-            word.setCode(CompilerConstant.NUMBER_PREFIX + "_" + doubleMap.size());
-            return;
-        }
-        sourcecode = sourcecode.toUpperCase();
-        Keyword keyword = this.keywordsTree.get(sourcecode);
-        if (keyword != null) {
-            word.setCode(keyword.getCode());
-            return;
-        }
 
-        if (wordPattern.matcher(sourcecode).matches()) {
-            if (!wordMap.containsKey(sourcecode)) {
-                wordMap.put(sourcecode, wordMap.size() + 1);
-                context.put(wordMap.size(), sourcecode);
-            }
-            word.setCode(CompilerConstant.STRING_PREFIX + "_" + wordMap.size());
-        } else {
-            System.out.println("Word:" + word);
-            throw new IllegalArgumentException("非法字符存在");
-        }
-    }
 }

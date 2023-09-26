@@ -1,6 +1,9 @@
 package org.riseger.main.compiler.syntax;
 
-import org.riseger.main.compiler.session.Context;
+
+import org.riseger.main.compiler.token.Token;
+
+import java.util.List;
 
 public class Parser {
     private final SyntaxTree syntaxTree;
@@ -9,7 +12,7 @@ public class Parser {
         this.syntaxTree = syntaxTree;
     }
 
-    public void parse(Context context) {
+    public SyntaxStructureTree invoke(List<Token> tokenList) {
 
     }
 }

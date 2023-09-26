@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 public class Keyword {
     private static final List<Keyword> KEYWORDS = new LinkedList<>();
-    private final int keywordIndex;
+    private final int id;
     private final List<Character> words = new LinkedList<>();
     private final String code;
 
@@ -20,7 +20,7 @@ public class Keyword {
         for (Character character : keyword.toCharArray()) {
             words.add(character);
         }
-        this.keywordIndex = index;
+        this.id = index;
         this.code = CompilerConstant.KEYWORD_PREFIX + CompilerConstant.SPLIT_PREFIX + KEYWORDS.size();
     }
 
