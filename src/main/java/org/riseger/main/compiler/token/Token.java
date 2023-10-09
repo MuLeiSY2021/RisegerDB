@@ -1,7 +1,7 @@
 package org.riseger.main.compiler.token;
 
 import lombok.Data;
-import org.riseger.main.compiler.CompilerConstant;
+import org.riseger.protoctl.serializer.JsonSerializer;
 
 @Data
 public class Token {
@@ -25,7 +25,7 @@ public class Token {
 
     @Override
     public String toString() {
-        return type.toString() + CompilerConstant.SPLIT_PREFIX + this.id;
+        return new String(JsonSerializer.serialize(this));
     }
 
     public void set(int id, TokenType tokenType) {

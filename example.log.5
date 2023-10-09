@@ -1,461 +1,30 @@
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"sql":{"database":"test_db","scope":{"coord":{"number1":1.0,"number2":1.0,"functionId":-1876601100},"len":{"number":20000.0,"functionId":1729357142},"functionId":1602469349},"map":"china_mp","search":{"content":["building_model.KEY_LOOP","building_model.name"],"where":{"condition":{"function1":{"function1":{"rect":{"coord":{"number1":4000.0,"number2":1000.0,"functionId":-1876601100},"len":{"number":5000.0,"functionId":1729357142},"functionId":1602469349},"functionId":-1633770632},"function2":{"rect":{"coord":{"number1":777.5,"number2":72658.1,"functionId":-1876601100},"len":{"number":45.2,"functionId":1729357142},"functionId":1602469349},"functionId":892724027},"functionId":1117061577},"function2":{"number1":{"model":"building_model","attribute":"floorArea","functionId":-1886426801},"number2":{"number":1000.0,"functionId":1729357142},"functionId":523439115},"functionId":867318673}}},"models":["province_scope.area_scope.building_model"]}}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: {"sql":{"database":"test_db","scope":{"coord":{"number1":1.0,"number2":1.0,"functionId":-1876601100},"len":{"number":20000.0,"functionId":1729357142},"functionId":1602469349},"map":"china_mp","search":{"content":["building_model.KEY_LOOP","building_model.name"],"where":{"condition":{"function1":{"function1":{"rect":{"coord":{"number1":4000.0,"number2":1000.0,"functionId":-1876601100},"len":{"number":5000.0,"functionId":1729357142},"functionId":1602469349},"functionId":-1633770632},"function2":{"rect":{"coord":{"number1":777.5,"number2":72658.1,"functionId":-1876601100},"len":{"number":45.2,"functionId":1729357142},"functionId":1602469349},"functionId":892724027},"functionId":1117061577},"function2":{"number1":{"model":"building_model","attribute":"floorArea","functionId":-1886426801},"number2":{"number":1000.0,"functionId":1729357142},"functionId":523439115},"functionId":867318673}}},"models":["province_scope.area_scope.building_model"]}}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - SearchRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending Response
-DEBUG pool-4-thread-1 org.riseger.main.search.SearchSession - result: {"building_model":[{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"Tianjin1","name":"Building 1","floorArea":3199.311438435107},"coordsSet":[[9439.5,9223.5],[9481.5,9253.0]],"threshold":0.5,"minX":9439.5,"maxX":9481.5,"minY":9223.5,"maxY":9481.5},{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"Tianjin3","name":"Building 3","floorArea":4527.432444949587},"coordsSet":[[9699.0,9675.5],[9701.0,9818.0]],"threshold":0.5,"minX":9699.0,"maxX":9701.0,"minY":9675.5,"maxY":9701.0},{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"Tianjin3","name":"Building 3","floorArea":4527.432444949587},"coordsSet":[[9699.0,9675.5],[9701.0,9818.0]],"threshold":0.5,"minX":9699.0,"maxX":9701.0,"minY":9675.5,"maxY":9701.0},{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"Tianjin1","name":"Building 1","floorArea":3199.311438435107},"coordsSet":[[9439.5,9223.5],[9481.5,9253.0]],"threshold":0.5,"minX":9439.5,"maxX":9481.5,"minY":9223.5,"maxY":9481.5}]}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"sql":{"database":"test_db","scope":{"coord":{"number1":1.0,"number2":1.0,"functionId":-1876601100},"len":{"number":20000.0,"functionId":1729357142},"functionId":1602469349},"map":"china_mp","search":{"content":["building_model.KEY_LOOP","building_model.name"],"where":{"condition":{"function1":{"function1":{"rect":{"coord":{"number1":4000.0,"number2":1000.0,"functionId":-1876601100},"len":{"number":5000.0,"functionId":1729357142},"functionId":1602469349},"functionId":-1633770632},"function2":{"rect":{"coord":{"number1":777.5,"number2":72658.1,"functionId":-1876601100},"len":{"number":45.2,"functionId":1729357142},"functionId":1602469349},"functionId":892724027},"functionId":1117061577},"function2":{"number1":{"model":"building_model","attribute":"floorArea","functionId":-1886426801},"number2":{"number":1000.0,"functionId":1729357142},"functionId":523439115},"functionId":867318673}}},"models":["province_scope.area_scope.building_model"]},"success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: {"sql":{"database":"test_db","scope":{"coord":{"number1":1.0,"number2":1.0,"functionId":-1876601100},"len":{"number":20000.0,"functionId":1729357142},"functionId":1602469349},"map":"china_mp","search":{"content":["building_model.KEY_LOOP","building_model.name"],"where":{"condition":{"function1":{"function1":{"rect":{"coord":{"number1":4000.0,"number2":1000.0,"functionId":-1876601100},"len":{"number":5000.0,"functionId":1729357142},"functionId":1602469349},"functionId":-1633770632},"function2":{"rect":{"coord":{"number1":777.5,"number2":72658.1,"functionId":-1876601100},"len":{"number":45.2,"functionId":1729357142},"functionId":1602469349},"functionId":892724027},"functionId":1117061577},"function2":{"number1":{"model":"building_model","attribute":"floorArea","functionId":-1886426801},"number2":{"number":1000.0,"functionId":1729357142},"functionId":523439115},"functionId":867318673}}},"models":["province_scope.area_scope.building_model"]},"success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - SearchRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending Response
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: SEARCH_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"sql":{"database":"test_db","scope":{"coord":{"number1":1.0,"number2":1.0,"functionId":-1876601100},"len":{"number":20000.0,"functionId":1729357142},"functionId":1602469349},"map":"china_mp","search":{"content":["building_model.KEY_LOOP","building_model.name"],"where":{"condition":{"function1":{"function1":{"rect":{"coord":{"number1":4000.0,"number2":1000.0,"functionId":-1876601100},"len":{"number":5000.0,"functionId":1729357142},"functionId":1602469349},"functionId":-1633770632},"function2":{"rect":{"coord":{"number1":777.5,"number2":72658.1,"functionId":-1876601100},"len":{"number":45.2,"functionId":1729357142},"functionId":1602469349},"functionId":892724027},"functionId":1117061577},"function2":{"number1":{"model":"building_model","attribute":"floorArea","functionId":-1886426801},"number2":{"number":1000.0,"functionId":1729357142},"functionId":523439115},"functionId":867318673}}},"models":["province_scope.area_scope.building_model"]},"success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: {"sql":{"database":"test_db","scope":{"coord":{"number1":1.0,"number2":1.0,"functionId":-1876601100},"len":{"number":20000.0,"functionId":1729357142},"functionId":1602469349},"map":"china_mp","search":{"content":["building_model.KEY_LOOP","building_model.name"],"where":{"condition":{"function1":{"function1":{"rect":{"coord":{"number1":4000.0,"number2":1000.0,"functionId":-1876601100},"len":{"number":5000.0,"functionId":1729357142},"functionId":1602469349},"functionId":-1633770632},"function2":{"rect":{"coord":{"number1":777.5,"number2":72658.1,"functionId":-1876601100},"len":{"number":45.2,"functionId":1729357142},"functionId":1602469349},"functionId":892724027},"functionId":1117061577},"function2":{"number1":{"model":"building_model","attribute":"floorArea","functionId":-1886426801},"number2":{"number":1000.0,"functionId":1729357142},"functionId":523439115},"functionId":867318673}}},"models":["province_scope.area_scope.building_model"]},"success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - SearchRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending Response
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: SEARCH_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"sql":{"database":"test_db","scope":{"coord":{"number1":1.0,"number2":1.0,"functionId":-1876601100},"len":{"number":20000.0,"functionId":1729357142},"functionId":1602469349},"map":"china_mp","search":{"content":["building_model.KEY_LOOP","building_model.name"],"where":{"condition":{"function1":{"function1":{"rect":{"coord":{"number1":4000.0,"number2":1000.0,"functionId":-1876601100},"len":{"number":5000.0,"functionId":1729357142},"functionId":1602469349},"functionId":-1633770632},"function2":{"rect":{"coord":{"number1":777.5,"number2":72658.1,"functionId":-1876601100},"len":{"number":45.2,"functionId":1729357142},"functionId":1602469349},"functionId":892724027},"functionId":1117061577},"function2":{"number1":{"model":"building_model","attribute":"floorArea","functionId":-1886426801},"number2":{"number":1000.0,"functionId":1729357142},"functionId":523439115},"functionId":867318673}}},"models":["province_scope.area_scope.building_model"]},"success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: {"sql":{"database":"test_db","scope":{"coord":{"number1":1.0,"number2":1.0,"functionId":-1876601100},"len":{"number":20000.0,"functionId":1729357142},"functionId":1602469349},"map":"china_mp","search":{"content":["building_model.KEY_LOOP","building_model.name"],"where":{"condition":{"function1":{"function1":{"rect":{"coord":{"number1":4000.0,"number2":1000.0,"functionId":-1876601100},"len":{"number":5000.0,"functionId":1729357142},"functionId":1602469349},"functionId":-1633770632},"function2":{"rect":{"coord":{"number1":777.5,"number2":72658.1,"functionId":-1876601100},"len":{"number":45.2,"functionId":1729357142},"functionId":1602469349},"functionId":892724027},"functionId":1117061577},"function2":{"number1":{"model":"building_model","attribute":"floorArea","functionId":-1886426801},"number2":{"number":1000.0,"functionId":1729357142},"functionId":523439115},"functionId":867318673}}},"models":["province_scope.area_scope.building_model"]},"success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - SearchRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending Response
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: SEARCH_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Error processing PreloadDatabaseRequest: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false,"exception":{"detailMessage":"java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $","cause":{"detailMessage":"Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $","stackTrace":[],"suppressedExceptions":[]},"stackTrace":[],"suppressedExceptions":[]}}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false,"exception":{"detailMessage":"java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $","cause":{"detailMessage":"Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $","stackTrace":[{"declaringClass":"com.google.gson.stream.JsonReader","methodName":"beginArray","fileName":"JsonReader.java","lineNumber":358},{"declaringClass":"com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter","methodName":"read","fileName":"CollectionTypeAdapterFactory.java","lineNumber":80},{"declaringClass":"com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter","methodName":"read","fileName":"CollectionTypeAdapterFactory.java","lineNumber":61},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1227},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1137},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1047},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1014},{"declaringClass":"org.riseger.protoctl.serializer.JsonSerializer","methodName":"deserialize","fileName":"JsonSerializer.java","lineNumber":25},{"declaringClass":"org.riseger.protoctl.packet.request.PreloadRequest","methodName":"warp","fileName":"PreloadRequest.java","lineNumber":30},{"declaringClass":"org.riseger.main.api.workflow.adapter.CommonAdapter","methodName":"adapt","fileName":"CommonAdapter.java","lineNumber":15},{"declaringClass":"org.riseger.main.api.workflow.workflow.CommonWorkFlow","methodName":"push","fileName":"CommonWorkFlow.java","lineNumber":22},{"declaringClass":"org.riseger.main.entry.server.ApiHandlerManager","methodName":"setPreloadRequest","fileName":"ApiHandlerManager.java","lineNumber":19},{"declaringClass":"org.riseger.main.entry.handler.PreloadMessageInboundHandler","methodName":"channelRead0","fileName":"PreloadMessageInboundHandler.java","lineNumber":20},{"declaringClass":"org.riseger.main.entry.handler.PreloadMessageInboundHandler","methodName":"channelRead0","fileName":"PreloadMessageInboundHandler.java","lineNumber":10},{"declaringClass":"io.netty.channel.SimpleChannelInboundHandler","methodName":"channelRead","fileName":"SimpleChannelInboundHandler.java","lineNumber":99},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":444},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"fireChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":412},{"declaringClass":"io.netty.handler.codec.ByteToMessageDecoder","methodName":"fireChannelRead","fileName":"ByteToMessageDecoder.java","lineNumber":346},{"declaringClass":"io.netty.handler.codec.ByteToMessageDecoder","methodName":"channelRead","fileName":"ByteToMessageDecoder.java","lineNumber":318},{"declaringClass":"io.netty.handler.codec.ByteToMessageCodec","methodName":"channelRead","fileName":"ByteToMessageCodec.java","lineNumber":103},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":442},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"fireChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":412},{"declaringClass":"io.netty.channel.DefaultChannelPipeline$HeadContext","methodName":"channelRead","fileName":"DefaultChannelPipeline.java","lineNumber":1410},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":440},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.DefaultChannelPipeline","methodName":"fireChannelRead","fileName":"DefaultChannelPipeline.java","lineNumber":919},{"declaringClass":"io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe","methodName":"read","fileName":"AbstractNioByteChannel.java","lineNumber":166},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKey","fileName":"NioEventLoop.java","lineNumber":788},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKeysOptimized","fileName":"NioEventLoop.java","lineNumber":724},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKeys","fileName":"NioEventLoop.java","lineNumber":650},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"run","fileName":"NioEventLoop.java","lineNumber":562},{"declaringClass":"io.netty.util.concurrent.SingleThreadEventExecutor$4","methodName":"run","fileName":"SingleThreadEventExecutor.java","lineNumber":997},{"declaringClass":"io.netty.util.internal.ThreadExecutorMap$2","methodName":"run","fileName":"ThreadExecutorMap.java","lineNumber":74},{"declaringClass":"io.netty.util.concurrent.FastThreadLocalRunnable","methodName":"run","fileName":"FastThreadLocalRunnable.java","lineNumber":30},{"declaringClass":"java.lang.Thread","methodName":"run","fileName":"Thread.java","lineNumber":750}],"suppressedExceptions":[]},"stackTrace":[{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1238},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1137},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1047},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1014},{"declaringClass":"org.riseger.protoctl.serializer.JsonSerializer","methodName":"deserialize","fileName":"JsonSerializer.java","lineNumber":25},{"declaringClass":"org.riseger.protoctl.packet.request.PreloadRequest","methodName":"warp","fileName":"PreloadRequest.java","lineNumber":30},{"declaringClass":"org.riseger.main.api.workflow.adapter.CommonAdapter","methodName":"adapt","fileName":"CommonAdapter.java","lineNumber":15},{"declaringClass":"org.riseger.main.api.workflow.workflow.CommonWorkFlow","methodName":"push","fileName":"CommonWorkFlow.java","lineNumber":22},{"declaringClass":"org.riseger.main.entry.server.ApiHandlerManager","methodName":"setPreloadRequest","fileName":"ApiHandlerManager.java","lineNumber":19},{"declaringClass":"org.riseger.main.entry.handler.PreloadMessageInboundHandler","methodName":"channelRead0","fileName":"PreloadMessageInboundHandler.java","lineNumber":20},{"declaringClass":"org.riseger.main.entry.handler.PreloadMessageInboundHandler","methodName":"channelRead0","fileName":"PreloadMessageInboundHandler.java","lineNumber":10},{"declaringClass":"io.netty.channel.SimpleChannelInboundHandler","methodName":"channelRead","fileName":"SimpleChannelInboundHandler.java","lineNumber":99},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":444},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"fireChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":412},{"declaringClass":"io.netty.handler.codec.ByteToMessageDecoder","methodName":"fireChannelRead","fileName":"ByteToMessageDecoder.java","lineNumber":346},{"declaringClass":"io.netty.handler.codec.ByteToMessageDecoder","methodName":"channelRead","fileName":"ByteToMessageDecoder.java","lineNumber":318},{"declaringClass":"io.netty.handler.codec.ByteToMessageCodec","methodName":"channelRead","fileName":"ByteToMessageCodec.java","lineNumber":103},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":442},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"fireChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":412},{"declaringClass":"io.netty.channel.DefaultChannelPipeline$HeadContext","methodName":"channelRead","fileName":"DefaultChannelPipeline.java","lineNumber":1410},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":440},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.DefaultChannelPipeline","methodName":"fireChannelRead","fileName":"DefaultChannelPipeline.java","lineNumber":919},{"declaringClass":"io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe","methodName":"read","fileName":"AbstractNioByteChannel.java","lineNumber":166},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKey","fileName":"NioEventLoop.java","lineNumber":788},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKeysOptimized","fileName":"NioEventLoop.java","lineNumber":724},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKeys","fileName":"NioEventLoop.java","lineNumber":650},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"run","fileName":"NioEventLoop.java","lineNumber":562},{"declaringClass":"io.netty.util.concurrent.SingleThreadEventExecutor$4","methodName":"run","fileName":"SingleThreadEventExecutor.java","lineNumber":997},{"declaringClass":"io.netty.util.internal.ThreadExecutorMap$2","methodName":"run","fileName":"ThreadExecutorMap.java","lineNumber":74},{"declaringClass":"io.netty.util.concurrent.FastThreadLocalRunnable","methodName":"run","fileName":"FastThreadLocalRunnable.java","lineNumber":30},{"declaringClass":"java.lang.Thread","methodName":"run","fileName":"Thread.java","lineNumber":750}],"suppressedExceptions":[]}}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-ERROR nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false,"exception":{"detailMessage":"java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $","cause":{"detailMessage":"Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 2 path $","stackTrace":[{"declaringClass":"com.google.gson.stream.JsonReader","methodName":"beginArray","fileName":"JsonReader.java","lineNumber":358},{"declaringClass":"com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter","methodName":"read","fileName":"CollectionTypeAdapterFactory.java","lineNumber":80},{"declaringClass":"com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter","methodName":"read","fileName":"CollectionTypeAdapterFactory.java","lineNumber":61},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1227},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1137},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1047},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1014},{"declaringClass":"org.riseger.protoctl.serializer.JsonSerializer","methodName":"deserialize","fileName":"JsonSerializer.java","lineNumber":25},{"declaringClass":"org.riseger.protoctl.packet.request.PreloadRequest","methodName":"warp","fileName":"PreloadRequest.java","lineNumber":30},{"declaringClass":"org.riseger.main.api.workflow.adapter.CommonAdapter","methodName":"adapt","fileName":"CommonAdapter.java","lineNumber":15},{"declaringClass":"org.riseger.main.api.workflow.workflow.CommonWorkFlow","methodName":"push","fileName":"CommonWorkFlow.java","lineNumber":22},{"declaringClass":"org.riseger.main.entry.server.ApiHandlerManager","methodName":"setPreloadRequest","fileName":"ApiHandlerManager.java","lineNumber":19},{"declaringClass":"org.riseger.main.entry.handler.PreloadMessageInboundHandler","methodName":"channelRead0","fileName":"PreloadMessageInboundHandler.java","lineNumber":20},{"declaringClass":"org.riseger.main.entry.handler.PreloadMessageInboundHandler","methodName":"channelRead0","fileName":"PreloadMessageInboundHandler.java","lineNumber":10},{"declaringClass":"io.netty.channel.SimpleChannelInboundHandler","methodName":"channelRead","fileName":"SimpleChannelInboundHandler.java","lineNumber":99},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":444},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"fireChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":412},{"declaringClass":"io.netty.handler.codec.ByteToMessageDecoder","methodName":"fireChannelRead","fileName":"ByteToMessageDecoder.java","lineNumber":346},{"declaringClass":"io.netty.handler.codec.ByteToMessageDecoder","methodName":"channelRead","fileName":"ByteToMessageDecoder.java","lineNumber":318},{"declaringClass":"io.netty.handler.codec.ByteToMessageCodec","methodName":"channelRead","fileName":"ByteToMessageCodec.java","lineNumber":103},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":442},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"fireChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":412},{"declaringClass":"io.netty.channel.DefaultChannelPipeline$HeadContext","methodName":"channelRead","fileName":"DefaultChannelPipeline.java","lineNumber":1410},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":440},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.DefaultChannelPipeline","methodName":"fireChannelRead","fileName":"DefaultChannelPipeline.java","lineNumber":919},{"declaringClass":"io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe","methodName":"read","fileName":"AbstractNioByteChannel.java","lineNumber":166},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKey","fileName":"NioEventLoop.java","lineNumber":788},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKeysOptimized","fileName":"NioEventLoop.java","lineNumber":724},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKeys","fileName":"NioEventLoop.java","lineNumber":650},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"run","fileName":"NioEventLoop.java","lineNumber":562},{"declaringClass":"io.netty.util.concurrent.SingleThreadEventExecutor$4","methodName":"run","fileName":"SingleThreadEventExecutor.java","lineNumber":997},{"declaringClass":"io.netty.util.internal.ThreadExecutorMap$2","methodName":"run","fileName":"ThreadExecutorMap.java","lineNumber":74},{"declaringClass":"io.netty.util.concurrent.FastThreadLocalRunnable","methodName":"run","fileName":"FastThreadLocalRunnable.java","lineNumber":30},{"declaringClass":"java.lang.Thread","methodName":"run","fileName":"Thread.java","lineNumber":750}],"suppressedExceptions":[]},"stackTrace":[{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1238},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1137},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1047},{"declaringClass":"com.google.gson.Gson","methodName":"fromJson","fileName":"Gson.java","lineNumber":1014},{"declaringClass":"org.riseger.protoctl.serializer.JsonSerializer","methodName":"deserialize","fileName":"JsonSerializer.java","lineNumber":25},{"declaringClass":"org.riseger.protoctl.packet.request.PreloadRequest","methodName":"warp","fileName":"PreloadRequest.java","lineNumber":30},{"declaringClass":"org.riseger.main.api.workflow.adapter.CommonAdapter","methodName":"adapt","fileName":"CommonAdapter.java","lineNumber":15},{"declaringClass":"org.riseger.main.api.workflow.workflow.CommonWorkFlow","methodName":"push","fileName":"CommonWorkFlow.java","lineNumber":22},{"declaringClass":"org.riseger.main.entry.server.ApiHandlerManager","methodName":"setPreloadRequest","fileName":"ApiHandlerManager.java","lineNumber":19},{"declaringClass":"org.riseger.main.entry.handler.PreloadMessageInboundHandler","methodName":"channelRead0","fileName":"PreloadMessageInboundHandler.java","lineNumber":20},{"declaringClass":"org.riseger.main.entry.handler.PreloadMessageInboundHandler","methodName":"channelRead0","fileName":"PreloadMessageInboundHandler.java","lineNumber":10},{"declaringClass":"io.netty.channel.SimpleChannelInboundHandler","methodName":"channelRead","fileName":"SimpleChannelInboundHandler.java","lineNumber":99},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":444},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"fireChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":412},{"declaringClass":"io.netty.handler.codec.ByteToMessageDecoder","methodName":"fireChannelRead","fileName":"ByteToMessageDecoder.java","lineNumber":346},{"declaringClass":"io.netty.handler.codec.ByteToMessageDecoder","methodName":"channelRead","fileName":"ByteToMessageDecoder.java","lineNumber":318},{"declaringClass":"io.netty.handler.codec.ByteToMessageCodec","methodName":"channelRead","fileName":"ByteToMessageCodec.java","lineNumber":103},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":442},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"fireChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":412},{"declaringClass":"io.netty.channel.DefaultChannelPipeline$HeadContext","methodName":"channelRead","fileName":"DefaultChannelPipeline.java","lineNumber":1410},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":440},{"declaringClass":"io.netty.channel.AbstractChannelHandlerContext","methodName":"invokeChannelRead","fileName":"AbstractChannelHandlerContext.java","lineNumber":420},{"declaringClass":"io.netty.channel.DefaultChannelPipeline","methodName":"fireChannelRead","fileName":"DefaultChannelPipeline.java","lineNumber":919},{"declaringClass":"io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe","methodName":"read","fileName":"AbstractNioByteChannel.java","lineNumber":166},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKey","fileName":"NioEventLoop.java","lineNumber":788},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKeysOptimized","fileName":"NioEventLoop.java","lineNumber":724},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"processSelectedKeys","fileName":"NioEventLoop.java","lineNumber":650},{"declaringClass":"io.netty.channel.nio.NioEventLoop","methodName":"run","fileName":"NioEventLoop.java","lineNumber":562},{"declaringClass":"io.netty.util.concurrent.SingleThreadEventExecutor$4","methodName":"run","fileName":"SingleThreadEventExecutor.java","lineNumber":997},{"declaringClass":"io.netty.util.internal.ThreadExecutorMap$2","methodName":"run","fileName":"ThreadExecutorMap.java","lineNumber":74},{"declaringClass":"io.netty.util.concurrent.FastThreadLocalRunnable","methodName":"run","fileName":"FastThreadLocalRunnable.java","lineNumber":30},{"declaringClass":"java.lang.Thread","methodName":"run","fileName":"Thread.java","lineNumber":750}],"suppressedExceptions":[]}}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Received PreloadDatabaseRequest: {"uri":"/home/MuLeiY9000P/IdeaProjects/RisegerDB/src/main/resources/dataSource/0.json","success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Processing PreloadDatabaseRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - PreloadDatabaseRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.PreloadMessageInboundHandler - Sending PreloadDatabaseResponse: {"success":false}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: PRELOAD_DB_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true,"message":"Successfully processed"}
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Model文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO pool-1-thread-1 org.riseger.main.storage.PreloadFSM - 创建Config文件成功
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: SEARCH
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"sql":{"database":"test_db","scope":{"coord":{"number1":1.0,"number2":1.0,"functionId":-1876601100},"len":{"number":20000.0,"functionId":1729357142},"functionId":1602469349},"map":"china_mp","search":{"content":["building_model.KEY_LOOP","building_model.name"],"where":{"condition":{"function1":{"function1":{"rect":{"coord":{"number1":4000.0,"number2":1000.0,"functionId":-1876601100},"len":{"number":5000.0,"functionId":1729357142},"functionId":1602469349},"functionId":-1633770632},"function2":{"rect":{"coord":{"number1":777.5,"number2":72658.1,"functionId":-1876601100},"len":{"number":45.2,"functionId":1729357142},"functionId":1602469349},"functionId":892724027},"functionId":1117061577},"function2":{"number1":{"model":"building_model","attribute":"floorArea","functionId":-1886426801},"number2":{"number":1000.0,"functionId":1729357142},"functionId":523439115},"functionId":867318673}}},"models":["province_scope.area_scope.building_model"]},"success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Received SearchRequest: {"sql":{"database":"test_db","scope":{"coord":{"number1":1.0,"number2":1.0,"functionId":-1876601100},"len":{"number":20000.0,"functionId":1729357142},"functionId":1602469349},"map":"china_mp","search":{"content":["building_model.KEY_LOOP","building_model.name"],"where":{"condition":{"function1":{"function1":{"rect":{"coord":{"number1":4000.0,"number2":1000.0,"functionId":-1876601100},"len":{"number":5000.0,"functionId":1729357142},"functionId":1602469349},"functionId":-1633770632},"function2":{"rect":{"coord":{"number1":777.5,"number2":72658.1,"functionId":-1876601100},"len":{"number":45.2,"functionId":1729357142},"functionId":1602469349},"functionId":892724027},"functionId":1117061577},"function2":{"number1":{"model":"building_model","attribute":"floorArea","functionId":-1886426801},"number2":{"number":1000.0,"functionId":1729357142},"functionId":523439115},"functionId":867318673}}},"models":["province_scope.area_scope.building_model"]},"success":false}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Processing SearchRequest...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.api.workflow.workflow.CommonWorkFlow - 收到一条请求
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - SearchRequest processed successfully.
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.SearchMessageInboundHandler - Sending Response
-DEBUG pool-4-thread-1 org.riseger.main.search.SearchSession - result: {"building_model":[{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"ShangHai2","name":"Building 2","floorArea":3387.6495116027545},"coordsSet":[[8980.0,7793.0],[9053.0,7869.0]],"threshold":0.5,"minX":8980.0,"maxX":9053.0,"minY":7793.0,"maxY":9053.0},{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"ShangHai1","name":"Building 1","floorArea":1484.6226331740243},"coordsSet":[[8975.0,7705.5],[8992.0,7836.5]],"threshold":0.5,"minX":8975.0,"maxX":8992.0,"minY":7705.5,"maxY":8992.0},{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"ShangHai1","name":"Building 1","floorArea":1484.6226331740243},"coordsSet":[[8975.0,7705.5],[8992.0,7836.5]],"threshold":0.5,"minX":8975.0,"maxX":8992.0,"minY":7705.5,"maxY":8992.0},{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"ShangHai3","name":"Building 3","floorArea":2934.877035925221},"coordsSet":[[8976.5,6617.5],[9007.0,7497.0]],"threshold":0.5,"minX":8976.5,"maxX":9007.0,"minY":6617.5,"maxY":9007.0},{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"ShangHai3","name":"Building 3","floorArea":2934.877035925221},"coordsSet":[[8976.5,6617.5],[9007.0,7497.0]],"threshold":0.5,"minX":8976.5,"maxX":9007.0,"minY":6617.5,"maxY":9007.0},{"parentModel":"field","model":{"name":"building_model","parent":"field","parameters":{"name":"STRING","address":"STRING","floorArea":"DOUBLE"}},"attributes":{"address":"ShangHai2","name":"Building 2","floorArea":3387.6495116027545},"coordsSet":[[8980.0,7793.0],[9053.0,7869.0]],"threshold":0.5,"minX":8980.0,"maxX":9053.0,"minY":7793.0,"maxY":9053.0}]}
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: SEARCH_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: SEARCH_RESPONSE
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.IndexOutOfBoundsException: readerIndex(5) + length(2157) exceeds writerIndex(2048): PooledUnsafeDirectByteBuf(ridx: 5, widx: 2048, cap: 2048)
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 123
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 117
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 99
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 99
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 117
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 83
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 104
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 103
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 72
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 103
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 123
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 98
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 66
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 117
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
@@ -463,15 +32,161 @@ ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 103
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 95
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
-ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 32
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 102
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 65
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 54
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 52
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 49
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 49
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 54
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 52
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 125
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 99
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 83
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 91
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 91
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 93
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 91
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 54
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 93
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 93
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 104
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 104
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 88
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 120
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 88
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 89
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 120
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 89
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 125
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 123
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 112
@@ -635,3 +350,531 @@ ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
 ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 83
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 104
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 103
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 72
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 49
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 66
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 117
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 103
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 32
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 49
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 102
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 65
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 49
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 52
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 52
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 54
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 54
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 49
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 52
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 52
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 125
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 99
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 83
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 91
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 91
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 93
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 91
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 54
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 93
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 93
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 104
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 104
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 88
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 120
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 88
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 89
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 120
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 89
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 125
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 123
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 112
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 77
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 102
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 123
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 98
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 117
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 103
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 95
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 112
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 102
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 112
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 123
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 83
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 84
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 82
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 73
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 78
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 71
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 83
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 84
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 82
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 73
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 78
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 71
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 102
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 65
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 68
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 79
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 85
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 66
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 76
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 69
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 125
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 125
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 98
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 117
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 123
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 83
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 104
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 103
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 72
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 49
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 66
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 117
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 103
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 32
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 49
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 102
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 65
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 49
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 52
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 52
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 54
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 54
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 49
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 52
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 52
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 125
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 99
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 83
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 91
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 91
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 93
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 91
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 51
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 54
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 93
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 93
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 116
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 104
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 114
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 101
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 115
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 104
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 111
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 108
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 100
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 88
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 97
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 120
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 88
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 56
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 57
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 50
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 105
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 110
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 89
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 58
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 55
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 48
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 46
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 53
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 44
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 34
+ERROR nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - java.lang.ArrayIndexOutOfBoundsException: 109

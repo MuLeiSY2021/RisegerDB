@@ -36,12 +36,14 @@ public class SyntaxRule {
             } else {
                 tokens = ruleTextLine.split("\\|");
             }
-            prevRule.newMeta();
-            for (String meta : tokens[1].split(" ")) {
-                if (meta.isEmpty()) {
-                    continue;
+            if (tokens.length > 1 && prevRule != null) {
+                prevRule.newMeta();
+                for (String meta : tokens[1].split(" ")) {
+                    if (meta.isEmpty()) {
+                        continue;
+                    }
+                    prevRule.add(meta, meta.startsWith("\""));
                 }
-                prevRule.add(meta, meta.startsWith("\""));
             }
         }
         return new SyntaxRule(eachRule);
@@ -90,7 +92,11 @@ public class SyntaxRule {
 
         public Type(boolean key, String value) {
             this.key = key;
-            this.value = value;
+            if (key) {
+                this.value = value.substring(1, value.length() - 1);
+            } else {
+                this.value = value;
+            }
         }
 
         @Override

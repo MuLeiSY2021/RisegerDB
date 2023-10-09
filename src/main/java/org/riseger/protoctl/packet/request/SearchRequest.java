@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Getter
 @Setter
-public class SearchRequest extends ResponseRequest {
+public class SearchRequest extends BasicRequest {
 
     private final USE sql;
 

@@ -1,5 +1,6 @@
 package org.riseger.main.compiler;
 
+import org.riseger.main.compiler.session.Session;
 import org.riseger.main.compiler.session.SessionAdaptor;
 
 public class CompilerMaster {
@@ -11,4 +12,7 @@ public class CompilerMaster {
         this.adaptor = adaptor;
     }
 
+    public Session adapt(String text) {
+        return adaptor.adapt(text);
+    }
 }

@@ -9,8 +9,8 @@ import org.riseger.protoctl.packet.PacketType;
 
 @Getter
 @Setter
-public abstract class ResponseRequest extends BasicPacket {
-    public ResponseRequest(PacketType packetType) {
+public abstract class BasicRequest extends BasicPacket {
+    public BasicRequest(PacketType packetType) {
         super(packetType);
     }
 

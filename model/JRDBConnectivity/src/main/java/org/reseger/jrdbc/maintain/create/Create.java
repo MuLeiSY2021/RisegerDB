@@ -1,8 +1,8 @@
-package org.reseger.jrdbc.command.maintain.create;
+package org.reseger.jrdbc.maintain.create;
 
-import org.reseger.jrdbc.command.CommandId;
-import org.reseger.jrdbc.command.Commands;
 import org.reseger.jrdbc.driver.session.Session;
+import org.reseger.jrdbc.maintain.command.CommandId;
+import org.reseger.jrdbc.maintain.command.Commands;
 
 @CommandId("create")
 public class Create {

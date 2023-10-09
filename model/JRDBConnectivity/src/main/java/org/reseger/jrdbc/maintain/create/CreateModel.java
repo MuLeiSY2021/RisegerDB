@@ -1,7 +1,7 @@
-package org.reseger.jrdbc.command.maintain.create;
+package org.reseger.jrdbc.maintain.create;
 
-import org.reseger.jrdbc.command.Command;
-import org.reseger.jrdbc.command.Commands;
+import org.reseger.jrdbc.maintain.command.Command;
+import org.reseger.jrdbc.maintain.command.Commands;
 import org.riseger.protoctl.struct.config.Option;
 import org.riseger.protoctl.struct.entity.ParentModel;
 import org.riseger.protoctl.struct.entity.Type;

@@ -1,7 +1,7 @@
 package org.riseger.main.entry.server;
 
 import org.riseger.main.workflow.workflow.CommonWorkFlow;
-import org.riseger.protoctl.packet.request.ResponseRequest;
+import org.riseger.protoctl.packet.request.BasicRequest;
 
 public class ApiHandlerManager {
     public static ApiHandlerManager INSTANCE;
@@ -14,12 +14,16 @@ public class ApiHandlerManager {
 
     private Compiler compiler;
 
-    public void setPreloadRequest(ResponseRequest request) throws Exception {
+    public void setPreloadRequest(BasicRequest request) throws Exception {
         preloadWorkflow.push(request);
     }
 
-    public void setSearchRequest(ResponseRequest request) throws Exception {
+    public void setSearchRequest(BasicRequest request) throws Exception {
         searchWorkflow.push(request);
+    }
+
+    public void setMaintainRequest(BasicRequest request) throws Exception {
+        maintainWorkflow.push(request);
     }
 
 }

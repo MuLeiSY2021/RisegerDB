@@ -11,6 +11,7 @@ public class HandlerManager extends ChannelInitializer<SocketChannel> {
         ch.pipeline()
                 .addLast(new ProtocolCodec())
                 .addLast(new PreloadMessageInboundHandler())
-                .addLast(new SearchMessageInboundHandler());
+                .addLast(new SearchMessageInboundHandler())
+                .addLast(new TextSQLMessageInboundHandler());
     }
 }

@@ -1,10 +1,10 @@
 package org.risegerdd.client.shell;
 
 import org.reseger.jrdbc.driver.connector.Connection;
-import org.reseger.jrdbc.driver.session.SearchSession;
+import org.reseger.jrdbc.driver.session.TextSQLMessageSession;
 import org.riseger.protoctl.exception.SQLException;
-import org.riseger.protoctl.search.ResultSet;
-import org.riseger.protoctl.search.ResultSetMetaData;
+import org.riseger.protoctl.otherProtocol.ProgressBar;
+import org.riseger.protoctl.packet.response.TextSQLResponse;
 import org.risegerdd.client.shell.introduce.CyberIntroduce;
 import org.risegerdd.client.shell.progressbar.WavyProgressBar;
 import org.risegerdd.client.shell.style.ColorList;
@@ -19,15 +19,21 @@ public class DatabaseShellClient {
 
     public static void main(String[] args) throws Exception {
         try {
-            Connection connection = Connection.connect("localhost", 10086);
-            SearchSession statement = connection.search();
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String userInput;
 
             PrintStream out = System.out;
             CyberIntroduce.introduce(out);
-            WavyProgressBar.loading(out, ColorList.CYBER_COLOR, 100, 0);
+            ProgressBar progressBar = new WavyProgressBar(out, ColorList.CYBER_COLOR, 100);
+            progressBar.loading(0);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            progressBar.loading(10);
+            Connection connection = Connection.connect("localhost", 10086, progressBar);
+            progressBar.loading(10);
+            TextSQLMessageSession statement = connection.sqlText();
+            progressBar.loading(10);
+            String userInput;
+
+            progressBar.done();
             out.println(ColorList.CYBER_COLOR.toColorful("ResigerDB is now loaded and ready to use!"));
             while (true) {
                 out.print(CyberColorStyle.VERY_SOFT_MAGENTA.toColor("ResigerDB" + CyberColorStyle.DARK_BLUE.toColor("❯ ")));
@@ -35,26 +41,31 @@ public class DatabaseShellClient {
                 if (userInput.equalsIgnoreCase("exit")) {
                     break;
                 }
-
+                statement.setSqlText(userInput);
                 try {
-                    if (userInput.trim().toLowerCase().startsWith("select")) {
-                        ResultSet resultSet = statement.executeQuery(userInput);
-                        ResultSetMetaData metaData = resultSet.getMetaData();
-                        int columnCount = metaData.getColumnCount();
+                    //发送查询请求，并接收结果
+                    TextSQLResponse response = statement.send();
 
-                        // 输出查询结果
-                        while (resultSet.next()) {
-                            for (int i = 1; i <= columnCount; i++) {
-                                out.print(resultSet.getString(i) + "\t");
-                            }
-                            out.println();
-                        }
-                    } else {
-                        int rowsAffected = statement.executeUpdate(userInput);
-                        out.println("Query OK, " + rowsAffected + " row(s) affected");
-                    }
-                } catch (SQLException e) {
-                    System.err.println("ERROR: " + e.getMessage());
+                    //输出结果
+                    out.print(response.getMessage());
+//                    if (userInput.trim().toLowerCase().startsWith("select")) {
+//                        ResultSet resultSet = statement.executeQuery(userInput);
+//                        ResultSetMetaData metaData = resultSet.getMetaData();
+//                        int columnCount = metaData.getColumnCount();
+//
+//                        // 输出查询结果
+//                        while (resultSet.next()) {
+//                            for (int i = 1; i <= columnCount; i++) {
+//                                out.print(resultSet.getString(i) + "\t");
+//                            }
+//                            out.println();
+//                        }
+//                    } else {
+//                        int rowsAffected = statement.executeUpdate(userInput);
+//                        out.println("Query OK, " + rowsAffected + " row(s) affected");
+//                    }
+                } catch (Exception e) {
+                    System.err.println("\nERROR: " + e.getMessage());
                 }
             }
 

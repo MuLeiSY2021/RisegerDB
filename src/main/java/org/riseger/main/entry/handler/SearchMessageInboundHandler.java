@@ -36,13 +36,13 @@ public class SearchMessageInboundHandler extends TransponderHandler<SearchReques
         if (super.isFailed()) {
             response.failed(super.getException());
         } else {
-            response.success(getE());
+            response.success(getOut());
         }
         ctx.channel().writeAndFlush(response);
     }
 
     @Override
-    public Map<String,List<Element_c>> getE() {
+    public Map<String, List<Element_c>> getOut() {
         try {
             super.sleep();
         } catch (InterruptedException e) {
@@ -53,7 +53,7 @@ public class SearchMessageInboundHandler extends TransponderHandler<SearchReques
     }
 
     @Override
-    public void setE(Map<String,List<Element_c>> result) {
+    public void setOut(Map<String, List<Element_c>> result) {
         this.result = result;
         super.wake();
     }

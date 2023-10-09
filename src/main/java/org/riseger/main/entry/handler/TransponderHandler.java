@@ -7,7 +7,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Getter
-public abstract class TransponderHandler<I, E> extends SimpleChannelInboundHandler<I> {
+public abstract class TransponderHandler<IN, OUT> extends SimpleChannelInboundHandler<IN> {
     private final ReentrantLock lock = new ReentrantLock();
 
     private final Condition cond = lock.newCondition();
@@ -16,9 +16,9 @@ public abstract class TransponderHandler<I, E> extends SimpleChannelInboundHandl
 
     private Exception exception;
 
-    public abstract E getE();
+    public abstract OUT getOut();
 
-    public abstract void setE(E database);
+    public abstract void setOut(OUT out);
 
     protected void sleep() throws InterruptedException {
         lock.lock();

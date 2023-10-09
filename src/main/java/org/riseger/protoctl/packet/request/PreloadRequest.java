@@ -16,12 +16,13 @@ import java.util.LinkedList;
 
 @Getter
 @Setter
-public class PreloadRequest extends ResponseRequest {
+public class PreloadRequest extends BasicRequest {
 
     private String uri;
 
-    public PreloadRequest() {
+    public PreloadRequest(String uri) {
         super(PacketType.PRELOAD_DB);
+        this.uri = uri;
     }
 
     @Override

@@ -11,6 +11,8 @@ import lombok.Getter;
 import org.reseger.jrdbc.driver.handler.ClientHandlerManager;
 import org.reseger.jrdbc.driver.session.PreloadSession;
 import org.reseger.jrdbc.driver.session.SearchSession;
+import org.reseger.jrdbc.driver.session.TextSQLMessageSession;
+import org.riseger.protoctl.otherProtocol.ProgressBar;
 
 import javax.xml.ws.Response;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -41,6 +43,25 @@ public class Connection {
                 .option(ChannelOption.TCP_NODELAY, true)
                 .handler(new ClientHandlerManager(connection))
                 .channel(NioSocketChannel.class);
+        connection.channel = bootstrap.connect(host, port).sync().channel();
+        return connection;
+    }
+
+    public static Connection connect(String host, int port, ProgressBar progressBar) throws InterruptedException {
+        Connection connection = new Connection(new NioEventLoopGroup());
+        progressBar.loading(10);
+        Bootstrap bootstrap = new Bootstrap();
+        progressBar.loading(10);
+        EventLoopGroup workerGroup = connection.getEventLoopGroup();
+        progressBar.loading(10);
+        bootstrap.group(workerGroup)
+                .option(ChannelOption.SO_KEEPALIVE, true)
+                .option(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(65535))
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
+                .option(ChannelOption.TCP_NODELAY, true)
+                .handler(new ClientHandlerManager(connection))
+                .channel(NioSocketChannel.class);
+        progressBar.loading(10);
         connection.channel = bootstrap.connect(host, port).sync().channel();
         return connection;
     }
@@ -79,5 +100,9 @@ public class Connection {
 
     public SearchSession search() {
         return new SearchSession(this);
+    }
+
+    public TextSQLMessageSession sqlText() {
+        return new TextSQLMessageSession(this);
     }
 }

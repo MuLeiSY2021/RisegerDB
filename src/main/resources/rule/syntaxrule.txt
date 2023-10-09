@@ -15,7 +15,7 @@ strings -> string "," string
 rectangle -> "RECT" "(" coord "," number_operator ")"
     | attribute
 
-coord -> "COORD" "(" number_operator "," number_operator ")"
+coord -> COORD "(" number_operator "," number_operator ")"
     | attribute
 
 conditions -> bool_condition
@@ -52,6 +52,5 @@ operator_1 -> number "*" number
     | number "/" number
     | number
 
-END:string -> "string"
-
-END:number -> '([1-9]\d*\.?\d*)|(0\.\d*[1-9])'
+END:string
+END:number

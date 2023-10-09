@@ -1,8 +1,8 @@
 package org.riseger.main.workflow.adapter;
 
-import org.riseger.protoctl.packet.request.ResponseRequest;
+import org.riseger.protoctl.packet.request.BasicRequest;
 
 public interface Adapter {
-    void adapt(ResponseRequest request);
+    void adapt(BasicRequest request);
 
 }

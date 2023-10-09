@@ -1,7 +1,7 @@
-package org.reseger.jrdbc.command;
+package org.reseger.jrdbc.maintain.command;
 
-import org.reseger.jrdbc.command.maintain.create.Create;
 import org.reseger.jrdbc.driver.session.Session;
+import org.reseger.jrdbc.maintain.create.Create;
 
 import java.util.HashMap;
 import java.util.LinkedList;

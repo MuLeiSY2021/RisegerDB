@@ -25,7 +25,6 @@ public class Session {
     private Map<Integer, Double> numberConstTable = new HashMap<>();
     private Map<Double, Integer> numberIndexTable = new HashMap<>();
 
-
     public Session(String sourcecode, Tokenizer tokenizer, Lexicator lexicator, Parser parser) {
         this.sourcecode = sourcecode;
         this.tokenizer = tokenizer;
@@ -34,10 +33,12 @@ public class Session {
     }
 
 
-    public void run() {
+    public String run() {
         this.tokenList = this.tokenizer.invoke(sourcecode);
         this.lexicator.invoke(tokenList, this);
         this.parser.invoke(tokenList);
+        //TODO:还差语义树
+        return "test";
     }
 
     public int put(double tmp) {

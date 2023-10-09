@@ -1,4 +1,4 @@
-package org.reseger.jrdbc.command;
+package org.reseger.jrdbc.maintain.command;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -15,8 +15,6 @@ public class SearchJob implements Job {
 
     private final TransponderHandler<SearchRequest, Map<String, List<Element_c>>> transponder;
 
-
-
     private SearchSession session;
 
     public SearchJob(USE sql, TransponderHandler<SearchRequest, Map<String, List<Element_c>>> transponder) {
@@ -32,7 +30,7 @@ public class SearchJob implements Job {
     @Override
     public void run() {
         try {
-            transponder.setE(session.process());
+            transponder.setOut(session.process());
         } catch (Exception e) {
             transponder.send(e);
             e.printStackTrace();

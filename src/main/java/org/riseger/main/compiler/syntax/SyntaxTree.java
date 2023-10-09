@@ -40,7 +40,7 @@ public class SyntaxTree {
     }
 
     private void parse(ListIterator<Token> tokenIterator, LayerIterator layerIterator) {
-        this.parse(tokenIterator, 0, layerIterator);
+        this.parse(tokenIterator, this.typeIdTable.get("sql"), layerIterator);
     }
 
     private void parse(ListIterator<Token> tokenIterator, int typeCode, LayerIterator layerIterator) {
@@ -122,6 +122,7 @@ public class SyntaxTree {
             }
 
             public boolean suit(ListIterator<Token> tokenIterator, LayerIterator layerIterator) {
+                //TODO:重新写遍历语法树的逻辑结构，基于状态机，同时做非关键字缓存，注意边界状态
                 Token token = tokenIterator.next();
 
                 if (this.isKeyword) {

@@ -1,8 +1,12 @@
 package org.riseger.protoctl.packet.response;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.riseger.protoctl.packet.BasicPacket;
 import org.riseger.protoctl.packet.PacketType;
 
+@Getter
+@Setter
 public abstract class BasicResponse<Msg> extends BasicPacket {
     private boolean success;
 

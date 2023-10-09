@@ -1,7 +1,7 @@
-package org.reseger.jrdbc.command.maintain.create;
+package org.reseger.jrdbc.maintain.create;
 
-import org.reseger.jrdbc.command.Command;
-import org.reseger.jrdbc.command.Commands;
+import org.reseger.jrdbc.maintain.command.Command;
+import org.reseger.jrdbc.maintain.command.Commands;
 
 import java.util.LinkedList;
 import java.util.List;

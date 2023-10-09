@@ -1,36 +1,44 @@
 package org.risegerdd.client.shell.progressbar;
 
+import org.riseger.protoctl.otherProtocol.ProgressBar;
 import org.risegerdd.client.shell.style.ColorList;
 
 import java.io.PrintStream;
-import java.util.concurrent.TimeUnit;
 
-public class WavyProgressBar {
-    public static void loading(final PrintStream out, ColorList color, int totalSteps, int currentStep) {
-        int animationSpeed = 100; // 波浪动画速度（毫秒）
+public class WavyProgressBar implements ProgressBar {
+    private final PrintStream out;
 
-        while (currentStep <= totalSteps) {
-            // 清除控制台内容
-            out.print("\033[H\033[2J");
-            out.flush();
+    private final ColorList color;
 
-            // 显示波浪进度条
-            out.print(color.toColor(generateWave(currentStep, 40, "Loading: " + currentStep * 100 / totalSteps + "% ", 0, totalSteps - 1)) + "\r");
+    private final int totalSteps;
 
-            // 增加步数
-            currentStep++;
+    private int currentStep;
 
-            // 模拟加载延迟
-            try {
-                TimeUnit.MILLISECONDS.sleep(20);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+    public WavyProgressBar(PrintStream out, ColorList color, int totalSteps) {
+        this.out = out;
+        this.color = color;
+        this.totalSteps = totalSteps;
+        this.currentStep = 0;
+    }
+
+    public void loading(int addedSteps) {
+        this.currentStep += addedSteps;
+        // 清除控制台内容
+        out.print("\033[H\033[2J");
+        out.flush();
+
+        // 显示波浪进度条
+        out.print(color.toColor(generateWave(currentStep, 40, "Loading: " + currentStep * 100 / totalSteps + "% ", 0, totalSteps - 1)) + "\r");
+    }
+
+    @Override
+    public void done() {
+        this.currentStep = this.totalSteps;
+        loading(0);
     }
 
     // 生成Unicode波浪进度条
-    public static String generateWave(double value, int length, String title, double vmin, double vmax) {
+    public String generateWave(double value, int length, String title, double vmin, double vmax) {
         String fill = "▒";
         StringBuilder res = new StringBuilder();
         String[] blocks = new String[]{"", "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█"};
