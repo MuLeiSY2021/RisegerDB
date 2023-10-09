@@ -99,6 +99,9 @@ public class SyntaxTree {
             }
 
             public void initialize(ListIterator<SyntaxRule.Type> types) {
+                if (!types.hasNext()) {
+                    return;
+                }
                 SyntaxRule.Type type = types.next();
                 for (Node node : children) {
                     if (node.equals(type)) {
