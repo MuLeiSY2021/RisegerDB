@@ -21,6 +21,10 @@ public class MainBootstrap {
         cacheInitializer.init();
         LOG.info("Cache initialized successfully");
 
+        CompilerInitialize compilerInitialize = new CompilerInitialize();
+        compilerInitialize.init();
+        LOG.info("Compiler initialized successfully");
+
         RequestHandlerInitializer requestHandlerInitializer = new RequestHandlerInitializer();
         requestHandlerInitializer.init();
         LOG.info("RequestHandler initialized successfully");

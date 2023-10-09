@@ -16,3 +16,9 @@ public class SearchMemory {
         this.universalRegister[index++] = object;
     }
 }
+
+
+
+
+
+

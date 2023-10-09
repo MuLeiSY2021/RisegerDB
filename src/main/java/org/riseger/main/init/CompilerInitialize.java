@@ -1,5 +1,6 @@
-package org.riseger.main.compiler.init;
+package org.riseger.main.init;
 
+import org.riseger.main.compiler.CompilerMaster;
 import org.riseger.main.compiler.lextcal.KeywordsTree;
 import org.riseger.main.compiler.lextcal.Lexicator;
 import org.riseger.main.compiler.session.SessionAdaptor;
@@ -12,8 +13,8 @@ import org.riseger.utils.Utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class CompilerInitialize {
-    public static SessionAdaptor initialize() throws FileNotFoundException {
+public class CompilerInitialize implements Initializer {
+    public void init() throws FileNotFoundException {
         //获取文法规则
         String rule = Utils.getText(new File("src/main/resources/rule/syntaxrule.txt"));
         if (rule == null) {
@@ -37,7 +38,6 @@ public class CompilerInitialize {
 
         //生成语法解析器
         Parser parser = new Parser(syntaxTree);
-
-        return new SessionAdaptor(tokenizer, lexicator, parser);
+        CompilerMaster.INSTANCE = new CompilerMaster(new SessionAdaptor(tokenizer, lexicator, parser));
     }
 }

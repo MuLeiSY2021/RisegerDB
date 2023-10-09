@@ -17,8 +17,6 @@ public class Token {
 
     private int column;
 
-    private int syntaxId = 0;
-
     public Token(String sourceCode, int line, int column) {
         this.sourceCode = sourceCode;
         this.line = line;

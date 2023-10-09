@@ -13,6 +13,6 @@ public class Parser {
     }
 
     public SyntaxStructureTree invoke(List<Token> tokenList) {
-
+        return syntaxTree.convert(tokenList);
     }
 }

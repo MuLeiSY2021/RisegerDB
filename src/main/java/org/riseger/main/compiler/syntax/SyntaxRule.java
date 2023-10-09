@@ -14,27 +14,34 @@ public class SyntaxRule {
     }
 
     public static SyntaxRule newSyntaxRule(String ruleText) {
-        Map<String, Rule> eachRule = new HashMap<String, Rule>();
+        Map<String, Rule> eachRule = new HashMap<>();
         Rule prevRule = null;
         for (String ruleTextLine : ruleText.split("\n")) {
+            if (ruleTextLine.isEmpty()) {
+                continue;
+            }
             String[] tokens;
-            if (!ruleTextLine.startsWith("   |")) {
+            if (!ruleTextLine.startsWith("    |")) {
                 tokens = ruleTextLine.split("->");
-                if (tokens[0].startsWith("END_")) {
-                    prevRule = new Rule(tokens[0].substring("END_".length()), true);
+                if (tokens[0].startsWith("END:")) {
+                    String name = tokens[0].substring("END:".length());
+                    prevRule = new Rule(name, true);
+                    eachRule.put(name, prevRule);
+
                 } else {
                     prevRule = new Rule(tokens[0], false);
+                    eachRule.put(tokens[0].replace(" ", ""), prevRule);
+
                 }
-                eachRule.put(tokens[0], prevRule);
-                tokens = tokens[1].split("\\|");
             } else {
                 tokens = ruleTextLine.split("\\|");
             }
-            for (String meta : tokens) {
-                prevRule.newMeta();
-                for (String tile : meta.split(" ")) {
-                    prevRule.add(tile, tile.startsWith("\""));
+            prevRule.newMeta();
+            for (String meta : tokens[1].split(" ")) {
+                if (meta.isEmpty()) {
+                    continue;
                 }
+                prevRule.add(meta, meta.startsWith("\""));
             }
         }
         return new SyntaxRule(eachRule);
