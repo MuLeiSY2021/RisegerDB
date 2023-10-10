@@ -15,7 +15,7 @@ strings -> string "," string
 rectangle -> "RECT" "(" coord "," number_operator ")"
     | attribute
 
-coord -> COORD "(" number_operator "," number_operator ")"
+coord -> "COORD" "(" number_operator "," number_operator ")"
     | attribute
 
 conditions -> bool_condition

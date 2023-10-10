@@ -22,7 +22,7 @@ public class CompilerInitialize implements Initializer {
         }
 
         //文法规则解析
-        SyntaxRule syntaxRule = SyntaxRule.newSyntaxRule(rule);
+        SyntaxRule syntaxRule = new SyntaxRule(rule);
 
         //生成文法规则树
         SyntaxTree syntaxTree = new SyntaxTree(syntaxRule);

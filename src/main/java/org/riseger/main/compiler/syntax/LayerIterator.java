@@ -17,7 +17,7 @@ public class LayerIterator {
     }
 
     public void add(Token token, boolean isKeyword, Keyword keyword, int typeCode) {
-        tmpParent.add(token, isKeyword, keyword, typeCode);
+        tmpParent.addFirst(token, isKeyword, keyword, typeCode);
         index++;
     }
 }

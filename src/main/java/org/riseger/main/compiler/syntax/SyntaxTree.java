@@ -11,24 +11,18 @@ import java.util.*;
 public class SyntaxTree {
     private final Map<Integer, SyntaxTreeChild> forest = new HashMap<>();
 
-    private final Map<String, Integer> typeIdTable = new HashMap<>();
-
     private final Map<Integer, String> finalTypeIdTable = new HashMap<>();
 
-    public SyntaxTree(SyntaxRule rule) {
-        for (Map.Entry<String, SyntaxRule.Rule> entry : rule.getRuleMap().entrySet()) {
-            int id;
+    private int entry;
 
-            if (typeIdTable.containsKey(entry.getKey())) {
-                id = typeIdTable.get(entry.getKey());
-            } else {
-                id = typeIdTable.size();
-                typeIdTable.put(entry.getKey(), id);
-            }
+    public SyntaxTree(SyntaxRule rule) {
+        this.entry = rule.getRuleMap().get("sql").getTypeId();
+
+        for (Map.Entry<String, SyntaxRule.Rule> entry : rule.getRuleMap().entrySet()) {
             if (entry.getValue().isEnd()) {
-                finalTypeIdTable.put(id, entry.getKey());
+                finalTypeIdTable.put(entry.getValue().getTypeId(), entry.getKey());
             } else {
-                forest.put(id, new SyntaxTreeChild(entry.getValue()));
+                forest.put(entry.getValue().getTypeId(), new SyntaxTreeChild(entry.getValue(), rule));
             }
         }
     }
@@ -40,10 +34,15 @@ public class SyntaxTree {
     }
 
     private void parse(ListIterator<Token> tokenIterator, LayerIterator layerIterator) {
-        this.parse(tokenIterator, this.typeIdTable.get("sql"), layerIterator);
+        this.parse(tokenIterator, entry, layerIterator);
     }
 
     private void parse(ListIterator<Token> tokenIterator, int typeCode, LayerIterator layerIterator) {
+        if (this.finalTypeIdTable.containsKey(typeCode)) {
+            //TODO:不确定边界
+            layerIterator.add(tokenIterator.next(), false, null, typeCode);
+            return;
+        }
         SyntaxTreeChild child = this.forest.get(typeCode);
         child.parse(tokenIterator, layerIterator);
         //TODO:
@@ -53,12 +52,12 @@ public class SyntaxTree {
     private class SyntaxTreeChild {
         private final String entry;
 
-        private final Node root = new Node(null, null);
+        private final Node root = new Node(null, null, null);
 
-        public SyntaxTreeChild(SyntaxRule.Rule rule) {
+        public SyntaxTreeChild(SyntaxRule.Rule rule, SyntaxRule syntaxRule) {
             this.entry = rule.getType();
             for (SyntaxRule.Meta meta : rule.getMeta()) {
-                root.initialize(meta.getTiles().listIterator());
+                root.initialize(meta.getTiles().listIterator(), syntaxRule);
             }
         }
 
@@ -79,7 +78,7 @@ public class SyntaxTree {
             private final int typeCode;
             private List<Node> children;
 
-            public Node(Node parent, SyntaxRule.Type type) {
+            public Node(Node parent, SyntaxRule.Type type, SyntaxRule syntaxRule) {
                 this.children = new LinkedList<>();
                 this.parent = parent;
                 if (type == null) {
@@ -92,25 +91,25 @@ public class SyntaxTree {
                         this.keyword = Keyword.addKeyword(type.getValue());
                         this.typeCode = -1;
                     } else {
-                        this.typeCode = type.hashCode();
+                        this.typeCode = syntaxRule.getRuleMap().get(type.getValue()).getTypeId();
                         this.keyword = null;
                     }
                 }
             }
 
-            public void initialize(ListIterator<SyntaxRule.Type> types) {
+            public void initialize(ListIterator<SyntaxRule.Type> types, SyntaxRule syntaxRule) {
                 if (!types.hasNext()) {
                     return;
                 }
                 SyntaxRule.Type type = types.next();
                 for (Node node : children) {
                     if (node.equals(type)) {
-                        node.initialize(types);
+                        node.initialize(types, syntaxRule);
                     }
                 }
-                Node tmp = new Node(this, type);
+                Node tmp = new Node(this, type, syntaxRule);
                 this.children.add(tmp);
-                tmp.initialize(types);
+                tmp.initialize(types, syntaxRule);
             }
 
             public boolean equals(SyntaxRule.Type type) {
@@ -122,7 +121,9 @@ public class SyntaxTree {
             }
 
             public boolean suit(ListIterator<Token> tokenIterator, LayerIterator layerIterator) {
-                //TODO:重新写遍历语法树的逻辑结构，基于状态机，同时做非关键字缓存，注意边界状态
+                if (!tokenIterator.hasNext()) {
+                    return false;
+                }
                 Token token = tokenIterator.next();
 
                 if (this.isKeyword) {
@@ -132,14 +133,47 @@ public class SyntaxTree {
                         return false;
                     }
                 } else {
-                    SyntaxTree.this.parse(tokenIterator, this.typeCode, layerIterator.deeper());
-                }
-                for (Node child : this.children) {
-                    if (!child.suit(tokenIterator, layerIterator)) {
+                    List<Token> tokens = new LinkedList<>();
+                    Node target;
+                    tokens.add(token);
+                    if (!this.children.isEmpty()) {
+                        for (ListIterator<Token> it = tokenIterator; it.hasNext(); ) {
+                            Token tmp = it.next();
+
+                            if ((target = hasSuit(tmp)) == null) {
+                                tokens.add(tmp);
+                            } else {
+                                if (target.suit(tokenIterator, layerIterator)) {
+                                    layerIterator.add(token, false, this.keyword, this.typeCode);
+                                    SyntaxTree.this.parse(tokens.listIterator(), this.typeCode, layerIterator.deeper());
+                                }
+                            }
+                        }
+
+                        //无法进行配对，在父的另一分支
+                        return false;
+                    } else {
+                        layerIterator.add(token, false, this.keyword, this.typeCode);
+                        tokenIterator.forEachRemaining(tokens::add);
+                        SyntaxTree.this.parse(tokens.listIterator(), this.typeCode, layerIterator.deeper());
                         return true;
                     }
                 }
                 return true;
+            }
+
+            private Node hasSuit(Token token) {
+                for (Node child : this.children) {
+                    if (!child.isKeyword) {
+                        continue;
+                    }
+
+                    if (token.equals(child.keyword)) {
+                        return child;
+                    }
+                }
+
+                return null;
             }
         }
     }

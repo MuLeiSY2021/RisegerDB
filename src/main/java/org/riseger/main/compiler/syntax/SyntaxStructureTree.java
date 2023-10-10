@@ -4,7 +4,6 @@ import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.main.compiler.token.Token;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class SyntaxStructureTree {
     private final Node root = new Node(null, false, null, -1);
@@ -22,7 +21,7 @@ public class SyntaxStructureTree {
 
         private final int typeCode;
 
-        private final List<Node> children = new LinkedList<>();
+        private final LinkedList<Node> children = new LinkedList<>();
 
 
         public Node(Token token, boolean isKeyword, Keyword keyword, int typeCode) {
@@ -38,6 +37,10 @@ public class SyntaxStructureTree {
 
         public void add(Token token, boolean isKeyword, Keyword keyword, int typeCode) {
             this.children.add(new Node(token, isKeyword, keyword, typeCode));
+        }
+
+        public void addFirst(Token token, boolean isKeyword, Keyword keyword, int typeCode) {
+            this.children.addFirst(new Node(token, isKeyword, keyword, typeCode));
         }
     }
 

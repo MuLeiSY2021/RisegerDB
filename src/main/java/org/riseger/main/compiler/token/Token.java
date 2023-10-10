@@ -1,6 +1,7 @@
 package org.riseger.main.compiler.token;
 
 import lombok.Data;
+import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.protoctl.serializer.JsonSerializer;
 
 @Data
@@ -31,5 +32,12 @@ public class Token {
     public void set(int id, TokenType tokenType) {
         this.id = id;
         this.type = tokenType;
+    }
+
+    public boolean equals(Keyword keyword) {
+        if (keyword != null) {
+            return keyword.getId() == this.id;
+        }
+        return false;
     }
 }

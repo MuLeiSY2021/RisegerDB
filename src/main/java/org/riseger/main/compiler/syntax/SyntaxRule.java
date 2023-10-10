@@ -9,12 +9,9 @@ import java.util.*;
 public class SyntaxRule {
     private final Map<String, Rule> ruleMap;
 
-    public SyntaxRule(Map<String, Rule> ruleMap) {
-        this.ruleMap = ruleMap;
-    }
-
-    public static SyntaxRule newSyntaxRule(String ruleText) {
+    public SyntaxRule(String ruleText) {
         Map<String, Rule> eachRule = new HashMap<>();
+        this.ruleMap = eachRule;
         Rule prevRule = null;
         for (String ruleTextLine : ruleText.split("\n")) {
             if (ruleTextLine.isEmpty()) {
@@ -31,7 +28,6 @@ public class SyntaxRule {
                 } else {
                     prevRule = new Rule(tokens[0], false);
                     eachRule.put(tokens[0].replace(" ", ""), prevRule);
-
                 }
             } else {
                 tokens = ruleTextLine.split("\\|");
@@ -46,11 +42,10 @@ public class SyntaxRule {
                 }
             }
         }
-        return new SyntaxRule(eachRule);
     }
 
     @Data
-    static class Rule {
+    class Rule {
         private final String type;
 
         private final boolean end;
@@ -59,10 +54,12 @@ public class SyntaxRule {
 
         private Meta tmp;
 
+        private int typeId;
 
         public Rule(String type, boolean end) {
             this.type = type;
             this.end = end;
+            this.typeId = SyntaxRule.this.ruleMap.size();
         }
 
         public void newMeta() {
