@@ -4,15 +4,15 @@ package org.risegerdd.client.shell.style;
 import java.util.Random;
 
 public enum ColorList {
-    CYBER_COLOR(CyberColorStyle.class);
+    CYBER_COLOR();
 
     private static final Random RAND = new Random();
     final ColorStyle[] colorStyles;
-    private Class<? extends ColorStyle> kind;
+    private final Class<? extends ColorStyle> kind;
 
-    ColorList(Class<? extends ColorStyle> kind) {
-        this.kind = kind;
-        this.colorStyles = kind.getEnumConstants();
+    ColorList() {
+        this.kind = CyberColorStyle.class;
+        this.colorStyles = ((Class<? extends ColorStyle>) CyberColorStyle.class).getEnumConstants();
     }
 
     public ColorStyle[] getColorStyles() {

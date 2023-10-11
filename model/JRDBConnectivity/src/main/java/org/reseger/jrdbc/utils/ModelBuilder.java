@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ModelBuilder {
+    protected final Map<String, Type> parameters = new HashMap<>();
+    protected final Map<Option, String> configs = new HashMap<>();
     private final Database database;
-    protected Map<String, Type> parameters = new HashMap<>();
-    protected Map<Option, String> configs = new HashMap<>();
     private String name;
     private String parent;
     private Model model;
@@ -25,9 +25,8 @@ public class ModelBuilder {
         return this;
     }
 
-    public Model build() {
+    public void build() {
         this.model = new Model(name, database, parent, this.parameters);
-        return this.model;
     }
 
     public ModelBuilder parameter(String name, Type type) {

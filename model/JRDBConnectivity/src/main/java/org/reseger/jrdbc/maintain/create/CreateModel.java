@@ -43,6 +43,6 @@ public class CreateModel extends Command {
     }
 
     public List<String> build() {
-        return new LinkedList<String>();
+        return new LinkedList<>();
     }
 }

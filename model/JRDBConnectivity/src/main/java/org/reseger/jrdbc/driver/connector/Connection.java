@@ -13,8 +13,8 @@ import org.reseger.jrdbc.driver.session.PreloadSession;
 import org.reseger.jrdbc.driver.session.SearchSession;
 import org.reseger.jrdbc.driver.session.TextSQLMessageSession;
 import org.riseger.protoctl.otherProtocol.ProgressBar;
+import org.riseger.protoctl.packet.response.BasicResponse;
 
-import javax.xml.ws.Response;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -22,7 +22,7 @@ import java.util.concurrent.locks.ReentrantLock;
 @Getter
 public class Connection {
 
-    private final LinkedBlockingDeque<Response<?>> resultQueue = new LinkedBlockingDeque<>();
+    private final LinkedBlockingDeque<BasicResponse> resultQueue = new LinkedBlockingDeque<>();
     private final EventLoopGroup eventLoopGroup;
     private final ReentrantLock lock = new ReentrantLock();
     private final Condition cond = lock.newCondition();
@@ -76,7 +76,7 @@ public class Connection {
         return new PreloadSession(this);
     }
 
-    public Response<?> getResult() throws InterruptedException {
+    public BasicResponse getResult() throws InterruptedException {
         try {
             lock.lock();
             if (resultQueue.size() == 0) {
@@ -88,7 +88,7 @@ public class Connection {
         }
     }
 
-    public void setResult(Response<?> result) {
+    public void setResult(BasicResponse result) {
         try {
             lock.lock();
             this.resultQueue.push(result);

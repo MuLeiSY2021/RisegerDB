@@ -19,7 +19,7 @@ public class DatabaseManager {
         this.databases = new HashMap<>();
     }
 
-    public Database_c preloadDatabase(Database database) throws IOException {
+    public void preloadDatabase(Database database) throws IOException {
         Database_c db = new Database_c(database.getName());
         this.databases.put(database.getName(), db);
         //添加Config
@@ -39,7 +39,6 @@ public class DatabaseManager {
 
         FileSystemManagers.DEFAULT.preloadFSM.saveDatabase(db);
         db.active();
-        return db;
     }
 
 

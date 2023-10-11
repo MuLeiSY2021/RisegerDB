@@ -3,7 +3,7 @@ package org.riseger.protoctl.struct.config;
 public class Config {
     private final String configName;
 
-    private String value;
+    private final String value;
 
     public Config(String configName, String value) {
         this.configName = configName;

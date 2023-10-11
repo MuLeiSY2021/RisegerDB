@@ -14,15 +14,15 @@ public class ApiHandlerManager {
 
     private Compiler compiler;
 
-    public void setPreloadRequest(BasicRequest request) throws Exception {
+    public void setPreloadRequest(BasicRequest request) {
         preloadWorkflow.push(request);
     }
 
-    public void setSearchRequest(BasicRequest request) throws Exception {
+    public void setSearchRequest(BasicRequest request) {
         searchWorkflow.push(request);
     }
 
-    public void setMaintainRequest(BasicRequest request) throws Exception {
+    public void setMaintainRequest(BasicRequest request) {
         maintainWorkflow.push(request);
     }
 

@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 
 public class RStarTree<R extends MBRectangle> extends RTree<R> {
     //-------------------Split---------------------//
-    protected int M = RStarTree.this.M();
-    protected int m = (int) (M * 0.4);
+    protected final int M = RStarTree.this.M();
+    protected final int m = (int) (M * 0.4);
     //-----------------ReInsert------------------//
-    int p = (int) (M * 0.3);
+    final int p = (int) (M * 0.3);
 
     public RStarTree(int nodeSize, double threshold, Class<? extends R> clazz) {
         super(nodeSize, threshold, clazz);

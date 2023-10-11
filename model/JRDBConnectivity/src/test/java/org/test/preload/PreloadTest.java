@@ -2,11 +2,10 @@ package org.test.preload;
 
 import org.reseger.jrdbc.driver.connector.Connection;
 import org.reseger.jrdbc.driver.session.PreloadSession;
-import org.riseger.protoctl.exception.SQLException;
 import org.riseger.protoctl.packet.response.PreloadResponse;
 
 public class PreloadTest {
-    public static void main(String[] args) throws Exception, SQLException {
+    public static void main(String[] args) throws Exception {
         Connection connection = Connection.connect("localhost", 10086);
 
         PreloadSession session = connection.preload();

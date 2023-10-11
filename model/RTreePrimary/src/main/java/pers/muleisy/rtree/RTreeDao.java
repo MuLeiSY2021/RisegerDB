@@ -9,7 +9,7 @@ public interface RTreeDao<R extends MBRectangle> {
 
     void insert(R rectangle);
 
-    int delete(Rectangle rectangle);
+    void delete(Rectangle rectangle);
 
     int deleteStrict(Rectangle rectangle);
 

@@ -4,7 +4,7 @@ import org.riseger.main.Constant;
 
 public class SearchMemory {
 
-    Object[] universalRegister = new Object[Constant.DEFAULT_MEMORYSIZE];
+    final Object[] universalRegister = new Object[Constant.DEFAULT_MEMORYSIZE];
 
     private int index;
 

@@ -27,7 +27,7 @@ public class Element_c extends MBRectangle_c {
         this.db = db;
         this.elementManager = elementManager;
         for (Map.Entry<String, String> a : e.getAttributes().entrySet()) {
-            Object k = convert(a.getKey(),a.getValue());
+            Object k = convert(a.getKey(), a.getValue());
             attributes.put(a.getKey(), k);
         }
     }

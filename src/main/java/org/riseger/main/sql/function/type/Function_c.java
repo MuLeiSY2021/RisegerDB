@@ -30,14 +30,10 @@ import java.util.Map;
 
 @Getter
 public abstract class Function_c<R> {
-    protected static final Logger LOG = Logger.getLogger(Function_c.class);
-
-    private final SearchMemory memory;
-
-    private final double threshold;
-
     public static final Map<Class<? extends FUNCTION>, Class<? extends Function_c<?>>>
             functionMap = new HashMap<>();
+    protected static final Logger LOG = Logger.getLogger(Function_c.class);
+
     static {
 
         functionMap.put(ATTRIBUTE.class, Attribute_fc.class);
@@ -59,6 +55,9 @@ public abstract class Function_c<R> {
         functionMap.put(SMALL.class, Small_fc.class);
         functionMap.put(SMALL_EQUAL.class, SmallEqual_fc.class);
     }
+
+    private final SearchMemory memory;
+    private final double threshold;
 
 
     public Function_c(SearchMemory memory, double threshold) {

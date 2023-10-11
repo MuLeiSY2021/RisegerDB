@@ -18,10 +18,8 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
     private final int M;
 
     private final int m;
-
+    private final String saveClassName;
     protected SubTree root;
-
-    private String saveClassName;
 
     public RTree(int nodeSize, double threshold, Class<? extends R> clazz) {
         this.M = nodeSize;
@@ -145,12 +143,12 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
     }
 
     @Override
-    public int delete(Rectangle rectangle) {
+    public void delete(Rectangle rectangle) {
         //Find node containing record.
         List<Leaf> leafList = findLeaf(rectangle);
 
         if (leafList.size() == 0) {
-            return 0;
+            return;
         }
 
         //[Delete record.]
@@ -163,7 +161,6 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         if (root.getSubTrees().size() == 1) {
             root = root.getSubTrees().get(0);
         }
-        return leafList.size();
     }
 
     @Override
@@ -197,7 +194,7 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
 
         while (!tuples1.isEmpty()) {
             for (SubTree parent : tuples1) {
-                if(Leaf.class.isInstance(parent)) {
+                if (Leaf.class.isInstance(parent)) {
                     for (Leaf child : parent.getLeave()) {
                         if (child.intersects(rect)) {
                             res.add(child);
@@ -451,6 +448,14 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         return deep;
     }
 
+    public MBRectangle getSquareRect() {
+        return new TestRectangle(
+                this.root.minX(),
+                this.root.maxX(),
+                this.root.minY(),
+                this.root.maxY(),
+                this.threshold);
+    }
 
     protected class SubTree extends MBRectangle {
 
@@ -635,15 +640,6 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         public boolean isEmpty() {
             return this.subTrees.isEmpty();
         }
-    }
-
-    public MBRectangle getSquareRect() {
-        return new TestRectangle(
-                this.root.minX(),
-                this.root.maxX(),
-                this.root.minY(),
-                this.root.maxY(),
-                this.threshold);
     }
 
     protected class Leaf extends SubTree {

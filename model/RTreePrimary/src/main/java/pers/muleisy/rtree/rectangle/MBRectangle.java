@@ -30,7 +30,7 @@ public abstract class MBRectangle implements Rectangle {
         truncateAll();
     }
 
-    public static void serialize(ByteBuf byteBuf, MBRectangle rectangle) throws Throwable {
+    public static void serialize(ByteBuf byteBuf, MBRectangle rectangle) {
         byteBuf.writeDouble(rectangle.minX);
         byteBuf.writeDouble(rectangle.maxX);
         byteBuf.writeDouble(rectangle.maxY);

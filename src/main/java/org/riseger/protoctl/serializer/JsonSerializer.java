@@ -17,6 +17,11 @@ public class JsonSerializer {
         return gson.toJson(obj).getBytes(StandardCharsets.UTF_8);
     }
 
+    public static String serializeToString(Object obj) {
+        return gson.toJson(obj);
+    }
+
+
     public static <T> T deserialize(byte[] bytes, Class<T> valueType) {
         return gson.fromJson(new String(bytes, StandardCharsets.UTF_8), valueType);
     }

@@ -1,9 +1,9 @@
 package org.reseger.jrdbc.driver.result;
 
 public class PreloadResult implements Result {
-    public boolean success;
+    public final boolean success;
 
-    public String message;
+    public final String message;
 
     public PreloadResult(boolean success, String message) {
         this.success = success;

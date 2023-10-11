@@ -7,21 +7,17 @@ import java.io.IOException;
 import java.util.List;
 
 public class RStarTreeTest {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         int size = 1600;
 
-        RTreeDao<MBRectangle> tree = new RStarTree(4, 0.5, MBRectangle.class);
+        RTreeDao<MBRectangle> tree = new RStarTree<>(4, 0.5, MBRectangle.class);
         List<MBRectangle> rectangles = ImagePrint.generateRectangles(size, 20);
         for (MBRectangle rectangle : rectangles) {
             tree.insert(rectangle);
         }
 
-        try {
-            System.out.println(tree);
-            ImagePrint.toPNG(size, "model/RTreePrimary/src/test/resources/pngPicture/star_r_tree", "all" + rectangles.size(), tree);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println(tree);
+        ImagePrint.toPNG(size, "model/RTreePrimary/src/test/resources/pngPicture/star_r_tree", "all" + rectangles.size(), tree);
         System.out.println(tree.getDeep());
         List<MBRectangle> list = tree.search(new TestRectangle(1235.0, 773.0, 1283.0, 924.0, 0.5));
         System.out.println(list);
@@ -33,11 +29,7 @@ public class RStarTreeTest {
 
         //delete
         tree.delete(new TestRectangle(159.0, 614.0, 186.0, 641.0, 0.5));
-        try {
-            ImagePrint.toPNG(size, "model/RTreePrimary/src/test/resources/pngPicture/star_r_tree", "deleted_N0", tree);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        ImagePrint.toPNG(size, "model/RTreePrimary/src/test/resources/pngPicture/star_r_tree", "deleted_N0", tree);
     }
 
 }

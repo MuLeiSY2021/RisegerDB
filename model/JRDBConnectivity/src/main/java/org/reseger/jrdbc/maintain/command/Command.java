@@ -7,7 +7,7 @@ public class Command {
 
     private final Commands commands;
 
-    private final List<String> arguments = new LinkedList<String>();
+    private final List<String> arguments = new LinkedList<>();
 
     private String command;
 

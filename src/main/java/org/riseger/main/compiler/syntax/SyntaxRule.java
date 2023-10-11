@@ -45,34 +45,6 @@ public class SyntaxRule {
     }
 
     @Data
-    class Rule {
-        private final String type;
-
-        private final boolean end;
-
-        private final List<Meta> meta = new LinkedList<Meta>();
-
-        private Meta tmp;
-
-        private int typeId;
-
-        public Rule(String type, boolean end) {
-            this.type = type;
-            this.end = end;
-            this.typeId = SyntaxRule.this.ruleMap.size();
-        }
-
-        public void newMeta() {
-            tmp = new Meta();
-            this.meta.add(tmp);
-        }
-
-        public void add(String type, boolean key) {
-            tmp.add(type, key);
-        }
-    }
-
-    @Data
     static class Meta {
         private List<Type> tiles = new LinkedList<>();
 
@@ -107,6 +79,34 @@ public class SyntaxRule {
         @Override
         public int hashCode() {
             return Objects.hash(value);
+        }
+    }
+
+    @Data
+    class Rule {
+        private final String type;
+
+        private final boolean end;
+
+        private final List<Meta> meta = new LinkedList<>();
+
+        private Meta tmp;
+
+        private int typeId;
+
+        public Rule(String type, boolean end) {
+            this.type = type;
+            this.end = end;
+            this.typeId = SyntaxRule.this.ruleMap.size();
+        }
+
+        public void newMeta() {
+            tmp = new Meta();
+            this.meta.add(tmp);
+        }
+
+        public void add(String type, boolean key) {
+            tmp.add(type, key);
         }
     }
 }

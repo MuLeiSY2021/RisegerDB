@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConfigDBManager {
-    private Database_c database;
+    private final Database_c database;
 
-    private Map<Config, String> configMap = new HashMap<>();
+    private final Map<Config, String> configMap = new HashMap<>();
 
     public ConfigDBManager(Database_c database) {
         this.database = database;

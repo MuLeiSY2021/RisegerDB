@@ -26,9 +26,8 @@ public class SubmapBuilder {
         return this;
     }
 
-    public Submap build() {
+    public void build() {
         this.submap = new Submap(name, scopePath, parent);
-        return this.submap;
     }
 
     public SubmapBuilder buildSubmap() {

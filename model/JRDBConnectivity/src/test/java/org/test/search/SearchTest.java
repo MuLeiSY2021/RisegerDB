@@ -2,7 +2,6 @@ package org.test.search;
 
 import org.reseger.jrdbc.driver.connector.Connection;
 import org.reseger.jrdbc.driver.session.SearchSession;
-import org.riseger.protoctl.exception.SQLException;
 import org.riseger.protoctl.packet.response.SearchResponse;
 import org.riseger.protoctl.search.function.condition.math.MATH_F;
 import org.riseger.protoctl.search.function.entity.basic.BASIC_F;
@@ -11,7 +10,7 @@ import org.riseger.protoctl.search.function.key.graphic.GRAPHIC_F;
 import org.riseger.protoctl.search.function.logic.LOGIC_F;
 
 public class SearchTest {
-    public static void main(String[] args) throws InterruptedException, SQLException {
+    public static void main(String[] args) throws InterruptedException {
         Connection connection = Connection.connect("localhost", 10086);
         try {
 

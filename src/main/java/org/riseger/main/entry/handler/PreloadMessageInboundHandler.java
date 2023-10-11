@@ -11,7 +11,7 @@ public class PreloadMessageInboundHandler extends SimpleChannelInboundHandler<Pr
     private final Logger LOG = Logger.getLogger(PreloadMessageInboundHandler.class);
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, PreloadRequest msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, PreloadRequest msg) {
         LOG.info("Received PreloadDatabaseRequest: " + msg);
 
         PreloadResponse response = new PreloadResponse();
@@ -29,7 +29,7 @@ public class PreloadMessageInboundHandler extends SimpleChannelInboundHandler<Pr
         }
 
         LOG.info("Sending PreloadDatabaseResponse: " + response);
-        response.success("Successfully processed");
+        response.success();
         ctx.channel().writeAndFlush(response);
     }
 }

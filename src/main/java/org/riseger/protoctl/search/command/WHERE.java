@@ -7,8 +7,7 @@ import org.riseger.protoctl.search.function.type.BOOL_FUNCTIONBLE;
 public class WHERE extends SQL {
     private BOOL_FUNCTIONBLE condition;
 
-    public WHERE condition(BOOL_FUNCTIONBLE function) {
+    public void condition(BOOL_FUNCTIONBLE function) {
         this.condition = function;
-        return this;
     }
 }

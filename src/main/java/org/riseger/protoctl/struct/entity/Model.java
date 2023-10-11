@@ -11,7 +11,7 @@ public class Model {
 
     protected String parent;
 
-    protected Map<String, Type> parameters = new HashMap<String, Type>();
+    protected Map<String, Type> parameters = new HashMap<>();
 
 
     public Model(String name, Database database, String parent, Map<String, Type> parameters) {

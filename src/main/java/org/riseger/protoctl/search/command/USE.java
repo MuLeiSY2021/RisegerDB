@@ -8,16 +8,11 @@ import java.util.List;
 
 @Getter
 public class USE extends SQL {
-    private String database;
-
-    private RECTANGLE_FUNCTIONBLE scope;
-
-    private String map;
-
-    private SEARCH search;
-
     private final List<String> models = new LinkedList<>();
-
+    private String database;
+    private RECTANGLE_FUNCTIONBLE scope;
+    private String map;
+    private SEARCH search;
 
     public USE useMap(String map) {
         this.map = map;

@@ -11,7 +11,7 @@ public class Coord_c {
     public double distance(Coord_c c2) {
         double x = Math.abs(this.coordinates[0] - c2.coordinates[0]),
                 y = Math.abs(this.coordinates[1] - c2.coordinates[1]);
-        double mn = Math.min(x,y);
+        double mn = Math.min(x, y);
         return (x + y) - (mn / 2) - (mn / 4) + (mn / 16);
     }
 

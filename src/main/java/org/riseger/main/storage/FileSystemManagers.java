@@ -14,8 +14,8 @@ import java.util.*;
 
 public class FileSystemManagers {
     public static FileSystemManagers DEFAULT;
-    public String rootPath;
-    public PreloadFSM preloadFSM;
+    public final String rootPath;
+    public final PreloadFSM preloadFSM;
 
 
     public FileSystemManagers(String rootPath) {

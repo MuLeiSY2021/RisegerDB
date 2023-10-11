@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class PreloadFSM {
     public static final Logger LOG = Logger.getLogger(PreloadFSM.class);
-    public String rootPath;
+    public final String rootPath;
 
     public PreloadFSM(String rootPath) {
         if (rootPath.endsWith("/")) {
@@ -30,7 +30,7 @@ public class PreloadFSM {
         this.rootPath = rootPath;
     }
 
-    private static void createLayer(File parent, Layer_c layer) throws IOException {
+    private static void createLayer(File parent, Layer_c layer) {
         File layerFile = new File(parent.getPath() + "/" + layer.getName() + ".layer");
         Utils.writeToFile(layerToFile(layer), layerFile.getPath());
     }
@@ -51,29 +51,21 @@ public class PreloadFSM {
 
     private static void createConfig(File parent, Map<String, Config> configs) {
         File configFile = new File(parent.getPath() + "/" + "config" + ".json");
-        try {
-            Utils.writeToFile(configToFile(configs), configFile.getPath());
-        } catch (IOException e) {
-            LOG.error(e);
-        }
+        Utils.writeToFile(configToFile(configs), configFile.getPath());
         LOG.info("创建Config文件成功");
     }
 
-    private static byte[] configToFile(Map<String, Config> configs) throws IOException {
+    private static byte[] configToFile(Map<String, Config> configs) {
         return JsonSerializer.serialize(configs);
     }
 
     private static void modelToFile(File parent, ModelManager models) {
         File modelFile = new File(parent.getPath() + "/" + "model" + ".json");
-        try {
-            Utils.writeToFile(modelsToFile(models), modelFile.getPath());
-        } catch (IOException e) {
-            LOG.error(e);
-        }
+        Utils.writeToFile(modelsToFile(models), modelFile.getPath());
         LOG.info("创建Model文件成功");
     }
 
-    private static byte[] modelsToFile(ModelManager models) throws IOException {
+    private static byte[] modelsToFile(ModelManager models) {
         return JsonSerializer.serialize(models);
     }
 

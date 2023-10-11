@@ -17,7 +17,7 @@ public class ProtocolCodec extends ByteToMessageCodec<BasicPacket> {
     }
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, BasicPacket msg, ByteBuf out) throws Exception {
+    protected void encode(ChannelHandlerContext ctx, BasicPacket msg, ByteBuf out) {
         LOG.debug("Encoding message: " + msg.getType());
         out.writeByte(msg.getType().ordinal()); // MessageType
         byte[] bytes = JsonSerializer.serialize(msg);
@@ -29,7 +29,7 @@ public class ProtocolCodec extends ByteToMessageCodec<BasicPacket> {
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) {
         try {
             PacketType packetType = PacketType.values()[in.readByte()];
-            LOG.debug("Decoding message of type: " + packetType);
+            LOG.info("Decoding message of type: " + packetType);
 
             byte[] data = new byte[in.readInt()];
             in.readBytes(data);

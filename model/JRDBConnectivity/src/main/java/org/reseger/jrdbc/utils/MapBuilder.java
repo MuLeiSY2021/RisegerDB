@@ -22,9 +22,8 @@ public class MapBuilder {
         return this;
     }
 
-    public MapBuilder build() {
+    public void build() {
         this.map = new MapDB(name, database, configs);
-        return this;
     }
 
 

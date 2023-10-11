@@ -25,7 +25,7 @@ public class SearchSession {
 
     public final MBRectangle_c scope;
 
-    public final Map<String,SearchSet> models;
+    public final Map<String, SearchSet> models;
 
     //Select
     private final List<SearchSet> searches;
@@ -34,23 +34,6 @@ public class SearchSession {
     private final Queue<Function_c<?>> functionQueue;
 
     private final SearchMemory memory;
-
-    @Data
-    private static class SearchSet {
-        String name;
-
-        List<String[]> child = new LinkedList<>();
-
-        public SearchSet(String name,String[] sets) {
-            this.name = name;
-            this.child.add(sets);
-        }
-
-        public void add(String[] sets) {
-            child.add(Arrays.copyOfRange(sets, 1, sets.length));
-        }
-    }
-
 
     public SearchSession(USE sql) throws Exception {
 
@@ -65,18 +48,18 @@ public class SearchSession {
         this.searches = dealSelect(sql.getSearch().getContent());
 
         //Deal Where
-        SQLTree tree = new SQLTree(sql.getSearch().getWhere(),memory, maps.get(0).getThreshold());
+        SQLTree tree = new SQLTree(sql.getSearch().getWhere(), memory, maps.get(0).getThreshold());
         this.functionQueue = tree.genFunctionList();
     }
 
-    private Map<String,SearchSet> dealModel(List<String> models) {
-        Map<String,SearchSet> searchSets = new HashMap<>();
+    private Map<String, SearchSet> dealModel(List<String> models) {
+        Map<String, SearchSet> searchSets = new HashMap<>();
         Map<String, SearchSet> searchSetMap = new HashMap<>();
         for (String list : models) {
             String[] sets = list.split("\\.");
             String modelName = sets[sets.length - 1];
             sets = Arrays.copyOfRange(sets, 0, sets.length - 1);
-             setSearchSets(searchSets, searchSetMap, sets, modelName);
+            setSearchSets(searchSets, searchSetMap, sets, modelName);
         }
         return searchSets;
     }
@@ -93,16 +76,16 @@ public class SearchSession {
         return searchSets;
     }
 
-    private void setSearchSets(Map<String,SearchSet> searchSets, Map<String, SearchSet> searchSetMap, String[] sets, String modelName) {
+    private void setSearchSets(Map<String, SearchSet> searchSets, Map<String, SearchSet> searchSetMap, String[] sets, String modelName) {
         SearchSet searchSet;
         if (searchSetMap.containsKey(modelName)) {
             searchSet = searchSetMap.get(modelName);
             searchSet.add(sets);
 
         } else {
-            searchSet = new SearchSet(modelName,sets);
+            searchSet = new SearchSet(modelName, sets);
             searchSetMap.put(modelName, searchSet);
-            searchSets.put(searchSet.name,searchSet);
+            searchSets.put(searchSet.name, searchSet);
         }
     }
 
@@ -148,7 +131,7 @@ public class SearchSession {
             }
             results.put(searchSet.name, result);
         }
-        LOG.debug("result: " + new String(JsonSerializer.serialize(results)));
+        LOG.debug("result: " + JsonSerializer.serializeToString(results));
 
         return results;
     }
@@ -200,10 +183,26 @@ public class SearchSession {
                     nextLayers = new LinkedList<>();
                 }
             }
-            for (MapDB_c map:tmpLayers) {
+            for (MapDB_c map : tmpLayers) {
                 results.add(map.getElementLayer(model.name));
             }
         }
         return results;
+    }
+
+    @Data
+    private static class SearchSet {
+        String name;
+
+        List<String[]> child = new LinkedList<>();
+
+        public SearchSet(String name, String[] sets) {
+            this.name = name;
+            this.child.add(sets);
+        }
+
+        public void add(String[] sets) {
+            child.add(Arrays.copyOfRange(sets, 1, sets.length));
+        }
     }
 }

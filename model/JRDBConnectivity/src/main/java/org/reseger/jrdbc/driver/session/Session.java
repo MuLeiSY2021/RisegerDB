@@ -4,7 +4,7 @@ import org.reseger.jrdbc.driver.connector.Connection;
 import org.riseger.protoctl.packet.request.BasicRequest;
 import org.riseger.protoctl.packet.response.BasicResponse;
 
-public abstract class Session<P extends BasicResponse<?>> {
+public abstract class Session<P extends BasicResponse> {
     protected transient final Connection parent;
 
     protected Session(Connection parent) {

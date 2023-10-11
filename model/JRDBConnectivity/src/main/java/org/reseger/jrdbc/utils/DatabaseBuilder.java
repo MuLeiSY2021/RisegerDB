@@ -33,9 +33,8 @@ public class DatabaseBuilder {
         return this;
     }
 
-    public DatabaseBuilder build() {
+    public void build() {
         this.database = new Database(name);
         this.parent.addDatabase(this.database);
-        return this;
     }
 }

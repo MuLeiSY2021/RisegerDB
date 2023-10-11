@@ -1,11 +1,10 @@
 package org.riseger.protoctl.packet.request;
 
-import org.riseger.main.entry.handler.TransponderHandler;
 import org.riseger.protoctl.job.Job;
 import org.riseger.protoctl.job.TextSQLJob;
 import org.riseger.protoctl.packet.PacketType;
 
-public class TextSQLRequest extends BasicRequest {
+public class TextSQLRequest extends TranspondRequest {
     private final String text;
 
     public TextSQLRequest(String text) {
@@ -15,6 +14,6 @@ public class TextSQLRequest extends BasicRequest {
 
     @Override
     public Job warp() {
-        return new TextSQLJob(text, (TransponderHandler<SearchRequest, String>) super.getTransponder());
+        return new TextSQLJob(super.getTransponder(), text);
     }
 }

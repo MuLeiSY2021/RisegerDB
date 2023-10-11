@@ -42,6 +42,6 @@ public class CreateScope extends Command {
     }
 
     public List<String> build() {
-        return new LinkedList<String>();
+        return new LinkedList<>();
     }
 }

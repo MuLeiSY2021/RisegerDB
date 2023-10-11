@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.riseger.protoctl.serializer.JsonSerializer;
 
-import java.nio.charset.StandardCharsets;
-
 @Getter
 @Setter
 public class BasicPacket implements Packet {
@@ -22,6 +20,6 @@ public class BasicPacket implements Packet {
 
     @Override
     public String toString() {
-        return new String(JsonSerializer.serialize(this), StandardCharsets.UTF_8);
+        return JsonSerializer.serializeToString(this);
     }
 }

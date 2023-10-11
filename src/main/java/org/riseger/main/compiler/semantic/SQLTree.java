@@ -18,11 +18,11 @@ public class SQLTree {
     private final SQLNode root;
 
     public SQLTree(WHERE where, SearchMemory searchMemory, double threshold) {
-        this.root = new SQLNode((FUNCTION) where.getCondition(), null,searchMemory, threshold);
+        this.root = new SQLNode((FUNCTION) where.getCondition(), null, searchMemory, threshold);
     }
 
     public SQLTree(RECTANGLE_FUNCTIONBLE function, SearchMemory searchMemory, double threshold) {
-        this.root = new SQLNode((FUNCTION) function, null,searchMemory, threshold);
+        this.root = new SQLNode((FUNCTION) function, null, searchMemory, threshold);
     }
 
     public Queue<Function_c<?>> genFunctionList() {
@@ -65,7 +65,7 @@ public class SQLTree {
                     sqlList.add(new SQLNode(child, this, searchMemory, threshold));
                 }
             }
-            if(isBool()) {
+            if (isBool()) {
                 sqlList.sort(Comparator.comparing((SQLNode x) -> x.condition.getWeight()).reversed());
             }
         }

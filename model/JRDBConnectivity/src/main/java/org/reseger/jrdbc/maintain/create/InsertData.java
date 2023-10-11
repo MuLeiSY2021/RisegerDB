@@ -48,6 +48,6 @@ public class InsertData extends Command {
     }
 
     public List<String> build() {
-        return new LinkedList<String>();
+        return new LinkedList<>();
     }
 }

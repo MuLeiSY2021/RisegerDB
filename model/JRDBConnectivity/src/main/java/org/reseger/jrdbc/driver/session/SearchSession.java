@@ -2,7 +2,6 @@ package org.reseger.jrdbc.driver.session;
 
 import lombok.Getter;
 import org.reseger.jrdbc.driver.connector.Connection;
-import org.riseger.protoctl.exception.SQLException;
 import org.riseger.protoctl.packet.request.SearchRequest;
 import org.riseger.protoctl.packet.response.SearchResponse;
 import org.riseger.protoctl.search.ResultSet;
@@ -27,7 +26,7 @@ public class SearchSession extends Session<SearchResponse> {
         return sql;
     }
 
-    public ResultSet executeQuery(String userInput) throws SQLException {
+    public ResultSet executeQuery(String userInput) {
         return null;
     }
 

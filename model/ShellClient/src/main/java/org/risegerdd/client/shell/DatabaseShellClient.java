@@ -8,6 +8,7 @@ import org.riseger.protoctl.packet.response.TextSQLResponse;
 import org.risegerdd.client.shell.introduce.CyberIntroduce;
 import org.risegerdd.client.shell.progressbar.WavyProgressBar;
 import org.risegerdd.client.shell.style.ColorList;
+import org.risegerdd.client.shell.style.ColorStyle;
 import org.risegerdd.client.shell.style.CyberColorStyle;
 
 import java.io.BufferedReader;
@@ -19,21 +20,27 @@ public class DatabaseShellClient {
 
     public static void main(String[] args) throws Exception {
         try {
-
-
-            PrintStream out = System.out;
-            CyberIntroduce.introduce(out);
-            ProgressBar progressBar = new WavyProgressBar(out, ColorList.CYBER_COLOR, 100);
-            progressBar.loading(0);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            progressBar.loading(10);
-            Connection connection = Connection.connect("localhost", 10086, progressBar);
-            progressBar.loading(10);
-            TextSQLMessageSession statement = connection.sqlText();
-            progressBar.loading(10);
+            BufferedReader reader;
+            PrintStream out;
+            TextSQLMessageSession statement;
             String userInput;
-
-            progressBar.done();
+            Connection connection;
+            try {
+                out = System.out;
+                CyberIntroduce.introduce(out);
+                ProgressBar progressBar = new WavyProgressBar(out, ColorList.CYBER_COLOR, 100);
+                progressBar.loading(0);
+                reader = new BufferedReader(new InputStreamReader(System.in));
+                progressBar.loading(10);
+                connection = Connection.connect("localhost", 10086, progressBar);
+                progressBar.loading(10);
+                statement = connection.sqlText();
+                progressBar.done();
+            } catch (Exception e) {
+                System.out.println();
+                System.err.print("[ERROR]   ");
+                throw e;
+            }
             out.println(ColorList.CYBER_COLOR.toColorful("ResigerDB is now loaded and ready to use!"));
             while (true) {
                 out.print(CyberColorStyle.VERY_SOFT_MAGENTA.toColor("ResigerDB" + CyberColorStyle.DARK_BLUE.toColor("❯ ")));
@@ -47,25 +54,14 @@ public class DatabaseShellClient {
                     TextSQLResponse response = statement.send();
 
                     //输出结果
-                    out.print(response.getMessage());
-//                    if (userInput.trim().toLowerCase().startsWith("select")) {
-//                        ResultSet resultSet = statement.executeQuery(userInput);
-//                        ResultSetMetaData metaData = resultSet.getMetaData();
-//                        int columnCount = metaData.getColumnCount();
-//
-//                        // 输出查询结果
-//                        while (resultSet.next()) {
-//                            for (int i = 1; i <= columnCount; i++) {
-//                                out.print(resultSet.getString(i) + "\t");
-//                            }
-//                            out.println();
-//                        }
-//                    } else {
-//                        int rowsAffected = statement.executeUpdate(userInput);
-//                        out.println("Query OK, " + rowsAffected + " row(s) affected");
-//                    }
+                    if (response.isSuccess()) {
+                        out.println(response.getShellOutcome());
+                    } else {
+                        out.print(ColorStyle.PROMPT_FRONT + "197m" + "[ERROR] Unknown error:");
+                        out.println(response.getException() + ColorStyle.END);
+                    }
                 } catch (Exception e) {
-                    System.err.println("\nERROR: " + e.getMessage());
+                    System.err.println("\n[ERROR] " + e.getMessage());
                 }
             }
 

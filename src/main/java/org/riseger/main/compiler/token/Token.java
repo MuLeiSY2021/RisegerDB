@@ -26,7 +26,7 @@ public class Token {
 
     @Override
     public String toString() {
-        return new String(JsonSerializer.serialize(this));
+        return JsonSerializer.serializeToString(this);
     }
 
     public void set(int id, TokenType tokenType) {

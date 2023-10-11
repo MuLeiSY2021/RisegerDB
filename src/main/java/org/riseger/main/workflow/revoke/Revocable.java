@@ -4,9 +4,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public abstract class Revocable<E> {
-    ReentrantLock lock = new ReentrantLock();
+    final ReentrantLock lock = new ReentrantLock();
 
-    Condition cond = lock.newCondition();
+    final Condition cond = lock.newCondition();
 
     public abstract E getE();
 

@@ -9,10 +9,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class FieldBuilder {
+    protected final ParentModel parent = ParentModel.RECTANGLE;
+    protected final ConcurrentMap<String, String> attributes = new ConcurrentHashMap<>();
+    protected final ConcurrentMap<Option, String> configs = new ConcurrentHashMap<>();
     private final MapDB map;
-    protected ParentModel parent = ParentModel.RECTANGLE;
-    protected ConcurrentMap<String, String> attributes = new ConcurrentHashMap<>();
-    protected ConcurrentMap<Option, String> configs = new ConcurrentHashMap<>();
     private String model;
     private int loopSize = 0;
     private Element element;
@@ -21,10 +21,9 @@ public class FieldBuilder {
         this.map = map;
     }
 
-    public Element build() {
+    public void build() {
         this.element = new Element(this.parent, model, this.attributes, this.configs);
         map.addElement(this.element);
-        return this.element;
     }
 
     public FieldBuilder addCoord(double x, double y) {

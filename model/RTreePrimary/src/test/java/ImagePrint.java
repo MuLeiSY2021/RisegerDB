@@ -17,14 +17,12 @@ import java.util.List;
 import java.util.*;
 
 public class ImagePrint {
+    static final HashMap<MBRectangle, Integer> hashMap = new HashMap<>();
     private static final HashMap<Integer, Float[]> colorHashMap = new HashMap<>();
-
     //1080p
     private static final int resolution = 2160;
-
     private static final Random random = new Random(0);
     static int i = 1;
-    static HashMap<MBRectangle, Integer> hashMap = new HashMap<>();
 
     public static List<MBRectangle> generateRectangles(int size, int numRectangles) {
         double minSize = Math.sqrt(size) / 2;
@@ -58,7 +56,7 @@ public class ImagePrint {
         return rectangles;
     }
 
-    public static void toPNG(int size, String URL, String fileName, RTreeDao<MBRectangle> tree) throws IOException {
+    public static void toPNG(int size, String URL, String fileName, RTreeDao<MBRectangle> tree) {
 //        double K = resolution /size <= 0 ? 1 : resolution / (double) size;
 ////        List<MBRectangle> tuples = tree.getAllNode4Test();
 //        //
@@ -88,7 +86,7 @@ public class ImagePrint {
         MBFImage image = ImageUtilities.createMBFImage(prevImage, false);
         image.fill(new Float[]{255f, 255f, 255f});
         for (MBRectangle tuple : rectangles) {
-            drawRectangles(image, tuple, 2, K);
+            drawRectangles(image, tuple, K);
         }
         File f = new File(URL + "/" + fileName + ".png");
         f.createNewFile();
@@ -111,11 +109,11 @@ public class ImagePrint {
         }
     }
 
-    private static void drawRectangles(MBFImage image, MBRectangle rectangles, int thickness, double K) {
-        int minX = (int) ((rectangles.minX() - thickness * 5 + 50) * K);
-        int minY = (int) ((rectangles.minY() - thickness * 5 + 50) * K);
-        int maxX = (int) ((rectangles.maxX() + thickness * 5 + 50) * K);
-        int maxY = (int) ((rectangles.maxY() + thickness * 5 + 50) * K);
+    private static void drawRectangles(MBFImage image, MBRectangle rectangles, double K) {
+        int minX = (int) ((rectangles.minX() - 2 * 5 + 50) * K);
+        int minY = (int) ((rectangles.minY() - 2 * 5 + 50) * K);
+        int maxX = (int) ((rectangles.maxX() + 2 * 5 + 50) * K);
+        int maxY = (int) ((rectangles.maxY() + 2 * 5 + 50) * K);
         Point2d tl = new Point2dImpl(minX, minY);
         Point2d bl = new Point2dImpl(minX, maxY);
         Point2d br = new Point2dImpl(maxX, maxY);

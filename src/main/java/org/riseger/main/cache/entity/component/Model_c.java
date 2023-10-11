@@ -7,11 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Model_c {
-    protected String name;
-
+    protected final String name;
+    protected final Map<String, Type> parameters = new HashMap<>();
     protected String parent;
-
-    protected Map<String, Type> parameters = new HashMap<String, Type>();
 
     public Model_c(Model model) {
         this.name = model.getName();

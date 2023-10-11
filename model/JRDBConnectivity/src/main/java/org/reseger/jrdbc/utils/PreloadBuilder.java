@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public class PreloadBuilder {
-    private final List<Database> databases = new LinkedList<Database>();
+    private final List<Database> databases = new LinkedList<>();
 
 
     public PreloadBuilder() {

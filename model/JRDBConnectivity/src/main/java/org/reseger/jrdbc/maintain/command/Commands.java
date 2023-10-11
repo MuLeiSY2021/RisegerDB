@@ -22,9 +22,9 @@ public class Commands {
 
     private final Create create;
 
-    private List<Command> commands = new LinkedList<Command>();
+    private final List<Command> commands = new LinkedList<>();
 
-    private Map<String, String> variable = new HashMap<String, String>();
+    private final Map<String, String> variable = new HashMap<>();
 
     public Commands(Session session) {
         this.session = session;
@@ -41,12 +41,12 @@ public class Commands {
     }
 
     public String getName(String argument) {
-        String name = getN(STRING_PREFIX);
+        String name = getN();
         this.variable.put(name, argument);
         return name;
     }
 
-    private String getN(String prefix) {
-        return prefix + SPLIT_PREFIX + variable.size();
+    private String getN() {
+        return Commands.STRING_PREFIX + SPLIT_PREFIX + variable.size();
     }
 }
