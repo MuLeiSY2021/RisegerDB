@@ -6,7 +6,7 @@ import org.riseger.main.sql.function.type.Function_c;
 import org.riseger.main.sql.search.SearchMemory;
 import org.riseger.protoctl.search.command.WHERE;
 import org.riseger.protoctl.search.function.FUNCTION;
-import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONBLE;
+import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONAL;
 
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -21,17 +21,17 @@ public class SQLTree {
         this.root = new SQLNode((FUNCTION) where.getCondition(), null, searchMemory, threshold);
     }
 
-    public SQLTree(RECTANGLE_FUNCTIONBLE function, SearchMemory searchMemory, double threshold) {
+    public SQLTree(RECTANGLE_FUNCTIONAL function, SearchMemory searchMemory, double threshold) {
         this.root = new SQLNode((FUNCTION) function, null, searchMemory, threshold);
     }
 
-    public Queue<Function_c<?>> genFunctionList() {
-        Queue<Function_c<?>> queue = new LinkedBlockingQueue<>();
+    public Queue<Function_c> genFunctionList() {
+        Queue<Function_c> queue = new LinkedBlockingQueue<>();
         walkTree(queue, this.root);
         return queue;
     }
 
-    private void walkTree(Queue<Function_c<?>> queue, SQLNode root) {
+    private void walkTree(Queue<Function_c> queue, SQLNode root) {
         if (root.sqlList.isEmpty()) {
             queue.add(root.getFunction());
             return;
@@ -47,7 +47,7 @@ public class SQLTree {
     static class SQLNode {
         private final SQLNode parent;
 
-        private Function_c<?> function;
+        private Function_c function;
 
         private FUNCTION condition;
 

@@ -2,6 +2,7 @@ package org.riseger.main.compiler.syntax;
 
 import lombok.Data;
 import lombok.Getter;
+import org.riseger.protoctl.search.function.FUNCTION;
 
 import java.util.*;
 
@@ -92,12 +93,15 @@ public class SyntaxRule {
 
         private Meta tmp;
 
+        private final FUNCTION function;
+
         private int typeId;
 
-        public Rule(String type, boolean end) {
+        public Rule(String type, boolean end, FUNCTION function) {
             this.type = type;
             this.end = end;
             this.typeId = SyntaxRule.this.ruleMap.size();
+            this.function = function;
         }
 
         public void newMeta() {
@@ -107,6 +111,10 @@ public class SyntaxRule {
 
         public void add(String type, boolean key) {
             tmp.add(type, key);
+        }
+
+        public FUNCTION getFunction() {
+            return null;
         }
     }
 }

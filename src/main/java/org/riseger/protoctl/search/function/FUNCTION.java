@@ -12,17 +12,17 @@ import org.riseger.protoctl.search.function.key.graphic.OUT;
 import org.riseger.protoctl.search.function.logic.AND;
 import org.riseger.protoctl.search.function.logic.NOT;
 import org.riseger.protoctl.search.function.logic.OR;
-import org.riseger.protoctl.search.function.type.FUNCTIONBLE;
+import org.riseger.protoctl.search.function.type.FUNCTIONAL;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class FUNCTION implements FUNCTIONBLE {
+public abstract class FUNCTION implements FUNCTIONAL {
 
-    public static final Map<Integer, Class<? extends FUNCTIONBLE>> idMap = new HashMap<>();
+    public static final Map<Integer, Class<? extends FUNCTIONAL>> idMap = new HashMap<>();
 
-    private static final Map<Class<? extends FUNCTIONBLE>, Integer> classMap = new HashMap<>();
+    private static final Map<Class<? extends FUNCTIONAL>, Integer> classMap = new HashMap<>();
     private static final Logger LOG = Logger.getLogger(FUNCTION.class);
 
     static {
@@ -45,11 +45,11 @@ public abstract class FUNCTION implements FUNCTIONBLE {
 
     private final int functionId;
 
-    public FUNCTION(Class<? extends FUNCTIONBLE> clazz) {
+    public FUNCTION(Class<? extends FUNCTIONAL> clazz) {
         this.functionId = classMap.get(clazz);
     }
 
-    public static void set(Class<? extends FUNCTIONBLE> clazz) {
+    public static void set(Class<? extends FUNCTIONAL> clazz) {
         set(clazz.getName());
     }
 
@@ -59,7 +59,7 @@ public abstract class FUNCTION implements FUNCTIONBLE {
             tmpid++;
         }
         try {
-            Class<? extends FUNCTIONBLE> clazz = (Class<? extends FUNCTIONBLE>) Class.forName(className);
+            Class<? extends FUNCTIONAL> clazz = (Class<? extends FUNCTIONAL>) Class.forName(className);
             idMap.put(tmpid, clazz);
             classMap.put(clazz, tmpid);
         } catch (ClassNotFoundException e) {

@@ -1,7 +1,7 @@
 package org.riseger.main.init;
 
 import org.riseger.main.compiler.CompilerMaster;
-import org.riseger.main.compiler.lextcal.KeywordsTree;
+import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.main.compiler.lextcal.Lexicator;
 import org.riseger.main.compiler.session.SessionAdaptor;
 import org.riseger.main.compiler.syntax.Parser;
@@ -9,6 +9,7 @@ import org.riseger.main.compiler.syntax.SyntaxRule;
 import org.riseger.main.compiler.syntax.SyntaxTree;
 import org.riseger.main.compiler.token.Tokenizer;
 import org.riseger.utils.Utils;
+import org.riseger.utils.tree.MultiBranchesTree;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -28,7 +29,7 @@ public class CompilerInitialize implements Initializer {
         SyntaxTree syntaxTree = new SyntaxTree(syntaxRule);
 
         //生成关键词树
-        KeywordsTree keywordsTree = KeywordsTree.newKeywordsTree();
+        MultiBranchesTree<Character, Keyword> keywordsTree = new MultiBranchesTree<>();
 
         //生成分词器
         Tokenizer tokenizer = new Tokenizer(keywordsTree);

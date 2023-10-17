@@ -1,6 +1,5 @@
 package org.riseger.main.sql.function.entity;
 
-import org.riseger.main.cache.entity.component.Element_c;
 import org.riseger.main.sql.function.type.NumberFunction_c;
 import org.riseger.main.sql.search.SearchMemory;
 import org.riseger.protoctl.search.function.FUNCTION;
@@ -19,9 +18,4 @@ public class Number_fc extends NumberFunction_c {
         this.n = nbmf.getNumber();
     }
 
-    @Override
-    public Number resolve(Element_c element) {
-        super.set(n);
-        return n;
-    }
 }

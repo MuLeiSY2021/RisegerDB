@@ -2,7 +2,6 @@ package org.riseger.main.sql.function.type;
 
 import lombok.Getter;
 import org.apache.log4j.Logger;
-import org.riseger.main.cache.entity.component.Element_c;
 import org.riseger.main.sql.function.entity.*;
 import org.riseger.main.sql.function.graphic.In_fc;
 import org.riseger.main.sql.function.graphic.Out_fc;
@@ -11,7 +10,6 @@ import org.riseger.main.sql.function.logic.Not_fc;
 import org.riseger.main.sql.function.logic.Or_fc;
 import org.riseger.main.sql.function.math.*;
 import org.riseger.main.sql.search.SearchMemory;
-import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 import org.riseger.protoctl.search.function.FUNCTION;
 import org.riseger.protoctl.search.function.condition.math.*;
 import org.riseger.protoctl.search.function.entity.DISTANCE;
@@ -27,10 +25,11 @@ import org.riseger.protoctl.search.function.logic.OR;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Queue;
 
 @Getter
-public abstract class Function_c<R> {
-    public static final Map<Class<? extends FUNCTION>, Class<? extends Function_c<?>>>
+public abstract class Function_c {
+    public static final Map<Class<? extends FUNCTION>, Class<? extends Function_c>>
             functionMap = new HashMap<>();
     protected static final Logger LOG = Logger.getLogger(Function_c.class);
 
@@ -56,20 +55,24 @@ public abstract class Function_c<R> {
         functionMap.put(SMALL_EQUAL.class, SmallEqual_fc.class);
     }
 
-    private final SearchMemory memory;
+    protected final SearchMemory memory;
+
     private final double threshold;
 
+    private final Queue<Function_c> functionQueue;
 
-    public Function_c(SearchMemory memory, double threshold) {
+
+    public Function_c(FUNCTION function, SearchMemory memory, double threshold, Queue<Function_c> functionQueue) {
         this.memory = memory;
         this.threshold = threshold;
+        this.functionQueue = functionQueue;
     }
 
-    public static Function_c<?> getFunctionFromMap(FUNCTION function, SearchMemory searchMemory, double threshold) {
+    public static Function_c getFunctionFromMap(FUNCTION function, SearchMemory searchMemory, double threshold) {
         try {
             return functionMap.get(function.getClass())
-                    .getConstructor(SearchMemory.class, double.class)
-                    .newInstance(searchMemory, threshold);
+                    .getConstructor(FUNCTION.class, SearchMemory.class, double.class)
+                    .newInstance(function, searchMemory, threshold);
         } catch (Exception e) {
             LOG.error(e);
             e.printStackTrace();
@@ -79,17 +82,17 @@ public abstract class Function_c<R> {
         return null;
     }
 
-    //这个函数多少有点多余了........
-    public abstract void setFunction(FUNCTION condition);
-
-
-    public abstract R resolve(Element_c element) throws IllegalSearchAttributeException;
-
     protected Object get() {
-        return memory.get();
+        return memory.getVar();
     }
 
     protected void set(Object obj) {
-        memory.set(obj);
+        memory.setVar(obj);
+    }
+
+    public abstract void process();
+
+    protected void jumpTo(int index) {
+        //TODO:
     }
 }

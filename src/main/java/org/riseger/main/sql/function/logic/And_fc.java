@@ -1,6 +1,5 @@
 package org.riseger.main.sql.function.logic;
 
-import org.riseger.main.cache.entity.component.Element_c;
 import org.riseger.main.sql.function.type.BooleanFunction_c;
 import org.riseger.main.sql.search.SearchMemory;
 import org.riseger.protoctl.search.function.FUNCTION;
@@ -19,12 +18,4 @@ public class And_fc extends BooleanFunction_c {
 
     }
 
-    @Override
-    public Boolean resolve(Element_c element) {
-        f1 = (Boolean) super.get();
-        f2 = (Boolean) super.get();
-        boolean result = f1 & f2;
-        super.set(result);
-        return result;
-    }
 }

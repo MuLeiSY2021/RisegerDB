@@ -2,16 +2,16 @@ package org.riseger.protoctl.serializer;
 
 import com.google.gson.*;
 import org.riseger.protoctl.search.function.FUNCTION;
-import org.riseger.protoctl.search.function.type.FUNCTIONBLE;
+import org.riseger.protoctl.search.function.type.FUNCTIONAL;
 
 import java.lang.reflect.Type;
 
-public class FunctionDeserializer implements JsonDeserializer<FUNCTIONBLE> {
+public class FunctionDeserializer implements JsonDeserializer<FUNCTIONAL> {
 
     @Override
-    public FUNCTIONBLE deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public FUNCTIONAL deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
-        Class<? extends FUNCTIONBLE> clazz = FUNCTION.idMap.get(Integer.parseInt(jsonObject.get("functionId").getAsString()));
+        Class<? extends FUNCTIONAL> clazz = FUNCTION.idMap.get(Integer.parseInt(jsonObject.get("functionId").getAsString()));
         return JsonSerializer.gson.fromJson(json, clazz);
     }
 }

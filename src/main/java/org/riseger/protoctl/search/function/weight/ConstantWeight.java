@@ -40,6 +40,8 @@ public class ConstantWeight {
     public static final int IN_WEIGHT = 100;
     public static final int OUT_WEIGHT = 700;
 
+    public static final int MAIN_WEIGHT = 100;
+
     //Logic functions
     /*
      * 逻辑函数权重无定值，由函数确定

@@ -1,15 +1,21 @@
+sqls -> sql ";" sqls
+    | sql
+
 sql -> sql ";" sql
-    | "USE" statement
-    | "SEARCH" strings
-    | "WHERE" conditions
+    | "USE" statements
+    | "SEARCH" strings :> org.riseger.protoctl.search.function.main.SEARCH
+    | "WHERE" conditions :> org.riseger.protoctl.search.function.main.WHERE
 
-statement -> statement "\" statement
-    | "DATABASE" string
-    | "MAP" string
-    | "SCOPE" rectangle
-    | "MODEL" strings
+statements -> statement "\" statements
+    |  statement
 
-strings -> string "," string
+statement -> DATABASE" string :> org.riseger.protoctl.search.function.main.USE_DATABASE
+    | "MAP" string :> org.riseger.protoctl.search.function.main.USE_MAP
+    | "SCOPE" rectangle :> org.riseger.protoctl.search.function.main.USE_SCOPE
+    | "MODEL" strings :> org.riseger.protoctl.search.function.main.USE_MODEL
+
+strings -> string "," strings
+    | string
     | attribute
 
 rectangle -> "RECT" "(" coord "," number_operator ")"

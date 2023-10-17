@@ -4,6 +4,7 @@ import org.riseger.main.compiler.CompilerConstant;
 import org.riseger.main.compiler.session.Session;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.main.compiler.token.TokenType;
+import org.riseger.utils.tree.MultiBranchesTree;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -15,7 +16,7 @@ public class Lexicator {
 
     private final Pattern wordPattern = Pattern.compile(CompilerConstant.WORD_PATTERN);
 
-    public Lexicator(KeywordsTree tree) {
+    public Lexicator(MultiBranchesTree<Character, Keyword> tree) {
         this.tree = tree;
     }
 

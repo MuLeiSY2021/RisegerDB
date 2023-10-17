@@ -2,23 +2,23 @@ package org.riseger.protoctl.search.function.logic;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.FUNCTION;
-import org.riseger.protoctl.search.function.type.BOOL_FUNCTIONBLE;
+import org.riseger.protoctl.search.function.type.BOOL_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class AND extends FUNCTION implements BOOL_FUNCTIONBLE {
-    private BOOL_FUNCTIONBLE function1;
+public class AND extends FUNCTION implements BOOL_FUNCTIONAL {
+    private BOOL_FUNCTIONAL function1;
 
-    private BOOL_FUNCTIONBLE function2;
+    private BOOL_FUNCTIONAL function2;
 
     public AND() {
         super(AND.class);
     }
 
-    public BOOL_FUNCTIONBLE invoke(BOOL_FUNCTIONBLE function1, BOOL_FUNCTIONBLE function2) {
+    public BOOL_FUNCTIONAL invoke(BOOL_FUNCTIONAL function1, BOOL_FUNCTIONAL function2) {
         this.function1 = function1;
         this.function2 = function2;
         return this;

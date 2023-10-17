@@ -20,7 +20,7 @@ public class SearchJob extends TranspondJob {
         SearchResponse response = new SearchResponse();
         super.prepare(response);
 
-        SearchSession session = new SearchSession(sql);
+        SearchSession session = new SearchSession(sql, database, scope, models, searches, memory);
         this.sql = null;
         response.setResultMap(session.process());
 

@@ -2,15 +2,31 @@ package org.riseger.main.compiler.lextcal;
 
 import lombok.Data;
 import org.riseger.main.compiler.CompilerConstant;
+import org.riseger.utils.tree.MultiTreeElement;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Data
-public class Keyword {
+public class Keyword implements MultiTreeElement<Character, Keyword> {
+    //------------Static-------------//
     private static final List<Keyword> KEYWORDS = new LinkedList<>();
+
+    public static Keyword addKeyword(String word) {
+        Keyword keyword = new Keyword(word, KEYWORDS.size());
+        KEYWORDS.add(keyword);
+        return keyword;
+    }
+
+    public static List<Keyword> getKeywords() {
+        return KEYWORDS;
+    }
+    //------------Static-------------//
+
     private final int id;
+
     private final List<Character> words = new LinkedList<>();
+
     private final String code;
 
     public Keyword(String keyword, int index) {
@@ -24,29 +40,18 @@ public class Keyword {
         this.code = CompilerConstant.KEYWORD_PREFIX + CompilerConstant.SPLIT_PREFIX + KEYWORDS.size();
     }
 
-    public static Keyword addKeyword(String word) {
-        Keyword keyword = new Keyword(word, KEYWORDS.size());
-        KEYWORDS.add(keyword);
-        return keyword;
-    }
-
-    public static List<Keyword> getKeywords() {
-        return KEYWORDS;
-    }
-
-    public char getWords(int index) {
+    @Override
+    public Character next(int index) {
         return this.words.get(index);
     }
 
-    public int length() {
-        return words.size();
+    @Override
+    public Keyword get() {
+        return this;
     }
 
+    @Override
     public boolean isTail(int index) {
         return this.words.size() == index + 1;
-    }
-
-    public boolean equals(int index, char word) {
-        return this.words.get(index) == word;
     }
 }

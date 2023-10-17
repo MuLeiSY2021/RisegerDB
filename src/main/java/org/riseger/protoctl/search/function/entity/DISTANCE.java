@@ -2,24 +2,24 @@ package org.riseger.protoctl.search.function.entity;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.FUNCTION;
-import org.riseger.protoctl.search.function.type.COORD_FUNCTIONBLE;
-import org.riseger.protoctl.search.function.type.NUMBER_FUNCTIONBLE;
+import org.riseger.protoctl.search.function.type.COORD_FUNCTIONAL;
+import org.riseger.protoctl.search.function.type.NUMBER_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class DISTANCE extends FUNCTION implements NUMBER_FUNCTIONBLE {
-    private COORD_FUNCTIONBLE coord1;
+public class DISTANCE extends FUNCTION implements NUMBER_FUNCTIONAL {
+    private COORD_FUNCTIONAL coord1;
 
-    private COORD_FUNCTIONBLE coord2;
+    private COORD_FUNCTIONAL coord2;
 
     public DISTANCE() {
         super(DISTANCE.class);
     }
 
-    public NUMBER_FUNCTIONBLE invoke(COORD_FUNCTIONBLE coord1, COORD_FUNCTIONBLE coord2) {
+    public NUMBER_FUNCTIONAL invoke(COORD_FUNCTIONAL coord1, COORD_FUNCTIONAL coord2) {
         this.coord1 = coord1;
         this.coord2 = coord2;
         return this;

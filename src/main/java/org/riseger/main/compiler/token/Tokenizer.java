@@ -2,7 +2,9 @@ package org.riseger.main.compiler.token;
 
 import com.google.gson.Gson;
 import org.riseger.main.compiler.CompilerConstant;
+import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.main.compiler.lextcal.KeywordsTree;
+import org.riseger.utils.tree.MultiBranchesTree;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +16,7 @@ public class Tokenizer {
 
     private final KeywordsTree keywordsTree;
 
-    public Tokenizer(KeywordsTree keywordsTree) {
+    public Tokenizer(MultiBranchesTree<Character, Keyword> keywordsTree) {
         this.keywordsTree = keywordsTree;
     }
 

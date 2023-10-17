@@ -6,6 +6,7 @@ import org.apache.commons.collections4.IteratorUtils;
 import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.protoctl.exception.CompileException;
+import org.riseger.protoctl.search.function.FUNCTION;
 import org.riseger.protoctl.serializer.JsonSerializer;
 
 import java.util.*;
@@ -52,14 +53,15 @@ public class SyntaxTree {
 
     @Getter
     private class SyntaxTreeChild {
-        private final String entry;
 
         private final int typeCode;
+
+        private final FUNCTION function;
 
         private final Node root = new Node(null, null, null);
 
         public SyntaxTreeChild(SyntaxRule.Rule rule, SyntaxRule syntaxRule) {
-            this.entry = rule.getType();
+            this.function = rule.getFunction();
             this.typeCode = rule.getTypeId();
             for (SyntaxRule.Meta meta : rule.getMeta()) {
                 root.initialize(meta.getTiles().listIterator(), syntaxRule);

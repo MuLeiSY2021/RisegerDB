@@ -2,26 +2,26 @@ package org.riseger.protoctl.search.function.entity.field;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.FUNCTION;
-import org.riseger.protoctl.search.function.type.COORD_FUNCTIONBLE;
-import org.riseger.protoctl.search.function.type.NUMBER_FUNCTIONBLE;
-import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONBLE;
+import org.riseger.protoctl.search.function.type.COORD_FUNCTIONAL;
+import org.riseger.protoctl.search.function.type.NUMBER_FUNCTIONAL;
+import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class RECT extends FUNCTION implements RECTANGLE_FUNCTIONBLE {
+public class RECT extends FUNCTION implements RECTANGLE_FUNCTIONAL {
 
-    private COORD_FUNCTIONBLE coord;
+    private COORD_FUNCTIONAL coord;
 
-    private NUMBER_FUNCTIONBLE len;
+    private NUMBER_FUNCTIONAL len;
 
     public RECT() {
         super(RECT.class);
     }
 
-    public RECTANGLE_FUNCTIONBLE invoke(COORD_FUNCTIONBLE coord, NUMBER_FUNCTIONBLE len) {
+    public RECTANGLE_FUNCTIONAL invoke(COORD_FUNCTIONAL coord, NUMBER_FUNCTIONAL len) {
         this.coord = coord;
         this.len = len;
         return this;

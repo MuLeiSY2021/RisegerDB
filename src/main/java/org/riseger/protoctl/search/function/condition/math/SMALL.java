@@ -2,25 +2,25 @@ package org.riseger.protoctl.search.function.condition.math;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.FUNCTION;
-import org.riseger.protoctl.search.function.type.BOOL_FUNCTIONBLE;
-import org.riseger.protoctl.search.function.type.NUMBER_FUNCTIONBLE;
+import org.riseger.protoctl.search.function.type.BOOL_FUNCTIONAL;
+import org.riseger.protoctl.search.function.type.NUMBER_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class SMALL extends FUNCTION implements BOOL_FUNCTIONBLE {
+public class SMALL extends FUNCTION implements BOOL_FUNCTIONAL {
 
-    private NUMBER_FUNCTIONBLE number1;
+    private NUMBER_FUNCTIONAL number1;
 
-    private NUMBER_FUNCTIONBLE number2;
+    private NUMBER_FUNCTIONAL number2;
 
     public SMALL() {
         super(SMALL.class);
     }
 
-    public BOOL_FUNCTIONBLE invoke(NUMBER_FUNCTIONBLE number1, NUMBER_FUNCTIONBLE number2) {
+    public BOOL_FUNCTIONAL invoke(NUMBER_FUNCTIONAL number1, NUMBER_FUNCTIONAL number2) {
         this.number1 = number1;
         this.number2 = number2;
         return this;

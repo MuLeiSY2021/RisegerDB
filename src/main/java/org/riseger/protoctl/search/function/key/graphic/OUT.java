@@ -2,23 +2,23 @@ package org.riseger.protoctl.search.function.key.graphic;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.FUNCTION;
-import org.riseger.protoctl.search.function.type.BOOL_FUNCTIONBLE;
-import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONBLE;
+import org.riseger.protoctl.search.function.type.BOOL_FUNCTIONAL;
+import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class OUT extends FUNCTION implements BOOL_FUNCTIONBLE {
+public class OUT extends FUNCTION implements BOOL_FUNCTIONAL {
 
-    private RECTANGLE_FUNCTIONBLE rect;
+    private RECTANGLE_FUNCTIONAL rect;
 
     public OUT() {
         super(OUT.class);
     }
 
-    public BOOL_FUNCTIONBLE invoke(RECTANGLE_FUNCTIONBLE rect) {
+    public BOOL_FUNCTIONAL invoke(RECTANGLE_FUNCTIONAL rect) {
         this.rect = rect;
         return this;
     }

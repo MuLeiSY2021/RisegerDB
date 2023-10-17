@@ -1,6 +1,5 @@
 package org.riseger.main.sql.function.graphic;
 
-import org.riseger.main.cache.entity.component.Element_c;
 import org.riseger.main.cache.entity.component.MBRectangle_c;
 import org.riseger.main.sql.function.type.BooleanFunction_c;
 import org.riseger.main.sql.search.SearchMemory;
@@ -18,11 +17,4 @@ public class Out_fc extends BooleanFunction_c {
 
     }
 
-    @Override
-    public Boolean resolve(Element_c element) {
-        r = (MBRectangle_c) super.get();
-        boolean result = !r.intersects(element);
-        super.set(result);
-        return result;
-    }
 }

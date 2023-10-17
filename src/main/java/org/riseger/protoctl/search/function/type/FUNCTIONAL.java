@@ -4,7 +4,7 @@ import org.riseger.protoctl.search.function.FUNCTION;
 
 import java.util.List;
 
-public interface FUNCTIONBLE {
+public interface FUNCTIONAL {
     int getId();
 
     List<FUNCTION> getFunctions();
