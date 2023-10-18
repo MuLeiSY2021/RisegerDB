@@ -1,7 +1,7 @@
 package org.riseger.main.sql.function.math;
 
+import org.riseger.main.sql.compoent.SearchMemory;
 import org.riseger.main.sql.function.type.BooleanFunction_c;
-import org.riseger.main.sql.search.SearchMemory;
 import org.riseger.protoctl.search.function.FUNCTION;
 
 public class BigEqual_fc extends BooleanFunction_c {

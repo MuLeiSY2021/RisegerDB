@@ -1,4 +1,4 @@
-package org.riseger.main.sql.search;
+package org.riseger.main.sql.compoent;
 
 import lombok.Data;
 

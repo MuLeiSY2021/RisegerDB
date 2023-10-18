@@ -10,14 +10,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class BIG_EQUAL extends FUNCTION implements BOOL_FUNCTIONAL {
-
+public class Big extends FUNCTION implements BOOL_FUNCTIONAL {
     private NUMBER_FUNCTIONAL number1;
 
     private NUMBER_FUNCTIONAL number2;
 
-    public BIG_EQUAL() {
-        super(BIG_EQUAL.class);
+    public Big() {
+        super(Big.class);
     }
 
     public BOOL_FUNCTIONAL invoke(NUMBER_FUNCTIONAL number1, NUMBER_FUNCTIONAL number2) {
@@ -36,7 +35,7 @@ public class BIG_EQUAL extends FUNCTION implements BOOL_FUNCTIONAL {
 
     @Override
     public Integer getWeight() {
-        return ConstantWeight.BIG_EQUAL_WEIGHT;
+        return ConstantWeight.BIG_WEIGHT;
     }
 
     @Override

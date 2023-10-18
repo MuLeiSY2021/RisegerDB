@@ -1,4 +1,4 @@
-package org.riseger.main.sql.search;
+package org.riseger.main.sql.compoent;
 
 import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.*;

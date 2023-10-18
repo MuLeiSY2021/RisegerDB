@@ -2,11 +2,7 @@ package org.riseger.protoctl.search.function;
 
 import org.apache.log4j.Logger;
 import org.riseger.protoctl.search.function.condition.math.*;
-import org.riseger.protoctl.search.function.entity.DISTANCE;
-import org.riseger.protoctl.search.function.entity.NUMBER;
-import org.riseger.protoctl.search.function.entity.basic.ATTRIBUTE;
-import org.riseger.protoctl.search.function.entity.field.COORD;
-import org.riseger.protoctl.search.function.entity.field.RECT;
+import org.riseger.protoctl.search.function.entity.*;
 import org.riseger.protoctl.search.function.key.graphic.IN;
 import org.riseger.protoctl.search.function.key.graphic.OUT;
 import org.riseger.protoctl.search.function.logic.AND;
@@ -26,7 +22,7 @@ public abstract class FUNCTION implements FUNCTIONAL {
     private static final Logger LOG = Logger.getLogger(FUNCTION.class);
 
     static {
-        FUNCTION.set(ATTRIBUTE.class);
+        FUNCTION.set(Attribute_F.class);
         FUNCTION.set(COORD.class);
         FUNCTION.set(RECT.class);
         FUNCTION.set(DISTANCE.class);
@@ -35,12 +31,12 @@ public abstract class FUNCTION implements FUNCTIONAL {
         FUNCTION.set(AND.class);
         FUNCTION.set(NOT.class);
         FUNCTION.set(OR.class);
-        FUNCTION.set(BIG.class);
-        FUNCTION.set(BIG_EQUAL.class);
-        FUNCTION.set(EQUAL.class);
+        FUNCTION.set(Big.class);
+        FUNCTION.set(BigEqual.class);
+        FUNCTION.set(Equal.class);
         FUNCTION.set(NUMBER.class);
-        FUNCTION.set(SMALL.class);
-        FUNCTION.set(SMALL_EQUAL.class);
+        FUNCTION.set(Small.class);
+        FUNCTION.set(SmallEqual.class);
     }
 
     private final int functionId;

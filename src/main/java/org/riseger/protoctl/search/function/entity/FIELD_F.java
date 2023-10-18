@@ -1,4 +1,4 @@
-package org.riseger.protoctl.search.function.entity.field;
+package org.riseger.protoctl.search.function.entity;
 
 public class FIELD_F {
     public static COORD COORD() {

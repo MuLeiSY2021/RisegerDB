@@ -2,21 +2,23 @@ package org.riseger.main.sql.function.type;
 
 import lombok.Getter;
 import org.apache.log4j.Logger;
-import org.riseger.main.sql.function.entity.*;
+import org.riseger.main.sql.compoent.CommandList;
+import org.riseger.main.sql.compoent.MemoryConstant;
+import org.riseger.main.sql.compoent.SearchMemory;
+import org.riseger.main.sql.function.entity.Attribute_fc;
+import org.riseger.main.sql.function.entity.Coord_fc;
+import org.riseger.main.sql.function.entity.Distance_fc;
+import org.riseger.main.sql.function.entity.Rectangle_fc;
 import org.riseger.main.sql.function.graphic.In_fc;
 import org.riseger.main.sql.function.graphic.Out_fc;
 import org.riseger.main.sql.function.logic.And_fc;
 import org.riseger.main.sql.function.logic.Not_fc;
 import org.riseger.main.sql.function.logic.Or_fc;
 import org.riseger.main.sql.function.math.*;
-import org.riseger.main.sql.search.SearchMemory;
+import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 import org.riseger.protoctl.search.function.FUNCTION;
 import org.riseger.protoctl.search.function.condition.math.*;
-import org.riseger.protoctl.search.function.entity.DISTANCE;
-import org.riseger.protoctl.search.function.entity.NUMBER;
-import org.riseger.protoctl.search.function.entity.basic.ATTRIBUTE;
-import org.riseger.protoctl.search.function.entity.field.COORD;
-import org.riseger.protoctl.search.function.entity.field.RECT;
+import org.riseger.protoctl.search.function.entity.*;
 import org.riseger.protoctl.search.function.key.graphic.IN;
 import org.riseger.protoctl.search.function.key.graphic.OUT;
 import org.riseger.protoctl.search.function.logic.AND;
@@ -25,7 +27,6 @@ import org.riseger.protoctl.search.function.logic.OR;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Queue;
 
 @Getter
 public abstract class Function_c {
@@ -35,7 +36,7 @@ public abstract class Function_c {
 
     static {
 
-        functionMap.put(ATTRIBUTE.class, Attribute_fc.class);
+        functionMap.put(Attribute_F.class, Attribute_fc.class);
         functionMap.put(COORD.class, Coord_fc.class);
         functionMap.put(DISTANCE.class, Distance_fc.class);
         functionMap.put(NUMBER.class, Number_fc.class);
@@ -48,24 +49,24 @@ public abstract class Function_c {
         functionMap.put(NOT.class, Not_fc.class);
         functionMap.put(OR.class, Or_fc.class);
 
-        functionMap.put(BIG.class, Big_fc.class);
-        functionMap.put(BIG_EQUAL.class, BigEqual_fc.class);
-        functionMap.put(EQUAL.class, Equal_fc.class);
-        functionMap.put(SMALL.class, Small_fc.class);
-        functionMap.put(SMALL_EQUAL.class, SmallEqual_fc.class);
+        functionMap.put(Big.class, Big_fc.class);
+        functionMap.put(BigEqual.class, BigEqual_fc.class);
+        functionMap.put(Equal.class, Equal_fc.class);
+        functionMap.put(Small.class, Small_fc.class);
+        functionMap.put(SmallEqual.class, SmallEqual_fc.class);
     }
 
-    protected final SearchMemory memory;
+    private final SearchMemory memory;
 
     private final double threshold;
 
-    private final Queue<Function_c> functionQueue;
+    private final CommandList commandList;
 
 
-    public Function_c(FUNCTION function, SearchMemory memory, double threshold, Queue<Function_c> functionQueue) {
+    public Function_c(FUNCTION function, SearchMemory memory, double threshold, CommandList commandList) {
         this.memory = memory;
         this.threshold = threshold;
-        this.functionQueue = functionQueue;
+        this.commandList = commandList;
     }
 
     public static Function_c getFunctionFromMap(FUNCTION function, SearchMemory searchMemory, double threshold) {
@@ -82,17 +83,33 @@ public abstract class Function_c {
         return null;
     }
 
-    protected Object get() {
+    protected Object poll() {
         return memory.getVar();
     }
 
-    protected void set(Object obj) {
+    protected void put(Object obj) {
         memory.setVar(obj);
     }
 
-    public abstract void process();
+    protected Object getMap(MemoryConstant constant) {
+        return memory.getMapValue(constant);
+    }
+
+    protected void setMap(Object o, MemoryConstant constant) {
+        this.memory.setMapValue(o, constant);
+    }
+
+    protected Object getConstant(int index) {
+        return this.memory.getConstant(index);
+    }
+
+    public abstract void process() throws IllegalSearchAttributeException;
 
     protected void jumpTo(int index) {
-        //TODO:
+        commandList.jump(index);
+    }
+
+    protected int index() {
+        return commandList.index();
     }
 }

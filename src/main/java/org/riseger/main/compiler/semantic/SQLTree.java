@@ -1,9 +1,9 @@
 package org.riseger.main.compiler.semantic;
 
 import lombok.Data;
+import org.riseger.main.sql.compoent.SearchMemory;
 import org.riseger.main.sql.function.type.BooleanFunction_c;
 import org.riseger.main.sql.function.type.Function_c;
-import org.riseger.main.sql.search.SearchMemory;
 import org.riseger.protoctl.search.command.WHERE;
 import org.riseger.protoctl.search.function.FUNCTION;
 import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONAL;

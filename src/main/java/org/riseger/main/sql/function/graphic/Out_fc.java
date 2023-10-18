@@ -1,20 +1,25 @@
 package org.riseger.main.sql.function.graphic;
 
+import org.riseger.main.cache.entity.component.Element_c;
 import org.riseger.main.cache.entity.component.MBRectangle_c;
+import org.riseger.main.sql.compoent.CommandList;
+import org.riseger.main.sql.compoent.MemoryConstant;
+import org.riseger.main.sql.compoent.SearchMemory;
 import org.riseger.main.sql.function.type.BooleanFunction_c;
-import org.riseger.main.sql.search.SearchMemory;
+import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 import org.riseger.protoctl.search.function.FUNCTION;
 
 public class Out_fc extends BooleanFunction_c {
-    MBRectangle_c r;
 
-    public Out_fc(SearchMemory memory, double threshold) {
-        super(memory, threshold);
+    public Out_fc(FUNCTION function, SearchMemory memory, double threshold, CommandList commandList) {
+        super(function, memory, threshold, commandList);
     }
 
     @Override
-    public void setFunction(FUNCTION condition) {
-
+    public void process() throws IllegalSearchAttributeException {
+        Element_c element = (Element_c) super.getMap(MemoryConstant.ELEMENT);
+        MBRectangle_c r = (MBRectangle_c) super.poll();
+        boolean result = !r.intersects(element);
+        super.put(result);
     }
-
 }
