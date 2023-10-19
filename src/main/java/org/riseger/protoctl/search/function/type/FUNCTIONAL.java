@@ -1,13 +1,13 @@
 package org.riseger.protoctl.search.function.type;
 
-import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.Function_F;
 
 import java.util.List;
 
 public interface FUNCTIONAL {
     int getId();
 
-    List<FUNCTION> getFunctions();
+    List<Function_F> getFunctions();
 
     Integer getWeight();
 

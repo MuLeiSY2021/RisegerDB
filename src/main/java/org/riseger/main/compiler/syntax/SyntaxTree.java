@@ -6,7 +6,7 @@ import org.apache.commons.collections4.IteratorUtils;
 import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.protoctl.exception.CompileException;
-import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.Function_F;
 import org.riseger.protoctl.serializer.JsonSerializer;
 
 import java.util.*;
@@ -56,7 +56,7 @@ public class SyntaxTree {
 
         private final int typeCode;
 
-        private final FUNCTION function;
+        private final Function_F function;
 
         private final Node root = new Node(null, null, null);
 

@@ -1,7 +1,7 @@
 package org.riseger.protoctl.search.function.key.graphic;
 
 import lombok.Getter;
-import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.Function_F;
 import org.riseger.protoctl.search.function.type.BOOL_FUNCTIONAL;
 import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
@@ -10,12 +10,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class IN extends FUNCTION implements BOOL_FUNCTIONAL {
+public class Out_F extends Function_F implements BOOL_FUNCTIONAL {
 
     private RECTANGLE_FUNCTIONAL rect;
 
-    public IN() {
-        super(IN.class);
+    public Out_F() {
+        super(Out_F.class);
     }
 
     public BOOL_FUNCTIONAL invoke(RECTANGLE_FUNCTIONAL rect) {
@@ -24,15 +24,15 @@ public class IN extends FUNCTION implements BOOL_FUNCTIONAL {
     }
 
     @Override
-    public List<FUNCTION> getFunctions() {
-        List<FUNCTION> res = new LinkedList<>();
-        res.add((FUNCTION) rect);
+    public List<Function_F> getFunctions() {
+        List<Function_F> res = new LinkedList<>();
+        res.add((Function_F) rect);
         return res;
     }
 
     @Override
     public Integer getWeight() {
-        return ConstantWeight.IN_WEIGHT;
+        return ConstantWeight.OUT_WEIGHT;
     }
 
     @Override

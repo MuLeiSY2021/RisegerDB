@@ -5,7 +5,7 @@ import org.riseger.main.sql.compoent.SearchMemory;
 import org.riseger.main.sql.function.type.BooleanFunction_c;
 import org.riseger.main.sql.function.type.Function_c;
 import org.riseger.protoctl.search.command.WHERE;
-import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.Function_F;
 import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONAL;
 
 import java.util.Comparator;
@@ -18,11 +18,11 @@ public class SQLTree {
     private final SQLNode root;
 
     public SQLTree(WHERE where, SearchMemory searchMemory, double threshold) {
-        this.root = new SQLNode((FUNCTION) where.getCondition(), null, searchMemory, threshold);
+        this.root = new SQLNode((Function_F) where.getCondition(), null, searchMemory, threshold);
     }
 
     public SQLTree(RECTANGLE_FUNCTIONAL function, SearchMemory searchMemory, double threshold) {
-        this.root = new SQLNode((FUNCTION) function, null, searchMemory, threshold);
+        this.root = new SQLNode((Function_F) function, null, searchMemory, threshold);
     }
 
     public Queue<Function_c> genFunctionList() {
@@ -49,11 +49,11 @@ public class SQLTree {
 
         private Function_c function;
 
-        private FUNCTION condition;
+        private Function_F condition;
 
         private List<SQLNode> sqlList = new LinkedList<>();
 
-        public SQLNode(FUNCTION condition, SQLNode parent, SearchMemory searchMemory, double threshold) {
+        public SQLNode(Function_F condition, SQLNode parent, SearchMemory searchMemory, double threshold) {
             this.parent = parent;
             this.function = Function_c.getFunctionFromMap(condition, searchMemory, threshold);
             if (this.function != null) {
@@ -61,7 +61,7 @@ public class SQLTree {
             }
             this.condition = condition;
             if (condition.getFunctions() != null) {
-                for (FUNCTION child : condition.getFunctions()) {
+                for (Function_F child : condition.getFunctions()) {
                     sqlList.add(new SQLNode(child, this, searchMemory, threshold));
                 }
             }

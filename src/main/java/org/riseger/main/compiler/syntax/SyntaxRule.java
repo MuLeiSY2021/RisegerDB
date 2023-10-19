@@ -2,7 +2,7 @@ package org.riseger.main.compiler.syntax;
 
 import lombok.Data;
 import lombok.Getter;
-import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.Entity_F;
 
 import java.util.*;
 
@@ -23,7 +23,7 @@ public class SyntaxRule {
                 tokens = ruleTextLine.split("->");
                 if (tokens[0].startsWith("END:")) {
                     String name = tokens[0].substring("END:".length());
-                    prevRule = new Rule(name, true);
+                    prevRule = new Rule(name, true, Entity_F.class);
                     eachRule.put(name, prevRule);
 
                 } else {
@@ -93,15 +93,15 @@ public class SyntaxRule {
 
         private Meta tmp;
 
-        private final FUNCTION function;
+        private final Class<Entity_F> function;
 
         private int typeId;
 
-        public Rule(String type, boolean end, FUNCTION function) {
+        public Rule(String type, boolean end, Class<Entity_F> functionClass) {
             this.type = type;
             this.end = end;
             this.typeId = SyntaxRule.this.ruleMap.size();
-            this.function = function;
+            this.function = functionClass;
         }
 
         public void newMeta() {
@@ -113,8 +113,8 @@ public class SyntaxRule {
             tmp.add(type, key);
         }
 
-        public FUNCTION getFunction() {
-            return null;
+        public Class<Entity_F> getFunction() {
+            return this.function;
         }
     }
 }

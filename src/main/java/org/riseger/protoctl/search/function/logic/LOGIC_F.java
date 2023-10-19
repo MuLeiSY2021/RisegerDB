@@ -2,16 +2,16 @@ package org.riseger.protoctl.search.function.logic;
 
 public class LOGIC_F {
 
-    public static AND AND() {
-        return new AND();
+    public static And_F AND() {
+        return new And_F();
     }
 
-    public static OR OR() {
-        return new OR();
+    public static Or_F OR() {
+        return new Or_F();
     }
 
-    public static NOT NOT() {
-        return new NOT();
+    public static Not_F NOT() {
+        return new Not_F();
     }
 
 }

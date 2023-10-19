@@ -7,12 +7,11 @@ import org.riseger.main.sql.compoent.MemoryConstant;
 import org.riseger.main.sql.compoent.SearchMemory;
 import org.riseger.main.sql.function.type.BooleanFunction_c;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
-import org.riseger.protoctl.search.function.FUNCTION;
 
 public class Out_fc extends BooleanFunction_c {
 
-    public Out_fc(FUNCTION function, SearchMemory memory, double threshold, CommandList commandList) {
-        super(function, memory, threshold, commandList);
+    public Out_fc(SearchMemory memory, double threshold, CommandList commandList) {
+        super(memory, threshold, commandList);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package org.riseger.protoctl.search.function.entity;
 
 import lombok.Getter;
-import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.Function_F;
 import org.riseger.protoctl.search.function.type.COORD_FUNCTIONAL;
 import org.riseger.protoctl.search.function.type.NUMBER_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
@@ -9,13 +9,13 @@ import org.riseger.protoctl.search.function.weight.ConstantWeight;
 import java.util.List;
 
 @Getter
-public class COORD extends FUNCTION implements COORD_FUNCTIONAL {
+public class Coord_F extends Function_F implements COORD_FUNCTIONAL {
     NUMBER_FUNCTIONAL number1;
 
     NUMBER_FUNCTIONAL number2;
 
-    public COORD() {
-        super(COORD.class);
+    public Coord_F() {
+        super(Coord_F.class);
 
     }
 
@@ -26,7 +26,7 @@ public class COORD extends FUNCTION implements COORD_FUNCTIONAL {
     }
 
     @Override
-    public List<FUNCTION> getFunctions() {
+    public List<Function_F> getFunctions() {
         return null;
     }
 

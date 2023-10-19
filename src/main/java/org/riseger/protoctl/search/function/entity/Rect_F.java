@@ -1,7 +1,7 @@
 package org.riseger.protoctl.search.function.entity;
 
 import lombok.Getter;
-import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.Function_F;
 import org.riseger.protoctl.search.function.type.COORD_FUNCTIONAL;
 import org.riseger.protoctl.search.function.type.NUMBER_FUNCTIONAL;
 import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONAL;
@@ -11,14 +11,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class RECT extends FUNCTION implements RECTANGLE_FUNCTIONAL {
+public class Rect_F extends Function_F implements RECTANGLE_FUNCTIONAL {
 
     private COORD_FUNCTIONAL coord;
 
     private NUMBER_FUNCTIONAL len;
 
-    public RECT() {
-        super(RECT.class);
+    public Rect_F() {
+        super(Rect_F.class);
     }
 
     public RECTANGLE_FUNCTIONAL invoke(COORD_FUNCTIONAL coord, NUMBER_FUNCTIONAL len) {
@@ -28,10 +28,10 @@ public class RECT extends FUNCTION implements RECTANGLE_FUNCTIONAL {
     }
 
     @Override
-    public List<FUNCTION> getFunctions() {
-        List<FUNCTION> res = new LinkedList<>();
-        res.add((FUNCTION) coord);
-        res.add((FUNCTION) len);
+    public List<Function_F> getFunctions() {
+        List<Function_F> res = new LinkedList<>();
+        res.add((Function_F) coord);
+        res.add((Function_F) len);
         return res;
     }
 

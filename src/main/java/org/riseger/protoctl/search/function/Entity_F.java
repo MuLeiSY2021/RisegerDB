@@ -4,7 +4,7 @@ import org.riseger.protoctl.search.function.type.UNIVERSAL_FUNCTIONAL;
 
 import java.util.List;
 
-public class Entity_F extends FUNCTION implements UNIVERSAL_FUNCTIONAL {
+public class Entity_F extends Function_F implements UNIVERSAL_FUNCTIONAL {
 
     private Object[] entities;
 
@@ -17,7 +17,7 @@ public class Entity_F extends FUNCTION implements UNIVERSAL_FUNCTIONAL {
         return new Entity_F(entities);
     }
 
-    public List<FUNCTION> getFunctions() {
+    public List<Function_F> getFunctions() {
         return null;
     }
 

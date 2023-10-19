@@ -41,7 +41,7 @@ public class DatabaseShellClient {
                 System.err.print("[ERROR]   ");
                 throw e;
             }
-            out.println(ColorList.CYBER_COLOR.toColorful("ResigerDB is now loaded and ready to use!"));
+            out.println(ColorList.CYBER_COLOR.toColorful("ResigerDB is now loaded And_F ready to use!"));
             while (true) {
                 out.print(CyberColorStyle.VERY_SOFT_MAGENTA.toColor("ResigerDB" + CyberColorStyle.DARK_BLUE.toColor("❯ ")));
                 userInput = reader.readLine();

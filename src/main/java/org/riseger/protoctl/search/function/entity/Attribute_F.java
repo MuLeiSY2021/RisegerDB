@@ -1,14 +1,14 @@
 package org.riseger.protoctl.search.function.entity;
 
 import lombok.Getter;
-import org.riseger.protoctl.search.function.FUNCTION;
+import org.riseger.protoctl.search.function.Function_F;
 import org.riseger.protoctl.search.function.type.UNIVERSAL_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
 import java.util.List;
 
 @Getter
-public class Attribute_F extends FUNCTION implements UNIVERSAL_FUNCTIONAL {
+public class Attribute_F extends Function_F implements UNIVERSAL_FUNCTIONAL {
     private final UNIVERSAL_FUNCTIONAL attribute;
 
     public Attribute_F(UNIVERSAL_FUNCTIONAL attribute) {
@@ -24,7 +24,7 @@ public class Attribute_F extends FUNCTION implements UNIVERSAL_FUNCTIONAL {
     }
 
     @Override
-    public List<FUNCTION> getFunctions() {
+    public List<Function_F> getFunctions() {
         return null;
     }
 
