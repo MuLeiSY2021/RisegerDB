@@ -1,5 +1,5 @@
 package org.riseger.utils.tree;
 
-enum MultiBranchesTreeIterStrategy {
+public enum MBTreeIterStrategy {
     BREADTH_FIRST, DEPTH_FIRST
 }

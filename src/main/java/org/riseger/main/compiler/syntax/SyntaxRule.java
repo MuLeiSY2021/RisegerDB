@@ -2,7 +2,9 @@ package org.riseger.main.compiler.syntax;
 
 import lombok.Data;
 import lombok.Getter;
+import org.riseger.main.sql.function.type.Function_c;
 import org.riseger.protoctl.search.function.Entity_F;
+import org.riseger.utils.tree.Equable;
 
 import java.util.*;
 
@@ -55,7 +57,7 @@ public class SyntaxRule {
     }
 
     @Data
-    static class Type {
+    static class Type implements Equable {
         boolean key;
 
         private String value;
@@ -93,11 +95,11 @@ public class SyntaxRule {
 
         private Meta tmp;
 
-        private final Class<Entity_F> function;
+        private final Class<? extends Function_c> function;
 
         private int typeId;
 
-        public Rule(String type, boolean end, Class<Entity_F> functionClass) {
+        public Rule(String type, boolean end, Class<? extends Function_c> functionClass) {
             this.type = type;
             this.end = end;
             this.typeId = SyntaxRule.this.ruleMap.size();
@@ -113,8 +115,5 @@ public class SyntaxRule {
             tmp.add(type, key);
         }
 
-        public Class<Entity_F> getFunction() {
-            return this.function;
-        }
     }
 }

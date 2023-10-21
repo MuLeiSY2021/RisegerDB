@@ -2,15 +2,15 @@ package org.riseger.utils.tree;
 
 import java.util.Stack;
 
-public class TreeIterator<E> {
+public class MBTreeIterator<E> {
     private final Stack<Integer> indexes = new Stack<>();
-    private final MultiBranchesTreeIterStrategy strategy;
+    private final MBTreeIterStrategy strategy;
     private TreeIterable<E> root;
 
-    public TreeIterator(MultiBranchesTreeIterStrategy strategy, TreeIterable<E> root) {
+    public MBTreeIterator(MBTreeIterStrategy strategy, TreeIterable<E> root) {
         this.strategy = strategy;
         this.root = root;
-        if (strategy == MultiBranchesTreeIterStrategy.DEPTH_FIRST) {
+        if (strategy == MBTreeIterStrategy.DEPTH_FIRST) {
             while (root.length() > 0) {
                 indexes.push(1);
                 this.root = root.shallower();

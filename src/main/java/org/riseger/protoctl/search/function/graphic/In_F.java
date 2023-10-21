@@ -1,4 +1,4 @@
-package org.riseger.protoctl.search.function.key.graphic;
+package org.riseger.protoctl.search.function.graphic;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.Function_F;

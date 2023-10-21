@@ -1,15 +1,14 @@
 sqls -> sql ";" sqls
     | sql
 
-sql -> sql ";" sql
-    | "USE" statements
+sql -> "USE" statements
     | "SEARCH" strings :> org.riseger.protoctl.search.function.main.SEARCH
     | "WHERE" conditions :> org.riseger.protoctl.search.function.main.WHERE
 
 statements -> statement "\" statements
     |  statement
 
-statement -> DATABASE" string :> org.riseger.protoctl.search.function.main.USE_DATABASE
+statement -> "DATABASE" string :> org.riseger.protoctl.search.function.main.USE_DATABASE
     | "MAP" string :> org.riseger.protoctl.search.function.main.USE_MAP
     | "SCOPE" rectangle :> org.riseger.protoctl.search.function.main.USE_SCOPE
     | "MODEL" strings :> org.riseger.protoctl.search.function.main.USE_MODEL
@@ -25,7 +24,6 @@ coord -> "COORD" "(" number_operator "," number_operator ")"
     | attribute
 
 conditions -> bool_condition
-    | "{" conditions "}"
 
 bool_condition -> "IN" rectangle
     | "OUT" rectangle

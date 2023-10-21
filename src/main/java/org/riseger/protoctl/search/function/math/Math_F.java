@@ -1,4 +1,4 @@
-package org.riseger.protoctl.search.function.condition.math;
+package org.riseger.protoctl.search.function.math;
 
 import org.riseger.protoctl.search.function.entity.NUMBER;
 

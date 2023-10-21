@@ -2,13 +2,14 @@ package org.riseger.main.compiler.lextcal;
 
 import lombok.Data;
 import org.riseger.main.compiler.CompilerConstant;
+import org.riseger.utils.tree.Equable;
 import org.riseger.utils.tree.MultiTreeElement;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Data
-public class Keyword implements MultiTreeElement<Character, Keyword> {
+public class Keyword implements MultiTreeElement<Keyword> {
     //------------Static-------------//
     private static final List<Keyword> KEYWORDS = new LinkedList<>();
 
@@ -41,9 +42,10 @@ public class Keyword implements MultiTreeElement<Character, Keyword> {
     }
 
     @Override
-    public Character next(int index) {
-        return this.words.get(index);
+    public Equable next(int index) {
+        return new C(this.words.get(index));
     }
+
 
     @Override
     public Keyword get() {

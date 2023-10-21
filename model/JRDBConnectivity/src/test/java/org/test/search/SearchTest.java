@@ -4,11 +4,11 @@ import org.reseger.jrdbc.driver.connector.Connection;
 import org.reseger.jrdbc.driver.session.SearchSession;
 import org.riseger.protoctl.packet.response.SearchResponse;
 import org.riseger.protoctl.search.function.Entity_F;
-import org.riseger.protoctl.search.function.condition.math.Math_F;
 import org.riseger.protoctl.search.function.entity.Attribute_F;
 import org.riseger.protoctl.search.function.entity.FIELD_F;
 import org.riseger.protoctl.search.function.key.graphic.GRAPHIC_F;
 import org.riseger.protoctl.search.function.logic.LOGIC_F;
+import org.riseger.protoctl.search.function.math.Math_F;
 
 public class SearchTest {
     public static void main(String[] args) throws InterruptedException {

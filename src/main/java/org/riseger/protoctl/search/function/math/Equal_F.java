@@ -1,4 +1,4 @@
-package org.riseger.protoctl.search.function.condition.math;
+package org.riseger.protoctl.search.function.math;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.Function_F;
@@ -10,14 +10,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class Small_F extends Function_F implements BOOL_FUNCTIONAL {
+public class Equal_F extends Function_F implements BOOL_FUNCTIONAL {
 
     private NUMBER_FUNCTIONAL number1;
 
     private NUMBER_FUNCTIONAL number2;
 
-    public Small_F() {
-        super(Small_F.class);
+    public Equal_F() {
+        super(Equal_F.class);
     }
 
     public BOOL_FUNCTIONAL invoke(NUMBER_FUNCTIONAL number1, NUMBER_FUNCTIONAL number2) {
@@ -36,7 +36,7 @@ public class Small_F extends Function_F implements BOOL_FUNCTIONAL {
 
     @Override
     public Integer getWeight() {
-        return ConstantWeight.SMALL_WEIGHT;
+        return ConstantWeight.EQUAL_WEIGHT;
     }
 
     @Override

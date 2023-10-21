@@ -1,16 +1,16 @@
 package org.riseger.protoctl.search.function;
 
 import org.apache.log4j.Logger;
-import org.riseger.protoctl.search.function.condition.math.*;
 import org.riseger.protoctl.search.function.entity.Attribute_F;
 import org.riseger.protoctl.search.function.entity.Coord_F;
 import org.riseger.protoctl.search.function.entity.Distance_f;
 import org.riseger.protoctl.search.function.entity.Rect_F;
-import org.riseger.protoctl.search.function.key.graphic.In_F;
-import org.riseger.protoctl.search.function.key.graphic.Out_F;
+import org.riseger.protoctl.search.function.graphic.In_F;
+import org.riseger.protoctl.search.function.graphic.Out_F;
 import org.riseger.protoctl.search.function.logic.And_F;
 import org.riseger.protoctl.search.function.logic.Not_F;
 import org.riseger.protoctl.search.function.logic.Or_F;
+import org.riseger.protoctl.search.function.math.*;
 import org.riseger.protoctl.search.function.type.FUNCTIONAL;
 
 import java.util.HashMap;

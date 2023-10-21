@@ -1,7 +1,7 @@
 package org.riseger.utils.tree;
 
-public interface MultiTreeElement<C, E> {
-    C next(int index);
+public interface MultiTreeElement<E> {
+    Equable next(int index);
 
     E get();
 

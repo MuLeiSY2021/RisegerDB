@@ -1,10 +1,26 @@
+//-------------------------字段SQL参考----------------------//
+USE
+  DATABASE 'test_db'\
+  MAP 'china_mp'\
+  SCOPE RECT(
+    COORD(1, 2),
+    20000
+  )\
+  MODEL province_scope.area_scope.building_model;
+SEARCH
+  building_model.KEY_LOOP,
+  building_model.name;
 WHERE
-IN cycle(coord(43,66),7)
-&
-OUT rect(coord(44,65),4)
-&
-IN cycle(5,4)
-|
-DISTANCE(coord(99,88),people.site) < 10
-&
-!road.size >= 5
+  IN CYCLE(
+    coord(43, 66),
+    7
+  )
+  OR OUT RECT(
+    coord(44, 65),
+    4
+  )
+  AND building_model.floorArea > 1000
+
+
+
+
