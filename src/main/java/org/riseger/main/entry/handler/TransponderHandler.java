@@ -68,8 +68,7 @@ public abstract class TransponderHandler<IN extends TranspondRequest> extends Si
                 LOG.info("Request processed successfully.");
             }
         } catch (Exception e) {
-            LOG.error(e);
-            e.printStackTrace();
+            LOG.error("E", e);
             response.failed(e);
         }
         postHandle(ctx, msg);

@@ -29,7 +29,7 @@ public class CompilerInitialize implements Initializer {
         SyntaxForest syntaxForest = new SyntaxForest(syntaxRule);
 
         //生成关键词树
-        MultiBranchesTree<Character, Keyword> keywordsTree = new MultiBranchesTree<>();
+        MultiBranchesTree<Keyword> keywordsTree = new MultiBranchesTree<>();
 
         //生成分词器
         Tokenizer tokenizer = new Tokenizer(keywordsTree);

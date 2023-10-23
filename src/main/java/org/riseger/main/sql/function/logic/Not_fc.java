@@ -1,7 +1,7 @@
 package org.riseger.main.sql.function.logic;
 
-import org.riseger.main.sql.compoent.CommandList;
-import org.riseger.main.sql.compoent.SearchMemory;
+import org.riseger.main.compiler.compoent.CommandList;
+import org.riseger.main.compiler.compoent.SearchMemory;
 import org.riseger.main.sql.function.type.BooleanFunction_c;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 

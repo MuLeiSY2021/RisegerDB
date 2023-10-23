@@ -24,6 +24,7 @@ import java.util.Objects;
 @Getter
 @Setter
 public class Layer_c {
+    @Getter
     private final LayerManager parent;
 
     private final ElementManager elementManager;
@@ -70,10 +71,6 @@ public class Layer_c {
 
     public void preloadElement(Element e) {
         elementManager.addElement(e);
-    }
-
-    public LayerManager getParent() {
-        return parent;
     }
 
     public void expand(Rectangle eC) {

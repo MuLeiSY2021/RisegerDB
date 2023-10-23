@@ -1,22 +1,21 @@
 package org.risegerdd.client.shell.style;
 
 
+import lombok.Getter;
+
 import java.util.Random;
 
 public enum ColorList {
     CYBER_COLOR();
 
     private static final Random RAND = new Random();
+    @Getter
     final ColorStyle[] colorStyles;
     private final Class<? extends ColorStyle> kind;
 
     ColorList() {
         this.kind = CyberColorStyle.class;
         this.colorStyles = ((Class<? extends ColorStyle>) CyberColorStyle.class).getEnumConstants();
-    }
-
-    public ColorStyle[] getColorStyles() {
-        return colorStyles;
     }
 
     public String[] toColorfulArray(String text) {

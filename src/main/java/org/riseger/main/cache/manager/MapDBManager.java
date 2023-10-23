@@ -1,5 +1,6 @@
 package org.riseger.main.cache.manager;
 
+import lombok.Getter;
 import org.riseger.main.cache.entity.builder.MapPreloadBuilder;
 import org.riseger.main.cache.entity.component.Database_c;
 import org.riseger.main.cache.entity.component.MapDB_c;
@@ -11,6 +12,7 @@ import java.util.concurrent.ConcurrentMap;
 public class MapDBManager {
     private final ConcurrentMap<String, MapDB_c> maps = new ConcurrentHashMap<>();
 
+    @Getter
     private final Database_c parent;
 
     public MapDBManager(Database_c parent) {
@@ -28,10 +30,6 @@ public class MapDBManager {
         builder.setThreshold(threshold);
         builder.setDatabase(parent);
         maps.put(map.getName(), builder.build());
-    }
-
-    public Database_c getParent() {
-        return parent;
     }
 
     public MapDB_c[] toList() {

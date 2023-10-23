@@ -79,7 +79,7 @@ public class Connection {
     public BasicResponse getResult() throws InterruptedException {
         try {
             lock.lock();
-            if (resultQueue.size() == 0) {
+            if (resultQueue.isEmpty()) {
                 cond.await();
             }
             return resultQueue.poll();

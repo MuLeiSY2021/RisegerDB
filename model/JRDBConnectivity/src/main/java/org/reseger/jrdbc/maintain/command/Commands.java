@@ -18,7 +18,7 @@ public class Commands {
     public static final String SPLIT_PREFIX = "_";
 
 
-    private final Session session;
+    private final Session<?> session;
 
     private final Create create;
 
@@ -26,7 +26,7 @@ public class Commands {
 
     private final Map<String, String> variable = new HashMap<>();
 
-    public Commands(Session session) {
+    public Commands(Session<?> session) {
         this.session = session;
         this.create = new Create(session, this);
     }

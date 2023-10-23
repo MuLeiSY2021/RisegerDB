@@ -2,9 +2,9 @@ package org.riseger.main.sql.function.type;
 
 import lombok.Getter;
 import org.apache.log4j.Logger;
-import org.riseger.main.sql.compoent.CommandList;
-import org.riseger.main.sql.compoent.MemoryConstant;
-import org.riseger.main.sql.compoent.SearchMemory;
+import org.riseger.main.compiler.compoent.CommandList;
+import org.riseger.main.compiler.compoent.MemoryConstant;
+import org.riseger.main.compiler.compoent.SearchMemory;
 import org.riseger.main.sql.function.entity.Attribute_fc;
 import org.riseger.main.sql.function.entity.Coord_fc;
 import org.riseger.main.sql.function.entity.Distance_fc;
@@ -77,8 +77,7 @@ public abstract class Function_c {
                     .getConstructor(Function_f.class, SearchMemory.class, double.class)
                     .newInstance(function, searchMemory, threshold);
         } catch (Exception e) {
-            LOG.error(e);
-            e.printStackTrace();
+            LOG.error("Error ", e);
             LOG.debug(function.getClass());
 
         }

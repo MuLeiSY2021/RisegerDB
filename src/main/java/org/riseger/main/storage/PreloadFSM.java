@@ -43,8 +43,7 @@ public class PreloadFSM {
             buffer.readBytes(data);
             return data;
         } catch (Throwable e) {
-            e.printStackTrace();
-            LOG.error(e);
+            LOG.error("Error", e);
         }
         return null;
     }

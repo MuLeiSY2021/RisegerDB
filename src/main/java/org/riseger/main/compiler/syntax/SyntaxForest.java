@@ -1,18 +1,19 @@
 package org.riseger.main.compiler.syntax;
 
 import lombok.Getter;
-import org.riseger.utils.tree.MultiBranchesTree;
+import org.riseger.protoctl.search.function.Function_f;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SyntaxForest {
-    private final Map<Integer, MultiBranchesTree<Syntax>> forest = new HashMap<>();
+    private final Map<Integer, SyntaxNode> forest = new HashMap<>();
 
     private final Map<Integer, String> finalTypeIdTable = new HashMap<>();
-
     @Getter
     private final int entry;
+    @Getter
+    private Class<Function_f> endFunctionClass;
 
     public SyntaxForest(SyntaxRule rule) {
         this.entry = rule.getRuleMap().get("sqls").getTypeId();
@@ -21,17 +22,14 @@ public class SyntaxForest {
             SyntaxRule.Rule entryRule = entry.getValue();
             if (entryRule.isEnd()) {
                 finalTypeIdTable.put(entryRule.getTypeId(), entry.getKey());
+                this.endFunctionClass = entryRule.getTmp().getFunctionClazz();
             } else {
-                MultiBranchesTree<Syntax> tmp_tree = new MultiBranchesTree<>();
-                forest.put(entry.getValue().getTypeId(), tmp_tree);
-                for (SyntaxRule.Meta meta : entryRule.getMeta()) {
-                    tmp_tree.insert(new SyntaxTreeElement(meta.getTiles().listIterator(), rule, meta.getFunctionClazz()));
-                }
+                forest.put(entry.getValue().getTypeId(), new SyntaxNode(entryRule, rule));
             }
         }
     }
 
-    public MultiBranchesTree<Syntax> getSyantaxTree(int code) {
+    public SyntaxNode getSyntaxNode(int code) {
         return forest.get(code);
     }
 
@@ -44,8 +42,8 @@ public class SyntaxForest {
     }
 
 
-    //    public SyntaxStructureTree convert(List<Token> tokenList) {
-//        SyntaxStructureTree tree = new SyntaxStructureTree();
+    //    public SemanticTree convert(List<Token> tokenList) {
+//        SemanticTree tree = new SemanticTree();
 //        parse(tokenList.listIterator(), tree.layerIterator());
 //        return tree;
 //    }
@@ -60,7 +58,7 @@ public class SyntaxForest {
 //            layerIterator.add(tokenIterator.next(), false, null, typeCode);
 //            return;
 //        }
-//        MultiBranchesTree<Syntax> child = this.forest.get(typeCode);
+//        MultiBranchesTree<Syntax> child = this.forest.getE(typeCode);
 //        child.parse(tokenIterator, layerIterator);
 //        //TODO:
 //    }
@@ -90,17 +88,17 @@ public class SyntaxForest {
 //            private final Syntax syntax;
 //
 //
-//            public Node(Node parent, SyntaxRule.Type type, SyntaxRule syntaxRule) {
+//            public Node(Node parent, SyntaxRule.Tile type, SyntaxRule syntaxRule) {
 //                this.children = new LinkedList<>();
 //                this.parent = parent;
 //                this.syntax = new Syntax(type,syntaxRule);
 //            }
 //
-//            public void initialize(ListIterator<SyntaxRule.Type> types, SyntaxRule syntaxRule) {
+//            public void initialize(ListIterator<SyntaxRule.Tile> types, SyntaxRule syntaxRule) {
 //                if (!types.hasNext()) {
 //                    return;
 //                }
-//                SyntaxRule.Type type = types.next();
+//                SyntaxRule.Tile type = types.next();
 //                for (Node node : children) {
 //                    if (node.equals(type)) {
 //                        node.initialize(types, syntaxRule);
@@ -111,7 +109,7 @@ public class SyntaxForest {
 //                tmp.initialize(types, syntaxRule);
 //            }
 //
-//            public boolean equals(SyntaxRule.Type type) {
+//            public boolean equals(SyntaxRule.Tile type) {
 //                if (this.isKeyword) {
 //                    return type.getValue().equals(keyword.getCode());
 //                } else {

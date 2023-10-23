@@ -1,6 +1,5 @@
 package org.riseger.protoctl.search.function.math;
 
-import org.riseger.protoctl.search.function.entity.NUMBER;
 
 public class Math_F {
     public static Big_f BIG() {
@@ -22,10 +21,5 @@ public class Math_F {
     public static SmallEqual_f SMALL_EQUAL() {
         return new SmallEqual_f();
     }
-
-    public static NUMBER NUMBER() {
-        return new NUMBER();
-    }
-
 
 }

@@ -1,36 +1,118 @@
 package org.riseger.main.compiler.semantic;
 
+import lombok.Data;
 import org.apache.log4j.Logger;
+import org.riseger.main.compiler.syntax.Syntax;
+import org.riseger.main.compiler.syntax.SyntaxForest;
+import org.riseger.main.compiler.token.Token;
+import org.riseger.main.sql.function.type.Function_c;
 import org.riseger.protoctl.search.function.Function_f;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
 
 public class SemanticTree {
-    public static final Logger LOG = Logger.getLogger(SemanticTree.class);
+    private final Logger LOG = Logger.getLogger(SemanticTree.class);
     private final Node root = new Node(null);
 
-    public SemanticTree(Sy) {
+    public SemanticTree(List<Token> tokenList, SyntaxForest forest) {
+        Iterator<Token> tokenIterator = tokenList.iterator();
+        suit(root, forest.getEntry(), tokenIterator, forest);
     }
 
-    private static class Node {
-        public static final Logger LOG = Logger.getLogger(Node.class);
+    public Queue<Function_c> getFunctionList() {
+        return null;
+    }
 
+    private Node suit(Node node, int code, Iterator<Token> tokenIterator, SyntaxForest forest) {
+
+        Node tmp = new Node(node);
+        if (forest.isEnd(code)) {
+            Token token = tokenIterator.next();
+            try {
+                Constructor<Function_f> constructor = forest.getEndFunctionClass().getConstructor(Object.class);
+                tmp.setFunction(constructor.newInstance(token.getSourceCode()));
+                return tmp;
+            } catch (NoSuchMethodException e) {
+                LOG.error("No such constructor of Object.class", e);
+            } catch (InvocationTargetException | InstantiationException e) {
+                LOG.error("Class might be abstract", e);
+            } catch (IllegalAccessException e) {
+                LOG.error("The Constructor can not access", e);
+            }
+            return null;
+        }
+        for (List<Syntax> syntaxList : forest.getSyntaxNode(code).getMetaList()) {
+            List<Object[]> res = suitOneBranch(tmp, tokenIterator, syntaxList.listIterator());
+            if (res != null) {
+                for (Object[] objects : res) {
+                    Node child = suit(tmp, (Integer) objects[0], ((List<Token>) objects[1]).iterator(), forest);
+                    tmp.add(child);
+                }
+                break;
+            }
+        }
+        return tmp;
+    }
+
+    private List<Object[]> suitOneBranch(Node node, Iterator<Token> tokenIterator, ListIterator<Syntax> treeIterator) {
+        List<Object[]> res = new LinkedList<>();
+        Token token_tmp;
+        for (Syntax tmp = treeIterator.next(); treeIterator.hasNext() && tmp.isKeyword(); tmp = treeIterator.next()) {
+            token_tmp = tokenIterator.next();
+            if (!tmp.equals(token_tmp)) {
+                return null;
+            }
+        }
+        treeIterator.previous();
+        Syntax tmp;
+        for (tmp = treeIterator.next(); treeIterator.hasNext(); tmp = treeIterator.next()) {
+            if (!tokenIterator.hasNext()) {
+                return null;
+            }
+            List<Token> remain = new LinkedList<>();
+
+            Object[] _res = new Object[2];
+            _res[0] = tmp.getHashCode();
+            _res[1] = remain;
+            res.add(_res);
+            if (treeIterator.hasNext()) {
+                Syntax tmp_next = treeIterator.next();
+                for (Token _tmp = tokenIterator.next(); !tmp_next.equals(_tmp); _tmp = tokenIterator.next()) {
+                    remain.add(_tmp);
+                }
+            } else {
+                tokenIterator.forEachRemaining(remain::add);
+            }
+        }
+        try {
+
+            node.setFunction(tmp.getFunctionFClass() == null ?
+                    null :
+                    tmp.getFunctionFClass().newInstance());
+        } catch (InstantiationException | IllegalAccessException e) {
+            LOG.error("Function can not empty instance", e);
+        }
+        return res;
+    }
+
+    @Data
+    private static class Node {
+        private Node parent;
+
+        private List<Node> children = new LinkedList<>();
 
         private Function_f function;
 
-        private boolean sortble = false;
+        public Node(Node parent) {
+            this.parent = parent;
+        }
 
-        private List<Node> nodeList = new LinkedList<>();
-
-        public Node(Class<? extends Function_f> function) {
-            if (function != null) {
-                try {
-                    this.function = function.newInstance();
-                } catch (InstantiationException | IllegalAccessException e) {
-                    LOG.error("function not have empty instance function", e);
-                }
-            }
+        public void add(Node child) {
+            this.children.add(child);
         }
     }
+
+
 }

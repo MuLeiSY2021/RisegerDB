@@ -1,12 +1,13 @@
 package org.riseger.main.sql.function.math;
 
-import org.riseger.main.sql.compoent.CommandList;
-import org.riseger.main.sql.compoent.SearchMemory;
+import org.riseger.main.compiler.compoent.CommandList;
+import org.riseger.main.compiler.compoent.SearchMemory;
 import org.riseger.main.sql.function.type.BooleanFunction_c;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 
 public class SmallEqual_fc extends BooleanFunction_c {
-    public Big_fc(SearchMemory memory, double threshold, CommandList commandList) {
+
+    public SmallEqual_fc(SearchMemory memory, double threshold, CommandList commandList) {
         super(memory, threshold, commandList);
     }
 

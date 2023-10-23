@@ -2,6 +2,7 @@ package pers.muleisy.rtree.othertree;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import lombok.Getter;
 import org.apache.log4j.Logger;
 import pers.muleisy.rtree.RTreeDao;
 import pers.muleisy.rtree.rectangle.MBRectangle;
@@ -17,13 +18,12 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
     protected final double threshold;
     private final int M;
 
-    private final int m;
     private final String saveClassName;
+
     protected SubTree root;
 
     public RTree(int nodeSize, double threshold, Class<? extends R> clazz) {
         this.M = nodeSize;
-        this.m = (int) (M * 0.4);
         this.threshold = threshold;
         this.root = new Leaf();
         this.saveClassName = clazz.getName();
@@ -31,7 +31,6 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
 
     public RTree(int nodeSize, double threshold, String clazz) {
         this.M = nodeSize;
-        this.m = (int) (M * 0.4);
         this.threshold = threshold;
         this.saveClassName = clazz;
     }
@@ -457,6 +456,7 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
                 this.threshold);
     }
 
+    @Getter
     protected class SubTree extends MBRectangle {
 
         private LinkedList<SubTree> subTrees = new LinkedList<>();
@@ -490,7 +490,7 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         public void serialize(ByteBuf byteBuf) throws Throwable {
             MBRectangle.serialize(byteBuf, this);
             byteBuf.writeInt(subTrees.size());
-            if (this.subTrees.size() == 0) {
+            if (this.subTrees.isEmpty()) {
                 return;
             }
             if (Leaf.class.isInstance(this.subTrees.getFirst())) {
@@ -505,10 +505,6 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
                     subTree.serialize(byteBuf);
                 }
             }
-        }
-
-        public LinkedList<SubTree> getSubTrees() {
-            return subTrees;
         }
 
         public void setSubTrees(LinkedList<SubTree> subTrees) {
@@ -601,10 +597,6 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
             }
         }
 
-        public SubTree getParent() {
-            return parent;
-        }
-
         public void delete(SubTree subTree) {
             if (this.isEmpty()) {
                 return;
@@ -642,6 +634,7 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
         }
     }
 
+    @Getter
     protected class Leaf extends SubTree {
         private final LinkedList<R> elements = new LinkedList<>();
 
@@ -687,10 +680,6 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
                 byteBuf.writeInt(bytes.length);
                 byteBuf.writeBytes(bytes);
             }
-        }
-
-        public LinkedList<R> getElements() {
-            return elements;
         }
 
         public void add(R element) {

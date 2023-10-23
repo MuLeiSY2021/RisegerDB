@@ -11,11 +11,14 @@ public class TreeFreelyIterator<E> {
 
     public TreeFreelyIterator(TreeIterable<E> root) {
         this.root = root;
-
     }
 
-    public E get() {
+    public E getE() {
         return root.get();
+    }
+
+    public Equable getEqual() {
+        return root.getEqual();
     }
 
     public void right() {
@@ -89,7 +92,7 @@ public class TreeFreelyIterator<E> {
         return !(this.indexes.isEmpty() || this.root == null);
     }
 
-    public void down() {
+    public Equable down() {
         if (this.root == null) {
             throw new NullPointerException();
         }
@@ -98,6 +101,7 @@ public class TreeFreelyIterator<E> {
         }
         this.root = this.root.deeper(0);
         this.level++;
+        return this.root.getEqual();
     }
 
     public boolean downable() {

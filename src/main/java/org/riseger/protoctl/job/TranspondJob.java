@@ -31,8 +31,7 @@ public abstract class TranspondJob implements Job {
             process();
         } catch (Exception e) {
             transponder.send(e);
-            LOG.error(e);
-            e.printStackTrace();
+            LOG.error("Error ", e);
         }
     }
 }

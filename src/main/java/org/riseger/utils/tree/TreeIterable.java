@@ -8,4 +8,6 @@ public interface TreeIterable<E> {
     TreeIterable<E> deeper(int index);
 
     TreeIterable<E> shallower();
+
+    Equable getEqual();
 }

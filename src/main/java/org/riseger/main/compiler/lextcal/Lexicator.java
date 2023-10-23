@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Lexicator {
-    private final KeywordsTree tree;
+    private final MultiBranchesTree<Keyword> tree;
 
     private final Pattern numberPattern = Pattern.compile(CompilerConstant.NUMBER_PATTERN);
 
     private final Pattern wordPattern = Pattern.compile(CompilerConstant.WORD_PATTERN);
 
-    public Lexicator(MultiBranchesTree<Character, Keyword> tree) {
+    public Lexicator(MultiBranchesTree<Keyword> tree) {
         this.tree = tree;
     }
 
@@ -30,7 +30,7 @@ public class Lexicator {
                 continue;
             }
             sourcecode = sourcecode.toUpperCase();
-            Keyword keyword = this.tree.get(sourcecode);
+            Keyword keyword = this.tree.search(C.toCollection(sourcecode));
             if (keyword != null) {
                 token.set(keyword.getId(), TokenType.KEYWORD);
                 continue;

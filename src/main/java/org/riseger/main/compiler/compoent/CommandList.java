@@ -1,15 +1,19 @@
-package org.riseger.main.sql.compoent;
+package org.riseger.main.compiler.compoent;
 
 import org.riseger.main.sql.function.type.Function_c;
+
+import java.util.Queue;
 
 public class CommandList {
     public Function_c[] functionList;
 
-    private int index;
+    private int index = 0;
 
-    public CommandList(int size) {
-        this.functionList = new Function_c[size];
-        this.index = 0;
+    public CommandList() {
+    }
+
+    public void setFunctionList(Queue<Function_c> functionQueue) {
+        this.functionList = functionQueue.toArray(new Function_c[0]);
     }
 
     public void jump(int index) {

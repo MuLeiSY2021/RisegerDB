@@ -1,8 +1,8 @@
 package org.riseger.main.sql.function.entity;
 
 import org.riseger.main.cache.entity.component.Coord_c;
-import org.riseger.main.sql.compoent.CommandList;
-import org.riseger.main.sql.compoent.SearchMemory;
+import org.riseger.main.compiler.compoent.CommandList;
+import org.riseger.main.compiler.compoent.SearchMemory;
 import org.riseger.main.sql.function.type.NumberFunction_c;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 

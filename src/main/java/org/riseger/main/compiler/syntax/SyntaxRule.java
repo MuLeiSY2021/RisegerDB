@@ -10,9 +10,8 @@ import java.util.*;
 
 @Getter
 public class SyntaxRule {
-    private final Map<String, Rule> ruleMap;
-
     public static final Logger LOG = Logger.getLogger(SyntaxRule.class);
+    private final Map<String, Rule> ruleMap;
 
     public SyntaxRule(String ruleText) {
         Map<String, Rule> eachRule = new HashMap<>();
@@ -40,12 +39,12 @@ public class SyntaxRule {
             if (tokens.length > 1 && prevRule != null) {
                 prevRule.newMeta();
                 String[] tmp;
-                Class<? extends Function_f> functionClazz = null;
+                Class<Function_f> functionClazz = null;
                 if ((tmp = tokens[1].split(":>")).length > 1) {
                     try {
                         Class<?> tmp_c = Class.forName(tokens[1]);
                         if (Function_f.class.isAssignableFrom(tmp_c)) {
-                            functionClazz = (Class<? extends Function_f>) tmp_c;
+                            functionClazz = (Class<Function_f>) tmp_c;
                         } else {
                             throw new ClassCastException();
                         }
@@ -66,23 +65,23 @@ public class SyntaxRule {
 
     @Data
     public static class Meta {
-        private List<Type> tiles = new LinkedList<>();
+        private List<Tile> tiles = new LinkedList<>();
 
-        private Class<? extends Function_f> functionClazz;
+        private Class<Function_f> functionClazz;
 
-        public void add(String type, boolean key, Class<? extends Function_f> functionClazz) {
-            this.tiles.add(new Type(key, type));
+        public void add(String type, boolean key, Class<Function_f> functionClazz) {
+            this.tiles.add(new Tile(key, type));
             this.functionClazz = functionClazz;
         }
     }
 
     @Data
-    public static class Type implements Equable {
+    public static class Tile implements Equable {
         boolean key;
 
         private String value;
 
-        public Type(boolean key, String value) {
+        public Tile(boolean key, String value) {
             this.key = key;
             if (key) {
                 this.value = value.substring(1, value.length() - 1);
@@ -95,8 +94,8 @@ public class SyntaxRule {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            Type type = (Type) o;
-            return Objects.equals(value, type.value);
+            Tile tile = (Tile) o;
+            return Objects.equals(value, tile.value);
         }
 
         @Override
@@ -129,7 +128,7 @@ public class SyntaxRule {
             this.meta.add(tmp);
         }
 
-        public void add(String type, boolean key, Class<? extends Function_f> functionClazz) {
+        public void add(String type, boolean key, Class<Function_f> functionClazz) {
             tmp.add(type, key, functionClazz);
         }
 

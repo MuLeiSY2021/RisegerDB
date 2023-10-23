@@ -31,7 +31,7 @@ public class Utils {
             }
             return sb.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("Error reading", e);
         }
         return null;
     }

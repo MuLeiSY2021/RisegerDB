@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Entity_f extends Function_f implements UNIVERSAL_FUNCTIONAL {
 
-    private Object[] entities;
+    private final Object[] entities;
 
     public Entity_f(Object... entities) {
         super(Entity_f.class);

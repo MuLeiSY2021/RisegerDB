@@ -2,9 +2,9 @@ package org.riseger.main.sql.function.entity;
 
 import org.apache.log4j.Logger;
 import org.riseger.main.cache.entity.component.Element_c;
-import org.riseger.main.sql.compoent.CommandList;
-import org.riseger.main.sql.compoent.MemoryConstant;
-import org.riseger.main.sql.compoent.SearchMemory;
+import org.riseger.main.compiler.compoent.CommandList;
+import org.riseger.main.compiler.compoent.MemoryConstant;
+import org.riseger.main.compiler.compoent.SearchMemory;
 import org.riseger.main.sql.function.type.UniversalFunction_c;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 

@@ -35,8 +35,7 @@ public class ElementManager {
         try {
             return new ElementManager((RTree<MBRectangle_c>) RTree.deserializeStar(Utils.fileToByteBuf(layer_)), layerC);
         } catch (Exception e) {
-            LOG.error(e);
-            e.printStackTrace();
+            LOG.error("An Exception occur", e);
         }
         return null;
     }

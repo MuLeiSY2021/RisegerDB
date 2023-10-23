@@ -23,8 +23,7 @@ public class PreloadMessageInboundHandler extends SimpleChannelInboundHandler<Pr
 
             LOG.info("PreloadDatabaseRequest processed successfully.");
         } catch (Exception e) {
-            LOG.error(e);
-            e.printStackTrace();
+            LOG.error("E", e);
             response.failed(e);
         }
 

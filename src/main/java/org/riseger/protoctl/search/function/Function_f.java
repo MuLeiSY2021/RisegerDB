@@ -61,8 +61,7 @@ public abstract class Function_f implements FUNCTIONAL {
             idMap.put(tmpid, clazz);
             classMap.put(clazz, tmpid);
         } catch (ClassNotFoundException e) {
-            LOG.error(e);
-            e.printStackTrace();
+            LOG.error("Error ", e);
         }
     }
 

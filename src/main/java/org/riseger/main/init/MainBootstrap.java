@@ -42,7 +42,7 @@ public class MainBootstrap {
         try {
             realPath = java.net.URLDecoder.decode(realPath, "utf-8");
         } catch (Exception e) {
-            e.printStackTrace();
+            java.util.logging.Logger.getLogger("MainBootstrap").severe(e.getMessage());
         }
 
         return realPath;

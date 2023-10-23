@@ -8,11 +8,11 @@ import org.reseger.jrdbc.maintain.command.Commands;
 public class Create {
 
 
-    private final Session session;
+    private final Session<?> session;
 
     private final Commands commands;
 
-    public Create(Session session, Commands commands) {
+    public Create(Session<?> session, Commands commands) {
         this.session = session;
         this.commands = commands;
     }

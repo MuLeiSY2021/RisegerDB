@@ -7,9 +7,9 @@ import org.riseger.main.storage.FileSystemManagers;
 import java.util.List;
 
 public class StorageInitializer implements Initializer {
-    private final String rootPath;
+    public static final Logger LOG = Logger.getLogger(StorageInitializer.class);
 
-    private final Logger LOG = Logger.getLogger(StorageInitializer.class);
+    private final String rootPath;
 
     public StorageInitializer(String rootPath) {
         this.rootPath = rootPath;
@@ -24,8 +24,7 @@ public class StorageInitializer implements Initializer {
         try {
             return FileSystemManagers.DEFAULT.initDatabases();
         } catch (Exception e) {
-            LOG.error(e);
-            e.printStackTrace();
+            LOG.error("Error ", e);
         }
         return null;
     }

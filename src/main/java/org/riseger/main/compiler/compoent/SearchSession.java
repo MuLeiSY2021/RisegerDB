@@ -1,4 +1,4 @@
-package org.riseger.main.sql.compoent;
+package org.riseger.main.compiler.compoent;
 
 import org.apache.log4j.Logger;
 

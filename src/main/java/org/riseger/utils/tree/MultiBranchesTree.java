@@ -93,6 +93,10 @@ public class MultiBranchesTree<E> {
             }
         }
 
+        @Override
+        public Equable getEqual() {
+            return this.equable;
+        }
 
         private boolean equals(Equable equable) {
             return this.equable.equals(equable);

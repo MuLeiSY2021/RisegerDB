@@ -2,8 +2,8 @@ package org.riseger.main.compiler.token;
 
 import com.google.gson.Gson;
 import org.riseger.main.compiler.CompilerConstant;
+import org.riseger.main.compiler.lextcal.C;
 import org.riseger.main.compiler.lextcal.Keyword;
-import org.riseger.main.compiler.lextcal.KeywordsTree;
 import org.riseger.utils.tree.MultiBranchesTree;
 
 import java.util.LinkedList;
@@ -14,9 +14,9 @@ import java.util.regex.Pattern;
 public class Tokenizer {
     static final Pattern tokenPattern = Pattern.compile(CompilerConstant.TOKEN_PATTERN);
 
-    private final KeywordsTree keywordsTree;
+    private final MultiBranchesTree<Keyword> keywordsTree;
 
-    public Tokenizer(MultiBranchesTree<Character, Keyword> keywordsTree) {
+    public Tokenizer(MultiBranchesTree<Keyword> keywordsTree) {
         this.keywordsTree = keywordsTree;
     }
 
@@ -27,30 +27,6 @@ public class Tokenizer {
         lines = splitToken(lines);
         return lines;
     }
-
-//    public List<String> splitToken(String tile) {
-//        List<String> res = new ArrayList<>();
-//        Matcher m;
-//        while (tile.length() > 0) {
-//            int index = -1;
-//            int tmp;
-//            if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
-//                index = m.end(0);
-//            } else if ((tmp = this.keywordsTree.getIndex(tile)) > -1) {
-//                index = tmp;
-//            }
-//
-//            if (index == -1) {
-//                throw new IndexOutOfBoundsException(tile + " -1");
-//            }
-//            res.add(tile.substring(0, index));
-//            if (tile.length() == index) {
-//                break;
-//            }
-//            tile = tile.substring(index);
-//        }
-//        return res;
-//    }
 
     private List<Token> splitToken(List<Token> lines) {
         List<Token> tokens = new LinkedList<>();
@@ -67,7 +43,7 @@ public class Tokenizer {
                 int tmp;
                 if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
                     index = m.end(0);
-                } else if ((tmp = keywordsTree.getIndex(tile)) > -1) {
+                } else if ((tmp = keywordsTree.search(C.toCollection(tile)).size()) != -1) {
                     index = tmp;
                 }
 

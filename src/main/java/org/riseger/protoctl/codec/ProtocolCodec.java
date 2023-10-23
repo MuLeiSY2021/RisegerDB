@@ -37,8 +37,7 @@ public class ProtocolCodec extends ByteToMessageCodec<BasicPacket> {
             LOG.debug("Decoded message: " + bm);
             out.add(bm);
         } catch (Exception e) {
-            LOG.error(e);
-            e.printStackTrace();
+            LOG.error("Error", e);
             throw e;
         }
     }

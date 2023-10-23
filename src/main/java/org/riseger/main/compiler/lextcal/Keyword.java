@@ -12,22 +12,9 @@ import java.util.List;
 public class Keyword implements MultiTreeElement<Keyword> {
     //------------Static-------------//
     private static final List<Keyword> KEYWORDS = new LinkedList<>();
-
-    public static Keyword addKeyword(String word) {
-        Keyword keyword = new Keyword(word, KEYWORDS.size());
-        KEYWORDS.add(keyword);
-        return keyword;
-    }
-
-    public static List<Keyword> getKeywords() {
-        return KEYWORDS;
-    }
-    //------------Static-------------//
-
     private final int id;
-
     private final List<Character> words = new LinkedList<>();
-
+    //------------Static-------------//
     private final String code;
 
     public Keyword(String keyword, int index) {
@@ -41,6 +28,20 @@ public class Keyword implements MultiTreeElement<Keyword> {
         this.code = CompilerConstant.KEYWORD_PREFIX + CompilerConstant.SPLIT_PREFIX + KEYWORDS.size();
     }
 
+    public static int addKeyword(String word) {
+        Keyword keyword = new Keyword(word, KEYWORDS.size());
+        KEYWORDS.add(keyword);
+        return KEYWORDS.size() - 1;
+    }
+
+    public static List<Keyword> getKeywords() {
+        return KEYWORDS;
+    }
+
+    public int size() {
+        return words.size();
+    }
+
     @Override
     public Equable next(int index) {
         return new C(this.words.get(index));
@@ -51,6 +52,7 @@ public class Keyword implements MultiTreeElement<Keyword> {
     public Keyword get() {
         return this;
     }
+
 
     @Override
     public boolean isTail(int index) {

@@ -2,7 +2,6 @@ package org.riseger.protoctl.packet.request;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.riseger.main.entry.handler.TransponderHandler;
 import org.riseger.protoctl.job.SearchJob;
 import org.riseger.protoctl.packet.PacketType;
 import org.riseger.protoctl.search.command.USE;
@@ -20,7 +19,7 @@ public class SearchRequest extends TranspondRequest {
 
     @Override
     public SearchJob warp() {
-        return new SearchJob(this.sql, (TransponderHandler<SearchRequest>) super.getTransponder());
+        return new SearchJob(this.sql, super.getTransponder());
     }
 
 }
