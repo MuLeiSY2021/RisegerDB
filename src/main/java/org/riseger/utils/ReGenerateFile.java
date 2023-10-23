@@ -25,9 +25,9 @@ public class ReGenerateFile {
 //            }
 //        }
 //        File keywordsFile = new File("./src/main/resources/keywords.json");
-//        try (FileOutputStream Out_F = new FileOutputStream(keywordsFile)){
+//        try (FileOutputStream Out_f = new FileOutputStream(keywordsFile)){
 //            Gson gson = new Gson();
-//            Out_F.write(gson.toJson(keywords).getBytes(StandardCharsets.UTF_8));
+//            Out_f.write(gson.toJson(keywords).getBytes(StandardCharsets.UTF_8));
 //        }
 //    }
 }

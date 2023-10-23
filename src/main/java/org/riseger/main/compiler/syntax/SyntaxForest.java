@@ -1,19 +1,21 @@
 package org.riseger.main.compiler.syntax;
 
+import lombok.Getter;
 import org.riseger.utils.tree.MultiBranchesTree;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class SyntaxTree {
+public class SyntaxForest {
     private final Map<Integer, MultiBranchesTree<Syntax>> forest = new HashMap<>();
 
     private final Map<Integer, String> finalTypeIdTable = new HashMap<>();
 
+    @Getter
     private final int entry;
 
-    public SyntaxTree(SyntaxRule rule) {
-        this.entry = rule.getRuleMap().get("sql").getTypeId();
+    public SyntaxForest(SyntaxRule rule) {
+        this.entry = rule.getRuleMap().get("sqls").getTypeId();
 
         for (Map.Entry<String, SyntaxRule.Rule> entry : rule.getRuleMap().entrySet()) {
             SyntaxRule.Rule entryRule = entry.getValue();
@@ -23,13 +25,26 @@ public class SyntaxTree {
                 MultiBranchesTree<Syntax> tmp_tree = new MultiBranchesTree<>();
                 forest.put(entry.getValue().getTypeId(), tmp_tree);
                 for (SyntaxRule.Meta meta : entryRule.getMeta()) {
-                    tmp_tree.insert(new SyntaxTreeElement(meta.getTiles().listIterator(), rule));
+                    tmp_tree.insert(new SyntaxTreeElement(meta.getTiles().listIterator(), rule, meta.getFunctionClazz()));
                 }
             }
         }
     }
 
-//    public SyntaxStructureTree convert(List<Token> tokenList) {
+    public MultiBranchesTree<Syntax> getSyantaxTree(int code) {
+        return forest.get(code);
+    }
+
+    public boolean isEnd(int code) {
+        return finalTypeIdTable.containsKey(code);
+    }
+
+    public boolean isHas(int code) {
+        return forest.containsKey(code) || finalTypeIdTable.containsKey(code);
+    }
+
+
+    //    public SyntaxStructureTree convert(List<Token> tokenList) {
 //        SyntaxStructureTree tree = new SyntaxStructureTree();
 //        parse(tokenList.listIterator(), tree.layerIterator());
 //        return tree;
@@ -161,7 +176,7 @@ public class SyntaxTree {
 //                            } else {
 //                                if (target.suit(tokenIterator, layerIterator)) {
 //                                    layerIterator.add(token, false, this.keyword, this.typeCode);
-//                                    SyntaxTree.this.parse(tokens.listIterator(), this.typeCode, layerIterator.deeper());
+//                                    SyntaxForest.this.parse(tokens.listIterator(), this.typeCode, layerIterator.deeper());
 //                                }
 //                            }
 //                        }
@@ -171,7 +186,7 @@ public class SyntaxTree {
 //                    } else {
 //                        layerIterator.add(token, false, this.keyword, this.typeCode);
 //                        tokenIterator.forEachRemaining(tokens::add);
-//                        SyntaxTree.this.parse(tokens.listIterator(), this.typeCode, layerIterator.deeper());
+//                        SyntaxForest.this.parse(tokens.listIterator(), this.typeCode, layerIterator.deeper());
 //                        return true;
 //                    }
 //                }

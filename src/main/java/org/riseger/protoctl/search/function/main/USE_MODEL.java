@@ -1,14 +1,14 @@
 package org.riseger.protoctl.search.function.main;
 
 import lombok.Getter;
-import org.riseger.protoctl.search.function.Function_F;
+import org.riseger.protoctl.search.function.Function_f;
 import org.riseger.protoctl.search.function.type.MAIN_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
 import java.util.List;
 
 @Getter
-public class USE_MODEL extends Function_F implements MAIN_FUNCTIONAL {
+public class USE_MODEL extends Function_f implements MAIN_FUNCTIONAL {
     private List<String> models;
 
     public USE_MODEL() {
@@ -21,7 +21,7 @@ public class USE_MODEL extends Function_F implements MAIN_FUNCTIONAL {
     }
 
     @Override
-    public List<Function_F> getFunctions() {
+    public List<Function_f> getFunctions() {
         return null;
     }
 

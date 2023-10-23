@@ -3,24 +3,24 @@ package org.riseger.protoctl.search.function.math;
 import org.riseger.protoctl.search.function.entity.NUMBER;
 
 public class Math_F {
-    public static Big_F BIG() {
-        return new Big_F();
+    public static Big_f BIG() {
+        return new Big_f();
     }
 
-    public static BigEqual_F BIG_EQUAL() {
-        return new BigEqual_F();
+    public static BigEqual_f BIG_EQUAL() {
+        return new BigEqual_f();
     }
 
-    public static Equal_F EQUAL() {
-        return new Equal_F();
+    public static Equal_f EQUAL() {
+        return new Equal_f();
     }
 
-    public static Small_F SMALL() {
-        return new Small_F();
+    public static Small_f SMALL() {
+        return new Small_f();
     }
 
-    public static SmallEqual_F SMALL_EQUAL() {
-        return new SmallEqual_F();
+    public static SmallEqual_f SMALL_EQUAL() {
+        return new SmallEqual_f();
     }
 
     public static NUMBER NUMBER() {

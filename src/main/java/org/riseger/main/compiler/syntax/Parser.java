@@ -8,16 +8,16 @@ import org.riseger.protoctl.serializer.JsonSerializer;
 import java.util.List;
 
 public class Parser {
-    private final SyntaxTree syntaxTree;
+    private final SyntaxForest syntaxForest;
 
     private static final Logger LOG = Logger.getLogger(Parser.class);
 
-    public Parser(SyntaxTree syntaxTree) {
-        this.syntaxTree = syntaxTree;
+    public Parser(SyntaxForest syntaxForest) {
+        this.syntaxForest = syntaxForest;
     }
 
     public void invoke(List<Token> tokenList) {
-        SyntaxStructureTree structureTree = syntaxTree.convert(tokenList);
+        SyntaxStructureTree structureTree = syntaxForest.convert(tokenList);
         LOG.debug(JsonSerializer.serializeToString(structureTree));
     }
 }

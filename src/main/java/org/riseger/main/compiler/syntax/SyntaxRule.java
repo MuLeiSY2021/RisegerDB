@@ -2,8 +2,8 @@ package org.riseger.main.compiler.syntax;
 
 import lombok.Data;
 import lombok.Getter;
-import org.riseger.main.sql.function.type.Function_c;
-import org.riseger.protoctl.search.function.Entity_F;
+import org.apache.log4j.Logger;
+import org.riseger.protoctl.search.function.Function_f;
 import org.riseger.utils.tree.Equable;
 
 import java.util.*;
@@ -11,6 +11,8 @@ import java.util.*;
 @Getter
 public class SyntaxRule {
     private final Map<String, Rule> ruleMap;
+
+    public static final Logger LOG = Logger.getLogger(SyntaxRule.class);
 
     public SyntaxRule(String ruleText) {
         Map<String, Rule> eachRule = new HashMap<>();
@@ -25,7 +27,7 @@ public class SyntaxRule {
                 tokens = ruleTextLine.split("->");
                 if (tokens[0].startsWith("END:")) {
                     String name = tokens[0].substring("END:".length());
-                    prevRule = new Rule(name, true, Entity_F.class);
+                    prevRule = new Rule(name, true);
                     eachRule.put(name, prevRule);
 
                 } else {
@@ -37,27 +39,45 @@ public class SyntaxRule {
             }
             if (tokens.length > 1 && prevRule != null) {
                 prevRule.newMeta();
+                String[] tmp;
+                Class<? extends Function_f> functionClazz = null;
+                if ((tmp = tokens[1].split(":>")).length > 1) {
+                    try {
+                        Class<?> tmp_c = Class.forName(tokens[1]);
+                        if (Function_f.class.isAssignableFrom(tmp_c)) {
+                            functionClazz = (Class<? extends Function_f>) tmp_c;
+                        } else {
+                            throw new ClassCastException();
+                        }
+                    } catch (ClassNotFoundException | ClassCastException e) {
+                        LOG.error("Function" + tokens[1] + " is not assignable from Function_f", e);
+                    }
+                    tokens[1] = tmp[0];
+                }
                 for (String meta : tokens[1].split(" ")) {
                     if (meta.isEmpty()) {
                         continue;
                     }
-                    prevRule.add(meta, meta.startsWith("\""));
+                    prevRule.add(meta, meta.startsWith("\""), functionClazz);
                 }
             }
         }
     }
 
     @Data
-    static class Meta {
+    public static class Meta {
         private List<Type> tiles = new LinkedList<>();
 
-        public void add(String type, boolean key) {
+        private Class<? extends Function_f> functionClazz;
+
+        public void add(String type, boolean key, Class<? extends Function_f> functionClazz) {
             this.tiles.add(new Type(key, type));
+            this.functionClazz = functionClazz;
         }
     }
 
     @Data
-    static class Type implements Equable {
+    public static class Type implements Equable {
         boolean key;
 
         private String value;
@@ -95,15 +115,13 @@ public class SyntaxRule {
 
         private Meta tmp;
 
-        private final Class<? extends Function_c> function;
-
         private int typeId;
 
-        public Rule(String type, boolean end, Class<? extends Function_c> functionClass) {
+
+        public Rule(String type, boolean end) {
             this.type = type;
             this.end = end;
             this.typeId = SyntaxRule.this.ruleMap.size();
-            this.function = functionClass;
         }
 
         public void newMeta() {
@@ -111,8 +129,8 @@ public class SyntaxRule {
             this.meta.add(tmp);
         }
 
-        public void add(String type, boolean key) {
-            tmp.add(type, key);
+        public void add(String type, boolean key, Class<? extends Function_f> functionClazz) {
+            tmp.add(type, key, functionClazz);
         }
 
     }

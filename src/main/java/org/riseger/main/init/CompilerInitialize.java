@@ -5,8 +5,8 @@ import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.main.compiler.lextcal.Lexicator;
 import org.riseger.main.compiler.session.SessionAdaptor;
 import org.riseger.main.compiler.syntax.Parser;
+import org.riseger.main.compiler.syntax.SyntaxForest;
 import org.riseger.main.compiler.syntax.SyntaxRule;
-import org.riseger.main.compiler.syntax.SyntaxTree;
 import org.riseger.main.compiler.token.Tokenizer;
 import org.riseger.utils.Utils;
 import org.riseger.utils.tree.MultiBranchesTree;
@@ -26,7 +26,7 @@ public class CompilerInitialize implements Initializer {
         SyntaxRule syntaxRule = new SyntaxRule(rule);
 
         //生成文法规则树
-        SyntaxTree syntaxTree = new SyntaxTree(syntaxRule);
+        SyntaxForest syntaxForest = new SyntaxForest(syntaxRule);
 
         //生成关键词树
         MultiBranchesTree<Character, Keyword> keywordsTree = new MultiBranchesTree<>();
@@ -38,7 +38,7 @@ public class CompilerInitialize implements Initializer {
         Lexicator lexicator = new Lexicator(keywordsTree);
 
         //生成语法解析器
-        Parser parser = new Parser(syntaxTree);
+        Parser parser = new Parser(syntaxForest);
         CompilerMaster.INSTANCE = new CompilerMaster(new SessionAdaptor(tokenizer, lexicator, parser));
     }
 }

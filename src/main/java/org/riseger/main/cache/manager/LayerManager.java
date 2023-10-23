@@ -66,7 +66,7 @@ public class LayerManager {
             layerMap.put(name, layer);
         }
         if (layer == null) {
-            throw new RuntimeException("Layer " + name + " Not_F found");
+            throw new RuntimeException("Layer " + name + " Not_f found");
         }
         layer.preloadElement(e);
     }

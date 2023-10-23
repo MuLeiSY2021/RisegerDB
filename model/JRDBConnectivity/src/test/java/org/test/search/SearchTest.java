@@ -3,8 +3,8 @@ package org.test.search;
 import org.reseger.jrdbc.driver.connector.Connection;
 import org.reseger.jrdbc.driver.session.SearchSession;
 import org.riseger.protoctl.packet.response.SearchResponse;
-import org.riseger.protoctl.search.function.Entity_F;
-import org.riseger.protoctl.search.function.entity.Attribute_F;
+import org.riseger.protoctl.search.function.Entity_f;
+import org.riseger.protoctl.search.function.entity.Attribute_f;
 import org.riseger.protoctl.search.function.entity.FIELD_F;
 import org.riseger.protoctl.search.function.key.graphic.GRAPHIC_F;
 import org.riseger.protoctl.search.function.logic.LOGIC_F;
@@ -21,8 +21,8 @@ public class SearchTest {
                     .useMap("china_mp")
                     .useScope(FIELD_F.RECT().invoke(
                             FIELD_F.COORD().invoke(
-                                    Entity_F.use(1), Entity_F.use(2)),
-                            Entity_F.use(20000)))
+                                    Entity_f.use(1), Entity_f.use(2)),
+                            Entity_f.use(20000)))
                     .useModel("province_scope.area_scope.building_model")
                     .search()
                     .attr("building_model.KEY_LOOP")
@@ -34,25 +34,25 @@ public class SearchTest {
                                             GRAPHIC_F.IN().invoke(
                                                     FIELD_F.RECT().invoke(
                                                             FIELD_F.COORD().invoke(
-                                                                    Entity_F.use(4000),
-                                                                    Entity_F.use(1000)
+                                                                    Entity_f.use(4000),
+                                                                    Entity_f.use(1000)
                                                             ),
-                                                            Entity_F.use(5000)
+                                                            Entity_f.use(5000)
                                                     )
                                             ),
                                             GRAPHIC_F.OUT().invoke(
                                                     FIELD_F.RECT().invoke(
                                                             FIELD_F.COORD().invoke(
-                                                                    Entity_F.use(777.5),
-                                                                    Entity_F.use(72658.1)
+                                                                    Entity_f.use(777.5),
+                                                                    Entity_f.use(72658.1)
                                                             ),
-                                                            Entity_F.use(45.2)
+                                                            Entity_f.use(45.2)
                                                     )
                                             )
                                     ),
                                     Math_F.BIG().invoke(
-                                            Attribute_F.use(Entity_F.use("building_model.floorArea")),
-                                            Entity_F.use(1000)
+                                            Attribute_f.use(Entity_f.use("building_model.floorArea")),
+                                            Entity_f.use(1000)
                                     )
                             )
                     );

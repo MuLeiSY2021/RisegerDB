@@ -17,6 +17,10 @@ public class MultiBranchesTree<E> {
         return this.root.search(equableCollection.iterator());
     }
 
+    public TreeFreelyIterator<E> getIterator() {
+        return new TreeFreelyIterator<>(root);
+    }
+
     @Getter
     class Node implements TreeIterable<E> {
         private final Node parent;

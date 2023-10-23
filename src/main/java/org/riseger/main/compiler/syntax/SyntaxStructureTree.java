@@ -1,46 +1,54 @@
 package org.riseger.main.compiler.syntax;
 
-import org.riseger.main.compiler.lextcal.Keyword;
+import lombok.Data;
+import org.apache.log4j.Logger;
 import org.riseger.main.compiler.token.Token;
+import org.riseger.utils.tree.TreeFreelyIterator;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 public class SyntaxStructureTree {
-    private final Node root = new Node(null, false, null, -1);
 
-    public LayerIterator layerIterator() {
-        return new LayerIterator(root);
+    private final Logger LOG = Logger.getLogger(SyntaxStructureTree.class);
+    private final Node root = new Node(null);
+
+    public SyntaxStructureTree(List<Token> tokenList, SyntaxForest forest) {
+        Iterator<Token> tokenIterator = tokenList.iterator();
+        suit(root, tokenIterator, forest);
     }
 
-    static class Node {
-        private final Token token;
+    private List<Object[]> suitOneBranche(Node node, Iterator<Token> tokenIterator, SyntaxForest forest) {
 
-        private final boolean isKeyword;
+    }
 
-        private final Keyword keyword;
-
-        private final int typeCode;
-
-        private final LinkedList<Node> children = new LinkedList<>();
-
-
-        public Node(Token token, boolean isKeyword, Keyword keyword, int typeCode) {
-            this.token = token;
-            this.isKeyword = isKeyword;
-            this.keyword = keyword;
-            this.typeCode = typeCode;
+    private boolean suit(Node node, Iterator<Token> tokenIterator, SyntaxForest forest) {
+        TreeFreelyIterator<Syntax> treeIterator_entry = forest.getSyantaxTree(forest.getEntry()).getIterator();
+        if (treeIterator_entry.downable()) {
+            treeIterator_entry.down();
+        } else {
+            LOG.fatal("SyntaxTree Empty");
         }
-
-        public Node get(int index) {
-            return children.get(index);
+        Token tmp = tokenIterator.next();
+        for (; tokenIterator.hasNext(); tmp = tokenIterator.next()) {
+            if (treeIterator_entry.get().equals(tmp)) {
+                node.add(new Node(node, ))
+            }
+            List<Token> tmpList = new LinkedList<>();
         }
+    }
 
-        public void add(Token token, boolean isKeyword, Keyword keyword, int typeCode) {
-            this.children.add(new Node(token, isKeyword, keyword, typeCode));
-        }
+    @Data
+    private static class Node {
+        private Node parent;
 
-        public void addFirst(Token token, boolean isKeyword, Keyword keyword, int typeCode) {
-            this.children.addFirst(new Node(token, isKeyword, keyword, typeCode));
+        private List<Node> chlidren = new LinkedList<>();
+
+        private Syntax element;
+
+        public Node(Node parent) {
+            this.parent = parent;
         }
     }
 

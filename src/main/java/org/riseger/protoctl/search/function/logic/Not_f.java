@@ -1,7 +1,7 @@
 package org.riseger.protoctl.search.function.logic;
 
 import lombok.Getter;
-import org.riseger.protoctl.search.function.Function_F;
+import org.riseger.protoctl.search.function.Function_f;
 import org.riseger.protoctl.search.function.type.BOOL_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
@@ -9,11 +9,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class Not_F extends Function_F implements BOOL_FUNCTIONAL {
+public class Not_f extends Function_f implements BOOL_FUNCTIONAL {
     private BOOL_FUNCTIONAL function;
 
-    public Not_F() {
-        super(Not_F.class);
+    public Not_f() {
+        super(Not_f.class);
     }
 
     public BOOL_FUNCTIONAL invoke(BOOL_FUNCTIONAL function) {
@@ -22,9 +22,9 @@ public class Not_F extends Function_F implements BOOL_FUNCTIONAL {
     }
 
     @Override
-    public List<Function_F> getFunctions() {
-        List<Function_F> res = new LinkedList<>();
-        res.add((Function_F) function);
+    public List<Function_f> getFunctions() {
+        List<Function_f> res = new LinkedList<>();
+        res.add((Function_f) function);
         return res;
     }
 

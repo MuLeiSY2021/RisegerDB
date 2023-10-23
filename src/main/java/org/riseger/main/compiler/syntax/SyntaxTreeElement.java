@@ -1,5 +1,6 @@
 package org.riseger.main.compiler.syntax;
 
+import org.riseger.protoctl.search.function.Function_f;
 import org.riseger.utils.tree.Equable;
 import org.riseger.utils.tree.MultiTreeElement;
 
@@ -9,9 +10,12 @@ public class SyntaxTreeElement implements MultiTreeElement<Syntax> {
     private final ListIterator<SyntaxRule.Type> types;
     private final SyntaxRule syntaxRule;
 
-    public SyntaxTreeElement(ListIterator<SyntaxRule.Type> types, SyntaxRule syntaxRule) {
+    private final Class<? extends Function_f> functionClazz;
+
+    public SyntaxTreeElement(ListIterator<SyntaxRule.Type> types, SyntaxRule syntaxRule, Class<? extends Function_f> functionClazz) {
         this.types = types;
         this.syntaxRule = syntaxRule;
+        this.functionClazz = functionClazz;
     }
 
     @Override
@@ -22,7 +26,7 @@ public class SyntaxTreeElement implements MultiTreeElement<Syntax> {
     @Override
     public Syntax get() {
         types.previous();
-        return new Syntax(syntaxRule, types.next());
+        return new Syntax(syntaxRule, types.next(), functionClazz);
     }
 
     @Override

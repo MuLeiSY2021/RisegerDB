@@ -2,7 +2,9 @@ package org.riseger.main.compiler.syntax;
 
 import lombok.Getter;
 import org.riseger.main.compiler.lextcal.Keyword;
-import org.riseger.main.sql.function.type.Function_c;
+import org.riseger.main.compiler.token.Token;
+import org.riseger.main.compiler.token.TokenType;
+import org.riseger.protoctl.search.function.Function_f;
 
 @Getter
 public class Syntax {
@@ -10,9 +12,9 @@ public class Syntax {
     private final Keyword keyword;
     private final int typeCode;
 
-    private final Class<? extends Function_c> function;
+    private final Class<? extends Function_f> function;
 
-    public Syntax(SyntaxRule syntaxRule, SyntaxRule.Type type) {
+    public Syntax(SyntaxRule syntaxRule, SyntaxRule.Type type, Class<? extends Function_f> functionClazz) {
         if (type == null) {
             this.isKeyword = false;
             this.typeCode = -2;
@@ -27,7 +29,15 @@ public class Syntax {
                 this.typeCode = syntaxRule.getRuleMap().get(type.getValue()).getTypeId();
                 this.keyword = null;
             }
-            this.function = syntaxRule.getRuleMap().get(type.getValue()).getFunction();
+            this.function = functionClazz;
         }
     }
+
+    public boolean equals(Token token) {
+        return this.isKeyword &&
+                token.getType().equals(TokenType.KEYWORD) &&
+                this.typeCode == token.getId();
+    }
+
+
 }

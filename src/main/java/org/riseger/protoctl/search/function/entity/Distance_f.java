@@ -1,7 +1,7 @@
 package org.riseger.protoctl.search.function.entity;
 
 import lombok.Getter;
-import org.riseger.protoctl.search.function.Function_F;
+import org.riseger.protoctl.search.function.Function_f;
 import org.riseger.protoctl.search.function.type.COORD_FUNCTIONAL;
 import org.riseger.protoctl.search.function.type.NUMBER_FUNCTIONAL;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Getter
-public class Distance_f extends Function_F implements NUMBER_FUNCTIONAL {
+public class Distance_f extends Function_f implements NUMBER_FUNCTIONAL {
     private COORD_FUNCTIONAL coord1;
 
     private COORD_FUNCTIONAL coord2;
@@ -26,10 +26,10 @@ public class Distance_f extends Function_F implements NUMBER_FUNCTIONAL {
     }
 
     @Override
-    public List<Function_F> getFunctions() {
-        List<Function_F> res = new LinkedList<>();
-        res.add((Function_F) coord1);
-        res.add((Function_F) coord2);
+    public List<Function_f> getFunctions() {
+        List<Function_f> res = new LinkedList<>();
+        res.add((Function_f) coord1);
+        res.add((Function_f) coord2);
         return res;
     }
 
