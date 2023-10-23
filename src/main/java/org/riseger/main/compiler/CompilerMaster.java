@@ -1,7 +1,7 @@
 package org.riseger.main.compiler;
 
-import org.riseger.main.compiler.session.Session;
-import org.riseger.main.compiler.session.SessionAdaptor;
+import org.riseger.main.compiler.compoent.SearchSession;
+import org.riseger.main.compiler.compoent.SessionAdaptor;
 
 public class CompilerMaster {
     public static CompilerMaster INSTANCE;
@@ -12,7 +12,7 @@ public class CompilerMaster {
         this.adaptor = adaptor;
     }
 
-    public Session adapt(String text) {
+    public SearchSession adapt(String text) {
         return adaptor.adapt(text);
     }
 }

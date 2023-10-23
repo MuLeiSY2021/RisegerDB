@@ -35,7 +35,7 @@ public class Tokenizer {
             String tile = token.getSourceCode();
             Matcher m;
             int debug = 100, round = 0;
-            while (tile.length() > 0) {
+            while (!tile.isEmpty()) {
                 if (round == debug) {
                     throw new RuntimeException("Always Loop :" + tile + " token:" + new Gson().toJson(token));
                 }
@@ -86,7 +86,7 @@ public class Tokenizer {
                 line = line.substring(0, m.start());
             }
             //去除空句
-            if (line.length() == 0) {
+            if (line.isEmpty()) {
                 continue;
             }
             int top = 1, bottom = 1;

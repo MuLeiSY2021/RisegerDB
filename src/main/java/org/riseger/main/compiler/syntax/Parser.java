@@ -2,9 +2,9 @@ package org.riseger.main.compiler.syntax;
 
 
 import org.apache.log4j.Logger;
+import org.riseger.main.compiler.compoent.SearchSession;
 import org.riseger.main.compiler.semantic.SemanticTree;
 import org.riseger.main.compiler.token.Token;
-import org.riseger.protoctl.serializer.JsonSerializer;
 
 import java.util.List;
 
@@ -16,8 +16,7 @@ public class Parser {
         this.syntaxForest = syntaxForest;
     }
 
-    public void invoke(List<Token> tokenList) {
-        SemanticTree structureTree = new SemanticTree(tokenList, syntaxForest);
-        LOG.debug(JsonSerializer.serializeToString(structureTree));
+    public SemanticTree invoke(List<Token> tokenList, SearchSession session) {
+        return new SemanticTree(tokenList, syntaxForest, session);
     }
 }

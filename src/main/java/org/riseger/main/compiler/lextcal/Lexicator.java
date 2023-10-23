@@ -1,7 +1,7 @@
 package org.riseger.main.compiler.lextcal;
 
 import org.riseger.main.compiler.CompilerConstant;
-import org.riseger.main.compiler.session.Session;
+import org.riseger.main.compiler.compoent.SearchSession;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.main.compiler.token.TokenType;
 import org.riseger.utils.tree.MultiBranchesTree;
@@ -20,7 +20,7 @@ public class Lexicator {
         this.tree = tree;
     }
 
-    public void invoke(List<Token> tokenList, Session session) {
+    public void invoke(List<Token> tokenList, SearchSession session) {
         for (Token token : tokenList) {
             String sourcecode = token.getSourceCode();
             if (numberPattern.matcher(sourcecode).matches()) {

@@ -14,7 +14,6 @@ import org.riseger.protoctl.search.function.math.*;
 import org.riseger.protoctl.search.function.type.FUNCTIONAL;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public abstract class Function_f implements FUNCTIONAL {
@@ -69,8 +68,6 @@ public abstract class Function_f implements FUNCTIONAL {
     public int getId() {
         return functionId;
     }
-
-    public abstract List<Function_f> getFunctions();
 
     public abstract Integer getWeight();
 

@@ -1,9 +1,9 @@
 package org.riseger.main.init;
 
 import org.riseger.main.compiler.CompilerMaster;
+import org.riseger.main.compiler.compoent.SessionAdaptor;
 import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.main.compiler.lextcal.Lexicator;
-import org.riseger.main.compiler.session.SessionAdaptor;
 import org.riseger.main.compiler.syntax.Parser;
 import org.riseger.main.compiler.syntax.SyntaxForest;
 import org.riseger.main.compiler.syntax.SyntaxRule;
@@ -39,6 +39,8 @@ public class CompilerInitialize implements Initializer {
 
         //生成语法解析器
         Parser parser = new Parser(syntaxForest);
+
+        //
         CompilerMaster.INSTANCE = new CompilerMaster(new SessionAdaptor(tokenizer, lexicator, parser));
     }
 }

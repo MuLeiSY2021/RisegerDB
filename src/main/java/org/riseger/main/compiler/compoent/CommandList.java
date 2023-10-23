@@ -1,6 +1,6 @@
 package org.riseger.main.compiler.compoent;
 
-import org.riseger.main.sql.function.type.Function_c;
+import org.riseger.main.compiler.function.type.Function_c;
 
 import java.util.Queue;
 
@@ -28,11 +28,7 @@ public class CommandList {
         return this.functionList[this.index++];
     }
 
-    public void putFunction(Function_c function) {
-        this.functionList[this.index++] = function;
-    }
-
-    public void cover() {
-        this.index = 0;
+    public boolean hasNext() {
+        return this.index < this.functionList.length;
     }
 }
