@@ -11,6 +11,7 @@ import org.riseger.main.compiler.syntax.SyntaxForest;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.protoctl.search.CommandTree;
 import org.riseger.protoctl.search.function.Function_f;
+import org.riseger.protoctl.search.function.ProcessorFunction;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -30,15 +31,15 @@ public class SemanticTree {
         suit(root, forest.getEntry(), tokenIterator, forest, session);
     }
 
-    public Queue<Function_c> getFunctionList(SearchMemory searchMemory, CommandList commandList) {
+    public void getFunctionList(SearchMemory searchMemory, CommandList commandList) {
         Queue<Function_c> queue = new ConcurrentLinkedQueue<>();
+        commandList.setFunctionList(queue);
         sort();
         this.root.toQueue(queue, searchMemory, commandList);
-        return queue;
     }
 
     private void sort() {
-        this.root.sort();
+        this.root.sort(0);
     }
 
     private Node suit(Node node, int code, Iterator<Token> tokenIterator, SyntaxForest forest, SearchSession session) {
@@ -114,12 +115,16 @@ public class SemanticTree {
     }
 
     @Data
-    private static class Node {
+    public static class Node {
         private Node parent;
 
         private List<Node> children = new LinkedList<>();
 
+        private boolean canSort = false;
+
         private Function_f function;
+
+        private int level;
 
         public Node(Node parent) {
             this.parent = parent;
@@ -129,7 +134,14 @@ public class SemanticTree {
             this.children.add(child);
         }
 
-        public Integer getPriority() {
+        void setFunction(Function_f function) {
+            this.function = function;
+            if (this.function != null) {
+                this.canSort = function.canSort();
+            }
+        }
+
+        Integer getPriority() {
             if (function == null) {
                 return -1;
             } else {
@@ -137,28 +149,66 @@ public class SemanticTree {
             }
         }
 
-        public void sort() {
-            if (function != null) {
+        int sort(int level) {
+            if (children.isEmpty()) {
+                this.level = ++level;
+                return this.level;
+            }
+            if (canSort) {
                 children.sort(Comparator.comparing(Node::getPriority));
             }
+
+            int total = 0;
+            for (Node c : children) {
+                total += c.sort(total);
+            }
+            this.level = total;
+            return this.level;
         }
 
-        public void toQueue(Queue<Function_c> queue, SearchMemory searchMemory, CommandList commandList) {
+        void toQueue(Queue<Function_c> queue, SearchMemory searchMemory, CommandList commandList) {
+            Function_c function = null;
+            if (this.function != null) {
+                function = Function_c.getFunctionFromMap(this.function, searchMemory, commandList);
+                if (function instanceof ProcessorFunction) {
+                    ProcessorFunction processorFunction = (ProcessorFunction) function;
+                    processorFunction.preHandle(this, queue.size());
+                }
+            }
             for (Node child : children) {
                 child.toQueue(queue, searchMemory, commandList);
             }
-            if (function != null) {
-                queue.add(Function_c.getFunctionFromMap(this.function, searchMemory, commandList));
+            if (this.function != null) {
+                queue.add(function);
             }
         }
 
-        public void copy(CommandTree.Node root) {
+        void copy(CommandTree.Node root) {
             this.function = root.getFunction();
             for (CommandTree.Node child : root.getChildren()) {
                 Node tmp = new Node(this);
                 tmp.copy(child);
                 this.add(tmp);
             }
+        }
+
+        public void addHead(Function_f function) {
+            this.parent.children.remove(this);
+            Node tmp = new Node(this.parent);
+            tmp.setFunction(function);
+            this.parent.children.add(tmp);
+            this.parent = tmp;
+            tmp.children.add(this);
+        }
+
+        public void addChild(Function_f function, int index) {
+            Node tmp = new Node(this);
+            tmp.setFunction(function);
+            Node child = this.children.get(index);
+            child.setParent(tmp);
+            tmp.add(child);
+            this.children.remove(index);
+            this.children.add(index, tmp);
         }
     }
 

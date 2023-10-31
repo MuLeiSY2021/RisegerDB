@@ -2,27 +2,20 @@ package org.riseger.protoctl.search.function.main;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.Function_f;
-import org.riseger.protoctl.search.function.type.MAIN_FUNCTIONAL;
+import org.riseger.protoctl.search.function.type.MAIN_functional;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
-import java.util.List;
-
 @Getter
-public class USE_MAP extends Function_f implements MAIN_FUNCTIONAL {
+public class UseDatabase_f extends Function_f implements MAIN_functional {
     private String name;
 
-    public USE_MAP() {
-        super(USE_MAP.class);
+    public UseDatabase_f() {
+        super(UseDatabase_f.class);
     }
 
-    public MAIN_FUNCTIONAL invoke(String name) {
+    public MAIN_functional invoke(String name) {
         this.name = name;
         return this;
-    }
-
-    @Override
-    public List<Function_f> getFunctions() {
-        return null;
     }
 
     @Override
@@ -31,7 +24,7 @@ public class USE_MAP extends Function_f implements MAIN_FUNCTIONAL {
     }
 
     @Override
-    public boolean canSkip() {
+    public boolean canSort() {
         return false;
     }
 }

@@ -1,10 +1,8 @@
 package org.riseger.protoctl.search.function;
 
-import org.riseger.protoctl.search.function.type.UNIVERSAL_FUNCTIONAL;
+import org.riseger.protoctl.search.function.type.UNIVERSAL_functional;
 
-import java.util.List;
-
-public class Entity_f extends Function_f implements UNIVERSAL_FUNCTIONAL {
+public class Entity_f extends Function_f implements UNIVERSAL_functional {
 
     private final Object entity;
 
@@ -13,12 +11,8 @@ public class Entity_f extends Function_f implements UNIVERSAL_FUNCTIONAL {
         this.entity = entity;
     }
 
-    public static UNIVERSAL_FUNCTIONAL use(Object entity) {
+    public static UNIVERSAL_functional use(Object entity) {
         return new Entity_f(entity);
-    }
-
-    public List<Function_f> getFunctions() {
-        return null;
     }
 
     @Override
@@ -27,7 +21,7 @@ public class Entity_f extends Function_f implements UNIVERSAL_FUNCTIONAL {
     }
 
     @Override
-    public boolean canSkip() {
+    public boolean canSort() {
         return false;
     }
 }

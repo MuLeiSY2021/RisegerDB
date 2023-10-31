@@ -12,11 +12,10 @@ public class IfJump_fc extends LoopFunction_c {
 
     @Override
     public void process() throws IllegalSearchAttributeException {
+        int index = (Integer) super.poll();
         boolean result = (boolean) super.poll();
         if (result) {
-            super.jumpTo((Integer) super.poll());
-        } else {
-            super.put(super.index());
+            super.jumpTo(index);
         }
     }
 

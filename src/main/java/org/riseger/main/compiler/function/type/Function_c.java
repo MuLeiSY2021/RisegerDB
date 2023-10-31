@@ -5,27 +5,23 @@ import org.apache.log4j.Logger;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.MemoryConstant;
 import org.riseger.main.compiler.compoent.SearchMemory;
-import org.riseger.main.compiler.function.entity.Attribute_fc;
-import org.riseger.main.compiler.function.entity.Coord_fc;
-import org.riseger.main.compiler.function.entity.Distance_fc;
-import org.riseger.main.compiler.function.entity.Rectangle_fc;
+import org.riseger.main.compiler.function.entity.*;
 import org.riseger.main.compiler.function.graphic.In_fc;
 import org.riseger.main.compiler.function.graphic.Out_fc;
 import org.riseger.main.compiler.function.logic.And_fc;
 import org.riseger.main.compiler.function.logic.Not_fc;
 import org.riseger.main.compiler.function.logic.Or_fc;
+import org.riseger.main.compiler.function.main.*;
 import org.riseger.main.compiler.function.math.*;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 import org.riseger.protoctl.search.function.Function_f;
-import org.riseger.protoctl.search.function.entity.Attribute_f;
-import org.riseger.protoctl.search.function.entity.Coord_f;
-import org.riseger.protoctl.search.function.entity.Distance_f;
-import org.riseger.protoctl.search.function.entity.Rect_f;
+import org.riseger.protoctl.search.function.entity.*;
 import org.riseger.protoctl.search.function.graphic.In_f;
 import org.riseger.protoctl.search.function.graphic.Out_f;
 import org.riseger.protoctl.search.function.logic.And_f;
 import org.riseger.protoctl.search.function.logic.Not_f;
 import org.riseger.protoctl.search.function.logic.Or_f;
+import org.riseger.protoctl.search.function.main.*;
 import org.riseger.protoctl.search.function.math.*;
 
 import java.util.HashMap;
@@ -42,7 +38,8 @@ public abstract class Function_c {
         functionMap.put(Attribute_f.class, Attribute_fc.class);
         functionMap.put(Coord_f.class, Coord_fc.class);
         functionMap.put(Distance_f.class, Distance_fc.class);
-        functionMap.put(Rect_f.class, Rectangle_fc.class);
+        functionMap.put(Rectangle_f.class, Rectangle_fc.class);
+        functionMap.put(Strings_f.class, Strings_fc.class);
 
         functionMap.put(In_f.class, In_fc.class);
         functionMap.put(Out_f.class, Out_fc.class);
@@ -50,6 +47,13 @@ public abstract class Function_c {
         functionMap.put(And_f.class, And_fc.class);
         functionMap.put(Not_f.class, Not_fc.class);
         functionMap.put(Or_f.class, Or_fc.class);
+
+        functionMap.put(Search_f.class, Search_fc.class);
+        functionMap.put(UseDatabase_f.class, UseDatabase_fc.class);
+        functionMap.put(UseMap_f.class, UseMap_fc.class);
+        functionMap.put(UseModel_f.class, UseModel_fc.class);
+        functionMap.put(UseScope_f.class, UseScope_fc.class);
+        functionMap.put(Where_f.class, Where_fc.class);
 
         functionMap.put(Big_f.class, Big_fc.class);
         functionMap.put(BigEqual_f.class, BigEqual_fc.class);
@@ -72,7 +76,7 @@ public abstract class Function_c {
         try {
             return functionMap.get(function.getClass())
                     .getConstructor(Function_f.class, SearchMemory.class, CommandList.class)
-                    .newInstance(function, searchMemory);
+                    .newInstance(function, searchMemory, commandList);
         } catch (Exception e) {
             LOG.error("Error ", e);
             LOG.debug(function.getClass());
@@ -110,4 +114,5 @@ public abstract class Function_c {
     protected boolean hasMap(MemoryConstant constant) {
         return this.memory.hasMapValue(constant);
     }
+
 }

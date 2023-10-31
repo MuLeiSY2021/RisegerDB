@@ -4,28 +4,29 @@ import lombok.Getter;
 import org.riseger.protoctl.search.function.Function_f;
 import org.riseger.protoctl.search.function.type.COORD_functional;
 import org.riseger.protoctl.search.function.type.NUMBER_functional;
+import org.riseger.protoctl.search.function.type.RECTANGLE_functional;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
 @Getter
-public class Coord_f extends Function_f implements COORD_functional {
-    NUMBER_functional number1;
+public class Rectangle_f extends Function_f implements RECTANGLE_functional {
 
-    NUMBER_functional number2;
+    private COORD_functional coord;
 
-    public Coord_f() {
-        super(Coord_f.class);
+    private NUMBER_functional len;
 
+    public Rectangle_f() {
+        super(Rectangle_f.class);
     }
 
-    public COORD_functional invoke(NUMBER_functional number1, NUMBER_functional number2) {
-        this.number1 = number1;
-        this.number2 = number2;
+    public RECTANGLE_functional invoke(COORD_functional coord, NUMBER_functional len) {
+        this.coord = coord;
+        this.len = len;
         return this;
     }
 
     @Override
     public Integer getWeight() {
-        return ConstantWeight.COORD_WEIGHT;
+        return ConstantWeight.RECTANGLE_WEIGHT;
     }
 
     @Override

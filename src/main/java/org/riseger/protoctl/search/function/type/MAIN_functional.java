@@ -4,6 +4,6 @@ import com.google.gson.annotations.JsonAdapter;
 import org.riseger.protoctl.serializer.FunctionDeserializer;
 
 @JsonAdapter(FunctionDeserializer.class)
+public interface MAIN_functional extends Functional {
 
-public interface RECTANGLE_FUNCTIONAL extends FUNCTIONAL {
 }

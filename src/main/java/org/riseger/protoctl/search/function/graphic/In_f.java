@@ -2,32 +2,22 @@ package org.riseger.protoctl.search.function.graphic;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.Function_f;
-import org.riseger.protoctl.search.function.type.BOOL_FUNCTIONAL;
-import org.riseger.protoctl.search.function.type.RECTANGLE_FUNCTIONAL;
+import org.riseger.protoctl.search.function.type.BOOL_functional;
+import org.riseger.protoctl.search.function.type.RECTANGLE_functional;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
-import java.util.LinkedList;
-import java.util.List;
-
 @Getter
-public class In_f extends Function_f implements BOOL_FUNCTIONAL {
+public class In_f extends Function_f implements BOOL_functional {
 
-    private RECTANGLE_FUNCTIONAL rect;
+    private RECTANGLE_functional rect;
 
     public In_f() {
         super(In_f.class);
     }
 
-    public BOOL_FUNCTIONAL invoke(RECTANGLE_FUNCTIONAL rect) {
+    public BOOL_functional invoke(RECTANGLE_functional rect) {
         this.rect = rect;
         return this;
-    }
-
-    @Override
-    public List<Function_f> getFunctions() {
-        List<Function_f> res = new LinkedList<>();
-        res.add((Function_f) rect);
-        return res;
     }
 
     @Override
@@ -36,7 +26,7 @@ public class In_f extends Function_f implements BOOL_FUNCTIONAL {
     }
 
     @Override
-    public boolean canSkip() {
+    public boolean canSort() {
         return false;
     }
 }

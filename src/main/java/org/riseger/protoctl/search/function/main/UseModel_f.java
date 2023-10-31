@@ -2,27 +2,22 @@ package org.riseger.protoctl.search.function.main;
 
 import lombok.Getter;
 import org.riseger.protoctl.search.function.Function_f;
-import org.riseger.protoctl.search.function.type.MAIN_FUNCTIONAL;
+import org.riseger.protoctl.search.function.type.MAIN_functional;
 import org.riseger.protoctl.search.function.weight.ConstantWeight;
 
 import java.util.List;
 
 @Getter
-public class USE_MODEL extends Function_f implements MAIN_FUNCTIONAL {
+public class UseModel_f extends Function_f implements MAIN_functional {
     private List<String> models;
 
-    public USE_MODEL() {
-        super(USE_MODEL.class);
+    public UseModel_f() {
+        super(UseModel_f.class);
     }
 
-    public MAIN_FUNCTIONAL invoke(List<String> rectangle) {
+    public MAIN_functional invoke(List<String> rectangle) {
         this.models = rectangle;
         return this;
-    }
-
-    @Override
-    public List<Function_f> getFunctions() {
-        return null;
     }
 
     @Override
@@ -31,7 +26,7 @@ public class USE_MODEL extends Function_f implements MAIN_FUNCTIONAL {
     }
 
     @Override
-    public boolean canSkip() {
+    public boolean canSort() {
         return false;
     }
 }

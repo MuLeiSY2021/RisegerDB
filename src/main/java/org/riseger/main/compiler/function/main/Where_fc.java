@@ -10,14 +10,19 @@ import org.riseger.main.compiler.compoent.MemoryConstant;
 import org.riseger.main.compiler.compoent.SearchMemory;
 import org.riseger.main.compiler.compoent.SearchSet;
 import org.riseger.main.compiler.function.type.MainFunction_c;
+import org.riseger.main.compiler.semantic.SemanticTree;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
+import org.riseger.protoctl.search.function.Entity_f;
+import org.riseger.protoctl.search.function.ProcessorFunction;
+import org.riseger.protoctl.search.function.loop.Back_f;
+import org.riseger.protoctl.search.function.loop.IfJump_f;
 import org.riseger.protoctl.search.result.ResultElement;
 import org.riseger.protoctl.search.result.ResultModelSet;
 import org.riseger.protoctl.search.result.ResultSet;
 
 import java.util.*;
 
-public class Where_fc extends MainFunction_c {
+public class Where_fc extends MainFunction_c implements ProcessorFunction {
 
     public Where_fc(SearchMemory memory, CommandList commandList) {
         super(memory, commandList);
@@ -68,7 +73,17 @@ public class Where_fc extends MainFunction_c {
             }
             MBRectangle_c mbRectangle = iterator.next();
             super.setMap(mbRectangle, MemoryConstant.ELEMENT);
+            super.put(false);
         }
+        super.put(true);
+    }
+
+    @Override
+    public void preHandle(SemanticTree.Node node, int size) {
+        node.addHead(new Back_f());
+        node.addHead(new Entity_f(size));
+        node.addHead(new IfJump_f());
+        node.addHead(new Entity_f(node.getLevel() + 1));
 
     }
 
