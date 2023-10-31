@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.main.compiler.token.TokenType;
-import org.riseger.protoctl.search.function.Function_f;
+import org.riseger.protoctl.compiler.function.Function_f;
 import org.riseger.utils.tree.Equable;
 
 import java.util.Objects;

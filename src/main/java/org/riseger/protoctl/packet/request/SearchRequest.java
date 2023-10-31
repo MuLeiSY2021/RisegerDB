@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.riseger.protoctl.job.SearchJob;
 import org.riseger.protoctl.packet.PacketType;
-import org.riseger.protoctl.search.command.USE;
+import org.riseger.protoctl.compiler.command.USE;
 
 @Getter
 @Setter

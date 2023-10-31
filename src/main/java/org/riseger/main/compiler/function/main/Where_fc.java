@@ -12,13 +12,13 @@ import org.riseger.main.compiler.compoent.SearchSet;
 import org.riseger.main.compiler.function.type.MainFunction_c;
 import org.riseger.main.compiler.semantic.SemanticTree;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
-import org.riseger.protoctl.search.function.Entity_f;
-import org.riseger.protoctl.search.function.ProcessorFunction;
-import org.riseger.protoctl.search.function.loop.Back_f;
-import org.riseger.protoctl.search.function.loop.IfJump_f;
-import org.riseger.protoctl.search.result.ResultElement;
-import org.riseger.protoctl.search.result.ResultModelSet;
-import org.riseger.protoctl.search.result.ResultSet;
+import org.riseger.protoctl.compiler.function.Entity_f;
+import org.riseger.protoctl.compiler.function.ProcessorFunction;
+import org.riseger.protoctl.compiler.function.loop.Back_f;
+import org.riseger.protoctl.compiler.function.loop.IfJump_f;
+import org.riseger.protoctl.compiler.result.ResultElement;
+import org.riseger.protoctl.compiler.result.ResultModelSet;
+import org.riseger.protoctl.compiler.result.ResultSet;
 
 import java.util.*;
 

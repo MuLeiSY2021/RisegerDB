@@ -7,7 +7,7 @@ import org.riseger.main.compiler.semantic.SemanticTree;
 import org.riseger.main.compiler.syntax.Parser;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.main.compiler.token.Tokenizer;
-import org.riseger.protoctl.search.result.ResultSet;
+import org.riseger.protoctl.compiler.result.ResultSet;
 
 import java.util.HashMap;
 import java.util.List;

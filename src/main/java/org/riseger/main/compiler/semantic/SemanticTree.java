@@ -9,9 +9,9 @@ import org.riseger.main.compiler.function.type.Function_c;
 import org.riseger.main.compiler.syntax.Syntax;
 import org.riseger.main.compiler.syntax.SyntaxForest;
 import org.riseger.main.compiler.token.Token;
-import org.riseger.protoctl.search.CommandTree;
-import org.riseger.protoctl.search.function.Function_f;
-import org.riseger.protoctl.search.function.ProcessorFunction;
+import org.riseger.protoctl.compiler.CommandTree;
+import org.riseger.protoctl.compiler.function.Function_f;
+import org.riseger.protoctl.compiler.function.ProcessorFunction;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

@@ -1,7 +1,7 @@
 package org.riseger.main.compiler.syntax;
 
 import lombok.Getter;
-import org.riseger.protoctl.search.function.Function_f;
+import org.riseger.protoctl.compiler.function.Function_f;
 
 import java.util.HashMap;
 import java.util.Map;

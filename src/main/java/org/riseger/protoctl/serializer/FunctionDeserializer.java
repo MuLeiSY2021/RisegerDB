@@ -1,8 +1,8 @@
 package org.riseger.protoctl.serializer;
 
 import com.google.gson.*;
-import org.riseger.protoctl.search.function.Function_f;
-import org.riseger.protoctl.search.function.type.Functional;
+import org.riseger.protoctl.compiler.function.Function_f;
+import org.riseger.protoctl.compiler.function.type.Functional;
 
 import java.lang.reflect.Type;
 

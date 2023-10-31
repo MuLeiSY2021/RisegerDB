@@ -3,7 +3,7 @@ package org.riseger.protoctl.packet.response;
 import lombok.Getter;
 import lombok.Setter;
 import org.riseger.protoctl.packet.PacketType;
-import org.riseger.protoctl.search.result.ResultSet;
+import org.riseger.protoctl.compiler.result.ResultSet;
 
 @Setter
 @Getter

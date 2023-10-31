@@ -1,6 +1,7 @@
 package org.riseger.main.compiler.function.main;
 
 import org.riseger.main.cache.entity.component.Database_c;
+import org.riseger.main.cache.entity.component.MapDB_c;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.MemoryConstant;
 import org.riseger.main.compiler.compoent.SearchMemory;
@@ -16,7 +17,9 @@ public class UseMap_fc extends MainFunction_c {
     @Override
     public void process() throws IllegalSearchAttributeException {
         Database_c db = (Database_c) super.getMap(MemoryConstant.DATABASE);
-        super.setMap(db.getMap((String) poll()), MemoryConstant.DATABASE);
+        MapDB_c map = db.getMap((String) poll());
+        super.setMap(map, MemoryConstant.DATABASE);
+        super.setMap(map.getThreshold(),MemoryConstant.THRESHOLD);
     }
 
 }

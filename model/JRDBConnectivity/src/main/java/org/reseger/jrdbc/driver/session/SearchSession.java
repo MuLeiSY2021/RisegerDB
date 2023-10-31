@@ -4,8 +4,8 @@ import lombok.Getter;
 import org.reseger.jrdbc.driver.connector.Connection;
 import org.riseger.protoctl.packet.request.SearchRequest;
 import org.riseger.protoctl.packet.response.SearchResponse;
-import org.riseger.protoctl.search.command.USE;
-import org.riseger.protoctl.search.result.ResultSet;
+import org.riseger.protoctl.compiler.command.USE;
+import org.riseger.protoctl.compiler.result.ResultSet;
 
 @Getter
 public class SearchSession extends Session<SearchResponse> {

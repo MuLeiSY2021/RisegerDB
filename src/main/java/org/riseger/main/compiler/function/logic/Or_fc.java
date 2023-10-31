@@ -5,9 +5,9 @@ import org.riseger.main.compiler.compoent.SearchMemory;
 import org.riseger.main.compiler.function.type.BooleanFunction_c;
 import org.riseger.main.compiler.semantic.SemanticTree;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
-import org.riseger.protoctl.search.function.Entity_f;
-import org.riseger.protoctl.search.function.ProcessorFunction;
-import org.riseger.protoctl.search.function.loop.IfJump_f;
+import org.riseger.protoctl.compiler.function.Entity_f;
+import org.riseger.protoctl.compiler.function.ProcessorFunction;
+import org.riseger.protoctl.compiler.function.loop.IfJump_f;
 
 public class Or_fc extends BooleanFunction_c implements ProcessorFunction {
 
