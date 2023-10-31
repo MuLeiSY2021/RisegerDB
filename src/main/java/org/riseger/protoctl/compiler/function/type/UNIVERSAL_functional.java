@@ -9,7 +9,7 @@ public interface UNIVERSAL_functional extends
         BOOL_functional,
         COORD_functional,
         Functional,
-        NUMBER_functional,
+        NumberFunctional,
         RECTANGLE_functional {
 
 }

@@ -2,6 +2,7 @@ package org.riseger.main.compiler.syntax;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.log4j.Logger;
 import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.main.compiler.token.TokenType;
@@ -15,21 +16,34 @@ public class Syntax implements Equable {
     private final boolean isKeyword;
     private final int hashCode;
 
+    private static final Logger LOG = Logger.getLogger(Syntax.class);
+
+    private String symbol = "null";
+
     @Setter
     private Class<Function_f> functionFClass;
 
     public Syntax(SyntaxRule syntaxRule, SyntaxRule.Tile tile) {
+        int hashCode1;
         if (tile == null) {
             this.isKeyword = false;
-            this.hashCode = -1;
+            hashCode1 = -1;
         } else {
+            this.symbol = tile.getValue();
             this.isKeyword = tile.isKey();
             if (this.isKeyword) {
-                this.hashCode = Keyword.addKeyword(tile.getValue());
+                hashCode1 = Keyword.addKeyword(tile.getValue());
             } else {
-                this.hashCode = syntaxRule.getRuleMap().get(tile.getValue()).getTypeId();
+                try {
+                    hashCode1 = syntaxRule.getRuleMap().get(tile.getValue()).getTypeId();
+                } catch (Exception e) {
+                    LOG.error("Failed to decode", e);
+                    LOG.debug(tile.getValue());
+                    hashCode1 = -1;
+                }
             }
         }
+        this.hashCode = hashCode1;
     }
 
     public boolean equals(Token token) {
@@ -49,5 +63,12 @@ public class Syntax implements Equable {
     @Override
     public int hashCode() {
         return Objects.hash(isKeyword, hashCode);
+    }
+
+    @Override
+    public String toString() {
+        return "Syntax{" +
+                '\'' + symbol + '\'' +
+                '}';
     }
 }

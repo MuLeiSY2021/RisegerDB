@@ -24,8 +24,9 @@ public class C implements Equable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Character) {
-            return this.character.equals(obj);
+        if (obj instanceof C) {
+            C comp = (C) obj;
+            return this.character.equals(comp.character);
         } else {
             return false;
         }

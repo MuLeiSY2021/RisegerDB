@@ -3,11 +3,11 @@ package org.riseger.protoctl.compiler.function.entity;
 import lombok.Getter;
 import org.riseger.protoctl.compiler.function.Function_f;
 import org.riseger.protoctl.compiler.function.type.COORD_functional;
-import org.riseger.protoctl.compiler.function.type.NUMBER_functional;
+import org.riseger.protoctl.compiler.function.type.NumberFunctional;
 import org.riseger.protoctl.compiler.function.weight.ConstantWeight;
 
 @Getter
-public class Distance_f extends Function_f implements NUMBER_functional {
+public class Distance_f extends Function_f implements NumberFunctional {
     private COORD_functional coord1;
 
     private COORD_functional coord2;
@@ -16,7 +16,7 @@ public class Distance_f extends Function_f implements NUMBER_functional {
         super(Distance_f.class);
     }
 
-    public NUMBER_functional invoke(COORD_functional coord1, COORD_functional coord2) {
+    public NumberFunctional invoke(COORD_functional coord1, COORD_functional coord2) {
         this.coord1 = coord1;
         this.coord2 = coord2;
         return this;

@@ -44,6 +44,9 @@ public class Keyword implements MultiTreeElement<Keyword> {
 
     @Override
     public Equable next(int index) {
+        if (this.words.size() == index) {
+            return null;
+        }
         return new C(this.words.get(index));
     }
 

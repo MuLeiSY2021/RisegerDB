@@ -22,7 +22,7 @@ public class SyntaxForest {
             SyntaxRule.Rule entryRule = entry.getValue();
             if (entryRule.isEnd()) {
                 finalTypeIdTable.put(entryRule.getTypeId(), entry.getKey());
-                this.endFunctionClass = entryRule.getTmp().getFunctionClazz();
+                this.endFunctionClass = rule.getEndFunction();
             } else {
                 forest.put(entry.getValue().getTypeId(), new SyntaxNode(entryRule, rule));
             }

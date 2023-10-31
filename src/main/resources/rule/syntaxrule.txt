@@ -4,7 +4,7 @@ sqls -> sql ";" sqls
 
 sql -> "USE" statements
     | "SEARCH" strings :> org.riseger.protoctl.compiler.function.main.Search_f
-    | "WHERE" conditions :> org.riseger.protoctl.compiler.function.main.WHERE
+    | "WHERE" conditions :> org.riseger.protoctl.compiler.function.main.Where_f
 
 statements -> statement "\" statements
     |  statement
@@ -14,48 +14,48 @@ statement -> "DATABASE" string :> org.riseger.protoctl.compiler.function.main.Us
     | "SCOPE" rectangle :> org.riseger.protoctl.compiler.function.main.UseScope_f
     | "MODEL" strings :> org.riseger.protoctl.compiler.function.main.UseModel_f
 
-strings -> string "," strings
-    | string
+strings -> string "," strings :> org.riseger.protoctl.compiler.function.entity.Strings_f
+    | string :> org.riseger.protoctl.compiler.function.entity.Strings_f
     | attribute
 
-rectangle -> "RECT" "(" coord "," number_operator ")"
+rectangle -> "RECT" "(" coord "," number_operator ")" :> org.riseger.protoctl.compiler.function.entity.Rectangle_f
     | attribute
 
-coord -> "COORD" "(" number_operator "," number_operator ")"
+coord -> "COORD" "(" number_operator "," number_operator ")" :> org.riseger.protoctl.compiler.function.entity.Coord_f
     | attribute
 
 conditions -> bool_condition
 
-bool_condition -> "IN" rectangle
-    | "OUT" rectangle
-    | "!" bool_condition
-    | bool_condition "AND" bool_condition
-    | bool_condition "OR" bool_condition
+bool_condition -> "IN" rectangle :> org.riseger.protoctl.compiler.function.graphic.In_f
+    | "OUT" rectangle :> org.riseger.protoctl.compiler.function.graphic.Out_f
+    | "!" bool_condition :> org.riseger.protoctl.compiler.function.logic.Not_f
+    | bool_condition "AND" bool_condition :> org.riseger.protoctl.compiler.function.logic.And_f
+    | bool_condition "OR" bool_condition :> org.riseger.protoctl.compiler.function.logic.Or_f
     | number_operator bool_operator number_operator
-    | string "=" string
-    | "(" conditions ")"
+    | string "=" string :> org.riseger.protoctl.compiler.function.math.Equal_f
+    | "(" conditions ")" :>
 
-bool_operator -> ">"
-    | ">="
-    | "="
-    | "<"
-    | "<="
+bool_operator -> ">" :> org.riseger.protoctl.compiler.function.math.Big_f
+    | ">=" :> org.riseger.protoctl.compiler.function.math.BigEqual_f
+    | "=" :> org.riseger.protoctl.compiler.function.math.Equal_f
+    | "<" :> org.riseger.protoctl.compiler.function.math.Small_f
+    | "<=" :> org.riseger.protoctl.compiler.function.math.SmallEqual_f
 
-attribute -> string "." string
+attribute -> string "." string :> org.riseger.protoctl.compiler.function.entity.Attribute_f
 
 
 
-number_operator -> "-" number_operator
+number_operator -> "-" number_operator :> org.riseger.protoctl.compiler.number.NegivateNumber_f
     | "(" number_operator ")"
     | operator_0
 
-operator_0 -> number "+" number
-    | number "-" number
+operator_0 -> number "+" number :> org.riseger.protoctl.compiler.number.AddNumber_f
+    | number "-" number :> org.riseger.protoctl.compiler.number.SubNumber_f
     | operator_1
 
-operator_1 -> number "*" number
-    | number "/" number
+operator_1 -> number "*" number :> org.riseger.protoctl.compiler.number.MutiNumber_f
+    | number "/" number :> org.riseger.protoctl.compiler.number.DivideNumber_f
     | number
 
-END:string
-END:number
+END:string :> org.riseger.protoctl.compiler.function.Entity_f
+END:number :> org.riseger.protoctl.compiler.function.Entity_f

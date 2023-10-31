@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class CompilerInitialize implements Initializer {
-    public void init() throws FileNotFoundException {
+    public void init() throws FileNotFoundException, ClassNotFoundException {
         //获取文法规则
         String rule = Utils.getText(new File("src/main/resources/rule/syntaxrule.txt"));
         if (rule == null) {
@@ -30,6 +30,10 @@ public class CompilerInitialize implements Initializer {
 
         //生成关键词树
         MultiBranchesTree<Keyword> keywordsTree = new MultiBranchesTree<>();
+        //填充关键词
+        for (Keyword keyword : Keyword.getKeywords()) {
+            keywordsTree.insert(keyword);
+        }
 
         //生成分词器
         Tokenizer tokenizer = new Tokenizer(keywordsTree);

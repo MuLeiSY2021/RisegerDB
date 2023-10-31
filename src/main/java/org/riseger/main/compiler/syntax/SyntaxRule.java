@@ -13,7 +13,9 @@ public class SyntaxRule {
     public static final Logger LOG = Logger.getLogger(SyntaxRule.class);
     private final Map<String, Rule> ruleMap;
 
-    public SyntaxRule(String ruleText) {
+    private Class<Function_f> endFunction;
+
+    public SyntaxRule(String ruleText) throws ClassNotFoundException {
         Map<String, Rule> eachRule = new HashMap<>();
         this.ruleMap = eachRule;
         Rule prevRule = null;
@@ -25,10 +27,11 @@ public class SyntaxRule {
             if (!ruleTextLine.startsWith("    |")) {
                 tokens = ruleTextLine.split("->");
                 if (tokens[0].startsWith("END:")) {
-                    String name = tokens[0].substring("END:".length());
+                    String[] endTokens = tokens[0].substring("END:".length()).split(":>");
+                    String name = endTokens[0].replace(" ", "");
                     prevRule = new Rule(name, true);
                     eachRule.put(name, prevRule);
-
+                    this.endFunction = (Class<Function_f>) Class.forName(endTokens[1].replace(" ", ""));
                 } else {
                     prevRule = new Rule(tokens[0], false);
                     eachRule.put(tokens[0].replace(" ", ""), prevRule);
@@ -42,7 +45,7 @@ public class SyntaxRule {
                 Class<Function_f> functionClazz = null;
                 if ((tmp = tokens[1].split(":>")).length > 1) {
                     try {
-                        Class<?> tmp_c = Class.forName(tokens[1]);
+                        Class<?> tmp_c = Class.forName(tmp[1].replace(" ", ""));
                         if (Function_f.class.isAssignableFrom(tmp_c)) {
                             functionClazz = (Class<Function_f>) tmp_c;
                         } else {
@@ -50,9 +53,10 @@ public class SyntaxRule {
                         }
                     } catch (ClassNotFoundException | ClassCastException e) {
                         LOG.error("Function" + tokens[1] + " is not assignable from Function_f", e);
+                        throw e;
                     }
-                    tokens[1] = tmp[0];
                 }
+                tokens[1] = tmp[0];
                 for (String meta : tokens[1].split(" ")) {
                     if (meta.isEmpty()) {
                         continue;

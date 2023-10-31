@@ -1,5 +1,6 @@
 package org.riseger.main.compiler.lextcal;
 
+import org.apache.log4j.Logger;
 import org.riseger.main.compiler.CompilerConstant;
 import org.riseger.main.compiler.compoent.SearchSession;
 import org.riseger.main.compiler.token.Token;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Lexicator {
+    private static final Logger LOG = Logger.getLogger(Lexicator.class);
     private final MultiBranchesTree<Keyword> tree;
 
     private final Pattern numberPattern = Pattern.compile(CompilerConstant.NUMBER_PATTERN);
@@ -24,6 +26,7 @@ public class Lexicator {
         for (Token token : tokenList) {
             String sourcecode = token.getSourceCode();
             if (numberPattern.matcher(sourcecode).matches()) {
+                LOG.debug("SourceCode:" + sourcecode + " 匹配数字");
                 double tmp = Double.parseDouble(sourcecode);
                 int id = session.put(tmp);
                 token.set(id, TokenType.NUMBER);
@@ -32,11 +35,13 @@ public class Lexicator {
             sourcecode = sourcecode.toUpperCase();
             Keyword keyword = this.tree.search(C.toCollection(sourcecode));
             if (keyword != null) {
+                LOG.debug("SourceCode:" + sourcecode + " 匹配关键字:" + keyword.getCode());
                 token.set(keyword.getId(), TokenType.KEYWORD);
                 continue;
             }
 
             if (wordPattern.matcher(sourcecode).matches()) {
+                LOG.debug("SourceCode:" + sourcecode + " 匹配字符串");
                 int id = session.put(sourcecode);
                 token.set(id, TokenType.STRING);
             } else {

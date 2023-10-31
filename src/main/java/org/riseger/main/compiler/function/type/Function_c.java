@@ -13,7 +13,8 @@ import org.riseger.main.compiler.function.logic.Not_fc;
 import org.riseger.main.compiler.function.logic.Or_fc;
 import org.riseger.main.compiler.function.main.*;
 import org.riseger.main.compiler.function.math.*;
-import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
+import org.riseger.main.compiler.function.number.*;
+import org.riseger.protoctl.compiler.function.Entity_f;
 import org.riseger.protoctl.compiler.function.Function_f;
 import org.riseger.protoctl.compiler.function.entity.*;
 import org.riseger.protoctl.compiler.function.graphic.In_f;
@@ -23,6 +24,8 @@ import org.riseger.protoctl.compiler.function.logic.Not_f;
 import org.riseger.protoctl.compiler.function.logic.Or_f;
 import org.riseger.protoctl.compiler.function.main.*;
 import org.riseger.protoctl.compiler.function.math.*;
+import org.riseger.protoctl.compiler.number.*;
+import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,6 +63,15 @@ public abstract class Function_c {
         functionMap.put(Equal_f.class, Equal_fc.class);
         functionMap.put(Small_f.class, Small_fc.class);
         functionMap.put(SmallEqual_f.class, SmallEqual_fc.class);
+
+        //Number
+        functionMap.put(AddNumber_f.class, AddNumber_fc.class);
+        functionMap.put(DivideNumber_f.class, DivideNumber_fc.class);
+        functionMap.put(MutiNumber_f.class, MutiNumber_fc.class);
+        functionMap.put(NegivateNumber_f.class, NegivateNumber_fc.class);
+        functionMap.put(SubNumber_f.class, SubNumber_fc.class);
+
+        functionMap.put(Entity_f.class, Equal_fc.class);
     }
 
     private final SearchMemory memory;
@@ -75,8 +87,8 @@ public abstract class Function_c {
     public static Function_c getFunctionFromMap(Function_f function, SearchMemory searchMemory, CommandList commandList) {
         try {
             return functionMap.get(function.getClass())
-                    .getConstructor(Function_f.class, SearchMemory.class, CommandList.class)
-                    .newInstance(function, searchMemory, commandList);
+                    .getConstructor(SearchMemory.class, CommandList.class)
+                    .newInstance(searchMemory, commandList);
         } catch (Exception e) {
             LOG.error("Error ", e);
             LOG.debug(function.getClass());

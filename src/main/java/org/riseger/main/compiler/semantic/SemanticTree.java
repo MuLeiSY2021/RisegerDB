@@ -9,12 +9,12 @@ import org.riseger.main.compiler.function.type.Function_c;
 import org.riseger.main.compiler.syntax.Syntax;
 import org.riseger.main.compiler.syntax.SyntaxForest;
 import org.riseger.main.compiler.token.Token;
+import org.riseger.main.compiler.token.TokenType;
 import org.riseger.protoctl.compiler.CommandTree;
+import org.riseger.protoctl.compiler.function.Entity_f;
 import org.riseger.protoctl.compiler.function.Function_f;
 import org.riseger.protoctl.compiler.function.ProcessorFunction;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -27,8 +27,7 @@ public class SemanticTree {
     }
 
     public SemanticTree(List<Token> tokenList, SyntaxForest forest, SearchSession session) {
-        Iterator<Token> tokenIterator = tokenList.iterator();
-        suit(root, forest.getEntry(), tokenIterator, forest, session);
+        suit(root, forest.getEntry(), tokenList, forest, session);
     }
 
     public void getFunctionList(SearchMemory searchMemory, CommandList commandList) {
@@ -42,29 +41,35 @@ public class SemanticTree {
         this.root.sort(0);
     }
 
-    private Node suit(Node node, int code, Iterator<Token> tokenIterator, SyntaxForest forest, SearchSession session) {
-
+    private Node suit(Node node, int code, List<Token> tokenList, SyntaxForest forest, SearchSession session) {
         Node tmp = new Node(node);
         if (forest.isEnd(code)) {
-            Token token = tokenIterator.next();
-            try {
-                Constructor<Function_f> constructor = forest.getEndFunctionClass().getConstructor(Object.class);
-                tmp.setFunction(constructor.newInstance(session.get(token.getId())));
-                return tmp;
-            } catch (NoSuchMethodException e) {
-                LOG.error("No such constructor of Object.class", e);
-            } catch (InvocationTargetException | InstantiationException e) {
-                LOG.error("Class might be abstract", e);
-            } catch (IllegalAccessException e) {
-                LOG.error("The Constructor can not access", e);
+            Token token = tokenList.get(0);
+            if (token.getType() == TokenType.KEYWORD) {
+                LOG.error("奇怪的Bug发生了，symbol" + token.getSourceCode() + "被错误判断");
             }
-            return null;
+//            try {
+            LOG.debug("匹配结束节点匹配成功，数值为：" + token.getSourceCode() + " 函数：" + forest.getEndFunctionClass());
+//                Constructor<Function_f> constructor = forest.getEndFunctionClass().getConstructor(Object.class);
+//                tmp.setFunction(constructor.newInstance(session.get(token.getId())));
+            tmp.setFunction(new Entity_f(session.get(token.getId())));
+                return tmp;
+//            } catch (NoSuchMethodException e) {
+//                LOG.error("No such constructor of Object.class", e);
+//            } catch (InvocationTargetException | InstantiationException e) {
+//                LOG.error("Class might be abstract", e);
+//            } catch (IllegalAccessException e) {
+//                LOG.error("The Constructor can not access", e);
+//            }
+//            return null;
         }
+
         for (List<Syntax> syntaxList : forest.getSyntaxNode(code).getMetaList()) {
-            List<Object[]> res = suitOneBranch(tmp, tokenIterator, syntaxList.listIterator(), session);
+            LOG.debug("匹配一条分支：" + syntaxList.stream().map(Syntax::toString));
+            List<Object[]> res = suitOneBranch(tmp, tokenList.listIterator(), syntaxList.listIterator(), session);
             if (res != null) {
                 for (Object[] objects : res) {
-                    Node child = suit(tmp, (Integer) objects[0], ((List<Token>) objects[1]).iterator(), forest, session);
+                    Node child = suit(tmp, (Integer) objects[0], ((List<Token>) objects[1]), forest, session);
                     tmp.add(child);
                 }
                 break;
@@ -73,41 +78,51 @@ public class SemanticTree {
         return tmp;
     }
 
-    private List<Object[]> suitOneBranch(Node node, Iterator<Token> tokenIterator, ListIterator<Syntax> treeIterator, SearchSession session) {
+    private List<Object[]> suitOneBranch(Node node, ListIterator<Token> tokenIterator, ListIterator<Syntax> treeIterator, SearchSession session) {
         List<Object[]> res = new LinkedList<>();
         Token token_tmp;
-        for (Syntax tmp = treeIterator.next(); treeIterator.hasNext() && tmp.isKeyword(); tmp = treeIterator.next()) {
-            token_tmp = tokenIterator.next();
-            if (!tmp.equals(token_tmp)) {
-                return null;
-            }
-        }
-        treeIterator.previous();
         Syntax tmp;
-        for (tmp = treeIterator.next(); treeIterator.hasNext(); tmp = treeIterator.next()) {
-            if (!tokenIterator.hasNext()) {
-                return null;
-            }
-            List<Token> remain = new LinkedList<>();
 
-            Object[] _res = new Object[2];
-            _res[0] = tmp.getHashCode();
-            _res[1] = remain;
-            res.add(_res);
-            if (treeIterator.hasNext()) {
-                Syntax tmp_next = treeIterator.next();
-                for (Token _tmp = tokenIterator.next(); !tmp_next.equals(_tmp); _tmp = tokenIterator.next()) {
-                    remain.add(_tmp);
+        do {
+            tmp = treeIterator.next();
+            token_tmp = tokenIterator.next();
+            if (tmp.isKeyword()) {
+                if (!tmp.equals(token_tmp)) {
+                    LOG.debug("匹配失败,符号：" + tmp.getSymbol() + ":" + tmp.getHashCode() + " 不匹配源代码：" + token_tmp.getSourceCode() + ":" + token_tmp.getId());
+                    return null;
                 }
+                LOG.debug("匹配成功，源代码为：" + token_tmp.getSourceCode() + " 匹配代码为" + tmp.getSymbol());
             } else {
-                tokenIterator.forEachRemaining(remain::add);
+                LOG.debug("非关键词,类型名为：" + tmp.getSymbol());
+                List<Token> remain = new LinkedList<>();
+                Object[] _res = new Object[2];
+                _res[0] = tmp.getHashCode();
+                _res[1] = remain;
+                res.add(_res);
+                Syntax tmp_next = null;
+                if (treeIterator.hasNext()) {
+                    tmp_next = treeIterator.next();
+                }
+                tokenIterator.previous();
+                do {
+                    token_tmp = tokenIterator.next();
+                    LOG.debug("把 " + token_tmp.getSourceCode() + " 填充进去了");
+                    remain.add(token_tmp);
+                } while (tmp_next == null && tokenIterator.hasNext() ||
+                        tmp_next != null && !tmp_next.equals(token_tmp) && tokenIterator.hasNext());
+                if (tmp_next != null) {
+                    treeIterator.previous();
+                    tokenIterator.previous();
+                }
             }
-        }
+        } while (treeIterator.hasNext());
         try {
-
             node.setFunction(tmp.getFunctionFClass() == null ?
                     null :
                     tmp.getFunctionFClass().newInstance());
+
+            LOG.debug("单支匹配成功，填充函数：" + tmp.getFunctionFClass());
+
         } catch (InstantiationException | IllegalAccessException e) {
             LOG.error("Function can not empty instance", e);
         }
@@ -128,6 +143,9 @@ public class SemanticTree {
 
         public Node(Node parent) {
             this.parent = parent;
+            if (parent != null) {
+                parent.children.add(this);
+            }
         }
 
         public void add(Node child) {

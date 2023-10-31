@@ -1,17 +1,16 @@
 package org.riseger.protoctl.compiler.function;
 
 import org.apache.log4j.Logger;
-import org.riseger.protoctl.compiler.function.entity.Attribute_f;
-import org.riseger.protoctl.compiler.function.entity.Coord_f;
-import org.riseger.protoctl.compiler.function.entity.Distance_f;
-import org.riseger.protoctl.compiler.function.entity.Rectangle_f;
+import org.riseger.protoctl.compiler.function.entity.*;
 import org.riseger.protoctl.compiler.function.graphic.In_f;
 import org.riseger.protoctl.compiler.function.graphic.Out_f;
 import org.riseger.protoctl.compiler.function.logic.And_f;
 import org.riseger.protoctl.compiler.function.logic.Not_f;
 import org.riseger.protoctl.compiler.function.logic.Or_f;
+import org.riseger.protoctl.compiler.function.main.*;
 import org.riseger.protoctl.compiler.function.math.*;
 import org.riseger.protoctl.compiler.function.type.Functional;
+import org.riseger.protoctl.compiler.number.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,30 +19,51 @@ public abstract class Function_f implements Functional {
 
     public static final Map<Integer, Class<? extends Functional>> idMap = new HashMap<>();
 
-    private static final Map<Class<? extends Functional>, Integer> classMap = new HashMap<>();
+
     private static final Logger LOG = Logger.getLogger(Function_f.class);
 
+    private static final Map<Class<? extends Functional>, Integer> classMap = new HashMap<>();
     static {
         Function_f.set(Attribute_f.class);
         Function_f.set(Coord_f.class);
-        Function_f.set(Rectangle_f.class);
         Function_f.set(Distance_f.class);
+        Function_f.set(Rectangle_f.class);
+        Function_f.set(Strings_f.class);
+
         Function_f.set(In_f.class);
         Function_f.set(Out_f.class);
+
         Function_f.set(And_f.class);
         Function_f.set(Not_f.class);
         Function_f.set(Or_f.class);
+
+        Function_f.set(Search_f.class);
+        Function_f.set(UseDatabase_f.class);
+        Function_f.set(UseMap_f.class);
+        Function_f.set(UseModel_f.class);
+        Function_f.set(UseScope_f.class);
+        Function_f.set(Where_f.class);
+
         Function_f.set(Big_f.class);
         Function_f.set(BigEqual_f.class);
         Function_f.set(Equal_f.class);
         Function_f.set(Small_f.class);
         Function_f.set(SmallEqual_f.class);
+
+        //Number
+        Function_f.set(AddNumber_f.class);
+        Function_f.set(DivideNumber_f.class);
+        Function_f.set(MutiNumber_f.class);
+        Function_f.set(NegivateNumber_f.class);
+        Function_f.set(SubNumber_f.class);
+
+        Function_f.set(Entity_f.class);
     }
 
     private final int functionId;
 
     public Function_f(Class<? extends Functional> clazz) {
-        this.functionId = classMap.get(clazz);
+        this.functionId = Function_f.classMap.get(clazz);
     }
 
     public static void set(Class<? extends Functional> clazz) {
