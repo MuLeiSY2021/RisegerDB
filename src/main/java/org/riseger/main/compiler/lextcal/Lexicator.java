@@ -25,28 +25,27 @@ public class Lexicator {
     public void invoke(List<Token> tokenList, SearchSession session) {
         for (Token token : tokenList) {
             String sourcecode = token.getSourceCode();
-            if (numberPattern.matcher(sourcecode).matches()) {
+            if (sourcecode.isEmpty()) {
+                continue;
+            } else if (numberPattern.matcher(sourcecode).matches()) {
                 LOG.debug("SourceCode:" + sourcecode + " 匹配数字");
                 double tmp = Double.parseDouble(sourcecode);
                 int id = session.put(tmp);
                 token.set(id, TokenType.NUMBER);
                 continue;
             }
-            sourcecode = sourcecode.toUpperCase();
-            Keyword keyword = this.tree.search(C.toCollection(sourcecode));
+            String tmp = sourcecode.toUpperCase();
+            Keyword keyword = this.tree.search(C.toCollection(tmp));
             if (keyword != null) {
                 LOG.debug("SourceCode:" + sourcecode + " 匹配关键字:" + keyword.getCode());
                 token.set(keyword.getId(), TokenType.KEYWORD);
-                continue;
-            }
-
-            if (wordPattern.matcher(sourcecode).matches()) {
+            } else if (wordPattern.matcher(sourcecode).matches()) {
                 LOG.debug("SourceCode:" + sourcecode + " 匹配字符串");
                 int id = session.put(sourcecode);
                 token.set(id, TokenType.STRING);
             } else {
-                System.out.println("Word:" + token);
-                throw new IllegalArgumentException("非法字符存在");
+                LOG.error("非法字符存在:" + token.getSourceCode(), new IllegalArgumentException());
+                throw new IllegalStateException();
             }
         }
     }

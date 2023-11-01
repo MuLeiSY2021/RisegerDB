@@ -11,16 +11,19 @@ public class TextSQLJob extends TranspondJob {
 
     private final String text;
 
-    public TextSQLJob(TransponderHandler<? extends TranspondRequest> transponder, String text) {
+    private final String ipAddress;
+
+    public TextSQLJob(TransponderHandler<? extends TranspondRequest> transponder, String text, String ipAddress) {
         super(transponder);
         this.text = text;
+        this.ipAddress = ipAddress;
     }
 
     @Override
     public void process() throws Exception {
         TextSQLResponse response = new TextSQLResponse();
         super.prepare(response);
-        SearchSession session = CompilerMaster.INSTANCE.adapt(text);
+        SearchSession session = CompilerMaster.INSTANCE.adapt(text, this.ipAddress);
         response.setShellOutcome(session.process());
 
         super.done();

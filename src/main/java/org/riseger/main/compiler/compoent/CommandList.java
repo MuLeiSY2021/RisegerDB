@@ -31,4 +31,8 @@ public class CommandList {
     public boolean hasNext() {
         return this.index < this.functionList.length;
     }
+
+    public boolean isEmpty() {
+        return this.functionList.length == 0;
+    }
 }

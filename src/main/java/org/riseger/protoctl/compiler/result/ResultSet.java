@@ -6,6 +6,10 @@ import java.util.Map;
 public class ResultSet {
     Map<String, ResultModelSet> modelSetMap = new HashMap<>();
 
+    public static ResultSet empty() {
+        return new ResultSet();
+    }
+
 
     public ResultModelSet getModelSet(String model) {
         return modelSetMap.get(model);

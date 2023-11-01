@@ -7,6 +7,8 @@ import org.riseger.protoctl.compiler.function.graphic.Out_f;
 import org.riseger.protoctl.compiler.function.logic.And_f;
 import org.riseger.protoctl.compiler.function.logic.Not_f;
 import org.riseger.protoctl.compiler.function.logic.Or_f;
+import org.riseger.protoctl.compiler.function.loop.Back_f;
+import org.riseger.protoctl.compiler.function.loop.IfJump_f;
 import org.riseger.protoctl.compiler.function.main.*;
 import org.riseger.protoctl.compiler.function.math.*;
 import org.riseger.protoctl.compiler.function.type.Functional;
@@ -37,6 +39,9 @@ public abstract class Function_f implements Functional {
         Function_f.set(Not_f.class);
         Function_f.set(Or_f.class);
 
+        Function_f.set(Back_f.class);
+        Function_f.set(IfJump_f.class);
+
         Function_f.set(Search_f.class);
         Function_f.set(UseDatabase_f.class);
         Function_f.set(UseMap_f.class);
@@ -63,7 +68,13 @@ public abstract class Function_f implements Functional {
     private final int functionId;
 
     public Function_f(Class<? extends Functional> clazz) {
-        this.functionId = Function_f.classMap.get(clazz);
+        try {
+            this.functionId = Function_f.classMap.get(clazz);
+        } catch (Exception e) {
+            LOG.debug("函数ID未找到，类型名为：" + clazz.getCanonicalName());
+            LOG.error("函数ID未找到，类型名为：" + clazz.getCanonicalName(), e);
+            throw e;
+        }
     }
 
     public static void set(Class<? extends Functional> clazz) {

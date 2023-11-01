@@ -14,7 +14,7 @@ import java.util.Objects;
 @Getter
 public class Syntax implements Equable {
     private final boolean isKeyword;
-    private final int hashCode;
+    private final int id;
 
     private static final Logger LOG = Logger.getLogger(Syntax.class);
 
@@ -43,13 +43,13 @@ public class Syntax implements Equable {
                 }
             }
         }
-        this.hashCode = hashCode1;
+        this.id = hashCode1;
     }
 
     public boolean equals(Token token) {
         return this.isKeyword &&
                 token.getType().equals(TokenType.KEYWORD) &&
-                this.hashCode == token.getId();
+                this.id == token.getId();
     }
 
     @Override
@@ -57,12 +57,12 @@ public class Syntax implements Equable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Syntax syntax = (Syntax) o;
-        return isKeyword == syntax.isKeyword && hashCode == syntax.hashCode;
+        return isKeyword == syntax.isKeyword && id == syntax.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isKeyword, hashCode);
+        return Objects.hash(isKeyword, id);
     }
 
     @Override

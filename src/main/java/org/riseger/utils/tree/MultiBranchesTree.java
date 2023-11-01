@@ -24,6 +24,10 @@ public class MultiBranchesTree<E> {
         return new TreeFreelyIterator<>(root);
     }
 
+    public E find(Collection<Equable> equableCollection) {
+        return this.root.find(equableCollection.iterator());
+    }
+
     @Getter
     class Node implements TreeIterable<E> {
         private final Node parent;
@@ -83,7 +87,6 @@ public class MultiBranchesTree<E> {
         }
 
         public E search(Iterator<Equable> equableIterator) {
-
             if (equableIterator.hasNext()) {
                 Equable equable = equableIterator.next();
                 for (Node node : this.children) {
@@ -104,6 +107,21 @@ public class MultiBranchesTree<E> {
 
         private boolean equals(Equable equable) {
             return this.equable.equals(equable);
+        }
+
+        public E find(Iterator<Equable> iterator) {
+            if (iterator.hasNext()) {
+                Equable equable = iterator.next();
+                for (Node node : this.children) {
+                    if (node.equals(equable)) {
+                        E e = node.find(iterator);
+                        return e == null ? this.element : e;
+                    }
+                }
+                return null;
+            } else {
+                return this.element;
+            }
         }
     }
 }

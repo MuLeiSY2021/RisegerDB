@@ -40,4 +40,8 @@ public class Token {
         }
         return false;
     }
+
+    public boolean isKeyword() {
+        return this.type == TokenType.KEYWORD;
+    }
 }

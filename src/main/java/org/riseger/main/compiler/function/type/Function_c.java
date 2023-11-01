@@ -5,12 +5,15 @@ import org.apache.log4j.Logger;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.MemoryConstant;
 import org.riseger.main.compiler.compoent.SearchMemory;
+import org.riseger.main.compiler.function.Entity_fc;
 import org.riseger.main.compiler.function.entity.*;
 import org.riseger.main.compiler.function.graphic.In_fc;
 import org.riseger.main.compiler.function.graphic.Out_fc;
 import org.riseger.main.compiler.function.logic.And_fc;
 import org.riseger.main.compiler.function.logic.Not_fc;
 import org.riseger.main.compiler.function.logic.Or_fc;
+import org.riseger.main.compiler.function.loop.Back_fc;
+import org.riseger.main.compiler.function.loop.IfJump_fc;
 import org.riseger.main.compiler.function.main.*;
 import org.riseger.main.compiler.function.math.*;
 import org.riseger.main.compiler.function.number.*;
@@ -22,6 +25,8 @@ import org.riseger.protoctl.compiler.function.graphic.Out_f;
 import org.riseger.protoctl.compiler.function.logic.And_f;
 import org.riseger.protoctl.compiler.function.logic.Not_f;
 import org.riseger.protoctl.compiler.function.logic.Or_f;
+import org.riseger.protoctl.compiler.function.loop.Back_f;
+import org.riseger.protoctl.compiler.function.loop.IfJump_f;
 import org.riseger.protoctl.compiler.function.main.*;
 import org.riseger.protoctl.compiler.function.math.*;
 import org.riseger.protoctl.compiler.number.*;
@@ -51,6 +56,9 @@ public abstract class Function_c {
         functionMap.put(Not_f.class, Not_fc.class);
         functionMap.put(Or_f.class, Or_fc.class);
 
+        functionMap.put(Back_f.class, Back_fc.class);
+        functionMap.put(IfJump_f.class, IfJump_fc.class);
+
         functionMap.put(Search_f.class, Search_fc.class);
         functionMap.put(UseDatabase_f.class, UseDatabase_fc.class);
         functionMap.put(UseMap_f.class, UseMap_fc.class);
@@ -71,7 +79,7 @@ public abstract class Function_c {
         functionMap.put(NegivateNumber_f.class, NegivateNumber_fc.class);
         functionMap.put(SubNumber_f.class, SubNumber_fc.class);
 
-        functionMap.put(Entity_f.class, Equal_fc.class);
+        functionMap.put(Entity_f.class, Entity_fc.class);
     }
 
     private final SearchMemory memory;
@@ -86,6 +94,11 @@ public abstract class Function_c {
 
     public static Function_c getFunctionFromMap(Function_f function, SearchMemory searchMemory, CommandList commandList) {
         try {
+            if (function instanceof Entity_f) {
+                return functionMap.get(function.getClass())
+                        .getConstructor(Object.class, SearchMemory.class, CommandList.class)
+                        .newInstance(((Entity_f) function).getEntity(), searchMemory, commandList);
+            }
             return functionMap.get(function.getClass())
                     .getConstructor(SearchMemory.class, CommandList.class)
                     .newInstance(searchMemory, commandList);

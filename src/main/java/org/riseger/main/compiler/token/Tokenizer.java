@@ -1,6 +1,5 @@
 package org.riseger.main.compiler.token;
 
-import com.google.gson.Gson;
 import org.riseger.main.compiler.CompilerConstant;
 import org.riseger.main.compiler.lextcal.C;
 import org.riseger.main.compiler.lextcal.Keyword;
@@ -31,33 +30,30 @@ public class Tokenizer {
     private List<Token> splitToken(List<Token> lines) {
         List<Token> tokens = new LinkedList<>();
         for (Token token : lines) {
-            int top = 0;
             String tile = token.getSourceCode();
-            Matcher m;
-            int debug = 100, round = 0;
-            while (!tile.isEmpty()) {
-                if (round == debug) {
-                    throw new RuntimeException("Always Loop :" + tile + " token:" + new Gson().toJson(token));
+            if (!tile.isEmpty()) {
+                Matcher m = tokenPattern.matcher(tile);
+                int prev = 0;
+                while (m.find()) {
+                    if (m.start() != prev) {
+                        String symbols = tile.substring(prev, m.start());
+                        Keyword keyword;
+                        while (!symbols.isEmpty() && (keyword = keywordsTree.find(C.toCollection(symbols))) != null) {
+                            tokens.add(new Token(symbols.substring(0, keyword.size()), prev, token.getLine()));
+                            symbols = symbols.substring(keyword.getWords().size());
+                        }
+                    }
+                    tokens.add(new Token(tile.substring(m.start(), m.end()), m.start(), token.getLine()));
+                    prev = m.end();
                 }
-                int index = -1;
-                int tmp;
-                if ((m = tokenPattern.matcher(tile)).find() && m.start() == 0) {
-                    index = m.end(0);
-                } else if ((tmp = keywordsTree.search(C.toCollection(tile)).size()) != -1) {
-                    index = tmp;
+                if (tile.length() - 1 >= prev) {
+                    String symbols = tile.substring(prev);
+                    Keyword keyword;
+                    while (!symbols.isEmpty() && (keyword = keywordsTree.find(C.toCollection(symbols))) != null) {
+                        tokens.add(new Token(symbols.substring(0, keyword.size()), prev, token.getLine()));
+                        symbols = symbols.substring(keyword.getWords().size());
+                    }
                 }
-
-                if (index == -1) {
-                    throw new IndexOutOfBoundsException(tile + " -1");
-                }
-                tokens.add(new Token(tile.substring(0, index), token.getLine(), top + token.getColumn()));
-                top = index;
-
-                if (token.getSourceCode().length() == index) {
-                    break;
-                }
-                tile = tile.substring(index);
-                round++;
             }
         }
         return tokens;
@@ -80,10 +76,9 @@ public class Tokenizer {
             String line = token.getSourceCode();
             //查找注释
             Matcher m = Pattern.compile("//.+").matcher(line);
-
             if (m.find()) {
                 //去除注释部分
-                line = line.substring(0, m.start());
+                continue;
             }
             //去除空句
             if (line.isEmpty()) {
@@ -99,7 +94,7 @@ public class Tokenizer {
                         flag = false;
                     }
                     sb.append(c);
-                } else {
+                } else if (sb.length() != 0) {
                     res.add(new Token(sb.toString(), token.getLine(), top));
                     flag = true;
                     sb = new StringBuilder();

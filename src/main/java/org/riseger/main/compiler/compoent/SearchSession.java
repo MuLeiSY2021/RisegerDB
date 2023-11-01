@@ -1,6 +1,7 @@
 package org.riseger.main.compiler.compoent;
 
 import lombok.Data;
+import org.apache.log4j.Logger;
 import org.riseger.main.compiler.function.type.Function_c;
 import org.riseger.main.compiler.lextcal.Lexicator;
 import org.riseger.main.compiler.semantic.SemanticTree;
@@ -15,20 +16,26 @@ import java.util.Map;
 
 @Data
 public class SearchSession {
+    public static final Logger LOG = Logger.getLogger(SearchSession.class);
+
     private final Tokenizer tokenizer;
 
     private final Lexicator lexicator;
-
-    private final String sourcecode;
 
     private final Parser parser;
 
     private final Map<Integer, Object> constTable = new HashMap<>();
 
     private final Map<Object, Integer> indexTable = new HashMap<>();
-    private final CommandList commandList = new CommandList();
+
+    private CommandList commandList = new CommandList();
+
     private final SearchMemory memory = new SearchMemory();
+
+    private String sourcecode;
+
     private List<Token> tokenList;
+
 
     public SearchSession(String sourcecode, Tokenizer tokenizer, Lexicator lexicator, Parser parser) {
         this.sourcecode = sourcecode;
@@ -36,15 +43,6 @@ public class SearchSession {
         this.parser = parser;
         this.lexicator = lexicator;
     }
-
-    public SearchSession(SemanticTree semanticTree) {
-        this.sourcecode = null;
-        this.tokenizer = null;
-        this.parser = null;
-        this.lexicator = null;
-        semanticTree.getFunctionList(memory, commandList);
-    }
-
 
     public void preHandle() {
         if (sourcecode != null) {
@@ -57,10 +55,20 @@ public class SearchSession {
 
     public ResultSet process() throws Exception {
         preHandle();
-        for (Function_c function = commandList.next(); commandList.hasNext(); function = commandList.next()) {
+        if (commandList.isEmpty()) {
+            LOG.debug("No command");
+            return null;
+        }
+        for (Function_c function; commandList.hasNext(); ) {
+            function = commandList.next();
+            LOG.debug("Command: " + function.getClass().getCanonicalName());
             function.process();
         }
-        return (ResultSet) memory.getMapValue(MemoryConstant.RESULT);
+        ResultSet resultSet = (ResultSet) memory.getMapValue(MemoryConstant.RESULT);
+        if (resultSet == null) {
+            return ResultSet.empty();
+        }
+        return null;
     }
 
     public int put(Object tmp) {
@@ -78,4 +86,9 @@ public class SearchSession {
     public Object get(int id) {
         return this.constTable.get(id);
     }
+
+    public void reset() {
+        this.commandList = new CommandList();
+    }
+
 }

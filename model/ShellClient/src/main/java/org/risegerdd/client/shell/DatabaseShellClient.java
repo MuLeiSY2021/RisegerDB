@@ -43,12 +43,16 @@ public class DatabaseShellClient {
             }
             out.println(ColorList.CYBER_COLOR.toColorful("ResigerDB is now loaded And_f ready to use!"));
             while (true) {
+                StringBuilder sb = new StringBuilder();
                 out.print(CyberColorStyle.VERY_SOFT_MAGENTA.toColor("ResigerDB" + CyberColorStyle.DARK_BLUE.toColor("❯ ")));
-                userInput = reader.readLine();
+                do {
+                    userInput = reader.readLine();
+                    sb.append(userInput).append('\n');
+                } while (!userInput.endsWith(";"));
                 if (userInput.equalsIgnoreCase("exit")) {
                     break;
                 }
-                statement.setSqlText(userInput);
+                statement.setSqlText(sb.toString());
                 try {
                     //发送查询请求，并接收结果
                     TextSQLResponse response = statement.send();

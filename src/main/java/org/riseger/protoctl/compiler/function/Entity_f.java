@@ -1,7 +1,9 @@
 package org.riseger.protoctl.compiler.function;
 
+import lombok.Getter;
 import org.riseger.protoctl.compiler.function.type.UNIVERSAL_functional;
 
+@Getter
 public class Entity_f extends Function_f implements UNIVERSAL_functional {
 
     private final Object entity;

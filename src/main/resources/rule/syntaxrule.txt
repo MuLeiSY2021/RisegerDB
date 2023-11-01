@@ -1,12 +1,23 @@
 
 sqls -> sql ";" sqls
+    | sql ";"
     | sql
 
-sql -> "USE" statements
-    | "SEARCH" strings :> org.riseger.protoctl.compiler.function.main.Search_f
-    | "WHERE" conditions :> org.riseger.protoctl.compiler.function.main.Where_f
+sql -> "USE" use "SEARCH" search "WHERE" where
+    | "USE" use "SEARCH" search
+    | "SEARCH" search "WHERE" where
+    | "USE" use
+    | "SEARCH" search
+    | "WHERE" where
 
-statements -> statement "\" statements
+
+search -> strings :> org.riseger.protoctl.compiler.function.main.Search_f
+
+where -> conditions :> org.riseger.protoctl.compiler.function.main.Where_f
+
+use -> statements
+
+statements -> statement "|" statements
     |  statement
 
 statement -> "DATABASE" string :> org.riseger.protoctl.compiler.function.main.UseDatabase_f
@@ -26,27 +37,27 @@ coord -> "COORD" "(" number_operator "," number_operator ")" :> org.riseger.prot
 
 conditions -> bool_condition
 
-bool_condition -> "IN" rectangle :> org.riseger.protoctl.compiler.function.graphic.In_f
-    | "OUT" rectangle :> org.riseger.protoctl.compiler.function.graphic.Out_f
+bool_condition -> "(" conditions ")"
+    | bool_condition bool_condition "OR" bool_condition :> org.riseger.protoctl.compiler.function.logic.Or_f
+    | "AND" bool_condition :> org.riseger.protoctl.compiler.function.logic.And_f
     | "!" bool_condition :> org.riseger.protoctl.compiler.function.logic.Not_f
-    | bool_condition "AND" bool_condition :> org.riseger.protoctl.compiler.function.logic.And_f
-    | bool_condition "OR" bool_condition :> org.riseger.protoctl.compiler.function.logic.Or_f
-    | number_operator bool_operator number_operator
-    | string "=" string :> org.riseger.protoctl.compiler.function.math.Equal_f
-    | "(" conditions ")" :>
-
-bool_operator -> ">" :> org.riseger.protoctl.compiler.function.math.Big_f
-    | ">=" :> org.riseger.protoctl.compiler.function.math.BigEqual_f
-    | "=" :> org.riseger.protoctl.compiler.function.math.Equal_f
-    | "<" :> org.riseger.protoctl.compiler.function.math.Small_f
-    | "<=" :> org.riseger.protoctl.compiler.function.math.SmallEqual_f
+    | number_operator ">" number_operator :> org.riseger.protoctl.compiler.function.math.Big_f
+    | number_operator ">=" number_operator :> org.riseger.protoctl.compiler.function.math.BigEqual_f
+    | number_operator "<" number_operator :> org.riseger.protoctl.compiler.function.math.Small_f
+    | number_operator "<=" number_operator :> org.riseger.protoctl.compiler.function.math.SmallEqual_f
+    //TODO：需要判断迭元语（number_operator，string）是否合法，这样会导致时间复杂度极大，需要做缓存存储部分迭代
+    | number_operator "=" number_operator :> org.riseger.protoctl.compiler.function.math.Equal_f
+    | attribute "=" attribute :> org.riseger.protoctl.compiler.function.math.Equal_f
+    | attribute "=" string :> org.riseger.protoctl.compiler.function.math.Equal_f
+    | "IN" rectangle :> org.riseger.protoctl.compiler.function.graphic.In_f
+    | "OUT" rectangle :> org.riseger.protoctl.compiler.function.graphic.Out_f
 
 attribute -> string "." string :> org.riseger.protoctl.compiler.function.entity.Attribute_f
 
 
 
-number_operator -> "-" number_operator :> org.riseger.protoctl.compiler.number.NegivateNumber_f
-    | "(" number_operator ")"
+number_operator -> "(" number_operator ")"
+    | "-" number_operator :> org.riseger.protoctl.compiler.number.NegivateNumber_f
     | operator_0
 
 operator_0 -> number "+" number :> org.riseger.protoctl.compiler.number.AddNumber_f

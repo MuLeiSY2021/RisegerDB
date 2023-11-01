@@ -1,17 +1,17 @@
 //-------------------------字段SQL参考----------------------//USE DATABASE 'test_db'
 USE
-  DATABASE 'test_db'\
-  MAP 'china_mp'\
+  DATABASE 'test_db'|
+  MAP 'china_mp'|
   SCOPE RECT(
     COORD(1, 2),
     20000
-  )\
+  )|
   MODEL province_scope.area_scope.building_model;
 SEARCH
   building_model.KEY_LOOP,
-  building_model.name;
+  building_model.name
 WHERE
-  IN CYCLE(
+  IN RECT(
     coord(43, 66),
     7
   )
