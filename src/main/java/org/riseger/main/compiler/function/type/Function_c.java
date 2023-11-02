@@ -29,7 +29,7 @@ import org.riseger.protoctl.compiler.function.loop.Back_f;
 import org.riseger.protoctl.compiler.function.loop.IfJump_f;
 import org.riseger.protoctl.compiler.function.main.*;
 import org.riseger.protoctl.compiler.function.math.*;
-import org.riseger.protoctl.compiler.number.*;
+import org.riseger.protoctl.compiler.function.number.*;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 
 import java.util.HashMap;
@@ -48,6 +48,7 @@ public abstract class Function_c {
         functionMap.put(Distance_f.class, Distance_fc.class);
         functionMap.put(Rectangle_f.class, Rectangle_fc.class);
         functionMap.put(Strings_f.class, Strings_fc.class);
+        functionMap.put(TopStrings_f.class, TopStrings_fc.class);
 
         functionMap.put(In_f.class, In_fc.class);
         functionMap.put(Out_f.class, Out_fc.class);
@@ -65,6 +66,8 @@ public abstract class Function_c {
         functionMap.put(UseModel_f.class, UseModel_fc.class);
         functionMap.put(UseScope_f.class, UseScope_fc.class);
         functionMap.put(Where_f.class, Where_fc.class);
+        functionMap.put(PreWhere_f.class, PreWhere_fc.class);
+        functionMap.put(PostWhere_f.class, PostWhere_fc.class);
 
         functionMap.put(Big_f.class, Big_fc.class);
         functionMap.put(BigEqual_f.class, BigEqual_fc.class);

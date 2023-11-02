@@ -6,20 +6,20 @@ USE
     COORD(1, 2),
     20000
   )|
-  MODEL province_scope.area_scope.building_model;
+  MODEL 'province_scope.area_scope.building_model'
 SEARCH
-  building_model.KEY_LOOP,
-  building_model.name
+  'building_model.KEY_LOOP',
+  'building_model.name'
 WHERE
   IN RECT(
-    coord(43, 66),
-    7
+    coord(4000 ,1000),
+    5000
   )
   OR OUT RECT(
-    coord(44, 65),
-    4
+    coord(777.5, 72658.1),
+    45.2
   )
-  AND building_model.floorArea > 1000
+  AND building_model.floorArea > 1000;
 
 
 

@@ -4,6 +4,8 @@ import lombok.Data;
 import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.protoctl.serializer.JsonSerializer;
 
+import java.util.Objects;
+
 @Data
 public class Token {
     private String sourceCode;
@@ -43,5 +45,35 @@ public class Token {
 
     public boolean isKeyword() {
         return this.type == TokenType.KEYWORD;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Token token = (Token) object;
+        return id == token.id && line == token.line && column == token.column && type == token.type;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, type);
+    }
+
+    public Object getEntity() {
+        switch (type) {
+            case STRING:
+                if (sourceCode.startsWith("'")) {
+                    return sourceCode.substring(1, sourceCode.length() - 1);
+                } else {
+                    return sourceCode;
+                }
+
+            case NUMBER:
+                return Double.parseDouble(sourceCode);
+
+            default:
+                throw new IllegalArgumentException("非法的实体获取");
+        }
     }
 }

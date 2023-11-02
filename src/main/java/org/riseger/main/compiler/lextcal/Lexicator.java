@@ -30,8 +30,7 @@ public class Lexicator {
             } else if (numberPattern.matcher(sourcecode).matches()) {
                 LOG.debug("SourceCode:" + sourcecode + " 匹配数字");
                 double tmp = Double.parseDouble(sourcecode);
-                int id = session.put(tmp);
-                token.set(id, TokenType.NUMBER);
+                token.set(Double.hashCode(tmp), TokenType.NUMBER);
                 continue;
             }
             String tmp = sourcecode.toUpperCase();
@@ -41,8 +40,7 @@ public class Lexicator {
                 token.set(keyword.getId(), TokenType.KEYWORD);
             } else if (wordPattern.matcher(sourcecode).matches()) {
                 LOG.debug("SourceCode:" + sourcecode + " 匹配字符串");
-                int id = session.put(sourcecode);
-                token.set(id, TokenType.STRING);
+                token.set(sourcecode.hashCode(), TokenType.STRING);
             } else {
                 LOG.error("非法字符存在:" + token.getSourceCode(), new IllegalArgumentException());
                 throw new IllegalStateException();

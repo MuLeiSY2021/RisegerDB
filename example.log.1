@@ -1,1022 +1,1121 @@
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Compiler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"USE\n  DATABASE \u0027test_db\u0027|\n  MAP \u0027china_mp\u0027|\n  SCOPE RECT(\n    COORD(1, 2),\n    20000\n  )|\n  MODEL province_scope.area_scope.building_model\nSEARCH\n  building_model.KEY_LOOP,\n  building_model.name\nWHERE\n  IN RECT(\n    coord(43, 66),\n    7\n  )\n  OR OUT RECT(\n    coord(44, 65),\n    4\n  )\n  AND building_model.floorArea \u003e 1000;\n"}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"USE\n  DATABASE \u0027test_db\u0027|\n  MAP \u0027china_mp\u0027|\n  SCOPE RECT(\n    COORD(1, 2),\n    20000\n  )|\n  MODEL province_scope.area_scope.building_model\nSEARCH\n  building_model.KEY_LOOP,\n  building_model.name\nWHERE\n  IN RECT(\n    coord(43, 66),\n    7\n  )\n  OR OUT RECT(\n    coord(44, 65),\n    4\n  )\n  AND building_model.floorArea \u003e 1000;\n"}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:USE 匹配关键字:KW_9
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:DATABASE 匹配关键字:KW_19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'test_db' 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:| 匹配关键字:KW_8
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:MAP 匹配关键字:KW_20
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'china_mp' 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:| 匹配关键字:KW_8
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:SCOPE 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:COORD 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:1 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:2 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:20000 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:MODEL 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:province_scope 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:area_scope 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:SEARCH 匹配关键字:KW_10
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:KEY_LOOP 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:name 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:WHERE 匹配关键字:KW_11
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:IN 匹配关键字:KW_0
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:43 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:66 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:7 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_7
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OR 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OUT 匹配关键字:KW_1
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:44 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:65 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:4 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_7
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:AND 匹配关键字:KW_3
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:floorArea 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:> 匹配关键字:KW_24
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:1000 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_12
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'sql'} Syntax{';'} Syntax{'sqls'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：;:12 不匹配源代码：43:12
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'sql'} Syntax{';'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：;:12 不匹配源代码：43:12
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'sql'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 43 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 66 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 7 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 44 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 65 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ; 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'USE'} Syntax{'use'} Syntax{'SEARCH'} Syntax{'search'} Syntax{'WHERE'} Syntax{'where'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：USE:9 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'USE'} Syntax{'use'} Syntax{'SEARCH'} Syntax{'search'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：USE:9 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'SEARCH'} Syntax{'search'} Syntax{'WHERE'} Syntax{'where'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：SEARCH:10 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'USE'} Syntax{'use'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：USE:9 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'SEARCH'} Syntax{'search'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：SEARCH:10 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'WHERE'} Syntax{'where'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：WHERE:11 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.compoent.SearchSession - No command
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"success":true}
-INFO nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Compiler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL
-INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"USE\n  DATABASE \u0027test_db\u0027|\n  MAP \u0027china_mp\u0027|\n  SCOPE RECT(\n    COORD(1, 2),\n    20000\n  )|\n  MODEL province_scope.area_scope.building_model\nSEARCH\n  building_model.KEY_LOOP,\n  building_model.name\nWHERE\n  IN RECT(\n    coord(43, 66),\n    7\n  )\n  OR OUT RECT(\n    coord(44, 65),\n    4\n  )\n  AND building_model.floorArea \u003e 1000;\n"}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"USE\n  DATABASE \u0027test_db\u0027|\n  MAP \u0027china_mp\u0027|\n  SCOPE RECT(\n    COORD(1, 2),\n    20000\n  )|\n  MODEL province_scope.area_scope.building_model\nSEARCH\n  building_model.KEY_LOOP,\n  building_model.name\nWHERE\n  IN RECT(\n    coord(43, 66),\n    7\n  )\n  OR OUT RECT(\n    coord(44, 65),\n    4\n  )\n  AND building_model.floorArea \u003e 1000;\n"}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:USE 匹配关键字:KW_9
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:DATABASE 匹配关键字:KW_19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'test_db' 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:| 匹配关键字:KW_8
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:MAP 匹配关键字:KW_20
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'china_mp' 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:| 匹配关键字:KW_8
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:SCOPE 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:COORD 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:1 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:2 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:20000 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:MODEL 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:province_scope 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:area_scope 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:SEARCH 匹配关键字:KW_10
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:KEY_LOOP 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:name 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:WHERE 匹配关键字:KW_11
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:IN 匹配关键字:KW_0
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:43 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:66 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:7 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_7
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OR 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OUT 匹配关键字:KW_1
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:44 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:65 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:4 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_7
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:AND 匹配关键字:KW_3
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:floorArea 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:> 匹配关键字:KW_24
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:1000 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_12
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'sql'} Syntax{';'} Syntax{'sqls'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：;:12 不匹配源代码：43:12
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'sql'} Syntax{';'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：;:12 不匹配源代码：43:12
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'sql'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 43 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 66 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 7 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 44 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 65 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ; 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'USE'} Syntax{'use'} Syntax{'SEARCH'} Syntax{'search'} Syntax{'WHERE'} Syntax{'where'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：USE:9 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'USE'} Syntax{'use'} Syntax{'SEARCH'} Syntax{'search'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：USE:9 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'SEARCH'} Syntax{'search'} Syntax{'WHERE'} Syntax{'where'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：SEARCH:10 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'USE'} Syntax{'use'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：USE:9 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'SEARCH'} Syntax{'search'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：SEARCH:10 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'WHERE'} Syntax{'where'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：WHERE:11 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.compoent.SearchSession - No command
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"success":true}
-INFO nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Compiler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL
-INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"USE\n  DATABASE \u0027test_db\u0027|\n  MAP \u0027china_mp\u0027|\n  SCOPE RECT(\n    COORD(1, 2),\n    20000\n  )|\n  MODEL province_scope.area_scope.building_model\nSEARCH\n  building_model.KEY_LOOP,\n  building_model.name\nWHERE\n  IN RECT(\n    coord(43, 66),\n    7\n  )\n  OR OUT RECT(\n    coord(44, 65),\n    4\n  )\n  AND building_model.floorArea \u003e 1000;\n"}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"USE\n  DATABASE \u0027test_db\u0027|\n  MAP \u0027china_mp\u0027|\n  SCOPE RECT(\n    COORD(1, 2),\n    20000\n  )|\n  MODEL province_scope.area_scope.building_model\nSEARCH\n  building_model.KEY_LOOP,\n  building_model.name\nWHERE\n  IN RECT(\n    coord(43, 66),\n    7\n  )\n  OR OUT RECT(\n    coord(44, 65),\n    4\n  )\n  AND building_model.floorArea \u003e 1000;\n"}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:USE 匹配关键字:KW_9
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:DATABASE 匹配关键字:KW_19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'test_db' 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:| 匹配关键字:KW_8
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:MAP 匹配关键字:KW_20
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'china_mp' 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:| 匹配关键字:KW_8
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:SCOPE 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:COORD 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:1 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:2 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:20000 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:MODEL 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:province_scope 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:area_scope 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:SEARCH 匹配关键字:KW_10
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:KEY_LOOP 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:name 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:WHERE 匹配关键字:KW_11
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:IN 匹配关键字:KW_0
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:43 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:66 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:7 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_7
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OR 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OUT 匹配关键字:KW_1
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:44 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:65 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:4 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_7
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:AND 匹配关键字:KW_3
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:floorArea 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:> 匹配关键字:KW_24
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:1000 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_12
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'sql'} Syntax{';'} Syntax{'sqls'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 43 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 66 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 7 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 44 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 65 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为：";" 匹配代码为:";"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'sql'} Syntax{';'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 43 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 66 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 7 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 44 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 65 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为：";" 匹配代码为:";"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'USE'} Syntax{'use'} Syntax{'SEARCH'} Syntax{'search'} Syntax{'WHERE'} Syntax{'where'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：USE:9 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'USE'} Syntax{'use'} Syntax{'SEARCH'} Syntax{'search'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：USE:9 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'SEARCH'} Syntax{'search'} Syntax{'WHERE'} Syntax{'where'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：SEARCH:10 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'USE'} Syntax{'use'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：USE:9 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'SEARCH'} Syntax{'search'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：SEARCH:10 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'WHERE'} Syntax{'where'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：WHERE:11 不匹配源代码：DATABASE:19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.compoent.SearchSession - No command
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"success":true}
-INFO nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":true}
-INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
-INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Compiler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
-INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
-INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
-DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL
-INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"USE\n  DATABASE \u0027test_db\u0027|\n  MAP \u0027china_mp\u0027|\n  SCOPE RECT(\n    COORD(1, 2),\n    20000\n  )|\n  MODEL province_scope.area_scope.building_model\nSEARCH\n  building_model.KEY_LOOP,\n  building_model.name\nWHERE\n  IN RECT(\n    coord(43, 66),\n    7\n  )\n  OR OUT RECT(\n    coord(44, 65),\n    4\n  )\n  AND building_model.floorArea \u003e 1000;\n"}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"USE\n  DATABASE \u0027test_db\u0027|\n  MAP \u0027china_mp\u0027|\n  SCOPE RECT(\n    COORD(1, 2),\n    20000\n  )|\n  MODEL province_scope.area_scope.building_model\nSEARCH\n  building_model.KEY_LOOP,\n  building_model.name\nWHERE\n  IN RECT(\n    coord(43, 66),\n    7\n  )\n  OR OUT RECT(\n    coord(44, 65),\n    4\n  )\n  AND building_model.floorArea \u003e 1000;\n"}
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
-DEBUG nioEventLoopGroup-3-1 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:USE 匹配关键字:KW_9
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:DATABASE 匹配关键字:KW_19
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'test_db' 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:| 匹配关键字:KW_8
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:MAP 匹配关键字:KW_20
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'china_mp' 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:| 匹配关键字:KW_8
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:SCOPE 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:COORD 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:1 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:2 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:20000 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:MODEL 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:province_scope 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:area_scope 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:SEARCH 匹配关键字:KW_10
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:KEY_LOOP 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:name 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:WHERE 匹配关键字:KW_11
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:IN 匹配关键字:KW_0
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:43 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:66 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:7 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_7
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OR 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OUT 匹配关键字:KW_1
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_23
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_13
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_6
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:44 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_14
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:65 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:4 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_7
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:AND 匹配关键字:KW_3
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_28
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:floorArea 匹配字符串
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:> 匹配关键字:KW_24
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:1000 匹配数字
-DEBUG pool-2-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_12
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'sql'} Syntax{';'} Syntax{'sqls'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 USE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 43 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 66 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 7 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 44 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 65 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为：";" 匹配代码为:";"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配失败，token无后续了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'sql'} Syntax{';'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 USE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 43 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 66 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 7 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 44 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 65 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为：";" 匹配代码为:";"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'USE'} Syntax{'use'} Syntax{'SEARCH'} Syntax{'search'} Syntax{'WHERE'} Syntax{'where'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："USE" 匹配代码为:"USE"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：use
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："SEARCH" 匹配代码为:"SEARCH"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：search
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 KEY_LOOP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 name 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："WHERE" 匹配代码为:"WHERE"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：where
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 43 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 66 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 7 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 44 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 65 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'statements'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statements
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'statement'} Syntax{'|'} Syntax{'statements'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statement
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："|" 匹配代码为:"|"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statements
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'DATABASE'} Syntax{'string'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："DATABASE" 匹配代码为:"DATABASE"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：string
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.main.UseDatabase_f
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'test_db' 函数：class org.riseger.protoctl.compiler.function.Entity_f
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'statement'} Syntax{'|'} Syntax{'statements'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statement
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："|" 匹配代码为:"|"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statements
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'DATABASE'} Syntax{'string'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,符号：DATABASE:19 不匹配源代码：MAP:20
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'MAP'} Syntax{'string'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："MAP" 匹配代码为:"MAP"
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：string
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.main.UseMap_f
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'china_mp' 函数：class org.riseger.protoctl.compiler.function.Entity_f
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：Syntax{'statement'} Syntax{'|'} Syntax{'statements'} 
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statement
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 province_scope 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
-DEBUG pool-2-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 area_scope 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 72658.1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 45.2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：RECT ( coord , additive ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："RECT" 匹配代码为:"RECT"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：coord
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：COORD ( additive , additive ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："coord" 匹配代码为:"COORD"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：additive
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：multiplicative 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：multiplicative
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：unary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：unary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："4000":1085227008 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："4000":1085227008 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："4000":1085227008 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：4000 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："4000":1085227008 不匹配语法：",":12
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：attribute 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：attribute
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity . entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配失败,有迭代节点条件不匹配
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配失败,有迭代节点条件不匹配
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：COORD ( additive , additive ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："coord" 匹配代码为:"COORD"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：additive
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：multiplicative 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：multiplicative
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：unary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：unary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："4000":1085227008 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："4000":1085227008 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："4000":1085227008 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：4000 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：additive
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：multiplicative 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：multiplicative
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：unary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：unary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："1000":1083129856 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："1000":1083129856 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："1000":1083129856 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：1000 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为：")" 匹配代码为:")"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.entity.Coord_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：additive
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 5000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：multiplicative 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：multiplicative
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 5000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：unary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：unary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 5000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 5000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："5000":1085507584 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："5000":1085507584 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："5000":1085507584 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 5000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：5000 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为：")" 匹配代码为:")"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.entity.Rectangle_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.graphic.In_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.main.Where_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为：";" 匹配代码为:";"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配失败，token无后续了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：sql ; 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：sql
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 USE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SEARCH 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.KEY_LOOP' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.name' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 WHERE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 5000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 777.5 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 72658.1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 45.2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：USE use SEARCH search WHERE where 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："USE" 匹配代码为:"USE"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：use
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：statements 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statements
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：statement | statements 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statement
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 DATABASE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：DATABASE primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："DATABASE" 匹配代码为:"DATABASE"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'test_db'":1377257315 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'test_db'":1377257315 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'test_db'":1377257315 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'test_db' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'test_db' 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.main.UseDatabase_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："|" 匹配代码为:"|"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statements
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：statement | statements 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statement
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MAP 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：DATABASE primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："MAP":15 不匹配语法："DATABASE":14
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：MAP primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："MAP" 匹配代码为:"MAP"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'china_mp'":885556149 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'china_mp'":885556149 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'china_mp'":885556149 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'china_mp' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'china_mp' 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.main.UseMap_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："|" 匹配代码为:"|"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statements
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 | 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：statement | statements 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statement
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 SCOPE 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：DATABASE primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："SCOPE":16 不匹配语法："DATABASE":14
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：MAP primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："SCOPE":16 不匹配语法："MAP":15
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：SCOPE rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："SCOPE" 匹配代码为:"SCOPE"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：rectangle
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：RECT ( coord , additive ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："RECT" 匹配代码为:"RECT"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：coord
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：COORD ( additive , additive ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："COORD" 匹配代码为:"COORD"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：additive
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：multiplicative 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：multiplicative
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：unary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：unary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："1":1072693248 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："1":1072693248 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："1":1072693248 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：1 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："1":1072693248 不匹配语法：",":12
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：attribute 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：attribute
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity . entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 COORD 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配失败,有迭代节点条件不匹配
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配失败,有迭代节点条件不匹配
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：COORD ( additive , additive ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："COORD" 匹配代码为:"COORD"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：additive
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：multiplicative 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：multiplicative
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：unary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：unary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："1":1072693248 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："1":1072693248 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："1":1072693248 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：1 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：additive
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：multiplicative 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：multiplicative
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：unary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：unary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："2":1073741824 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："2":1073741824 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："2":1073741824 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：2 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为：")" 匹配代码为:")"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.entity.Coord_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：additive
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：multiplicative 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：multiplicative
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：unary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：unary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："20000":1087604736 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："20000":1087604736 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："20000":1087604736 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 20000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：20000 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为：")" 匹配代码为:")"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.entity.Rectangle_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.main.UseScope_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："|" 匹配代码为:"|"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statements
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：statement | statements 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statement
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：DATABASE primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："MODEL":17 不匹配语法："DATABASE":14
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：MAP primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："MODEL":17 不匹配语法："MAP":15
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：SCOPE rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："MODEL":17 不匹配语法："SCOPE":16
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：MODEL strings 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："MODEL" 匹配代码为:"MODEL"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：strings
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary , strings 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'province_scope.area_scope.building_model' 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法：",":12
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'province_scope.area_scope.building_model' 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.entity.TopStrings_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.main.UseModel_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："|":1
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：statement 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：statement
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 MODEL 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：DATABASE primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："MODEL":17 不匹配语法："DATABASE":14
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：MAP primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："MODEL":17 不匹配语法："MAP":15
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：SCOPE rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："MODEL":17 不匹配语法："SCOPE":16
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：MODEL strings 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："MODEL" 匹配代码为:"MODEL"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：strings
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary , strings 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'province_scope.area_scope.building_model' 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法：",":12
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'province_scope.area_scope.building_model'":-1163700481 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'province_scope.area_scope.building_model' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'province_scope.area_scope.building_model' 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.entity.TopStrings_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.main.UseModel_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："SEARCH" 匹配代码为:"SEARCH"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：search
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.KEY_LOOP' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.name' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：strings 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：strings
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.KEY_LOOP' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.name' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary , strings 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.KEY_LOOP' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'building_model.KEY_LOOP'":235215642 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'building_model.KEY_LOOP'":235215642 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'building_model.KEY_LOOP'":235215642 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.KEY_LOOP' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'building_model.KEY_LOOP' 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：strings
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.name' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary , strings 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.name' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'building_model.name'":-231774829 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'building_model.name'":-231774829 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'building_model.name'":-231774829 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.name' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'building_model.name' 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'building_model.name'":-231774829 不匹配语法：",":12
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：primary 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：primary
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.name' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：IN rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'building_model.name'":-231774829 不匹配语法："IN":27
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：OUT rectangle 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'building_model.name'":-231774829 不匹配语法："OUT":28
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：( bool_condition ) 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配失败,源代码："'building_model.name'":-231774829 不匹配语法："(":11
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：entity 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：entity
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 'building_model.name' 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配结束节点匹配成功，数值为：'building_model.name' 函数：class org.riseger.protoctl.compiler.function.Entity_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：null
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.entity.TopStrings_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.entity.Strings_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 不符合，进入下一个分支终结符
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 单支匹配成功，填充函数：class org.riseger.protoctl.compiler.function.main.Search_f
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 完整函数出现，储存为缓存
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 符合语法规则
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配成功，源代码为："WHERE" 匹配代码为:"WHERE"
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：where
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 5000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 777.5 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 72658.1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 45.2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：bool_condition 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：bool_condition
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 5000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 777.5 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 72658.1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 45.2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：or_condition 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：or_condition
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 4000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 5000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OR 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 OUT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 777.5 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 72658.1 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 , 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 45.2 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ) 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 AND 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 building_model 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 . 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 floorArea 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 > 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 1000 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 分支片段语法查询
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 匹配一条分支：and_condition 
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 非关键词,类型名为：and_condition
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 IN 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 RECT 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 coord 填充进去了
+DEBUG pool-3-thread-1 org.riseger.main.compiler.semantic.SemanticTree - 把 ( 填充进去了

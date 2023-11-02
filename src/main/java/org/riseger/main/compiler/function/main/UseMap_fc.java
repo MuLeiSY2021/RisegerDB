@@ -17,8 +17,10 @@ public class UseMap_fc extends MainFunction_c {
     @Override
     public void process() throws IllegalSearchAttributeException {
         Database_c db = (Database_c) super.getMap(MemoryConstant.DATABASE);
-        MapDB_c map = db.getMap((String) poll());
-        super.setMap(map, MemoryConstant.DATABASE);
+        String name = (String) poll();
+        LOG.debug("获取地图:\"" + name + "\"");
+        MapDB_c map = db.getMap(name);
+        super.setMap(map, MemoryConstant.MAP);
         super.setMap(map.getThreshold(),MemoryConstant.THRESHOLD);
     }
 

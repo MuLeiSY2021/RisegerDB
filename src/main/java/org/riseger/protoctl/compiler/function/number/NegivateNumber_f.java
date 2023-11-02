@@ -1,11 +1,11 @@
-package org.riseger.protoctl.compiler.number;
+package org.riseger.protoctl.compiler.function.number;
 
 import org.riseger.protoctl.compiler.function.Function_f;
 import org.riseger.protoctl.compiler.function.type.Functional;
 import org.riseger.protoctl.compiler.function.type.NumberFunctional;
 
-public class SubNumber_f extends Function_f implements NumberFunctional {
-    public SubNumber_f(Class<? extends Functional> clazz) {
+public class NegivateNumber_f extends Function_f implements NumberFunctional {
+    public NegivateNumber_f(Class<? extends Functional> clazz) {
         super(clazz);
     }
 

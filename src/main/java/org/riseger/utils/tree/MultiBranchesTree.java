@@ -52,7 +52,8 @@ public class MultiBranchesTree<E> {
 
             for (Node node : children) {
                 if (checkElement.equals(node.getEquable())) {
-                    node.insert(multiTreeElement, index);
+                    node.insert(multiTreeElement, ++index);
+                    return;
                 }
             }
             Node tmp;
@@ -115,7 +116,7 @@ public class MultiBranchesTree<E> {
                 for (Node node : this.children) {
                     if (node.equals(equable)) {
                         E e = node.find(iterator);
-                        return e == null ? this.element : e;
+                        return e == null ? node.element : e;
                     }
                 }
                 return null;

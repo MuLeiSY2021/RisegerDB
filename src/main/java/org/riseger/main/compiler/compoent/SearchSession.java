@@ -10,9 +10,7 @@ import org.riseger.main.compiler.token.Token;
 import org.riseger.main.compiler.token.Tokenizer;
 import org.riseger.protoctl.compiler.result.ResultSet;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Data
 public class SearchSession {
@@ -23,10 +21,6 @@ public class SearchSession {
     private final Lexicator lexicator;
 
     private final Parser parser;
-
-    private final Map<Integer, Object> constTable = new HashMap<>();
-
-    private final Map<Object, Integer> indexTable = new HashMap<>();
 
     private CommandList commandList = new CommandList();
 
@@ -69,22 +63,6 @@ public class SearchSession {
             return ResultSet.empty();
         }
         return null;
-    }
-
-    public int put(Object tmp) {
-        int i;
-        if (!indexTable.containsKey(tmp)) {
-            i = constTable.size();
-            constTable.put(i, tmp);
-            indexTable.put(tmp, i);
-        } else {
-            i = indexTable.get(tmp);
-        }
-        return i;
-    }
-
-    public Object get(int id) {
-        return this.constTable.get(id);
     }
 
     public void reset() {

@@ -37,8 +37,7 @@ public class Syntax implements Equable {
                 try {
                     hashCode1 = syntaxRule.getRuleMap().get(tile.getValue()).getTypeId();
                 } catch (Exception e) {
-                    LOG.error("Failed to decode", e);
-                    LOG.debug(tile.getValue());
+                    LOG.error("Failed to decode " + tile.getValue(), e);
                     hashCode1 = -1;
                 }
             }

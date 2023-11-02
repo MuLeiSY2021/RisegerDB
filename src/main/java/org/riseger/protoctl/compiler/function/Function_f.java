@@ -11,8 +11,8 @@ import org.riseger.protoctl.compiler.function.loop.Back_f;
 import org.riseger.protoctl.compiler.function.loop.IfJump_f;
 import org.riseger.protoctl.compiler.function.main.*;
 import org.riseger.protoctl.compiler.function.math.*;
+import org.riseger.protoctl.compiler.function.number.*;
 import org.riseger.protoctl.compiler.function.type.Functional;
-import org.riseger.protoctl.compiler.number.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +31,7 @@ public abstract class Function_f implements Functional {
         Function_f.set(Distance_f.class);
         Function_f.set(Rectangle_f.class);
         Function_f.set(Strings_f.class);
+        Function_f.set(TopStrings_f.class);
 
         Function_f.set(In_f.class);
         Function_f.set(Out_f.class);
@@ -48,6 +49,8 @@ public abstract class Function_f implements Functional {
         Function_f.set(UseModel_f.class);
         Function_f.set(UseScope_f.class);
         Function_f.set(Where_f.class);
+        Function_f.set(PreWhere_f.class);
+        Function_f.set(PostWhere_f.class);
 
         Function_f.set(Big_f.class);
         Function_f.set(BigEqual_f.class);
