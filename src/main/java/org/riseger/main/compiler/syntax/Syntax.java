@@ -66,8 +66,6 @@ public class Syntax implements Equable {
 
     @Override
     public String toString() {
-        return "Syntax{" +
-                '\'' + symbol + '\'' +
-                '}';
+        return '\'' + symbol + "',";
     }
 }

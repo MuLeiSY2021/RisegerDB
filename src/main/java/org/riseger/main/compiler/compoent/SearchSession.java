@@ -38,7 +38,7 @@ public class SearchSession {
         this.lexicator = lexicator;
     }
 
-    public void preHandle() {
+    public void preHandle() throws Exception {
         if (sourcecode != null) {
             this.tokenList = this.tokenizer.invoke(sourcecode);
             this.lexicator.invoke(tokenList, this);

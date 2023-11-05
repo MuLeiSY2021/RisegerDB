@@ -5,7 +5,7 @@ import org.riseger.main.compiler.lextcal.C;
 import org.riseger.main.compiler.lextcal.Keyword;
 import org.riseger.utils.tree.MultiBranchesTree;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,7 +28,7 @@ public class Tokenizer {
     }
 
     private List<Token> splitToken(List<Token> lines) {
-        List<Token> tokens = new LinkedList<>();
+        List<Token> tokens = new ArrayList<>();
         for (Token token : lines) {
             String tile = token.getSourceCode();
             if (!tile.isEmpty()) {
@@ -60,7 +60,7 @@ public class Tokenizer {
     }
 
     private List<Token> splitLine(String code) {
-        List<Token> res = new LinkedList<>();
+        List<Token> res = new ArrayList<>();
         int i = 1;
         for (String line : code.split("\n")) {
             res.add(new Token(line, i, 0));
@@ -70,7 +70,7 @@ public class Tokenizer {
     }
 
     private List<Token> splitSpace(List<Token> tokens) {
-        List<Token> res = new LinkedList<>();
+        List<Token> res = new ArrayList<>();
 
         for (Token token : tokens) {
             String line = token.getSourceCode();

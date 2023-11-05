@@ -16,7 +16,7 @@ public class Parser {
         this.syntaxForest = syntaxForest;
     }
 
-    public SemanticTree invoke(List<Token> tokenList, SearchSession session) {
+    public SemanticTree invoke(List<Token> tokenList, SearchSession session) throws Exception {
         return new SemanticTree(tokenList, syntaxForest, session);
     }
 }

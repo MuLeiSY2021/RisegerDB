@@ -28,7 +28,7 @@ or_condition -> and_condition
     | "(" or_condition ")"
 
 and_condition -> comparison
-    | and_condition "AND" not_condition :> org.riseger.protoctl.compiler.function.logic.And_f
+    | and_condition "AND" comparison :> org.riseger.protoctl.compiler.function.logic.And_f
 
 comparison -> additive
     | comparison ">" additive :> org.riseger.protoctl.compiler.function.math.Big_f
