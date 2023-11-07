@@ -10,7 +10,7 @@ import org.riseger.main.compiler.token.Token;
 import org.riseger.main.compiler.token.Tokenizer;
 import org.riseger.protoctl.compiler.result.ResultSet;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Data
 public class SearchSession {
@@ -28,7 +28,7 @@ public class SearchSession {
 
     private String sourcecode;
 
-    private List<Token> tokenList;
+    private ArrayList<Token> tokenList;
 
 
     public SearchSession(String sourcecode, Tokenizer tokenizer, Lexicator lexicator, Parser parser) {
@@ -42,7 +42,7 @@ public class SearchSession {
         if (sourcecode != null) {
             this.tokenList = this.tokenizer.invoke(sourcecode);
             this.lexicator.invoke(tokenList, this);
-            SemanticTree semanticTree = this.parser.invoke(tokenList, this);
+            SemanticTree semanticTree = this.parser.invoke(tokenList);
             semanticTree.getFunctionList(memory, commandList);
         }
     }

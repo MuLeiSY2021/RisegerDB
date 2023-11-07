@@ -18,6 +18,7 @@ import org.riseger.protoctl.compiler.result.ResultModelSet;
 import org.riseger.protoctl.compiler.result.ResultSet;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -69,15 +70,18 @@ public class Where_fc extends MainFunction_c implements ProcessorFunction {
     }
 
     @Override
-    public void preHandle(SemanticTree.Node node, int size, List<Function_f> functionList) {
-        //TODO:重新设计Where插入，把preWhere和PostWhere都重新插入到node里
-        functionList.add(new PreWhere_f());
+    public void stretch(SemanticTree.Node node, int size, List<Function_f> functionList) {
         node.addHead(new Back_f());
         node.addHead(new Entity_f(size));
         node.addHead(new PostWhere_f());
         node.addHead(new IfJump_f());
         node.addHead(new Entity_f(node.getLevel() + 3));
-
     }
 
+    @Override
+    public List<Function_f> preprocess() {
+        List<Function_f> result = new LinkedList<>();
+        result.add(new PreWhere_f());
+        return result;
+    }
 }

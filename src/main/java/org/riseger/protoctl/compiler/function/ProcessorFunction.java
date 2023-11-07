@@ -5,5 +5,8 @@ import org.riseger.main.compiler.semantic.SemanticTree;
 import java.util.List;
 
 public interface ProcessorFunction {
-    void preHandle(SemanticTree.Node node, int size, List<Function_f> functionList);
+
+    void stretch(SemanticTree.Node node, int size, List<Function_f> functionList);
+
+    List<Function_f> preprocess();
 }

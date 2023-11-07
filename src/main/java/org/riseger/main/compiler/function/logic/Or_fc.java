@@ -27,9 +27,13 @@ public class Or_fc extends BooleanFunction_c implements ProcessorFunction {
     }
 
     @Override
-    public void preHandle(SemanticTree.Node node, int size, List<Function_f> functionList) {
+    public void stretch(SemanticTree.Node node, int size, List<Function_f> functionList) {
         node.addChild(new Entity_f(node.getLevel() + 1), 0);
         node.addChild(new IfJump_f(), 0);
     }
 
+    @Override
+    public List<Function_f> preprocess() {
+        return null;
+    }
 }

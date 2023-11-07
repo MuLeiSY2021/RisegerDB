@@ -17,4 +17,17 @@ public enum TokenType {
     public String toString() {
         return type;
     }
+
+    public static TokenType fromString(String type) {
+        switch (type) {
+            case "string":
+                return TokenType.STRING;
+
+            case "number":
+                return TokenType.NUMBER;
+
+            default:
+                return null;
+        }
+    }
 }

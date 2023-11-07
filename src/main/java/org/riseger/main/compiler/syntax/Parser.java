@@ -2,11 +2,10 @@ package org.riseger.main.compiler.syntax;
 
 
 import org.apache.log4j.Logger;
-import org.riseger.main.compiler.compoent.SearchSession;
 import org.riseger.main.compiler.semantic.SemanticTree;
 import org.riseger.main.compiler.token.Token;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Parser {
     private static final Logger LOG = Logger.getLogger(Parser.class);
@@ -16,7 +15,7 @@ public class Parser {
         this.syntaxForest = syntaxForest;
     }
 
-    public SemanticTree invoke(List<Token> tokenList, SearchSession session) throws Exception {
-        return new SemanticTree(tokenList, syntaxForest, session);
+    public SemanticTree invoke(ArrayList<Token> tokenList) throws Exception {
+        return new SemanticTree(tokenList, syntaxForest);
     }
 }

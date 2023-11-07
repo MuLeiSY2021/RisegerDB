@@ -19,16 +19,16 @@ public class Tokenizer {
         this.keywordsTree = keywordsTree;
     }
 
-    public List<Token> invoke(String sourcecode) {
-        List<Token> lines;
+    public ArrayList<Token> invoke(String sourcecode) {
+        ArrayList<Token> lines;
         lines = splitLine(sourcecode);
         lines = splitSpace(lines);
         lines = splitToken(lines);
         return lines;
     }
 
-    private List<Token> splitToken(List<Token> lines) {
-        List<Token> tokens = new ArrayList<>();
+    private ArrayList<Token> splitToken(List<Token> lines) {
+        ArrayList<Token> tokens = new ArrayList<>();
         for (Token token : lines) {
             String tile = token.getSourceCode();
             if (!tile.isEmpty()) {
@@ -59,8 +59,8 @@ public class Tokenizer {
         return tokens;
     }
 
-    private List<Token> splitLine(String code) {
-        List<Token> res = new ArrayList<>();
+    private ArrayList<Token> splitLine(String code) {
+        ArrayList<Token> res = new ArrayList<>();
         int i = 1;
         for (String line : code.split("\n")) {
             res.add(new Token(line, i, 0));
@@ -69,8 +69,8 @@ public class Tokenizer {
         return res;
     }
 
-    private List<Token> splitSpace(List<Token> tokens) {
-        List<Token> res = new ArrayList<>();
+    private ArrayList<Token> splitSpace(List<Token> tokens) {
+        ArrayList<Token> res = new ArrayList<>();
 
         for (Token token : tokens) {
             String line = token.getSourceCode();

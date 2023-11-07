@@ -3,9 +3,17 @@ package org.riseger.main.compiler.function.logic;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.SearchMemory;
 import org.riseger.main.compiler.function.type.BooleanFunction_c;
+import org.riseger.main.compiler.semantic.SemanticTree;
+import org.riseger.protoctl.compiler.function.Entity_f;
+import org.riseger.protoctl.compiler.function.Function_f;
+import org.riseger.protoctl.compiler.function.ProcessorFunction;
+import org.riseger.protoctl.compiler.function.logic.Not_f;
+import org.riseger.protoctl.compiler.function.loop.IfJump_f;
 import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
 
-public class And_fc extends BooleanFunction_c {
+import java.util.List;
+
+public class And_fc extends BooleanFunction_c implements ProcessorFunction {
 
     public And_fc(SearchMemory memory, CommandList commandList) {
         super(memory, commandList);
@@ -17,5 +25,17 @@ public class And_fc extends BooleanFunction_c {
                 f2 = (Boolean) super.poll();
         boolean result = f1 & f2;
         super.put(result);
+    }
+
+    @Override
+    public void stretch(SemanticTree.Node node, int size, List<Function_f> functionList) {
+        node.addChild(new Not_f(), 0);
+        node.addChild(new Entity_f(node.getLevel() + 1), 0);
+        node.addChild(new IfJump_f(), 0);
+    }
+
+    @Override
+    public List<Function_f> preprocess() {
+        return null;
     }
 }
