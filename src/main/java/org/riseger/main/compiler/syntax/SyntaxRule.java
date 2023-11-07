@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import org.apache.log4j.Logger;
 import org.riseger.protoctl.compiler.function.Function_f;
+import org.riseger.protoctl.compiler.function.Null_f;
 import org.riseger.utils.tree.Equable;
 
 import java.util.*;
@@ -55,6 +56,9 @@ public class SyntaxRule {
                         LOG.error("Function" + tokens[1] + " is not assignable from Function_f", e);
                         throw e;
                     }
+                } else {
+                    Class<?> clazz = Null_f.class;
+                    functionClazz = (Class<Function_f>) clazz;
                 }
                 tokens[1] = tmp[0];
                 for (String meta : tokens[1].split(" ")) {
@@ -109,7 +113,7 @@ public class SyntaxRule {
     }
 
     @Data
-    class Rule {
+    public class Rule {
         private final String type;
 
         private final boolean end;

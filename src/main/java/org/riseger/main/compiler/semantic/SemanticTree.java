@@ -108,41 +108,6 @@ public class SemanticTree {
         return null;
     }
 
-    private static class TokenIterator {
-        ArrayList<Token> arrayList;
-        int index;
-
-        public TokenIterator(ArrayList<Token> arrayList) {
-            this.arrayList = arrayList;
-            index = 0;
-        }
-
-        private TokenIterator(ArrayList<Token> arrayList, int index) {
-            this.arrayList = arrayList;
-            this.index = index;
-        }
-
-        public Token next() {
-            return arrayList.get(index++);
-        }
-
-        public Token previous() {
-            return arrayList.get(--index);
-        }
-
-        public TokenIterator copy() {
-            return new TokenIterator(this.arrayList, this.index);
-        }
-
-        public boolean hasNext() {
-            return this.arrayList.size() > index;
-        }
-
-        public void back(TokenIterator iterator) {
-            this.index = iterator.index;
-        }
-    }
-
     @Data
     public static class Node {
         private Node parent;

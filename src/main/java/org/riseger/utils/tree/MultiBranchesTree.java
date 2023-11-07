@@ -2,10 +2,12 @@ package org.riseger.utils.tree;
 
 import lombok.Getter;
 import org.apache.log4j.Logger;
+import org.riseger.main.compiler.semantic.CopyableIterator;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class MultiBranchesTree<E> {
     private final Node root = new Node(null, null, null);
@@ -26,6 +28,10 @@ public class MultiBranchesTree<E> {
 
     public E find(Collection<Equable> equableCollection) {
         return this.root.find(equableCollection.iterator());
+    }
+
+    public E find(CopyableIterator<Equable> equableCopyableIterator) {
+        return this.root.find(equableCopyableIterator);
     }
 
     @Getter
@@ -116,8 +122,29 @@ public class MultiBranchesTree<E> {
                 for (Node node : this.children) {
                     if (node.equals(equable)) {
                         E e = node.find(iterator);
+                        if (e == null && node.element != null && iterator instanceof ListIterator) {
+                            ((ListIterator<Equable>) iterator).previous();
+                        }
                         return e == null ? node.element : e;
                     }
+                }
+                return null;
+            } else {
+                return this.element;
+            }
+        }
+
+        public E find(CopyableIterator<Equable> equableCopyableIterator) {
+            CopyableIterator<Equable> copyableIterator = equableCopyableIterator.copy();
+            if (equableCopyableIterator.hasNext()) {
+                Equable equable = equableCopyableIterator.next();
+                for (Node node : this.children) {
+                    if (node.equals(equable)) {
+                        E e = node.find(equableCopyableIterator);
+                        equableCopyableIterator.previous();
+                        return e == null ? node.element : e;
+                    }
+                    equableCopyableIterator.back(copyableIterator);
                 }
                 return null;
             } else {

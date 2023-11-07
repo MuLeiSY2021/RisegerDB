@@ -28,9 +28,9 @@ public class SyntaxForest {
             } else {
                 MultiBranchesTree<Class<Function_f>> mbt = new MultiBranchesTree<>();
                 for (SyntaxRule.Meta meta : entryRule.getMeta()) {
-                    mbt.insert(new SyntaxTreeElement(meta));
+                    mbt.insert(new SyntaxTreeElement(meta, rule));
                 }
-                forest.put(entry.getValue().getTypeId(), mbt));
+                forest.put(entry.getValue().getTypeId(), mbt);
             }
         }
     }

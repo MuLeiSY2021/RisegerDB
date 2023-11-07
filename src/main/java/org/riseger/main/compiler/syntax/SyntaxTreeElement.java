@@ -7,13 +7,16 @@ import org.riseger.utils.tree.MultiTreeElement;
 public class SyntaxTreeElement implements MultiTreeElement<Class<Function_f>> {
     private final SyntaxRule.Meta meta;
 
-    public SyntaxTreeElement(SyntaxRule.Meta meta) {
+    private final SyntaxRule rule;
+
+    public SyntaxTreeElement(SyntaxRule.Meta meta, SyntaxRule rule) {
         this.meta = meta;
+        this.rule = rule;
     }
 
     @Override
     public Equable next(int index) {
-        return meta.getTiles().get(index);
+        return new Syntax(rule, meta.getTiles().get(index));
     }
 
     @Override
