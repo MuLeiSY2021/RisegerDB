@@ -9,5 +9,5 @@ public interface TreeIterable<E> {
 
     TreeIterable<E> shallower();
 
-    Equable getEqual();
+    Object getEqual();
 }

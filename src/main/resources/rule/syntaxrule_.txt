@@ -17,9 +17,9 @@ use_statements -> use_statement "|" use_statements
 use_statement -> "DATABASE" string :> org.riseger.protoctl.compiler.function.main.UseDatabase_f
     | "MAP" string :> org.riseger.protoctl.compiler.function.main.UseMap_f
     | "SCOPE" rectangle_expression :> org.riseger.protoctl.compiler.function.main.UseScope_f
-    | "MODEL" strings_expression :> org.riseger.protoctl.compiler.function.main.UseModel_f
+    | "MODEL" strings :> org.riseger.protoctl.compiler.function.main.UseModel_f
 
-search_clause -> strings_expression :> org.riseger.protoctl.compiler.function.main.Search_f
+search_clause -> strings :> org.riseger.protoctl.compiler.function.main.Search_f
 
 where_clause -> bool_condition :> org.riseger.protoctl.compiler.function.main.Where_f
 
@@ -46,33 +46,26 @@ bool_condition_3 -> num_condition ">" bool_condition_3 :> org.riseger.protoctl.c
     | num_condition
 
 num_condition -> "(" num_condition ")"
-    | "-" num_condition :> org.riseger.protoctl.compiler.function.number.NegivateNumber_f
+    | num_condition_0 "+" num_condition :> org.riseger.protoctl.compiler.function.number.AddNumber_f
+    | num_condition_0 "-" num_condition :> org.riseger.protoctl.compiler.function.number.SubNumber_f
     | num_condition_0
-num_condition_0
-    | num_condition_1 "+" num_condition :> org.riseger.protoctl.compiler.function.number.AddNumber_f
-    | num_condition_1 "-" num_condition :> org.riseger.protoctl.compiler.function.number.SubNumber_f
+
+num_condition_0 -> num_condition_1 "*" num_condition_0 :> org.riseger.protoctl.compiler.function.number.MutiNumber_f
+    | num_condition_1 "/" num_condition_0 :> org.riseger.protoctl.compiler.function.number.DivideNumber_f
     | num_condition_1
 
-num_condition_1 -> number_entity "*" num_condition :> org.riseger.protoctl.compiler.function.number.MutiNumber_f
-    | number_entity "/" num_condition :> org.riseger.protoctl.compiler.function.number.DivideNumber_f
-    | number_entity
+num_condition_1 -> "-" number :> org.riseger.protoctl.compiler.function.number.NegivateNumber_f
+    | number
 
 attribute_expression -> string "." string :> org.riseger.protoctl.compiler.function.entity.Attribute_f
 
-graphic_expression -> rectangle_expression
-
 rectangle_expression -> "RECT" "(" coord_expression "," num_condition ")" :> org.riseger.protoctl.compiler.function.entity.Rectangle_f
 
-coord_expression -> "COORD" "(" num_condition "," num_condition ")" :> org.riseger.protoctl.compiler.function.entity.Coord_f
+coord_expression "COORD" "(" num_condition "," num_condition ")" :> org.riseger.protoctl.compiler.function.entity.Coord_f
 
-strings_expression -> string_entity "," strings_expression :> org.riseger.protoctl.compiler.function.entity.Strings_f
-    | string_entity :> org.riseger.protoctl.compiler.function.entity.TopStrings_f
+strings_expression -> string "," strings :> org.riseger.protoctl.compiler.function.entity.Strings_f
+    | string :> org.riseger.protoctl.compiler.function.entity.TopStrings_f
 
-number_entity -> number
-    | attribute_expression
-
-string_entity -> string
-    | attribute_expression
 END:number :> org.riseger.protoctl.compiler.function.Entity_f
 END:string :> org.riseger.protoctl.compiler.function.Entity_f
 

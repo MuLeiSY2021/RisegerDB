@@ -19,7 +19,7 @@ public class Tokenizer {
         this.keywordsTree = keywordsTree;
     }
 
-    public ArrayList<Token> invoke(String sourcecode) {
+    public ArrayList<Token> invoke(String sourcecode) throws Exception {
         ArrayList<Token> lines;
         lines = splitLine(sourcecode);
         lines = splitSpace(lines);
@@ -27,7 +27,7 @@ public class Tokenizer {
         return lines;
     }
 
-    private ArrayList<Token> splitToken(List<Token> lines) {
+    private ArrayList<Token> splitToken(List<Token> lines) throws Exception {
         ArrayList<Token> tokens = new ArrayList<>();
         for (Token token : lines) {
             String tile = token.getSourceCode();

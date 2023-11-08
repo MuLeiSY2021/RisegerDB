@@ -23,7 +23,7 @@ public class C implements Equable {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equal(Object obj) {
         if (obj instanceof C) {
             C comp = (C) obj;
             return this.character.equals(comp.character);
@@ -31,4 +31,5 @@ public class C implements Equable {
             return false;
         }
     }
+
 }

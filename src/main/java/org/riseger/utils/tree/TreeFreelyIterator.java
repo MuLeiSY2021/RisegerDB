@@ -17,7 +17,7 @@ public class TreeFreelyIterator<E> {
         return root.get();
     }
 
-    public Equable getEqual() {
+    public Object getEqual() {
         return root.getEqual();
     }
 
@@ -92,7 +92,7 @@ public class TreeFreelyIterator<E> {
         return !(this.indexes.isEmpty() || this.root == null);
     }
 
-    public Equable down() {
+    public Object down() {
         if (this.root == null) {
             throw new NullPointerException();
         }

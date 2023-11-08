@@ -1,11 +1,16 @@
 package org.riseger.main.compiler.semantic;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class CopyableIterator<E> {
+public class CopyableIterator<E> implements Iterator<E> {
     ArrayList<E> arrayList;
+
+    @Setter
+    SyntaxEqualPack pack;
 
     @Getter
     int index;
@@ -15,7 +20,7 @@ public class CopyableIterator<E> {
         index = 0;
     }
 
-    private CopyableIterator(ArrayList<E> arrayList, int index) {
+    CopyableIterator(ArrayList<E> arrayList, int index) {
         this.arrayList = arrayList;
         this.index = index;
     }
@@ -40,4 +45,7 @@ public class CopyableIterator<E> {
         this.index = iterator.getIndex();
     }
 
+    public boolean hasPrevious() {
+        return index != 0;
+    }
 }

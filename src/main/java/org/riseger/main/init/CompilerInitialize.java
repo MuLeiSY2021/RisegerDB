@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class CompilerInitialize implements Initializer {
-    public void init() throws FileNotFoundException, ClassNotFoundException {
+    public void init() throws Exception {
         //获取文法规则
         String rule = Utils.getText(new File("src/main/resources/rule/syntaxrule.txt"));
         if (rule == null) {

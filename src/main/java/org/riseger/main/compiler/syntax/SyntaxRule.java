@@ -99,7 +99,7 @@ public class SyntaxRule {
         }
 
         @Override
-        public boolean equals(Object o) {
+        public boolean equal(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Tile tile = (Tile) o;

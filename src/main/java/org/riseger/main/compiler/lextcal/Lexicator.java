@@ -22,7 +22,7 @@ public class Lexicator {
         this.tree = tree;
     }
 
-    public void invoke(List<Token> tokenList, SearchSession session) {
+    public void invoke(List<Token> tokenList, SearchSession session) throws Exception {
         for (Token token : tokenList) {
             String sourcecode = token.getSourceCode();
             if (sourcecode.isEmpty()) {

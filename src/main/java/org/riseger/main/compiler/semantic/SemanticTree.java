@@ -5,17 +5,17 @@ import org.apache.log4j.Logger;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.SearchMemory;
 import org.riseger.main.compiler.function.type.Function_c;
-import org.riseger.main.compiler.syntax.Syntax;
 import org.riseger.main.compiler.syntax.SyntaxForest;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.protoctl.compiler.CommandTree;
 import org.riseger.protoctl.compiler.function.Entity_f;
 import org.riseger.protoctl.compiler.function.Function_f;
+import org.riseger.protoctl.compiler.function.Null_f;
 import org.riseger.protoctl.compiler.function.ProcessorFunction;
+import org.riseger.utils.tree.MultiBranchesTree;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.stream.Collectors;
 
 public class SemanticTree {
     private final Logger LOG = Logger.getLogger(SemanticTree.class);
@@ -26,7 +26,13 @@ public class SemanticTree {
     }
 
     public SemanticTree(ArrayList<Token> tokenList, SyntaxForest forest) throws Exception {
-        root.add(suitTree(forest.getEntry(), new TokenIterator(tokenList), forest));
+        ArrayList<SyntaxEqualPack> syntaxEqualPacks = new ArrayList<>(tokenList.size());
+        CopyableIterator<SyntaxEqualPack> iterator = new CopyableIterator<>(syntaxEqualPacks);
+        for (Token token : tokenList) {
+            syntaxEqualPacks.add(new SyntaxEqualPack(this, this.root, token, iterator, forest)); // 请根据需要传递适当的参数给SyntaxEqualPack构造函数
+        }
+
+        suitTree(this.root, forest.getEntry(), iterator, forest);
     }
 
     public void getFunctionList(SearchMemory searchMemory, CommandList commandList) {
@@ -44,68 +50,23 @@ public class SemanticTree {
         this.root.sort(0);
     }
 
-    private Node suitTree(int treeCode, TokenIterator iterator, SyntaxForest forest) throws InstantiationException, IllegalAccessException {
-        if (forest.isEnd(treeCode)) {
-            Token token = iterator.next();
-            LOG.debug("语法终结点：" + token.getSourceCode());
-            if (token.getType().equals(forest.getEndType(treeCode))) {
-                Node node = new Node();
-                node.setFunction(new Entity_f(token.getEntity()));
-                LOG.debug("语法终结点 匹配成功");
-                return node;
-            } else {
-                LOG.debug("语法终结点 匹配失败");
-                return null;
-            }
+    public boolean suitTree(Node tmp, int treeCode, CopyableIterator<SyntaxEqualPack> iterator, SyntaxForest forest) throws Exception {
+        MultiBranchesTree<Class<Function_f>> mbt = forest.getSyntaxNode(treeCode);
+        Class<Function_f> f = mbt.find(iterator);
+        if (f == null) return false;
+        if (!Null_f.class.isAssignableFrom(f)) {
+            tmp.setFunction(f.newInstance());
         }
-        TokenIterator __ = iterator.copy();
-        for (List<Syntax> syntaxList : forest.getSyntaxNode(treeCode).getMetaList()) {
-            Node node = new Node();
-            iterator.back(__);
-            LOG.debug("进入" + syntaxList.stream().map(Syntax::toString).collect(Collectors.toList()) + "中匹配");
-            Syntax syntax_end = null;
-            for (Syntax syntax : syntaxList) {
-                syntax_end = syntax;
-                if (syntax.isKeyword()) {
-                    Token token = iterator.next();
-                    if (!syntax.equals(token)) {
-                        iterator.previous();
-                        LOG.debug("匹配失败,源代码：\"" + token.getSourceCode() + "\":" + token.getId() + " 不匹配语法：\"" + syntax.getSymbol() + "\":" + syntax.getId());
-                        syntax_end = null;
-                        break;
-                    }
-                    LOG.debug("匹配成功，源代码为：\"" + token.getSourceCode() + "\" 匹配代码为:\"" + syntax.getSymbol() + "\"");
-                } else {
-                    LOG.debug("非关键词匹配");
-                    Node tmp = suitTree(syntax.getId(), iterator, forest);
-                    if (tmp != null) {
-                        LOG.debug("匹配成功，非关键词 '" + syntax.getSymbol() + "' 匹配");
-                        node.add(tmp);
-                    } else {
-                        LOG.debug("非关键词" + syntax.getSymbol() + "匹配失败");
-                        syntax_end = null;
-                        break;
-                    }
-                }
-            }
-            if (syntax_end != null) {
-                LOG.debug("单支" + syntaxList.stream().map(Syntax::toString).collect(Collectors.toList()) + "匹配成功，填充函数：" + syntax_end.getFunctionFClass());
-                try {
-                    if (syntax_end.getFunctionFClass() != null) {
-                        node.setFunction(syntax_end.getFunctionFClass().newInstance());
-                    }
-                    return node;
-                } catch (InstantiationException | IllegalAccessException e) {
-                    LOG.error("Function can not empty instance", e);
-                    throw e;
-                }
-            }
-            if (!iterator.hasNext()) {
-                return null;
-            }
+        return true;
+    }
+
+    public boolean getEndNode(Node node, Token token, int code, SyntaxForest forest) {
+        if (token.getType().equals(forest.getEndType(code))) {
+            node.setFunction(new Entity_f(token.getEntity()));
+            return true;
+        } else {
+            return false;
         }
-        LOG.debug("匹配失败，" + forest.getSyntaxNode(treeCode).getMetaList().get(0).stream().map(Syntax::toString).collect(Collectors.toList()) + " 树内所有分支无匹配");
-        return null;
     }
 
     @Data
@@ -128,7 +89,7 @@ public class SemanticTree {
             child.setParent(this);
         }
 
-        void setFunction(Function_f function) {
+        public void setFunction(Function_f function) {
             this.function = function;
             if (this.function != null) {
                 this.canSort = function.canSort();
@@ -217,6 +178,7 @@ public class SemanticTree {
         }
 
         public void addChild(Function_f function, int index) {
+            //TODO: 语法树解析时添加函数部分出现问题
             Node tmp = new Node();
             tmp.setFunction(function);
             Node child = this.children.get(index);

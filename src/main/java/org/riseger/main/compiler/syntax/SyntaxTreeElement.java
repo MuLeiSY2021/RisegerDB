@@ -26,6 +26,6 @@ public class SyntaxTreeElement implements MultiTreeElement<Class<Function_f>> {
 
     @Override
     public boolean isTail(int index) {
-        return meta.getTiles().size() == index;
+        return meta.getTiles().size() == index + 1;
     }
 }

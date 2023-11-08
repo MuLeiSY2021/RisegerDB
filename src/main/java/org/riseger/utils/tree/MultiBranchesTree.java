@@ -14,11 +14,11 @@ public class MultiBranchesTree<E> {
 
     private static final Logger LOG = Logger.getLogger(MultiBranchesTree.class);
 
-    public void insert(MultiTreeElement<E> multiTreeElement) {
+    public void insert(MultiTreeElement<E> multiTreeElement) throws Exception {
         this.root.insert(multiTreeElement, 0);
     }
 
-    public E search(Collection<Equable> equableCollection) {
+    public E search(Collection<Equable> equableCollection) throws Exception {
         return this.root.search(equableCollection.iterator());
     }
 
@@ -26,12 +26,12 @@ public class MultiBranchesTree<E> {
         return new TreeFreelyIterator<>(root);
     }
 
-    public E find(Collection<Equable> equableCollection) {
+    public E find(Collection<Equable> equableCollection) throws Exception {
         return this.root.find(equableCollection.iterator());
     }
 
-    public E find(CopyableIterator<Equable> equableCopyableIterator) {
-        return this.root.find(equableCopyableIterator);
+    public E find(CopyableIterator<? extends Equable> equableCopyableIterator) throws Exception {
+        return this.root.find((CopyableIterator<Equable>) equableCopyableIterator);
     }
 
     @Getter
@@ -40,7 +40,7 @@ public class MultiBranchesTree<E> {
 
         private final LinkedList<Node> children = new LinkedList<>();
 
-        private final E element;
+        private E element;
 
         private final Equable equable;
 
@@ -50,15 +50,20 @@ public class MultiBranchesTree<E> {
             this.equable = equable;
         }
 
-        public void insert(MultiTreeElement<E> multiTreeElement, int index) {
+        public void insert(MultiTreeElement<E> multiTreeElement, int index) throws Exception {
+            //TODO: insert插入元素出问题了
             Equable checkElement = multiTreeElement.next(index);
             if (checkElement == null) {
                 return;
             }
 
             for (Node node : children) {
-                if (checkElement.equals(node.getEquable())) {
-                    node.insert(multiTreeElement, ++index);
+                if (checkElement.equal(node.getEquable())) {
+                    if (multiTreeElement.isTail(index)) {
+                        node.element = multiTreeElement.get();
+                    } else {
+                        node.insert(multiTreeElement, ++index);
+                    }
                     return;
                 }
             }
@@ -93,11 +98,11 @@ public class MultiBranchesTree<E> {
             return this.children.get(index);
         }
 
-        public E search(Iterator<Equable> equableIterator) {
+        public E search(Iterator<Equable> equableIterator) throws Exception {
             if (equableIterator.hasNext()) {
                 Equable equable = equableIterator.next();
                 for (Node node : this.children) {
-                    if (node.equals(equable)) {
+                    if (node.equal(equable)) {
                         return node.search(equableIterator);
                     }
                 }
@@ -112,15 +117,15 @@ public class MultiBranchesTree<E> {
             return this.equable;
         }
 
-        private boolean equals(Equable equable) {
-            return this.equable.equals(equable);
+        private boolean equal(Equable equable) throws Exception {
+            return equable.equal(this.equable);
         }
 
-        public E find(Iterator<Equable> iterator) {
+        public E find(Iterator<Equable> iterator) throws Exception {
             if (iterator.hasNext()) {
                 Equable equable = iterator.next();
                 for (Node node : this.children) {
-                    if (node.equals(equable)) {
+                    if (node.equal(equable)) {
                         E e = node.find(iterator);
                         if (e == null && node.element != null && iterator instanceof ListIterator) {
                             ((ListIterator<Equable>) iterator).previous();
@@ -134,17 +139,19 @@ public class MultiBranchesTree<E> {
             }
         }
 
-        public E find(CopyableIterator<Equable> equableCopyableIterator) {
-            CopyableIterator<Equable> copyableIterator = equableCopyableIterator.copy();
-            if (equableCopyableIterator.hasNext()) {
-                Equable equable = equableCopyableIterator.next();
+        public E find(CopyableIterator<Equable> equableCopyableIterator) throws Exception {
+            if (equableCopyableIterator.hasNext() && !this.children.isEmpty()) {
+                CopyableIterator<Equable> copyableIterator = equableCopyableIterator.copy();
                 for (Node node : this.children) {
-                    if (node.equals(equable)) {
+                    Equable equable = equableCopyableIterator.next();
+                    if (node.equal(equable)) {
                         E e = node.find(equableCopyableIterator);
-                        equableCopyableIterator.previous();
                         return e == null ? node.element : e;
                     }
                     equableCopyableIterator.back(copyableIterator);
+                }
+                if (this.element != null) {
+                    return this.element;
                 }
                 return null;
             } else {
