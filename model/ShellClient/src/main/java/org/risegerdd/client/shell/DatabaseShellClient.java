@@ -5,6 +5,7 @@ import org.reseger.jrdbc.driver.session.TextSQLMessageSession;
 import org.riseger.protoctl.exception.SQLException;
 import org.riseger.protoctl.otherProtocol.ProgressBar;
 import org.riseger.protoctl.packet.response.TextSQLResponse;
+import org.riseger.protoctl.serializer.JsonSerializer;
 import org.risegerdd.client.shell.introduce.CyberIntroduce;
 import org.risegerdd.client.shell.progressbar.WavyProgressBar;
 import org.risegerdd.client.shell.style.ColorList;
@@ -59,7 +60,7 @@ public class DatabaseShellClient {
 
                     //输出结果
                     if (response.isSuccess()) {
-                        out.println(response.getShellOutcome());
+                        out.println(JsonSerializer.serializeToString(response.getShellOutcome()));
                     } else {
                         out.print(ColorStyle.PROMPT_FRONT + "197m" + "[ERROR] Unknown error:");
                         out.println(response.getException() + ColorStyle.END);

@@ -30,14 +30,15 @@ public class Where_fc extends MainFunction_c implements ProcessorFunction {
 
     @Override
     public void process() throws IllegalSearchAttributeException {
+        if ((Boolean) poll()) {
+            fillResult();
+        }
         WhereIterator iterator = (WhereIterator) getMap(MemoryConstant.WHERE);
         if (iterator.hasNext()) {
-            if (super.hasMap(MemoryConstant.PASS) && (Boolean) super.getMap(MemoryConstant.PASS)) {
-                fillResult();
-            }
             super.put(true);
+        } else {
+            super.put(false);
         }
-        super.put(false);
     }
 
     private void fillResult() {
@@ -66,7 +67,7 @@ public class Where_fc extends MainFunction_c implements ProcessorFunction {
         for (String column : searchList.get(element.getModel())) {
             resultElement.addColumn(column, element.getAttributes().get(column));
         }
-        resultModelSet.add(new ResultElement());
+        resultModelSet.add(resultElement);
     }
 
     @Override
@@ -75,7 +76,7 @@ public class Where_fc extends MainFunction_c implements ProcessorFunction {
         node.addHead(new Entity_f(size + 1));
         node.addHead(new PostWhere_f());
         node.addHead(new IfJump_f());
-        node.addHead(new Entity_f(node.getLevel() + 3));
+        node.addHead(new Entity_f(node.getLevel() + 5));
     }
 
     @Override

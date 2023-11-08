@@ -63,7 +63,7 @@ public class SearchSession {
         if (resultSet == null) {
             return ResultSet.empty();
         }
-        return null;
+        return resultSet;
     }
 
     public void reset() {

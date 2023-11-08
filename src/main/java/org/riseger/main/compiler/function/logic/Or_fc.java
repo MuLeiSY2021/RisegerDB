@@ -23,6 +23,7 @@ public class Or_fc extends BooleanFunction_c implements ProcessorFunction {
         boolean f1 = (Boolean) super.poll();
         boolean f2 = (Boolean) super.poll();
         boolean result = f1 | f2;
+        LOG.debug(f1 + " | " + f2 + " " + result);
         super.put(result);
     }
 

@@ -39,19 +39,21 @@ public class WhereIterator {
     }
 
     public MBRectangle_c next() {
-        if (!this.elementListIterator.hasNext()) {
-            if (!layerListIterator.hasNext()) {
-                this.model = searchListIterator.next();
-                this.layerListIterator = findModelLayer(searchMap.get(model.getName()), maps, scope).listIterator();
-            }
-            this.layer = layerListIterator.next();
-            this.elementListIterator = layer.getElements(scope).listIterator();
-        }
         return this.elementListIterator.next();
     }
 
     public boolean hasNext() {
-        return elementListIterator.hasNext();
+        if (!this.elementListIterator.hasNext()) {
+            if (!layerListIterator.hasNext() && searchListIterator.hasNext()) {
+                this.model = searchListIterator.next();
+                this.layerListIterator = findModelLayer(searchMap.get(model.getName()), maps, scope).listIterator();
+            }
+            if (layerListIterator.hasNext()) {
+                this.layer = layerListIterator.next();
+                this.elementListIterator = layer.getElements(scope).listIterator();
+            }
+        }
+        return this.elementListIterator.hasNext();
     }
 
     private List<Layer_c> findModelLayer(SearchSet model, List<MapDB_c> maps, MBRectangle_c scope) {

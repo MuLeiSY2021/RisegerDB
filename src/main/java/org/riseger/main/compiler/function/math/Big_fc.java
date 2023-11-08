@@ -13,10 +13,11 @@ public class Big_fc extends BooleanFunction_c {
 
     @Override
     public void process() throws IllegalSearchAttributeException {
-        Number x1 = (Number) super.poll(),
-                x2 = (Number) super.poll();
+        Number x2 = (Number) super.poll(),
+                x1 = (Number) super.poll();
 
         boolean result = ((Comparable) x1).compareTo(x2) > 0;
+        LOG.debug(x1 + " > " + x2 + " " + result);
         super.put(result);
     }
 }
