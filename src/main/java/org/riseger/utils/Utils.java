@@ -86,4 +86,7 @@ public class Utils {
         return name + "." + style;
     }
 
+    public static String getClassLastDotName(Class<?> clazz) {
+        return clazz.getCanonicalName().substring(clazz.getCanonicalName().lastIndexOf(".") + 1);
+    }
 }

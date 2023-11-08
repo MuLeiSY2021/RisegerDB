@@ -1,9 +1,9 @@
 package org.riseger.protoctl.job;
 
 import org.riseger.main.entry.handler.TransponderHandler;
+import org.riseger.protoctl.compiler.command.USE;
 import org.riseger.protoctl.packet.request.TranspondRequest;
 import org.riseger.protoctl.packet.response.SearchResponse;
-import org.riseger.protoctl.compiler.command.USE;
 
 public class SearchJob extends TranspondJob {
 
@@ -15,7 +15,7 @@ public class SearchJob extends TranspondJob {
     }
 
     @Override
-    public void process() throws Exception {
+    public void process() {
         SearchResponse response = new SearchResponse();
         super.prepare(response);
 

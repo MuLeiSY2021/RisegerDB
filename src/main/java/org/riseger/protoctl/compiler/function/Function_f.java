@@ -8,6 +8,7 @@ import org.riseger.protoctl.compiler.function.logic.And_f;
 import org.riseger.protoctl.compiler.function.logic.Not_f;
 import org.riseger.protoctl.compiler.function.logic.Or_f;
 import org.riseger.protoctl.compiler.function.loop.Back_f;
+import org.riseger.protoctl.compiler.function.loop.IfJump_Pass_f;
 import org.riseger.protoctl.compiler.function.loop.IfJump_f;
 import org.riseger.protoctl.compiler.function.main.*;
 import org.riseger.protoctl.compiler.function.math.*;
@@ -42,6 +43,7 @@ public abstract class Function_f implements Functional {
 
         Function_f.set(Back_f.class);
         Function_f.set(IfJump_f.class);
+        Function_f.set(IfJump_Pass_f.class);
 
         Function_f.set(Search_f.class);
         Function_f.set(UseDatabase_f.class);

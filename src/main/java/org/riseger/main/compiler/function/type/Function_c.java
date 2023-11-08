@@ -13,6 +13,7 @@ import org.riseger.main.compiler.function.logic.And_fc;
 import org.riseger.main.compiler.function.logic.Not_fc;
 import org.riseger.main.compiler.function.logic.Or_fc;
 import org.riseger.main.compiler.function.loop.Back_fc;
+import org.riseger.main.compiler.function.loop.IfJump_Pass_fc;
 import org.riseger.main.compiler.function.loop.IfJump_fc;
 import org.riseger.main.compiler.function.main.*;
 import org.riseger.main.compiler.function.math.*;
@@ -26,6 +27,7 @@ import org.riseger.protoctl.compiler.function.logic.And_f;
 import org.riseger.protoctl.compiler.function.logic.Not_f;
 import org.riseger.protoctl.compiler.function.logic.Or_f;
 import org.riseger.protoctl.compiler.function.loop.Back_f;
+import org.riseger.protoctl.compiler.function.loop.IfJump_Pass_f;
 import org.riseger.protoctl.compiler.function.loop.IfJump_f;
 import org.riseger.protoctl.compiler.function.main.*;
 import org.riseger.protoctl.compiler.function.math.*;
@@ -59,6 +61,7 @@ public abstract class Function_c {
 
         functionMap.put(Back_f.class, Back_fc.class);
         functionMap.put(IfJump_f.class, IfJump_fc.class);
+        functionMap.put(IfJump_Pass_f.class, IfJump_Pass_fc.class);
 
         functionMap.put(Search_f.class, Search_fc.class);
         functionMap.put(UseDatabase_f.class, UseDatabase_fc.class);

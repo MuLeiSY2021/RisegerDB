@@ -35,9 +35,9 @@ public class Where_fc extends MainFunction_c implements ProcessorFunction {
             if (super.hasMap(MemoryConstant.PASS) && (Boolean) super.getMap(MemoryConstant.PASS)) {
                 fillResult();
             }
-            super.put(false);
+            super.put(true);
         }
-        super.put(true);
+        super.put(false);
     }
 
     private void fillResult() {
@@ -72,7 +72,7 @@ public class Where_fc extends MainFunction_c implements ProcessorFunction {
     @Override
     public void stretch(SemanticTree.Node node, int size, List<Function_f> functionList) {
         node.addHead(new Back_f());
-        node.addHead(new Entity_f(size));
+        node.addHead(new Entity_f(size + 1));
         node.addHead(new PostWhere_f());
         node.addHead(new IfJump_f());
         node.addHead(new Entity_f(node.getLevel() + 3));

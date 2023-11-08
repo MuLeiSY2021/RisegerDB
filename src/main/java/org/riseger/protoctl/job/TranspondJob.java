@@ -15,7 +15,7 @@ public abstract class TranspondJob implements Job {
         this.transponder = transponder;
     }
 
-    public abstract void process() throws Exception;
+    public abstract void process();
 
     public void prepare(BasicResponse response) {
         transponder.setOut(response);
@@ -27,11 +27,11 @@ public abstract class TranspondJob implements Job {
 
     @Override
     public void run() {
-        try {
-            process();
-        } catch (Exception e) {
-            transponder.send(e);
-            LOG.error("Error ", e);
-        }
+        process();
+    }
+
+    public void sendError(Exception e) {
+        transponder.send(e);
+        LOG.error("Error ", e);
     }
 }

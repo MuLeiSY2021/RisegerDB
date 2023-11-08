@@ -8,10 +8,8 @@ import org.riseger.main.compiler.function.type.Function_c;
 import org.riseger.main.compiler.syntax.SyntaxForest;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.protoctl.compiler.CommandTree;
-import org.riseger.protoctl.compiler.function.Entity_f;
-import org.riseger.protoctl.compiler.function.Function_f;
-import org.riseger.protoctl.compiler.function.Null_f;
-import org.riseger.protoctl.compiler.function.ProcessorFunction;
+import org.riseger.protoctl.compiler.function.*;
+import org.riseger.utils.Utils;
 import org.riseger.utils.tree.MultiBranchesTree;
 
 import java.util.*;
@@ -28,12 +26,15 @@ public class SemanticTree {
     public SemanticTree(ArrayList<Token> tokenList, SyntaxForest forest) throws Exception {
         ArrayList<SyntaxEqualPack> syntaxEqualPacks = new ArrayList<>(tokenList.size());
         CopyableIterator<SyntaxEqualPack> iterator = new CopyableIterator<>(syntaxEqualPacks);
+        Stack<TreeIterator<Function_f>> nodeStack = new Stack<>();
         for (Token token : tokenList) {
-            syntaxEqualPacks.add(new SyntaxEqualPack(this, this.root, token, iterator, forest)); // 请根据需要传递适当的参数给SyntaxEqualPack构造函数
+            syntaxEqualPacks.add(new SyntaxEqualPack(this, token, iterator, forest, nodeStack)); // 请根据需要传递适当的参数给SyntaxEqualPack构造函数
         }
-
-        suitTree(this.root, forest.getEntry(), iterator, forest);
+        nodeStack.push(new SemanticTreeIterator(this.root));
+        suitTree(nodeStack, forest.getEntry(), iterator, forest);
     }
+
+
 
     public void getFunctionList(SearchMemory searchMemory, CommandList commandList) {
         sort();
@@ -50,27 +51,39 @@ public class SemanticTree {
         this.root.sort(0);
     }
 
-    public boolean suitTree(Node tmp, int treeCode, CopyableIterator<SyntaxEqualPack> iterator, SyntaxForest forest) throws Exception {
+    public boolean suitTree(Stack<TreeIterator<Function_f>> nodeStack, int treeCode, CopyableIterator<SyntaxEqualPack> iterator, SyntaxForest forest) throws Exception {
         MultiBranchesTree<Class<Function_f>> mbt = forest.getSyntaxNode(treeCode);
         Class<Function_f> f = mbt.find(iterator);
-        if (f == null) return false;
-        if (!Null_f.class.isAssignableFrom(f)) {
-            tmp.setFunction(f.newInstance());
+        TreeIterator<Function_f> tmp = nodeStack.pop();
+        if (f == null || tmp == null) {
+            return false;
+        } else if (!Null_f.class.isAssignableFrom(f)) {
+            tmp.set(f.newInstance());
         }
         return true;
     }
 
-    public boolean getEndNode(Node node, Token token, int code, SyntaxForest forest) {
+    public boolean getEndNode(Stack<TreeIterator<Function_f>> nodeStack, Token token, int code, SyntaxForest forest) {
+        TreeIterator<Function_f> tmp = nodeStack.pop();
+        if (tmp == null) {
+            return false;
+        }
         if (token.getType().equals(forest.getEndType(code))) {
-            node.setFunction(new Entity_f(token.getEntity()));
+            tmp.set(new Entity_f(token.getEntity()));
             return true;
         } else {
             return false;
         }
     }
 
+    public TreeIterator<Function_f> iteratorEmpty() {
+        return new SemanticTreeIterator(new Node());
+    }
+
     @Data
     public static class Node {
+        private static final Logger LOG = Logger.getLogger(Node.class);
+
         private Node parent;
 
         private ArrayList<Node> children = new ArrayList<>(4);
@@ -105,19 +118,32 @@ public class SemanticTree {
         }
 
         int sort(int level) {
-            if (children.isEmpty()) {
-                this.level = ++level;
-                return this.level;
-            }
             if (canSort) {
                 children.sort(Comparator.comparing(Node::getPriority));
             }
 
-            int total = 0;
-            for (Node c : children) {
-                total += c.sort(total);
+            int[] array = null;
+            if (this.function instanceof ProcessorFunction_f) {
+                ProcessorFunction_f processorFunction = (ProcessorFunction_f) this.function;
+                array = processorFunction.getPostFunSize();
+                level += processorFunction.getInsertFunSize();
             }
+
+            int total = level;
+            int i = 0;
+            for (Node c : children) {
+                if (array != null && array.length == i + 1) {
+                    total += array[i];
+                }
+                total = c.sort(total);
+                i++;
+            }
+
             this.level = total;
+            if (this.function != null) {
+                this.level++;
+                LOG.debug("Fun:" + Utils.getClassLastDotName(this.function.getClass()) + " Level:" + this.level);
+            }
             return this.level;
         }
 
@@ -129,7 +155,7 @@ public class SemanticTree {
                 if (function instanceof ProcessorFunction) {
                     List<Function_f> functionList = new LinkedList<>();
                     ProcessorFunction processorFunction = (ProcessorFunction) function;
-                    processorFunction.stretch(this, this.level, functionList);
+                    processorFunction.stretch(this, len[0], functionList);
                     len[0] += functionList.size();
                 }
             }
@@ -145,11 +171,19 @@ public class SemanticTree {
             Function_c function = null;
             if (this.function != null) {
                 function = Function_c.getFunctionFromMap(this.function, searchMemory, commandList);
-                if (function instanceof ProcessorFunction) {
-                    ProcessorFunction processorFunction = (ProcessorFunction) function;
-                    for (Function_f f : processorFunction.preprocess()) {
-                        queue.add(Function_c.getFunctionFromMap(f, searchMemory, commandList));
+                try {
+                    if (function instanceof ProcessorFunction) {
+                        ProcessorFunction processorFunction = (ProcessorFunction) function;
+                        List<Function_f> list = processorFunction.preprocess();
+                        if (list != null) {
+                            for (Function_f f : list) {
+                                queue.add(Function_c.getFunctionFromMap(f, searchMemory, commandList));
+                            }
+                        }
                     }
+                } catch (NullPointerException e) {
+                    LOG.debug(this.function.getClass().getCanonicalName());
+                    throw e;
                 }
             }
             for (Node child : children) {
@@ -189,5 +223,26 @@ public class SemanticTree {
         }
     }
 
+    public static class SemanticTreeIterator implements TreeIterator<Function_f> {
+        private final Node node;
 
+        public SemanticTreeIterator(Node node) {
+            this.node = node;
+        }
+
+        @Override
+        public TreeIterator<Function_f> copy(TreeIterator<Function_f> iterator) {
+            return new SemanticTreeIterator(node);
+        }
+
+        @Override
+        public void add(TreeIterator<Function_f> iterator) {
+            this.node.add(((SemanticTreeIterator) iterator).node);
+        }
+
+        @Override
+        public void set(Function_f function) {
+            this.node.setFunction(function);
+        }
+    }
 }

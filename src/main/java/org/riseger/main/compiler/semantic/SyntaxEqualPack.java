@@ -5,23 +5,30 @@ import org.apache.log4j.Logger;
 import org.riseger.main.compiler.syntax.Syntax;
 import org.riseger.main.compiler.syntax.SyntaxForest;
 import org.riseger.main.compiler.token.Token;
+import org.riseger.protoctl.compiler.function.Function_f;
 import org.riseger.utils.tree.Equable;
+
+import java.util.Stack;
 
 @Data
 public class SyntaxEqualPack implements Equable {
     private static final Logger LOG = Logger.getLogger(SyntaxEqualPack.class);
-    SemanticTree tree;
-    SemanticTree.Node node;
-    Token token;
-    CopyableIterator<SyntaxEqualPack> iterator;
-    SyntaxForest forest;
+    private SemanticTree tree;
 
-    public SyntaxEqualPack(SemanticTree tree, SemanticTree.Node node, Token token, CopyableIterator<SyntaxEqualPack> iterator, SyntaxForest forest) {
+    private Token token;
+
+    private CopyableIterator<SyntaxEqualPack> iterator;
+
+    private SyntaxForest forest;
+
+    private Stack<TreeIterator<Function_f>> nodeStack;
+
+    public SyntaxEqualPack(SemanticTree tree, Token token, CopyableIterator<SyntaxEqualPack> iterator, SyntaxForest forest, Stack<TreeIterator<Function_f>> nodeStack) {
         this.tree = tree;
-        this.node = node;
         this.token = token;
         this.iterator = iterator;
         this.forest = forest;
+        this.nodeStack = nodeStack;
     }
 
     @Override
@@ -36,12 +43,14 @@ public class SyntaxEqualPack implements Equable {
                 return true;
             }
         } else {
-            SemanticTree.Node tmp = new SemanticTree.Node();
-
+            TreeIterator<Function_f> parent = nodeStack.peek();
+            TreeIterator<Function_f> tmp = tree.iteratorEmpty();
+            nodeStack.push(tmp);
             if (forest.isEnd(syntax.getId())) {
                 LOG.debug("语法终结点：" + forest.getEndType(syntax.getId()));
-                if (tree.getEndNode(tmp, token, syntax.getId(), forest)) {
+                if (tree.getEndNode(nodeStack, token, syntax.getId(), forest)) {
                     LOG.debug("语法终结点" + token.getSourceCode() + " 匹配成功");
+                    parent.add(tmp);
                     return true;
                 } else {
                     LOG.debug("语法终结点" + token.getSourceCode() + " 匹配失败");
@@ -52,9 +61,9 @@ public class SyntaxEqualPack implements Equable {
             if (iterator.hasPrevious()) {
                 iterator.previous();
             }
-            if (tree.suitTree(tmp, syntax.getId(), iterator, forest)) {
+            if (tree.suitTree(nodeStack, syntax.getId(), iterator, forest)) {
                 LOG.debug("非关键词 '" + syntax.getSymbol() + "' 匹配成功");
-                node.add(tmp);
+                parent.add(tmp);
                 return true;
             } else {
                 LOG.debug("非关键词" + syntax.getSymbol() + "匹配失败");

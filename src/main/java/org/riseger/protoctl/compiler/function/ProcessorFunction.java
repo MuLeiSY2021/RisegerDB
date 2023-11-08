@@ -9,4 +9,6 @@ public interface ProcessorFunction {
     void stretch(SemanticTree.Node node, int size, List<Function_f> functionList);
 
     List<Function_f> preprocess();
+
+
 }

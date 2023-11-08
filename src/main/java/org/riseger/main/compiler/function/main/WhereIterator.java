@@ -40,9 +40,7 @@ public class WhereIterator {
 
     public MBRectangle_c next() {
         if (!this.elementListIterator.hasNext()) {
-            if (!searchListIterator.hasNext()) {
-                throw new IndexOutOfBoundsException("Search list is done");
-            } else if (!layerListIterator.hasNext()) {
+            if (!layerListIterator.hasNext()) {
                 this.model = searchListIterator.next();
                 this.layerListIterator = findModelLayer(searchMap.get(model.getName()), maps, scope).listIterator();
             }

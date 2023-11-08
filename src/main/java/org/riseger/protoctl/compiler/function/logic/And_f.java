@@ -2,11 +2,12 @@ package org.riseger.protoctl.compiler.function.logic;
 
 import lombok.Getter;
 import org.riseger.protoctl.compiler.function.Function_f;
+import org.riseger.protoctl.compiler.function.ProcessorFunction_f;
 import org.riseger.protoctl.compiler.function.type.BOOL_functional;
 import org.riseger.protoctl.compiler.function.weight.ConstantWeight;
 
 @Getter
-public class And_f extends Function_f implements BOOL_functional {
+public class And_f extends Function_f implements BOOL_functional, ProcessorFunction_f {
     private BOOL_functional function1;
 
     private BOOL_functional function2;
@@ -29,5 +30,16 @@ public class And_f extends Function_f implements BOOL_functional {
     @Override
     public boolean canSort() {
         return false;
+    }
+
+    @Override
+    public int getInsertFunSize() {
+        return 0;
+    }
+
+    @Override
+    public int[] getPostFunSize() {
+        return new int[]{0, 3};
+//        return null;
     }
 }

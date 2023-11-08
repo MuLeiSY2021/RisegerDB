@@ -9,6 +9,7 @@ import org.riseger.main.compiler.syntax.Parser;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.main.compiler.token.Tokenizer;
 import org.riseger.protoctl.compiler.result.ResultSet;
+import org.riseger.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -55,7 +56,7 @@ public class SearchSession {
         }
         for (Function_c function; commandList.hasNext(); ) {
             function = commandList.next();
-            LOG.debug("Command: " + function.getClass().getCanonicalName());
+            LOG.debug("ID:" + commandList.index() + " Fun: " + Utils.getClassLastDotName(function.getClass()));
             function.process();
         }
         ResultSet resultSet = (ResultSet) memory.getMapValue(MemoryConstant.RESULT);

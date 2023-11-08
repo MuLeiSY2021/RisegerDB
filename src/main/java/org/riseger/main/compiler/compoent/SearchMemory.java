@@ -14,10 +14,16 @@ public class SearchMemory {
     private int variableIndex;
 
     public Object getVar() {
+        if (variableIndex == 0) {
+            throw new IndexOutOfBoundsException("Not enough variable");
+        }
         return this.stackMemory[--variableIndex];
     }
 
     public void setVar(Object object) {
+        if (variableIndex == Constant.DEFAULT_MEMORYSIZE) {
+            throw new IndexOutOfBoundsException("Stack over flow size:" + Constant.DEFAULT_MEMORYSIZE * 8 + "bytes");
+        }
         this.stackMemory[variableIndex++] = object;
     }
 

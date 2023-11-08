@@ -20,13 +20,17 @@ public class TextSQLJob extends TranspondJob {
     }
 
     @Override
-    public void process() throws Exception {
-        TextSQLResponse response = new TextSQLResponse();
-        super.prepare(response);
-        SearchSession session = CompilerMaster.INSTANCE.adapt(text, this.ipAddress);
-        response.setShellOutcome(session.process());
+    public void process() {
+        try {
+            TextSQLResponse response = new TextSQLResponse();
+            super.prepare(response);
+            SearchSession session = CompilerMaster.INSTANCE.adapt(text, this.ipAddress);
+            response.setShellOutcome(session.process());
 
-        super.done();
+            super.done();
+        } catch (Exception e) {
+            super.sendError(e);
+        }
     }
 
 }
