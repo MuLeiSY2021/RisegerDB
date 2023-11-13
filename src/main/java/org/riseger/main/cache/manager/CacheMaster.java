@@ -3,6 +3,8 @@ package org.riseger.main.cache.manager;
 import lombok.Data;
 import org.riseger.main.cache.entity.component.Database_c;
 
+import java.util.List;
+
 @Data
 public class CacheMaster {
     public static CacheMaster INSTANCE;
@@ -20,5 +22,9 @@ public class CacheMaster {
 
     public Database_c getDatabase(String database) {
         return databaseManager.getDatabase(database);
+    }
+
+    public List<String> getDatabases() {
+        return databaseManager.getDatabases();
     }
 }

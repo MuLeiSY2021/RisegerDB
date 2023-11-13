@@ -8,7 +8,9 @@ import org.riseger.protoctl.struct.entity.MapDB;
 import org.riseger.protoctl.struct.entity.Model;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -48,5 +50,15 @@ public class DatabaseManager {
 
     public Database_c getDatabase(String database) {
         return this.databases.get(database);
+    }
+
+    public int size() {
+        return this.databases.size();
+    }
+
+    public List<String> getDatabases() {
+        List<String> databases = new ArrayList<>(this.size());
+        databases.addAll(this.databases.keySet());
+        return databases;
     }
 }

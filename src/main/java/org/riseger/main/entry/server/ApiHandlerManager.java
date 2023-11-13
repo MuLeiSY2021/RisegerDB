@@ -1,29 +1,28 @@
 package org.riseger.main.entry.server;
 
 import org.riseger.main.workflow.workflow.CommonWorkFlow;
+import org.riseger.protoctl.packet.RequestType;
 import org.riseger.protoctl.packet.request.BasicRequest;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ApiHandlerManager {
     public static ApiHandlerManager INSTANCE;
 
-    private final CommonWorkFlow preloadWorkflow = new CommonWorkFlow();
+    private final Map<RequestType, CommonWorkFlow> workFlowMap = new HashMap<>();
 
-    private final CommonWorkFlow maintainWorkflow = new CommonWorkFlow();
-
-    private final CommonWorkFlow searchWorkflow = new CommonWorkFlow();
+    {
+        workFlowMap.put(RequestType.SEARCH, new CommonWorkFlow());
+        workFlowMap.put(RequestType.PRELOAD, new CommonWorkFlow());
+        workFlowMap.put(RequestType.UPDATE, new CommonWorkFlow());
+        workFlowMap.put(RequestType.SHELL, new CommonWorkFlow());
+    }
 
     private Compiler compiler;
 
-    public void setPreloadRequest(BasicRequest request) {
-        preloadWorkflow.push(request);
-    }
-
-    public void setSearchRequest(BasicRequest request) {
-        searchWorkflow.push(request);
-    }
-
-    public void setMaintainRequest(BasicRequest request) {
-        maintainWorkflow.push(request);
+    public void setRequest(BasicRequest request, RequestType type) {
+        workFlowMap.get(type).push(request);
     }
 
 }

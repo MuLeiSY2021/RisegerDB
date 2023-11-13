@@ -1,17 +1,21 @@
-package org.riseger.protoctl.compiler.function.main;
+package org.riseger.protoctl.compiler.function.get;
 
 import lombok.Getter;
 import org.riseger.protoctl.compiler.function.Function_f;
-import org.riseger.protoctl.compiler.function.ProcessorFunction_f;
 import org.riseger.protoctl.compiler.function.type.mainFunctional;
 import org.riseger.protoctl.compiler.function.weight.ConstantWeight;
 
 @Getter
-public class Where_f extends Function_f implements mainFunctional, ProcessorFunction_f {
+public class GetMaps_f extends Function_f implements mainFunctional {
     private String name;
 
-    public Where_f() {
-        super(Where_f.class);
+    public GetMaps_f() {
+        super(GetMaps_f.class);
+    }
+
+    public mainFunctional invoke(String name) {
+        this.name = name;
+        return this;
     }
 
     @Override
@@ -22,15 +26,5 @@ public class Where_f extends Function_f implements mainFunctional, ProcessorFunc
     @Override
     public boolean canSort() {
         return false;
-    }
-
-    @Override
-    public int[] getPostFunSize() {
-        return null;
-    }
-
-    @Override
-    public int getInsertFunSize() {
-        return 1;
     }
 }

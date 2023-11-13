@@ -2,10 +2,9 @@ package org.reseger.jrdbc.driver.session;
 
 import lombok.Getter;
 import org.reseger.jrdbc.driver.connector.Connection;
-import org.riseger.protoctl.packet.request.SearchRequest;
-import org.riseger.protoctl.packet.response.SearchResponse;
 import org.riseger.protoctl.compiler.command.USE;
 import org.riseger.protoctl.compiler.result.ResultSet;
+import org.riseger.protoctl.packet.response.SearchResponse;
 
 @Getter
 public class SearchSession extends Session<SearchResponse> {
@@ -18,7 +17,8 @@ public class SearchSession extends Session<SearchResponse> {
 
     @Override
     public SearchResponse send() throws InterruptedException {
-        return super.send(new SearchRequest(sql));
+//        return super.send(new SearchRequest(sql));
+        return null;
     }
 
     public USE use() {

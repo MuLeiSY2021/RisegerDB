@@ -15,6 +15,6 @@ public class TextSQLMessageSession extends Session<TextSQLResponse> {
 
     @Override
     public TextSQLResponse send() throws InterruptedException {
-        return super.send(new TextSQLRequest(this.sqlText));
+        return super.send(new TextSQLRequest(this.sqlText, super.getType(), super.getIpAddress()));
     }
 }

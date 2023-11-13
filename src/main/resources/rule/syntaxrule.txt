@@ -2,14 +2,26 @@ sqls -> sql ";" sqls
     | sql ";"
     | sql
 
-sql -> use_clause "SEARCH" search_clause "WHERE" where_clause
-    | use_clause "SEARCH" search_clause
-    | search_clause "WHERE" where_clause
-    | use_clause
-    | search_clause
-    | where_clause
+sql -> search_sql
+    | create_sql
+    | update_sql
 
-use_clause -> "USE" use_statements
+search_sql -> "USE" use_clause "SEARCH" search_clause "WHERE" where_clause
+    | "USE" use_clause "SEARCH" search_clause
+    | "SEARCH" search_clause "WHERE" where_clause
+    | "USE" use_clause
+    | "SEARCH" search_clause
+    | "WHERE" where_clause
+    | "GET" "DATABASES" :> org.riseger.protoctl.compiler.function.get.GetDatabases_f
+    | "GET" "MAPS" :> org.riseger.protoctl.compiler.function.get.GetMaps_f
+    | "GET" "MODELS" :> org.riseger.protoctl.compiler.function.get.GetModels_f
+
+create_sql -> "PRELOAD" string_entity :>
+
+//TODO:NEED LOG SYSTEM
+//update_sql -> "DELETE" "DATABASE" string_entity :>
+
+use_clause -> use_statements
 
 use_statements -> use_statement "|" use_statements
     | use_statement

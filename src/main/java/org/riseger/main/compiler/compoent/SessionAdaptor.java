@@ -3,6 +3,7 @@ package org.riseger.main.compiler.compoent;
 import org.riseger.main.compiler.lextcal.Lexicator;
 import org.riseger.main.compiler.syntax.Parser;
 import org.riseger.main.compiler.token.Tokenizer;
+import org.riseger.protoctl.compiler.CommandTree;
 
 public class SessionAdaptor {
     private final Tokenizer tokenizer;
@@ -19,5 +20,9 @@ public class SessionAdaptor {
 
     public SearchSession adapt(String sourceCode) {
         return new SearchSession(sourceCode, tokenizer, lexicator, parser);
+    }
+
+    public SearchSession adapt(CommandTree commandTree) {
+        return new SearchSession(commandTree, tokenizer, lexicator, parser);
     }
 }

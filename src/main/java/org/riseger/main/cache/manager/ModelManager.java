@@ -5,6 +5,8 @@ import org.riseger.main.cache.entity.component.Model_c;
 import org.riseger.protoctl.struct.entity.Model;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class ModelManager {
@@ -23,4 +25,7 @@ public class ModelManager {
         return models.get(name);
     }
 
+    public List<Model_c> getModels() {
+        return new LinkedList<>(models.values());
+    }
 }

@@ -10,8 +10,6 @@ public class HandlerManager extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) {
         ch.pipeline()
                 .addLast(new ProtocolCodec())
-                .addLast(new PreloadMessageInboundHandler())
-                .addLast(new SearchMessageInboundHandler())
                 .addLast(new TextSQLMessageInboundHandler());
     }
 }

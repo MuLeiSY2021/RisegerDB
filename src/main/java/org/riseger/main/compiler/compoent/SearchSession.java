@@ -8,6 +8,7 @@ import org.riseger.main.compiler.semantic.SemanticTree;
 import org.riseger.main.compiler.syntax.Parser;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.main.compiler.token.Tokenizer;
+import org.riseger.protoctl.compiler.CommandTree;
 import org.riseger.protoctl.compiler.result.ResultSet;
 import org.riseger.utils.Utils;
 
@@ -22,6 +23,8 @@ public class SearchSession {
     private final Lexicator lexicator;
 
     private final Parser parser;
+
+    private CommandTree commandTree;
 
     private CommandList commandList = new CommandList();
 
@@ -39,8 +42,18 @@ public class SearchSession {
         this.lexicator = lexicator;
     }
 
+    public SearchSession(CommandTree commandTree, Tokenizer tokenizer, Lexicator lexicator, Parser parser) {
+        this.commandTree = commandTree;
+        this.tokenizer = tokenizer;
+        this.parser = parser;
+        this.lexicator = lexicator;
+    }
+
     public void preHandle() throws Exception {
-        if (sourcecode != null) {
+        if (sourcecode == null) {
+            SemanticTree semanticTree = new SemanticTree(commandTree);
+            semanticTree.getFunctionList(memory, commandList);
+        } else {
             this.tokenList = this.tokenizer.invoke(sourcecode);
             this.lexicator.invoke(tokenList, this);
             SemanticTree semanticTree = this.parser.invoke(tokenList);

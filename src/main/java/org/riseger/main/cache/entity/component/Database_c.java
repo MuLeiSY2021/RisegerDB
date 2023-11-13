@@ -9,6 +9,7 @@ import org.riseger.protoctl.struct.entity.MapDB;
 import org.riseger.protoctl.struct.entity.Model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -17,11 +18,11 @@ public class Database_c {
 
     private Status status = Status.LOADING;
 
-    private MapDBManager maps = new MapDBManager(this);
+    private MapDBManager mapDBManager = new MapDBManager(this);
 
     private Map<String, Config> configs = new HashMap<>();
 
-    private ModelManager models = new ModelManager(this);
+    private ModelManager modelManager = new ModelManager(this);
 
     public Database_c(String name) {
         this.name = name;
@@ -32,11 +33,11 @@ public class Database_c {
     }
 
     public void addModel(Model model) {
-        models.addModel(model);
+        modelManager.addModel(model);
     }
 
     public void addMap(MapDB map) {
-        maps.addMap(Integer.parseInt(map.getConfig("nodeSize")),
+        mapDBManager.addMap(Integer.parseInt(map.getConfig("nodeSize")),
                 Double.parseDouble(map.getConfig("threshold")),
                 map);
     }
@@ -45,11 +46,19 @@ public class Database_c {
         this.status = Status.ACTIVE;
     }
 
+    public List<MapDB_c> getMapDBs() {
+        return mapDBManager.getMapDBs();
+    }
+
     public void initMap(MapDB_c map) {
-        maps.initMap(map);
+        mapDBManager.initMap(map);
     }
 
     public MapDB_c getMap(String map) {
-        return this.maps.getMap(map);
+        return this.mapDBManager.getMap(map);
+    }
+
+    public List<Model_c> getModels() {
+        return this.modelManager.getModels();
     }
 }

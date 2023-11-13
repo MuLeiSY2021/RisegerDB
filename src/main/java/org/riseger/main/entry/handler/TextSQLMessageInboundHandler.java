@@ -9,6 +9,6 @@ public class TextSQLMessageInboundHandler extends TransponderHandler<TextSQLRequ
     @Override
     public void handle(ChannelHandlerContext ctx, TextSQLRequest msg) throws Exception {
         msg.setIpAddress(ctx.channel().remoteAddress().toString());
-        ApiHandlerManager.INSTANCE.setMaintainRequest(msg);
+        ApiHandlerManager.INSTANCE.setRequest(msg, msg.getRequestType());
     }
 }

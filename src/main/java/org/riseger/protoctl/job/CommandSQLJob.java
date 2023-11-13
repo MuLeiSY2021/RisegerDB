@@ -3,19 +3,20 @@ package org.riseger.protoctl.job;
 import org.riseger.main.compiler.CompilerMaster;
 import org.riseger.main.compiler.compoent.SearchSession;
 import org.riseger.main.entry.handler.TransponderHandler;
+import org.riseger.protoctl.compiler.CommandTree;
 import org.riseger.protoctl.packet.request.TranspondRequest;
 import org.riseger.protoctl.packet.response.TextSQLResponse;
 
+public class CommandSQLJob extends TranspondJob {
 
-public class TextSQLJob extends TranspondJob {
-
-    private final String text;
+    private final CommandTree commandTree;
 
     private final String ipAddress;
 
-    public TextSQLJob(TransponderHandler<? extends TranspondRequest> transponder, String text, String ipAddress) {
+
+    public CommandSQLJob(TransponderHandler<? extends TranspondRequest> transponder, CommandTree commandTree, String ipAddress) {
         super(transponder);
-        this.text = text;
+        this.commandTree = commandTree;
         this.ipAddress = ipAddress;
     }
 
@@ -24,7 +25,7 @@ public class TextSQLJob extends TranspondJob {
         try {
             TextSQLResponse response = new TextSQLResponse();
             super.prepare(response);
-            SearchSession session = CompilerMaster.INSTANCE.adapt(text, ipAddress);
+            SearchSession session = CompilerMaster.INSTANCE.adapt(commandTree, this.ipAddress);
             response.setShellOutcome(session.process());
 
             super.done();

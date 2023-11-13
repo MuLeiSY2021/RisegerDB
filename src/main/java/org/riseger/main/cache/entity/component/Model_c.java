@@ -1,11 +1,13 @@
 package org.riseger.main.cache.entity.component;
 
+import lombok.Data;
 import org.riseger.protoctl.struct.entity.Model;
 import org.riseger.protoctl.struct.entity.Type;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
 public class Model_c {
     protected final String name;
     protected final Map<String, Type> parameters = new HashMap<>();

@@ -4,6 +4,7 @@ import org.reseger.jrdbc.driver.connector.Connection;
 import org.reseger.jrdbc.driver.session.TextSQLMessageSession;
 import org.riseger.protoctl.exception.SQLException;
 import org.riseger.protoctl.otherProtocol.ProgressBar;
+import org.riseger.protoctl.packet.RequestType;
 import org.riseger.protoctl.packet.response.TextSQLResponse;
 import org.riseger.protoctl.serializer.JsonSerializer;
 import org.risegerdd.client.shell.introduce.CyberIntroduce;
@@ -42,7 +43,7 @@ public class DatabaseShellClient {
                 System.err.print("[ERROR]   ");
                 throw e;
             }
-            out.println(ColorList.CYBER_COLOR.toColorful("ResigerDB is now loaded And_f ready to use!"));
+            out.println(ColorList.CYBER_COLOR.toColorful("ResigerDB is now loaded and ready to use!"));
             while (true) {
                 StringBuilder sb = new StringBuilder();
                 out.print(CyberColorStyle.VERY_SOFT_MAGENTA.toColor("ResigerDB" + CyberColorStyle.DARK_BLUE.toColor("❯ ")));
@@ -54,6 +55,7 @@ public class DatabaseShellClient {
                     break;
                 }
                 statement.setSqlText(sb.toString());
+                statement.setType(RequestType.SHELL);
                 try {
                     //发送查询请求，并接收结果
                     TextSQLResponse response = statement.send();

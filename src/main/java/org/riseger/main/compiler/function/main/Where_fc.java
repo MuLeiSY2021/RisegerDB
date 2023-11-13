@@ -63,9 +63,22 @@ public class Where_fc extends MainFunction_c implements ProcessorFunction {
         Map<String, List<String>> searchList = (Map<String, List<String>>) getMap(MemoryConstant.SEARCH);//√
 
         ResultElement resultElement = new ResultElement();
-        resultElement.setKeyColumns(element.getCoordsSet());
         for (String column : searchList.get(element.getModel())) {
-            resultElement.addColumn(column, element.getAttributes().get(column));
+            if (column.startsWith("KEY_LOOP")) {
+                String[] values = column.split("::");
+                if (values.length == 1) {
+                    resultElement.setAllKeyColumns(element.getCoordsSet());
+                } else if (values.length == 2) {
+                    int index = Integer.parseInt(values[1]);
+                    resultElement.setKeyColumns(index, element.getCoordsSet()[index]);
+                } else if (values.length == 3) {
+                    int index = Integer.parseInt(values[1]),
+                            x = values[2] == "x" ? 0 : 1;
+                    resultElement.setKeyColumns(index, x, element.getCoordsSet()[index][x]);
+                }
+            } else {
+                resultElement.addColumn(column, element.getAttributes().get(column));
+            }
         }
         resultModelSet.add(resultElement);
     }

@@ -112,10 +112,10 @@ public class PreloadFSM {
             createConfig(db, database.getConfigs());
 
             //创建Model文件
-            modelToFile(db, database.getModels());
+            modelToFile(db, database.getModelManager());
 
             //创建Map文件
-            for (MapDB_c map : database.getMaps().toList()) {
+            for (MapDB_c map : database.getMapDBManager().toList()) {
                 createMap(db, map, null);
             }
 

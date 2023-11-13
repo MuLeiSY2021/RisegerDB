@@ -23,7 +23,7 @@ public class Element_c extends MBRectangle_c {
     public Element_c(Element e, Database_c db, ElementManager elementManager, double threshold) {
         super(e.getAttributes(), threshold);
         this.parentModel = e.getParent().getName();
-        this.model = db.getModels().getModel(e.getModelName());
+        this.model = db.getModelManager().getModel(e.getModelName());
         this.db = db;
         this.elementManager = elementManager;
         for (Map.Entry<String, String> a : e.getAttributes().entrySet()) {
