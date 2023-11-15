@@ -3,10 +3,9 @@ package org.riseger.main.compiler.function;
 import org.apache.log4j.Logger;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.SearchMemory;
-import org.riseger.main.compiler.function.type.UniversalFunction_c;
-import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
+import org.riseger.protoctl.exception.SQLException;
 
-public class Entity_fc extends UniversalFunction_c {
+public class Entity_fc extends Function_c {
     private static final Logger LOG = Logger.getLogger(Entity_fc.class);
 
     private final Object _entity;
@@ -17,7 +16,7 @@ public class Entity_fc extends UniversalFunction_c {
     }
 
     @Override
-    public void process() throws IllegalSearchAttributeException {
+    public void process() throws SQLException {
         super.put(_entity);
     }
 

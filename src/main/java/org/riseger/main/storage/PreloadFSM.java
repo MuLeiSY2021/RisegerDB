@@ -59,7 +59,7 @@ public class PreloadFSM {
     }
 
     private static void modelToFile(File parent, ModelManager models) {
-        File modelFile = new File(parent.getPath() + "/" + "model" + ".json");
+        File modelFile = new File(parent.getPath() + "/" + Constant.MODEL_FILE_NAME + Constant.DOT_PREFIX + Constant.JSON_PREFIX);
         Utils.writeToFile(modelsToFile(models), modelFile.getPath());
         LOG.info("创建Model文件成功");
     }

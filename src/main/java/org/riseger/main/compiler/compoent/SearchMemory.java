@@ -38,6 +38,10 @@ public class SearchMemory {
     public boolean hasMapValue(MemoryConstant constant) {
         return this.mapMemory.containsKey(constant.hashCode());
     }
+
+    public void removeMapValue(MemoryConstant memoryConstant) {
+        this.mapMemory.remove(memoryConstant.hashCode());
+    }
 }
 
 

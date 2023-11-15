@@ -30,7 +30,7 @@ public class MapInitBuilder implements MapBuilder {
     }
 
     public MapDB_c build() {
-        MapDB_c map = new MapDB_c(null, configs, name, database);
+        MapDB_c map = new MapDB_c(configs, name, database);
         map.initAllSmp(smp_layer);
         map.initAllMd(md_layer);
         return map;

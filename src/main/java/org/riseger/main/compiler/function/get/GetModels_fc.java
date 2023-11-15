@@ -5,24 +5,24 @@ import org.riseger.main.cache.entity.component.Model_c;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.MemoryConstant;
 import org.riseger.main.compiler.compoent.SearchMemory;
-import org.riseger.main.compiler.function.type.MainFunction_c;
+import org.riseger.main.compiler.function.Function_c;
 import org.riseger.protoctl.compiler.result.ResultElement;
 import org.riseger.protoctl.compiler.result.ResultModelSet;
 import org.riseger.protoctl.compiler.result.ResultSet;
-import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
+import org.riseger.protoctl.exception.SQLException;
 import org.riseger.protoctl.struct.entity.Type;
 
 import java.util.List;
 import java.util.Map;
 
-public class GetModels_fc extends MainFunction_c {
+public class GetModels_fc extends Function_c {
 
     public GetModels_fc(SearchMemory memory, CommandList commandList) {
         super(memory, commandList);
     }
 
     @Override
-    public void process() throws IllegalSearchAttributeException {
+    public void process() throws SQLException {
         Database_c db = (Database_c) super.getMap(MemoryConstant.DATABASE);
 
         ResultSet resultSet;

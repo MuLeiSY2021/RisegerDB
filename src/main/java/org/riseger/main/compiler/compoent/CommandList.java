@@ -1,6 +1,6 @@
 package org.riseger.main.compiler.compoent;
 
-import org.riseger.main.compiler.function.type.Function_c;
+import org.riseger.main.compiler.function.Function_c;
 
 import java.util.Queue;
 

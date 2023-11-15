@@ -4,10 +4,10 @@ import org.riseger.main.cache.manager.CacheMaster;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.MemoryConstant;
 import org.riseger.main.compiler.compoent.SearchMemory;
-import org.riseger.main.compiler.function.type.MainFunction_c;
-import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
+import org.riseger.main.compiler.function.Function_c;
+import org.riseger.protoctl.exception.SQLException;
 
-public class UseDatabase_fc extends MainFunction_c {
+public class UseDatabase_fc extends Function_c {
 
 
     public UseDatabase_fc(SearchMemory memory, CommandList commandList) {
@@ -15,7 +15,7 @@ public class UseDatabase_fc extends MainFunction_c {
     }
 
     @Override
-    public void process() throws IllegalSearchAttributeException {
+    public void process() throws SQLException {
         setMap(CacheMaster.INSTANCE.getDatabase((String) poll()), MemoryConstant.DATABASE);
     }
 }

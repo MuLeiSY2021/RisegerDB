@@ -56,11 +56,10 @@ public class ElementManager {
 
     public void updateIndex(MBRectangle_c self, Rectangle rectangle) {
         if (self.willBeExpand(rectangle)) {
-            int i = rtreeKeyIndex.deleteStrict(self);
+            rtreeKeyIndex.deleteStrict(self);
             self.expand(rectangle);
-            if (i != 0) {
-                rtreeKeyIndex.insert(self);
-            }
+            rtreeKeyIndex.insert(self);
+            this.parent.expand(self);
         }
     }
 

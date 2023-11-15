@@ -2,6 +2,9 @@ package org.riseger.protoctl.compiler.function;
 
 import org.apache.log4j.Logger;
 import org.riseger.protoctl.compiler.function.entity.*;
+import org.riseger.protoctl.compiler.function.get.GetDatabases_f;
+import org.riseger.protoctl.compiler.function.get.GetMaps_f;
+import org.riseger.protoctl.compiler.function.get.GetModels_f;
 import org.riseger.protoctl.compiler.function.graphic.In_f;
 import org.riseger.protoctl.compiler.function.graphic.Out_f;
 import org.riseger.protoctl.compiler.function.logic.And_f;
@@ -13,6 +16,7 @@ import org.riseger.protoctl.compiler.function.loop.IfJump_f;
 import org.riseger.protoctl.compiler.function.main.*;
 import org.riseger.protoctl.compiler.function.math.*;
 import org.riseger.protoctl.compiler.function.number.*;
+import org.riseger.protoctl.compiler.function.preload.Preload_f;
 import org.riseger.protoctl.compiler.function.type.Functional;
 
 import java.util.HashMap;
@@ -68,6 +72,12 @@ public abstract class Function_f implements Functional {
         Function_f.set(SubNumber_f.class);
 
         Function_f.set(Entity_f.class);
+
+        Function_f.set(GetDatabases_f.class);
+        Function_f.set(GetMaps_f.class);
+        Function_f.set(GetModels_f.class);
+
+        Function_f.set(Preload_f.class);
     }
 
     private final int functionId;

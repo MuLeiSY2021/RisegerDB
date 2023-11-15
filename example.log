@@ -1,0 +1,279 @@
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
+DEBUG pool-5-thread-3 org.riseger.main.compiler.CompilerMaster - ip: /127.0.0.1:45624
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:get 匹配关键字:KW_18
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:models 匹配关键字:KW_21
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_11
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："USE":15
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："SEARCH":16
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："WHERE":17
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："get" 匹配代码为:"GET"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："models":21 不匹配语法："DATABASES":19
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："models":21 不匹配语法："MAPS":20
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："models" 匹配代码为:"MODELS"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：";" 匹配代码为:";"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:GetModels_f Level:1
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:1 Fun: GetModels_fc
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"shellOutcome":{"modelSetMap":{"maps":{"resultElements":[]}}},"success":true}
+INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"get models\n;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"get models\n;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
+DEBUG pool-5-thread-4 org.riseger.main.compiler.CompilerMaster - ip: /127.0.0.1:45624
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:get 匹配关键字:KW_18
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:models 匹配关键字:KW_21
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_11
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："USE":15
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："SEARCH":16
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："WHERE":17
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："get" 匹配代码为:"GET"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："models":21 不匹配语法："DATABASES":19
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："models":21 不匹配语法："MAPS":20
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："models" 匹配代码为:"MODELS"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：";" 匹配代码为:";"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:GetModels_f Level:1
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:1 Fun: GetModels_fc
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"shellOutcome":{"modelSetMap":{"maps":{"resultElements":[]}}},"success":true}
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Compiler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"get models\n;use database \u0027test_db\u0027;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"get models\n;use database \u0027test_db\u0027;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
+DEBUG pool-5-thread-1 org.riseger.main.compiler.CompilerMaster - ip: /127.0.0.1:37214
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:get 匹配关键字:KW_18
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:models 匹配关键字:KW_21
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_11
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:use 匹配关键字:KW_15
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:database 匹配关键字:KW_1
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'test_db' 匹配字符串
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_11
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："USE":15
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："SEARCH":16
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："WHERE":17
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："get" 匹配代码为:"GET"
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："models":21 不匹配语法："DATABASES":19
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："models":21 不匹配语法："MAPS":20
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："models" 匹配代码为:"MODELS"
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：";" 匹配代码为:";"
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sqls' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："use" 匹配代码为:"USE"
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_clause' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statements' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statement' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："database" 匹配代码为:"DATABASE"
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：STR
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点'test_db' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statement' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：";":11 不匹配语法："|":6
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statements' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_clause' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：";":11 不匹配语法："SEARCH":16
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：";" 匹配代码为:";"
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sqls' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:GetModels_f Level:1
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:2
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:UseDatabase_f Level:3
+DEBUG pool-5-thread-1 org.riseger.main.compiler.compoent.SearchSession - ID:1 Fun: GetModels_fc
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed failed.
+ERROR pool-5-thread-1 org.riseger.protoctl.job.TextSQLJob - Error 
+java.lang.NullPointerException
+	at org.riseger.main.compiler.function.get.GetModels_fc.process(GetModels_fc.java:35)
+	at org.riseger.main.compiler.compoent.SearchSession.process(SearchSession.java:73)
+	at org.riseger.protoctl.job.TextSQLJob.process(TextSQLJob.java:28)
+	at org.riseger.protoctl.job.TranspondJob.run(TranspondJob.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"success":false}
+DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
+DEBUG nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"use database \u0027test_db\u0027;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"use database \u0027test_db\u0027;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
+DEBUG nioEventLoopGroup-3-2 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
+DEBUG pool-5-thread-2 org.riseger.main.compiler.CompilerMaster - ip: /127.0.0.1:60242
+DEBUG pool-5-thread-2 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:use 匹配关键字:KW_15
+DEBUG pool-5-thread-2 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:database 匹配关键字:KW_1
+DEBUG pool-5-thread-2 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'test_db' 匹配字符串
+DEBUG pool-5-thread-2 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_11
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："use" 匹配代码为:"USE"
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_clause' 匹配
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statements' 匹配
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statement' 匹配
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："database" 匹配代码为:"DATABASE"
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：STR
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点'test_db' 匹配成功
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statement' 匹配成功
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：";":11 不匹配语法："|":6
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statements' 匹配成功
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_clause' 匹配成功
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：";":11 不匹配语法："SEARCH":16
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配成功
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配成功
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：";" 匹配代码为:";"
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:1
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:UseDatabase_f Level:2
+DEBUG pool-5-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:1 Fun: Entity_fc
+DEBUG pool-5-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: UseDatabase_fc
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
+DEBUG nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"shellOutcome":{"modelSetMap":{}},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"shellOutcome":{"modelSetMap":{}},"success":true}
+DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
+DEBUG nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"get models;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"get models;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
+DEBUG nioEventLoopGroup-3-2 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
+DEBUG pool-5-thread-3 org.riseger.main.compiler.CompilerMaster - ip: /127.0.0.1:60242
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:get 匹配关键字:KW_18
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:models 匹配关键字:KW_21
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_11
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："USE":15
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："SEARCH":16
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："WHERE":17
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："get" 匹配代码为:"GET"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："models":21 不匹配语法："DATABASES":19
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："models":21 不匹配语法："MAPS":20
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："models" 匹配代码为:"MODELS"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：";" 匹配代码为:";"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:GetModels_f Level:1
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:1 Fun: GetModels_fc
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
+DEBUG nioEventLoopGroup-3-2 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
+INFO nioEventLoopGroup-3-2 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"shellOutcome":{"modelSetMap":{"maps":{"resultElements":[]}}},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"shellOutcome":{"modelSetMap":{"maps":{"resultElements":[]}}},"success":true}
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+ERROR main org.riseger.main.init.StorageInitializer - Error 
+java.nio.file.NoSuchFileException: /path/to/file.txt
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86)
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107)
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214)
+	at java.nio.file.Files.newByteChannel(Files.java:361)
+	at java.nio.file.Files.newByteChannel(Files.java:407)
+	at java.nio.file.Files.readAllBytes(Files.java:3152)
+	at org.riseger.utils.Utils.getBytes(Utils.java:94)
+	at org.riseger.main.storage.FileSystemManagers.getDatabase(FileSystemManagers.java:52)
+	at org.riseger.main.storage.FileSystemManagers.initDatabases(FileSystemManagers.java:35)
+	at org.riseger.main.init.StorageInitializer.initDatabases(StorageInitializer.java:25)
+	at org.riseger.main.init.CacheInitializer.init(CacheInitializer.java:20)
+	at org.riseger.main.init.MainBootstrap.main(MainBootstrap.java:21)
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Compiler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+INFO main org.riseger.main.init.MainBootstrap - Log initializer successfully
+INFO main org.riseger.main.init.MainBootstrap - Storage initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Cache initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Compiler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - RequestHandler initialized successfully
+INFO main org.riseger.main.init.MainBootstrap - Entry initialized successfully
+INFO entry-initializer org.riseger.main.entry.server.NettyServer - Netty server connected ,waiting for port 10086 requests
+DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"USE\n  DATABASE \u0027test_db\u0027;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"USE\n  DATABASE \u0027test_db\u0027;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
+DEBUG pool-5-thread-1 org.riseger.main.compiler.CompilerMaster - ip: /127.0.0.1:37158
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:USE 匹配关键字:KW_15
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:DATABASE 匹配关键字:KW_1
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:'test_db' 匹配字符串
+DEBUG pool-5-thread-1 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_11
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："USE" 匹配代码为:"USE"
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_clause' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statements' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statement' 匹配
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："DATABASE" 匹配代码为:"DATABASE"
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：STR
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点'test_db' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statement' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：";":11 不匹配语法："|":6
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_statements' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'use_clause' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：";":11 不匹配语法："SEARCH":16
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配成功
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：";" 匹配代码为:";"
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:1
+DEBUG pool-5-thread-1 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:UseDatabase_f Level:2
+DEBUG pool-5-thread-1 org.riseger.main.compiler.compoent.SearchSession - ID:1 Fun: Entity_fc
+DEBUG pool-5-thread-1 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: UseDatabase_fc
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"shellOutcome":{"modelSetMap":{}},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"shellOutcome":{"modelSetMap":{}},"success":true}
+DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"get models;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"get models;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
+DEBUG pool-5-thread-2 org.riseger.main.compiler.CompilerMaster - ip: /127.0.0.1:37158
+DEBUG pool-5-thread-2 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:get 匹配关键字:KW_18
+DEBUG pool-5-thread-2 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:models 匹配关键字:KW_21
+DEBUG pool-5-thread-2 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:; 匹配关键字:KW_11
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："USE":15
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："SEARCH":16
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："get":18 不匹配语法："WHERE":17
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："get" 匹配代码为:"GET"
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："models":21 不匹配语法："DATABASES":19
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："models":21 不匹配语法："MAPS":20
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："models" 匹配代码为:"MODELS"
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配成功
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'sql' 匹配成功
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：";" 匹配代码为:";"
+DEBUG pool-5-thread-2 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:GetModels_f Level:1
+DEBUG pool-5-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:1 Fun: GetModels_fc
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"shellOutcome":{"modelSetMap":{"maps":{"resultElements":[{"columns":{"parent":"field","address":"STRING","name":"STRING","floorArea":"DOUBLE"},"keyColumns":{}}]}}},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"shellOutcome":{"modelSetMap":{"maps":{"resultElements":[{"columns":{"parent":"field","address":"STRING","name":"STRING","floorArea":"DOUBLE"},"keyColumns":{}}]}}},"success":true}

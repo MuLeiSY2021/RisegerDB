@@ -4,7 +4,7 @@ import org.riseger.main.cache.entity.component.Element_c;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.MemoryConstant;
 import org.riseger.main.compiler.compoent.SearchMemory;
-import org.riseger.main.compiler.function.type.MainFunction_c;
+import org.riseger.main.compiler.function.Function_c;
 import org.riseger.main.compiler.semantic.SemanticTree;
 import org.riseger.protoctl.compiler.function.Entity_f;
 import org.riseger.protoctl.compiler.function.Function_f;
@@ -16,20 +16,20 @@ import org.riseger.protoctl.compiler.function.main.PreWhere_f;
 import org.riseger.protoctl.compiler.result.ResultElement;
 import org.riseger.protoctl.compiler.result.ResultModelSet;
 import org.riseger.protoctl.compiler.result.ResultSet;
-import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
+import org.riseger.protoctl.exception.SQLException;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class Where_fc extends MainFunction_c implements ProcessorFunction {
+public class Where_fc extends Function_c implements ProcessorFunction {
 
     public Where_fc(SearchMemory memory, CommandList commandList) {
         super(memory, commandList);
     }
 
     @Override
-    public void process() throws IllegalSearchAttributeException {
+    public void process() throws SQLException {
         if ((Boolean) poll()) {
             fillResult();
         }

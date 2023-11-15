@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class ResultElement {
     private final Map<String, Object> columns = new HashMap<>();
-    private Map<Integer, Double[]> keyColumns;
+    private final Map<Integer, Double[]> keyColumns = new HashMap<>();
 
     public Object getColumn(String key) {
         return this.columns.get(key);

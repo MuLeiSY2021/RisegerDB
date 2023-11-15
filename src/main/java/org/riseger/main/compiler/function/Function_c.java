@@ -1,12 +1,14 @@
-package org.riseger.main.compiler.function.type;
+package org.riseger.main.compiler.function;
 
 import lombok.Getter;
 import org.apache.log4j.Logger;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.MemoryConstant;
 import org.riseger.main.compiler.compoent.SearchMemory;
-import org.riseger.main.compiler.function.Entity_fc;
 import org.riseger.main.compiler.function.entity.*;
+import org.riseger.main.compiler.function.get.GetDatabases_fc;
+import org.riseger.main.compiler.function.get.GetMaps_fc;
+import org.riseger.main.compiler.function.get.GetModels_fc;
 import org.riseger.main.compiler.function.graphic.In_fc;
 import org.riseger.main.compiler.function.graphic.Out_fc;
 import org.riseger.main.compiler.function.logic.And_fc;
@@ -18,9 +20,13 @@ import org.riseger.main.compiler.function.loop.IfJump_fc;
 import org.riseger.main.compiler.function.main.*;
 import org.riseger.main.compiler.function.math.*;
 import org.riseger.main.compiler.function.number.*;
+import org.riseger.main.compiler.function.preload.Preload_fc;
 import org.riseger.protoctl.compiler.function.Entity_f;
 import org.riseger.protoctl.compiler.function.Function_f;
 import org.riseger.protoctl.compiler.function.entity.*;
+import org.riseger.protoctl.compiler.function.get.GetDatabases_f;
+import org.riseger.protoctl.compiler.function.get.GetMaps_f;
+import org.riseger.protoctl.compiler.function.get.GetModels_f;
 import org.riseger.protoctl.compiler.function.graphic.In_f;
 import org.riseger.protoctl.compiler.function.graphic.Out_f;
 import org.riseger.protoctl.compiler.function.logic.And_f;
@@ -32,7 +38,8 @@ import org.riseger.protoctl.compiler.function.loop.IfJump_f;
 import org.riseger.protoctl.compiler.function.main.*;
 import org.riseger.protoctl.compiler.function.math.*;
 import org.riseger.protoctl.compiler.function.number.*;
-import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
+import org.riseger.protoctl.compiler.function.preload.Preload_f;
+import org.riseger.protoctl.exception.SQLException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -86,6 +93,17 @@ public abstract class Function_c {
         functionMap.put(SubNumber_f.class, SubNumber_fc.class);
 
         functionMap.put(Entity_f.class, Entity_fc.class);
+
+        /*        Function_f.set(GetDatabases_f.class);
+        Function_f.set(GetMaps_f.class);
+        Function_f.set(GetModels_f.class);
+        */
+
+        functionMap.put(GetDatabases_f.class, GetDatabases_fc.class);
+        functionMap.put(GetMaps_f.class, GetMaps_fc.class);
+        functionMap.put(GetModels_f.class, GetModels_fc.class);
+
+        functionMap.put(Preload_f.class, Preload_fc.class);
     }
 
     private final SearchMemory memory;
@@ -132,7 +150,7 @@ public abstract class Function_c {
         this.memory.setMapValue(o, constant);
     }
 
-    public abstract void process() throws IllegalSearchAttributeException;
+    public abstract void process() throws SQLException;
 
     protected void jumpTo(int index) {
         commandList.jump(index);

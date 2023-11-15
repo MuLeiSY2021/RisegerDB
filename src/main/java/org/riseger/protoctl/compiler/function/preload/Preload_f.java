@@ -1,4 +1,4 @@
-package org.riseger.protoctl.compiler.function.main;
+package org.riseger.protoctl.compiler.function.preload;
 
 import lombok.Getter;
 import org.riseger.protoctl.compiler.function.Function_f;
@@ -6,10 +6,10 @@ import org.riseger.protoctl.compiler.function.type.mainFunctional;
 import org.riseger.protoctl.compiler.function.weight.ConstantWeight;
 
 @Getter
-public class UseMap_f extends Function_f implements mainFunctional {
+public class Preload_f extends Function_f implements mainFunctional {
 
-    public UseMap_f() {
-        super(UseMap_f.class);
+    public Preload_f() {
+        super(Preload_f.class);
     }
 
     @Override

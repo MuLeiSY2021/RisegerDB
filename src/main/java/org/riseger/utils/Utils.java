@@ -89,4 +89,8 @@ public class Utils {
     public static String getClassLastDotName(Class<?> clazz) {
         return clazz.getCanonicalName().substring(clazz.getCanonicalName().lastIndexOf(".") + 1);
     }
+
+    public static byte[] getBytes(File map) throws IOException {
+        return Files.readAllBytes(Paths.get(map.toURI()));
+    }
 }

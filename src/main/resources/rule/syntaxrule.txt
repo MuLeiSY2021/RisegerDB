@@ -4,7 +4,7 @@ sqls -> sql ";" sqls
 
 sql -> search_sql
     | create_sql
-    | update_sql
+//    | update_sql
 
 search_sql -> "USE" use_clause "SEARCH" search_clause "WHERE" where_clause
     | "USE" use_clause "SEARCH" search_clause
@@ -16,7 +16,7 @@ search_sql -> "USE" use_clause "SEARCH" search_clause "WHERE" where_clause
     | "GET" "MAPS" :> org.riseger.protoctl.compiler.function.get.GetMaps_f
     | "GET" "MODELS" :> org.riseger.protoctl.compiler.function.get.GetModels_f
 
-create_sql -> "PRELOAD" string_entity :>
+create_sql -> "PRELOAD" string_entity :> org.riseger.protoctl.compiler.function.preload.Preload_f
 
 //TODO:NEED LOG SYSTEM
 //update_sql -> "DELETE" "DATABASE" string_entity :>

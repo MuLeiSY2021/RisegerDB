@@ -12,7 +12,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentMap;
 
 @Getter
 public class MapDB_c extends MBRectangle_c {
@@ -24,8 +23,8 @@ public class MapDB_c extends MBRectangle_c {
     private transient final Database_c database;
     private transient ElementManager smp_parent;
 
-    public MapDB_c(ConcurrentMap<String, String> map, int nodeSize, double threshold, String name, Database_c database) {
-        super(map, threshold);
+    public MapDB_c(int nodeSize, double threshold, String name, Database_c database) {
+        super(threshold);
         this.name = name;
         this.layers = new LayerManager(this);
         this.database = database;
@@ -33,16 +32,16 @@ public class MapDB_c extends MBRectangle_c {
         configs.put("threshold", new Config("threshold", String.valueOf(threshold)));
     }
 
-    public MapDB_c(ConcurrentMap<String, String> map, Map<String, Config> configs, String name, Database_c database) {
-        super(map, configs.get("threshold").getDoubleValue());
+    public MapDB_c(Map<String, Config> configs, String name, Database_c database) {
+        super(configs.get("threshold").getDoubleValue());
         this.name = name;
         this.layers = new LayerManager(this);
         this.database = database;
         this.configs.putAll(configs);
     }
 
-    public MapDB_c(ConcurrentMap<String, String> map, Map<String, Config> configs, String name, Database_c database, ElementManager em) {
-        super(map, configs.get("threshold").getDoubleValue());
+    public MapDB_c(Map<String, Config> configs, String name, Database_c database, ElementManager em) {
+        super(configs.get("threshold").getDoubleValue());
         this.name = name;
         this.layers = new LayerManager(this);
         this.database = database;
@@ -51,7 +50,7 @@ public class MapDB_c extends MBRectangle_c {
     }
 
     public MapDB_c(String name, Layer_c layer, Database_c database, ElementManager em) {
-        super(null, layer.getParent().getParent().getThreshold());
+        super(layer.getParent().getParent().getThreshold());
         this.name = name;
         this.layers = new LayerManager(this);
         this.database = database;
@@ -73,9 +72,11 @@ public class MapDB_c extends MBRectangle_c {
     }
 
     public void updateBoundary(Rectangle mbr) {
+        super.expand(mbr);
         if (smp_parent != null) {
             smp_parent.updateIndex(this, mbr);
         }
+
     }
 
     public int getNodeSize() {

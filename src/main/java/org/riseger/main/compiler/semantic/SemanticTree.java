@@ -4,7 +4,7 @@ import lombok.Data;
 import org.apache.log4j.Logger;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.SearchMemory;
-import org.riseger.main.compiler.function.type.Function_c;
+import org.riseger.main.compiler.function.Function_c;
 import org.riseger.main.compiler.syntax.SyntaxForest;
 import org.riseger.main.compiler.token.Token;
 import org.riseger.protoctl.compiler.CommandTree;

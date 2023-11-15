@@ -2,7 +2,7 @@ package org.riseger.main.compiler.compoent;
 
 import lombok.Data;
 import org.apache.log4j.Logger;
-import org.riseger.main.compiler.function.type.Function_c;
+import org.riseger.main.compiler.function.Function_c;
 import org.riseger.main.compiler.lextcal.Lexicator;
 import org.riseger.main.compiler.semantic.SemanticTree;
 import org.riseger.main.compiler.syntax.Parser;
@@ -81,6 +81,9 @@ public class SearchSession {
 
     public void reset() {
         this.commandList = new CommandList();
+        this.memory.removeMapValue(MemoryConstant.RESULT);
+        this.memory.removeMapValue(MemoryConstant.WHERE);
+        this.memory.removeMapValue(MemoryConstant.ELEMENT);
     }
 
 }

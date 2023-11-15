@@ -3,21 +3,21 @@ package org.riseger.main.compiler.function.main;
 import org.riseger.main.compiler.compoent.CommandList;
 import org.riseger.main.compiler.compoent.MemoryConstant;
 import org.riseger.main.compiler.compoent.SearchMemory;
-import org.riseger.main.compiler.function.type.MainFunction_c;
-import org.riseger.protoctl.exception.search.function.IllegalSearchAttributeException;
+import org.riseger.main.compiler.function.Function_c;
+import org.riseger.protoctl.exception.SQLException;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class Search_fc extends MainFunction_c {
+public class Search_fc extends Function_c {
     public Search_fc(SearchMemory memory, CommandList commandList) {
         super(memory, commandList);
     }
 
     @Override
-    public void process() throws IllegalSearchAttributeException {
+    public void process() throws SQLException {
         List<String> models = (List<String>) poll();
         Map<String, List<String>> searchSetMap = new HashMap<>();
         Map<String, Map<String, Object>> expireCopys = new HashMap<>();

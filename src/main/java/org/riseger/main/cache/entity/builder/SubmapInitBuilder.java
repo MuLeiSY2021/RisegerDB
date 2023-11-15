@@ -27,7 +27,7 @@ public class SubmapInitBuilder implements MapBuilder {
     List<File> md_layer = new LinkedList<>();
 
     public MapDB_c build() {
-        MapDB_c map = new MapDB_c(null, configs, name, database, em);
+        MapDB_c map = new MapDB_c(configs, name, database, em);
         map.initAllMd(md_layer);
         map.initAllSmp(smp_layer);
         return map;
