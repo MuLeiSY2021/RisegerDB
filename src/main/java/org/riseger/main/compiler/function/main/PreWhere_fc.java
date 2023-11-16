@@ -23,10 +23,10 @@ public class PreWhere_fc extends Function_c {
     public void process() throws SQLException {
         WhereIterator iterator;
         List<MapDB_c> maps = new LinkedList<>();
-        maps.add((MapDB_c) getMap(MemoryConstant.MAP));
-        MBRectangle_c scope = (MBRectangle_c) getMap(MemoryConstant.SCOPE);//√
+        maps.add((MapDB_c) get(MemoryConstant.MAP));
+        MBRectangle_c scope = (MBRectangle_c) get(MemoryConstant.SCOPE);//√
 
-        Map<String, SearchSet> searchMap = (Map<String, SearchSet>) getMap(MemoryConstant.MODEL);//√
+        Map<String, SearchSet> searchMap = (Map<String, SearchSet>) get(MemoryConstant.MODEL);//√
         iterator = new WhereIterator(searchMap, maps, scope);
         setMap(iterator, MemoryConstant.WHERE);
         if (iterator.hasNext()) {

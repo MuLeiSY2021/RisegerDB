@@ -42,8 +42,6 @@ public class WavyProgressBar implements ProgressBar {
         String fill = "▒";
         StringBuilder res = new StringBuilder();
         String[] blocks = new String[]{"", "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█"};
-//        vmin = 0.0;
-//        vmax = 1.0;
         String lsep = "▏", rsep = "▕";
         value = Math.min(Math.max(value, vmin), vmax);
         value = (value - vmin) / (vmax - vmin);

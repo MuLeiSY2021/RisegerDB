@@ -16,7 +16,7 @@ public class UseMap_fc extends Function_c {
 
     @Override
     public void process() throws SQLException {
-        Database_c db = (Database_c) super.getMap(MemoryConstant.DATABASE);
+        Database_c db = (Database_c) super.get(MemoryConstant.DATABASE);
         String name = (String) poll();
         LOG.debug("获取地图:\"" + name + "\"");
         MapDB_c map = db.getMap(name);

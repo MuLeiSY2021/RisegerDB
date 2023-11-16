@@ -62,7 +62,6 @@ public abstract class TransponderHandler<IN extends TranspondRequest> extends Si
             if (this.isFailed()) {
                 response.failed(getException());
                 LOG.info("Request processed failed.");
-
             } else {
                 response.success();
                 LOG.info("Request processed successfully.");

@@ -22,7 +22,7 @@ public class GetDatabases_fc extends Function_c {
     public void process() throws SQLException {
         ResultSet resultSet;
         if (hasMap(MemoryConstant.RESULT)) {
-            resultSet = (ResultSet) super.getMap(MemoryConstant.RESULT);
+            resultSet = (ResultSet) super.get(MemoryConstant.RESULT);
         } else {
             resultSet = new ResultSet();
             super.setMap(resultSet, MemoryConstant.RESULT);

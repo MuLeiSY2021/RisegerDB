@@ -142,7 +142,7 @@ public abstract class Function_c {
         memory.setVar(obj);
     }
 
-    protected Object getMap(MemoryConstant constant) {
+    protected Object get(MemoryConstant constant) {
         return memory.getMapValue(constant);
     }
 

@@ -8,7 +8,7 @@ import org.riseger.protoctl.packet.PacketType;
 @Setter
 @Getter
 public class TextSQLResponse extends BasicResponse {
-    private ResultSet shellOutcome;
+    private ResultSet Result;
 
     public TextSQLResponse() {
         super(PacketType.TEXT_SQL_RESPONSE);

@@ -26,7 +26,7 @@ public class CommandSQLJob extends TranspondJob {
             TextSQLResponse response = new TextSQLResponse();
             super.prepare(response);
             SearchSession session = CompilerMaster.INSTANCE.adapt(commandTree, this.ipAddress);
-            response.setShellOutcome(session.process());
+            response.setResult(session.process());
 
             super.done();
         } catch (Exception e) {

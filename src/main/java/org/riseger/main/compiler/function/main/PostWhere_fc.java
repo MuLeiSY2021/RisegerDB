@@ -15,7 +15,7 @@ public class PostWhere_fc extends Function_c {
 
     @Override
     public void process() throws SQLException {
-        WhereIterator iterator = (WhereIterator) getMap(MemoryConstant.WHERE);
+        WhereIterator iterator = (WhereIterator) get(MemoryConstant.WHERE);
         MBRectangle_c mbRectangle = iterator.next();
         super.setMap(mbRectangle, MemoryConstant.ELEMENT);
     }

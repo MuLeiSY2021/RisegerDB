@@ -17,7 +17,7 @@ public class In_fc extends Function_c {
 
     @Override
     public void process() throws SQLException {
-        Element_c element = (Element_c) super.getMap(MemoryConstant.ELEMENT);
+        Element_c element = (Element_c) super.get(MemoryConstant.ELEMENT);
         MBRectangle_c r = (MBRectangle_c) super.poll();
         boolean result = r.inner(element);
         LOG.debug(JsonSerializer.serializeToString(element.getCoordsSet()) + " IN " + JsonSerializer.serializeToString(r.getCoordsSet()) + " = " + result);

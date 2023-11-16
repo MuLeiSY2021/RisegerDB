@@ -39,6 +39,6 @@ public class Or_f extends Function_f implements BOOL_functional, ProcessorFuncti
 
     @Override
     public int[] getPostFunSize() {
-        return new int[]{0, 0};
+        return new int[]{0, 2};
     }
 }

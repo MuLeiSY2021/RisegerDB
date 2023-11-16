@@ -17,7 +17,7 @@ public class Out_fc extends Function_c {
 
     @Override
     public void process() throws SQLException {
-        Element_c element = (Element_c) super.getMap(MemoryConstant.ELEMENT);
+        Element_c element = (Element_c) super.get(MemoryConstant.ELEMENT);
         MBRectangle_c r = (MBRectangle_c) super.poll();
         boolean result = !r.intersects(element);
         LOG.debug(JsonSerializer.serializeToString(element.getCoordsSet()) + " OUT " + JsonSerializer.serializeToString(r.getCoordsSet()) + " = " + result);

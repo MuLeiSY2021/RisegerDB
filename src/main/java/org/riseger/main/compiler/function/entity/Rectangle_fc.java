@@ -18,7 +18,7 @@ public class Rectangle_fc extends Function_c {
     public void process() throws SQLException {
         Double len = ((Number) super.poll()).doubleValue();
         Coord_c coord = (Coord_c) super.poll();
-        MBRectangle_c mbr = new MBRectangle_c(coord, len, (Double) super.getMap(MemoryConstant.THRESHOLD));
+        MBRectangle_c mbr = new MBRectangle_c(coord, len, (Double) super.get(MemoryConstant.THRESHOLD));
         super.put(mbr);
     }
 }

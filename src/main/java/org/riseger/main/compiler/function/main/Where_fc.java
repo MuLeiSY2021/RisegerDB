@@ -21,6 +21,7 @@ import org.riseger.protoctl.exception.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Where_fc extends Function_c implements ProcessorFunction {
 
@@ -33,11 +34,11 @@ public class Where_fc extends Function_c implements ProcessorFunction {
         if ((Boolean) poll()) {
             fillResult();
         }
-        WhereIterator iterator = (WhereIterator) getMap(MemoryConstant.WHERE);
+        WhereIterator iterator = (WhereIterator) get(MemoryConstant.WHERE);
         if (iterator.hasNext()) {
-            super.put(true);
-        } else {
             super.put(false);
+        } else {
+            super.put(true);
         }
     }
 
@@ -45,10 +46,10 @@ public class Where_fc extends Function_c implements ProcessorFunction {
         if (!super.hasMap(MemoryConstant.RESULT)) {
             setMap(new ResultSet(), MemoryConstant.RESULT);
         }
-        Element_c element = (Element_c) super.getMap(MemoryConstant.ELEMENT);
+        Element_c element = (Element_c) super.get(MemoryConstant.ELEMENT);
         ResultSet resultSet;
         if (hasMap(MemoryConstant.RESULT)) {
-            resultSet = (ResultSet) super.getMap(MemoryConstant.RESULT);
+            resultSet = (ResultSet) super.get(MemoryConstant.RESULT);
         } else {
             resultSet = new ResultSet();
             super.setMap(resultSet, MemoryConstant.RESULT);
@@ -60,7 +61,7 @@ public class Where_fc extends Function_c implements ProcessorFunction {
             resultModelSet = new ResultModelSet();
             resultSet.setModelSet(element.getModel(), resultModelSet);
         }
-        Map<String, List<String>> searchList = (Map<String, List<String>>) getMap(MemoryConstant.SEARCH);//√
+        Map<String, List<String>> searchList = (Map<String, List<String>>) get(MemoryConstant.SEARCH);//√
 
         ResultElement resultElement = new ResultElement();
         for (String column : searchList.get(element.getModel())) {
@@ -73,7 +74,7 @@ public class Where_fc extends Function_c implements ProcessorFunction {
                     resultElement.setKeyColumns(index, element.getCoordsSet()[index]);
                 } else if (values.length == 3) {
                     int index = Integer.parseInt(values[1]),
-                            x = values[2] == "x" ? 0 : 1;
+                            x = Objects.equals(values[2], "x") ? 0 : 1;
                     resultElement.setKeyColumns(index, x, element.getCoordsSet()[index][x]);
                 }
             } else {

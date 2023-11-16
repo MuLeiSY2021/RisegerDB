@@ -1,5 +1,6 @@
 package org.test.preload;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -34,7 +35,7 @@ public class BuildingGenerator {
             double randomYMax = getRandomInRange(randomYMin, y_max);
 
             Building newBuilding = new Building(randomXMin, randomYMin, randomXMax, randomYMax,
-                    "Building " + (i + 1), addressPrefix + (i + 1), getRandomInRange(1000, 5000));
+                    "Building " + (i + 1), addressPrefix + (i + 1), Double.parseDouble(new DecimalFormat("####.##").format(getRandomInRange(1000, 5000))));
 
             boolean isOverlapping = false;
             for (Building existingBuilding : buildings) {

@@ -10,6 +10,7 @@ import org.riseger.main.compiler.token.Token;
 import org.riseger.main.compiler.token.Tokenizer;
 import org.riseger.protoctl.compiler.CommandTree;
 import org.riseger.protoctl.compiler.result.ResultSet;
+import org.riseger.protoctl.exception.SQLException;
 import org.riseger.utils.Utils;
 
 import java.util.ArrayList;
@@ -61,22 +62,26 @@ public class SearchSession {
         }
     }
 
-    public ResultSet process() throws Exception {
-        preHandle();
-        if (commandList.isEmpty()) {
-            LOG.debug("No command");
-            return null;
+    public ResultSet process() throws SQLException {
+        try {
+            preHandle();
+            if (commandList.isEmpty()) {
+                LOG.debug("No command");
+                return null;
+            }
+            for (Function_c function; commandList.hasNext(); ) {
+                function = commandList.next();
+                LOG.debug("ID:" + commandList.index() + " Fun: " + Utils.getClassLastDotName(function.getClass()));
+                function.process();
+            }
+            ResultSet resultSet = (ResultSet) memory.getMapValue(MemoryConstant.RESULT);
+            if (resultSet == null) {
+                return ResultSet.empty();
+            }
+            return resultSet;
+        } catch (Exception e) {
+            throw new SQLException(e.getMessage());
         }
-        for (Function_c function; commandList.hasNext(); ) {
-            function = commandList.next();
-            LOG.debug("ID:" + commandList.index() + " Fun: " + Utils.getClassLastDotName(function.getClass()));
-            function.process();
-        }
-        ResultSet resultSet = (ResultSet) memory.getMapValue(MemoryConstant.RESULT);
-        if (resultSet == null) {
-            return ResultSet.empty();
-        }
-        return resultSet;
     }
 
     public void reset() {

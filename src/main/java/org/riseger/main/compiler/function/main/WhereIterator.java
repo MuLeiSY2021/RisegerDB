@@ -82,9 +82,9 @@ public class WhereIterator {
                     for (MBRectangle_c mbr : tmp) {
                         nextLayers.add((MapDB_c) mbr);
                     }
-                    tmpLayers = nextLayers;
-                    nextLayers = new LinkedList<>();
                 }
+                tmpLayers = nextLayers;
+                nextLayers = new LinkedList<>();
             }
             for (MapDB_c map : tmpLayers) {
                 results.add(map.getElementLayer(model.getName()));

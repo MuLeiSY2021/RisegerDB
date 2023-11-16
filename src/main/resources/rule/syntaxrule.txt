@@ -1,7 +1,3 @@
-sqls -> sql ";" sqls
-    | sql ";"
-    | sql
-
 sql -> search_sql
     | create_sql
 //    | update_sql

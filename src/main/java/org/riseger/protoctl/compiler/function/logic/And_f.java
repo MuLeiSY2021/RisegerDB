@@ -39,7 +39,7 @@ public class And_f extends Function_f implements BOOL_functional, ProcessorFunct
 
     @Override
     public int[] getPostFunSize() {
-        return new int[]{0, 3};
+        return new int[]{0, 0};
 //        return null;
     }
 }

@@ -23,11 +23,11 @@ public class GetModels_fc extends Function_c {
 
     @Override
     public void process() throws SQLException {
-        Database_c db = (Database_c) super.getMap(MemoryConstant.DATABASE);
+        Database_c db = (Database_c) super.get(MemoryConstant.DATABASE);
 
         ResultSet resultSet;
         if (hasMap(MemoryConstant.RESULT)) {
-            resultSet = (ResultSet) super.getMap(MemoryConstant.RESULT);
+            resultSet = (ResultSet) super.get(MemoryConstant.RESULT);
         } else {
             resultSet = new ResultSet();
             super.setMap(resultSet, MemoryConstant.RESULT);

@@ -29,7 +29,7 @@ public class Or_fc extends Function_c implements ProcessorFunction {
 
     @Override
     public void stretch(SemanticTree.Node node, int size, List<Function_f> functionList) {
-        node.addChild(new Entity_f(node.getLevel() + 1), 0);
+        node.addChild(new Entity_f(node.getLevel()), 0);
         node.addChild(new IfJump_f(), 0);
     }
 

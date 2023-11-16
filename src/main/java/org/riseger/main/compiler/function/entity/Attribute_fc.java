@@ -19,7 +19,7 @@ public class Attribute_fc extends Function_c {
     @Override
     public void process() throws SQLException {
         String attribute = (String) poll(), model = (String) poll();
-        Element_c element = (Element_c) super.getMap(MemoryConstant.ELEMENT);
+        Element_c element = (Element_c) super.get(MemoryConstant.ELEMENT);
         if (element.getModel().equals(model)) {
             Object result = element.getAttribute(attribute);
             if (result == null) {

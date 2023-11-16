@@ -18,7 +18,7 @@ public class SyntaxForest {
     private Class<Function_f> endFunctionClass;
 
     public SyntaxForest(SyntaxRule rule) throws Exception {
-        this.entry = rule.getRuleMap().get("sqls").getTypeId();
+        this.entry = rule.getRuleMap().get("sql").getTypeId();
 
         for (Map.Entry<String, SyntaxRule.Rule> entry : rule.getRuleMap().entrySet()) {
             SyntaxRule.Rule entryRule = entry.getValue();
