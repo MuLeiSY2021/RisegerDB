@@ -1,190 +1,123 @@
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - 1653.91 > 2000.0 false
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:41 Fun: And_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - false & true false
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:42 Fun: Or_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - false | false false
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - [[7171.0,5395.0],[7623.5,5934.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = false
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:30 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:31 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:32 Fun: Coord_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:33 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:34 Fun: Rectangle_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:35 Fun: Out_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - [[7171.0,5395.0],[7623.5,5934.5]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:36 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:37 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:38 Fun: Attribute_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:39 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:40 Fun: Big_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - 4081.35 > 2000.0 true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:41 Fun: And_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - true & true true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:42 Fun: Or_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - true | false true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - [[7825.5,4554.0],[7967.0,5786.0]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = false
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:30 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:31 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:32 Fun: Coord_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:33 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:34 Fun: Rectangle_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:35 Fun: Out_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - [[7825.5,4554.0],[7967.0,5786.0]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:36 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:37 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:38 Fun: Attribute_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:39 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:40 Fun: Big_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - 2780.99 > 2000.0 true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:41 Fun: And_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - true & true true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:42 Fun: Or_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - true | false true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - [[1755.0,5984.5],[3290.0,6085.0]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - [[1629.0,5540.0],[5262.0,5616.0]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - [[3703.5,5810.0],[4359.0,7825.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - [[2708.0,7762.5],[2828.0,7816.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - [[2062.0,7645.0],[2594.0,7845.0]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.Function_c - [[1596.5,7315.0],[2182.0,7379.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
-DEBUG pool-4-thread-2 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:48
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
-DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
-INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"Result":{"modelSetMap":{"building_model":{"resultElements":[{"columns":{"address":"ShangHai2","floorArea":4081.35},"keyColumns":{"0":[7171.0,5395.0],"1":[7623.5,5934.5]}},{"columns":{"address":"ShangHai3","floorArea":2780.99},"keyColumns":{"0":[7825.5,4554.0],"1":[7967.0,5786.0]}}]}}},"success":true}
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:38 Fun: Attribute_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:39 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:40 Fun: Big_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.Function_c - 2780.99 > 2000.0 true
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:41 Fun: And_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.Function_c - true & true true
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:42 Fun: Or_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.Function_c - true | false true
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.Function_c - [[3703.5,5810.0],[4359.0,7825.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.Function_c - [[1629.0,5540.0],[5262.0,5616.0]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.Function_c - [[1755.0,5984.5],[3290.0,6085.0]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.Function_c - [[1596.5,7315.0],[2182.0,7379.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.Function_c - [[2062.0,7645.0],[2594.0,7845.0]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:46 Fun: PostWhere_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:47 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:48 Fun: Back_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:21
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Coord_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: Rectangle_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: In_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.Function_c - [[2708.0,7762.5],[2828.0,7816.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:29 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:42
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:43 Fun: Where_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:44 Fun: Entity_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.compoent.SearchSession - ID:45 Fun: IfJump_fc
+DEBUG pool-5-thread-5 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:48
+INFO nioEventLoopGroup-3-6 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
+DEBUG nioEventLoopGroup-3-6 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
+INFO nioEventLoopGroup-3-6 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"Result":{"modelSetMap":{"building_model":{"resultElements":[{"columns":{"address":"ShangHai2","floorArea":4081.35},"keyColumns":{"0":[7171.0,5395.0],"1":[7623.5,5934.5]}},{"columns":{"address":"ShangHai3","floorArea":2780.99},"keyColumns":{"0":[7825.5,4554.0],"1":[7967.0,5786.0]}}]}}},"success":true}

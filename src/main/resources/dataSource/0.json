@@ -24,13 +24,13 @@
                     },
                     "modelName": "building_model",
                     "attributes": {
-                      "KEY_LOOP::1::x": "7849.7745406040285",
+                      "KEY_LOOP::1::x": "2630.681222986604",
                       "address": "ShangHai1",
-                      "KEY_LOOP::1::y": "7275.110761594389",
+                      "KEY_LOOP::1::y": "5012.689164823823",
                       "name": "Building 1",
-                      "KEY_LOOP::0::y": "6022.322433365613",
-                      "KEY_LOOP::0::x": "7773.622322370945",
-                      "floorArea": "1653.91"
+                      "KEY_LOOP::0::y": "4706.386250660811",
+                      "KEY_LOOP::0::x": "2029.9278362853047",
+                      "floorArea": "1711.03"
                     },
                     "configs": {}
                   }
@@ -51,13 +51,13 @@
                     },
                     "modelName": "building_model",
                     "attributes": {
-                      "KEY_LOOP::1::x": "7623.591428286749",
+                      "KEY_LOOP::1::x": "8389.274257536123",
                       "address": "ShangHai2",
-                      "KEY_LOOP::1::y": "5934.505253703528",
+                      "KEY_LOOP::1::y": "3981.299792521595",
                       "name": "Building 2",
-                      "KEY_LOOP::0::y": "5395.383722173461",
-                      "KEY_LOOP::0::x": "7171.262700856512",
-                      "floorArea": "4081.35"
+                      "KEY_LOOP::0::y": "3113.1336916629853",
+                      "KEY_LOOP::0::x": "7802.996638247376",
+                      "floorArea": "3199.37"
                     },
                     "configs": {}
                   }
@@ -78,13 +78,13 @@
                     },
                     "modelName": "building_model",
                     "attributes": {
-                      "KEY_LOOP::1::x": "7967.483419314367",
+                      "KEY_LOOP::1::x": "9467.919234822157",
                       "address": "ShangHai3",
-                      "KEY_LOOP::1::y": "5786.386649780447",
+                      "KEY_LOOP::1::y": "5753.579380730527",
                       "name": "Building 3",
-                      "KEY_LOOP::0::y": "4554.075774269192",
-                      "KEY_LOOP::0::x": "7825.62813967016",
-                      "floorArea": "2780.99"
+                      "KEY_LOOP::0::y": "5732.133116535422",
+                      "KEY_LOOP::0::x": "7338.308364448368",
+                      "floorArea": "3997.42"
                     },
                     "configs": {}
                   }
@@ -113,13 +113,13 @@
                     },
                     "modelName": "building_model",
                     "attributes": {
-                      "KEY_LOOP::1::x": "3290.136344343542",
+                      "KEY_LOOP::1::x": "8005.200502892221",
                       "address": "Tianjin1",
-                      "KEY_LOOP::1::y": "6085.063706798431",
+                      "KEY_LOOP::1::y": "6887.361652071297",
                       "name": "Building 1",
-                      "KEY_LOOP::0::y": "5984.737274418803",
-                      "KEY_LOOP::0::x": "1755.1821313658995",
-                      "floorArea": "1352.54"
+                      "KEY_LOOP::0::y": "6265.073640731563",
+                      "KEY_LOOP::0::x": "7973.364128069205",
+                      "floorArea": "3877.74"
                     },
                     "configs": {}
                   }
@@ -140,13 +140,13 @@
                     },
                     "modelName": "building_model",
                     "attributes": {
-                      "KEY_LOOP::1::x": "5262.445115255642",
+                      "KEY_LOOP::1::x": "7991.493230555359",
                       "address": "Tianjin2",
-                      "KEY_LOOP::1::y": "5616.24030696336",
+                      "KEY_LOOP::1::y": "9186.041291865287",
                       "name": "Building 2",
-                      "KEY_LOOP::0::y": "5540.45875314578",
-                      "KEY_LOOP::0::x": "1629.264202857785",
-                      "floorArea": "4683.09"
+                      "KEY_LOOP::0::y": "7805.982862186576",
+                      "KEY_LOOP::0::x": "7977.391308442105",
+                      "floorArea": "4137.14"
                     },
                     "configs": {}
                   }
@@ -167,13 +167,13 @@
                     },
                     "modelName": "building_model",
                     "attributes": {
-                      "KEY_LOOP::1::x": "4359.418805723712",
+                      "KEY_LOOP::1::x": "7984.806972665348",
                       "address": "Tianjin3",
-                      "KEY_LOOP::1::y": "7825.983528268729",
+                      "KEY_LOOP::1::y": "9149.73430565443",
                       "name": "Building 3",
-                      "KEY_LOOP::0::y": "5810.175981748889",
-                      "KEY_LOOP::0::x": "3703.6624499050345",
-                      "floorArea": "3893.19"
+                      "KEY_LOOP::0::y": "9140.618285315053",
+                      "KEY_LOOP::0::x": "7675.1953735660145",
+                      "floorArea": "4474.31"
                     },
                     "configs": {}
                   }
@@ -202,13 +202,13 @@
                     },
                     "modelName": "building_model",
                     "attributes": {
-                      "KEY_LOOP::1::x": "2828.3260121551266",
+                      "KEY_LOOP::1::x": "2268.424980225094",
                       "address": "Chongqing1",
-                      "KEY_LOOP::1::y": "7816.951289241159",
+                      "KEY_LOOP::1::y": "4719.100970500057",
                       "name": "Building 1",
-                      "KEY_LOOP::0::y": "7762.928308739256",
-                      "KEY_LOOP::0::x": "2708.3882156241916",
-                      "floorArea": "2343.39"
+                      "KEY_LOOP::0::y": "4584.689623520111",
+                      "KEY_LOOP::0::x": "1548.0811251908995",
+                      "floorArea": "3817.45"
                     },
                     "configs": {}
                   }
@@ -229,13 +229,13 @@
                     },
                     "modelName": "building_model",
                     "attributes": {
-                      "KEY_LOOP::1::x": "2594.4786791219776",
+                      "KEY_LOOP::1::x": "2366.1014523640956",
                       "address": "Chongqing2",
-                      "KEY_LOOP::1::y": "7845.317838951948",
+                      "KEY_LOOP::1::y": "1983.4234214003554",
                       "name": "Building 2",
-                      "KEY_LOOP::0::y": "7645.147482365227",
-                      "KEY_LOOP::0::x": "2062.130601344555",
-                      "floorArea": "1091.21"
+                      "KEY_LOOP::0::y": "1358.781794963496",
+                      "KEY_LOOP::0::x": "1326.331222847123",
+                      "floorArea": "4970.18"
                     },
                     "configs": {}
                   }
@@ -256,13 +256,13 @@
                     },
                     "modelName": "building_model",
                     "attributes": {
-                      "KEY_LOOP::1::x": "2182.4623104293237",
+                      "KEY_LOOP::1::x": "2437.139948293657",
                       "address": "Chongqing3",
-                      "KEY_LOOP::1::y": "7379.967705919763",
+                      "KEY_LOOP::1::y": "3033.4810140835953",
                       "name": "Building 3",
-                      "KEY_LOOP::0::y": "7315.328473714723",
-                      "KEY_LOOP::0::x": "1596.8542418784432",
-                      "floorArea": "4996.49"
+                      "KEY_LOOP::0::y": "2591.423623323497",
+                      "KEY_LOOP::0::x": "2358.7702527444308",
+                      "floorArea": "3218.63"
                     },
                     "configs": {}
                   }

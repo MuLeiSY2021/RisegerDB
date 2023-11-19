@@ -69,14 +69,14 @@ public class DatabaseShellClient {
 
                     //输出结果
                     if (response.isSuccess()) {
-//                        out.println(tablePrinter.getTable(response.getResult()));
-                        out.println(JsonSerializer.serializeToString(response.getResult()));
+                        LOG.debug(JsonSerializer.serializeToString(response.getResult()));
+                        out.println(tablePrinter.getTables(response.getResult()));
                     } else {
                         out.print(ColorStyle.PROMPT_FRONT + "197m" + "[ERROR] Unknown error:");
                         out.println(response.getException() + ColorStyle.END);
                     }
                 } catch (Exception e) {
-                    System.err.println("\n[ERROR] " + e.getClass().getCanonicalName() + ":" + e.getMessage());
+                    LOG.error("程序内部错误：", e);
                 }
             }
             connection.close();

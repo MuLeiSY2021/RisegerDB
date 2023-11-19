@@ -1,8 +1,11 @@
 package org.riseger.protoctl.compiler.result;
 
+import lombok.Data;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
 public class ResultElement {
     private final Map<String, Object> columns = new HashMap<>();
     private final Map<Integer, Double[]> keyColumns = new HashMap<>();
@@ -16,6 +19,7 @@ public class ResultElement {
     }
 
     public void setAllKeyColumns(Double[][] coordsSet) {
+
         for (int i = 0; i < coordsSet.length; i++) {
             for (int j = 0; j < coordsSet[i].length; j++) {
                 setKeyColumns(i, j, coordsSet[i][j]);

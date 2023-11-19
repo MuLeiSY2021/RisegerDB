@@ -1,8 +1,11 @@
 package org.riseger.protoctl.compiler.result;
 
+import lombok.Data;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
 public class ResultSet {
     Map<String, ResultModelSet> modelSetMap = new HashMap<>();
 
