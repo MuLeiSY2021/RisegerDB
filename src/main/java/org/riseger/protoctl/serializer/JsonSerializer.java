@@ -33,5 +33,4 @@ public class JsonSerializer {
     public static Object deserialize(String text, TypeToken<?> parameterized) {
         return gson.fromJson(text, parameterized);
     }
-
 }

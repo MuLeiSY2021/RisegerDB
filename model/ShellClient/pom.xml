@@ -38,7 +38,7 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>org.risegerdb.jdbc</groupId>
             <artifactId>JRDBConnectivity</artifactId>
             <version>0.1.0</version>
         </dependency>

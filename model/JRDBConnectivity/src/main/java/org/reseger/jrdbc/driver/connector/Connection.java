@@ -9,7 +9,6 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.Getter;
 import org.reseger.jrdbc.driver.handler.ClientHandlerManager;
-import org.reseger.jrdbc.driver.session.SearchSession;
 import org.reseger.jrdbc.driver.session.TextSQLMessageSession;
 import org.riseger.protoctl.otherProtocol.ProgressBar;
 import org.riseger.protoctl.packet.response.BasicResponse;
@@ -95,10 +94,6 @@ public class Connection {
         } finally {
             lock.unlock();
         }
-    }
-
-    public SearchSession search() {
-        return new SearchSession(this);
     }
 
     public TextSQLMessageSession sqlText() {

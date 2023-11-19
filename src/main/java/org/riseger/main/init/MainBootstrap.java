@@ -6,9 +6,9 @@ public class MainBootstrap {
     private static Logger LOG;
 
     public static void main(String[] args) throws Exception {
-        String rootPath = getRootPath();
+        String rootPath = args[0];
 
-        LogInitializer logInitializer = new LogInitializer();
+        LogInitializer logInitializer = new LogInitializer(rootPath);
         logInitializer.initLog();
         MainBootstrap.LOG = Logger.getLogger(MainBootstrap.class);
         LOG.info("Log initializer successfully");
@@ -21,7 +21,7 @@ public class MainBootstrap {
         cacheInitializer.init();
         LOG.info("Cache initialized successfully");
 
-        CompilerInitialize compilerInitialize = new CompilerInitialize();
+        CompilerInitialize compilerInitialize = new CompilerInitialize(rootPath);
         compilerInitialize.init();
         LOG.info("Compiler initialized successfully");
 
@@ -32,19 +32,10 @@ public class MainBootstrap {
         EntryInitializer entryInitializer = new EntryInitializer();
         entryInitializer.init();
         LOG.info("Entry initialized successfully");
+
+        ConsoleInitialize consoleInitialize = new ConsoleInitialize();
+        consoleInitialize.init();
+        LOG.info("Console initialized successfully");
     }
 
-    public static String getRootPath() {
-        String realPath = MainBootstrap.class.getClassLoader().getResource("")
-                .getFile();
-        java.io.File file = new java.io.File(realPath);
-        realPath = file.getAbsolutePath();
-        try {
-            realPath = java.net.URLDecoder.decode(realPath, "utf-8");
-        } catch (Exception e) {
-            java.util.logging.Logger.getLogger("MainBootstrap").severe(e.getMessage());
-        }
-
-        return realPath;
-    }
 }

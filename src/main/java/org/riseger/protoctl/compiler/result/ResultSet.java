@@ -9,6 +9,8 @@ import java.util.Map;
 public class ResultSet {
     Map<String, ResultModelSet> modelSetMap = new HashMap<>();
 
+    int size = 0;
+
     public int getCount() {
         return modelSetMap.size();
     }
@@ -28,5 +30,11 @@ public class ResultSet {
 
     public boolean hasModelSet(String model) {
         return modelSetMap.containsKey(model);
+    }
+
+    public void pack() {
+        for (ResultModelSet modelSet : modelSetMap.values()) {
+            size += modelSet.size();
+        }
     }
 }

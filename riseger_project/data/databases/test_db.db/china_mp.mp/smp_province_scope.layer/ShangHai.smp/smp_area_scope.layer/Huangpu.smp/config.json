@@ -1,0 +1,10 @@
+{
+  "threshold": {
+    "configName": "threshold",
+    "value": "0.5"
+  },
+  "node_size": {
+    "configName": "node_size",
+    "value": "4"
+  }
+}

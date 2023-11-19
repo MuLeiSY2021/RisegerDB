@@ -8,6 +8,7 @@ import org.riseger.protoctl.packet.BasicPacket;
 import org.riseger.protoctl.packet.PacketType;
 import org.riseger.protoctl.serializer.JsonSerializer;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class ProtocolCodec extends ByteToMessageCodec<BasicPacket> {
@@ -18,6 +19,7 @@ public class ProtocolCodec extends ByteToMessageCodec<BasicPacket> {
 
     @Override
     protected void encode(ChannelHandlerContext ctx, BasicPacket msg, ByteBuf out) {
+        LOG.info("Accept message from" + ctx.channel().remoteAddress() + " Message Type:" + msg.getType());
         LOG.debug("Encoding message: " + msg.getType());
         out.writeByte(msg.getType().ordinal()); // MessageType
         byte[] bytes = JsonSerializer.serialize(msg);
@@ -27,17 +29,27 @@ public class ProtocolCodec extends ByteToMessageCodec<BasicPacket> {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) {
-        try {
-            PacketType packetType = PacketType.values()[in.readByte()];
-            LOG.info("Decoding message of type: " + packetType);
+        PacketType packetType = PacketType.values()[in.readByte()];
+        LOG.info("Decoding message of type: " + packetType);
+        int len = in.readInt();
+        byte[] data = new byte[len];
+        int i = 0;
+        while (i != len) {
+            if (in.isReadable()) {
+                data[i++] = in.readByte();
+            } else {
+                in.resetReaderIndex();
+                return;
+            }
+        }
 
-            byte[] data = new byte[in.readInt()];
-            in.readBytes(data);
+        String message = new String(data, StandardCharsets.UTF_8);
+        try {
             BasicPacket bm = (BasicPacket) JsonSerializer.deserialize(data, packetType.getClazz());
             LOG.debug("Decoded message: " + bm);
             out.add(bm);
         } catch (Exception e) {
-            LOG.error("Error", e);
+            LOG.error("ErrorJson:" + message, e);
             throw e;
         }
     }

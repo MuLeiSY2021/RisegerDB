@@ -11,7 +11,7 @@ import org.riseger.protoctl.packet.RequestType;
 public class CommandSQLRequest extends TranspondRequest {
     private final CommandTree commandTree;
 
-    private final String ipAddress;
+    private String ipAddress;
 
     public CommandSQLRequest(CommandTree commandTree, String ipAddress, RequestType type) {
         super(PacketType.COMMAND_SQL, type);

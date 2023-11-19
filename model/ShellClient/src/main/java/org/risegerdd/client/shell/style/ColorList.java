@@ -5,17 +5,15 @@ import lombok.Getter;
 
 import java.util.Random;
 
+@Getter
 public enum ColorList {
     CYBER_COLOR();
 
     private static final Random RAND = new Random();
-    @Getter
-    final ColorStyle[] colorStyles;
-    private final Class<? extends ColorStyle> kind;
+    final CyberColorStyle[] colorStyles;
 
     ColorList() {
-        this.kind = CyberColorStyle.class;
-        this.colorStyles = ((Class<? extends ColorStyle>) CyberColorStyle.class).getEnumConstants();
+        this.colorStyles = (CyberColorStyle.class).getEnumConstants();
     }
 
     public String[] toColorfulArray(String text) {
@@ -28,7 +26,7 @@ public enum ColorList {
         int step = textArray.length / this.getColorStyles().length + (textArray.length > this.getColorStyles().length ? 1 : 0);
         int index = 0;
         for (int i = 0; i < textArray.length; i++) {
-            colorArray[i] = this.getColorStyles()[index].toColor(textArray[i], back);
+            colorArray[i] = CyberColorStyle.color(this.getColorStyles()[index]).toColor(textArray[i], back);
             if (i % step == 0) {
                 index++;
             }
@@ -41,7 +39,7 @@ public enum ColorList {
     }
 
     public String toColor(String text) {
-        return this.getColorStyles()[RAND.nextInt(this.getColorStyles().length)].toString() + text + ColorStyle.END;
+        return CyberColorStyle.color(this.getColorStyles()[RAND.nextInt(this.getColorStyles().length)]).toColor(text);
     }
 
 
@@ -49,7 +47,7 @@ public enum ColorList {
         StringBuilder sb = new StringBuilder();
         String[] split = text.split(" ");
         for (int i = 0; i < split.length; i++) {
-            sb.append(this.getColorStyles()[i % this.getColorStyles().length].toColor(split[i], back)).append(" ");
+            sb.append(CyberColorStyle.color(this.getColorStyles()[i % this.getColorStyles().length]).toColor(split[i], back)).append(" ");
         }
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();

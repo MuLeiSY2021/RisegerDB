@@ -13,4 +13,5 @@ public class TextSQLResponse extends BasicResponse {
     public TextSQLResponse() {
         super(PacketType.TEXT_SQL_RESPONSE);
     }
+
 }

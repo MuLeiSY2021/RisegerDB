@@ -1,40 +1,24 @@
 package org.risegerdd.client.shell.style;
 
-public enum CyberColorStyle implements ColorStyle {
-
-    VERY_SOFT_BLUE("117"),
-    VERY_SOFT_MAGENTA("213"),
-
-    MODERATE_VIOLET("135"),
+import java.util.HashMap;
+import java.util.Map;
 
 
-    DARK_BLUE("25");
-    //        RED("203");
-    private final String rgbColor;
+public enum CyberColorStyle {
+    VERY_SOFT_BLUE, VERY_SOFT_MAGENTA, MODERATE_VIOLET, SOFT_RED, DARK_BLUE;
 
-    CyberColorStyle(String rgbColor) {
-        this.rgbColor = rgbColor;
+    private static final Map<CyberColorStyle, Color> colorMap = new HashMap<>();
+
+    static {
+        colorMap.put(VERY_SOFT_BLUE, new Color("117"));
+        colorMap.put(VERY_SOFT_MAGENTA, new Color("213"));
+        colorMap.put(MODERATE_VIOLET, new Color("135"));
+        colorMap.put(SOFT_RED, new Color("197"));
+        colorMap.put(DARK_BLUE, new Color("25"));
     }
 
-
-    @Override
-    public String toColor(String s, boolean back) {
-        return this.toString(back) + s + ColorStyle.END;
+    public static Color color(CyberColorStyle color) {
+        return colorMap.get(color);
     }
 
-    @Override
-    public String toColor(String s) {
-        return toColor(s, false);
-    }
-
-
-    public String toString(boolean back) {
-        if (back) return ColorStyle.PROMPT_BACK + this.rgbColor + "m";
-        return ColorStyle.PROMPT_FRONT + this.rgbColor + "m";
-    }
-
-    @Override
-    public String toString() {
-        return toString(false);
-    }
 }

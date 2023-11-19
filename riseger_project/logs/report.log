@@ -1,0 +1,816 @@
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_2
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_33
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:4000 匹配数字
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_4
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:1000 匹配数字
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_5
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_4
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:5000 匹配数字
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_5
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OR 匹配关键字:KW_30
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OUT 匹配关键字:KW_29
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_2
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_33
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:777.5 匹配数字
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_4
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:72658.1 匹配数字
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_5
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_4
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:45.2 匹配数字
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_5
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:AND 匹配关键字:KW_32
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_21
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:floorArea 匹配字符串
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:> 匹配关键字:KW_22
+DEBUG pool-5-thread-3 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:2000 匹配数字
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："WHERE":16 不匹配语法："USE":14
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："WHERE":16 不匹配语法："SEARCH":15
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："WHERE" 匹配代码为:"WHERE"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'where_clause' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："IN":28 不匹配语法："(":3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_0' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："IN":28 不匹配语法："!":27
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_2' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："IN" 匹配代码为:"IN"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'graphic_expression' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'rectangle_expression' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："RECT" 匹配代码为:"RECT"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'coord_expression' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："coord" 匹配代码为:"COORD"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："4000":1085227008 不匹配语法："(":3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："4000":1085227008 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点4000 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："*":7
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："/":8
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："+":9
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："1000":1083129856 不匹配语法："(":3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："1000":1083129856 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点1000 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："*":7
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："/":8
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："+":9
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：")" 匹配代码为:")"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'coord_expression' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："5000":1085507584 不匹配语法："(":3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："5000":1085507584 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点5000 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："*":7
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："/":8
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："+":9
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：")" 匹配代码为:")"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'rectangle_expression' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'graphic_expression' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_2' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："OR":30 不匹配语法："AND":32
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_0' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："OR" 匹配代码为:"OR"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_0' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："OUT":29 不匹配语法："!":27
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_2' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："OUT":29 不匹配语法："IN":28
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："OUT" 匹配代码为:"OUT"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'graphic_expression' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'rectangle_expression' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："RECT" 匹配代码为:"RECT"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'coord_expression' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："coord" 匹配代码为:"COORD"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："777.5":1082674176 不匹配语法："(":3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："777.5":1082674176 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点777.5 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："*":7
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："/":8
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："+":9
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："72658.1":-647486277 不匹配语法："(":3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："72658.1":-647486277 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点72658.1 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："*":7
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："/":8
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："+":9
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：")" 匹配代码为:")"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'coord_expression' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："45.2":-639696893 不匹配语法："(":3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："45.2":-639696893 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点45.2 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："*":7
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："/":8
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："+":9
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：")" 匹配代码为:")"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'rectangle_expression' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'graphic_expression' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_2' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："AND" 匹配代码为:"AND"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："building_model":1100388830 不匹配语法："!":27
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_2' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："building_model":1100388830 不匹配语法："IN":28
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："building_model":1100388830 不匹配语法："OUT":29
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_3' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："building_model":1100388830 不匹配语法："(":3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："building_model":1100388830 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点building_model 匹配失败
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'attribute_expression' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：STR
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点building_model 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："." 匹配代码为:"."
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：STR
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点floorArea 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'attribute_expression' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：">":22 不匹配语法："*":7
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：">":22 不匹配语法："/":8
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：">":22 不匹配语法："+":9
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：">":22 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：">" 匹配代码为:">"
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_3' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："2000":1084178432 不匹配语法："(":3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："2000":1084178432 不匹配语法："-":10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点2000 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_3' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_3' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_2' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_1' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_0' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'where_clause' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配成功
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:2
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:3
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Coord_f Level:4
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:5
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Rectangle_f Level:6
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:In_f Level:7
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:10
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:11
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Coord_f Level:12
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:13
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Rectangle_f Level:14
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Out_f Level:15
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:16
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:17
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Attribute_f Level:18
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:19
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Big_f Level:20
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:And_f Level:21
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Or_f Level:22
+DEBUG pool-5-thread-3 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Where_f Level:23
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:1 Fun: PreWhere_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: In_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[8021.0,8276.5],[8031.0,9750.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = false
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Out_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[8021.0,8276.5],[8031.0,9750.5]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Attribute_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:20 Fun: Big_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - 2351.8 > 2000.0 true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:21 Fun: And_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - true & true true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Or_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - true | false true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Where_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: PostWhere_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Back_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: In_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[8005.0,9501.5],[8012.0,9589.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = false
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Out_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[8005.0,9501.5],[8012.0,9589.5]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Attribute_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:20 Fun: Big_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - 4866.46 > 2000.0 true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:21 Fun: And_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - true & true true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Or_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - true | false true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Where_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: PostWhere_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Back_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: In_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[5324.5,7863.5],[6696.5,8543.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = false
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Out_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[5324.5,7863.5],[6696.5,8543.5]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Attribute_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:20 Fun: Big_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - 1350.56 > 2000.0 false
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:21 Fun: And_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - false & true false
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Or_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - false | false false
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Where_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: PostWhere_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Back_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: In_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[5683.5,8780.5],[6127.5,8781.0]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = false
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Out_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[5683.5,8780.5],[6127.5,8781.0]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Attribute_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:20 Fun: Big_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - 2946.61 > 2000.0 true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:21 Fun: And_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - true & true true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:22 Fun: Or_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - true | false true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Where_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: PostWhere_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Back_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: In_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[5355.5,8661.0],[5485.0,8958.0]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:22
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Where_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: PostWhere_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Back_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: In_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[5647.0,7882.0],[5969.0,8516.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:22
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Where_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: PostWhere_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Back_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: In_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[5065.5,8613.5],[5823.0,8753.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:22
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Where_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:26 Fun: PostWhere_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:27 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:28 Fun: Back_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: In_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.Function_c - [[5774.0,8514.5],[5822.5,8598.5]] IN [[-4000.0,-1000.0],[6000.0,9000.0]] = true
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:22
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:23 Fun: Where_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:24 Fun: Entity_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.compoent.SearchSession - ID:25 Fun: IfJump_fc
+DEBUG pool-5-thread-3 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:28
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Accept message from/127.0.0.1:35802 Message Type:TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"Result":{"modelSetMap":{"building_model":{"size":3,"resultElements":[{"columns":{"address":"ShangHai1","floorArea":2351.8},"keyColumns":{"0":[8021.0,8276.5],"1":[8031.0,9750.5]}},{"columns":{"address":"ShangHai2","floorArea":4866.46},"keyColumns":{"0":[8005.0,9501.5],"1":[8012.0,9589.5]}},{"columns":{"address":"Tianjin2","floorArea":2946.61},"keyColumns":{"0":[5683.5,8780.5],"1":[6127.5,8781.0]}}]}},"size":3},"success":true}
+INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoding message of type: TEXT_SQL
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Decoded message: {"text":"WHERE\n  OUT RECT(\n    coord(777.5, 72658.1),\n    45.2\n  )\n  AND building_model.floorArea \u003e 2000;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Received Request: {"text":"WHERE\n  OUT RECT(\n    coord(777.5, 72658.1),\n    45.2\n  )\n  AND building_model.floorArea \u003e 2000;\n","ipAddress":"localhost/127.0.0.1:10086","requestType":"SHELL"}
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Processing Request...
+DEBUG nioEventLoopGroup-3-1 org.riseger.main.workflow.workflow.CommonWorkFlow - 收到一条请求
+DEBUG pool-5-thread-4 org.riseger.main.compiler.CompilerMaster - ip: /127.0.0.1:35802
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:WHERE 匹配关键字:KW_16
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:OUT 匹配关键字:KW_29
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:RECT 匹配关键字:KW_2
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_3
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:coord 匹配关键字:KW_33
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:( 匹配关键字:KW_3
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:777.5 匹配数字
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_4
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:72658.1 匹配数字
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_5
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:, 匹配关键字:KW_4
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:45.2 匹配数字
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:) 匹配关键字:KW_5
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:AND 匹配关键字:KW_32
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:building_model 匹配字符串
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:. 匹配关键字:KW_21
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:floorArea 匹配字符串
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:> 匹配关键字:KW_22
+DEBUG pool-5-thread-4 org.riseger.main.compiler.lextcal.Lexicator - SourceCode:2000 匹配数字
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："WHERE":16 不匹配语法："USE":14
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："WHERE":16 不匹配语法："SEARCH":15
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："WHERE" 匹配代码为:"WHERE"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'where_clause' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："OUT":29 不匹配语法："(":3
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_0' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_1' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："OUT":29 不匹配语法："!":27
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_2' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："OUT":29 不匹配语法："IN":28
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："OUT" 匹配代码为:"OUT"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'graphic_expression' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'rectangle_expression' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："RECT" 匹配代码为:"RECT"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'coord_expression' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："coord" 匹配代码为:"COORD"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："(" 匹配代码为:"("
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："777.5":1082674176 不匹配语法："(":3
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："777.5":1082674176 不匹配语法："-":10
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点777.5 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："*":7
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："/":8
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："+":9
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：",":4 不匹配语法："-":10
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："72658.1":-647486277 不匹配语法："(":3
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："72658.1":-647486277 不匹配语法："-":10
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点72658.1 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："*":7
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："/":8
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："+":9
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："-":10
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：")" 匹配代码为:")"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'coord_expression' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："," 匹配代码为:","
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："45.2":-639696893 不匹配语法："(":3
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："45.2":-639696893 不匹配语法："-":10
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点45.2 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："*":7
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："/":8
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："+":9
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：")":5 不匹配语法："-":10
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：")" 匹配代码为:")"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'rectangle_expression' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'graphic_expression' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_2' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_1' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："AND" 匹配代码为:"AND"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_1' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："building_model":1100388830 不匹配语法："!":27
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_2' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："building_model":1100388830 不匹配语法："IN":28
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："building_model":1100388830 不匹配语法："OUT":29
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_3' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："building_model":1100388830 不匹配语法："(":3
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："building_model":1100388830 不匹配语法："-":10
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点building_model 匹配失败
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'attribute_expression' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：STR
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点building_model 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为："." 匹配代码为:"."
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：STR
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点floorArea 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'attribute_expression' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：">":22 不匹配语法："*":7
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：">":22 不匹配语法："/":8
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：">":22 不匹配语法："+":9
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码：">":22 不匹配语法："-":10
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配成功，源代码为：">" 匹配代码为:">"
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_3' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："2000":1084178432 不匹配语法："(":3
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 匹配失败,源代码："2000":1084178432 不匹配语法："-":10
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点：NUM
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 语法终结点2000 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'number_entity' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_1' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition_0' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'num_condition' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_3' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_3' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_2' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_1' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition_0' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'bool_condition' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'where_clause' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SyntaxEqualPack - 非关键词 'search_sql' 匹配成功
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:2
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:3
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Coord_f Level:4
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:5
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Rectangle_f Level:6
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Out_f Level:7
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:8
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:9
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Attribute_f Level:10
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Entity_f Level:11
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Big_f Level:12
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:And_f Level:13
+DEBUG pool-5-thread-4 org.riseger.main.compiler.semantic.SemanticTree$Node - Fun:Where_f Level:14
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:1 Fun: PreWhere_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: Out_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - [[8021.0,8276.5],[8031.0,9750.5]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Attribute_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Big_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - 2351.8 > 2000.0 true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: And_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - true & true true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Where_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: IfJump_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: PostWhere_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Back_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: Out_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - [[8005.0,9501.5],[8012.0,9589.5]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Attribute_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Big_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - 4866.46 > 2000.0 true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: And_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - true & true true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Where_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: IfJump_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: PostWhere_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Back_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: Out_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - [[5324.5,7863.5],[6696.5,8543.5]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Attribute_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Big_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - 1350.56 > 2000.0 false
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: And_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - false & true false
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Where_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: IfJump_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: PostWhere_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Back_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: Out_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - [[5683.5,8780.5],[6127.5,8781.0]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Attribute_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Big_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - 2946.61 > 2000.0 true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: And_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - true & true true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Where_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: IfJump_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: PostWhere_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Back_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: Out_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - [[5355.5,8661.0],[5485.0,8958.0]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Attribute_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Big_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - 4246.1 > 2000.0 true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: And_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - true & true true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Where_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: IfJump_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: PostWhere_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Back_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: Out_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - [[5647.0,7882.0],[5969.0,8516.5]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Attribute_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Big_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - 4697.35 > 2000.0 true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: And_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - true & true true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Where_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: IfJump_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: PostWhere_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Back_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: Out_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - [[5065.5,8613.5],[5823.0,8753.5]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Attribute_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Big_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - 2126.11 > 2000.0 true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: And_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - true & true true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Where_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: IfJump_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.IfJump_fc - 不满足条件，放回
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:17 Fun: PostWhere_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:18 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:19 Fun: Back_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.Back_fc - 满足条件，跳转至:1
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:2 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:3 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:4 Fun: Coord_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:5 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:6 Fun: Rectangle_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:7 Fun: Out_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - [[5774.0,8514.5],[5822.5,8598.5]] OUT [[72612.5,732.0],[72703.0,822.5]] = true
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:8 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:9 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:10 Fun: Attribute_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:11 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:12 Fun: Big_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - 1802.25 > 2000.0 false
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:13 Fun: And_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.Function_c - false & true false
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:14 Fun: Where_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:15 Fun: Entity_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.compoent.SearchSession - ID:16 Fun: IfJump_fc
+DEBUG pool-5-thread-4 org.riseger.main.compiler.function.loop.IfJump_fc - 满足条件，跳转至:19
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Request processed successfully.
+INFO nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Accept message from/127.0.0.1:35802 Message Type:TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-3-1 org.riseger.protoctl.codec.ProtocolCodec - Encoding message: TEXT_SQL_RESPONSE
+INFO nioEventLoopGroup-3-1 org.riseger.main.entry.handler.TransponderHandler - Sending Request: {"Result":{"modelSetMap":{"building_model":{"size":6,"resultElements":[{"columns":{"address":"ShangHai1","floorArea":2351.8},"keyColumns":{"0":[8021.0,8276.5],"1":[8031.0,9750.5]}},{"columns":{"address":"ShangHai2","floorArea":4866.46},"keyColumns":{"0":[8005.0,9501.5],"1":[8012.0,9589.5]}},{"columns":{"address":"Tianjin2","floorArea":2946.61},"keyColumns":{"0":[5683.5,8780.5],"1":[6127.5,8781.0]}},{"columns":{"address":"Tianjin3","floorArea":4246.1},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}},{"columns":{"address":"Chongqing1","floorArea":4697.35},"keyColumns":{"0":[5647.0,7882.0],"1":[5969.0,8516.5]}},{"columns":{"address":"Chongqing2","floorArea":2126.11},"keyColumns":{"0":[5065.5,8613.5],"1":[5823.0,8753.5]}}]}},"size":6},"success":true}

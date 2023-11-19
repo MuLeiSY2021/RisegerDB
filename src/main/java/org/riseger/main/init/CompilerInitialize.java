@@ -15,9 +15,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class CompilerInitialize implements Initializer {
+    private final String rootPath;
+
+    public CompilerInitialize(String rootPath) {
+        this.rootPath = rootPath;
+    }
+
     public void init() throws Exception {
         //获取文法规则
-        String rule = Utils.getText(new File("src/main/resources/rule/syntaxrule.txt"));
+        String rule = Utils.getText(new File(rootPath + "/resources/rule/syntaxrule.rule"));
         if (rule == null) {
             throw new FileNotFoundException("Syntax rule");
         }

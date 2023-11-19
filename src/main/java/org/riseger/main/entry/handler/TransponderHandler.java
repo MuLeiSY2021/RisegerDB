@@ -46,7 +46,7 @@ public abstract class TransponderHandler<IN extends TranspondRequest> extends Si
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, IN msg) {
         LOG.info("Received Request: " + msg);
-
+        reset();
         msg.setTransponder(this);
 
         preHandle(ctx, msg);
@@ -75,6 +75,12 @@ public abstract class TransponderHandler<IN extends TranspondRequest> extends Si
 
         LOG.info("Sending Request: " + response);
 
+    }
+
+    private void reset() {
+        failed = false;
+        exception = null;
+        response = null;
     }
 
     protected void sleep() throws InterruptedException {

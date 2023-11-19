@@ -21,6 +21,9 @@ public class GetMaps_fc extends Function_c {
 
     @Override
     public void process() throws SQLException {
+        if (!hasMap(MemoryConstant.DATABASE)) {
+            throw new SQLException("No database using");
+        }
         Database_c db = (Database_c) super.get(MemoryConstant.DATABASE);
 
         ResultSet resultSet;

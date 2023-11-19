@@ -3,6 +3,8 @@ package org.risegerdd.client.shell.table;
 import org.riseger.protoctl.compiler.result.ResultElement;
 import org.riseger.protoctl.compiler.result.ResultModelSet;
 import org.riseger.protoctl.compiler.result.ResultSet;
+import org.risegerdd.client.shell.style.Color;
+import org.risegerdd.client.shell.style.TableColorStyle;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -70,14 +72,15 @@ public class TablePrinter {
             total += i + 3;
         }
         total++;
-        stringBuilder.append(TITLE_LINE[0]);
-        stringBuilder.append(repeat(TITLE_LINE[1], total + 2));
-        stringBuilder.append(TITLE_LINE[2]).append("\n");
-
-        stringBuilder.append(MIDDLE_LINE[0]);
-        stringBuilder.append(" ").append(title).append(" ");
-        stringBuilder.append(repeat(" ", total - title.length()));
-        stringBuilder.append(MIDDLE_LINE[0]).append("\n");
+        stringBuilder.append(TableColorStyle.color(TableColorStyle.DARK_BLUE).toColor())
+                .append(TITLE_LINE[0])
+                .append(repeat(TITLE_LINE[1], total + 2))
+                .append(TITLE_LINE[2]).append("\n")
+                .append(MIDDLE_LINE[0])
+                .append(" ").append(TableColorStyle.color(TableColorStyle.VERY_SOFT_MAGENTA).toColor(title)).append(" ")
+                .append(TableColorStyle.color(TableColorStyle.DARK_BLUE).toColor())
+                .append(repeat(" ", total - title.length()))
+                .append(MIDDLE_LINE[0]).append("\n");
     }
 
     private void addTop(StringBuilder stringBuilder, TableElement tableElement) {
@@ -95,8 +98,9 @@ public class TablePrinter {
         int type = tableElement.fst ? 0 : tableElement.bi ? 1 : 2;
 
         //添加数字排
-        stringBuilder.append(TOP_LINE[type][1]);
-        stringBuilder.append(repeat(TOP_LINE[type][0], TableElement.indexAssigned + 2));
+        stringBuilder.append(TableColorStyle.color(TableColorStyle.DARK_BLUE).toColor())
+                .append(TOP_LINE[type][1])
+                .append(repeat(TOP_LINE[type][0], TableElement.indexAssigned + 2));
         //添加第二排
         for (int i = 0; i < TableElement.standardAssignedValueList.length; i++) {
             int row_c = i == 0 ? 2 : tableElement.getMix(i) ? 3 : tableElement.getPrevMix(i) ? 4 : 5;
@@ -124,9 +128,11 @@ public class TablePrinter {
           ║ a │ e        │ t      │ k ║
          */
         stringBuilder.append(MIDDLE_LINE[0]).append(" ");
-        String indexStr = tableElement.index == -1 ? " " : String.valueOf(tableElement.index);
-        stringBuilder.append(indexStr);
-        stringBuilder.append(repeat(" ", TableElement.indexAssigned - indexStr.length() + 1));
+        String indexStr = tableElement.index == -1 ? " " : String.valueOf(tableElement.index + 1);
+        stringBuilder.append(TableColorStyle.color(TableColorStyle.DARK_BLUE).toColor())
+                .append(TableColorStyle.color(TableColorStyle.SOFT_RED).toColor(indexStr))
+                .append(TableColorStyle.color(TableColorStyle.DARK_BLUE).toColor())
+                .append(repeat(" ", TableElement.indexAssigned - indexStr.length() + 1));
         int bend = 0;
         for (int i = 0; i < TableElement.standardAssignedValueList.length; i++) {
             if (tableElement.getMix(i)) {
@@ -139,8 +145,10 @@ public class TablePrinter {
                     stringBuilder.append(MIDDLE_LINE[1]).append(" ");
                 }
                 String str = tableElement.contents.get(i - bend);
-                stringBuilder.append(str);
-                stringBuilder.append(repeat(" ", TableElement.standardAssignedValueList[i] - str.length()));
+                stringBuilder
+                        .append(TableColorStyle.color(tableElement.fst ? TableColorStyle.VERY_SOFT_BLUE : TableColorStyle.SOFT_YELLOW).toColor(str))
+                        .append(TableColorStyle.color(TableColorStyle.DARK_BLUE).toColor())
+                        .append(repeat(" ", TableElement.standardAssignedValueList[i] - str.length()));
             }
 
             stringBuilder.append(" ");
@@ -155,17 +163,18 @@ public class TablePrinter {
    {"═", "╚", "╩", "═", "╧", "╝"};
          */
         //添加数字排
-        stringBuilder.append(BOTTOM_LINE[1]);
-        stringBuilder.append(repeat(BOTTOM_LINE[0], TableElement.indexAssigned + 2));
+        stringBuilder.append(TableColorStyle.color(TableColorStyle.DARK_BLUE).toColor())
+                .append(BOTTOM_LINE[1])
+                .append(repeat(BOTTOM_LINE[0], TableElement.indexAssigned + 2));
         //添加第二排
         for (int i = 0; i < TableElement.standardAssignedValueList.length; i++) {
             int row_c = i == 0 ? 2 : tableElement.getMix(i) ? 3 : 4;
-            stringBuilder.append(BOTTOM_LINE[row_c]);
-            stringBuilder.append(repeat(BOTTOM_LINE[0], TableElement.standardAssignedValueList[i] + 2));
+            stringBuilder.append(BOTTOM_LINE[row_c])
+                    .append(repeat(BOTTOM_LINE[0], TableElement.standardAssignedValueList[i] + 2));
         }
 
         //添加最后一行
-        stringBuilder.append(BOTTOM_LINE[5]).append("\n");
+        stringBuilder.append(BOTTOM_LINE[5]).append("\n").append(Color.END);
 
     }
 
@@ -213,8 +222,9 @@ public class TablePrinter {
                 this.contents.add(s);
                 standardAssignedValueList[i] = Math.max(standardAssignedValueList[i], s.length());
                 i++;
+                i += kRowSize - 1;
             }
-            i += kRowSize - 1;
+
             for (Map.Entry<String, Object> entry : re.getColumns().entrySet()) {
                 String s = entry.getKey();
                 this.contents.add(s);

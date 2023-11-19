@@ -8,6 +8,7 @@ import java.util.List;
 
 @Getter
 public class ResultModelSet {
+    int size;
 
     @Setter
     private String modelName;
@@ -16,5 +17,10 @@ public class ResultModelSet {
 
     public void add(ResultElement resultElement) {
         this.resultElements.add(resultElement);
+        size++;
+    }
+
+    public int size() {
+        return size;
     }
 }

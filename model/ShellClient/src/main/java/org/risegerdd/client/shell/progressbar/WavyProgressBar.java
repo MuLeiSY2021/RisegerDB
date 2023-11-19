@@ -23,9 +23,7 @@ public class WavyProgressBar implements ProgressBar {
 
     public void loading(int addedSteps) {
         this.currentStep += addedSteps;
-        // 清除控制台内容
-        out.print("\033[H\033[2J");
-        out.flush();
+
 
         // 显示波浪进度条
         out.print(color.toColor(generateWave(currentStep, 40, "Loading: " + currentStep * 100 / totalSteps + "% ", 0, totalSteps - 1)) + "\r");
@@ -42,7 +40,7 @@ public class WavyProgressBar implements ProgressBar {
         String fill = "▒";
         StringBuilder res = new StringBuilder();
         String[] blocks = new String[]{"", "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█"};
-        String lsep = "▏", rsep = "▕";
+        String lsep = "┃", rsep = "┃";
         value = Math.min(Math.max(value, vmin), vmax);
         value = (value - vmin) / (vmax - vmin);
 
