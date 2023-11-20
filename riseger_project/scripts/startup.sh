@@ -1,13 +1,15 @@
 #!/bin/bash
 
-# 设置Java运行时环境变量，根据你的实际情况修改JAVA_HOME的路径
-CRTDIR=$(readlink -f "${BASH_SOURCE[0]}")
+# 设置根目录
 
-cd $CRTDIR
-# 设置JAR文件路径，根据你的实际情况修改
+cd $(dirname "$0")
+cd ..
+CRTDIR=$(pwd)
+
+# 设置JAR文件路径
 JAR_PATH=./RisegerDB.jar
 
-# 设置Java虚拟机参数，根据需要修改
+# 设置Java虚拟机参数
 JAVA_OPTS="-Xmx512m -Xms256m"
 
 # 执行启动命令

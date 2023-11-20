@@ -49,6 +49,12 @@ public class MainBootstrap {
         if (consoleInitialize.init()) {
             LOG.info("Console initialized successfully");
         }
+        consoleInitialize.join();
+
+        //Ending
+        entryInitializer.close();
+        requestHandlerInitializer.close();
+        LOG.info("Server closed");
     }
 
 }

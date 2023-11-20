@@ -11,16 +11,22 @@ public class ConsoleInitialize extends Initializer {
         super(rootPath);
     }
 
+    private Scanner scanner;
+
     @Override
     public boolean init() {
         try {
-            Scanner scanner = new Scanner(System.in);
-            while (!scanner.nextLine().equals("exit")) {
-            }
+            scanner = new Scanner(System.in);
             return true;
         } catch (Exception e) {
             LOG.error("Failed to Initialize Console", e);
         }
         return false;
+    }
+
+    public void join() {
+        while (!scanner.nextLine().equals("exit")) {
+        }
+        scanner.close();
     }
 }

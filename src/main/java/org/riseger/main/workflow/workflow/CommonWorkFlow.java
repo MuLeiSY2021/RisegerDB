@@ -22,4 +22,8 @@ public class CommonWorkFlow {
         adapter.adapt(request);
         workerPool.arrangeWork();
     }
+
+    public void close() {
+        workerPool.close();
+    }
 }

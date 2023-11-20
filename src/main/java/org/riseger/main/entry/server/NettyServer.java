@@ -14,14 +14,17 @@ import org.riseger.main.entry.handler.HandlerManager;
 public class NettyServer implements Server, Runnable {
     private static final Logger LOG = Logger.getLogger(NettyServer.class);
 
+    private final EventLoopGroup bossGroup = new NioEventLoopGroup();
+
+    private final EventLoopGroup workerGroup = new NioEventLoopGroup();
+
     @Override
     public void run() {
         bootstrap();
     }
 
     public void bootstrap() {
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+
 
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
@@ -42,5 +45,10 @@ public class NettyServer implements Server, Runnable {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
         }
+    }
+
+    public void close() {
+        workerGroup.shutdownGracefully();
+        bossGroup.shutdownGracefully();
     }
 }

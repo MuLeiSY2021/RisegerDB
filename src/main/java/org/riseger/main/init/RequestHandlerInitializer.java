@@ -19,4 +19,8 @@ public class RequestHandlerInitializer extends Initializer {
         }
         return false;
     }
+
+    public void close() {
+        ApiHandlerManager.INSTANCE.close();
+    }
 }

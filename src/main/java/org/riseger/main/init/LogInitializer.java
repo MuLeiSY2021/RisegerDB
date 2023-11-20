@@ -19,7 +19,7 @@ public class LogInitializer extends Initializer {
         FileInputStream fileInputStream = null;
         try {
             Properties properties = new Properties();
-            fileInputStream = new FileInputStream(rootPath + "/resources/log4j.properties");
+            fileInputStream = new FileInputStream(rootPath + "/configs/log4j.properties");
             properties.load(fileInputStream);
             PropertyConfigurator.configure(properties);
             return true;

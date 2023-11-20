@@ -34,4 +34,8 @@ public class CommonWorkerPool implements WorkerPool {
             lo.warn("Thread pool is full, reject to stack");
         }
     }
+
+    public void close() {
+        threadPool.shutdown();
+    }
 }

@@ -79,7 +79,7 @@ public class DatabaseShellClient {
             userInput = reader.nextLine();
             sb.append(userInput).append('\n');
         } while (!userInput.endsWith(";"));
-        if (userInput.equalsIgnoreCase("exit")) {
+        if (userInput.startsWith("exit")) {
             return false;
         }
         statement.setSqlText(sb.toString());

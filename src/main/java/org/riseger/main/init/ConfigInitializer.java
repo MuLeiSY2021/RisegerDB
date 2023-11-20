@@ -19,7 +19,7 @@ public class ConfigInitializer extends Initializer {
     @Override
     public boolean init() throws Exception {
         LOG.info("Set working directory..");
-        File workdir = new File(rootPath + "/config");
+        File workdir = new File(rootPath + "/configs");
 
         File xmlConfigFile = Utils.getFile(workdir, "config.xml");
 

@@ -23,4 +23,9 @@ public class ApiHandlerManager {
         workFlowMap.get(type).push(request);
     }
 
+    public void close() {
+        for (CommonWorkFlow c : workFlowMap.values()) {
+            c.close();
+        }
+    }
 }
