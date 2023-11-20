@@ -15,20 +15,19 @@ To start RisegerDB, use the following startup scripts:
 ## Example Usage
 
 Here is an example sequence of commands using RisegerDB:
-
-![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/726efafa-93e0-4c51-abec-28e48ae57030)
-```bash
+```sql
 get databases
 ```
-```bash
+![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/726efafa-93e0-4c51-abec-28e48ae57030)
+
+```sql
 preload './test/test_data.json'
 
 use databases 'test_db'
 
 get maps
 ```
-![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/e3897021-81fd-49ca-a585-72e1bf05fea8)
-```bash
+```sql
 USE		
   DATABASE 'test_db'|		
   MAP 'china_map'|		
@@ -51,6 +50,9 @@ WHERE
   )		
   AND building_model.floorArea > 1000;
 ```
+
+![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/e3897021-81fd-49ca-a585-72e1bf05fea8)
+
 
 ## SQL Syntax
 
