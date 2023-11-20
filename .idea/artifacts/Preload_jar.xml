@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Preload:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Preload_jar</output-path>
+    <root id="archive" name="Preload.jar">
+      <element id="module-output" name="Preload" />
+      <element id="module-test-output" name="Preload" />
+    </root>
+  </artifact>
+</component>
