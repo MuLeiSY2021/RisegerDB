@@ -1,4 +1,4 @@
-package org.example;
+package org.riseger;
 
 /**
  * Unit test for simple App.

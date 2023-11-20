@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # 设置Java运行时环境变量，根据你的实际情况修改JAVA_HOME的路径
-CRTDIR=$(pwd)/models/shellCli
+CRTDIR=$(readlink -f "${BASH_SOURCE[0]}")/models/shellCli
+
+cd $CRTDIR
 
 # 设置JAR文件路径，根据你的实际情况修改
-JAR_PATH=./models/shellCli/ShellClient.jar
+JAR_PATH=./ShellClient.jar
 
 # 设置Java虚拟机参数，根据需要修改
 JAVA_OPTS="-Xmx512m -Xms256m"

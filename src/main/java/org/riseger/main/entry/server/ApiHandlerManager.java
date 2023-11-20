@@ -19,8 +19,6 @@ public class ApiHandlerManager {
         workFlowMap.put(RequestType.SHELL, new CommonWorkFlow());
     }
 
-    private Compiler compiler;
-
     public void setRequest(BasicRequest request, RequestType type) {
         workFlowMap.get(type).push(request);
     }

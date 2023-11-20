@@ -1,6 +1,7 @@
 package org.riseger.main.workflow.wokerpool;
 
 import org.apache.log4j.Logger;
+import org.riseger.ConfigConstant;
 import org.riseger.main.workflow.jobstack.CommonJobStack;
 
 import java.util.concurrent.LinkedBlockingQueue;
@@ -12,9 +13,9 @@ public class CommonWorkerPool implements WorkerPool {
     private static final Logger lo = Logger.getLogger(CommonWorkerPool.class);
     private final CommonJobStack jobStack;
     private final ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
-            CORE_POOL_SIZE,
-            MAX_POOL_SIZE,
-            KEEP_ALIVE_TIME,
+            ConfigConstant.CORE_POOL_SIZE,
+            ConfigConstant.MAX_POOL_SIZE,
+            ConfigConstant.KEEP_ALIVE_TIME,
             TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(),
             new ThreadPoolExecutor.AbortPolicy()

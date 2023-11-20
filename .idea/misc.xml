@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">
@@ -9,10 +10,12 @@
         <option value="$PROJECT_DIR$/model/RTreePrimary/pom.xml" />
         <option value="$PROJECT_DIR$/model/JRDBC_Protoctl/pom.xml" />
         <option value="$PROJECT_DIR$/model/ShellClient/pom.xml" />
+        <option value="$PROJECT_DIR$/Protocol/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/Protocol/pom.xml" />
         <option value="$PROJECT_DIR$/model/JRDBC_Protocol/pom.xml" />
         <option value="$PROJECT_DIR$/model/JRDBC_Protoctl/pom.xml" />
       </set>

@@ -1,13 +1,13 @@
 package org.riseger.main.compiler.compoent;
 
-import org.riseger.main.Constant;
+import org.riseger.ConfigConstant;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SearchMemory {
 
-    final Object[] stackMemory = new Object[Constant.DEFAULT_MEMORYSIZE];
+    final Object[] stackMemory = new Object[ConfigConstant.DEFAULT_MEMORYSIZE];
 
     final Map<Integer, Object> mapMemory = new HashMap<>();
 
@@ -21,8 +21,8 @@ public class SearchMemory {
     }
 
     public void setVar(Object object) {
-        if (variableIndex == Constant.DEFAULT_MEMORYSIZE) {
-            throw new IndexOutOfBoundsException("Stack over flow size:" + Constant.DEFAULT_MEMORYSIZE * 8 + "bytes");
+        if (variableIndex == ConfigConstant.DEFAULT_MEMORYSIZE) {
+            throw new IndexOutOfBoundsException("Stack over flow size:" + ConfigConstant.DEFAULT_MEMORYSIZE * 8 + "bytes");
         }
         this.stackMemory[variableIndex++] = object;
     }

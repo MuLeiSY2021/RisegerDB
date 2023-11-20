@@ -1,7 +1,6 @@
 package org.riseger.main;
 
 public class Constant {
-    public static final String VERSION = "1.0.0";
 
     public static final String SUBMAP_PREFIX = "smp";
 
@@ -19,6 +18,5 @@ public class Constant {
 
     public static final String DOT_PREFIX = ".";
 
-    public static final Integer DEFAULT_MEMORYSIZE = 1024;
     public static final String MODEL_FILE_NAME = "model";
 }

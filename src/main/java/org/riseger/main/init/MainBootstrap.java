@@ -9,33 +9,46 @@ public class MainBootstrap {
         String rootPath = args[0];
 
         LogInitializer logInitializer = new LogInitializer(rootPath);
-        logInitializer.initLog();
+        logInitializer.init();
         MainBootstrap.LOG = Logger.getLogger(MainBootstrap.class);
-        LOG.info("Log initializer successfully");
+        if (logInitializer.init()) {
+            LOG.info("Log initializer successfully");
+        }
+
+        ConfigInitializer configInitializer = new ConfigInitializer(rootPath);
+        if (configInitializer.init()) {
+            LOG.info("Config initializer successfully");
+        }
 
         StorageInitializer storageInitializer = new StorageInitializer(rootPath);
-        storageInitializer.init();
-        LOG.info("Storage initialized successfully");
+        if (storageInitializer.init()) {
+            LOG.info("Storage initialized successfully");
+        }
 
-        CacheInitializer cacheInitializer = new CacheInitializer(storageInitializer);
-        cacheInitializer.init();
-        LOG.info("Cache initialized successfully");
+        CacheInitializer cacheInitializer = new CacheInitializer(rootPath, storageInitializer);
+        if (cacheInitializer.init()) {
+            LOG.info("Cache initialized successfully");
+        }
 
         CompilerInitialize compilerInitialize = new CompilerInitialize(rootPath);
-        compilerInitialize.init();
-        LOG.info("Compiler initialized successfully");
+        if (compilerInitialize.init()) {
+            LOG.info("Compiler initialized successfully");
+        }
 
-        RequestHandlerInitializer requestHandlerInitializer = new RequestHandlerInitializer();
-        requestHandlerInitializer.init();
-        LOG.info("RequestHandler initialized successfully");
+        RequestHandlerInitializer requestHandlerInitializer = new RequestHandlerInitializer(rootPath);
+        if (requestHandlerInitializer.init()) {
+            LOG.info("RequestHandler initialized successfully");
+        }
 
-        EntryInitializer entryInitializer = new EntryInitializer();
-        entryInitializer.init();
-        LOG.info("Entry initialized successfully");
+        EntryInitializer entryInitializer = new EntryInitializer(rootPath);
+        if (entryInitializer.init()) {
+            LOG.info("Entry initialized successfully");
+        }
 
-        ConsoleInitialize consoleInitialize = new ConsoleInitialize();
-        consoleInitialize.init();
-        LOG.info("Console initialized successfully");
+        ConsoleInitialize consoleInitialize = new ConsoleInitialize(rootPath);
+        if (consoleInitialize.init()) {
+            LOG.info("Console initialized successfully");
+        }
     }
 
 }

@@ -93,4 +93,14 @@ public class Utils {
     public static byte[] getBytes(File map) throws IOException {
         return Files.readAllBytes(Paths.get(map.toURI()));
     }
+
+    public static File getFile(File dir, String name) throws IOException {
+        File file = new File(dir + "/" + name);
+        boolean res = true;
+        if (!file.exists()) {
+            res &= dir.mkdirs();
+            res &= file.createNewFile();
+        }
+        return file;
+    }
 }

@@ -6,26 +6,25 @@ import org.riseger.main.storage.FileSystemManagers;
 
 import java.util.List;
 
-public class StorageInitializer implements Initializer {
+public class StorageInitializer extends Initializer {
     public static final Logger LOG = Logger.getLogger(StorageInitializer.class);
 
-    private final String rootPath;
-
     public StorageInitializer(String rootPath) {
-        this.rootPath = rootPath;
+        super(rootPath);
     }
 
     @Override
-    public void init() {
-        FileSystemManagers.DEFAULT = new FileSystemManagers(rootPath);
+    public boolean init() {
+        try {
+            FileSystemManagers.DEFAULT = new FileSystemManagers(rootPath);
+            return true;
+        } catch (Exception e) {
+            LOG.error("Failed to initialize storage", e);
+            return false;
+        }
     }
 
-    public List<Database_c> initDatabases() {
-        try {
-            return FileSystemManagers.DEFAULT.initDatabases();
-        } catch (Exception e) {
-            LOG.error("Error ", e);
-        }
-        return null;
+    public List<Database_c> initDatabases() throws Exception {
+        return FileSystemManagers.DEFAULT.initDatabases();
     }
 }
