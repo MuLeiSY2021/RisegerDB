@@ -1,5 +1,5 @@
 # RisegerDB - README
-![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/8e44772c-2d9d-4b4d-a378-b9f4978c663f)
+![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/40efff70-f058-4f94-a372-3f431dbd8da4)
 
 RisegerDB is an open-source spatial database system designed for efficient spatial data retrieval using R-trees and R*-trees as the primary indexes. This document provides an overview of the startup procedures, example usage, and the syntax for SQL commands supported by RisegerDB.
 
@@ -27,6 +27,8 @@ use databases 'test_db'
 
 get maps
 ```
+![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/2024c928-708f-457d-8f1f-d498c841953a)
+
 ```sql
 USE		
   DATABASE 'test_db'|		
