@@ -3,6 +3,10 @@
 
 RisegerDB is an open-source spatial database system designed for efficient spatial data retrieval using R-trees and R*-trees as the primary indexes. This document provides an overview of the startup procedures, example usage, and the syntax for SQL commands supported by RisegerDB.
 
+The name of this project, **RisegerDB**, is derived from **Rapid Search of Geographic Database** (*Ri-se-ger-DB*), emphasizing its focus on fast and efficient searching of geographic data.
+
+## RisegerDB
+**[中文](README.md)**  
 ## Getting Started
 
 To start RisegerDB, use the following startup scripts:
