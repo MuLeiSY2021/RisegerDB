@@ -186,8 +186,3 @@ END:string
 欢迎使用、修改和为RisegerDB贡献代码。有关更详细的信息和更新，请查看官方 [RisegerDB存储库](https://github.com/your_username/risegerdb).
 
 愉快的编码！
-
-string_entity -> string
-| attribute_expression
-END:number :> org.riseger.protoctl.compiler.function.Entity_f
-END:string :> org.riseger.protoctl.compiler.function.Entity_f
