@@ -4,7 +4,7 @@
 **RisegerDB**是一个基于R树和R*树主索引的地理空间数据库系统，旨在通过高效的空间数据检索满足各类应用需求。本文档提供了RisegerDB的启动流程、示例用法以及支持的SQL命令语法概述。
 
 这个项目的名字**RisegerDB**来源于 **“Rapid Search of Geographic Database”**（*Ri-se-ger-DB*）即“快速搜素地理数据库”，项目专为地理数据进行快速高效的搜索。
-## Riseger
+## RisegerDB
 
 **[English](README-eng.md)**  
 
