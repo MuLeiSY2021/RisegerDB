@@ -28,7 +28,7 @@ get databases
 ```sql
 preload './test/test_data.json'
 
-use databases 'test_db'
+use database 'test_db'
 
 get maps
 ```
