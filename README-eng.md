@@ -1,25 +1,24 @@
 # RisegerDB - README
 ![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/855c98f5-3be1-4071-aa0a-f3110833f027)
 
-**RisegerDB**是一个基于R树和R*树主索引的地理空间数据库系统，旨在通过高效的空间数据检索满足各类应用需求。本文档提供了RisegerDB的启动流程、示例用法以及支持的SQL命令语法概述。
+RisegerDB is an open-source spatial database system designed for efficient spatial data retrieval using R-trees and R*-trees as the primary indexes. This document provides an overview of the startup procedures, example usage, and the syntax for SQL commands supported by RisegerDB.
 
-这个项目的名字**RisegerDB**来源于 **“Rapid Search of Geographic Database”**（*Ri-se-ger-DB*）即“快速搜素地理数据库”，项目专为地理数据进行快速高效的搜索。
+The name of this project, **RisegerDB**, is derived from **Rapid Search of Geographic Database** (*Ri-se-ger-DB*), emphasizing its focus on fast and efficient searching of geographic data.
+
 ## RisegerDB
+**[中文](README.md)**  
+## Getting Started
 
-**[English](README-eng.md)**  
-
-## 入门指南
-
-要启动RisegerDB，请使用以下启动脚本：
+To start RisegerDB, use the following startup scripts:
 
 ```bash
 ./scripts/startup.sh
 ./scripts/shell.sh
 ```
 
-## 示例用法
+## Example Usage
 
-以下是使用RisegerDB的一系列命令示例：
+Here is an example sequence of commands using RisegerDB:
 ```sql
 get databases
 ```
@@ -28,7 +27,7 @@ get databases
 ```sql
 preload './test/test_data.json'
 
-use database 'test_db'
+use databases 'test_db'
 
 get maps
 ```
@@ -61,9 +60,9 @@ WHERE
 ![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/e3897021-81fd-49ca-a585-72e1bf05fea8)
 
 
-## SQL语法
+## SQL Syntax
 
-### 搜索SQL
+### Search SQL
 
 ```bash
 USE use_clause SEARCH search_clause WHERE where_clause
@@ -77,13 +76,13 @@ GET MAPS
 GET MODELS
 ```
 
-### 创建SQL
+### Create SQL
 
 ```bash
 PRELOAD 'file_path'
 ```
 
-### 使用语句
+### Use Statements
 
 ```bash
 use_statement "|" use_statements
@@ -96,19 +95,19 @@ use_statement:
   | MODEL 'model_expression'
 ```
 
-### 搜索子句
+### Search Clause
 
 ```bash
 search_clause: strings_expression
 ```
 
-### WHERE子句
+### Where Clause
 
 ```bash
 where_clause: bool_condition
 ```
 
-### 布尔条件
+### Boolean Conditions
 
 ```bash
 bool_condition:
@@ -176,13 +175,19 @@ string_entity:
   | attribute_expression
 ```
 
-## 实体定义
+## Entity Definitions
 
 ```bash
 END:number
 END:string
 ```
 
-欢迎使用、修改和为RisegerDB贡献代码。有关更详细的信息和更新，请查看官方 [RisegerDB存储库](https://github.com/your_username/risegerdb).
+Feel free to use, modify, and contribute to RisegerDB. For more detailed information and updates, check the official [RisegerDB repository](https://github.com/your_username/risegerdb).
 
-愉快的编码！
+Happy coding!
+END:string
+
+string_entity -> string
+| attribute_expression
+END:number :> org.riseger.protoctl.compiler.function.Entity_f
+END:string :> org.riseger.protoctl.compiler.function.Entity_f
