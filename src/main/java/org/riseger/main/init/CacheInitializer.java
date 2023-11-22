@@ -1,9 +1,9 @@
 package org.riseger.main.init;
 
 import org.apache.log4j.Logger;
-import org.riseger.main.cache.entity.component.Database_c;
-import org.riseger.main.cache.manager.CacheMaster;
-import org.riseger.main.cache.manager.DatabaseManager;
+import org.riseger.main.system.CacheSystem;
+import org.riseger.main.system.cache.entity.component.Database_c;
+import org.riseger.main.system.cache.manager.DatabasesManager;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ public class CacheInitializer extends Initializer {
 
     public boolean init() {
         try {
-            CacheMaster.setINSTANCE(new CacheMaster());
-            DatabaseManager dbm = CacheMaster.INSTANCE.getDatabaseManager();
+            CacheSystem.setINSTANCE(new CacheSystem());
+            DatabasesManager dbm = CacheSystem.INSTANCE.getDatabasesManager();
             List<Database_c> databases = storageInitializer.initDatabases();
             if (databases != null) {
                 for (Database_c database : databases) {

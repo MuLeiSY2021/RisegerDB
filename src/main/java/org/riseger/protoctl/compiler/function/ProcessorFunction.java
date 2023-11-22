@@ -1,6 +1,6 @@
 package org.riseger.protoctl.compiler.function;
 
-import org.riseger.main.compiler.semantic.SemanticTree;
+import org.riseger.main.system.compile.semantic.SemanticTree;
 
 import java.util.List;
 
