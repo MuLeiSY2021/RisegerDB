@@ -1,8 +1,8 @@
 package org.riseger.protoctl.job;
 
-import org.riseger.main.compiler.CompilerMaster;
-import org.riseger.main.compiler.compoent.SearchSession;
 import org.riseger.main.entry.handler.TransponderHandler;
+import org.riseger.main.system.CompileSystem;
+import org.riseger.main.system.compile.compoent.SearchSession;
 import org.riseger.protoctl.compiler.result.ResultSet;
 import org.riseger.protoctl.packet.request.TranspondRequest;
 import org.riseger.protoctl.packet.response.TextSQLResponse;
@@ -25,7 +25,7 @@ public class TextSQLJob extends TranspondJob {
         try {
             TextSQLResponse response = new TextSQLResponse();
             super.prepare(response);
-            SearchSession session = CompilerMaster.INSTANCE.adapt(text, ipAddress);
+            SearchSession session = CompileSystem.INSTANCE.adapt(text, ipAddress);
             ResultSet resultSet = session.process();
             response.setResult(resultSet);
             super.done();

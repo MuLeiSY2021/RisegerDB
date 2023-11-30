@@ -34,6 +34,7 @@ public class DatabaseShellClient {
             TablePrinter tablePrinter;
             try {
                 out = System.out;
+                out.println("\n");
                 CyberIntroduce.introduce(out);
                 ProgressBar progressBar = new WavyProgressBar(out, ColorList.CYBER_COLOR, 100);
                 progressBar.loading(0);

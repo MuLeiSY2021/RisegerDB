@@ -5,7 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import org.apache.log4j.Logger;
-import org.riseger.main.Constant;
+import org.riseger.main.constant.Constant;
 
 import java.io.*;
 import java.nio.file.Files;

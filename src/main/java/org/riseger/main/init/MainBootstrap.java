@@ -8,10 +8,10 @@ public class MainBootstrap {
     public static void main(String[] args) throws Exception {
         String rootPath = args[0];
 
-        LogInitializer logInitializer = new LogInitializer(rootPath);
-        logInitializer.init();
+        SystemLogInitializer systemLogInitializer = new SystemLogInitializer(rootPath);
+        systemLogInitializer.init();
         MainBootstrap.LOG = Logger.getLogger(MainBootstrap.class);
-        if (logInitializer.init()) {
+        if (systemLogInitializer.init()) {
             LOG.info("Log initializer successfully");
         }
 

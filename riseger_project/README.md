@@ -113,8 +113,3 @@ string_entity -> string
     | attribute_expression
 END:number
 END:string
-
-string_entity -> string
-    | attribute_expression
-END:number :> org.riseger.protoctl.compiler.function.Entity_f
-END:string :> org.riseger.protoctl.compiler.function.Entity_f
