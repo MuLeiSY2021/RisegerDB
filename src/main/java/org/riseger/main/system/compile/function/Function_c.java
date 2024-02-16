@@ -47,6 +47,7 @@ import java.util.Map;
 public abstract class Function_c {
     public static final Map<Class<? extends Function_f>, Class<? extends Function_c>>
             functionMap = new HashMap<>();
+
     protected static final Logger LOG = Logger.getLogger(Function_c.class);
 
     static {

@@ -19,5 +19,4 @@ public class Entity_fc extends Function_c {
     public void process(SearchMemory searchMemory, CommandList commandList) throws SQLException {
         searchMemory.push(_entity);
     }
-
 }

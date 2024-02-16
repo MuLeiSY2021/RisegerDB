@@ -1,6 +1,8 @@
 package org.riseger.main.system.cache.entity.component;
 
 import lombok.Getter;
+import org.riseger.main.system.cache.entity.Entity;
+import org.riseger.main.system.cache.entity.Entity_f;
 import pers.muleisy.rtree.rectangle.MBRectangle;
 import pers.muleisy.rtree.rectangle.Rectangle;
 
@@ -9,9 +11,11 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentMap;
 
 @Getter
-public class MBRectangle_c extends MBRectangle {
+public class MBRectangle_c extends MBRectangle implements Entity_f {
 
     private final Double[][] coordsSet;
+
+    private final Entity_f entity = new Entity();
 
     public MBRectangle_c(Double threshold) {
         super(threshold);
@@ -80,5 +84,15 @@ public class MBRectangle_c extends MBRectangle {
         coordsSet[0][1] = minY();
         coordsSet[1][0] = maxX();
         coordsSet[1][1] = maxY();
+    }
+
+    @Override
+    public void changeEntity() {
+        entity.changeEntity();
+    }
+
+    @Override
+    public void resetChanged() {
+        entity.resetChanged();
     }
 }

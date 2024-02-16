@@ -26,7 +26,6 @@ public abstract class Function_f implements Functional {
 
     public static final Map<Integer, Class<? extends Functional>> idMap = new HashMap<>();
 
-
     private static final Logger LOG = Logger.getLogger(Function_f.class);
 
     private static final Map<Class<? extends Functional>, Integer> classMap = new HashMap<>();
@@ -116,6 +115,4 @@ public abstract class Function_f implements Functional {
     }
 
     public abstract Integer getWeight();
-
-
 }

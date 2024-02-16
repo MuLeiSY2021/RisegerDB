@@ -103,4 +103,8 @@ public class Utils {
         }
         return file;
     }
+
+    public static String toJson(Object object) {
+        return gson.toJson(object);
+    }
 }

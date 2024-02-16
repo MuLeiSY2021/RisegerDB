@@ -2,6 +2,7 @@ package org.riseger.main.system.cache.entity.component;
 
 import lombok.Data;
 import org.riseger.main.constant.Status;
+import org.riseger.main.system.cache.entity.Entity;
 import org.riseger.main.system.cache.manager.MapDBManager;
 import org.riseger.main.system.cache.manager.ModelManager;
 import org.riseger.protoctl.struct.config.Config;
@@ -13,7 +14,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Data
-public class Database_c {
+public class Database_c extends Entity {
     private String name;
 
     private Status status = Status.LOADING;
