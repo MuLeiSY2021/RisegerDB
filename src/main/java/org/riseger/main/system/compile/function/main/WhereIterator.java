@@ -1,8 +1,8 @@
 package org.riseger.main.system.compile.function.main;
 
-import org.riseger.main.system.cache.entity.component.Layer_c;
-import org.riseger.main.system.cache.entity.component.MBRectangle_c;
-import org.riseger.main.system.cache.entity.component.MapDB_c;
+import org.riseger.main.system.cache.component.Layer_c;
+import org.riseger.main.system.cache.component.MBRectangle_c;
+import org.riseger.main.system.cache.component.Map_c;
 import org.riseger.main.system.compile.compoent.SearchSet;
 
 import java.util.*;
@@ -10,7 +10,7 @@ import java.util.*;
 public class WhereIterator {
     private final Map<String, SearchSet> searchMap;
 
-    private final List<MapDB_c> maps;
+    private final List<Map_c> maps;
 
     private final MBRectangle_c scope;
 
@@ -24,7 +24,7 @@ public class WhereIterator {
 
     private ListIterator<MBRectangle_c> elementListIterator;
 
-    public WhereIterator(Map<String, SearchSet> searchMap, List<MapDB_c> maps, MBRectangle_c scope) {
+    public WhereIterator(Map<String, SearchSet> searchMap, List<Map_c> maps, MBRectangle_c scope) {
         this.searchMap = searchMap;
         this.maps = maps;
         this.scope = scope;
@@ -56,7 +56,7 @@ public class WhereIterator {
         return this.elementListIterator.hasNext();
     }
 
-    private List<Layer_c> findModelLayer(SearchSet model, List<MapDB_c> maps, MBRectangle_c scope) {
+    private List<Layer_c> findModelLayer(SearchSet model, List<Map_c> maps, MBRectangle_c scope) {
         List<Layer_c> results = new LinkedList<>();
 
         for (String[] route : model.getChild()) {
@@ -64,7 +64,7 @@ public class WhereIterator {
               province_scope.area_scope.building_model
               province_scope.building_model
             */
-            List<MapDB_c> tmpLayers = new LinkedList<>(maps),
+            List<Map_c> tmpLayers = new LinkedList<>(maps),
                     nextLayers = new LinkedList<>();
             for (String layerName : route) {
                 /*
@@ -72,7 +72,7 @@ public class WhereIterator {
                   area_scope
                   building_model
                  */
-                for (MapDB_c map : tmpLayers) {
+                for (Map_c map : tmpLayers) {
                     /*
                       Tianjin
                       Shanghai
@@ -80,13 +80,13 @@ public class WhereIterator {
                      */
                     List<MBRectangle_c> tmp = map.getSubmapLayer(layerName).getElements(scope);
                     for (MBRectangle_c mbr : tmp) {
-                        nextLayers.add((MapDB_c) mbr);
+                        nextLayers.add((Map_c) mbr);
                     }
                 }
                 tmpLayers = nextLayers;
                 nextLayers = new LinkedList<>();
             }
-            for (MapDB_c map : tmpLayers) {
+            for (Map_c map : tmpLayers) {
                 results.add(map.getElementLayer(model.getName()));
             }
         }

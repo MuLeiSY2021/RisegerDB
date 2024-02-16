@@ -1,7 +1,7 @@
 package org.riseger.main.system.compile.function.get;
 
-import org.riseger.main.system.cache.entity.component.Database_c;
-import org.riseger.main.system.cache.entity.component.Model_c;
+import org.riseger.main.system.cache.component.Database_c;
+import org.riseger.main.system.cache.component.Model_c;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.MemoryConstant;
 import org.riseger.main.system.compile.compoent.SearchMemory;

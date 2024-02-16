@@ -1,7 +1,7 @@
 package org.riseger.main.system.compile.function.get;
 
-import org.riseger.main.system.cache.entity.component.Database_c;
-import org.riseger.main.system.cache.entity.component.MapDB_c;
+import org.riseger.main.system.cache.component.Database_c;
+import org.riseger.main.system.cache.component.Map_c;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.MemoryConstant;
 import org.riseger.main.system.compile.compoent.SearchMemory;
@@ -33,10 +33,10 @@ public class GetMaps_fc extends Function_c {
             resultSet = new ResultSet();
             searchMemory.setMap(resultSet, MemoryConstant.RESULT);
         }
-        List<MapDB_c> mapDBs = db.getMapDBs();
+        List<Map_c> mapDBs = db.getMapDBs();
         ResultModelSet resultModelSet = new ResultModelSet();
         resultSet.setModelSet("maps", resultModelSet);
-        for (MapDB_c map : mapDBs) {
+        for (Map_c map : mapDBs) {
             ResultElement resultElement = new ResultElement();
             resultElement.addColumn("name", map.getName());
             //TODO: Maps not have their coordinates

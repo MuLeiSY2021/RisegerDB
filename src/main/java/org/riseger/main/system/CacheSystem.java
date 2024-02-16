@@ -1,7 +1,7 @@
 package org.riseger.main.system;
 
 import lombok.Data;
-import org.riseger.main.system.cache.entity.component.Database_c;
+import org.riseger.main.system.cache.component.Database_c;
 import org.riseger.main.system.cache.manager.DatabasesManager;
 
 import java.util.List;

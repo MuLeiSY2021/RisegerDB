@@ -1,14 +1,15 @@
-package org.riseger.protoctl.struct.config;
+package org.riseger.main.system.cache.component;
 
 import lombok.Getter;
+import org.riseger.main.system.cache.CacheEntity;
 
-public class Config {
+public class Config_c extends CacheEntity {
     private final String configName;
 
     @Getter
     private final String value;
 
-    public Config(String configName, String value) {
+    public Config_c(String configName, String value) {
         this.configName = configName;
         this.value = value;
     }

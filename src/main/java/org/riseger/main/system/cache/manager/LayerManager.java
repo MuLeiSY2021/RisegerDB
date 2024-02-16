@@ -2,8 +2,9 @@ package org.riseger.main.system.cache.manager;
 
 import lombok.Data;
 import org.riseger.main.constant.Constant;
-import org.riseger.main.system.cache.entity.component.Layer_c;
-import org.riseger.main.system.cache.entity.component.MapDB_c;
+import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.component.Layer_c;
+import org.riseger.main.system.cache.component.Map_c;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
 import org.riseger.utils.Utils;
@@ -15,12 +16,12 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Data
-public class LayerManager {
+public class LayerManager extends CacheEntity {
     private final Map<String, Layer_c> layerMap = new ConcurrentHashMap<>();
 
-    private final MapDB_c parent;
+    private final Map_c parent;
 
-    public LayerManager(MapDB_c parent) {
+    public LayerManager(Map_c parent) {
         this.parent = parent;
     }
 

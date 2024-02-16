@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/model/JRDBC_Protoctl/pom.xml" />
         <option value="$PROJECT_DIR$/model/ShellClient/pom.xml" />
         <option value="$PROJECT_DIR$/Protocol/pom.xml" />
+        <option value="$PROJECT_DIR$/model/Preload/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

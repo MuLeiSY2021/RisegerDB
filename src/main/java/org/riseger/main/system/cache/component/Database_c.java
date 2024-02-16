@@ -1,27 +1,25 @@
-package org.riseger.main.system.cache.entity.component;
+package org.riseger.main.system.cache.component;
 
 import lombok.Data;
 import org.riseger.main.constant.Status;
-import org.riseger.main.system.cache.entity.Entity;
-import org.riseger.main.system.cache.manager.MapDBManager;
+import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.manager.ConfigManager;
+import org.riseger.main.system.cache.manager.MapManager;
 import org.riseger.main.system.cache.manager.ModelManager;
-import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.MapDB;
 import org.riseger.protoctl.struct.entity.Model;
 
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Data
-public class Database_c extends Entity {
+public class Database_c extends CacheEntity {
     private String name;
 
     private Status status = Status.LOADING;
 
-    private MapDBManager mapDBManager = new MapDBManager(this);
+    private MapManager mapManager = new MapManager(this);
 
-    private Map<String, Config> configs = new ConcurrentHashMap<>();
+    private ConfigManager configManager = new ConfigManager();
 
     private ModelManager modelManager = new ModelManager(this);
 
@@ -29,8 +27,8 @@ public class Database_c extends Entity {
         this.name = name;
     }
 
-    public void addConfig(Config config, String value) {
-        configs.put(value, config);
+    public void addConfig(Config_c config, String value) {
+        configManager.addConfig(config, value);
     }
 
     public void addModel(Model model) {
@@ -38,7 +36,7 @@ public class Database_c extends Entity {
     }
 
     public void addMap(MapDB map) {
-        mapDBManager.addMap(Integer.parseInt(map.getConfig("nodeSize")),
+        mapManager.addMap(Integer.parseInt(map.getConfig("nodeSize")),
                 Double.parseDouble(map.getConfig("threshold")),
                 map);
     }
@@ -47,16 +45,16 @@ public class Database_c extends Entity {
         this.status = Status.ACTIVE;
     }
 
-    public List<MapDB_c> getMapDBs() {
-        return mapDBManager.getMapDBs();
+    public List<Map_c> getMapDBs() {
+        return mapManager.getMapDBs();
     }
 
-    public void initMap(MapDB_c map) {
-        mapDBManager.initMap(map);
+    public void initMap(Map_c map) {
+        mapManager.initMap(map);
     }
 
-    public MapDB_c getMap(String map) {
-        return this.mapDBManager.getMap(map);
+    public Map_c getMap(String map) {
+        return this.mapManager.getMap(map);
     }
 
     public List<Model_c> getModels() {

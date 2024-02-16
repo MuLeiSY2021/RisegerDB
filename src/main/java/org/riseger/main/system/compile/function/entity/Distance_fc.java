@@ -1,6 +1,6 @@
 package org.riseger.main.system.compile.function.entity;
 
-import org.riseger.main.system.cache.entity.component.Coord_c;
+import org.riseger.main.system.cache.component.Coord_c;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;

@@ -1,7 +1,8 @@
 package org.riseger.main.system.cache.manager;
 
-import org.riseger.main.system.cache.entity.component.Database_c;
-import org.riseger.main.system.cache.entity.component.Model_c;
+import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.component.Database_c;
+import org.riseger.main.system.cache.component.Model_c;
 import org.riseger.protoctl.struct.entity.Model;
 
 import java.util.LinkedList;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ModelManager {
+public class ModelManager extends CacheEntity {
     private transient final Database_c database;
     private final Map<String, Model_c> models = new ConcurrentHashMap<>();
 

@@ -1,10 +1,10 @@
-package org.riseger.main.system.cache.entity.builder;
+package org.riseger.main.system.cache.builder;
 
 import lombok.Data;
 import org.riseger.main.constant.Constant;
-import org.riseger.main.system.cache.entity.component.Database_c;
-import org.riseger.main.system.cache.entity.component.MapDB_c;
-import org.riseger.protoctl.struct.config.Config;
+import org.riseger.main.system.cache.component.Config_c;
+import org.riseger.main.system.cache.component.Database_c;
+import org.riseger.main.system.cache.component.Map_c;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Data
 public class MapInitBuilder implements MapBuilder {
-    Map<String, Config> configs;
+    Map<String, Config_c> configs;
 
     String name;
 
@@ -29,8 +29,8 @@ public class MapInitBuilder implements MapBuilder {
 
     }
 
-    public MapDB_c build() {
-        MapDB_c map = new MapDB_c(configs, name, database);
+    public Map_c build() {
+        Map_c map = new Map_c(configs, name, database);
         map.initAllSmp(smp_layer);
         map.initAllMd(md_layer);
         return map;

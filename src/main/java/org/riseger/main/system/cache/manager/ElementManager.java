@@ -2,10 +2,11 @@ package org.riseger.main.system.cache.manager;
 
 import lombok.Data;
 import org.apache.log4j.Logger;
-import org.riseger.main.system.cache.entity.component.Element_c;
-import org.riseger.main.system.cache.entity.component.Layer_c;
-import org.riseger.main.system.cache.entity.component.MBRectangle_c;
-import org.riseger.main.system.cache.entity.component.MapDB_c;
+import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.component.Element_c;
+import org.riseger.main.system.cache.component.Layer_c;
+import org.riseger.main.system.cache.component.MBRectangle_c;
+import org.riseger.main.system.cache.component.Map_c;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.utils.Utils;
 import pers.muleisy.rtree.othertree.RStarTree;
@@ -16,7 +17,7 @@ import java.io.File;
 import java.util.List;
 
 @Data
-public class ElementManager {
+public class ElementManager extends CacheEntity {
 
     private static final Logger LOG = Logger.getLogger(ElementManager.class);
     private final RTree<MBRectangle_c> rtreeKeyIndex;
@@ -49,7 +50,7 @@ public class ElementManager {
         parent.expand(e_c);
     }
 
-    public void addElement(MapDB_c e) {
+    public void addElement(Map_c e) {
         rtreeKeyIndex.insert(e);
         parent.expand(e);
     }
@@ -63,7 +64,7 @@ public class ElementManager {
         }
     }
 
-    public void remove(MapDB_c mapDBC) {
+    public void remove(Map_c mapDBC) {
         rtreeKeyIndex.deleteStrict(mapDBC);
     }
 

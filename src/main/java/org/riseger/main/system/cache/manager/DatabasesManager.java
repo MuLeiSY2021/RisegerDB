@@ -1,8 +1,9 @@
 package org.riseger.main.system.cache.manager;
 
 import org.riseger.main.system.StorageSystem;
-import org.riseger.main.system.cache.entity.component.Database_c;
-import org.riseger.protoctl.struct.config.Config;
+import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.component.Config_c;
+import org.riseger.main.system.cache.component.Database_c;
 import org.riseger.protoctl.struct.entity.Database;
 import org.riseger.protoctl.struct.entity.MapDB;
 import org.riseger.protoctl.struct.entity.Model;
@@ -14,7 +15,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-public class DatabasesManager {
+public class DatabasesManager extends CacheEntity {
     private final Map<String, Database_c> databases;
 
     public DatabasesManager() {
@@ -25,7 +26,7 @@ public class DatabasesManager {
         Database_c db = new Database_c(database.getName());
         this.databases.put(database.getName(), db);
         //添加Config
-        for (Map.Entry<Config, String> entry : database.getConfigs().entrySet()) {
+        for (Map.Entry<Config_c, String> entry : database.getConfigs().entrySet()) {
             db.addConfig(entry.getKey(), entry.getValue());
         }
 
@@ -39,7 +40,7 @@ public class DatabasesManager {
             db.addMap(map);
         }
 
-        StorageSystem.DEFAULT.preloadFSM.saveDatabase(db);
+        StorageSystem.DEFAULT.writeDatabase(db);
         db.active();
     }
 

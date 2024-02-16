@@ -1,4 +1,4 @@
-package org.riseger.main.system.cache.entity.component;
+package org.riseger.main.system.cache.component;
 
 import lombok.Getter;
 import org.riseger.main.system.cache.manager.ElementManager;

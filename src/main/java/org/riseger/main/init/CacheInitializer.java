@@ -2,7 +2,7 @@ package org.riseger.main.init;
 
 import org.apache.log4j.Logger;
 import org.riseger.main.system.CacheSystem;
-import org.riseger.main.system.cache.entity.component.Database_c;
+import org.riseger.main.system.cache.component.Database_c;
 import org.riseger.main.system.cache.manager.DatabasesManager;
 
 import java.util.List;

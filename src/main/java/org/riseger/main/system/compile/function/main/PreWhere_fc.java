@@ -1,7 +1,7 @@
 package org.riseger.main.system.compile.function.main;
 
-import org.riseger.main.system.cache.entity.component.MBRectangle_c;
-import org.riseger.main.system.cache.entity.component.MapDB_c;
+import org.riseger.main.system.cache.component.MBRectangle_c;
+import org.riseger.main.system.cache.component.Map_c;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.MemoryConstant;
 import org.riseger.main.system.compile.compoent.SearchMemory;
@@ -22,8 +22,8 @@ public class PreWhere_fc extends Function_c {
     @Override
     public void process(SearchMemory searchMemory, CommandList commandList) throws SQLException {
         WhereIterator iterator;
-        List<MapDB_c> maps = new LinkedList<>();
-        maps.add((MapDB_c) searchMemory.get(MemoryConstant.MAP));
+        List<Map_c> maps = new LinkedList<>();
+        maps.add((Map_c) searchMemory.get(MemoryConstant.MAP));
         MBRectangle_c scope = (MBRectangle_c) searchMemory.get(MemoryConstant.SCOPE);//√
 
         Map<String, SearchSet> searchMap = (Map<String, SearchSet>) searchMemory.get(MemoryConstant.MODEL);//√

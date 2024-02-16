@@ -107,4 +107,5 @@ public class Utils {
     public static String toJson(Object object) {
         return gson.toJson(object);
     }
+
 }

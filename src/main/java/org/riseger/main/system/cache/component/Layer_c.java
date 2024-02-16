@@ -1,16 +1,14 @@
-package org.riseger.main.system.cache.entity.component;
+package org.riseger.main.system.cache.component;
 
 import com.google.gson.reflect.TypeToken;
 import lombok.Getter;
 import lombok.Setter;
 import org.riseger.main.constant.Constant;
-import org.riseger.main.system.cache.entity.Entity;
-import org.riseger.main.system.cache.entity.builder.SubmapInitBuilder;
-import org.riseger.main.system.cache.entity.builder.SubmapPreloadBuilder;
+import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.builder.SubmapInitBuilder;
 import org.riseger.main.system.cache.manager.ElementManager;
 import org.riseger.main.system.cache.manager.LayerManager;
 import org.riseger.protoctl.serializer.JsonSerializer;
-import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
 import org.riseger.utils.Utils;
@@ -24,7 +22,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
-public class Layer_c extends Entity {
+public class Layer_c extends CacheEntity {
     @Getter
     private final LayerManager parent;
 
@@ -36,7 +34,7 @@ public class Layer_c extends Entity {
         this.name = name;
         this.parent = parent;
         if (isSubMap()) {
-            this.elementManager = ElementManager.buildRStartElementManager(nodeSize, threshold, this, MapDB_c.class);
+            this.elementManager = ElementManager.buildRStartElementManager(nodeSize, threshold, this, Map_c.class);
         } else {
             this.elementManager = ElementManager.buildRStartElementManager(nodeSize, threshold, this, Element_c.class);
         }
@@ -54,12 +52,10 @@ public class Layer_c extends Entity {
     }
 
     public void preloadSubmap(Submap submap, int index) {
-        SubmapPreloadBuilder submapPreloadBuilder = new SubmapPreloadBuilder();
-        submapPreloadBuilder.setLayer(this);
-        submapPreloadBuilder.setEm(elementManager);
-        submapPreloadBuilder.setName(submap.getName());
-        submapPreloadBuilder.setDatabase(parent.getParent().getDatabase());
-        MapDB_c map = submapPreloadBuilder.build();
+        Map_c map = new Map_c(submap.getName(),
+                this,
+                parent.getParent().getDatabase(),
+                elementManager);
         for (Element e : submap.getElements()) {
             map.preloadElement(e);
         }
@@ -93,8 +89,8 @@ public class Layer_c extends Entity {
             } else if (smp_.getName().equals(Constant.CONFIG_FILE_NAME
                     + Constant.DOT_PREFIX
                     + Constant.JSON_PREFIX)) {
-                Map<String, Config> configs = (Map<String, Config>) JsonSerializer.deserialize(Utils.getText(smp_),
-                        TypeToken.getParameterized(HashMap.class, String.class, Config.class));
+                Map<String, Config_c> configs = (Map<String, Config_c>) JsonSerializer.deserialize(Utils.getText(smp_),
+                        TypeToken.getParameterized(HashMap.class, String.class, Config_c.class));
                 submapInitBuilder.setConfigs(configs);
             }
         }

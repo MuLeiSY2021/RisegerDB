@@ -1,6 +1,6 @@
 package org.riseger.main.system.compile.function.main;
 
-import org.riseger.main.system.cache.entity.component.MBRectangle_c;
+import org.riseger.main.system.cache.component.MBRectangle_c;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.MemoryConstant;
 import org.riseger.main.system.compile.compoent.SearchMemory;

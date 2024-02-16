@@ -9,6 +9,8 @@
     <file url="file://$PROJECT_DIR$/model/JRDBC_Protoctl/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/model/JRDBConnectivity/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/model/JRDBConnectivity/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/model/Preload/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/model/Preload/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/model/ShellClient/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/model/ShellClient/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />

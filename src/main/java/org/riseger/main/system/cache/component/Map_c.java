@@ -1,9 +1,9 @@
-package org.riseger.main.system.cache.entity.component;
+package org.riseger.main.system.cache.component;
 
 import lombok.Getter;
+import org.riseger.main.system.cache.manager.ConfigManager;
 import org.riseger.main.system.cache.manager.ElementManager;
 import org.riseger.main.system.cache.manager.LayerManager;
-import org.riseger.protoctl.struct.config.Config;
 import org.riseger.protoctl.struct.entity.Element;
 import org.riseger.protoctl.struct.entity.Submap;
 import pers.muleisy.rtree.rectangle.Rectangle;
@@ -11,51 +11,50 @@ import pers.muleisy.rtree.rectangle.Rectangle;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Getter
-public class MapDB_c extends MBRectangle_c {
+public class Map_c extends MBRectangle_c {
     private final String name;
 
-    private final Map<String, Config> configs = new ConcurrentHashMap<>();
+    private final ConfigManager configManager = new ConfigManager();
 
     private transient final LayerManager layers;
     private transient final Database_c database;
     private transient ElementManager smp_parent;
 
-    public MapDB_c(int nodeSize, double threshold, String name, Database_c database) {
+    public Map_c(int nodeSize, double threshold, String name, Database_c database) {
         super(threshold);
         this.name = name;
         this.layers = new LayerManager(this);
         this.database = database;
-        configs.put("node_size", new Config("node_size", String.valueOf(nodeSize)));
-        configs.put("threshold", new Config("threshold", String.valueOf(threshold)));
+        configManager.addConfig(new Config_c("node_size", String.valueOf(nodeSize)), "node_size");
+        configManager.addConfig(new Config_c("threshold", String.valueOf(threshold)), "threshold");
     }
 
-    public MapDB_c(Map<String, Config> configs, String name, Database_c database) {
-        super(configs.get("threshold").getDoubleValue());
+    public Map_c(Map<String, Config_c> configManager, String name, Database_c database) {
+        super(configManager.get("threshold").getDoubleValue());
         this.name = name;
         this.layers = new LayerManager(this);
         this.database = database;
-        this.configs.putAll(configs);
+        this.configManager.addAll(configManager);
     }
 
-    public MapDB_c(Map<String, Config> configs, String name, Database_c database, ElementManager em) {
-        super(configs.get("threshold").getDoubleValue());
+    public Map_c(Map<String, Config_c> configManager, String name, Database_c database, ElementManager em) {
+        super(configManager.get("threshold").getDoubleValue());
         this.name = name;
         this.layers = new LayerManager(this);
         this.database = database;
-        this.configs.putAll(configs);
+        this.configManager.addAll(configManager);
         this.smp_parent = em;
     }
 
-    public MapDB_c(String name, Layer_c layer, Database_c database, ElementManager em) {
+    public Map_c(String name, Layer_c layer, Database_c database, ElementManager em) {
         super(layer.getParent().getParent().getThreshold());
         this.name = name;
         this.layers = new LayerManager(this);
         this.database = database;
-        configs.put("node_size", new Config("node_size", String.valueOf(layer.getParent().getParent().getNodeSize())));
-        configs.put("threshold", new Config("threshold", String.valueOf(layer.getParent().getParent().getThreshold())));
+        configManager.addConfig(new Config_c("node_size", String.valueOf(layer.getParent().getParent().getNodeSize())), "node_size");
+        configManager.addConfig(new Config_c("threshold", String.valueOf(layer.getParent().getParent().getThreshold())), "threshold");
         this.smp_parent = em;
     }
 
@@ -80,11 +79,11 @@ public class MapDB_c extends MBRectangle_c {
     }
 
     public int getNodeSize() {
-        return configs.get("node_size").getIntValue();
+        return configManager.getInt("node_size");
     }
 
     public double getThreshold() {
-        return configs.get("threshold").getDoubleValue();
+        return configManager.geDouble("threshold");
     }
 
     public void initAllSmp(List<File> submaps) {

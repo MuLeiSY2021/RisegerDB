@@ -1,11 +1,11 @@
-package org.riseger.main.system.cache.entity.builder;
+package org.riseger.main.system.cache.builder;
 
 import lombok.Data;
 import org.riseger.main.constant.Constant;
-import org.riseger.main.system.cache.entity.component.Database_c;
-import org.riseger.main.system.cache.entity.component.MapDB_c;
+import org.riseger.main.system.cache.component.Config_c;
+import org.riseger.main.system.cache.component.Database_c;
+import org.riseger.main.system.cache.component.Map_c;
 import org.riseger.main.system.cache.manager.ElementManager;
-import org.riseger.protoctl.struct.config.Config;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -16,7 +16,7 @@ import java.util.Map;
 public class SubmapInitBuilder implements MapBuilder {
     String name;
 
-    Map<String, Config> configs;
+    Map<String, Config_c> configs;
 
     Database_c database;
 
@@ -26,8 +26,8 @@ public class SubmapInitBuilder implements MapBuilder {
 
     List<File> md_layer = new LinkedList<>();
 
-    public MapDB_c build() {
-        MapDB_c map = new MapDB_c(configs, name, database, em);
+    public Map_c build() {
+        Map_c map = new Map_c(configs, name, database, em);
         map.initAllMd(md_layer);
         map.initAllSmp(smp_layer);
         return map;

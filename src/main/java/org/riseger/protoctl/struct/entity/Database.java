@@ -1,7 +1,7 @@
 package org.riseger.protoctl.struct.entity;
 
 import lombok.Data;
-import org.riseger.protoctl.struct.config.Config;
+import org.riseger.main.system.cache.component.Config_c;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class Database {
     private String name;
 
-    private Map<Config, String> configs = new HashMap<>();
+    private Map<Config_c, String> configs = new HashMap<>();
 
     private List<MapDB> maps = new LinkedList<>();
 
@@ -30,7 +30,7 @@ public class Database {
         models.add(model);
     }
 
-    public void addConfig(Config config, String value) {
+    public void addConfig(Config_c config, String value) {
         configs.put(config, value);
     }
 
