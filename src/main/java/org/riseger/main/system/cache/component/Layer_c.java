@@ -4,7 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import lombok.Getter;
 import lombok.Setter;
 import org.riseger.main.constant.Constant;
-import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.Entity;
 import org.riseger.main.system.cache.builder.SubmapInitBuilder;
 import org.riseger.main.system.cache.manager.ElementManager;
 import org.riseger.main.system.cache.manager.LayerManager;
@@ -22,7 +22,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
-public class Layer_c extends CacheEntity {
+public class Layer_c extends Entity {
     @Getter
     private final LayerManager parent;
 

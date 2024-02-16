@@ -13,4 +13,6 @@ public interface CacheEntity_i {
     void write();
 
     void unwrite();
+
+    boolean isChanged();
 }

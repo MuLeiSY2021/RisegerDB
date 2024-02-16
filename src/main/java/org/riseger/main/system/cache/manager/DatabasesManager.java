@@ -1,7 +1,7 @@
 package org.riseger.main.system.cache.manager;
 
 import org.riseger.main.system.StorageSystem;
-import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.Entity;
 import org.riseger.main.system.cache.component.Config_c;
 import org.riseger.main.system.cache.component.Database_c;
 import org.riseger.protoctl.struct.entity.Database;
@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-public class DatabasesManager extends CacheEntity {
+public class DatabasesManager extends Entity {
     private final Map<String, Database_c> databases;
 
     public DatabasesManager() {

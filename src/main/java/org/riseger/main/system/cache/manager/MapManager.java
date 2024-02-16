@@ -1,7 +1,7 @@
 package org.riseger.main.system.cache.manager;
 
 import lombok.Getter;
-import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.Entity;
 import org.riseger.main.system.cache.component.Database_c;
 import org.riseger.main.system.cache.component.Map_c;
 import org.riseger.protoctl.struct.entity.Element;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class MapManager extends CacheEntity {
+public class MapManager extends Entity {
     private final Map<String, Map_c> maps = new ConcurrentHashMap<>();
 
     @Getter
@@ -47,7 +47,7 @@ public class MapManager extends CacheEntity {
         this.maps.put(map.getName(), map);
     }
 
-    public List<Map_c> getMapDBs() {
+    public List<Map_c> getMaps() {
         return new LinkedList<>(maps.values());
     }
 }

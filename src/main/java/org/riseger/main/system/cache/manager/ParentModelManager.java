@@ -1,12 +1,12 @@
 package org.riseger.main.system.cache.manager;
 
-import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.Entity;
 import org.riseger.main.system.cache.component.Model_c;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ParentModelManager extends CacheEntity {
+public class ParentModelManager extends Entity {
     private final Map<String, Model_c> parentModel = new ConcurrentHashMap<>();
     public ParentModelManager INSTANCE = new ParentModelManager();
 

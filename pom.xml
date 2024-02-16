@@ -5,9 +5,7 @@
     <groupId>org.risegerdb</groupId>
     <artifactId>RisegerDB</artifactId>
     <version>0.1.0</version>
-    <modules>
-        <module>Preload</module>
-    </modules>
+
     <build>
         <plugins>
             <plugin>
@@ -66,12 +64,6 @@
             <artifactId>dom4j</artifactId>
             <version>1.6.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.risegerdb.protocol</groupId>
-            <artifactId>Protocol</artifactId>
-            <version>0.1.0</version>
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

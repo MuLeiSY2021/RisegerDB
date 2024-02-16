@@ -2,7 +2,7 @@ package org.riseger.main.system.cache.manager;
 
 import lombok.Data;
 import org.apache.log4j.Logger;
-import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.Entity;
 import org.riseger.main.system.cache.component.Element_c;
 import org.riseger.main.system.cache.component.Layer_c;
 import org.riseger.main.system.cache.component.MBRectangle_c;
@@ -17,7 +17,7 @@ import java.io.File;
 import java.util.List;
 
 @Data
-public class ElementManager extends CacheEntity {
+public class ElementManager extends Entity {
 
     private static final Logger LOG = Logger.getLogger(ElementManager.class);
     private final RTree<MBRectangle_c> rtreeKeyIndex;

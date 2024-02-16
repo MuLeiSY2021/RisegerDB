@@ -250,5 +250,22 @@ public class StorageSystem {
         if (database.getModelManager().isChanged()) {
             writeModel(databaseFile, database.getModelManager());
         }
+
+        //Map Update
+        if (database.getMapManager().isChanged()) {
+            for (Map_c map : database.getMapManager().getMaps()) {
+                if (map.isChanged()) {
+                    organizeMap(map);
+                }
+            }
+        }
+    }
+
+    private void organizeMap(Map_c map) throws IOException {
+        //Config Update
+        if (map.getConfigManager().isChanged()) {
+            //TODO: Layer更新没做，MapFile获取，Layer里的smp递归没做
+            writeConfig(databaseFile, database.getConfigManager());
+        }
     }
 }

@@ -1,7 +1,7 @@
 package org.riseger.main.system.cache.component;
 
 import lombok.Data;
-import org.riseger.main.system.cache.CacheEntity;
+import org.riseger.main.system.cache.Entity;
 import org.riseger.protoctl.struct.entity.Model;
 import org.riseger.protoctl.struct.entity.Type;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Data
-public class Model_c extends CacheEntity {
+public class Model_c extends Entity {
     protected final String name;
     protected final Map<String, Type> parameters = new ConcurrentHashMap<>();
     protected String parent;

@@ -9,7 +9,7 @@
         <version>0.1.0</version>
     </parent>
 
-    <groupId>org.example</groupId>
+    <groupId>org.risegerdb.preload</groupId>
     <artifactId>Preload</artifactId>
 
     <properties>
@@ -18,12 +18,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.risegerdb</groupId>
-            <artifactId>RisegerDB</artifactId>
-            <version>0.1.0</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>org.risegerdb</groupId>
             <artifactId>RisegerDB</artifactId>

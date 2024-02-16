@@ -1,8 +1,8 @@
 package org.riseger.main.system.cache.component;
 
 import lombok.Getter;
-import org.riseger.main.system.cache.CacheEntity;
 import org.riseger.main.system.cache.CacheEntity_i;
+import org.riseger.main.system.cache.Entity;
 import pers.muleisy.rtree.rectangle.MBRectangle;
 import pers.muleisy.rtree.rectangle.Rectangle;
 
@@ -15,7 +15,7 @@ public class MBRectangle_c extends MBRectangle implements CacheEntity_i {
 
     private final Double[][] coordsSet;
 
-    private final CacheEntity_i entity = new CacheEntity();
+    private final CacheEntity_i entity = new Entity();
 
     public MBRectangle_c(Double threshold) {
         super(threshold);
@@ -114,5 +114,10 @@ public class MBRectangle_c extends MBRectangle implements CacheEntity_i {
     @Override
     public void unwrite() {
         entity.unwrite();
+    }
+
+    @Override
+    public boolean isChanged() {
+        return entity.isChanged();
     }
 }

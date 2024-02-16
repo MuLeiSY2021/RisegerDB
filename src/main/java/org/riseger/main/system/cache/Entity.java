@@ -6,11 +6,12 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Getter
-public class CacheEntity implements CacheEntity_i {
+public class Entity implements CacheEntity_i {
     private final transient ReadWriteLock lock;
+
     private boolean isChanged;
 
-    public CacheEntity() {
+    public Entity() {
         this.isChanged = false;
         this.lock = new ReentrantReadWriteLock();
     }
