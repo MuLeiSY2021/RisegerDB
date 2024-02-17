@@ -1,12 +1,12 @@
 package org.riseger.main.system.cache.manager;
 
-import org.riseger.main.system.cache.Entity;
+import org.riseger.main.system.cache.HolisticStorageEntity;
 import org.riseger.main.system.cache.component.Config_c;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ConfigManager extends Entity {
+public class ConfigManager extends HolisticStorageEntity {
     private final Map<String, Config_c> configs = new ConcurrentHashMap<>();
 
     public ConfigManager() {

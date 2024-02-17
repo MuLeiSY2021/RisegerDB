@@ -1,8 +1,6 @@
 package org.riseger.main.system.cache.component;
 
-import org.riseger.main.system.cache.Entity;
-
-public class Coord_c extends Entity {
+public class Coord_c {
     private final Double[] coordinates = new Double[2];
 
     public Coord_c(double x, double y) {

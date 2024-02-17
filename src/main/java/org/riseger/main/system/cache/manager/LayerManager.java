@@ -2,7 +2,7 @@ package org.riseger.main.system.cache.manager;
 
 import lombok.Data;
 import org.riseger.main.constant.Constant;
-import org.riseger.main.system.cache.Entity;
+import org.riseger.main.system.cache.HolisticStorageEntity;
 import org.riseger.main.system.cache.component.Layer_c;
 import org.riseger.main.system.cache.component.Map_c;
 import org.riseger.protoctl.struct.entity.Element;
@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Data
-public class LayerManager extends Entity {
+public class LayerManager extends HolisticStorageEntity {
     private final Map<String, Layer_c> layerMap = new ConcurrentHashMap<>();
 
     private final Map_c parent;

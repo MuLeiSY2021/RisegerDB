@@ -1,9 +1,9 @@
 package org.riseger.main.system.cache.component;
 
 import lombok.Getter;
-import org.riseger.main.system.cache.Entity;
+import org.riseger.main.system.cache.HolisticStorageEntity;
 
-public class Config_c extends Entity {
+public class Config_c extends HolisticStorageEntity {
     private final String configName;
 
     @Getter

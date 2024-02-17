@@ -1,6 +1,8 @@
 package org.riseger.main.system.cache.component;
 
 import lombok.Getter;
+import org.riseger.main.system.cache.HolisticStorageEntity;
+import org.riseger.main.system.cache.HolisticStorageEntity_i;
 import org.riseger.main.system.cache.manager.ConfigManager;
 import org.riseger.main.system.cache.manager.ElementManager;
 import org.riseger.main.system.cache.manager.LayerManager;
@@ -13,19 +15,21 @@ import java.util.List;
 import java.util.Map;
 
 @Getter
-public class Map_c extends MBRectangle_c {
+public class Map_c extends MBRectangle_c implements HolisticStorageEntity_i {
     private final String name;
+
+    private final HolisticStorageEntity_i entity = new HolisticStorageEntity();
 
     private final ConfigManager configManager = new ConfigManager();
 
-    private transient final LayerManager layers;
+    private transient final LayerManager layerManager;
     private transient final Database_c database;
     private transient ElementManager smp_parent;
 
     public Map_c(int nodeSize, double threshold, String name, Database_c database) {
         super(threshold);
         this.name = name;
-        this.layers = new LayerManager(this);
+        this.layerManager = new LayerManager(this);
         this.database = database;
         configManager.addConfig(new Config_c("node_size", String.valueOf(nodeSize)), "node_size");
         configManager.addConfig(new Config_c("threshold", String.valueOf(threshold)), "threshold");
@@ -34,7 +38,7 @@ public class Map_c extends MBRectangle_c {
     public Map_c(Map<String, Config_c> configManager, String name, Database_c database) {
         super(configManager.get("threshold").getDoubleValue());
         this.name = name;
-        this.layers = new LayerManager(this);
+        this.layerManager = new LayerManager(this);
         this.database = database;
         this.configManager.addAll(configManager);
     }
@@ -42,7 +46,7 @@ public class Map_c extends MBRectangle_c {
     public Map_c(Map<String, Config_c> configManager, String name, Database_c database, ElementManager em) {
         super(configManager.get("threshold").getDoubleValue());
         this.name = name;
-        this.layers = new LayerManager(this);
+        this.layerManager = new LayerManager(this);
         this.database = database;
         this.configManager.addAll(configManager);
         this.smp_parent = em;
@@ -51,7 +55,7 @@ public class Map_c extends MBRectangle_c {
     public Map_c(String name, Layer_c layer, Database_c database, ElementManager em) {
         super(layer.getParent().getParent().getThreshold());
         this.name = name;
-        this.layers = new LayerManager(this);
+        this.layerManager = new LayerManager(this);
         this.database = database;
         configManager.addConfig(new Config_c("node_size", String.valueOf(layer.getParent().getParent().getNodeSize())), "node_size");
         configManager.addConfig(new Config_c("threshold", String.valueOf(layer.getParent().getParent().getThreshold())), "threshold");
@@ -59,15 +63,15 @@ public class Map_c extends MBRectangle_c {
     }
 
     public void preloadElement(Element e) {
-        layers.addElement(e);
+        layerManager.addElement(e);
     }
 
     public void preloadSubmap(Submap map) {
-        layers.preloadSubmap(map);
+        layerManager.preloadSubmap(map);
     }
 
     public void preloadSubmap(Submap submapChild, int index) {
-        layers.preloadSubmap(submapChild, index);
+        layerManager.preloadSubmap(submapChild, index);
     }
 
     public void updateBoundary(Rectangle mbr) {
@@ -88,21 +92,36 @@ public class Map_c extends MBRectangle_c {
 
     public void initAllSmp(List<File> submaps) {
         for (File submap_ : submaps) {
-            layers.initSmpLayer(submap_);
+            layerManager.initSmpLayer(submap_);
         }
     }
 
     public void initAllMd(List<File> mdLayer) {
         for (File md_ : mdLayer) {
-            layers.initMdLayer(md_);
+            layerManager.initMdLayer(md_);
         }
     }
 
     public Layer_c getSubmapLayer(String s) {
-        return this.layers.getSubmap(s);
+        return this.layerManager.getSubmap(s);
     }
 
     public Layer_c getElementLayer(String s) {
-        return this.layers.getElement(s);
+        return this.layerManager.getElement(s);
+    }
+
+    @Override
+    public void changeEntity() {
+        entity.changeEntity();
+    }
+
+    @Override
+    public void resetChanged() {
+        entity.resetChanged();
+    }
+
+    @Override
+    public boolean isChanged() {
+        return entity.isChanged();
     }
 }

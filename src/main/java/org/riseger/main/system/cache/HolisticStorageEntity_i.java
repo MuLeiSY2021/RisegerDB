@@ -1,18 +1,10 @@
 package org.riseger.main.system.cache;
 
-public interface CacheEntity_i {
+public interface HolisticStorageEntity_i {
 
     void changeEntity();
 
     void resetChanged();
-
-    void read();
-
-    void unread();
-
-    void write();
-
-    void unwrite();
 
     boolean isChanged();
 }

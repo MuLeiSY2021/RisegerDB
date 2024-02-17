@@ -1,12 +1,11 @@
 package org.riseger.main.system.cache.manager;
 
-import org.riseger.main.system.cache.Entity;
 import org.riseger.main.system.compile.compoent.SearchSession;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class SessionManager extends Entity {
+public class SessionManager {
     private static final Map<String, SearchSession> sessionCache = new ConcurrentHashMap<>();
 
     public static void put(String key, SearchSession session) {

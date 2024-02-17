@@ -1,27 +1,14 @@
 package org.riseger.main.system.cache;
 
-import lombok.Getter;
-
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-@Getter
-public class Entity implements CacheEntity_i {
+public class LockableEntity implements LockableEntity_i {
+
     private final transient ReadWriteLock lock;
 
-    private boolean isChanged;
-
-    public Entity() {
-        this.isChanged = false;
+    public LockableEntity() {
         this.lock = new ReentrantReadWriteLock();
-    }
-
-    public void changeEntity() {
-        this.isChanged = true;
-    }
-
-    public void resetChanged() {
-        this.isChanged = false;
     }
 
     @Override

@@ -107,10 +107,6 @@ public class StorageSystem {
         }
     }
 
-    private File getDatabaseSorageFile(Database_c database) {
-        return new File(rootPath + "/data/databases" + "/" + database.getName() + ".db");
-    }
-
     public void writeDatabase(Database_c database) throws IOException {
         File root = new File(rootPath + "/data/databases");
         try {
@@ -169,7 +165,7 @@ public class StorageSystem {
         writeConfig(rootFile, map.getConfigManager());
 
         //创建Layer文件夹
-        for (Layer_c layer : map.getLayers().toList()) {
+        for (Layer_c layer : map.getLayerManager().toList()) {
             if (layer.isSubMap()) {
                 rootFile = new File(rootFile.getPath() + "/" + layer.getName() + ".layer");
                 String res = writeDir(rootFile);
@@ -182,26 +178,14 @@ public class StorageSystem {
                 }
                 List<MBRectangle_c> maps = layer.getElementManager().getRtreeKeyIndex().getElements();
                 for (MBRectangle mbr : maps) {
-                    writeSubmap((Map_c) mbr, rootFile);
+                    File submapFile = new File(rootFile.getPath() + "/" + map.getName() + "." + Constant.SUBMAP_PREFIX);
+                    writeDir(submapFile);
+                    writeMap(submapFile, (Map_c) mbr, submapFile);
                 }
             } else {
                 writeLayer(rootFile, layer);
             }
         }
-    }
-
-    private void writeSubmap(Map_c map, File mapFile) throws IOException {
-        String res;
-        File submapFile = new File(mapFile.getPath() + "/" + map.getName() + "." + Constant.SUBMAP_PREFIX);
-        res = writeDir(submapFile);
-        if (res != null) {
-            if (!res.isEmpty()) {
-                LOG.error(res + "地图目录");
-            } else {
-                LOG.info("创建地图目录成功");
-            }
-        }
-        writeMap(submapFile, map, submapFile);
     }
 
     public String writeDir(File file) {
@@ -230,42 +214,70 @@ public class StorageSystem {
         for (Database_c db : databases) {
             if (db.isChanged()) {
                 organizeDatabase(db);
+                db.resetChanged();
             }
         }
     }
 
     private void organizeDatabase(Database_c database) throws IOException {
-        File databaseFile = getDatabaseSorageFile(database);
+        File root = new File(rootPath + "/data/databases");
+        File databaseFile = new File(root.getPath() + "/" + database.getName() + ".db");
         if (!databaseFile.exists()) {
             writeDatabase(database);
             return;
         }
 
         //Config Update
-        if (database.getConfigManager().isChanged()) {
-            writeConfig(databaseFile, database.getConfigManager());
-        }
+        organizeConfig(database.getConfigManager(), databaseFile);
 
         //Model Update
-        if (database.getModelManager().isChanged()) {
-            writeModel(databaseFile, database.getModelManager());
+        ModelManager modelManager = database.getModelManager();
+        if (modelManager.isChanged()) {
+            writeModel(databaseFile, modelManager);
+            modelManager.resetChanged();
         }
 
         //Map Update
         if (database.getMapManager().isChanged()) {
             for (Map_c map : database.getMapManager().getMaps()) {
                 if (map.isChanged()) {
-                    organizeMap(map);
+                    organizeMap(root, map, null);
+                    map.resetChanged();
                 }
             }
+            database.getMapManager().resetChanged();
+        }
+
+    }
+
+    private void organizeConfig(ConfigManager configManager, File databaseFile) {
+        if (configManager.isChanged()) {
+            writeConfig(databaseFile, configManager);
+            configManager.resetChanged();
         }
     }
 
-    private void organizeMap(Map_c map) throws IOException {
+    private void organizeMap(File parent, Map_c map, File rootFile) {
         //Config Update
-        if (map.getConfigManager().isChanged()) {
-            //TODO: Layer更新没做，MapFile获取，Layer里的smp递归没做
-            writeConfig(databaseFile, database.getConfigManager());
+        organizeConfig(map.getConfigManager(), parent);
+
+
+        if (map.getLayerManager().isChanged()) {
+            for (Layer_c layer : map.getLayerManager().toList()) {
+                if (layer.isChanged()) {
+                    if (layer.isSubMap()) {
+                        rootFile = new File(rootFile.getPath() + "/" + layer.getName() + ".layer");
+                        List<MBRectangle_c> maps = layer.getElementManager().getRtreeKeyIndex().getElements();
+                        for (MBRectangle mbr : maps) {
+                            organizeMap(new File(rootFile.getPath() + "/" + map.getName() + "." + Constant.SUBMAP_PREFIX), (Map_c) mbr, rootFile);
+                        }
+                    } else {
+                        writeLayer(rootFile, layer);
+                    }
+                    layer.resetChanged();
+                }
+            }
+            map.getLayerManager().resetChanged();
         }
     }
 }
