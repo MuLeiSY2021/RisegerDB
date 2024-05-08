@@ -21,7 +21,7 @@ public class Attribute_fc extends Function_c {
     public void process(SearchMemory searchMemory, CommandList commandList) throws SQLException {
         DotString attributes = (DotString) searchMemory.poll();
         if (attributes.length() != 1) {
-            SQLException e = new SQLException("Attributes:Not illegal:" + attributes);
+            SQLException e = new SQLException("Attributes:Is illegal:" + attributes);
             LOG.error(e.getMessage(), e);
             throw e;
         }

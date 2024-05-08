@@ -25,7 +25,7 @@ public class And_fc extends Function_c implements ProcessorFunction {
     }
 
     @Override
-    public List<Function_f> preprocess() {
+    public List<Function_f> preProcess() {
         return null;
     }
 }

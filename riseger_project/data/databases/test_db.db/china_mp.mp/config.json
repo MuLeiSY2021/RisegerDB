@@ -8,5 +8,8 @@
       "configName": "node_size",
       "value": "4"
     }
+  },
+  "entity": {
+    "isChanged": false
   }
 }

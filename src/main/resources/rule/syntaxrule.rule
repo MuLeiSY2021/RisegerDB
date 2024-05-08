@@ -17,10 +17,6 @@ use_clause -> use_statement "|" use_statements
 use_statement -> "DATABASE" string :> org.riseger.protocol.compiler.function.main.UseDatabase_f
     | "MAP" string :> org.riseger.protocol.compiler.function.main.UseMap_f
     | "SCOPE" rectangle_expression :> org.riseger.protocol.compiler.function.main.UseScope_f
-
-
-
-
     | "MODEL" strings_expression :> org.riseger.protocol.compiler.function.main.UseModel_f
 
 search_sql ->  "SEARCH" search_clause "WHERE" where_clause
@@ -107,9 +103,9 @@ dot_strings_expression -> dot_string
 number_entity -> number
     | attribute_expression
 
-attribute_expression -> dot_string :> org.riseger.protocol.compiler.function.entity.Attribute_f
+attribute_expression -> dot_strings :> org.riseger.protocol.compiler.function.entity.Attribute_f
 
-dot_strings -> string "." dot_string :> org.riseger.protocol.compiler.function.entity.DotStrings_f
+dot_strings -> string "." dot_strings :> org.riseger.protocol.compiler.function.entity.DotStrings_f
     | string :> org.riseger.protocol.compiler.function.entity.TopDotStrings_f
 
 string_entity -> "'" string "'"

@@ -35,7 +35,7 @@ public class Or_fc extends Function_c implements ProcessorFunction, StretchFunct
     }
 
     @Override
-    public List<Function_f> preprocess() {
+    public List<Function_f> preProcess() {
         return null;
     }
 

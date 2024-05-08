@@ -65,12 +65,13 @@ public class Token {
             case STRING:
                 if (sourceCode.startsWith("'")) {
                     return sourceCode.substring(1, sourceCode.length() - 1);
-                } else {
-                    return sourceCode;
                 }
 
             case NUMBER:
                 return Double.parseDouble(sourceCode);
+
+            case ATTRIBUTE:
+                return sourceCode;
 
             default:
                 throw new IllegalArgumentException("非法的实体获取");

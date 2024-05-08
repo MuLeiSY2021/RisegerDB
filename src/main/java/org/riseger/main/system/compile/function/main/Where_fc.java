@@ -1,6 +1,5 @@
 package org.riseger.main.system.compile.function.main;
 
-import org.riseger.main.system.cache.component.Element;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.MemoryConstant;
 import org.riseger.main.system.compile.compoent.SearchMemory;
@@ -14,15 +13,10 @@ import org.riseger.protocol.compiler.function.loop.Back_f;
 import org.riseger.protocol.compiler.function.loop.IfJump_f;
 import org.riseger.protocol.compiler.function.main.PostWhere_f;
 import org.riseger.protocol.compiler.function.main.PreWhere_f;
-import org.riseger.protocol.compiler.result.ResultElement;
-import org.riseger.protocol.compiler.result.ResultModelSet;
-import org.riseger.protocol.compiler.result.ResultSet;
 import org.riseger.protocol.exception.SQLException;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 public class Where_fc extends Function_c implements ProcessorFunction, StretchFunction {
 
@@ -33,7 +27,8 @@ public class Where_fc extends Function_c implements ProcessorFunction, StretchFu
     @Override
     public void process(SearchMemory searchMemory, CommandList commandList) throws SQLException {
         if ((Boolean) searchMemory.poll()) {
-            fillResult(searchMemory);
+            WhereHandleFunction function = (WhereHandleFunction) searchMemory.get(MemoryConstant.METOD_PROCESS);
+            function.postProcess(searchMemory, commandList);
         }
         WhereIterator iterator = (WhereIterator) searchMemory.get(MemoryConstant.WHERE);
         if (iterator.hasNext()) {
@@ -43,47 +38,6 @@ public class Where_fc extends Function_c implements ProcessorFunction, StretchFu
         }
     }
 
-    private void fillResult(SearchMemory searchMemory) {
-        if (!searchMemory.hasMap(MemoryConstant.RESULT)) {
-            searchMemory.setMap(new ResultSet(), MemoryConstant.RESULT);
-        }
-        Element element = (Element) searchMemory.get(MemoryConstant.ELEMENT);
-        ResultSet resultSet;
-        if (searchMemory.hasMap(MemoryConstant.RESULT)) {
-            resultSet = (ResultSet) searchMemory.get(MemoryConstant.RESULT);
-        } else {
-            resultSet = new ResultSet();
-            searchMemory.setMap(resultSet, MemoryConstant.RESULT);
-        }
-        ResultModelSet resultModelSet;
-        if (resultSet.hasModelSet(element.getModel())) {
-            resultModelSet = resultSet.getModelSet(element.getModel());
-        } else {
-            resultModelSet = new ResultModelSet();
-            resultSet.setModelSet(element.getModel(), resultModelSet);
-        }
-        Map<String, List<String>> searchList = (Map<String, List<String>>) searchMemory.get(MemoryConstant.SEARCH);//√
-
-        ResultElement resultElement = new ResultElement();
-        for (String column : searchList.get(element.getModel())) {
-            if (column.startsWith("KEY_LOOP")) {
-                String[] values = column.split("::");
-                if (values.length == 1) {
-                    resultElement.setAllKeyColumns(element.getCoordsSet());
-                } else if (values.length == 2) {
-                    int index = Integer.parseInt(values[1]);
-                    resultElement.setKeyColumns(index, element.getCoordsSet()[index]);
-                } else if (values.length == 3) {
-                    int index = Integer.parseInt(values[1]),
-                            x = Objects.equals(values[2], "x") ? 0 : 1;
-                    resultElement.setKeyColumns(index, x, element.getCoordsSet()[index][x]);
-                }
-            } else {
-                resultElement.addColumn(column, element.getAttributes().get(column));
-            }
-        }
-        resultModelSet.add(resultElement);
-    }
 
     @Override
     public void stretch(SemanticTree.Node node, int size, List<Function_f> functionList) {
@@ -95,7 +49,7 @@ public class Where_fc extends Function_c implements ProcessorFunction, StretchFu
     }
 
     @Override
-    public List<Function_f> preprocess() {
+    public List<Function_f> preProcess() {
         List<Function_f> result = new LinkedList<>();
         result.add(new PreWhere_f());
         return result;

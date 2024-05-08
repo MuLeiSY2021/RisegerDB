@@ -77,6 +77,16 @@ public abstract class Function_f implements Functional {
         Function_f.set(GetModels_f.class);
 
         Function_f.set(Preload_f.class);
+
+        Function_f.set(DotStrings_f.class);
+        Function_f.set(TopDotStrings_f.class);
+
+        Function_f.set(Coords_f.class);
+        Function_f.set(TopCoords_f.class);
+
+        Function_f.set(CoordToRect_f.class);
+
+        Function_f.set(Update_f.class);
     }
 
     private final int functionId;

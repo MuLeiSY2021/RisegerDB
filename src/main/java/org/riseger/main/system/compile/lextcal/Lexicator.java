@@ -18,6 +18,8 @@ public class Lexicator {
 
     private final Pattern wordPattern = Pattern.compile(CompilerConstant.WORD_PATTERN);
 
+    private final Pattern attrPattern = Pattern.compile(CompilerConstant.ATTRIBUTE_PATTERN);
+
     public Lexicator(MultiBranchesTree<Keyword> tree) {
         this.tree = tree;
     }
@@ -41,6 +43,9 @@ public class Lexicator {
             } else if (wordPattern.matcher(sourcecode).matches()) {
                 LOG.debug("SourceCode:" + sourcecode + " 匹配字符串");
                 token.set(sourcecode.hashCode(), TokenType.STRING);
+            } else if (attrPattern.matcher(sourcecode).matches()) {
+                LOG.debug("SourceCode:" + sourcecode + " 匹配属性名");
+                token.set(sourcecode.hashCode(), TokenType.ATTRIBUTE);
             } else {
                 LOG.error("非法字符存在:" + token.getSourceCode(), new IllegalArgumentException());
                 throw new IllegalStateException();

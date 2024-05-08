@@ -25,6 +25,11 @@ public class MainBootstrap {
             LOG.info("Storage initialized successfully");
         }
 
+        LogInitializer logInitializer = new LogInitializer(rootPath);
+        if (logInitializer.init()) {
+            LOG.info("UpdateLog initialized successfully");
+        }
+
         CacheInitializer cacheInitializer = new CacheInitializer(rootPath, storageInitializer);
         if (cacheInitializer.init()) {
             LOG.info("Cache initialized successfully");

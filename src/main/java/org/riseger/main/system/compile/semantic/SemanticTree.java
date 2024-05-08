@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class SemanticTree {
     private final Logger LOG = Logger.getLogger(SemanticTree.class);
-    private final Node root = new Node();
+    private final Node root = new Node(this);
 
     public SemanticTree(CommandTree commandTree) {
         this.root.copy(commandTree.getRoot());
@@ -34,8 +34,6 @@ public class SemanticTree {
         nodeStack.push(new SemanticTreeIterator(this.root));
         suitTree(nodeStack, forest.getEntry(), iterator, forest);
     }
-
-
 
     public void getFunctionList(SearchMemory searchMemory, CommandList commandList) {
         sort();
@@ -78,7 +76,7 @@ public class SemanticTree {
     }
 
     public TreeIterator<Function_f> iteratorEmpty() {
-        return new SemanticTreeIterator(new Node());
+        return new SemanticTreeIterator(new Node(this));
     }
 
     @Data
@@ -95,7 +93,10 @@ public class SemanticTree {
 
         private int level;
 
-        public Node() {
+        private final SemanticTree tree;
+
+        public Node(SemanticTree tree) {
+            this.tree = tree;
         }
 
         public void add(Node child) {
@@ -174,12 +175,13 @@ public class SemanticTree {
                 try {
                     if (function instanceof ProcessorFunction) {
                         ProcessorFunction processorFunction = (ProcessorFunction) function;
-                        List<Function_f> list = processorFunction.preprocess();
+                        List<Function_f> list = processorFunction.preProcess();
                         if (list != null) {
                             for (Function_f f : list) {
                                 queue.add(Function_c.getFunctionFromMap(f, searchMemory, commandList));
                             }
                         }
+
                     }
                 } catch (NullPointerException e) {
                     LOG.debug(this.function.getClass().getCanonicalName());
@@ -197,7 +199,7 @@ public class SemanticTree {
         void copy(CommandTree.Node root) {
             this.function = root.getFunction();
             for (CommandTree.Node child : root.getChildren()) {
-                Node tmp = new Node();
+                Node tmp = new Node(this.tree);
                 tmp.copy(child);
                 this.add(tmp);
             }
@@ -205,7 +207,7 @@ public class SemanticTree {
 
         public void addHead(Function_f function) {
             this.parent.children.remove(this);
-            Node tmp = new Node();
+            Node tmp = new Node(this.tree);
             tmp.setFunction(function);
             this.parent.add(tmp);
             tmp.add(this);
@@ -213,7 +215,7 @@ public class SemanticTree {
 
         public void addChild(Function_f function, int index) {
             //TODO: 语法树解析时添加函数部分出现问题
-            Node tmp = new Node();
+            Node tmp = new Node(this.tree);
             tmp.setFunction(function);
             Node child = this.children.get(index);
             child.setParent(tmp);

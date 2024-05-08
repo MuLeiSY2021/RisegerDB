@@ -1,25 +1,19 @@
-sql -> search_sql
+sql -> ues_sql
     | create_sql
-//    | update_sql
+    | search_sql
+    | update_sql
 
-search_sql -> "USE" use_clause "SEARCH" search_clause "WHERE" where_clause
-    | "USE" use_clause "SEARCH" search_clause
-    | "SEARCH" search_clause "WHERE" where_clause
-    | "USE" use_clause
-    | "SEARCH" search_clause
-    | "WHERE" where_clause
-    | "GET" "DATABASES" :> org.riseger.protocol.compiler.function.get.GetDatabases_f
-    | "GET" "MAPS" :> org.riseger.protocol.compiler.function.get.GetMaps_f
-    | "GET" "MODELS" :> org.riseger.protocol.compiler.function.get.GetModels_f
+create_sql -> "PRELOAD" string :> org.riseger.protocol.compiler.function.preload.Preload_f
 
-create_sql -> "PRELOAD" string_entity :> org.riseger.protocol.compiler.function.preload.Preload_f
+ues_sql -> "USE" use_clause
+    | "USE" use_clause search_sql
+    | "USE" use_clause update_sql
+//TODO:    | "USE" use_clause alter_sql
+//TODO:    | "USE" use_clause delete_sql
 
-//TODO:NEED LOG SYSTEM
-//update_sql -> "DELETE" "DATABASE" string_entity :>
+//TODO:"DELETE" "DATABASE" string :>
 
-use_clause -> use_statements
-
-use_statements -> use_statement "|" use_statements
+use_clause -> use_statement "|" use_clause
     | use_statement
 
 use_statement -> "DATABASE" string :> org.riseger.protocol.compiler.function.main.UseDatabase_f
@@ -27,7 +21,20 @@ use_statement -> "DATABASE" string :> org.riseger.protocol.compiler.function.mai
     | "SCOPE" rectangle_expression :> org.riseger.protocol.compiler.function.main.UseScope_f
     | "MODEL" strings_expression :> org.riseger.protocol.compiler.function.main.UseModel_f
 
+search_sql ->  "SEARCH" search_clause "WHERE" where_clause
+    | "SEARCH" search_clause
+    | "GET" "DATABASES" :> org.riseger.protocol.compiler.function.get.GetDatabases_f
+    | "GET" "MAPS" :> org.riseger.protocol.compiler.function.get.GetMaps_f
+    | "GET" "MODELS" :> org.riseger.protocol.compiler.function.get.GetModels_f
+
 search_clause -> strings_expression :> org.riseger.protocol.compiler.function.main.Search_f
+
+update_sql -> "UPDATE" update_clauses "WHERE" where_clause
+
+update_clauses -> update_clause "," update_clause
+    | update_clause
+
+update_clause -> dot_strings_expression "=" all_entity :> org.riseger.protocol.compiler.function.main.Update_f
 
 where_clause -> bool_condition :> org.riseger.protocol.compiler.function.main.Where_f
 
@@ -45,7 +52,6 @@ bool_condition_2 -> "IN" graphic_expression :> org.riseger.protocol.compiler.fun
     | "OUT" graphic_expression :> org.riseger.protocol.compiler.function.graphic.Out_f
     | bool_condition_3
 
-
 bool_condition_3 -> num_condition ">" bool_condition_3 :> org.riseger.protocol.compiler.function.math.Big_f
     | num_condition ">=" bool_condition_3 :> org.riseger.protocol.compiler.function.math.BigEqual_f
     | num_condition "<" bool_condition_3 :> org.riseger.protocol.compiler.function.math.Small_f
@@ -56,6 +62,7 @@ bool_condition_3 -> num_condition ">" bool_condition_3 :> org.riseger.protocol.c
 num_condition -> "(" num_condition ")"
     | "-" num_condition :> org.riseger.protocol.compiler.function.number.NegivateNumber_f
     | num_condition_0
+
 num_condition_0
     | num_condition_1 "+" num_condition :> org.riseger.protocol.compiler.function.number.AddNumber_f
     | num_condition_1 "-" num_condition :> org.riseger.protocol.compiler.function.number.SubNumber_f
@@ -63,24 +70,47 @@ num_condition_0
 
 num_condition_1 -> number_entity "*" num_condition :> org.riseger.protocol.compiler.function.number.MutiNumber_f
     | number_entity "/" num_condition :> org.riseger.protocol.compiler.function.number.DivideNumber_f
+//    | graphic_expression ":" number_entity ":" string :> //TODO:从长方体提取点数值,冒号语法
+//    | coord_expression ":" string :> //TODO:从坐标提取数值,冒号语法
     | number_entity
-
-attribute_expression -> string "." string :> org.riseger.protocol.compiler.function.entity.Attribute_f
-
-graphic_expression -> rectangle_expression
-
-rectangle_expression -> "RECT" "(" coord_expression "," num_condition ")" :> org.riseger.protocol.compiler.function.entity.Rectangle_f
-
-coord_expression -> "COORD" "(" num_condition "," num_condition ")" :> org.riseger.protocol.compiler.function.entity.Coord_f
-
-strings_expression -> string_entity "," strings_expression :> org.riseger.protocol.compiler.function.entity.Strings_f
-    | string_entity :> org.riseger.protocol.compiler.function.entity.TopStrings_f
 
 number_entity -> number
     | attribute_expression
 
-string_entity -> string
+graphic_expression -> rectangle_expression
+    | coords_expression
+    | coord_expression :> org.riseger.protocol.compiler.function.entity.CoordToRect_f
     | attribute_expression
+
+coords_expression -> coord_expression "," coords_expression :> org.riseger.protocol.compiler.function.entity.Coords_f
+    | coord_expression :> org.riseger.protocol.compiler.function.entity.TopCoords_f
+
+rectangle_expression -> "RECT" "(" coord_expression "," num_condition ")" :> org.riseger.protocol.compiler.function.entity.Rectangle_f
+
+coord_expression -> "[" num_condition "," num_condition "]" :> org.riseger.protocol.compiler.function.entity.Coord_f
+//    | rectangle_expression ":" number_entity :> //TODO:从长方体提取点坐标,冒号语法
+
+strings_expression -> dot_strings_expression "," strings_expression :> org.riseger.protocol.compiler.function.entity.Strings_f
+    | dot_strings_expression :> org.riseger.protocol.compiler.function.entity.TopStrings_f
+
+all_entity -> num_condition
+    | rectangle_expression
+    | coord_expression
+    | attribute_expression
+    | string
+
+//TODO:连锁要更改dot的查询逻辑
+//dot_strings_expression -> dot_strings "AS" attribute :> //TODO: org.riseger.protocol.compiler.function.As_f
+//    | dot_string
+
+dot_strings_expression -> dot_strings
+
+attribute_expression -> dot_strings :> org.riseger.protocol.compiler.function.entity.Attribute_f
+
+dot_strings -> attribute "." dot_strings :> org.riseger.protocol.compiler.function.entity.DotStrings_f
+    | attribute :> org.riseger.protocol.compiler.function.entity.TopDotStrings_f
+
+END:attribute :> org.riseger.protocol.compiler.function.Entity_f
 END:number :> org.riseger.protocol.compiler.function.Entity_f
 END:string :> org.riseger.protocol.compiler.function.Entity_f
 

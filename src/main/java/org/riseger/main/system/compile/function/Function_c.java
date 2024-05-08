@@ -108,7 +108,6 @@ public abstract class Function_c {
         functionMap.put(TopCoords_f.class, TopCoords_fc.class);
 
         functionMap.put(CoordToRect_f.class, CoordToRect_fc.class);
-        functionMap.put(WriteUpdateLog_f.class, WiteUpdateLog_fc.class);
 
         functionMap.put(Update_f.class, Update_fc.class);
 

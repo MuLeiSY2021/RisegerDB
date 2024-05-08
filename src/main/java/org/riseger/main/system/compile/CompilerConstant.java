@@ -15,6 +15,9 @@ public class CompilerConstant {
 
     public static final String NUMBER_PREFIX = "NUM";
 
+
+    public static final String ATTRIBUTE_PREFIX = "ATR";
+
     public static final String KEYWORD_PREFIX = "KW";
 
     public static final String SPLIT_PREFIX = "_";
@@ -24,7 +27,10 @@ public class CompilerConstant {
     public static final String NUMBER_PATTERN = "([1-9]\\d*\\.?\\d*)|(0\\.\\d*[1-9])";
 
     public static final String WORD_PATTERN =
-            "((?!\\d+(\\.\\d+)?)\\w+|^('')?$|'[^']*')";
+            "'[^']*'";
+
+    public static final String ATTRIBUTE_PATTERN =
+            "((?!\\d+(\\.\\d+)?)\\w+)";
 
     public static final String TOKEN_PATTERN =
             "((?!\\d+(\\.\\d+)?)\\w+|^('')?$|'[^']*')|([1-9]\\d*\\.?\\d*)|(0\\.\\d*[1-9])";

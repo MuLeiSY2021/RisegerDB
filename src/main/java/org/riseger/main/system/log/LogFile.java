@@ -11,16 +11,23 @@ import java.io.IOException;
 
 public class LogFile {
 
-    private final File log;
+    private final File logDirectory;
+
+
 
     private static final Logger LOG = Logger.getLogger(LogFile.class);
+    private final File log;
 
     public LogFile(String rootPath, int sessionId, String dbName) {
-        this.log = new File(rootPath + "/" + dbName + "/" + "logs" + sessionId + ".log");
+        this.logDirectory = new File(rootPath + "/" + dbName + ".db/" + "logs");
+        this.log = new File(rootPath + "/" + dbName + ".db/" + "logs/" + sessionId + ".log");
     }
 
     public void write(CommandList commandList) {
         try {
+            if (!logDirectory.exists()) {
+                logDirectory.mkdirs();
+            }
             if (!log.exists()) {
                 log.createNewFile();
             }

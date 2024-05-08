@@ -18,12 +18,12 @@ public class IfJump_fc extends Function_c {
         int index = (Integer) searchMemory.poll();
         boolean result = (boolean) searchMemory.poll();
         if (result) {
-            LOG.debug("满足条件，跳转至:" + index);
+            LOG.debug("满足条件，跳转至:" + (index));
             commandList.jumpTo(index);
         } else {
             LOG.debug("不满足条件，放回");
-            searchMemory.push(false);
         }
+        searchMemory.push(result);
     }
 
 }

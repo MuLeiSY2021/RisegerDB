@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ProcessorFunction {
 
-    List<Function_f> preprocess();
+    List<Function_f> preProcess();
 
 
 }

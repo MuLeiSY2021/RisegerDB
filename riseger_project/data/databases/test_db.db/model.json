@@ -1,4 +1,7 @@
 {
+  "entity": {
+    "isChanged": false
+  },
   "models": {
     "building_model": {
       "name": "building_model",

@@ -21,7 +21,9 @@ public class LogSystem {
     }
 
     public void init() {
-        logDaemon.run();
+        Thread t = new Thread(logDaemon);
+        t.setDaemon(true);
+        t.start();
     }
 
     public void writeLog(int sessionId, String dbName, CommandList commandList) {

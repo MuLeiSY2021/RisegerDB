@@ -21,7 +21,7 @@ public class SyntaxRule {
         this.ruleMap = eachRule;
         Rule prevRule = null;
         for (String ruleTextLine : ruleText.split("\n")) {
-            if (ruleTextLine.isEmpty()) {
+            if (ruleTextLine.isEmpty() | ruleTextLine.startsWith("//")) {
                 continue;
             }
             String[] tokens;

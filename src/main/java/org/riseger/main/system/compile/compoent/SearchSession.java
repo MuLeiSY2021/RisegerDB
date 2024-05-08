@@ -2,7 +2,10 @@ package org.riseger.main.system.compile.compoent;
 
 import lombok.Data;
 import org.apache.log4j.Logger;
+import org.riseger.main.system.LogSystem;
+import org.riseger.main.system.cache.component.Database;
 import org.riseger.main.system.compile.function.Function_c;
+import org.riseger.main.system.compile.function.main.Update_fc;
 import org.riseger.main.system.compile.lextcal.Lexicator;
 import org.riseger.main.system.compile.semantic.SemanticTree;
 import org.riseger.main.system.compile.syntax.Parser;
@@ -75,6 +78,9 @@ public class SearchSession {
             function = commandList.next();
             LOG.debug("ID:" + commandList.index() + " Fun: " + Utils.getClassLastDotName(function.getClass()));
             function.process(memory, commandList);
+        }
+        if (((Function_c) memory.get((MemoryConstant.METOD_PROCESS))).getClass().equals(Update_fc.class)) {
+            LogSystem.INSTANCE.writeLog(memory.getSessionId(), ((Database) memory.get(MemoryConstant.DATABASE)).getName(), commandList);
         }
         ResultSet resultSet = (ResultSet) memory.get(MemoryConstant.RESULT);
         if (resultSet == null) {

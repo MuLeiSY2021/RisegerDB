@@ -4,6 +4,8 @@ import org.riseger.main.system.compile.CompilerConstant;
 
 public enum TokenType {
     NUMBER(CompilerConstant.NUMBER_PREFIX),
+    ATTRIBUTE(CompilerConstant.ATTRIBUTE_PREFIX),
+
     KEYWORD(CompilerConstant.KEYWORD_PREFIX),
     STRING(CompilerConstant.STRING_PREFIX);
 
@@ -22,6 +24,9 @@ public enum TokenType {
         switch (type) {
             case "string":
                 return TokenType.STRING;
+
+            case "attribute":
+                return TokenType.ATTRIBUTE;
 
             case "number":
                 return TokenType.NUMBER;

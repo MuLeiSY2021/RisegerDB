@@ -450,3 +450,355 @@ INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept mes
 DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
 INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
 DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"java.lang.String incompatible with org.riseger.main.system.compile.clazz.DotString"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Not enough variable"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{"0":[5774.0,8514.5],"1":[5822.5,8598.5]}},{"columns":{"name":"Building 3"},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{"0":[5774.0,8514.5],"1":[5822.5,8598.5]}},{"columns":{"name":"Building 3"},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"非法的实体获取"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Attributes:Not illegal:province_scope.area_scope.building_model"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{"0":[5774.0,8514.5],"1":[5822.5,8598.5]}},{"columns":{"name":"Building 3"},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"org.riseger.main.system.compile.clazz.DotString incompatible with java.util.List"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{"0":[5774.0,8514.5],"1":[5822.5,8598.5]}},{"columns":{"name":"Building 3"},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{"0":[5774.0,8514.5],"1":[5822.5,8598.5]}},{"columns":{"name":"Building 3"},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{"0":[5774.0,8514.5],"1":[5822.5,8598.5]}},{"columns":{"name":"Building 3"},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{"0":[5774.0,8514.5],"1":[5822.5,8598.5]}},{"columns":{"name":"Building 3"},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{"0":[5774.0,8514.5],"1":[5822.5,8598.5]}},{"columns":{"name":"Building 3"},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Not enough variable"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Not enough variable"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Not enough variable"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Not enough variable"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Stack over flow size:8192bytes"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Stack over flow size:8192bytes"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Stack over flow size:8192bytes"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Stack over flow size:8192bytes"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Stack over flow size:8192bytes"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Stack over flow size:8192bytes"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"java.lang.Boolean incompatible with org.riseger.main.system.compile.clazz.DotString"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Not enough variable"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Not enough variable"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"java.lang.Boolean incompatible with java.lang.Integer"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Not enough variable"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"java.lang.Boolean incompatible with java.lang.Integer"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{"0":[5774.0,8514.5],"1":[5822.5,8598.5]}},{"columns":{"name":"Building 3"},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{"0":[5774.0,8514.5],"1":[5822.5,8598.5]}},{"columns":{"name":"Building 3"},"keyColumns":{"0":[5355.5,8661.0],"1":[5485.0,8958.0]}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{}},{"columns":{"name":"Building 3"},"keyColumns":{}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"java.lang.Boolean incompatible with java.lang.Number"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Not enough variable"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{"building_model":{"size":2,"resultElements":[{"columns":{"name":"Building 3"},"keyColumns":{}},{"columns":{"name":"Building 3"},"keyColumns":{}}]}},"size":2},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"java.lang.Boolean incompatible with [Ljava.lang.Object;"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"java.lang.String incompatible with org.riseger.main.system.compile.clazz.DotString"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false,"exception":"Not enough variable"}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"success":false}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Accept message fromlocalhost/127.0.0.1:10086 Message Type:TEXT_SQL
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Encoding message: TEXT_SQL
+INFO nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoding message of type: TEXT_SQL_RESPONSE
+DEBUG nioEventLoopGroup-2-1 org.riseger.protocol.codec.ProtocolCodec - Decoded message: {"Result":{"modelSetMap":{},"size":0},"success":true}

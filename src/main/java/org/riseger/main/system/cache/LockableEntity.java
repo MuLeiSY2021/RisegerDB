@@ -5,13 +5,16 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class LockableEntity {
 
-    private final transient ReadWriteLock lock;
+    private transient ReadWriteLock lock;
 
     public LockableEntity() {
         this.lock = new ReentrantReadWriteLock();
     }
 
     public void read() {
+        if (lock == null) {
+            lock = new ReentrantReadWriteLock();
+        }
         lock.readLock().lock();
     }
 
@@ -20,6 +23,9 @@ public class LockableEntity {
     }
 
     public void write() {
+        if (lock == null) {
+            lock = new ReentrantReadWriteLock();
+        }
         lock.writeLock().lock();
     }
 

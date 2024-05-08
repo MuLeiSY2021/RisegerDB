@@ -8,15 +8,25 @@ import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;
 import org.riseger.protocol.exception.SQLException;
 
-public class Update_fc extends Function_c {
+public class Update_fc extends Function_c implements WhereHandleFunction {
     public Update_fc() {
         super();
     }
 
     @Override
     public void process(SearchMemory searchMemory, CommandList commandList) throws SQLException {
-        DotString attributes = (DotString) searchMemory.poll();
-        Object value = searchMemory.poll();
+        Object[] args = new Object[2];
+        args[0] = searchMemory.poll();
+        args[1] = searchMemory.poll();
+        searchMemory.setMap(args, MemoryConstant.METOD_PARAMATER);
+        searchMemory.setMap(this, MemoryConstant.METOD_PROCESS);
+    }
+
+    @Override
+    public void postProcess(SearchMemory searchMemory, CommandList commandList) throws SQLException {
+        Object[] args = (Object[]) searchMemory.get(MemoryConstant.METOD_PARAMATER);
+        DotString attributes = (DotString) args[1];
+        Object value = args[0];
         if (attributes.length() != 1) {
             SQLException e = new SQLException("Attributes:Not illegal:" + attributes);
             LOG.error(e.getMessage(), e);

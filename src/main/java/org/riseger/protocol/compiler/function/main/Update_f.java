@@ -2,12 +2,11 @@ package org.riseger.protocol.compiler.function.main;
 
 import lombok.Getter;
 import org.riseger.protocol.compiler.function.Function_f;
-import org.riseger.protocol.compiler.function.ProcessorFunction_f;
 import org.riseger.protocol.compiler.function.type.mainFunctional;
 import org.riseger.protocol.compiler.function.weight.ConstantWeight;
 
 @Getter
-public class Update_f extends Function_f implements mainFunctional, ProcessorFunction_f {
+public class Update_f extends Function_f implements mainFunctional {
     private String name;
 
     public Update_f() {
@@ -22,15 +21,5 @@ public class Update_f extends Function_f implements mainFunctional, ProcessorFun
     @Override
     public boolean canSort() {
         return false;
-    }
-
-    @Override
-    public int[] getPostFunSize() {
-        return null;
-    }
-
-    @Override
-    public int getInsertFunSize() {
-        return 1;
     }
 }
