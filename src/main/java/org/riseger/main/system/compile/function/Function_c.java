@@ -20,25 +20,25 @@ import org.riseger.main.system.compile.function.main.*;
 import org.riseger.main.system.compile.function.math.*;
 import org.riseger.main.system.compile.function.number.*;
 import org.riseger.main.system.compile.function.preload.Preload_fc;
-import org.riseger.protoctl.compiler.function.Entity_f;
-import org.riseger.protoctl.compiler.function.Function_f;
-import org.riseger.protoctl.compiler.function.entity.*;
-import org.riseger.protoctl.compiler.function.get.GetDatabases_f;
-import org.riseger.protoctl.compiler.function.get.GetMaps_f;
-import org.riseger.protoctl.compiler.function.get.GetModels_f;
-import org.riseger.protoctl.compiler.function.graphic.In_f;
-import org.riseger.protoctl.compiler.function.graphic.Out_f;
-import org.riseger.protoctl.compiler.function.logic.And_f;
-import org.riseger.protoctl.compiler.function.logic.Not_f;
-import org.riseger.protoctl.compiler.function.logic.Or_f;
-import org.riseger.protoctl.compiler.function.loop.Back_f;
-import org.riseger.protoctl.compiler.function.loop.IfJump_Pass_f;
-import org.riseger.protoctl.compiler.function.loop.IfJump_f;
-import org.riseger.protoctl.compiler.function.main.*;
-import org.riseger.protoctl.compiler.function.math.*;
-import org.riseger.protoctl.compiler.function.number.*;
-import org.riseger.protoctl.compiler.function.preload.Preload_f;
-import org.riseger.protoctl.exception.SQLException;
+import org.riseger.protocol.compiler.function.Entity_f;
+import org.riseger.protocol.compiler.function.Function_f;
+import org.riseger.protocol.compiler.function.entity.*;
+import org.riseger.protocol.compiler.function.get.GetDatabases_f;
+import org.riseger.protocol.compiler.function.get.GetMaps_f;
+import org.riseger.protocol.compiler.function.get.GetModels_f;
+import org.riseger.protocol.compiler.function.graphic.In_f;
+import org.riseger.protocol.compiler.function.graphic.Out_f;
+import org.riseger.protocol.compiler.function.logic.And_f;
+import org.riseger.protocol.compiler.function.logic.Not_f;
+import org.riseger.protocol.compiler.function.logic.Or_f;
+import org.riseger.protocol.compiler.function.loop.Back_f;
+import org.riseger.protocol.compiler.function.loop.IfJump_Pass_f;
+import org.riseger.protocol.compiler.function.loop.IfJump_f;
+import org.riseger.protocol.compiler.function.main.*;
+import org.riseger.protocol.compiler.function.math.*;
+import org.riseger.protocol.compiler.function.number.*;
+import org.riseger.protocol.compiler.function.preload.Preload_f;
+import org.riseger.protocol.exception.SQLException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -99,6 +99,19 @@ public abstract class Function_c {
         functionMap.put(GetModels_f.class, GetModels_fc.class);
 
         functionMap.put(Preload_f.class, Preload_fc.class);
+
+        //New
+        functionMap.put(DotStrings_f.class, DotStrings_fc.class);
+        functionMap.put(TopDotStrings_f.class, TopDotStrings_fc.class);
+
+        functionMap.put(Coords_f.class, Coords_fc.class);
+        functionMap.put(TopCoords_f.class, TopCoords_fc.class);
+
+        functionMap.put(CoordToRect_f.class, CoordToRect_fc.class);
+        functionMap.put(WriteUpdateLog_f.class, WiteUpdateLog_fc.class);
+
+        functionMap.put(Update_f.class, Update_fc.class);
+
     }
 
     public Function_c() {

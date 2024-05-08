@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.riseger.main.system.cache.manager.SessionManager;
 import org.riseger.main.system.compile.compoent.SearchSession;
 import org.riseger.main.system.compile.compoent.SessionAdaptor;
-import org.riseger.protoctl.compiler.CommandTree;
+import org.riseger.protocol.compiler.CommandTree;
 
 public class CompileSystem {
     private static final Logger LOG = Logger.getLogger(CompileSystem.class);
@@ -24,7 +24,7 @@ public class CompileSystem {
             session.setSourcecode(text);
             session.reset();
         } else {
-            session = adaptor.adapt(text);
+            session = adaptor.adapt(text, ipAddress.hashCode());
             SessionManager.put(ipAddress, session);
         }
         return session;
@@ -37,7 +37,7 @@ public class CompileSystem {
             session.reset();
             return session;
         } else {
-            return adaptor.adapt(commandTree);
+            return adaptor.adapt(commandTree, ipAddress.hashCode());
         }
     }
 }

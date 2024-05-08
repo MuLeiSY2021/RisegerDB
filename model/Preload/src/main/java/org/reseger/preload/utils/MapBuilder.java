@@ -1,7 +1,7 @@
 package org.reseger.preload.utils;
 
-import org.riseger.protoctl.struct.entity.Database;
-import org.riseger.protoctl.struct.entity.MapDB;
+import org.riseger.protocol.struct.entity.Database;
+import org.riseger.protocol.struct.entity.MapDB;
 
 import java.util.HashMap;
 import java.util.Map;

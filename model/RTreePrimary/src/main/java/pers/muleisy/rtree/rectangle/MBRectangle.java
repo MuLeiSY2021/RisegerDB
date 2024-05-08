@@ -93,6 +93,13 @@ public abstract class MBRectangle implements Rectangle {
         truncateAll();
     }
 
+    public void setAll(Rectangle rectangle) {
+        this.setMinX(rectangle.minX());
+        this.setMinY(rectangle.minY());
+        this.setMaxX(rectangle.maxX());
+        this.setMaxY(rectangle.maxY());
+    }
+
     @Override
     public void expand(Rectangle rectangle) {
         this.setMinX(Math.min(rectangle.minX(), this.minX()));
@@ -215,7 +222,6 @@ public abstract class MBRectangle implements Rectangle {
         return this.maxX() - this.minX();
     }
 
-
     @Override
     public Double height() {
         return this.maxY() - this.minY();
@@ -283,4 +289,6 @@ public abstract class MBRectangle implements Rectangle {
                 "x" + maxX +
                 "y" + maxY;
     }
+
+
 }

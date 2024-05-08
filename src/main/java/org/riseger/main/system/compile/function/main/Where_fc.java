@@ -1,29 +1,30 @@
 package org.riseger.main.system.compile.function.main;
 
-import org.riseger.main.system.cache.component.Element_c;
+import org.riseger.main.system.cache.component.Element;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.MemoryConstant;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;
+import org.riseger.main.system.compile.function.interfaces.StretchFunction;
 import org.riseger.main.system.compile.semantic.SemanticTree;
-import org.riseger.protoctl.compiler.function.Entity_f;
-import org.riseger.protoctl.compiler.function.Function_f;
-import org.riseger.protoctl.compiler.function.ProcessorFunction;
-import org.riseger.protoctl.compiler.function.loop.Back_f;
-import org.riseger.protoctl.compiler.function.loop.IfJump_f;
-import org.riseger.protoctl.compiler.function.main.PostWhere_f;
-import org.riseger.protoctl.compiler.function.main.PreWhere_f;
-import org.riseger.protoctl.compiler.result.ResultElement;
-import org.riseger.protoctl.compiler.result.ResultModelSet;
-import org.riseger.protoctl.compiler.result.ResultSet;
-import org.riseger.protoctl.exception.SQLException;
+import org.riseger.protocol.compiler.function.Entity_f;
+import org.riseger.protocol.compiler.function.Function_f;
+import org.riseger.protocol.compiler.function.ProcessorFunction;
+import org.riseger.protocol.compiler.function.loop.Back_f;
+import org.riseger.protocol.compiler.function.loop.IfJump_f;
+import org.riseger.protocol.compiler.function.main.PostWhere_f;
+import org.riseger.protocol.compiler.function.main.PreWhere_f;
+import org.riseger.protocol.compiler.result.ResultElement;
+import org.riseger.protocol.compiler.result.ResultModelSet;
+import org.riseger.protocol.compiler.result.ResultSet;
+import org.riseger.protocol.exception.SQLException;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class Where_fc extends Function_c implements ProcessorFunction {
+public class Where_fc extends Function_c implements ProcessorFunction, StretchFunction {
 
     public Where_fc() {
         super();
@@ -46,7 +47,7 @@ public class Where_fc extends Function_c implements ProcessorFunction {
         if (!searchMemory.hasMap(MemoryConstant.RESULT)) {
             searchMemory.setMap(new ResultSet(), MemoryConstant.RESULT);
         }
-        Element_c element = (Element_c) searchMemory.get(MemoryConstant.ELEMENT);
+        Element element = (Element) searchMemory.get(MemoryConstant.ELEMENT);
         ResultSet resultSet;
         if (searchMemory.hasMap(MemoryConstant.RESULT)) {
             resultSet = (ResultSet) searchMemory.get(MemoryConstant.RESULT);

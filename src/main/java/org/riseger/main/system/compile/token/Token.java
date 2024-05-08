@@ -2,7 +2,7 @@ package org.riseger.main.system.compile.token;
 
 import lombok.Data;
 import org.riseger.main.system.compile.lextcal.Keyword;
-import org.riseger.protoctl.serializer.JsonSerializer;
+import org.riseger.protocol.serializer.JsonSerializer;
 
 import java.util.Objects;
 

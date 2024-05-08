@@ -1,15 +1,15 @@
 package org.riseger.main.system.compile.function.get;
 
-import org.riseger.main.system.cache.component.Database_c;
-import org.riseger.main.system.cache.component.Map_c;
+import org.riseger.main.system.cache.component.Database;
+import org.riseger.main.system.cache.component.GeoMap;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.MemoryConstant;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;
-import org.riseger.protoctl.compiler.result.ResultElement;
-import org.riseger.protoctl.compiler.result.ResultModelSet;
-import org.riseger.protoctl.compiler.result.ResultSet;
-import org.riseger.protoctl.exception.SQLException;
+import org.riseger.protocol.compiler.result.ResultElement;
+import org.riseger.protocol.compiler.result.ResultModelSet;
+import org.riseger.protocol.compiler.result.ResultSet;
+import org.riseger.protocol.exception.SQLException;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class GetMaps_fc extends Function_c {
         if (searchMemory.hasMap(MemoryConstant.DATABASE)) {
             throw new SQLException("No database using");
         }
-        Database_c db = (Database_c) searchMemory.get(MemoryConstant.DATABASE);
+        Database db = (Database) searchMemory.get(MemoryConstant.DATABASE);
 
         ResultSet resultSet;
         if (searchMemory.hasMap(MemoryConstant.RESULT)) {
@@ -33,10 +33,10 @@ public class GetMaps_fc extends Function_c {
             resultSet = new ResultSet();
             searchMemory.setMap(resultSet, MemoryConstant.RESULT);
         }
-        List<Map_c> mapDBs = db.getMapDBs();
+        List<GeoMap> mapDBs = db.getMapDBs();
         ResultModelSet resultModelSet = new ResultModelSet();
         resultSet.setModelSet("maps", resultModelSet);
-        for (Map_c map : mapDBs) {
+        for (GeoMap map : mapDBs) {
             ResultElement resultElement = new ResultElement();
             resultElement.addColumn("name", map.getName());
             //TODO: Maps not have their coordinates

@@ -1,12 +1,12 @@
 package org.riseger.main.system.compile.function.entity;
 
-import org.riseger.main.system.cache.component.Coord_c;
-import org.riseger.main.system.cache.component.MBRectangle_c;
+import org.riseger.main.system.cache.component.Coord;
+import org.riseger.main.system.cache.component.GeoRectangle;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.MemoryConstant;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;
-import org.riseger.protoctl.exception.SQLException;
+import org.riseger.protocol.exception.SQLException;
 
 public class Rectangle_fc extends Function_c {
 
@@ -17,8 +17,8 @@ public class Rectangle_fc extends Function_c {
     @Override
     public void process(SearchMemory searchMemory, CommandList commandList) throws SQLException {
         Double len = ((Number) searchMemory.poll()).doubleValue();
-        Coord_c coord = (Coord_c) searchMemory.poll();
-        MBRectangle_c mbr = new MBRectangle_c(coord, len, (Double) searchMemory.get(MemoryConstant.THRESHOLD));
+        Coord coord = (Coord) searchMemory.poll();
+        GeoRectangle mbr = new GeoRectangle(coord, len, (Double) searchMemory.get(MemoryConstant.THRESHOLD));
         searchMemory.push(mbr);
     }
 }

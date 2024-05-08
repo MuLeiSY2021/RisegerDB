@@ -1,5 +1,5 @@
 package org.riseger.main.system.compile.compoent;
 
 public enum MemoryConstant {
-    DATABASE, MAP, MODEL, ELEMENT, SEARCH, WHERE, RESULT, THRESHOLD, SCOPE
+    DATABASE, MAP, SEARCH_SETS, ELEMENT, SEARCH, WHERE, RESULT, THRESHOLD, SCOPE, MODELS, AS_TABLE
 }

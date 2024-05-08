@@ -3,7 +3,7 @@ package org.riseger.main.system.cache;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class LockableEntity implements LockableEntity_i {
+public class LockableEntity {
 
     private final transient ReadWriteLock lock;
 
@@ -11,22 +11,18 @@ public class LockableEntity implements LockableEntity_i {
         this.lock = new ReentrantReadWriteLock();
     }
 
-    @Override
     public void read() {
         lock.readLock().lock();
     }
 
-    @Override
     public void unread() {
         lock.readLock().unlock();
     }
 
-    @Override
     public void write() {
         lock.writeLock().lock();
     }
 
-    @Override
     public void unwrite() {
         lock.writeLock().unlock();
     }

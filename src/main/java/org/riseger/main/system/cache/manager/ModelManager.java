@@ -1,32 +1,60 @@
 package org.riseger.main.system.cache.manager;
 
 import org.riseger.main.system.cache.HolisticStorageEntity;
-import org.riseger.main.system.cache.component.Database_c;
-import org.riseger.main.system.cache.component.Model_c;
-import org.riseger.protoctl.struct.entity.Model;
+import org.riseger.main.system.cache.HolisticStorageEntity_i;
+import org.riseger.main.system.cache.LockableEntity;
+import org.riseger.main.system.cache.component.Database;
+import org.riseger.main.system.cache.component.Model;
+import org.riseger.protocol.struct.entity.Model_p;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ModelManager extends HolisticStorageEntity {
-    private transient final Database_c database;
-    private final Map<String, Model_c> models = new ConcurrentHashMap<>();
+public class ModelManager extends LockableEntity implements HolisticStorageEntity_i {
+    private transient final Database database;
 
-    public ModelManager(Database_c database) {
+    private final HolisticStorageEntity entity = new HolisticStorageEntity();
+
+    private final Map<String, Model> models = new ConcurrentHashMap<>();
+
+    public ModelManager(Database database) {
         this.database = database;
     }
 
-    public void addModel(Model model) {
-        models.put(model.getName(), new Model_c(model));
+    public void addModel(Model_p model) {
+        super.write();
+        models.put(model.getName(), new Model(model));
+        super.unwrite();
     }
 
-    public Model_c getModel(String name) {
-        return models.get(name);
+    public Model getModel(String name) {
+        super.read();
+        Model model = models.get(name);
+        super.unread();
+        return model;
     }
 
-    public List<Model_c> getModels() {
-        return new LinkedList<>(models.values());
+    public List<Model> getModels() {
+        super.read();
+        List<Model> modelList = new LinkedList<>(models.values());
+        super.unread();
+        return modelList;
+    }
+
+    @Override
+    public void changeEntity() {
+        entity.changeEntity();
+    }
+
+    @Override
+    public void resetChanged() {
+        entity.resetChanged();
+    }
+
+    @Override
+    public boolean isChanged() {
+        return entity.isChanged();
     }
 }

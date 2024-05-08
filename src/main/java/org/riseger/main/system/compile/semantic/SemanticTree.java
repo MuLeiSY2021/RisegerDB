@@ -5,10 +5,11 @@ import org.apache.log4j.Logger;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;
+import org.riseger.main.system.compile.function.interfaces.StretchFunction;
 import org.riseger.main.system.compile.syntax.SyntaxForest;
 import org.riseger.main.system.compile.token.Token;
-import org.riseger.protoctl.compiler.CommandTree;
-import org.riseger.protoctl.compiler.function.*;
+import org.riseger.protocol.compiler.CommandTree;
+import org.riseger.protocol.compiler.function.*;
 import org.riseger.utils.Utils;
 import org.riseger.utils.tree.MultiBranchesTree;
 
@@ -151,10 +152,9 @@ public class SemanticTree {
             Function_c function;
             if (this.function != null) {
                 function = Function_c.getFunctionFromMap(this.function, searchMemory, commandList);
-
-                if (function instanceof ProcessorFunction) {
+                if (function instanceof StretchFunction) {
                     List<Function_f> functionList = new LinkedList<>();
-                    ProcessorFunction processorFunction = (ProcessorFunction) function;
+                    StretchFunction processorFunction = (StretchFunction) function;
                     processorFunction.stretch(this, len[0], functionList);
                     len[0] += functionList.size();
                 }

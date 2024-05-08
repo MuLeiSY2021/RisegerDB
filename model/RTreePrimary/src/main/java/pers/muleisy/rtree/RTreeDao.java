@@ -23,4 +23,5 @@ public interface RTreeDao<R extends MBRectangle> {
 
     int getDeep();
 
+    boolean willShrunk(R rect) throws CloneNotSupportedException;
 }

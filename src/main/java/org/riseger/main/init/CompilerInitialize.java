@@ -22,7 +22,7 @@ public class CompilerInitialize extends Initializer {
         super(rootPath);
     }
 
-    public boolean init() {
+    public boolean init() throws Exception {
         try {
             //获取文法规则
             String rule = Utils.getText(new File(rootPath + "/resources/rule/syntaxrule.rule"));
@@ -56,7 +56,7 @@ public class CompilerInitialize extends Initializer {
             CompileSystem.INSTANCE = new CompileSystem(new SessionAdaptor(tokenizer, lexicator, parser));
         } catch (Exception e) {
             LOG.error("Failed to initialize Compiler", e);
-            return false;
+            throw e;
         }
         return true;
     }

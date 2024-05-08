@@ -2,23 +2,23 @@ package org.riseger.main.system.cache.builder;
 
 import lombok.Data;
 import org.riseger.main.constant.Constant;
-import org.riseger.main.system.cache.component.Config_c;
-import org.riseger.main.system.cache.component.Database_c;
-import org.riseger.main.system.cache.component.Map_c;
+import org.riseger.main.system.cache.component.Database;
+import org.riseger.main.system.cache.component.GeoMap;
+import org.riseger.main.system.cache.manager.ConfigManager;
 import org.riseger.main.system.cache.manager.ElementManager;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 @Data
 public class SubmapInitBuilder implements MapBuilder {
     String name;
 
-    Map<String, Config_c> configs;
+    ConfigManager configs;
 
-    Database_c database;
+    Database database;
 
     ElementManager em;
 
@@ -26,8 +26,8 @@ public class SubmapInitBuilder implements MapBuilder {
 
     List<File> md_layer = new LinkedList<>();
 
-    public Map_c build() {
-        Map_c map = new Map_c(configs, name, database, em);
+    public GeoMap build() throws IOException {
+        GeoMap map = new GeoMap(configs, name, database, em);
         map.initAllMd(md_layer);
         map.initAllSmp(smp_layer);
         return map;

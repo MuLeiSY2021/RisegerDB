@@ -1,7 +1,7 @@
 package org.riseger.main.system;
 
 import lombok.Data;
-import org.riseger.main.system.cache.component.Database_c;
+import org.riseger.main.system.cache.component.Database;
 import org.riseger.main.system.cache.manager.DatabasesManager;
 
 import java.util.List;
@@ -21,11 +21,15 @@ public class CacheSystem {
 
     }
 
-    public Database_c getDatabase(String database) {
+    public Database getDatabase(String database) {
         return databasesManager.getDatabase(database);
     }
 
-    public List<String> getDatabases() {
+    public List<String> getDatabasesName() {
+        return databasesManager.getDatabasesName();
+    }
+
+    public List<Database> getDatabases() {
         return databasesManager.getDatabases();
     }
 }

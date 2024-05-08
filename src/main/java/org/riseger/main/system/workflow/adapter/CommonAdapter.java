@@ -1,7 +1,7 @@
 package org.riseger.main.system.workflow.adapter;
 
 import org.riseger.main.system.workflow.jobstack.CommonJobStack;
-import org.riseger.protoctl.packet.request.BasicRequest;
+import org.riseger.protocol.packet.request.BasicRequest;
 
 public class CommonAdapter implements Adapter {
     private final CommonJobStack stack;

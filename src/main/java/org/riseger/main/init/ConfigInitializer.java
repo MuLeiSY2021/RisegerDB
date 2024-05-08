@@ -48,7 +48,7 @@ public class ConfigInitializer extends Initializer {
             return true;
         } catch (Exception e) {
             LOG.error("Config Not Correct", e);
-            return false;
+            throw e;
         }
 
     }

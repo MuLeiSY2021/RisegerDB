@@ -3,22 +3,28 @@ package org.riseger.main.system.log;
 import org.riseger.main.system.compile.compoent.CommandList;
 
 import java.io.File;
+import java.util.Objects;
 
 public class LogFileSystem {
 
     public final String rootPath;
 
     public LogFileSystem(String rootPath) {
-        this.rootPath = rootPath;
+        this.rootPath = rootPath + "/data/databases";
     }
 
     public void deleteAll() {
-        //TODO: 删除所有日志
+        File rootFile = new File(rootPath);
+        for (File db : Objects.requireNonNull(rootFile.listFiles())) {
+            File logsDir = new File(db.getPath() + "/logs");
+            for (File log : Objects.requireNonNull(logsDir.listFiles())) {
+                log.delete();
+            }
+        }
     }
 
-    public void write(int sessionId,String dbName,String mpName, CommandList commandList) {
-        //TODO: 写入日志
-        File file = new File(rootPath + "/" + dbName + "/" + mpName + "/" + sessionId + ".log");
-
+    public void write(int sessionId, String dbName, CommandList commandList) {
+        LogFile logFile = new LogFile(rootPath, sessionId, dbName);
+        logFile.write(commandList);
     }
 }

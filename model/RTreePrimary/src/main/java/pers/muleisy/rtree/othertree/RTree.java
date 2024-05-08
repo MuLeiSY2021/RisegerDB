@@ -377,6 +377,13 @@ public abstract class RTree<R extends MBRectangle> implements RTreeDao<R> {
                 this.threshold);
     }
 
+    @Override
+    public boolean willShrunk(R rect) throws CloneNotSupportedException {
+        RTree tree = (RTree) this.clone();
+        tree.deleteStrict(rect);
+        return this.getSquareRect().equals(tree.getSquareRect());
+    }
+
     @Getter
     protected class SubTree extends MBRectangle {
 

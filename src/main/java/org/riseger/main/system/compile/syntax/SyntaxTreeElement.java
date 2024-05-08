@@ -1,6 +1,6 @@
 package org.riseger.main.system.compile.syntax;
 
-import org.riseger.protoctl.compiler.function.Function_f;
+import org.riseger.protocol.compiler.function.Function_f;
 import org.riseger.utils.tree.Equable;
 import org.riseger.utils.tree.MultiTreeElement;
 

@@ -3,7 +3,7 @@ package org.riseger.main.system.compile.function.math;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;
-import org.riseger.protoctl.exception.SQLException;
+import org.riseger.protocol.exception.SQLException;
 
 public class SmallEqual_fc extends Function_c {
 

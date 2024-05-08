@@ -1,7 +1,9 @@
 package org.riseger.main.system.cache.builder;
 
-import org.riseger.main.system.cache.component.Map_c;
+import org.riseger.main.system.cache.component.GeoMap;
+
+import java.io.IOException;
 
 public interface MapBuilder {
-    Map_c build();
+    GeoMap build() throws IOException;
 }

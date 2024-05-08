@@ -1,9 +1,9 @@
 package org.reseger.jrdbc.utils;
 
-import org.riseger.protoctl.struct.config.Option;
-import org.riseger.protoctl.struct.entity.Element;
-import org.riseger.protoctl.struct.entity.MapDB;
-import org.riseger.protoctl.struct.entity.ParentModel;
+import org.riseger.protocol.struct.config.Option;
+import org.riseger.protocol.struct.entity.Element_p;
+import org.riseger.protocol.struct.entity.MapDB;
+import org.riseger.protocol.struct.entity.ParentModel;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -15,14 +15,14 @@ public class FieldBuilder {
     private final MapDB map;
     private String model;
     private int loopSize = 0;
-    private Element element;
+    private Element_p element;
 
     public FieldBuilder(MapDB map) {
         this.map = map;
     }
 
     public void build() {
-        this.element = new Element(this.parent, model, this.attributes, this.configs);
+        this.element = new Element_p(this.parent, model, this.attributes, this.configs);
         map.addElement(this.element);
     }
 

@@ -3,7 +3,7 @@ package org.riseger.main.system.compile.function;
 import org.apache.log4j.Logger;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.SearchMemory;
-import org.riseger.protoctl.exception.SQLException;
+import org.riseger.protocol.exception.SQLException;
 
 public class Entity_fc extends Function_c {
     private static final Logger LOG = Logger.getLogger(Entity_fc.class);

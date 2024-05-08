@@ -1,8 +1,8 @@
 package org.riseger.main.system;
 
 import org.riseger.main.system.workflow.workflow.CommonWorkFlow;
-import org.riseger.protoctl.packet.RequestType;
-import org.riseger.protoctl.packet.request.BasicRequest;
+import org.riseger.protocol.packet.RequestType;
+import org.riseger.protocol.packet.request.BasicRequest;
 
 import java.util.HashMap;
 import java.util.Map;

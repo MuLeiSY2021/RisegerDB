@@ -1,8 +1,8 @@
 package org.riseger.main.system.compile.function.main;
 
-import org.riseger.main.system.cache.component.Layer_c;
-import org.riseger.main.system.cache.component.MBRectangle_c;
-import org.riseger.main.system.cache.component.Map_c;
+import org.riseger.main.system.cache.component.GeoMap;
+import org.riseger.main.system.cache.component.GeoRectangle;
+import org.riseger.main.system.cache.component.Layer;
 import org.riseger.main.system.compile.compoent.SearchSet;
 
 import java.util.*;
@@ -10,21 +10,21 @@ import java.util.*;
 public class WhereIterator {
     private final Map<String, SearchSet> searchMap;
 
-    private final List<Map_c> maps;
+    private final List<GeoMap> maps;
 
-    private final MBRectangle_c scope;
+    private final GeoRectangle scope;
 
     private final Iterator<SearchSet> searchListIterator;
 
     private SearchSet model;
 
-    private ListIterator<Layer_c> layerListIterator;
+    private ListIterator<Layer> layerListIterator;
 
-    private Layer_c layer;
+    private Layer layer;
 
-    private ListIterator<MBRectangle_c> elementListIterator;
+    private ListIterator<GeoRectangle> elementListIterator;
 
-    public WhereIterator(Map<String, SearchSet> searchMap, List<Map_c> maps, MBRectangle_c scope) {
+    public WhereIterator(Map<String, SearchSet> searchMap, List<GeoMap> maps, GeoRectangle scope) {
         this.searchMap = searchMap;
         this.maps = maps;
         this.scope = scope;
@@ -38,7 +38,7 @@ public class WhereIterator {
         this.elementListIterator = layer.getElements(scope).listIterator();
     }
 
-    public MBRectangle_c next() {
+    public GeoRectangle next() {
         return this.elementListIterator.next();
     }
 
@@ -56,15 +56,15 @@ public class WhereIterator {
         return this.elementListIterator.hasNext();
     }
 
-    private List<Layer_c> findModelLayer(SearchSet model, List<Map_c> maps, MBRectangle_c scope) {
-        List<Layer_c> results = new LinkedList<>();
+    private List<Layer> findModelLayer(SearchSet model, List<GeoMap> maps, GeoRectangle scope) {
+        List<Layer> results = new LinkedList<>();
 
-        for (String[] route : model.getChild()) {
+        for (List<String> route : model.getChild()) {
             /*
               province_scope.area_scope.building_model
               province_scope.building_model
             */
-            List<Map_c> tmpLayers = new LinkedList<>(maps),
+            List<GeoMap> tmpLayers = new LinkedList<>(maps),
                     nextLayers = new LinkedList<>();
             for (String layerName : route) {
                 /*
@@ -72,21 +72,21 @@ public class WhereIterator {
                   area_scope
                   building_model
                  */
-                for (Map_c map : tmpLayers) {
+                for (GeoMap map : tmpLayers) {
                     /*
                       Tianjin
                       Shanghai
                       Beijing
                      */
-                    List<MBRectangle_c> tmp = map.getSubmapLayer(layerName).getElements(scope);
-                    for (MBRectangle_c mbr : tmp) {
-                        nextLayers.add((Map_c) mbr);
+                    List<GeoRectangle> tmp = map.getSubmapLayer(layerName).getElements(scope);
+                    for (GeoRectangle mbr : tmp) {
+                        nextLayers.add((GeoMap) mbr);
                     }
                 }
                 tmpLayers = nextLayers;
                 nextLayers = new LinkedList<>();
             }
-            for (Map_c map : tmpLayers) {
+            for (GeoMap map : tmpLayers) {
                 results.add(map.getElementLayer(model.getName()));
             }
         }

@@ -4,8 +4,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.reseger.jrdbc.utils.*;
-import org.riseger.protoctl.struct.entity.ParentModel;
-import org.riseger.protoctl.struct.entity.Type;
+import org.riseger.protocol.struct.entity.ParentModel;
+import org.riseger.protocol.struct.entity.Type;
 
 import java.util.HashMap;
 import java.util.List;

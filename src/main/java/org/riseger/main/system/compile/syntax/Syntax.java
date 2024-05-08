@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.riseger.main.system.compile.lextcal.Keyword;
 import org.riseger.main.system.compile.token.Token;
 import org.riseger.main.system.compile.token.TokenType;
-import org.riseger.protoctl.compiler.function.Function_f;
+import org.riseger.protocol.compiler.function.Function_f;
 import org.riseger.utils.tree.Equable;
 
 import java.util.Objects;

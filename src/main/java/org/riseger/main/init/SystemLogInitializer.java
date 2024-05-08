@@ -15,7 +15,7 @@ public class SystemLogInitializer extends Initializer {
         super(rootPath);
     }
 
-    public boolean init() {
+    public boolean init() throws IOException {
         FileInputStream fileInputStream = null;
         try {
             Properties properties = new Properties();
@@ -25,6 +25,7 @@ public class SystemLogInitializer extends Initializer {
             return true;
         } catch (Exception e) {
             LOG.severe(e.getMessage());
+            throw e;
         } finally {
             if (fileInputStream != null) {
                 try {
@@ -34,6 +35,5 @@ public class SystemLogInitializer extends Initializer {
                 }
             }
         }
-        return false;
     }
 }

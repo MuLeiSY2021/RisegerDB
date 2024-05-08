@@ -16,10 +16,18 @@ public class LogSystem {
         this.logDaemon = new LogDaemon();
     }
 
-    public void writeLog(int sessionId,String dbName,String mpName, CommandList commandList) {
+    public static void setINSTANCE(LogSystem logSystem) {
+        LogSystem.INSTANCE = logSystem;
+    }
+
+    public void init() {
+        logDaemon.run();
+    }
+
+    public void writeLog(int sessionId, String dbName, CommandList commandList) {
         logDaemon.countDown(commandList.size());
         logDaemon.read();
-        logFileSystem.write(sessionId,dbName,mpName,commandList);
+        logFileSystem.write(sessionId, dbName, commandList);
         logDaemon.unread();
     }
 

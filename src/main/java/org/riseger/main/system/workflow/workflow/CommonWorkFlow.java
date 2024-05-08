@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.riseger.main.system.workflow.adapter.CommonAdapter;
 import org.riseger.main.system.workflow.jobstack.CommonJobStack;
 import org.riseger.main.system.workflow.wokerpool.CommonWorkerPool;
-import org.riseger.protoctl.packet.request.BasicRequest;
+import org.riseger.protocol.packet.request.BasicRequest;
 
 public class CommonWorkFlow {
     private static final Logger LOG = Logger.getLogger(CommonWorkFlow.class);

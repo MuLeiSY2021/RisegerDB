@@ -2,7 +2,7 @@ package org.riseger.main.system.compile.syntax;
 
 import lombok.Getter;
 import org.riseger.main.system.compile.token.TokenType;
-import org.riseger.protoctl.compiler.function.Function_f;
+import org.riseger.protocol.compiler.function.Function_f;
 import org.riseger.utils.tree.MultiBranchesTree;
 
 import java.util.HashMap;

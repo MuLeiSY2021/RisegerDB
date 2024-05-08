@@ -4,8 +4,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.Getter;
 import org.apache.log4j.Logger;
-import org.riseger.protoctl.packet.request.TranspondRequest;
-import org.riseger.protoctl.packet.response.BasicResponse;
+import org.riseger.protocol.packet.request.TranspondRequest;
+import org.riseger.protocol.packet.response.BasicResponse;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;

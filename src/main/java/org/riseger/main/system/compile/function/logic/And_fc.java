@@ -3,10 +3,9 @@ package org.riseger.main.system.compile.function.logic;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;
-import org.riseger.main.system.compile.semantic.SemanticTree;
-import org.riseger.protoctl.compiler.function.Function_f;
-import org.riseger.protoctl.compiler.function.ProcessorFunction;
-import org.riseger.protoctl.exception.SQLException;
+import org.riseger.protocol.compiler.function.Function_f;
+import org.riseger.protocol.compiler.function.ProcessorFunction;
+import org.riseger.protocol.exception.SQLException;
 
 import java.util.List;
 
@@ -23,10 +22,6 @@ public class And_fc extends Function_c implements ProcessorFunction {
         boolean result = f1 & f2;
         LOG.debug(f1 + " & " + f2 + " " + result);
         searchMemory.push(result);
-    }
-
-    @Override
-    public void stretch(SemanticTree.Node node, int size, List<Function_f> functionList) {
     }
 
     @Override

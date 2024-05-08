@@ -11,7 +11,13 @@ public class SearchMemory {
 
     final Map<Integer, Object> mapMemory = new HashMap<>();
 
+    private final SearchSession searchSession;
+
     private int variableIndex;
+
+    public SearchMemory(SearchSession searchSession) {
+        this.searchSession = searchSession;
+    }
 
     public Object poll() {
         if (variableIndex == 0) {
@@ -41,6 +47,10 @@ public class SearchMemory {
 
     public void removeMapValue(MemoryConstant memoryConstant) {
         this.mapMemory.remove(memoryConstant.hashCode());
+    }
+
+    public int getSessionId() {
+        return searchSession.getSessionId();
     }
 }
 

@@ -4,7 +4,10 @@ import org.apache.log4j.Logger;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.utils.Utils;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class LogFile {
 
@@ -12,8 +15,8 @@ public class LogFile {
 
     private static final Logger LOG = Logger.getLogger(LogFile.class);
 
-    public LogFile(String rootPath,int sessionId,String dbName,String mpName) {
-        this.log = new File(rootPath + "/" + dbName + "/" + mpName + "/" + sessionId + ".log");
+    public LogFile(String rootPath, int sessionId, String dbName) {
+        this.log = new File(rootPath + "/" + dbName + "/" + "logs" + sessionId + ".log");
     }
 
     public void write(CommandList commandList) {
@@ -27,6 +30,7 @@ public class LogFile {
             }
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(log, true))) {
+                //TODO: CommandList能被序列化吗？
                 writer.write(Utils.toJson(commandList) + "\n");
                 LOG.info("Data has been written to " + log.getName());
             } catch (IOException e) {

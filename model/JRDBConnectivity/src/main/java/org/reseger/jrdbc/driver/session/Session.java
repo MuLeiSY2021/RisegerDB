@@ -3,9 +3,9 @@ package org.reseger.jrdbc.driver.session;
 import lombok.Getter;
 import lombok.Setter;
 import org.reseger.jrdbc.driver.connector.Connection;
-import org.riseger.protoctl.packet.RequestType;
-import org.riseger.protoctl.packet.request.BasicRequest;
-import org.riseger.protoctl.packet.response.BasicResponse;
+import org.riseger.protocol.packet.RequestType;
+import org.riseger.protocol.packet.request.BasicRequest;
+import org.riseger.protocol.packet.response.BasicResponse;
 
 public abstract class Session<P extends BasicResponse> {
     protected transient final Connection parent;

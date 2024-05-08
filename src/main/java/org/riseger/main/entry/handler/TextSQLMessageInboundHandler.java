@@ -2,7 +2,7 @@ package org.riseger.main.entry.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import org.riseger.main.system.WorkflowSystem;
-import org.riseger.protoctl.packet.request.TextSQLRequest;
+import org.riseger.protocol.packet.request.TextSQLRequest;
 
 public class TextSQLMessageInboundHandler extends TransponderHandler<TextSQLRequest> {
 

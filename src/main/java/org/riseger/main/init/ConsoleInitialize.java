@@ -20,8 +20,8 @@ public class ConsoleInitialize extends Initializer {
             return true;
         } catch (Exception e) {
             LOG.error("Failed to Initialize Console", e);
+            throw e;
         }
-        return false;
     }
 
     public void join() {

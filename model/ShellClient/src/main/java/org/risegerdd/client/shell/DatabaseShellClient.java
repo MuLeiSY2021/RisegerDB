@@ -3,10 +3,10 @@ package org.risegerdd.client.shell;
 import org.apache.log4j.PropertyConfigurator;
 import org.reseger.jrdbc.driver.connector.Connection;
 import org.reseger.jrdbc.driver.session.TextSQLMessageSession;
-import org.riseger.protoctl.exception.SQLException;
-import org.riseger.protoctl.otherProtocol.ProgressBar;
-import org.riseger.protoctl.packet.RequestType;
-import org.riseger.protoctl.packet.response.TextSQLResponse;
+import org.riseger.protocol.exception.SQLException;
+import org.riseger.protocol.otherProtocol.ProgressBar;
+import org.riseger.protocol.packet.RequestType;
+import org.riseger.protocol.packet.response.TextSQLResponse;
 import org.risegerdd.client.shell.introduce.CyberIntroduce;
 import org.risegerdd.client.shell.progressbar.WavyProgressBar;
 import org.risegerdd.client.shell.style.Color;
@@ -49,7 +49,6 @@ public class DatabaseShellClient {
                 connection = Connection.connect("localhost", 10086, progressBar);
                 progressBar.loading(10);
                 statement = connection.sqlText();
-
                 progressBar.done();
             } catch (Exception e) {
                 System.err.println("[ERROR]   ");

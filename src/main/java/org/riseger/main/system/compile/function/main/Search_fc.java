@@ -1,10 +1,11 @@
 package org.riseger.main.system.compile.function.main;
 
+import org.riseger.main.system.compile.clazz.DotString;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.MemoryConstant;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;
-import org.riseger.protoctl.exception.SQLException;
+import org.riseger.protocol.exception.SQLException;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -18,13 +19,12 @@ public class Search_fc extends Function_c {
 
     @Override
     public void process(SearchMemory searchMemory, CommandList commandList) throws SQLException {
-        List<String> models = (List<String>) searchMemory.poll();
+        List<DotString> models = (List<DotString>) searchMemory.poll();
         Map<String, List<String>> searchSetMap = new HashMap<>();
         Map<String, Map<String, Object>> expireCopys = new HashMap<>();
-        for (String list : models) {
-            String[] sets = list.split("\\.");
-            String modelName = sets[0],
-                    column = sets[1];
+        for (DotString dotString : models) {
+            String modelName = dotString.getParent(),
+                    column = dotString.getBottom();
             List<String> searchSetList;
             Map<String, Object> expireCopy;
             if (searchSetMap.containsKey(modelName)) {

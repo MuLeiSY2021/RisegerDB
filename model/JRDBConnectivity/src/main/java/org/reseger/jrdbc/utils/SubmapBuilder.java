@@ -1,7 +1,7 @@
 package org.reseger.jrdbc.utils;
 
-import org.riseger.protoctl.struct.entity.MapDB;
-import org.riseger.protoctl.struct.entity.Submap;
+import org.riseger.protocol.struct.entity.MapDB;
+import org.riseger.protocol.struct.entity.Submap;
 
 public class SubmapBuilder {
     private final MapDB parent;

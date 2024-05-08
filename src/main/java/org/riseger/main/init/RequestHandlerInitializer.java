@@ -16,8 +16,8 @@ public class RequestHandlerInitializer extends Initializer {
             return true;
         } catch (Exception e) {
             LOG.error("Failed to Initialize ApiHandler", e);
+            throw e;
         }
-        return false;
     }
 
     public void close() {

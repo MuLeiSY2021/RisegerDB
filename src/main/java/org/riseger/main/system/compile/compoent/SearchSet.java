@@ -2,7 +2,6 @@ package org.riseger.main.system.compile.compoent;
 
 import lombok.Data;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,14 +9,14 @@ import java.util.List;
 public class SearchSet {
     String name;
 
-    List<String[]> child = new LinkedList<>();
+    List<List<String>> child = new LinkedList<>();
 
-    public SearchSet(String name, String[] sets) {
+    public SearchSet(String name, List<String> sets) {
         this.name = name;
         this.child.add(sets);
     }
 
-    public void add(String[] sets) {
-        child.add(Arrays.copyOfRange(sets, 1, sets.length));
+    public void add(List<String> sets) {
+        child.add(sets);
     }
 }

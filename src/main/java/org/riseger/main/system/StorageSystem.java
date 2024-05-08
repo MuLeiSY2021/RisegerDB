@@ -1,22 +1,25 @@
 package org.riseger.main.system;
 
-import com.google.gson.reflect.TypeToken;
 import io.netty.buffer.ByteBuf;
 import org.apache.log4j.Logger;
 import org.riseger.main.constant.Constant;
 import org.riseger.main.system.cache.builder.MapInitBuilder;
-import org.riseger.main.system.cache.component.*;
+import org.riseger.main.system.cache.component.Database;
+import org.riseger.main.system.cache.component.GeoMap;
+import org.riseger.main.system.cache.component.GeoRectangle;
+import org.riseger.main.system.cache.component.Layer;
 import org.riseger.main.system.cache.manager.ConfigManager;
 import org.riseger.main.system.cache.manager.ModelManager;
-import org.riseger.protoctl.serializer.JsonSerializer;
+import org.riseger.protocol.serializer.JsonSerializer;
 import org.riseger.utils.Utils;
 import pers.muleisy.rtree.othertree.RTree;
-import pers.muleisy.rtree.rectangle.MBRectangle;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
 public class StorageSystem {
 
@@ -31,8 +34,18 @@ public class StorageSystem {
     }
 
 
-    public List<Database_c> initDatabases() throws IOException {
-        List<Database_c> databases = new LinkedList<>();
+    private static void writeLayer(File parent, Layer layer) throws Throwable {
+        File layerFile = new File(parent.getPath() + "/" + layer.getName() + ".layer");
+        byte[] data;
+        RTree<GeoRectangle> r_t = layer.getElementManager().getRtreeKeyIndex();
+        ByteBuf buffer = r_t.serialize();
+        data = new byte[buffer.readableBytes()];
+        buffer.readBytes(data);
+        Utils.writeToFile(data, layerFile.getPath());
+    }
+
+    public List<Database> initDatabases() throws IOException {
+        List<Database> databases = new LinkedList<>();
         File root = new File(this.rootPath + "/data/databases");
 
         if (root.exists()) {
@@ -45,28 +58,14 @@ public class StorageSystem {
         return databases;
     }
 
-    private static void writeLayer(File parent, Layer_c layer) {
-        File layerFile = new File(parent.getPath() + "/" + layer.getName() + ".layer");
-        byte[] data = null;
-        try {
-            RTree<MBRectangle_c> r_t = layer.getElementManager().getRtreeKeyIndex();
-            ByteBuf buffer = r_t.serialize();
-            data = new byte[buffer.readableBytes()];
-            buffer.readBytes(data);
-        } catch (Throwable e) {
-            LOG.error("Error", e);
-        }
-        Utils.writeToFile(data, layerFile.getPath());
-    }
-
     private static void writeModel(File parent, ModelManager models) {
         File modelFile = new File(parent.getPath() + "/" + Constant.MODEL_FILE_NAME + Constant.DOT_PREFIX + Constant.JSON_PREFIX);
         Utils.writeToFile(JsonSerializer.serialize(models), modelFile.getPath());
         LOG.info("创建Model文件成功");
     }
 
-    private Database_c getDatabase(File db_) throws IOException {
-        Database_c db = new Database_c(db_.getName().split("\\.")[0]);
+    private Database getDatabase(File db_) throws IOException {
+        Database db = new Database(db_.getName().split("\\.")[0]);
         for (File map_ : db_.listFiles()) {
             if (map_.isDirectory() && map_.getName().endsWith(Constant.MAP_PREFIX)) {
                 db.initMap(getMap(map_, db));
@@ -80,7 +79,7 @@ public class StorageSystem {
         return db;
     }
 
-    private Map_c getMap(File map_, Database_c db) {
+    private GeoMap getMap(File map_, Database db) throws IOException {
         MapInitBuilder mb = new MapInitBuilder();
         mb.setDatabase(db);
         mb.setName(map_.getName().split("\\.")[0]);
@@ -88,8 +87,8 @@ public class StorageSystem {
             if (submap_.getName().endsWith(Constant.LAYER_PREFIX)) {
                 mb.addLayer(submap_);
             } else if (submap_.getName().startsWith(Constant.CONFIG_FILE_NAME)) {
-                Map<String, Config_c> configs = (Map<String, Config_c>) JsonSerializer.deserialize(Utils.getText(submap_),
-                        TypeToken.getParameterized(HashMap.class, String.class, Config_c.class));
+                ConfigManager configs = JsonSerializer.deserialize(Utils.getBytes(submap_),
+                        ConfigManager.class);
                 mb.setConfigs(configs);
             }
         }
@@ -97,58 +96,48 @@ public class StorageSystem {
         return mb.build();
     }
 
-    public void writeDatabases(List<Database_c> databases) {
-        for (Database_c db : databases) {
-            try {
-                writeDatabase(db);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+    public void writeDatabases(List<Database> databases) throws Throwable {
+        for (Database db : databases) {
+            writeDatabase(db);
         }
     }
 
-    public void writeDatabase(Database_c database) throws IOException {
+    public void writeDatabase(Database database) throws Throwable {
         File root = new File(rootPath + "/data/databases");
-        try {
-            //创建数据库根目录
-            String res = writeDir(root);
-            if (res != null) {
-                if (!res.isEmpty()) {
-                    LOG.error(res + "数据库根目录");
-                } else {
-                    LOG.info("创建数据库根目录成功");
-                }
+        //创建数据库根目录
+        String res = writeDir(root);
+        if (res != null) {
+            if (!res.isEmpty()) {
+                LOG.error(res + "数据库根目录");
+            } else {
+                LOG.info("创建数据库根目录成功");
             }
+        }
 
-            //创建数据库目录
-            File db = new File(root.getPath() + "/" + database.getName() + ".db");
-            res = writeDir(db);
-            if (res != null) {
-                if (!res.isEmpty()) {
-                    LOG.error(res + "数据库目录");
-                } else {
-                    LOG.info("创建数据库目录成功");
-                }
+        //创建数据库目录
+        File db = new File(root.getPath() + "/" + database.getName() + ".db");
+        res = writeDir(db);
+        if (res != null) {
+            if (!res.isEmpty()) {
+                LOG.error(res + "数据库目录");
+            } else {
+                LOG.info("创建数据库目录成功");
             }
+        }
 
-            //创建Config文件
-            writeConfig(db, database.getConfigManager());
+        //创建Config文件
+        writeConfig(db, database.getConfigManager());
 
-            //创建Model文件
-            writeModel(db, database.getModelManager());
+        //创建Model文件
+        writeModel(db, database.getModelManager());
 
-            //创建Map文件
-            for (Map_c map : database.getMapManager().toList()) {
-                writeMap(db, map, null);
-            }
-
-        } catch (Exception e) {
-            LOG.error(e);
-            throw e;
+        //创建Map文件
+        for (GeoMap map : database.getMapManager().toList()) {
+            writeMap(db, map, null);
         }
     }
 
-    private void writeMap(File parent, Map_c map, File rootFile) throws IOException {
+    private void writeMap(File parent, GeoMap map, File rootFile) throws Throwable {
         if (rootFile == null) {
             rootFile = new File(parent.getPath() + "/" + map.getName() + ".mp");
             String res = writeDir(rootFile);
@@ -165,7 +154,7 @@ public class StorageSystem {
         writeConfig(rootFile, map.getConfigManager());
 
         //创建Layer文件夹
-        for (Layer_c layer : map.getLayerManager().toList()) {
+        for (Layer layer : map.getLayerManager().toList()) {
             if (layer.isSubMap()) {
                 rootFile = new File(rootFile.getPath() + "/" + layer.getName() + ".layer");
                 String res = writeDir(rootFile);
@@ -176,11 +165,11 @@ public class StorageSystem {
                         LOG.info("创建地图目录成功");
                     }
                 }
-                List<MBRectangle_c> maps = layer.getElementManager().getRtreeKeyIndex().getElements();
-                for (MBRectangle mbr : maps) {
+                List<GeoRectangle> maps = layer.getElementManager().getRtreeKeyIndex().getElements();
+                for (pers.muleisy.rtree.rectangle.MBRectangle mbr : maps) {
                     File submapFile = new File(rootFile.getPath() + "/" + map.getName() + "." + Constant.SUBMAP_PREFIX);
                     writeDir(submapFile);
-                    writeMap(submapFile, (Map_c) mbr, submapFile);
+                    writeMap(submapFile, (GeoMap) mbr, submapFile);
                 }
             } else {
                 writeLayer(rootFile, layer);
@@ -210,8 +199,8 @@ public class StorageSystem {
         LOG.info("创建Config文件成功");
     }
 
-    public void organizeDatabases(List<Database_c> databases) throws IOException {
-        for (Database_c db : databases) {
+    public void organizeDatabases(List<Database> databases) throws Throwable {
+        for (Database db : databases) {
             if (db.isChanged()) {
                 organizeDatabase(db);
                 db.resetChanged();
@@ -219,7 +208,7 @@ public class StorageSystem {
         }
     }
 
-    private void organizeDatabase(Database_c database) throws IOException {
+    private void organizeDatabase(Database database) throws Throwable {
         File root = new File(rootPath + "/data/databases");
         File databaseFile = new File(root.getPath() + "/" + database.getName() + ".db");
         if (!databaseFile.exists()) {
@@ -239,7 +228,7 @@ public class StorageSystem {
 
         //Map Update
         if (database.getMapManager().isChanged()) {
-            for (Map_c map : database.getMapManager().getMaps()) {
+            for (GeoMap map : database.getMapManager().getMaps()) {
                 if (map.isChanged()) {
                     organizeMap(root, map, null);
                     map.resetChanged();
@@ -257,19 +246,19 @@ public class StorageSystem {
         }
     }
 
-    private void organizeMap(File parent, Map_c map, File rootFile) {
+    private void organizeMap(File parent, GeoMap map, File rootFile) throws Throwable {
         //Config Update
         organizeConfig(map.getConfigManager(), parent);
 
 
         if (map.getLayerManager().isChanged()) {
-            for (Layer_c layer : map.getLayerManager().toList()) {
+            for (Layer layer : map.getLayerManager().toList()) {
                 if (layer.isChanged()) {
                     if (layer.isSubMap()) {
                         rootFile = new File(rootFile.getPath() + "/" + layer.getName() + ".layer");
-                        List<MBRectangle_c> maps = layer.getElementManager().getRtreeKeyIndex().getElements();
-                        for (MBRectangle mbr : maps) {
-                            organizeMap(new File(rootFile.getPath() + "/" + map.getName() + "." + Constant.SUBMAP_PREFIX), (Map_c) mbr, rootFile);
+                        List<GeoRectangle> maps = layer.getElementManager().getRtreeKeyIndex().getElements();
+                        for (pers.muleisy.rtree.rectangle.MBRectangle mbr : maps) {
+                            organizeMap(new File(rootFile.getPath() + "/" + map.getName() + "." + Constant.SUBMAP_PREFIX), (GeoMap) mbr, rootFile);
                         }
                     } else {
                         writeLayer(rootFile, layer);

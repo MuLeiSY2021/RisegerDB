@@ -3,16 +3,17 @@ package org.riseger.main.system.compile.function.logic;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;
+import org.riseger.main.system.compile.function.interfaces.StretchFunction;
 import org.riseger.main.system.compile.semantic.SemanticTree;
-import org.riseger.protoctl.compiler.function.Entity_f;
-import org.riseger.protoctl.compiler.function.Function_f;
-import org.riseger.protoctl.compiler.function.ProcessorFunction;
-import org.riseger.protoctl.compiler.function.loop.IfJump_f;
-import org.riseger.protoctl.exception.SQLException;
+import org.riseger.protocol.compiler.function.Entity_f;
+import org.riseger.protocol.compiler.function.Function_f;
+import org.riseger.protocol.compiler.function.ProcessorFunction;
+import org.riseger.protocol.compiler.function.loop.IfJump_f;
+import org.riseger.protocol.exception.SQLException;
 
 import java.util.List;
 
-public class Or_fc extends Function_c implements ProcessorFunction {
+public class Or_fc extends Function_c implements ProcessorFunction, StretchFunction {
 
     public Or_fc() {
         super();

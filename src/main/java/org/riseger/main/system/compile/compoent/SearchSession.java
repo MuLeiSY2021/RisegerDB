@@ -8,8 +8,8 @@ import org.riseger.main.system.compile.semantic.SemanticTree;
 import org.riseger.main.system.compile.syntax.Parser;
 import org.riseger.main.system.compile.token.Token;
 import org.riseger.main.system.compile.token.Tokenizer;
-import org.riseger.protoctl.compiler.CommandTree;
-import org.riseger.protoctl.compiler.result.ResultSet;
+import org.riseger.protocol.compiler.CommandTree;
+import org.riseger.protocol.compiler.result.ResultSet;
 import org.riseger.utils.Utils;
 
 import java.util.ArrayList;
@@ -24,29 +24,33 @@ public class SearchSession {
 
     private final Parser parser;
 
+    private final int sessionId;
+
     private CommandTree commandTree;
 
     private CommandList commandList = new CommandList();
 
-    private final SearchMemory memory = new SearchMemory();
+    private final SearchMemory memory = new SearchMemory(this);
 
     private String sourcecode;
 
     private ArrayList<Token> tokenList;
 
 
-    public SearchSession(String sourcecode, Tokenizer tokenizer, Lexicator lexicator, Parser parser) {
+    public SearchSession(String sourcecode, Tokenizer tokenizer, Lexicator lexicator, Parser parser, int sessionId) {
         this.sourcecode = sourcecode;
         this.tokenizer = tokenizer;
         this.parser = parser;
         this.lexicator = lexicator;
+        this.sessionId = sessionId;
     }
 
-    public SearchSession(CommandTree commandTree, Tokenizer tokenizer, Lexicator lexicator, Parser parser) {
+    public SearchSession(CommandTree commandTree, Tokenizer tokenizer, Lexicator lexicator, Parser parser, int sessionId) {
         this.commandTree = commandTree;
         this.tokenizer = tokenizer;
         this.parser = parser;
         this.lexicator = lexicator;
+        this.sessionId = sessionId;
     }
 
     public void preHandle() throws Exception {

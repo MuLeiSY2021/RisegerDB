@@ -1,8 +1,8 @@
 package org.risegerdd.client.shell.table;
 
-import org.riseger.protoctl.compiler.result.ResultElement;
-import org.riseger.protoctl.compiler.result.ResultModelSet;
-import org.riseger.protoctl.compiler.result.ResultSet;
+import org.riseger.protocol.compiler.result.ResultElement;
+import org.riseger.protocol.compiler.result.ResultModelSet;
+import org.riseger.protocol.compiler.result.ResultSet;
 import org.risegerdd.client.shell.style.Color;
 import org.risegerdd.client.shell.style.TableColorStyle;
 

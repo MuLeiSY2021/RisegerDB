@@ -5,10 +5,10 @@ import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.MemoryConstant;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.main.system.compile.function.Function_c;
-import org.riseger.protoctl.compiler.result.ResultElement;
-import org.riseger.protoctl.compiler.result.ResultModelSet;
-import org.riseger.protoctl.compiler.result.ResultSet;
-import org.riseger.protoctl.exception.SQLException;
+import org.riseger.protocol.compiler.result.ResultElement;
+import org.riseger.protocol.compiler.result.ResultModelSet;
+import org.riseger.protocol.compiler.result.ResultSet;
+import org.riseger.protocol.exception.SQLException;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class GetDatabases_fc extends Function_c {
             resultSet = new ResultSet();
             searchMemory.setMap(resultSet, MemoryConstant.RESULT);
         }
-        List<String> names = CacheSystem.INSTANCE.getDatabases();
+        List<String> names = CacheSystem.INSTANCE.getDatabasesName();
         ResultModelSet resultModelSet = new ResultModelSet();
         resultSet.setModelSet("databases", resultModelSet);
         for (String name : names) {
