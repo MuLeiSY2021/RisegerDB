@@ -31,7 +31,7 @@ public class SearchSession {
 
     private CommandTree commandTree;
 
-    private CommandList commandList = new CommandList();
+    private CommandList commandList;
 
     private final SearchMemory memory = new SearchMemory(this);
 
@@ -56,7 +56,16 @@ public class SearchSession {
         this.sessionId = sessionId;
     }
 
+    public SearchSession(CommandList commandList, Tokenizer tokenizer, Lexicator lexicator, Parser parser, int sessionId) {
+        this.tokenizer = tokenizer;
+        this.parser = parser;
+        this.lexicator = lexicator;
+        this.commandList = commandList;
+        this.sessionId = sessionId;
+    }
+
     public void preHandle() throws Exception {
+        commandList = new CommandList();
         if (sourcecode == null) {
             SemanticTree semanticTree = new SemanticTree(commandTree);
             semanticTree.getFunctionList(memory, commandList);
@@ -69,7 +78,13 @@ public class SearchSession {
     }
 
     public ResultSet process() throws Exception {
-        preHandle();
+        return process(false);
+    }
+
+    public ResultSet process(boolean logMode) throws Exception {
+        if (!logMode) {
+            preHandle();
+        }
         if (commandList.isEmpty()) {
             LOG.debug("No command");
             return null;
@@ -79,8 +94,8 @@ public class SearchSession {
             LOG.debug("ID:" + commandList.index() + " Fun: " + Utils.getClassLastDotName(function.getClass()));
             function.process(memory, commandList);
         }
-        if (((Function_c) memory.get((MemoryConstant.METOD_PROCESS))).getClass().equals(Update_fc.class)) {
-            LogSystem.INSTANCE.writeLog(memory.getSessionId(), ((Database) memory.get(MemoryConstant.DATABASE)).getName(), commandList);
+        if (!logMode && ((Function_c) memory.get((MemoryConstant.METOD_PROCESS))).getClass().equals(Update_fc.class)) {
+            LogSystem.INSTANCE.writeLog(memory.getSessionId(), ((Database) memory.get(MemoryConstant.DATABASE)).getName(), commandList.getFunctionList());
         }
         ResultSet resultSet = (ResultSet) memory.get(MemoryConstant.RESULT);
         if (resultSet == null) {

@@ -25,4 +25,8 @@ public class SessionAdaptor {
     public SearchSession adapt(CommandTree commandTree, int sessionId) {
         return new SearchSession(commandTree, tokenizer, lexicator, parser, sessionId);
     }
+
+    public SearchSession adapt(CommandList commandList, int sessionId) {
+        return new SearchSession(commandList, tokenizer, lexicator, parser, sessionId);
+    }
 }

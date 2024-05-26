@@ -1,6 +1,6 @@
 package org.riseger.main.system.log;
 
-import org.riseger.main.system.compile.compoent.CommandList;
+import org.riseger.main.system.compile.function.Function_c;
 
 import java.io.File;
 import java.util.Objects;
@@ -23,8 +23,8 @@ public class LogFileSystem {
         }
     }
 
-    public void write(int sessionId, String dbName, CommandList commandList) {
+    public void write(int sessionId, String dbName, Function_c[] functions) {
         LogFile logFile = new LogFile(rootPath, sessionId, dbName);
-        logFile.write(commandList);
+        logFile.write(functions);
     }
 }

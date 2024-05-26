@@ -6,17 +6,17 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SessionManager {
-    private static final Map<String, SearchSession> sessionCache = new ConcurrentHashMap<>();
+    private static final Map<Integer, SearchSession> sessionCache = new ConcurrentHashMap<>();
 
-    public static void put(String key, SearchSession session) {
+    public static void put(Integer key, SearchSession session) {
         sessionCache.put(key, session);
     }
 
-    public static SearchSession get(String key) {
+    public static SearchSession get(Integer key) {
         return sessionCache.get(key);
     }
 
-    public static boolean containsKey(String ipAddress) {
-        return sessionCache.containsKey(ipAddress);
+    public static boolean containsKey(Integer key) {
+        return sessionCache.containsKey(key);
     }
 }

@@ -25,11 +25,6 @@ public class MainBootstrap {
             LOG.info("Storage initialized successfully");
         }
 
-        LogInitializer logInitializer = new LogInitializer(rootPath);
-        if (logInitializer.init()) {
-            LOG.info("UpdateLog initialized successfully");
-        }
-
         CacheInitializer cacheInitializer = new CacheInitializer(rootPath, storageInitializer);
         if (cacheInitializer.init()) {
             LOG.info("Cache initialized successfully");
@@ -38,6 +33,11 @@ public class MainBootstrap {
         CompilerInitialize compilerInitialize = new CompilerInitialize(rootPath);
         if (compilerInitialize.init()) {
             LOG.info("Compiler initialized successfully");
+        }
+
+        LogInitializer logInitializer = new LogInitializer(rootPath);
+        if (logInitializer.init()) {
+            LOG.info("UpdateLog initialized successfully");
         }
 
         RequestHandlerInitializer requestHandlerInitializer = new RequestHandlerInitializer(rootPath);

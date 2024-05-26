@@ -1,8 +1,8 @@
 package org.riseger.main.system.log;
 
 import org.apache.log4j.Logger;
-import org.riseger.main.system.compile.compoent.CommandList;
-import org.riseger.utils.Utils;
+import org.riseger.main.system.compile.function.Function_c;
+import org.riseger.protocol.serializer.JsonSerializer;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,10 +20,10 @@ public class LogFile {
 
     public LogFile(String rootPath, int sessionId, String dbName) {
         this.logDirectory = new File(rootPath + "/" + dbName + ".db/" + "logs");
-        this.log = new File(rootPath + "/" + dbName + ".db/" + "logs/" + sessionId + ".log");
+        this.log = new File(rootPath + "/" + dbName + ".db/" + "logs/" + System.currentTimeMillis() + "_" + sessionId + ".log");
     }
 
-    public void write(CommandList commandList) {
+    public void write(Function_c[] functions) {
         try {
             if (!logDirectory.exists()) {
                 logDirectory.mkdirs();
@@ -37,8 +37,7 @@ public class LogFile {
             }
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(log, true))) {
-                //TODO: CommandList能被序列化吗？
-                writer.write(Utils.toJson(commandList) + "\n");
+                writer.write(JsonSerializer.serializeToString(functions) + "\n");
                 LOG.info("Data has been written to " + log.getName());
             } catch (IOException e) {
                 LOG.error("Error writing to file: " + e.getMessage());

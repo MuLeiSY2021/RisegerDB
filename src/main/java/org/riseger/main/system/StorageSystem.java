@@ -17,9 +17,7 @@ import pers.muleisy.rtree.othertree.RTree;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class StorageSystem {
 
@@ -268,5 +266,23 @@ public class StorageSystem {
             }
             map.getLayerManager().resetChanged();
         }
+    }
+
+    public File[] getDatabasesFile() {
+        File root = new File(this.rootPath + "/data/databases");
+        return root.listFiles();
+    }
+
+    public List<File> getLogFiles(File database, boolean sort) {
+        List<File> logFiles = new LinkedList<>();
+        File logsDir = new File(database.getPath() + "/logs");
+        if (logsDir.exists()) {
+            logFiles.addAll(Arrays.asList(Objects.requireNonNull(logsDir.listFiles())));
+            if (sort) {
+                logFiles.sort(Comparator.comparing(File::getName));
+            }
+        }
+
+        return logFiles;
     }
 }

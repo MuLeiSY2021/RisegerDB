@@ -15,7 +15,7 @@ public class IfJump_fc extends Function_c {
 
     @Override
     public void process(SearchMemory searchMemory, CommandList commandList) throws SQLException {
-        int index = (Integer) searchMemory.poll();
+        int index = ((Number) searchMemory.poll()).intValue();
         boolean result = (boolean) searchMemory.poll();
         if (result) {
             LOG.debug("满足条件，跳转至:" + (index));

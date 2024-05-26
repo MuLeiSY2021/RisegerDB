@@ -15,7 +15,7 @@ public class Back_fc extends Function_c {
 
     @Override
     public void process(SearchMemory searchMemory, CommandList commandList) throws SQLException {
-        int index = (int) searchMemory.poll();
+        int index = ((Number) searchMemory.poll()).intValue();
         LOG.debug("满足条件，跳转至:" + index);
 
         commandList.jumpTo(index);

@@ -1,10 +1,12 @@
 package org.riseger.main.system.compile.function;
 
+import lombok.Getter;
 import org.apache.log4j.Logger;
 import org.riseger.main.system.compile.compoent.CommandList;
 import org.riseger.main.system.compile.compoent.SearchMemory;
 import org.riseger.protocol.exception.SQLException;
 
+@Getter
 public class Entity_fc extends Function_c {
     private static final Logger LOG = Logger.getLogger(Entity_fc.class);
 

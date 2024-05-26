@@ -1,5 +1,7 @@
 package org.riseger.main.system.compile.token;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
 import lombok.Data;
 import org.riseger.main.system.compile.lextcal.Keyword;
 import org.riseger.protocol.serializer.JsonSerializer;
@@ -24,6 +26,11 @@ public class Token {
         this.sourceCode = sourceCode;
         this.line = line;
         this.column = column;
+    }
+
+    public static String parseEntity(Object entity) {
+
+        return null;
     }
 
     @Override
@@ -76,5 +83,30 @@ public class Token {
             default:
                 throw new IllegalArgumentException("非法的实体获取");
         }
+    }
+
+    public static Object parseEntity(JsonElement entityElement) {
+        if (entityElement != null) {
+            if (entityElement.isJsonPrimitive()) {
+                JsonPrimitive primitive = entityElement.getAsJsonPrimitive();
+                if (primitive.isNumber()) {
+                    // 处理数字
+                    return primitive.getAsDouble();
+                } else if (primitive.isString()) {
+                    // 处理字符串
+                    return primitive.getAsString();
+                } else if (primitive.isBoolean()) {
+                    // 处理布尔值
+                    return primitive.getAsBoolean();
+                }
+            } else if (entityElement.isJsonNull()) {
+                // 处理 null 值
+                return null;
+            } else if (entityElement.isJsonArray() || entityElement.isJsonObject()) {
+                // 处理复杂对象 (可以根据需要扩展处理逻辑)
+                return entityElement.toString();
+            }
+        }
+        return null; // 默认返回 null
     }
 }
