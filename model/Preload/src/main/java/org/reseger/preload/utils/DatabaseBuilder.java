@@ -1,6 +1,6 @@
 package org.reseger.preload.utils;
 
-import org.riseger.protoctl.struct.entity.Database;
+import org.riseger.protocol.struct.entity.Database;
 
 public class DatabaseBuilder {
     private final PreloadBuilder parent;

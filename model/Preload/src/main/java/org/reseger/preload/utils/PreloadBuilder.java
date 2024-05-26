@@ -1,7 +1,7 @@
 package org.reseger.preload.utils;
 
 import com.google.gson.Gson;
-import org.riseger.protoctl.struct.entity.Database;
+import org.riseger.protocol.struct.entity.Database;
 import org.riseger.utils.Utils;
 
 import java.util.LinkedList;

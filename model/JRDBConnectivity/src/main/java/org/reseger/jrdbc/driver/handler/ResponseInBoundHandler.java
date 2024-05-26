@@ -3,7 +3,7 @@ package org.reseger.jrdbc.driver.handler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.reseger.jrdbc.driver.connector.Connection;
-import org.riseger.protoctl.packet.response.BasicResponse;
+import org.riseger.protocol.packet.response.BasicResponse;
 
 public class ResponseInBoundHandler extends SimpleChannelInboundHandler<BasicResponse> {
     private final Connection connection;

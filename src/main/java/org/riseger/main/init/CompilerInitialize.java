@@ -1,14 +1,14 @@
 package org.riseger.main.init;
 
 import org.apache.log4j.Logger;
-import org.riseger.main.compiler.CompilerMaster;
-import org.riseger.main.compiler.compoent.SessionAdaptor;
-import org.riseger.main.compiler.lextcal.Keyword;
-import org.riseger.main.compiler.lextcal.Lexicator;
-import org.riseger.main.compiler.syntax.Parser;
-import org.riseger.main.compiler.syntax.SyntaxForest;
-import org.riseger.main.compiler.syntax.SyntaxRule;
-import org.riseger.main.compiler.token.Tokenizer;
+import org.riseger.main.system.CompileSystem;
+import org.riseger.main.system.compile.compoent.SessionAdaptor;
+import org.riseger.main.system.compile.lextcal.Keyword;
+import org.riseger.main.system.compile.lextcal.Lexicator;
+import org.riseger.main.system.compile.syntax.Parser;
+import org.riseger.main.system.compile.syntax.SyntaxForest;
+import org.riseger.main.system.compile.syntax.SyntaxRule;
+import org.riseger.main.system.compile.token.Tokenizer;
 import org.riseger.utils.Utils;
 import org.riseger.utils.tree.MultiBranchesTree;
 
@@ -22,7 +22,7 @@ public class CompilerInitialize extends Initializer {
         super(rootPath);
     }
 
-    public boolean init() {
+    public boolean init() throws Exception {
         try {
             //获取文法规则
             String rule = Utils.getText(new File(rootPath + "/resources/rule/syntaxrule.rule"));
@@ -53,10 +53,10 @@ public class CompilerInitialize extends Initializer {
             Parser parser = new Parser(syntaxForest);
 
             //
-            CompilerMaster.INSTANCE = new CompilerMaster(new SessionAdaptor(tokenizer, lexicator, parser));
+            CompileSystem.INSTANCE = new CompileSystem(new SessionAdaptor(tokenizer, lexicator, parser));
         } catch (Exception e) {
             LOG.error("Failed to initialize Compiler", e);
-            return false;
+            throw e;
         }
         return true;
     }

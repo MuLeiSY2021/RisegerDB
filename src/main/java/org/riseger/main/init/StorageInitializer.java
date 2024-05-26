@@ -1,8 +1,8 @@
 package org.riseger.main.init;
 
 import org.apache.log4j.Logger;
-import org.riseger.main.cache.entity.component.Database_c;
-import org.riseger.main.storage.FileSystemManagers;
+import org.riseger.main.system.StorageSystem;
+import org.riseger.main.system.cache.component.Database;
 
 import java.util.List;
 
@@ -16,15 +16,15 @@ public class StorageInitializer extends Initializer {
     @Override
     public boolean init() {
         try {
-            FileSystemManagers.DEFAULT = new FileSystemManagers(rootPath);
+            StorageSystem.DEFAULT = new StorageSystem(rootPath);
             return true;
         } catch (Exception e) {
             LOG.error("Failed to initialize storage", e);
-            return false;
+            throw e;
         }
     }
 
-    public List<Database_c> initDatabases() throws Exception {
-        return FileSystemManagers.DEFAULT.initDatabases();
+    public List<Database> initDatabases() throws Exception {
+        return StorageSystem.DEFAULT.initDatabases();
     }
 }

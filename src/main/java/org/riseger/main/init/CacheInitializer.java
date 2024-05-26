@@ -1,9 +1,9 @@
 package org.riseger.main.init;
 
 import org.apache.log4j.Logger;
-import org.riseger.main.cache.entity.component.Database_c;
-import org.riseger.main.cache.manager.CacheMaster;
-import org.riseger.main.cache.manager.DatabaseManager;
+import org.riseger.main.system.CacheSystem;
+import org.riseger.main.system.cache.component.Database;
+import org.riseger.main.system.cache.manager.DatabasesManager;
 
 import java.util.List;
 
@@ -17,20 +17,20 @@ public class CacheInitializer extends Initializer {
         this.storageInitializer = storageInitializer;
     }
 
-    public boolean init() {
+    public boolean init() throws Exception {
         try {
-            CacheMaster.setINSTANCE(new CacheMaster());
-            DatabaseManager dbm = CacheMaster.INSTANCE.getDatabaseManager();
-            List<Database_c> databases = storageInitializer.initDatabases();
+            CacheSystem.setINSTANCE(new CacheSystem());
+            DatabasesManager dbm = CacheSystem.INSTANCE.getDatabasesManager();
+            List<Database> databases = storageInitializer.initDatabases();
             if (databases != null) {
-                for (Database_c database : databases) {
+                for (Database database : databases) {
                     dbm.addDatabase(database);
                 }
             }
             return true;
         } catch (Exception e) {
             LOG.error("Failed to initialize cache", e);
-            return false;
+            throw e;
         }
 
     }

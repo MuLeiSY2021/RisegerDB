@@ -2,7 +2,7 @@ package org.riseger.utils.tree;
 
 import lombok.Getter;
 import org.apache.log4j.Logger;
-import org.riseger.main.compiler.semantic.CopyableIterator;
+import org.riseger.main.system.compile.semantic.CopyableIterator;
 
 import java.util.Collection;
 import java.util.Iterator;

@@ -1,8 +1,8 @@
 package test.preload;
 
 import org.reseger.preload.utils.*;
-import org.riseger.protoctl.struct.entity.ParentModel;
-import org.riseger.protoctl.struct.entity.Type;
+import org.riseger.protocol.struct.entity.ParentModel;
+import org.riseger.protocol.struct.entity.Type;
 
 import java.util.HashMap;
 import java.util.List;

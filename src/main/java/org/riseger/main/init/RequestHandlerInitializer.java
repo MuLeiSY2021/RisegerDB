@@ -1,7 +1,7 @@
 package org.riseger.main.init;
 
 import org.apache.log4j.Logger;
-import org.riseger.main.entry.server.ApiHandlerManager;
+import org.riseger.main.system.WorkflowSystem;
 
 public class RequestHandlerInitializer extends Initializer {
     private static final Logger LOG = Logger.getLogger(RequestHandlerInitializer.class);
@@ -12,15 +12,15 @@ public class RequestHandlerInitializer extends Initializer {
 
     public boolean init() {
         try {
-            ApiHandlerManager.INSTANCE = new ApiHandlerManager();
+            WorkflowSystem.INSTANCE = new WorkflowSystem();
             return true;
         } catch (Exception e) {
             LOG.error("Failed to Initialize ApiHandler", e);
+            throw e;
         }
-        return false;
     }
 
     public void close() {
-        ApiHandlerManager.INSTANCE.close();
+        WorkflowSystem.INSTANCE.close();
     }
 }

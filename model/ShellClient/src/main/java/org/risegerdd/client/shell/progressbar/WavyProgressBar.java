@@ -1,6 +1,6 @@
 package org.risegerdd.client.shell.progressbar;
 
-import org.riseger.protoctl.otherProtocol.ProgressBar;
+import org.riseger.protocol.otherProtocol.ProgressBar;
 import org.risegerdd.client.shell.style.ColorList;
 
 import java.io.PrintStream;

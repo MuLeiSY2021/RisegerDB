@@ -1,14 +1,10 @@
 package org.riseger.main.init;
 
-import org.apache.log4j.PropertyConfigurator;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
+import org.riseger.main.system.LogSystem;
 
 public class LogInitializer extends Initializer {
-    public static final Logger LOG = Logger.getLogger("LogInitializer");
+    private static final Logger LOG = Logger.getLogger(LogInitializer.class);
 
 
     public LogInitializer(String rootPath) {
@@ -16,24 +12,15 @@ public class LogInitializer extends Initializer {
     }
 
     public boolean init() {
-        FileInputStream fileInputStream = null;
         try {
-            Properties properties = new Properties();
-            fileInputStream = new FileInputStream(rootPath + "/configs/log4j.properties");
-            properties.load(fileInputStream);
-            PropertyConfigurator.configure(properties);
+            LogSystem.setINSTANCE(new LogSystem(rootPath));
+            LogSystem.INSTANCE.init();
             return true;
         } catch (Exception e) {
-            LOG.severe(e.getMessage());
-        } finally {
-            if (fileInputStream != null) {
-                try {
-                    fileInputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            LOG.error("Failed to initialize log", e);
+            return false;
         }
-        return false;
+
     }
+
 }

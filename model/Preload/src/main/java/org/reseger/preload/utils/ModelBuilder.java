@@ -1,9 +1,9 @@
 package org.reseger.preload.utils;
 
-import org.riseger.protoctl.struct.config.Option;
-import org.riseger.protoctl.struct.entity.Database;
-import org.riseger.protoctl.struct.entity.Model;
-import org.riseger.protoctl.struct.entity.Type;
+import org.riseger.protocol.struct.config.Option;
+import org.riseger.protocol.struct.entity.Database;
+import org.riseger.protocol.struct.entity.Model_p;
+import org.riseger.protocol.struct.entity.Type;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ public class ModelBuilder {
     private final Database database;
     private String name;
     private String parent;
-    private Model model;
+    private Model_p model;
 
     public ModelBuilder(Database database) {
         this.database = database;
@@ -26,7 +26,7 @@ public class ModelBuilder {
     }
 
     public void build() {
-        this.model = new Model(name, database, parent, this.parameters);
+        this.model = new Model_p(name, database, parent, this.parameters);
     }
 
     public ModelBuilder parameter(String name, Type type) {

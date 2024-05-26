@@ -2,7 +2,7 @@ package org.riseger.main.entry.handler;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
-import org.riseger.protoctl.codec.ProtocolCodec;
+import org.riseger.protocol.codec.ProtocolCodec;
 
 public class HandlerManager extends ChannelInitializer<SocketChannel> {
 

@@ -4,7 +4,7 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import org.reseger.jrdbc.driver.connector.Connection;
-import org.riseger.protoctl.codec.ProtocolCodec;
+import org.riseger.protocol.codec.ProtocolCodec;
 
 import java.util.ArrayList;
 import java.util.List;

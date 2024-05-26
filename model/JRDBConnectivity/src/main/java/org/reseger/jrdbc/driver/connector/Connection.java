@@ -10,8 +10,8 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.Getter;
 import org.reseger.jrdbc.driver.handler.ClientHandlerManager;
 import org.reseger.jrdbc.driver.session.TextSQLMessageSession;
-import org.riseger.protoctl.otherProtocol.ProgressBar;
-import org.riseger.protoctl.packet.response.BasicResponse;
+import org.riseger.protocol.otherProtocol.ProgressBar;
+import org.riseger.protocol.packet.response.BasicResponse;
 
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.locks.Condition;

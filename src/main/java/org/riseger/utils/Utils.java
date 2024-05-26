@@ -1,22 +1,17 @@
 package org.riseger.utils;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import org.apache.log4j.Logger;
-import org.riseger.main.Constant;
+import org.riseger.main.constant.Constant;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 public class Utils {
 
     private static final Logger LOG = Logger.getLogger(Utils.class);
-
-    private static final Gson gson = new Gson();
 
     public static String getText(File file) {
         try (FileReader reader = new FileReader(file);
@@ -59,10 +54,6 @@ public class Utils {
         }
     }
 
-    public static List<?> toJson(String text, TypeToken<?> parameterized) {
-        return gson.fromJson(text, parameterized.getType());
-    }
-
     public static ByteBuf fileToByteBuf(File file) {
         try {
             FileInputStream in = new FileInputStream(file);
@@ -103,4 +94,5 @@ public class Utils {
         }
         return file;
     }
+
 }

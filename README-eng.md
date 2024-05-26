@@ -25,33 +25,33 @@ get databases
 ![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/726efafa-93e0-4c51-abec-28e48ae57030)
 
 ```sql
-preload './test/test_data.json'
+preload './test/test_data.json';
 
-use databases 'test_db'
+use database 'test_db';
 
-get maps
+get maps;
 ```
 ![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/2024c928-708f-457d-8f1f-d498c841953a)
 
 ```sql
-USE		
-  DATABASE 'test_db'|		
-  MAP 'china_map'|		
+USE
+    DATABASE 'test_db'|		
+  MAP 'china_mp'|		
   SCOPE RECT(		
-    COORD(1, 2),		
+    [1, 2],		
     20000		
   )|		
-  MODEL 'province_scope.area_scope.building_model'		
+  MODEL province_scope.area_scope.building_model		
 SEARCH		
-  'building_model.KEY_LOOP',		
-  'building_model.name'		
+  building_model.KEY_LOOP,		
+  building_model.name		
 WHERE		
   IN RECT(		
-    COORD(4000, 1000),		
+    [4000, 1000],		
     5000		
   )		
   OR OUT RECT(		
-    COORD(777.5, 72658.1),		
+    [777.5, 72658.1],		
     45.2		
   )		
   AND building_model.floorArea > 1000;
@@ -189,5 +189,5 @@ END:string
 
 string_entity -> string
 | attribute_expression
-END:number :> org.riseger.protoctl.compiler.function.Entity_f
-END:string :> org.riseger.protoctl.compiler.function.Entity_f
+END:number :> org.riseger.protocol.compiler.function.Entity_f
+END:string :> org.riseger.protocol.compiler.function.Entity_f
