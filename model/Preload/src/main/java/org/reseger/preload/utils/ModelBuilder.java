@@ -1,7 +1,7 @@
 package org.reseger.preload.utils;
 
 import org.riseger.protocol.struct.config.Option;
-import org.riseger.protocol.struct.entity.Database;
+import org.riseger.protocol.struct.entity.Database_p;
 import org.riseger.protocol.struct.entity.Model_p;
 import org.riseger.protocol.struct.entity.Type;
 
@@ -11,12 +11,12 @@ import java.util.Map;
 public class ModelBuilder {
     protected final Map<String, Type> parameters = new HashMap<>();
     protected final Map<Option, String> configs = new HashMap<>();
-    private final Database database;
+    private final Database_p database;
     private String name;
     private String parent;
     private Model_p model;
 
-    public ModelBuilder(Database database) {
+    public ModelBuilder(Database_p database) {
         this.database = database;
     }
 

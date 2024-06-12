@@ -1,7 +1,7 @@
 package org.reseger.jrdbc.utils;
 
 import com.google.gson.Gson;
-import org.riseger.protocol.struct.entity.Database;
+import org.riseger.protocol.struct.entity.Database_p;
 import org.riseger.utils.Utils;
 
 import java.util.LinkedList;
@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public class PreloadBuilder {
-    private final List<Database> databases = new LinkedList<>();
+    private final List<Database_p> databases = new LinkedList<>();
 
 
     public PreloadBuilder() {
@@ -23,7 +23,7 @@ public class PreloadBuilder {
         return new DatabaseBuilder(this);
     }
 
-    public void addDatabase(Database database) {
+    public void addDatabase(Database_p database) {
         this.databases.add(database);
     }
 }

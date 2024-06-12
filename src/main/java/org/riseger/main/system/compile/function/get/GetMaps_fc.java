@@ -39,8 +39,6 @@ public class GetMaps_fc extends Function_c {
         for (GeoMap map : mapDBs) {
             ResultElement resultElement = new ResultElement();
             resultElement.addColumn("name", map.getName());
-            //TODO: Maps not have their coordinates
-            resultElement.setAllKeyColumns(map.getCoordsSet());
             resultModelSet.add(resultElement);
         }
     }

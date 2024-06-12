@@ -2,7 +2,7 @@ package org.reseger.jrdbc.utils;
 
 import org.riseger.protocol.struct.config.Option;
 import org.riseger.protocol.struct.entity.Element_p;
-import org.riseger.protocol.struct.entity.MapDB;
+import org.riseger.protocol.struct.entity.GeoMap_p;
 import org.riseger.protocol.struct.entity.ParentModel;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,12 +12,12 @@ public class FieldBuilder {
     protected final ParentModel parent = ParentModel.RECTANGLE;
     protected final ConcurrentMap<String, String> attributes = new ConcurrentHashMap<>();
     protected final ConcurrentMap<Option, String> configs = new ConcurrentHashMap<>();
-    private final MapDB map;
+    private final GeoMap_p map;
     private String model;
     private int loopSize = 0;
     private Element_p element;
 
-    public FieldBuilder(MapDB map) {
+    public FieldBuilder(GeoMap_p map) {
         this.map = map;
     }
 

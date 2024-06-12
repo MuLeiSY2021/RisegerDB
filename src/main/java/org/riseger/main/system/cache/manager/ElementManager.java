@@ -4,7 +4,6 @@ import lombok.Data;
 import org.apache.log4j.Logger;
 import org.riseger.main.system.cache.LockableEntity;
 import org.riseger.main.system.cache.component.Element;
-import org.riseger.main.system.cache.component.GeoMap;
 import org.riseger.main.system.cache.component.GeoRectangle;
 import org.riseger.main.system.cache.component.Layer;
 import org.riseger.protocol.struct.entity.Element_p;
@@ -48,25 +47,6 @@ public class ElementManager extends LockableEntity {
                 this,
                 parent.getParent().getParent().getThreshold());
         rtreeKeyIndex.insert(e_c);
-        parent.expand(e_c);
-        super.unwrite();
-    }
-
-    public void addElement(GeoMap e) {
-        super.write();
-        rtreeKeyIndex.insert(e);
-        parent.expand(e);
-        super.unwrite();
-    }
-
-    public void updateIndex(GeoRectangle self, Rectangle rectangle) {
-        super.write();
-        if (self.willBeExpand(rectangle)) {
-            rtreeKeyIndex.deleteStrict(self);
-            self.expand(rectangle);
-            rtreeKeyIndex.insert(self);
-            this.parent.expand(self);
-        }
         super.unwrite();
     }
 
@@ -76,7 +56,6 @@ public class ElementManager extends LockableEntity {
             rtreeKeyIndex.deleteStrict(self);
             self.setAll(rectangle);
             rtreeKeyIndex.insert(self);
-            this.parent.adjust(self);
         }
         super.unwrite();
     }

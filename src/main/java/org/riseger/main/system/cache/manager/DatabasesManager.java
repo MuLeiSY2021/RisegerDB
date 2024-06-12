@@ -3,7 +3,8 @@ package org.riseger.main.system.cache.manager;
 import org.riseger.main.system.StorageSystem;
 import org.riseger.main.system.cache.component.Config;
 import org.riseger.main.system.cache.component.Database;
-import org.riseger.protocol.struct.entity.MapDB;
+import org.riseger.protocol.struct.entity.Database_p;
+import org.riseger.protocol.struct.entity.GeoMap_p;
 import org.riseger.protocol.struct.entity.Model_p;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class DatabasesManager {
         this.databases = new ConcurrentHashMap<>();
     }
 
-    public void preloadDatabase(org.riseger.protocol.struct.entity.Database database) throws Throwable {
+    public void preloadDatabase(Database_p database) throws Throwable {
         Database db = new Database(database.getName());
         this.databases.put(database.getName(), db);
         //添加Config
@@ -34,7 +35,7 @@ public class DatabasesManager {
         }
 
         //
-        for (MapDB map : database.getMaps()) {
+        for (GeoMap_p map : database.getMaps()) {
             db.addMap(map);
         }
 

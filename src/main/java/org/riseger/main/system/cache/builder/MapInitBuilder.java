@@ -19,8 +19,6 @@ public class MapInitBuilder implements MapBuilder {
 
     Database database;
 
-    List<SubmapInitBuilder> submaps = new LinkedList<>();
-
     List<File> smp_layer = new LinkedList<>();
 
     List<File> md_layer = new LinkedList<>();
@@ -31,7 +29,6 @@ public class MapInitBuilder implements MapBuilder {
 
     public GeoMap build() throws IOException {
         GeoMap map = new GeoMap(configs, name, database);
-        map.initAllSmp(smp_layer);
         map.initAllMd(md_layer);
         return map;
     }

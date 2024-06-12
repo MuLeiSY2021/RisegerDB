@@ -153,25 +153,7 @@ public class StorageSystem {
 
         //创建Layer文件夹
         for (Layer layer : map.getLayerManager().toList()) {
-            if (layer.isSubMap()) {
-                rootFile = new File(rootFile.getPath() + "/" + layer.getName() + ".layer");
-                String res = writeDir(rootFile);
-                if (res != null) {
-                    if (!res.isEmpty()) {
-                        LOG.error(res + "地图目录");
-                    } else {
-                        LOG.info("创建地图目录成功");
-                    }
-                }
-                List<GeoRectangle> maps = layer.getElementManager().getRtreeKeyIndex().getElements();
-                for (pers.muleisy.rtree.rectangle.MBRectangle mbr : maps) {
-                    File submapFile = new File(rootFile.getPath() + "/" + map.getName() + "." + Constant.SUBMAP_PREFIX);
-                    writeDir(submapFile);
-                    writeMap(submapFile, (GeoMap) mbr, submapFile);
-                }
-            } else {
-                writeLayer(rootFile, layer);
-            }
+            writeLayer(rootFile, layer);
         }
     }
 
@@ -252,15 +234,7 @@ public class StorageSystem {
         if (map.getLayerManager().isChanged()) {
             for (Layer layer : map.getLayerManager().toList()) {
                 if (layer.isChanged()) {
-                    if (layer.isSubMap()) {
-                        rootFile = new File(rootFile.getPath() + "/" + layer.getName() + ".layer");
-                        List<GeoRectangle> maps = layer.getElementManager().getRtreeKeyIndex().getElements();
-                        for (pers.muleisy.rtree.rectangle.MBRectangle mbr : maps) {
-                            organizeMap(new File(rootFile.getPath() + "/" + map.getName() + "." + Constant.SUBMAP_PREFIX), (GeoMap) mbr, rootFile);
-                        }
-                    } else {
-                        writeLayer(rootFile, layer);
-                    }
+                    writeLayer(rootFile, layer);
                     layer.resetChanged();
                 }
             }

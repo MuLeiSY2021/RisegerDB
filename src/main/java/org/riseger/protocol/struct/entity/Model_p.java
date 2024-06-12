@@ -14,7 +14,7 @@ public class Model_p {
     protected Map<String, Type> parameters = new HashMap<>();
 
 
-    public Model_p(String name, Database database, String parent, Map<String, Type> parameters) {
+    public Model_p(String name, Database_p database, String parent, Map<String, Type> parameters) {
         this.name = name;
         database.addModel(this);
         this.parent = parent;

@@ -1,19 +1,19 @@
 package org.reseger.jrdbc.utils;
 
-import org.riseger.protocol.struct.entity.Database;
-import org.riseger.protocol.struct.entity.MapDB;
+import org.riseger.protocol.struct.entity.Database_p;
+import org.riseger.protocol.struct.entity.GeoMap_p;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MapBuilder {
-    private final Database database;
+    private final Database_p database;
     private final Map<String, String> configs = new HashMap<>();
-    private MapDB map;
+    private GeoMap_p map;
     private String name;
 
 
-    public MapBuilder(Database database) {
+    public MapBuilder(Database_p database) {
         this.database = database;
     }
 
@@ -23,7 +23,7 @@ public class MapBuilder {
     }
 
     public void build() {
-        this.map = new MapDB(name, database, configs);
+        this.map = new GeoMap_p(name, database, configs);
     }
 
 

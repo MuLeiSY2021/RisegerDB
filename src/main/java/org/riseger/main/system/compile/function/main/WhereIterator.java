@@ -72,17 +72,6 @@ public class WhereIterator {
                   area_scope
                   building_model
                  */
-                for (GeoMap map : tmpLayers) {
-                    /*
-                      Tianjin
-                      Shanghai
-                      Beijing
-                     */
-                    List<GeoRectangle> tmp = map.getSubmapLayer(layerName).getElements(scope);
-                    for (GeoRectangle mbr : tmp) {
-                        nextLayers.add((GeoMap) mbr);
-                    }
-                }
                 tmpLayers = nextLayers;
                 nextLayers = new LinkedList<>();
             }

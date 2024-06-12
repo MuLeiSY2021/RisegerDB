@@ -10,6 +10,6 @@ public interface UNIVERSAL_functional extends
         COORD_functional,
         Functional,
         NumberFunctional,
-        RECTANGLE_functional {
+        rectangleFunctional {
 
 }

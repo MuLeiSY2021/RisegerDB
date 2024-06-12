@@ -1,11 +1,11 @@
 package org.reseger.jrdbc.utils;
 
-import org.riseger.protocol.struct.entity.Database;
+import org.riseger.protocol.struct.entity.Database_p;
 
 public class DatabaseBuilder {
     private final PreloadBuilder parent;
 
-    private Database database;
+    private Database_p database;
 
     private String name;
 
@@ -34,7 +34,7 @@ public class DatabaseBuilder {
     }
 
     public void build() {
-        this.database = new Database(name);
+        this.database = new Database_p(name);
         this.parent.addDatabase(this.database);
     }
 }

@@ -5,276 +5,179 @@
     "maps": [
       {
         "name": "china_mp",
-        "submaps": [
+        "elements": [
           {
-            "scopePath": "province_scope",
-            "name": "ShangHai",
-            "submaps": [
-              {
-                "scopePath": "province_scope.area_scope",
-                "name": "Huangpu",
-                "submaps": [],
-                "elements": [
-                  {
-                    "parent": {
-                      "name": "field",
-                      "parameters": {
-                        "KEY_LOOP": "COORDS_LOOP"
-                      }
-                    },
-                    "modelName": "building_model",
-                    "attributes": {
-                      "KEY_LOOP::1::x": "8031.243194387228",
-                      "address": "ShangHai1",
-                      "KEY_LOOP::1::y": "9750.508247520616",
-                      "name": "Building 1",
-                      "KEY_LOOP::0::y": "8276.567019702818",
-                      "KEY_LOOP::0::x": "8021.258849832455",
-                      "floorArea": "2351.8"
-                    },
-                    "configs": {}
-                  }
-                ],
-                "configs": {}
-              },
-              {
-                "scopePath": "province_scope.area_scope",
-                "name": "Jing\u0027an",
-                "submaps": [],
-                "elements": [
-                  {
-                    "parent": {
-                      "name": "field",
-                      "parameters": {
-                        "KEY_LOOP": "COORDS_LOOP"
-                      }
-                    },
-                    "modelName": "building_model",
-                    "attributes": {
-                      "KEY_LOOP::1::x": "8012.399251405288",
-                      "address": "ShangHai2",
-                      "KEY_LOOP::1::y": "9589.507610278244",
-                      "name": "Building 2",
-                      "KEY_LOOP::0::y": "9501.546579320608",
-                      "KEY_LOOP::0::x": "8005.133126271705",
-                      "floorArea": "4866.46"
-                    },
-                    "configs": {}
-                  }
-                ],
-                "configs": {}
-              },
-              {
-                "scopePath": "province_scope.area_scope",
-                "name": "Xuhui",
-                "submaps": [],
-                "elements": [
-                  {
-                    "parent": {
-                      "name": "field",
-                      "parameters": {
-                        "KEY_LOOP": "COORDS_LOOP"
-                      }
-                    },
-                    "modelName": "building_model",
-                    "attributes": {
-                      "KEY_LOOP::1::x": "8038.963694986767",
-                      "address": "ShangHai3",
-                      "KEY_LOOP::1::y": "9438.870578906517",
-                      "name": "Building 3",
-                      "KEY_LOOP::0::y": "8433.253205717567",
-                      "KEY_LOOP::0::x": "8038.7170465850695",
-                      "floorArea": "2085.82"
-                    },
-                    "configs": {}
-                  }
-                ],
-                "configs": {}
+            "parent": {
+              "name": "field",
+              "parameters": {
+                "KEY_LOOP": "LOOP"
               }
-            ],
-            "elements": [],
+            },
+            "modelName": "building_model",
+            "attributes": {
+              "KEY_LOOP::1::x": "8555.066397653232",
+              "address": "ShangHai1",
+              "KEY_LOOP::1::y": "7381.218197720321",
+              "name": "Building 1",
+              "KEY_LOOP::0::y": "7095.208208961515",
+              "KEY_LOOP::0::x": "8421.517551689596",
+              "floorArea": "1363.42"
+            },
             "configs": {}
           },
           {
-            "scopePath": "province_scope",
-            "name": "Tianjin",
-            "submaps": [
-              {
-                "scopePath": "province_scope.area_scope",
-                "name": "Hexi",
-                "submaps": [],
-                "elements": [
-                  {
-                    "parent": {
-                      "name": "field",
-                      "parameters": {
-                        "KEY_LOOP": "COORDS_LOOP"
-                      }
-                    },
-                    "modelName": "building_model",
-                    "attributes": {
-                      "KEY_LOOP::1::x": "6696.5226660322505",
-                      "address": "Tianjin1",
-                      "KEY_LOOP::1::y": "8543.922364084743",
-                      "name": "Building 1",
-                      "KEY_LOOP::0::y": "7863.93243336674",
-                      "KEY_LOOP::0::x": "5324.95794314944",
-                      "floorArea": "1350.56"
-                    },
-                    "configs": {}
-                  }
-                ],
-                "configs": {}
-              },
-              {
-                "scopePath": "province_scope.area_scope",
-                "name": "Heping",
-                "submaps": [],
-                "elements": [
-                  {
-                    "parent": {
-                      "name": "field",
-                      "parameters": {
-                        "KEY_LOOP": "COORDS_LOOP"
-                      }
-                    },
-                    "modelName": "building_model",
-                    "attributes": {
-                      "KEY_LOOP::1::x": "6127.84387774215",
-                      "address": "Tianjin2",
-                      "KEY_LOOP::1::y": "8781.076148399603",
-                      "name": "Building 2",
-                      "KEY_LOOP::0::y": "8780.552553482885",
-                      "KEY_LOOP::0::x": "5683.804242385773",
-                      "floorArea": "2946.61"
-                    },
-                    "configs": {}
-                  }
-                ],
-                "configs": {}
-              },
-              {
-                "scopePath": "province_scope.area_scope",
-                "name": "Hedong",
-                "submaps": [],
-                "elements": [
-                  {
-                    "parent": {
-                      "name": "field",
-                      "parameters": {
-                        "KEY_LOOP": "COORDS_LOOP"
-                      }
-                    },
-                    "modelName": "building_model",
-                    "attributes": {
-                      "KEY_LOOP::1::x": "5485.37782484111",
-                      "address": "Tianjin3",
-                      "KEY_LOOP::1::y": "8958.095268229235",
-                      "name": "Building 3",
-                      "KEY_LOOP::0::y": "8661.333382488227",
-                      "KEY_LOOP::0::x": "5355.951304148268",
-                      "floorArea": "4246.1"
-                    },
-                    "configs": {}
-                  }
-                ],
-                "configs": {}
+            "parent": {
+              "name": "field",
+              "parameters": {
+                "KEY_LOOP": "LOOP"
               }
-            ],
-            "elements": [],
+            },
+            "modelName": "building_model",
+            "attributes": {
+              "KEY_LOOP::1::x": "8323.96785903126",
+              "address": "ShangHai2",
+              "KEY_LOOP::1::y": "7367.709241345603",
+              "name": "Building 2",
+              "KEY_LOOP::0::y": "7277.320014327593",
+              "KEY_LOOP::0::x": "8097.636379232587",
+              "floorArea": "1846.81"
+            },
             "configs": {}
           },
           {
-            "scopePath": "province_scope",
-            "name": "Chongqing",
-            "submaps": [
-              {
-                "scopePath": "province_scope.area_scope",
-                "name": "Yuzhong",
-                "submaps": [],
-                "elements": [
-                  {
-                    "parent": {
-                      "name": "field",
-                      "parameters": {
-                        "KEY_LOOP": "COORDS_LOOP"
-                      }
-                    },
-                    "modelName": "building_model",
-                    "attributes": {
-                      "KEY_LOOP::1::x": "5969.248371499287",
-                      "address": "Chongqing1",
-                      "KEY_LOOP::1::y": "8516.676952616086",
-                      "name": "Building 1",
-                      "KEY_LOOP::0::y": "7882.399203090099",
-                      "KEY_LOOP::0::x": "5647.3476079214715",
-                      "floorArea": "4697.35"
-                    },
-                    "configs": {}
-                  }
-                ],
-                "configs": {}
-              },
-              {
-                "scopePath": "province_scope.area_scope",
-                "name": "Jiangbei",
-                "submaps": [],
-                "elements": [
-                  {
-                    "parent": {
-                      "name": "field",
-                      "parameters": {
-                        "KEY_LOOP": "COORDS_LOOP"
-                      }
-                    },
-                    "modelName": "building_model",
-                    "attributes": {
-                      "KEY_LOOP::1::x": "5823.3727166796625",
-                      "address": "Chongqing2",
-                      "KEY_LOOP::1::y": "8753.552249304734",
-                      "name": "Building 2",
-                      "KEY_LOOP::0::y": "8613.885517155455",
-                      "KEY_LOOP::0::x": "5065.738618598226",
-                      "floorArea": "2126.11"
-                    },
-                    "configs": {}
-                  }
-                ],
-                "configs": {}
-              },
-              {
-                "scopePath": "province_scope.area_scope",
-                "name": "Shapingba",
-                "submaps": [],
-                "elements": [
-                  {
-                    "parent": {
-                      "name": "field",
-                      "parameters": {
-                        "KEY_LOOP": "COORDS_LOOP"
-                      }
-                    },
-                    "modelName": "building_model",
-                    "attributes": {
-                      "KEY_LOOP::1::x": "5822.549071258161",
-                      "address": "Chongqing3",
-                      "KEY_LOOP::1::y": "8598.861076155428",
-                      "name": "Building 3",
-                      "KEY_LOOP::0::y": "8514.706574141588",
-                      "KEY_LOOP::0::x": "5774.229337115906",
-                      "floorArea": "1802.25"
-                    },
-                    "configs": {}
-                  }
-                ],
-                "configs": {}
+            "parent": {
+              "name": "field",
+              "parameters": {
+                "KEY_LOOP": "LOOP"
               }
-            ],
-            "elements": [],
+            },
+            "modelName": "building_model",
+            "attributes": {
+              "KEY_LOOP::1::x": "7426.96399080136",
+              "address": "ShangHai3",
+              "KEY_LOOP::1::y": "7579.1039888249425",
+              "name": "Building 3",
+              "KEY_LOOP::0::y": "7560.919582480711",
+              "KEY_LOOP::0::x": "6427.574224744181",
+              "floorArea": "2908.9"
+            },
+            "configs": {}
+          },
+          {
+            "parent": {
+              "name": "field",
+              "parameters": {
+                "KEY_LOOP": "LOOP"
+              }
+            },
+            "modelName": "building_model",
+            "attributes": {
+              "KEY_LOOP::1::x": "7538.898085310106",
+              "address": "Tianjin1",
+              "KEY_LOOP::1::y": "5043.138366369035",
+              "name": "Building 1",
+              "KEY_LOOP::0::y": "4797.232709547067",
+              "KEY_LOOP::0::x": "6473.4104356954895",
+              "floorArea": "3958.26"
+            },
+            "configs": {}
+          },
+          {
+            "parent": {
+              "name": "field",
+              "parameters": {
+                "KEY_LOOP": "LOOP"
+              }
+            },
+            "modelName": "building_model",
+            "attributes": {
+              "KEY_LOOP::1::x": "6421.873454855875",
+              "address": "Tianjin2",
+              "KEY_LOOP::1::y": "4671.5284057045765",
+              "name": "Building 2",
+              "KEY_LOOP::0::y": "4641.622581707916",
+              "KEY_LOOP::0::x": "6047.625290006233",
+              "floorArea": "1466.33"
+            },
+            "configs": {}
+          },
+          {
+            "parent": {
+              "name": "field",
+              "parameters": {
+                "KEY_LOOP": "LOOP"
+              }
+            },
+            "modelName": "building_model",
+            "attributes": {
+              "KEY_LOOP::1::x": "7954.220970357791",
+              "address": "Tianjin3",
+              "KEY_LOOP::1::y": "4638.265809213176",
+              "name": "Building 3",
+              "KEY_LOOP::0::y": "4132.328578271057",
+              "KEY_LOOP::0::x": "7292.716324279494",
+              "floorArea": "1595.77"
+            },
+            "configs": {}
+          },
+          {
+            "parent": {
+              "name": "field",
+              "parameters": {
+                "KEY_LOOP": "LOOP"
+              }
+            },
+            "modelName": "building_model",
+            "attributes": {
+              "KEY_LOOP::1::x": "7805.960499443",
+              "address": "Chongqing1",
+              "KEY_LOOP::1::y": "8906.576789685238",
+              "name": "Building 1",
+              "KEY_LOOP::0::y": "6979.207031219476",
+              "KEY_LOOP::0::x": "7697.777099496243",
+              "floorArea": "1710.01"
+            },
+            "configs": {}
+          },
+          {
+            "parent": {
+              "name": "field",
+              "parameters": {
+                "KEY_LOOP": "LOOP"
+              }
+            },
+            "modelName": "building_model",
+            "attributes": {
+              "KEY_LOOP::1::x": "7779.974530646428",
+              "address": "Chongqing2",
+              "KEY_LOOP::1::y": "9612.666221219746",
+              "name": "Building 2",
+              "KEY_LOOP::0::y": "9197.888329947113",
+              "KEY_LOOP::0::x": "7728.762148771986",
+              "floorArea": "2088.53"
+            },
+            "configs": {}
+          },
+          {
+            "parent": {
+              "name": "field",
+              "parameters": {
+                "KEY_LOOP": "LOOP"
+              }
+            },
+            "modelName": "building_model",
+            "attributes": {
+              "KEY_LOOP::1::x": "7903.843587364843",
+              "address": "Chongqing3",
+              "KEY_LOOP::1::y": "9338.337659219767",
+              "name": "Building 3",
+              "KEY_LOOP::0::y": "7523.308247079135",
+              "KEY_LOOP::0::x": "7805.566946900012",
+              "floorArea": "3820.32"
+            },
             "configs": {}
           }
         ],
-        "elements": [],
         "configs": {
           "nodeSize": "4",
           "threshold": "0.5"

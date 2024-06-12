@@ -3,19 +3,19 @@ package org.riseger.protocol.compiler.function.graphic;
 import lombok.Getter;
 import org.riseger.protocol.compiler.function.Function_f;
 import org.riseger.protocol.compiler.function.type.BOOL_functional;
-import org.riseger.protocol.compiler.function.type.RECTANGLE_functional;
+import org.riseger.protocol.compiler.function.type.rectangleFunctional;
 import org.riseger.protocol.compiler.function.weight.ConstantWeight;
 
 @Getter
-public class Out_f extends Function_f implements BOOL_functional {
+public class Out_f extends Function_f implements BOOL_functional, GraphicFunctional {
 
-    private RECTANGLE_functional rect;
+    private rectangleFunctional rect;
 
     public Out_f() {
         super(Out_f.class);
     }
 
-    public BOOL_functional invoke(RECTANGLE_functional rect) {
+    public BOOL_functional invoke(rectangleFunctional rect) {
         this.rect = rect;
         return this;
     }

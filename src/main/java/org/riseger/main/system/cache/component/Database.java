@@ -7,7 +7,7 @@ import org.riseger.main.system.cache.HolisticStorageEntity;
 import org.riseger.main.system.cache.manager.ConfigManager;
 import org.riseger.main.system.cache.manager.MapManager;
 import org.riseger.main.system.cache.manager.ModelManager;
-import org.riseger.protocol.struct.entity.MapDB;
+import org.riseger.protocol.struct.entity.GeoMap_p;
 import org.riseger.protocol.struct.entity.Model_p;
 
 import java.util.List;
@@ -37,7 +37,7 @@ public class Database extends HolisticStorageEntity {
         modelManager.addModel(model);
     }
 
-    public void addMap(MapDB map) {
+    public void addMap(GeoMap_p map) {
         mapManager.addMap(Integer.parseInt(map.getConfig("nodeSize")),
                 Double.parseDouble(map.getConfig("threshold")),
                 map);
@@ -47,15 +47,15 @@ public class Database extends HolisticStorageEntity {
         this.status = Status.ACTIVE;
     }
 
-    public List<GeoMap> getMapDBs() {
+    public List<org.riseger.main.system.cache.component.GeoMap> getMapDBs() {
         return mapManager.getMaps();
     }
 
-    public void initMap(GeoMap map) {
+    public void initMap(org.riseger.main.system.cache.component.GeoMap map) {
         mapManager.initMap(map);
     }
 
-    public GeoMap getMap(String map) {
+    public org.riseger.main.system.cache.component.GeoMap getMap(String map) {
         return this.mapManager.getMap(map);
     }
 

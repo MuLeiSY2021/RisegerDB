@@ -5,5 +5,5 @@ import org.riseger.protocol.serializer.FunctionDeserializer;
 
 @JsonAdapter(FunctionDeserializer.class)
 
-public interface RECTANGLE_functional extends Functional {
+public interface rectangleFunctional extends Functional {
 }

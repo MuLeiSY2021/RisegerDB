@@ -8,7 +8,7 @@ import org.riseger.main.system.compile.function.Function_c;
 import org.riseger.protocol.exception.PreloadException;
 import org.riseger.protocol.exception.SQLException;
 import org.riseger.protocol.serializer.JsonSerializer;
-import org.riseger.protocol.struct.entity.Database;
+import org.riseger.protocol.struct.entity.Database_p;
 import org.riseger.utils.Utils;
 
 import java.io.File;
@@ -24,10 +24,10 @@ public class Preload_fc extends Function_c {
 
     @Override
     public void process(SearchMemory searchMemory, CommandList commandList) throws SQLException {
-        List<Database> databases = JsonSerializer.deserialize(Utils.getText(new File((String) searchMemory.poll())).getBytes(StandardCharsets.UTF_8),
-                new TypeToken<LinkedList<Database>>() {
+        List<Database_p> databases = JsonSerializer.deserialize(Utils.getText(new File((String) searchMemory.poll())).getBytes(StandardCharsets.UTF_8),
+                new TypeToken<LinkedList<Database_p>>() {
                 }.getType());
-        for (Database database : databases) {
+        for (Database_p database : databases) {
             try {
                 CacheSystem.INSTANCE.getDatabasesManager().preloadDatabase(database);
             } catch (Throwable e) {

@@ -14,8 +14,6 @@ import java.util.Map;
 public class BuildPreloadTest {
 
     public static Map<String, String[]> initDataMap() {
-
-
         Map<String, String[]> map = new HashMap<>();
         String[] tianjin_areas = new String[]{"Hexi", "Heping", "Hedong"};
         map.put("Tianjin", tianjin_areas);
@@ -70,23 +68,12 @@ public class BuildPreloadTest {
         int i = 0;
         for (String name : province_names) {
             List<Building> buildings = initDataBuildings(map, name, i);
-            SubmapBuilder submapBuilder = mapBuilder.buildSubMap();
-            submapBuilder
-                    .name(name)
-                    .scopePath("province_scope")
-                    .build();
 
             int j = 0;
-            for (String area_name : map.get(name)) {
-                SubmapBuilder submap_area = submapBuilder.buildSubmap();
-                submap_area
-                        .name(area_name)
-                        .scopePath("province_scope.area_scope")
-                        .build();
-
+            for (String ignored : map.get(name)) {
                 Building building = buildings.get(j);
 
-                FieldBuilder fieldBuilder = submap_area.buildField();
+                FieldBuilder fieldBuilder = mapBuilder.buildField();
                 fieldBuilder.addModel("building_model")
                         .addCoord(building.getX_min(), building.getY_min())
                         .addCoord(building.getX_max(), building.getY_max())

@@ -1,7 +1,7 @@
 package org.riseger.protocol.compiler.command;
 
 import lombok.Getter;
-import org.riseger.protocol.compiler.function.type.RECTANGLE_functional;
+import org.riseger.protocol.compiler.function.type.rectangleFunctional;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public class USE extends SQL {
     private final List<String> models = new LinkedList<>();
     private String database;
-    private RECTANGLE_functional scope;
+    private rectangleFunctional scope;
     private String map;
     private SEARCH search;
 
@@ -24,7 +24,7 @@ public class USE extends SQL {
         return this;
     }
 
-    public USE useScope(RECTANGLE_functional rectangle) {
+    public USE useScope(rectangleFunctional rectangle) {
         this.scope = rectangle;
         return this;
     }
