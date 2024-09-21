@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">
@@ -11,6 +12,13 @@
         <option value="$PROJECT_DIR$/model/ShellClient/pom.xml" />
         <option value="$PROJECT_DIR$/Protocol/pom.xml" />
         <option value="$PROJECT_DIR$/model/Preload/pom.xml" />
+        <option value="$PROJECT_DIR$/module-utlis-preload/pom.xml" />
+        <option value="$PROJECT_DIR$/module-util-rtree/pom.xml" />
+        <option value="$PROJECT_DIR$/module-client-shell/pom.xml" />
+        <option value="$PROJECT_DIR$/module-connectivity-jrdbc/pom.xml" />
+        <option value="$PROJECT_DIR$/riseger-core/pom.xml" />
+        <option value="$PROJECT_DIR$/module-jmeter-tesing/pom.xml" />
+        <option value="$PROJECT_DIR$/module-util-preload/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -24,7 +32,7 @@
   <component name="PWA">
     <option name="wasEnabledAtLeastOnce" value="true" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="semeru-1.8 (2)" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="ProjectType">

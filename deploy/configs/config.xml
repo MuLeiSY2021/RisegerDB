@@ -2,7 +2,7 @@
 
 <config>
     <!-- 监听端口 -->
-    <port>10086</port>
+    <port>12000</port>
 
     <!-- 阻塞任务队列长度 -->
     <blocking-log>125</blocking-log>
