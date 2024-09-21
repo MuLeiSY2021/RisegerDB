@@ -3,8 +3,36 @@
     <modelVersion>4.0.0</modelVersion>
     <version>0.1.0</version>
     <groupId>org.riseger.testing</groupId>
-
+    <parent>
+        <version>0.1.0</version>
+        <groupId>org.riseger</groupId>
+        <artifactId>riseger-main</artifactId>
+    </parent>
     <artifactId>module-jmeter-tesing</artifactId>
     <name>Archetype - module-jmeter-tesing</name>
     <url>http://maven.apache.org</url>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_core</artifactId>
+            <version>5.6.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_java</artifactId>
+            <version>5.6.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.riseger.jdbc</groupId>
+            <artifactId>module-connectivity-jrdbc</artifactId>
+            <version>0.1.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>

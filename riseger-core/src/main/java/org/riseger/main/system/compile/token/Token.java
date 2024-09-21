@@ -72,6 +72,9 @@ public class Token {
             case STRING:
                 if (sourceCode.startsWith("'")) {
                     return sourceCode.substring(1, sourceCode.length() - 1);
+                } else {
+                    //TODO:临时兼容无属性名的设计
+                    return sourceCode;
                 }
 
             case NUMBER:

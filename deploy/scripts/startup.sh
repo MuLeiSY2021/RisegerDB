@@ -7,7 +7,7 @@ cd ..
 CRTDIR=$(pwd)
 
 # 设置JAR文件路径
-JAR_PATH=./RisegerDB.jar
+JAR_PATH=./riseger-core.jar
 
 # 设置Java虚拟机参数
 JAVA_OPTS="-Xmx512m -Xms256m"

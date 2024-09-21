@@ -44,8 +44,9 @@ public class Lexicator {
                 LOG.debug("SourceCode:" + sourcecode + " 匹配字符串");
                 token.set(sourcecode.hashCode(), TokenType.STRING);
             } else if (attrPattern.matcher(sourcecode).matches()) {
+                //TODO:属性名暂无特殊，依旧以字符串对待，在设计上应该把'STR'和A.B分开吗，我不好说
                 LOG.debug("SourceCode:" + sourcecode + " 匹配属性名");
-                token.set(sourcecode.hashCode(), TokenType.ATTRIBUTE);
+                token.set(sourcecode.hashCode(), TokenType.STRING);
             } else {
                 LOG.error("非法字符存在:" + token.getSourceCode(), new IllegalArgumentException());
                 throw new IllegalStateException();

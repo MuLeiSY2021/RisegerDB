@@ -18,7 +18,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Getter
-public class Connection {
+public class Connection implements AutoCloseable {
 
     private final LinkedBlockingDeque<BasicResponse> resultQueue = new LinkedBlockingDeque<>();
     private final EventLoopGroup eventLoopGroup;
@@ -74,16 +74,23 @@ public class Connection {
 //        return new PreloadSession(this);
 //    }
 
-    public BasicResponse getResult() throws InterruptedException {
+    public void awaitSendBack(long nanosTimeout) throws InterruptedException {
         try {
             lock.lock();
             if (resultQueue.isEmpty()) {
-                cond.await();
+                if (nanosTimeout > -1) {
+                    cond.awaitNanos(nanosTimeout);
+                } else {
+                    cond.await();
+                }
             }
-            return resultQueue.poll();
         } finally {
             lock.unlock();
         }
+    }
+
+    public BasicResponse getResult() {
+        return resultQueue.poll();
     }
 
     public void setResult(BasicResponse result) {

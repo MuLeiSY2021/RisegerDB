@@ -1,9 +1,7 @@
 sql -> ues_sql
     | create_sql
-    | search_sql
-    | update_sql
 
-create_sql -> "PRELOAD" string :> org.riseger.protocol.compiler.function.preload.Preload_f
+create_sql -> "PRELOAD" string_entity :> org.riseger.protocol.compiler.function.preload.Preload_f
 
 ues_sql -> "USE" use_clause
     | "USE" use_clause search_sql
@@ -11,7 +9,7 @@ ues_sql -> "USE" use_clause
 //TODO:    | "USE" use_clause alter_sql
 //TODO:    | "USE" use_clause delete_sql
 
-//TODO:"DELETE" "DATABASE" string :>
+//TODO:"DELETE" "DATABASE" string_entity :>
 
 use_clause -> use_statement "|" use_clause
     | use_statement
@@ -29,12 +27,12 @@ search_sql ->  "SEARCH" search_clause "WHERE" where_clause
 
 search_clause -> strings_expression :> org.riseger.protocol.compiler.function.main.Search_f
 
-update_sql -> "UPDATE" update_clauses "WHERE" where_clause
+update_sql -> "UPDATE" update_clause "WHERE" where_clause
 
-update_clauses -> update_clause "," update_clause
+updates_clause -> update_clause "," updates_clause
     | update_clause
 
-update_clause -> dot_strings_expression "=" all_entity :> org.riseger.protocol.compiler.function.main.Update_f
+update_clause -> attribute_expression "=" all_entity :> org.riseger.protocol.compiler.function.main.Update_f
 
 where_clause -> bool_condition :> org.riseger.protocol.compiler.function.main.Where_f
 
@@ -74,9 +72,6 @@ num_condition_1 -> number_entity "*" num_condition :> org.riseger.protocol.compi
 //    | coord_expression ":" string :> //TODO:从坐标提取数值,冒号语法
     | number_entity
 
-number_entity -> number
-    | attribute_expression
-
 graphic_expression -> rectangle_expression
     | coords_expression
     | coord_expression :> org.riseger.protocol.compiler.function.entity.CoordToRect_f
@@ -97,20 +92,24 @@ all_entity -> num_condition
     | rectangle_expression
     | coord_expression
     | attribute_expression
-    | string
+    | string_entity
 
 //TODO:连锁要更改dot的查询逻辑
-//dot_strings_expression -> dot_strings "AS" attribute :> //TODO: org.riseger.protocol.compiler.function.As_f
+//dot_strings_expression -> dot_string "AS" string :> //TODO: org.riseger.protocol.compiler.function.As_f
 //    | dot_string
 
 dot_strings_expression -> dot_strings
 
+number_entity -> number
+    | attribute_expression
+
 attribute_expression -> dot_strings :> org.riseger.protocol.compiler.function.entity.Attribute_f
 
-dot_strings -> attribute "." dot_strings :> org.riseger.protocol.compiler.function.entity.DotStrings_f
-    | attribute :> org.riseger.protocol.compiler.function.entity.TopDotStrings_f
+dot_strings -> string "." dot_strings :> org.riseger.protocol.compiler.function.entity.DotStrings_f
+    | string :> org.riseger.protocol.compiler.function.entity.TopDotStrings_f
 
-END:attribute :> org.riseger.protocol.compiler.function.Entity_f
+string_entity -> "'" string "'"
+
 END:number :> org.riseger.protocol.compiler.function.Entity_f
 END:string :> org.riseger.protocol.compiler.function.Entity_f
 

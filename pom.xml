@@ -2,10 +2,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <version>0.0.0</version>
+    <version>0.1.0</version>
+    <groupId>org.riseger</groupId>
+    <artifactId>riseger-main</artifactId>
+    <modules>
+        <module>module-util-rtree</module>
+        <module>module-jmeter-tesing</module>
+        <module>module-client-shell</module>
+        <module>module-connectivity-jrdbc</module>
+        <module>module-util-preload</module>
+        <module>riseger-core</module>
+    </modules>
     <packaging>pom</packaging>
-    <groupId>org.riseger.dir</groupId>
-    <artifactId>riseger-dir</artifactId>
 
     <name>Risegerdb</name>
     <url>http://maven.apache.org</url>
@@ -13,4 +21,14 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>pers.muleisy.rtree</groupId>
+                <artifactId>module-util-rtree</artifactId>
+                <version>0.1.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

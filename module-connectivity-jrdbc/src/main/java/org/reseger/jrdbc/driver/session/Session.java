@@ -21,8 +21,15 @@ public abstract class Session<P extends BasicResponse> {
     abstract P send() throws InterruptedException;
 
     protected P send(BasicRequest request) throws InterruptedException {
+        return send(request, -1);
+    }
+
+    protected P send(BasicRequest request, long nanosTimeout) throws InterruptedException {
         parent.getChannel().writeAndFlush(request);
+        parent.awaitSendBack(nanosTimeout);
+
         return (P) parent.getResult();
+
     }
 
     protected String getIpAddress() {

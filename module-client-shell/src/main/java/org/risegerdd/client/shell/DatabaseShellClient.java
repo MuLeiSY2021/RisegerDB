@@ -12,7 +12,7 @@ import org.risegerdd.client.shell.progressbar.WavyProgressBar;
 import org.risegerdd.client.shell.style.Color;
 import org.risegerdd.client.shell.style.ColorList;
 import org.risegerdd.client.shell.style.CyberColorStyle;
-import org.risegerdd.client.shell.table.TablePrinter;
+import org.risegerdd.client.shell.table.ColorfulTablePrinter;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class DatabaseShellClient {
             PrintStream out;
             TextSQLMessageSession statement;
             Connection connection;
-            TablePrinter tablePrinter;
+            ColorfulTablePrinter tablePrinter;
             try {
                 out = System.out;
                 out.println("\n");
@@ -42,7 +42,7 @@ public class DatabaseShellClient {
                 progressBar.loading(10);
                 initLog(root);
                 progressBar.loading(10);
-                tablePrinter = new TablePrinter();
+                tablePrinter = new ColorfulTablePrinter();
                 progressBar.loading(10);
                 reader = new Scanner(System.in);
                 progressBar.loading(10);
@@ -70,7 +70,7 @@ public class DatabaseShellClient {
     private static boolean clientSending(Scanner reader,
                                          PrintStream out,
                                          TextSQLMessageSession statement,
-                                         TablePrinter tablePrinter) {
+                                         ColorfulTablePrinter tablePrinter) {
 
         StringBuilder sb = new StringBuilder();
         out.print(CyberColorStyle.color(VERY_SOFT_MAGENTA).toColor("ResigerDB" + CyberColorStyle.color(DARK_BLUE).toColor("❯ ")));

@@ -94,7 +94,8 @@ public class SearchSession {
             LOG.debug("ID:" + commandList.index() + " Fun: " + Utils.getClassLastDotName(function.getClass()));
             function.process(memory, commandList);
         }
-        if (!logMode && ((Function_c) memory.get((MemoryConstant.METOD_PROCESS))).getClass().equals(Update_fc.class)) {
+        Function_c tmp = ((Function_c) memory.get((MemoryConstant.METOD_PROCESS)));
+        if (!logMode && tmp != null && tmp.getClass().equals(Update_fc.class)) {
             LogSystem.INSTANCE.writeLog(memory.getSessionId(), ((Database) memory.get(MemoryConstant.DATABASE)).getName(), commandList.getFunctionList());
         }
         ResultSet resultSet = (ResultSet) memory.get(MemoryConstant.RESULT);

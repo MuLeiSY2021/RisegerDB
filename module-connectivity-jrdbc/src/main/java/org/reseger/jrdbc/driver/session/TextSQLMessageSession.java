@@ -17,4 +17,8 @@ public class TextSQLMessageSession extends Session<TextSQLResponse> {
     public TextSQLResponse send() throws InterruptedException {
         return super.send(new TextSQLRequest(this.sqlText, super.getType(), super.getIpAddress()));
     }
+
+    public TextSQLResponse send(long nanosTimeout) throws InterruptedException {
+        return super.send(new TextSQLRequest(this.sqlText, super.getType(), super.getIpAddress()), nanosTimeout);
+    }
 }
