@@ -6,7 +6,11 @@ public class MainBootstrap {
     private static Logger LOG;
 
     public static void main(String[] args) throws Exception {
-        String rootPath = args[0];
+        String rootPath = "./";
+        if(args.length != 0) {
+            rootPath = args[0];
+        }
+
 
         SystemLogInitializer systemLogInitializer = new SystemLogInitializer(rootPath);
         systemLogInitializer.init();

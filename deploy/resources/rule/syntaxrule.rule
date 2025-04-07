@@ -1,6 +1,6 @@
 sql -> ues_sql
     | create_sql
-
+    | search_sql
 create_sql -> "PRELOAD" string_entity :> org.riseger.protocol.compiler.function.preload.Preload_f
 
 ues_sql -> "USE" use_clause

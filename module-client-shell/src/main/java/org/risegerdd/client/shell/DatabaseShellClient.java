@@ -38,7 +38,11 @@ public class DatabaseShellClient {
                 CyberIntroduce.introduce(out);
                 ProgressBar progressBar = new WavyProgressBar(out, ColorList.CYBER_COLOR, 100);
                 progressBar.loading(0);
-                String root = args[0];
+                String root = "./";
+                if(args.length != 0) {
+                    root = args[0];
+                }
+
                 progressBar.loading(10);
                 initLog(root);
                 progressBar.loading(10);

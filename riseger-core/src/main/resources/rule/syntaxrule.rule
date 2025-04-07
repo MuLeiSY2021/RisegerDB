@@ -1,5 +1,6 @@
 sql -> ues_sql
     | create_sql
+    | search_sql
 
 create_sql -> "PRELOAD" string_entity :> org.riseger.protocol.compiler.function.preload.Preload_f
 
@@ -8,6 +9,13 @@ ues_sql -> "USE" use_clause
     | "USE" use_clause update_sql
 //TODO:    | "USE" use_clause alter_sql
 //TODO:    | "USE" use_clause delete_sql
+
+search_sql ->  "SEARCH" search_clause "WHERE" where_clause
+    | "SEARCH" search_clause
+    | "GET" "DATABASES" :> org.riseger.protocol.compiler.function.get.GetDatabases_f
+    | "GET" "MAPS" :> org.riseger.protocol.compiler.function.get.GetMaps_f
+    | "GET" "MODELS" :> org.riseger.protocol.compiler.function.get.GetModels_f
+
 
 //TODO:"DELETE" "DATABASE" string_entity :>
 
@@ -19,11 +27,6 @@ use_statement -> "DATABASE" string :> org.riseger.protocol.compiler.function.mai
     | "SCOPE" rectangle_expression :> org.riseger.protocol.compiler.function.main.UseScope_f
     | "MODEL" strings_expression :> org.riseger.protocol.compiler.function.main.UseModel_f
 
-search_sql ->  "SEARCH" search_clause "WHERE" where_clause
-    | "SEARCH" search_clause
-    | "GET" "DATABASES" :> org.riseger.protocol.compiler.function.get.GetDatabases_f
-    | "GET" "MAPS" :> org.riseger.protocol.compiler.function.get.GetMaps_f
-    | "GET" "MODELS" :> org.riseger.protocol.compiler.function.get.GetModels_f
 
 search_clause -> strings_expression :> org.riseger.protocol.compiler.function.main.Search_f
 
