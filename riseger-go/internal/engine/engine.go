@@ -15,11 +15,12 @@ import (
 // Engine is the core database engine, orchestrating the cache, storage,
 // and WAL subsystems.
 type Engine struct {
-	Config  *config.ServerConfig
-	Cache   *cache.CacheManager
-	Storage *storage.StorageManager
-	WAL     *wal.Manager
-	Logger  *slog.Logger
+	Config     *config.ServerConfig
+	Cache      *cache.CacheManager
+	Storage    *storage.StorageManager
+	WAL        *wal.Manager
+	Logger     *slog.Logger
+	preloadMgr *PreloadManager
 }
 
 // New creates and initializes the engine from a config.
@@ -29,10 +30,11 @@ func New(cfg *config.ServerConfig) (*Engine, error) {
 	}))
 
 	e := &Engine{
-		Config:  cfg,
-		Cache:   cache.NewCacheManager(),
-		Storage: storage.NewStorageManager(cfg.DataDir, logger),
-		Logger:  logger,
+		Config:     cfg,
+		Cache:      cache.NewCacheManager(),
+		Storage:    storage.NewStorageManager(cfg.DataDir, logger),
+		Logger:     logger,
+		preloadMgr: NewPreloadManager(),
 	}
 
 	e.WAL = wal.NewManager(

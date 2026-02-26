@@ -10,11 +10,18 @@ import (
 
 // Compiler compiles and executes SQL-like queries against the database engine.
 type Compiler struct {
-	cache *cache.CacheManager
+	cache   *cache.CacheManager
+	preload function.PreloadFunc
 }
 
 func NewCompiler(cache *cache.CacheManager) *Compiler {
 	return &Compiler{cache: cache}
+}
+
+// SetPreloadHandler registers the callback that handles PRELOAD commands.
+// This is called by the engine after construction to wire up the import pipeline.
+func (c *Compiler) SetPreloadHandler(fn function.PreloadFunc) {
+	c.preload = fn
 }
 
 // Execute parses and executes a query string. The context (database, map, etc.)
@@ -30,6 +37,7 @@ func (c *Compiler) Execute(query string) (*function.ResultSet, error) {
 // ExecuteAST executes a pre-parsed AST.
 func (c *Compiler) ExecuteAST(ast *parser.Node) (*function.ResultSet, error) {
 	ctx := function.NewContext()
+	ctx.Preload = c.preload
 
 	c.resolveDatabase(ast, ctx)
 

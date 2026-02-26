@@ -9,7 +9,6 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/riseger/riseger-go/internal/cache"
 	"github.com/riseger/riseger-go/internal/compile"
 	"github.com/riseger/riseger-go/internal/config"
 	"github.com/riseger/riseger-go/internal/engine"
@@ -52,8 +51,7 @@ func main() {
 	}
 
 	compiler := compile.NewCompiler(e.Cache)
-
-	integrateCompilerWithEngine(compiler, e.Cache)
+	compiler.SetPreloadHandler(e.Preload)
 
 	addr := fmt.Sprintf(":%d", cfg.Port)
 	srv := server.New(addr, compiler, e.Logger)
@@ -78,7 +76,3 @@ func main() {
 	}
 }
 
-func integrateCompilerWithEngine(c *compile.Compiler, cm *cache.CacheManager) {
-	_ = c
-	_ = cm
-}

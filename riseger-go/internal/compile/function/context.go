@@ -5,6 +5,10 @@ import (
 	"github.com/riseger/riseger-go/pkg/rtree"
 )
 
+// PreloadFunc is a callback that the engine registers so the executor
+// can trigger an async geodata import without depending on the engine package.
+type PreloadFunc func(path string) (taskID string, err error)
+
 // Context holds the execution state during query processing.
 // It replaces the Java SearchMemory + CommandList + SearchSession.
 type Context struct {
@@ -14,8 +18,9 @@ type Context struct {
 	Scope     rtree.Rectangle
 	Threshold float64
 
-	Stack  []interface{}
-	Result *ResultSet
+	Stack   []interface{}
+	Result  *ResultSet
+	Preload PreloadFunc
 }
 
 func NewContext() *Context {

@@ -167,6 +167,22 @@ func eval(node *parser.Node, ctx *Context) error {
 
 	// ---------- PRELOAD ----------
 	case parser.NodePreload:
+		path := extractString(node.Children[0])
+		if ctx.Preload == nil {
+			return fmt.Errorf("PRELOAD not supported: no preload handler registered")
+		}
+		taskID, err := ctx.Preload(path)
+		if err != nil {
+			return fmt.Errorf("PRELOAD failed: %w", err)
+		}
+		rs := NewResultSet()
+		rs.Columns = []string{"status", "task_id", "file"}
+		rs.AddRow(map[string]interface{}{
+			"status":  "accepted",
+			"task_id": taskID,
+			"file":    path,
+		})
+		ctx.Result = rs
 		return nil
 
 	// ---------- Boolean / Logic ----------

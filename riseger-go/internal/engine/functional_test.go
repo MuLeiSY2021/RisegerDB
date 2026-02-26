@@ -10,6 +10,7 @@ import (
 	"github.com/riseger/riseger-go/internal/compile"
 	cfgpkg "github.com/riseger/riseger-go/internal/config"
 	"github.com/riseger/riseger-go/internal/wal"
+	geodatapkg "github.com/riseger/riseger-go/pkg/geodata"
 	gpb "github.com/riseger/riseger-go/pkg/geodata/pb"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -294,6 +295,73 @@ func buildGeoData(dbName, mapName string, provinces map[string][]string, buildin
 			}},
 		}},
 	}
+}
+
+// ============================================================================
+// 功能测试 4: PRELOAD SQL 命令端到端
+//
+// 流程:
+//   1. 用 geodata-gen 生成 .geodata 文件
+//   2. 启动引擎 + 编译器（注入 Preload handler）
+//   3. 执行 PRELOAD 'path.geodata' SQL
+//   4. 等待异步导入完成
+//   5. 验证数据已导入并可查询
+// ============================================================================
+
+func TestFunctional_PreloadSQL(t *testing.T) {
+	root := t.TempDir()
+	cfg := &cfgpkg.ServerConfig{
+		DataDir:          root,
+		Port:             0,
+		FlushThreshold:   9999,
+		FlushIntervalSec: 3600,
+	}
+
+	geodataPath := root + "/test.geodata"
+	geoData := generateSmallGeoData()
+	require.NoError(t, geodataWriteFile(geodataPath, geoData))
+
+	e, err := New(cfg)
+	require.NoError(t, err)
+	require.NoError(t, e.Start())
+	defer e.Stop()
+
+	compiler := compile.NewCompiler(e.Cache)
+	compiler.SetPreloadHandler(e.Preload)
+
+	rs, err := compiler.Execute(fmt.Sprintf("PRELOAD '%s'", geodataPath))
+	require.NoError(t, err)
+	require.NotNil(t, rs)
+	assert.Equal(t, 1, len(rs.Rows))
+	assert.Equal(t, "accepted", rs.Rows[0]["status"])
+	taskID := rs.Rows[0]["task_id"].(string)
+	assert.NotEmpty(t, taskID)
+
+	// 等待异步导入完成（最多 5 秒）
+	for i := 0; i < 50; i++ {
+		time.Sleep(100 * time.Millisecond)
+		task, ok := e.GetPreloadTask(taskID)
+		if ok && (task.Status == "done" || task.Status == "failed") {
+			break
+		}
+	}
+
+	task, ok := e.GetPreloadTask(taskID)
+	require.True(t, ok)
+	assert.Equal(t, "done", task.Status, "preload task should succeed")
+	assert.Equal(t, 6, task.Elements)
+
+	db, ok := e.GetDatabase("wal_test_db")
+	require.True(t, ok, "database should exist after PRELOAD")
+	assert.Equal(t, 6, countAllElements(db))
+
+	rs2, err := compiler.Execute("USE DATABASE wal_test_db | MAP test_map SEARCH name, floorArea")
+	require.NoError(t, err)
+	assert.Equal(t, 6, len(rs2.Rows))
+}
+
+func geodataWriteFile(path string, data *gpb.GeoDataFile) error {
+	return geodatapkg.WriteFile(path, data)
 }
 
 func countAllElements(db *cache.Database) int {
