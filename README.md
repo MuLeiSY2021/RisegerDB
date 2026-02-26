@@ -1,4 +1,15 @@
 # RisegerDB - README
+
+> **⚠️ 迁移通知 (2026-02-26)**
+>
+> 自 2026 年 2 月 26 日起，RisegerDB 已正式迁移至 **Go 语言版本**，本 Java 仓库不再维护。
+>
+> **新仓库地址：[github.com/MuLeiSY2021/RisegerDB-go](https://github.com/MuLeiSY2021/RisegerDB-go)**
+>
+> Go 版本包含所有 Java 版本的功能，并新增了 HTTP REST API、DELETE 语句、CREATE DDL、Protobuf 存储格式和 `.geodata` 数据导入工具。
+
+---
+
 ![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/855c98f5-3be1-4071-aa0a-f3110833f027)
 
 **RisegerDB**是一个基于R树和R*树主索引的地理空间数据库系统，旨在通过高效的空间数据检索满足各类应用需求。本文档提供了RisegerDB的启动流程、示例用法以及支持的SQL命令语法概述。

@@ -1,4 +1,15 @@
 # RisegerDB - README
+
+> **⚠️ Migration Notice (2026-02-26)**
+>
+> As of February 26, 2026, RisegerDB has been officially migrated to the **Go language version**. This Java repository is no longer maintained.
+>
+> **New repository: [github.com/MuLeiSY2021/RisegerDB-go](https://github.com/MuLeiSY2021/RisegerDB-go)**
+>
+> The Go version includes all Java features plus HTTP REST API, DELETE statement, CREATE DDL, Protobuf storage, and `.geodata` import tooling.
+
+---
+
 ![image](https://github.com/MuLeiSY2021/RisegerDB/assets/92205763/855c98f5-3be1-4071-aa0a-f3110833f027)
 
 RisegerDB is an open-source spatial database system designed for efficient spatial data retrieval using R-trees and R*-trees as the primary indexes. This document provides an overview of the startup procedures, example usage, and the syntax for SQL commands supported by RisegerDB.
