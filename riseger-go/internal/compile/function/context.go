@@ -9,6 +9,12 @@ import (
 // can trigger an async geodata import without depending on the engine package.
 type PreloadFunc func(path string) (taskID string, err error)
 
+// CreateDatabaseFunc creates a new empty database.
+type CreateDatabaseFunc func(name string) error
+
+// CreateMapFunc creates a new map in the current database.
+type CreateMapFunc func(db *cache.Database, name string, nodeSize int, threshold float64) error
+
 // Context holds the execution state during query processing.
 // It replaces the Java SearchMemory + CommandList + SearchSession.
 type Context struct {
@@ -18,9 +24,11 @@ type Context struct {
 	Scope     rtree.Rectangle
 	Threshold float64
 
-	Stack   []interface{}
-	Result  *ResultSet
-	Preload PreloadFunc
+	Stack          []interface{}
+	Result         *ResultSet
+	Preload        PreloadFunc
+	CreateDatabase CreateDatabaseFunc
+	CreateMap      CreateMapFunc
 }
 
 func NewContext() *Context {

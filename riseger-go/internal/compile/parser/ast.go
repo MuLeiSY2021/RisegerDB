@@ -18,6 +18,12 @@ const (
 	NodeGetDatabases
 	NodeGetMaps
 	NodeGetModels
+	// DDL
+	NodeCreateDatabase
+	NodeCreateMap
+	NodeCreateModel
+	NodeCreateModelParam
+	NodeDelete
 	// Boolean / logic
 	NodeAnd
 	NodeOr
@@ -53,6 +59,7 @@ var nodeTypeNames = [...]string{
 	"SQL", "Use", "UseDatabase", "UseMap", "UseScope", "UseModel",
 	"Search", "Update", "UpdateClause", "Where", "Preload",
 	"GetDatabases", "GetMaps", "GetModels",
+	"CreateDatabase", "CreateMap", "CreateModel", "CreateModelParam", "Delete",
 	"And", "Or", "Not",
 	"Greater", "GreaterEq", "Less", "LessEq", "Equal",
 	"Add", "Sub", "Mul", "Div", "Negate",

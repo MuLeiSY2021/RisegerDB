@@ -135,8 +135,12 @@ func (p *Parser) ParseSQL() (*Node, error) {
 		return p.parseGetStmt()
 	case tok.IsKeyword("PRELOAD"):
 		return p.parsePreload()
+	case tok.IsKeyword("CREATE"):
+		return p.parseCreateStmt()
+	case tok.IsKeyword("DELETE"):
+		return p.parseDeleteStmt()
 	default:
-		return nil, p.errorf("expected USE, SEARCH, GET, or PRELOAD, got %s", tok)
+		return nil, p.errorf("expected USE, SEARCH, GET, PRELOAD, CREATE, or DELETE, got %s", tok)
 	}
 }
 
@@ -183,6 +187,20 @@ func (p *Parser) parseUseStmt() (*Node, error) {
 
 	case next.IsKeyword("GET"):
 		child, err := p.parseGetStmt()
+		if err != nil {
+			return nil, err
+		}
+		root.Children = append(root.Children, child)
+
+	case next.IsKeyword("CREATE"):
+		child, err := p.parseCreateStmt()
+		if err != nil {
+			return nil, err
+		}
+		root.Children = append(root.Children, child)
+
+	case next.IsKeyword("DELETE"):
+		child, err := p.parseDeleteStmt()
 		if err != nil {
 			return nil, err
 		}
@@ -961,6 +979,123 @@ func (p *Parser) parseAllEntity() (*Node, error) {
 	default:
 		return nil, p.errorf("expected value expression, got %s", tok)
 	}
+}
+
+// ============================================================================
+// 规则: create_stmt → CREATE DATABASE string_value
+//                   | CREATE MAP string_value NODESIZE number THRESHOLD number
+//                   | CREATE MODEL string_value PARENT string_value ( PARAM ident string_value )*
+//
+// DDL 语句，用于创建数据库、地图和数据模型。
+//
+// 示例:
+//
+//	CREATE DATABASE 'my_db'
+//	CREATE MAP 'world' NODESIZE 8 THRESHOLD 0.5
+//	CREATE MODEL 'building' PARENT 'field' PARAM name STRING PARAM area DOUBLE
+//
+// ============================================================================
+
+func (p *Parser) parseCreateStmt() (*Node, error) {
+	p.expect("CREATE")
+	tok := p.peek()
+	switch {
+	case tok.IsKeyword("DATABASE"):
+		p.advance()
+		name, err := p.parseStringValue()
+		if err != nil {
+			return nil, err
+		}
+		return newNode(NodeCreateDatabase, name), nil
+
+	case tok.IsKeyword("MAP"):
+		p.advance()
+		name, err := p.parseStringValue()
+		if err != nil {
+			return nil, err
+		}
+		node := newNode(NodeCreateMap, name)
+		if p.peek().IsKeyword("NODESIZE") {
+			p.advance()
+			ns, err := p.parseAtom()
+			if err != nil {
+				return nil, err
+			}
+			node.Children = append(node.Children, ns)
+		}
+		if p.peek().IsKeyword("THRESHOLD") {
+			p.advance()
+			th, err := p.parseAtom()
+			if err != nil {
+				return nil, err
+			}
+			node.Children = append(node.Children, th)
+		}
+		return node, nil
+
+	case tok.IsKeyword("MODEL"):
+		p.advance()
+		name, err := p.parseStringValue()
+		if err != nil {
+			return nil, err
+		}
+		node := newNode(NodeCreateModel, name)
+		if p.peek().IsKeyword("PARENT") {
+			p.advance()
+			parent, err := p.parseStringValue()
+			if err != nil {
+				return nil, err
+			}
+			node.Children = append(node.Children, parent)
+		}
+		for p.peek().IsKeyword("PARAM") {
+			p.advance()
+			paramName, err := p.parseStringValue()
+			if err != nil {
+				return nil, err
+			}
+			paramType, err := p.parseStringValue()
+			if err != nil {
+				return nil, err
+			}
+			node.Children = append(node.Children, newNode(NodeCreateModelParam, paramName, paramType))
+		}
+		return node, nil
+
+	default:
+		return nil, p.errorf("expected DATABASE, MAP, or MODEL after CREATE, got %s", tok)
+	}
+}
+
+// ============================================================================
+// 规则: delete_stmt → DELETE FROM string_value WHERE where_clause
+//
+// 删除符合条件的元素。需要在 USE DATABASE | MAP 上下文中使用。
+//
+// 示例:
+//
+//	USE DATABASE 'test_db' | MAP 'china' DELETE FROM 'building_model' WHERE area < 100
+//	DELETE FROM building_model WHERE name = 'old'
+//
+// ============================================================================
+
+func (p *Parser) parseDeleteStmt() (*Node, error) {
+	p.expect("DELETE")
+	if err := p.expectKeyword("FROM"); err != nil {
+		return nil, err
+	}
+	modelName, err := p.parseStringValue()
+	if err != nil {
+		return nil, err
+	}
+	if err := p.expectKeyword("WHERE"); err != nil {
+		return nil, err
+	}
+	where, err := p.parseWhereClause()
+	if err != nil {
+		return nil, err
+	}
+	return newNode(NodeDelete, modelName, where), nil
 }
 
 // ============================================================================

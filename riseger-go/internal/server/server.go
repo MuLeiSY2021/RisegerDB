@@ -6,22 +6,20 @@ import (
 	"fmt"
 	"log/slog"
 	"net"
-	"sync"
+	"net/http"
+	"time"
 
 	"github.com/riseger/riseger-go/internal/compile"
 	"github.com/riseger/riseger-go/internal/compile/function"
-	"github.com/riseger/riseger-go/pkg/protocol"
 )
 
-// Server is the TCP server that accepts client connections and
+// Server is the HTTP server that accepts client requests and
 // dispatches queries to the compiler/executor.
 type Server struct {
 	addr     string
-	listener net.Listener
 	compiler *compile.Compiler
 	logger   *slog.Logger
-	wg       sync.WaitGroup
-	quit     chan struct{}
+	httpSrv  *http.Server
 }
 
 func New(addr string, compiler *compile.Compiler, logger *slog.Logger) *Server {
@@ -32,110 +30,129 @@ func New(addr string, compiler *compile.Compiler, logger *slog.Logger) *Server {
 		addr:     addr,
 		compiler: compiler,
 		logger:   logger,
-		quit:     make(chan struct{}),
 	}
 }
 
-// Start begins listening and accepting connections. It blocks until
-// the context is cancelled or Stop is called.
+// QueryRequest is the JSON body for POST /query.
+type QueryRequest struct {
+	SQL string `json:"sql"`
+}
+
+// QueryResponse is the JSON response for POST /query.
+type QueryResponse struct {
+	Success  bool                     `json:"success"`
+	Error    string                   `json:"error,omitempty"`
+	Columns  []string                 `json:"columns,omitempty"`
+	Rows     []map[string]interface{} `json:"rows,omitempty"`
+	RowCount int                      `json:"rowCount"`
+	Time     string                   `json:"time,omitempty"`
+}
+
+// Start begins listening on HTTP. It blocks until ctx is cancelled.
 func (s *Server) Start(ctx context.Context) error {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/query", s.handleQuery)
+	mux.HandleFunc("/health", s.handleHealth)
+
+	s.httpSrv = &http.Server{
+		Addr:    s.addr,
+		Handler: mux,
+	}
+
 	ln, err := net.Listen("tcp", s.addr)
 	if err != nil {
 		return fmt.Errorf("listen %s: %w", s.addr, err)
 	}
-	s.listener = ln
-	s.logger.Info("server listening", "addr", s.addr)
+	s.addr = ln.Addr().String()
+	s.logger.Info("HTTP server listening", "addr", s.addr)
 
 	go func() {
-		select {
-		case <-ctx.Done():
-			s.Stop()
-		case <-s.quit:
-		}
+		<-ctx.Done()
+		shutCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+		s.httpSrv.Shutdown(shutCtx)
 	}()
 
-	for {
-		conn, err := ln.Accept()
-		if err != nil {
-			select {
-			case <-s.quit:
-				return nil
-			default:
-				s.logger.Error("accept error", "error", err)
-				continue
-			}
-		}
-		s.wg.Add(1)
-		go s.handleConnection(conn)
+	err = s.httpSrv.Serve(ln)
+	if err == http.ErrServerClosed {
+		return nil
 	}
+	return err
 }
 
 // Stop gracefully shuts down the server.
 func (s *Server) Stop() {
-	close(s.quit)
-	if s.listener != nil {
-		s.listener.Close()
+	if s.httpSrv != nil {
+		shutCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+		s.httpSrv.Shutdown(shutCtx)
 	}
-	s.wg.Wait()
-	s.logger.Info("server stopped")
+	s.logger.Info("HTTP server stopped")
 }
 
-// Addr returns the listener address (useful for tests with port 0).
+// Addr returns the actual listening address (useful when port is 0).
 func (s *Server) Addr() string {
-	if s.listener != nil {
-		return s.listener.Addr().String()
-	}
 	return s.addr
 }
 
-func (s *Server) handleConnection(conn net.Conn) {
-	defer s.wg.Done()
-	defer conn.Close()
-
-	remote := conn.RemoteAddr().String()
-	s.logger.Info("client connected", "remote", remote)
-
-	for {
-		pktType, data, err := protocol.ReadPacket(conn)
-		if err != nil {
-			s.logger.Debug("client disconnected", "remote", remote, "reason", err)
-			return
-		}
-
-		var resp *protocol.Response
-		switch pktType {
-		case protocol.PacketTextSQL:
-			resp = s.handleTextSQL(data, remote)
-		default:
-			resp = protocol.ErrorResponse(fmt.Errorf("unsupported packet type: %d", pktType))
-		}
-
-		if err := protocol.WritePacket(conn, protocol.PacketTextSQLResponse, resp); err != nil {
-			s.logger.Error("write response failed", "remote", remote, "error", err)
-			return
-		}
-	}
-}
-
-func (s *Server) handleTextSQL(data []byte, remote string) *protocol.Response {
-	var req protocol.Request
-	if err := json.Unmarshal(data, &req); err != nil {
-		return protocol.ErrorResponse(fmt.Errorf("invalid request: %w", err))
+// POST /query — execute a SQL query
+func (s *Server) handleQuery(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
 	}
 
-	s.logger.Info("query", "remote", remote, "sql", req.Query)
+	var req QueryRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeJSON(w, http.StatusBadRequest, QueryResponse{
+			Success: false, Error: "invalid JSON: " + err.Error(),
+		})
+		return
+	}
 
-	rs, err := s.compiler.Execute(req.Query)
+	if req.SQL == "" {
+		writeJSON(w, http.StatusBadRequest, QueryResponse{
+			Success: false, Error: "empty SQL",
+		})
+		return
+	}
+
+	start := time.Now()
+	s.logger.Info("query", "remote", r.RemoteAddr, "sql", req.SQL)
+
+	rs, err := s.compiler.Execute(req.SQL)
+	elapsed := time.Since(start)
+
 	if err != nil {
-		return protocol.ErrorResponse(err)
+		writeJSON(w, http.StatusOK, QueryResponse{
+			Success: false, Error: err.Error(), Time: elapsed.String(),
+		})
+		return
 	}
 
-	return resultSetToResponse(rs)
+	writeJSON(w, http.StatusOK, resultSetToResponse(rs, elapsed))
 }
 
-func resultSetToResponse(rs *function.ResultSet) *protocol.Response {
+// GET /health — health check
+func (s *Server) handleHealth(w http.ResponseWriter, r *http.Request) {
+	writeJSON(w, http.StatusOK, map[string]string{"status": "ok"})
+}
+
+func resultSetToResponse(rs *function.ResultSet, elapsed time.Duration) QueryResponse {
 	if rs == nil {
-		return protocol.EmptySuccess()
+		return QueryResponse{Success: true, RowCount: 0, Time: elapsed.String()}
 	}
-	return protocol.SuccessResponse(rs.Columns, rs.Rows)
+	return QueryResponse{
+		Success:  true,
+		Columns:  rs.Columns,
+		Rows:     rs.Rows,
+		RowCount: len(rs.Rows),
+		Time:     elapsed.String(),
+	}
+}
+
+func writeJSON(w http.ResponseWriter, status int, v interface{}) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	json.NewEncoder(w).Encode(v)
 }

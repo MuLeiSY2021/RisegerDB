@@ -9,6 +9,7 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/riseger/riseger-go/internal/cache"
 	"github.com/riseger/riseger-go/internal/compile"
 	"github.com/riseger/riseger-go/internal/config"
 	"github.com/riseger/riseger-go/internal/engine"
@@ -52,6 +53,15 @@ func main() {
 
 	compiler := compile.NewCompiler(e.Cache)
 	compiler.SetPreloadHandler(e.Preload)
+	compiler.SetCreateDatabaseHandler(func(name string) error {
+		_, err := e.CreateDatabase(name)
+		return err
+	})
+	compiler.SetCreateMapHandler(func(db *cache.Database, name string, nodeSize int, threshold float64) error {
+		m := cache.NewGeoMap(name, nodeSize, threshold, db)
+		db.AddMap(m)
+		return e.Storage.WriteDatabase(db)
+	})
 
 	addr := fmt.Sprintf(":%d", cfg.Port)
 	srv := server.New(addr, compiler, e.Logger)
@@ -75,4 +85,3 @@ func main() {
 		os.Exit(1)
 	}
 }
-

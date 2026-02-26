@@ -2,14 +2,13 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"encoding/json"
 	"flag"
 	"fmt"
-	"net"
+	"net/http"
 	"os"
 	"strings"
-
-	"github.com/riseger/riseger-go/pkg/protocol"
 )
 
 const banner = `
@@ -21,22 +20,40 @@ const banner = `
  ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═════╝ ╚═════╝
 `
 
+type queryRequest struct {
+	SQL string `json:"sql"`
+}
+
+type queryResponse struct {
+	Success  bool                     `json:"success"`
+	Error    string                   `json:"error,omitempty"`
+	Columns  []string                 `json:"columns,omitempty"`
+	Rows     []map[string]interface{} `json:"rows,omitempty"`
+	RowCount int                      `json:"rowCount"`
+	Time     string                   `json:"time,omitempty"`
+}
+
 func main() {
 	host := flag.String("host", "localhost", "server host")
 	port := flag.Int("port", 12000, "server port")
+	tls := flag.Bool("https", false, "use HTTPS")
 	flag.Parse()
 
-	addr := fmt.Sprintf("%s:%d", *host, *port)
+	scheme := "http"
+	if *tls {
+		scheme = "https"
+	}
+	baseURL := fmt.Sprintf("%s://%s:%d", scheme, *host, *port)
 
 	fmt.Print(banner)
-	fmt.Printf("Connecting to %s...\n", addr)
+	fmt.Printf("Connecting to %s ...\n", baseURL)
 
-	conn, err := net.Dial("tcp", addr)
+	resp, err := http.Get(baseURL + "/health")
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Connection failed: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Cannot connect to server: %v\n", err)
 		os.Exit(1)
 	}
-	defer conn.Close()
+	resp.Body.Close()
 
 	fmt.Println("Connected! Type SQL queries ending with ';'. Type 'exit' to quit.")
 	fmt.Println()
@@ -77,50 +94,43 @@ func main() {
 			continue
 		}
 
-		resp, err := sendQuery(conn, query)
+		qr, err := sendQuery(baseURL, query)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 			continue
 		}
 
-		printResponse(resp)
+		printResponse(qr)
 	}
 }
 
-func sendQuery(conn net.Conn, query string) (*protocol.Response, error) {
-	req := protocol.Request{
-		Type:  protocol.ReqShell,
-		Query: query,
-	}
-	if err := protocol.WritePacket(conn, protocol.PacketTextSQL, &req); err != nil {
-		return nil, err
-	}
-
-	_, data, err := protocol.ReadPacket(conn)
+func sendQuery(baseURL, sql string) (*queryResponse, error) {
+	body, _ := json.Marshal(queryRequest{SQL: sql})
+	resp, err := http.Post(baseURL+"/query", "application/json", bytes.NewReader(body))
 	if err != nil {
 		return nil, err
 	}
+	defer resp.Body.Close()
 
-	var resp protocol.Response
-	if err := json.Unmarshal(data, &resp); err != nil {
+	var qr queryResponse
+	if err := json.NewDecoder(resp.Body).Decode(&qr); err != nil {
 		return nil, err
 	}
-	return &resp, nil
+	return &qr, nil
 }
 
-func printResponse(resp *protocol.Response) {
+func printResponse(resp *queryResponse) {
 	if !resp.Success {
 		fmt.Printf("[ERROR] %s\n\n", resp.Error)
 		return
 	}
 
 	if resp.RowCount == 0 {
-		fmt.Println("Query OK, 0 rows affected.")
-		fmt.Println()
+		fmt.Printf("Query OK, 0 rows affected. (%s)\n\n", resp.Time)
 		return
 	}
 
-	fmt.Printf("Query OK, %d rows.\n", resp.RowCount)
+	fmt.Printf("Query OK, %d rows. (%s)\n", resp.RowCount, resp.Time)
 
 	if len(resp.Columns) == 0 && len(resp.Rows) > 0 {
 		for k := range resp.Rows[0] {

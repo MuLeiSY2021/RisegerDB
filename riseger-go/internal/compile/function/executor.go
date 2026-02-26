@@ -145,24 +145,9 @@ func eval(node *parser.Node, ctx *Context) error {
 
 	// ---------- UPDATE ----------
 	case parser.NodeUpdate:
-		for _, child := range node.Children {
-			if err := eval(child, ctx); err != nil {
-				return err
-			}
-		}
-		return nil
+		return executeUpdate(node, ctx)
 
 	case parser.NodeUpdateClause:
-		if err := eval(node.Children[0], ctx); err != nil {
-			return err
-		}
-		attrName := ctx.PopString()
-		if err := eval(node.Children[1], ctx); err != nil {
-			return err
-		}
-		value := ctx.Pop()
-		_ = attrName
-		_ = value
 		return nil
 
 	// ---------- PRELOAD ----------
@@ -184,6 +169,84 @@ func eval(node *parser.Node, ctx *Context) error {
 		})
 		ctx.Result = rs
 		return nil
+
+	// ---------- CREATE ----------
+	case parser.NodeCreateDatabase:
+		name := extractString(node.Children[0])
+		if ctx.CreateDatabase == nil {
+			return fmt.Errorf("CREATE DATABASE not supported: no handler registered")
+		}
+		if err := ctx.CreateDatabase(name); err != nil {
+			return err
+		}
+		ctx.Result = NewResultSet()
+		ctx.Result.Columns = []string{"status", "database"}
+		ctx.Result.AddRow(map[string]interface{}{"status": "created", "database": name})
+		return nil
+
+	case parser.NodeCreateMap:
+		if ctx.Database == nil {
+			return fmt.Errorf("no database selected, use USE DATABASE first")
+		}
+		name := extractString(node.Children[0])
+		nodeSize := 4
+		threshold := 0.5
+		for i := 1; i < len(node.Children); i++ {
+			if err := eval(node.Children[i], ctx); err != nil {
+				return err
+			}
+		}
+		if len(node.Children) >= 3 {
+			threshold = ctx.PopFloat()
+			nodeSize = int(ctx.PopFloat())
+		} else if len(node.Children) >= 2 {
+			nodeSize = int(ctx.PopFloat())
+		}
+		if ctx.CreateMap != nil {
+			if err := ctx.CreateMap(ctx.Database, name, nodeSize, threshold); err != nil {
+				return err
+			}
+		} else {
+			m := cache.NewGeoMap(name, nodeSize, threshold, ctx.Database)
+			ctx.Database.AddMap(m)
+		}
+		ctx.Result = NewResultSet()
+		ctx.Result.Columns = []string{"status", "map"}
+		ctx.Result.AddRow(map[string]interface{}{"status": "created", "map": name})
+		return nil
+
+	case parser.NodeCreateModel:
+		if ctx.Database == nil {
+			return fmt.Errorf("no database selected, use USE DATABASE first")
+		}
+		name := extractString(node.Children[0])
+		parent := ""
+		params := make(map[string]cache.FieldType)
+		startIdx := 1
+		if startIdx < len(node.Children) && node.Children[startIdx].Type == parser.NodeString {
+			parent = extractString(node.Children[startIdx])
+			startIdx++
+		}
+		for i := startIdx; i < len(node.Children); i++ {
+			if node.Children[i].Type == parser.NodeCreateModelParam {
+				pName := extractString(node.Children[i].Children[0])
+				pType := extractString(node.Children[i].Children[1])
+				params[pName] = cache.ParseFieldType(pType)
+			}
+		}
+		model := cache.NewModel(name, parent, params)
+		ctx.Database.AddModel(model)
+		ctx.Result = NewResultSet()
+		ctx.Result.Columns = []string{"status", "model"}
+		ctx.Result.AddRow(map[string]interface{}{"status": "created", "model": name})
+		return nil
+
+	case parser.NodeCreateModelParam:
+		return nil
+
+	// ---------- DELETE ----------
+	case parser.NodeDelete:
+		return executeDelete(node, ctx)
 
 	// ---------- Boolean / Logic ----------
 	case parser.NodeAnd:
@@ -426,6 +489,111 @@ func peekElement(ctx *Context) rtree.Rectangle {
 			return r
 		}
 	}
+	return nil
+}
+
+func executeUpdate(node *parser.Node, ctx *Context) error {
+	if ctx.Map == nil {
+		return fmt.Errorf("no map selected")
+	}
+
+	whereNode := node.Children[len(node.Children)-1]
+	updateClauses := node.Children[:len(node.Children)-1]
+
+	type assignment struct {
+		attr  string
+		value interface{}
+	}
+	var assignments []assignment
+	for _, clause := range updateClauses {
+		if clause.Type != parser.NodeUpdateClause {
+			continue
+		}
+		attrCtx := *ctx
+		attrCtx.Stack = make([]interface{}, 0, 8)
+		if err := eval(clause.Children[0], &attrCtx); err != nil {
+			return err
+		}
+		attrName := attrCtx.PopString()
+		if err := eval(clause.Children[1], &attrCtx); err != nil {
+			return err
+		}
+		value := attrCtx.Pop()
+		assignments = append(assignments, assignment{attr: attrName, value: value})
+	}
+
+	updated := 0
+	for _, layer := range ctx.Map.ListLayers() {
+		if layer.IsSubMap() {
+			continue
+		}
+		for _, elem := range layer.Elements() {
+			subCtx := *ctx
+			subCtx.Stack = make([]interface{}, 0, 16)
+			subCtx.Push(elem)
+			if err := eval(whereNode, &subCtx); err != nil {
+				continue
+			}
+			if !subCtx.PopBool() {
+				continue
+			}
+			if e, ok := elem.(*cache.Element); ok {
+				for _, a := range assignments {
+					e.SetAttribute(a.attr, a.value)
+				}
+				updated++
+			}
+		}
+	}
+
+	ctx.Result = NewResultSet()
+	ctx.Result.Columns = []string{"status", "updated"}
+	ctx.Result.AddRow(map[string]interface{}{
+		"status":  "ok",
+		"updated": float64(updated),
+	})
+	return nil
+}
+
+func executeDelete(node *parser.Node, ctx *Context) error {
+	if ctx.Map == nil {
+		return fmt.Errorf("no map selected")
+	}
+	modelName := extractString(node.Children[0])
+	whereNode := node.Children[1]
+
+	layerName := ctx.Map.ElementLayerName(modelName)
+	layer, ok := ctx.Map.GetLayer(layerName)
+	if !ok {
+		ctx.Result = NewResultSet()
+		ctx.Result.Columns = []string{"status", "deleted"}
+		ctx.Result.AddRow(map[string]interface{}{"status": "ok", "deleted": float64(0)})
+		return nil
+	}
+
+	var toDelete []rtree.Rectangle
+	for _, elem := range layer.Elements() {
+		subCtx := *ctx
+		subCtx.Stack = make([]interface{}, 0, 16)
+		subCtx.Push(elem)
+		if err := eval(whereNode, &subCtx); err != nil {
+			continue
+		}
+		if subCtx.PopBool() {
+			toDelete = append(toDelete, elem)
+		}
+	}
+
+	for _, elem := range toDelete {
+		layer.DeleteStrict(elem)
+	}
+
+	ctx.Result = NewResultSet()
+	ctx.Result.Columns = []string{"status", "deleted"}
+	ctx.Result.AddRow(map[string]interface{}{
+		"status":  "ok",
+		"deleted": float64(len(toDelete)),
+	})
 	return nil
 }
 

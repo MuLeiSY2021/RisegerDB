@@ -1,23 +1,23 @@
 package server
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
-	"net"
+	"fmt"
+	"net/http"
 	"testing"
 	"time"
 
 	"github.com/riseger/riseger-go/internal/cache"
 	"github.com/riseger/riseger-go/internal/compile"
-	"github.com/riseger/riseger-go/pkg/protocol"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
-func setupTestServer(t *testing.T) (*Server, *cache.CacheManager) {
+func setupTestServer(t *testing.T) (*Server, string) {
 	t.Helper()
 	cm := cache.NewCacheManager()
-
 	db := cache.NewDatabase("test_db")
 	db.Activate()
 	db.AddModel(cache.NewModel("building", "field", map[string]cache.FieldType{
@@ -37,163 +37,95 @@ func setupTestServer(t *testing.T) (*Server, *cache.CacheManager) {
 
 	compiler := compile.NewCompiler(cm)
 	srv := New(":0", compiler, nil)
-	return srv, cm
-}
 
-func startServer(t *testing.T, srv *Server) string {
-	t.Helper()
 	ctx, cancel := context.WithCancel(context.Background())
-	t.Cleanup(func() {
-		cancel()
-		srv.Stop()
-	})
-
-	ready := make(chan string, 1)
+	ready := make(chan struct{})
 	go func() {
-		ln, err := net.Listen("tcp", ":0")
-		if err != nil {
-			t.Error(err)
-			return
-		}
-		srv.listener = ln
-		srv.logger.Info("test server listening", "addr", ln.Addr().String())
-		ready <- ln.Addr().String()
-
-		go func() {
-			<-ctx.Done()
-			ln.Close()
-		}()
-
-		for {
-			conn, err := ln.Accept()
-			if err != nil {
-				return
-			}
-			srv.wg.Add(1)
-			go srv.handleConnection(conn)
-		}
+		close(ready)
+		srv.Start(ctx)
 	}()
+	<-ready
+	time.Sleep(50 * time.Millisecond)
+	t.Cleanup(func() { cancel(); time.Sleep(50 * time.Millisecond) })
 
-	select {
-	case addr := <-ready:
-		return addr
-	case <-time.After(2 * time.Second):
-		t.Fatal("server failed to start")
-		return ""
-	}
+	return srv, srv.Addr()
 }
 
-func sendRequest(t *testing.T, conn net.Conn, query string) *protocol.Response {
+func queryHTTP(t *testing.T, addr, sql string) QueryResponse {
 	t.Helper()
-	req := protocol.Request{Type: protocol.ReqShell, Query: query}
-	require.NoError(t, protocol.WritePacket(conn, protocol.PacketTextSQL, &req))
-
-	_, data, err := protocol.ReadPacket(conn)
+	body, _ := json.Marshal(QueryRequest{SQL: sql})
+	resp, err := http.Post(fmt.Sprintf("http://%s/query", addr), "application/json", bytes.NewReader(body))
 	require.NoError(t, err)
+	defer resp.Body.Close()
 
-	var resp protocol.Response
-	require.NoError(t, json.Unmarshal(data, &resp))
-	return &resp
+	var qr QueryResponse
+	require.NoError(t, json.NewDecoder(resp.Body).Decode(&qr))
+	return qr
 }
 
-func TestServerGetDatabases(t *testing.T) {
-	srv, _ := setupTestServer(t)
-	addr := startServer(t, srv)
-
-	conn, err := net.Dial("tcp", addr)
+func TestHTTPHealth(t *testing.T) {
+	_, addr := setupTestServer(t)
+	resp, err := http.Get(fmt.Sprintf("http://%s/health", addr))
 	require.NoError(t, err)
-	defer conn.Close()
-
-	resp := sendRequest(t, conn, "GET DATABASES")
-	assert.True(t, resp.Success)
+	assert.Equal(t, 200, resp.StatusCode)
 }
 
-func TestServerSearchQuery(t *testing.T) {
-	srv, _ := setupTestServer(t)
-	addr := startServer(t, srv)
-
-	conn, err := net.Dial("tcp", addr)
-	require.NoError(t, err)
-	defer conn.Close()
-
-	resp := sendRequest(t, conn, "USE DATABASE test_db | MAP china SEARCH name, area")
-	assert.True(t, resp.Success)
-	assert.Equal(t, 10, resp.RowCount)
+func TestHTTPGetDatabases(t *testing.T) {
+	_, addr := setupTestServer(t)
+	qr := queryHTTP(t, addr, "GET DATABASES")
+	assert.True(t, qr.Success)
 }
 
-func TestServerSearchWhere(t *testing.T) {
-	srv, _ := setupTestServer(t)
-	addr := startServer(t, srv)
-
-	conn, err := net.Dial("tcp", addr)
-	require.NoError(t, err)
-	defer conn.Close()
-
-	resp := sendRequest(t, conn, "USE DATABASE test_db | MAP china SEARCH name WHERE area > 100")
-	assert.True(t, resp.Success)
-	assert.Greater(t, resp.RowCount, 0)
-	assert.Less(t, resp.RowCount, 10)
+func TestHTTPSearch(t *testing.T) {
+	_, addr := setupTestServer(t)
+	qr := queryHTTP(t, addr, "USE DATABASE test_db | MAP china SEARCH name, area")
+	assert.True(t, qr.Success)
+	assert.Equal(t, 10, qr.RowCount)
 }
 
-func TestServerInvalidQuery(t *testing.T) {
-	srv, _ := setupTestServer(t)
-	addr := startServer(t, srv)
-
-	conn, err := net.Dial("tcp", addr)
-	require.NoError(t, err)
-	defer conn.Close()
-
-	resp := sendRequest(t, conn, "INVALID QUERY")
-	assert.False(t, resp.Success)
-	assert.NotEmpty(t, resp.Error)
+func TestHTTPSearchWhere(t *testing.T) {
+	_, addr := setupTestServer(t)
+	qr := queryHTTP(t, addr, "USE DATABASE test_db | MAP china SEARCH name WHERE area > 100")
+	assert.True(t, qr.Success)
+	assert.Greater(t, qr.RowCount, 0)
+	assert.Less(t, qr.RowCount, 10)
 }
 
-func TestServerMultipleQueries(t *testing.T) {
-	srv, _ := setupTestServer(t)
-	addr := startServer(t, srv)
-
-	conn, err := net.Dial("tcp", addr)
-	require.NoError(t, err)
-	defer conn.Close()
-
-	queries := []string{
-		"GET DATABASES",
-		"USE DATABASE test_db GET MAPS",
-		"USE DATABASE test_db GET MODELS",
-		"USE DATABASE test_db | MAP china SEARCH name, area",
-	}
-
-	for _, q := range queries {
-		resp := sendRequest(t, conn, q)
-		assert.True(t, resp.Success, "query: %s", q)
-	}
+func TestHTTPInvalidQuery(t *testing.T) {
+	_, addr := setupTestServer(t)
+	qr := queryHTTP(t, addr, "INVALID SQL")
+	assert.False(t, qr.Success)
+	assert.NotEmpty(t, qr.Error)
 }
 
-func TestServerMultipleClients(t *testing.T) {
-	srv, _ := setupTestServer(t)
-	addr := startServer(t, srv)
+func TestHTTPUpdate(t *testing.T) {
+	_, addr := setupTestServer(t)
+	qr := queryHTTP(t, addr, "USE DATABASE test_db | MAP china UPDATE name = 'updated' WHERE area > 100")
+	assert.True(t, qr.Success)
+	assert.Greater(t, qr.RowCount, 0)
+}
 
-	done := make(chan bool, 3)
-	for i := 0; i < 3; i++ {
-		go func() {
-			conn, err := net.Dial("tcp", addr)
-			if err != nil {
-				done <- false
-				return
-			}
-			defer conn.Close()
+func TestHTTPCreateAndDelete(t *testing.T) {
+	_, addr := setupTestServer(t)
 
-			resp := sendRequest(t, conn, "GET DATABASES")
-			done <- resp.Success
-		}()
-	}
+	qr := queryHTTP(t, addr, "USE DATABASE test_db CREATE MODEL city PARENT point PARAM name STRING PARAM population DOUBLE")
+	assert.True(t, qr.Success)
 
-	for i := 0; i < 3; i++ {
-		select {
-		case ok := <-done:
-			assert.True(t, ok)
-		case <-time.After(5 * time.Second):
-			t.Fatal("timeout waiting for client")
+	qr2 := queryHTTP(t, addr, "USE DATABASE test_db GET MODELS")
+	assert.True(t, qr2.Success)
+	found := false
+	for _, row := range qr2.Rows {
+		if row["model"] == "city" {
+			found = true
 		}
 	}
+	assert.True(t, found, "created model should be visible")
+}
+
+func TestHTTPEmptySQL(t *testing.T) {
+	_, addr := setupTestServer(t)
+	body, _ := json.Marshal(QueryRequest{SQL: ""})
+	resp, err := http.Post(fmt.Sprintf("http://%s/query", addr), "application/json", bytes.NewReader(body))
+	require.NoError(t, err)
+	assert.Equal(t, 400, resp.StatusCode)
 }

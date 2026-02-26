@@ -13,7 +13,8 @@ var keywords = map[string]bool{
 	"GET": true, "DATABASES": true, "MAPS": true, "MODELS": true,
 	"AND": true, "OR": true, "NOT": true, "IN": true, "OUT": true,
 	"RECT": true, "AS": true, "CREATE": true, "DELETE": true,
-	"SET": true,
+	"SET": true, "PARENT": true, "PARAM": true, "THRESHOLD": true,
+	"NODESIZE": true, "FROM": true,
 }
 
 // Lexer performs lexical analysis on SQL-like query strings.
