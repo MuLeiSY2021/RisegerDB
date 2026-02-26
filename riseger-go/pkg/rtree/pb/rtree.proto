@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package rtree;
+
+option go_package = "github.com/riseger/riseger-go/pkg/rtree/pb";
+
+message Rect {
+  double min_x = 1;
+  double max_x = 2;
+  double min_y = 3;
+  double max_y = 4;
+}
+
+message Element {
+  Rect bounds = 1;
+  bytes payload = 2;
+}
+
+message Node {
+  Rect bounds = 1;
+  bool is_leaf = 2;
+  repeated Node children = 3;
+  repeated Element elements = 4;
+}
+
+message RTreeProto {
+  int32 max_entries = 1;
+  double threshold = 2;
+  string tree_type = 3;
+  Node root = 4;
+}
