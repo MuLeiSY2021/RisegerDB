@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package geodata;
+
+option go_package = "github.com/riseger/riseger-go/pkg/geodata/pb";
+
+// GeoDataFile 是 .geodata 二进制文件的顶层结构。
+// 一个文件可以包含多个数据库定义。
+message GeoDataFile {
+  repeated GeoDatabase databases = 1;
+}
+
+message GeoDatabase {
+  string name = 1;
+  map<string, string> configs = 2;
+  repeated GeoModel models = 3;
+  repeated GeoMap maps = 4;
+}
+
+message GeoModel {
+  string name = 1;
+  string parent = 2;
+  map<string, string> parameters = 3;   // key -> FieldType name ("STRING", "DOUBLE", etc.)
+}
+
+message GeoMap {
+  string name = 1;
+  int32 node_size = 2;
+  double threshold = 3;
+  repeated GeoElement elements = 4;
+  repeated GeoSubmap submaps = 5;
+}
+
+message GeoSubmap {
+  string name = 1;
+  string scope_path = 2;
+  repeated GeoElement elements = 3;
+  repeated GeoSubmap submaps = 4;
+}
+
+message GeoElement {
+  string model_name = 1;
+  string parent_model = 2;             // "point", "road", "field"
+  repeated GeoCoord coords = 3;        // 空间坐标点列表
+  map<string, string> attributes = 4;  // 非空间属性 key -> string value
+}
+
+message GeoCoord {
+  double x = 1;
+  double y = 2;
+}

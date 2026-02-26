@@ -144,6 +144,7 @@ func (e *Engine) replayEntry(entry wal.LogEntry) {
 		case "INSERT":
 			geoMap, ok := db.GetMap(op.MapName)
 			if !ok {
+				e.Logger.Warn("WAL replay: map not found", "map", op.MapName)
 				continue
 			}
 			elem := cache.NewElement(0, 0, 0, 0, geoMap.Threshold(), "", op.ModelName)
@@ -151,6 +152,7 @@ func (e *Engine) replayEntry(entry wal.LogEntry) {
 				elem.SetAttribute(k, v)
 			}
 			geoMap.AddElement(elem)
+			e.Logger.Debug("WAL replay: inserted element", "map", op.MapName, "model", op.ModelName)
 		case "DELETE":
 			// future: implement delete replay
 		default:
